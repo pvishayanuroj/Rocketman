@@ -20,7 +20,7 @@
 {
 	if ((self = [super init])) {
         
-        sprite_ = [[CCSprite spriteWithSpriteFrameName:@"Cloud Idle 01.png"] retain];
+        sprite_ = [[CCSprite spriteWithSpriteFrameName:@"Cloud 01.png"] retain];
         [self addChild:sprite_];
         
         sprite_.position = pos;

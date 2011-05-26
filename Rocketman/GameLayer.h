@@ -26,17 +26,18 @@
     
     CGFloat rocketSpeed_;
     
-    NSMutableArray *clouds_;
+    NSMutableArray *doodads_;
     
     NSMutableArray *backgroundClouds_;    
     
-    NSUInteger screenWidth_;
-    NSUInteger screenHeight_;
+    NSInteger screenWidth_;
+    NSInteger screenHeight_;
     
     NSUInteger numBoosts_;
     
     NSUInteger numCats_;
     
+    NSInteger yCutoff_;
 }
 
 - (void) cloudGenerator;

@@ -9,6 +9,8 @@
 #import "GameLayer.h"
 #import "Rocket.h"
 #import "Obstacle.h"
+#import "Doodad.h"
+#import "Cloud.h"
 #import "Alien.h"
 #import "Dino.h"
 
@@ -27,6 +29,8 @@
         screenWidth_ = size.width;
         screenHeight_ = size.height;        
         
+        yCutoff_ = -(screenHeight_ + 100);
+        
         // Add background
         CCSprite *bg = [CCSprite spriteWithFile:@"background.png"];
         [self addChild:bg z:kBackgroundDepth];
@@ -39,7 +43,7 @@
         
         obstacles_ = [[NSMutableArray arrayWithCapacity:20] retain];
         firedCats_ = [[NSMutableArray arrayWithCapacity:5] retain];
-        clouds_ = [[NSMutableArray arrayWithCapacity:20] retain];
+        doodads_ = [[NSMutableArray arrayWithCapacity:20] retain];
         
         rocketInitSpeed_ = 5.0;
         rocketSpeed_ = 4;
@@ -56,7 +60,7 @@
     [rocket_ release];
     [obstacles_ release];
     [firedCats_ release];
-    [clouds_ release];
+    [doodads_ release];
     
     [super dealloc];
 }
@@ -69,6 +73,9 @@
 
 - (void) slowUpdate:(ccTime)dt
 {
+    NSLog(@"doodads: %d", [doodads_ count]);
+    NSLog(@"obstacles: %d", [obstacles_ count]);    
+    
     [self cloudGenerator];
     [self obstacleGenerator];    
 }
@@ -80,20 +87,19 @@
 
 - (void) applyGravity
 {
-    for (CCSprite *c in clouds_) {
-        CGPoint p = CGPointMake(0, rocketSpeed_);
-        c.position = ccpSub(c.position, p);
-        
-        if (c.position.y > screenHeight_ + 100) {
-            [c removeFromParentAndCleanup:YES];
-            [clouds_ removeObject:c];
+    for (Doodad *doodad in doodads_) {
+        [doodad fall:rocketSpeed_];
+
+        if (doodad.position.y < yCutoff_) {
+            [doodad removeFromParentAndCleanup:YES];
+            [doodads_ removeObject:doodad];
         }
     }    
     
     for (Obstacle *obstacle in obstacles_) {
         [obstacle fall:rocketSpeed_];
         
-        if (obstacle.position.y > screenHeight_ + 100) {
+        if (obstacle.position.y < yCutoff_) {
             [obstacle removeFromParentAndCleanup:YES];
             [obstacles_ removeObject:obstacle];
         }
@@ -107,6 +113,13 @@
     
     if (randNum < chance) {    
         
+        NSInteger xCoord = arc4random() % screenWidth_;
+        
+        CGPoint pos = CGPointMake(xCoord, screenHeight_);        
+        Doodad *doodad = [Cloud cloudWithPos:pos];
+        
+        [self addChild:doodad z:kCloudDepth];   
+        [doodads_ addObject:doodad];
     }
 }
 
