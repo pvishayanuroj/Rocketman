@@ -130,6 +130,12 @@
 		DA346EF8138EB6F2000881D6 /* Obstacle.m in Sources */ = {isa = PBXBuildFile; fileRef = DA346EF7138EB6E5000881D6 /* Obstacle.m */; };
 		DA346EFB138EBA5A000881D6 /* Dino.m in Sources */ = {isa = PBXBuildFile; fileRef = DA346EFA138EBA4C000881D6 /* Dino.m */; };
 		DA346EFE138EC4C5000881D6 /* TargetedAction.m in Sources */ = {isa = PBXBuildFile; fileRef = DA346EFD138EC4BE000881D6 /* TargetedAction.m */; };
+		DA346F12138ECB56000881D6 /* sheet01_animations.plist in Resources */ = {isa = PBXBuildFile; fileRef = DA346F0F138ECB56000881D6 /* sheet01_animations.plist */; };
+		DA346F13138ECB56000881D6 /* sheet01.plist in Resources */ = {isa = PBXBuildFile; fileRef = DA346F10138ECB56000881D6 /* sheet01.plist */; };
+		DA346F14138ECB56000881D6 /* sheet01.png in Resources */ = {isa = PBXBuildFile; fileRef = DA346F11138ECB56000881D6 /* sheet01.png */; };
+		DA346F18138ECB7C000881D6 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = DA346F17138ECB7C000881D6 /* background.png */; };
+		DAE1BEB3138ED7AF000378DE /* Doodad.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE1BEB2138ED7AF000378DE /* Doodad.m */; };
+		DAE1BEB7138ED833000378DE /* Cloud.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE1BEB6138ED833000378DE /* Cloud.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -384,6 +390,15 @@
 		DA346EFA138EBA4C000881D6 /* Dino.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Dino.m; sourceTree = "<group>"; };
 		DA346EFC138EC4BA000881D6 /* TargetedAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetedAction.h; sourceTree = "<group>"; };
 		DA346EFD138EC4BE000881D6 /* TargetedAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TargetedAction.m; sourceTree = "<group>"; };
+		DA346F0F138ECB56000881D6 /* sheet01_animations.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = sheet01_animations.plist; path = Resources/Spritesheets/sheet01_animations.plist; sourceTree = "<group>"; };
+		DA346F10138ECB56000881D6 /* sheet01.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = sheet01.plist; path = Resources/Spritesheets/sheet01.plist; sourceTree = "<group>"; };
+		DA346F11138ECB56000881D6 /* sheet01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sheet01.png; path = Resources/Spritesheets/sheet01.png; sourceTree = "<group>"; };
+		DA346F17138ECB7C000881D6 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
+		DA346F21138ED4D0000881D6 /* Enums.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Enums.h; sourceTree = "<group>"; };
+		DAE1BEB1138ED7AF000378DE /* Doodad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Doodad.h; sourceTree = "<group>"; };
+		DAE1BEB2138ED7AF000378DE /* Doodad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Doodad.m; sourceTree = "<group>"; };
+		DAE1BEB5138ED832000378DE /* Cloud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cloud.h; sourceTree = "<group>"; };
+		DAE1BEB6138ED833000378DE /* Cloud.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cloud.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -466,6 +481,11 @@
 				DA346EF3138EB179000881D6 /* Alien.m */,
 				DA346EF9138EBA49000881D6 /* Dino.h */,
 				DA346EFA138EBA4C000881D6 /* Dino.m */,
+				DA346F21138ED4D0000881D6 /* Enums.h */,
+				DAE1BEB1138ED7AF000378DE /* Doodad.h */,
+				DAE1BEB2138ED7AF000378DE /* Doodad.m */,
+				DAE1BEB5138ED832000378DE /* Cloud.h */,
+				DAE1BEB6138ED833000378DE /* Cloud.m */,
 			);
 			path = Rocketman;
 			sourceTree = "<group>";
@@ -473,6 +493,7 @@
 		DA346D76138E593D000881D6 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				DA346F16138ECB61000881D6 /* Spritesheets */,
 				DA346EE4138E5D53000881D6 /* Game Art */,
 				DA346D77138E593D000881D6 /* Default.png */,
 				DA346D79138E593D000881D6 /* fps_images.png */,
@@ -802,9 +823,20 @@
 		DA346EE4138E5D53000881D6 /* Game Art */ = {
 			isa = PBXGroup;
 			children = (
+				DA346F17138ECB7C000881D6 /* background.png */,
 			);
 			name = "Game Art";
 			path = "Resources/Game Art";
+			sourceTree = "<group>";
+		};
+		DA346F16138ECB61000881D6 /* Spritesheets */ = {
+			isa = PBXGroup;
+			children = (
+				DA346F0F138ECB56000881D6 /* sheet01_animations.plist */,
+				DA346F10138ECB56000881D6 /* sheet01.plist */,
+				DA346F11138ECB56000881D6 /* sheet01.png */,
+			);
+			name = Spritesheets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -866,6 +898,10 @@
 				DA346D84138E593D000881D6 /* Icon.png in Resources */,
 				DA346D86138E593D000881D6 /* Icon@2x.png in Resources */,
 				DA346D89138E593D000881D6 /* iTunesArtwork in Resources */,
+				DA346F12138ECB56000881D6 /* sheet01_animations.plist in Resources */,
+				DA346F13138ECB56000881D6 /* sheet01.plist in Resources */,
+				DA346F14138ECB56000881D6 /* sheet01.png in Resources */,
+				DA346F18138ECB7C000881D6 /* background.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -982,6 +1018,8 @@
 				DA346EF8138EB6F2000881D6 /* Obstacle.m in Sources */,
 				DA346EFB138EBA5A000881D6 /* Dino.m in Sources */,
 				DA346EFE138EC4C5000881D6 /* TargetedAction.m in Sources */,
+				DAE1BEB3138ED7AF000378DE /* Doodad.m in Sources */,
+				DAE1BEB7138ED833000378DE /* Cloud.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1075,6 +1113,7 @@
 				DA346ED5138E5942000881D6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

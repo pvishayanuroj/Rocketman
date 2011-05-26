@@ -20,10 +20,13 @@
 {
 	if ((self = [super init])) {
         
-        sprite_ = [[CCSprite spriteWithSpriteFrameName:@"Alien"] retain];
+        sprite_ = [[CCSprite spriteWithSpriteFrameName:@"Alien Idle 01.png"] retain];
         [self addChild:sprite_];
         
         sprite_.position = pos;
+        
+        [self initActions];
+        [self showIdle];        
         
     }
     return self;
@@ -42,5 +45,11 @@
 	CCActionInterval *animate = [CCAnimate actionWithAnimation:animation];
 	idleAnimation_ = [[CCRepeatForever actionWithAction:animate] retain];		
 }                 
+
+- (void) showIdle
+{
+	[sprite_ stopAllActions];
+	[sprite_ runAction:idleAnimation_];	
+}
 
 @end

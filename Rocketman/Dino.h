@@ -20,4 +20,10 @@
 
 - (id) initWithPos:(CGPoint)pos;
 
+- (void) initActions;
+
+- (void) showIdle;
+
+- (void) showAttacking;
+
 @end

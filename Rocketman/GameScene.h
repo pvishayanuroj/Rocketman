@@ -13,4 +13,6 @@
     
 }
 
+- (void) animationLoader:(NSString *)unitListName spriteSheetName:(NSString *)spriteSheetName;
+
 @end
