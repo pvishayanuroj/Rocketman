@@ -12,7 +12,9 @@
 #import "GameConfig.h"
 #import "HelloWorldLayer.h"
 #import "RootViewController.h"
-#import "GameScene.h"
+#import "MainMenuScene.h"
+
+#import <GameKit/GameKit.h>
 
 @implementation AppDelegate
 
@@ -109,10 +111,12 @@
 	
 	// Removes the startup flicker
 	[self removeStartupFlicker];
+    
+    [self authenticateLocalPlayer];
 	
 	// Run the intro Scene
 	//[[CCDirector sharedDirector] runWithScene: [HelloWorldLayer scene]];
-    [[CCDirector sharedDirector] runWithScene: [GameScene node]];
+    [[CCDirector sharedDirector] runWithScene: [MainMenuScene node]];
 }
 
 
@@ -150,6 +154,17 @@
 
 - (void)applicationSignificantTimeChange:(UIApplication *)application {
 	[[CCDirector sharedDirector] setNextDeltaTimeZero:YES];
+}
+
+- (void) authenticateLocalPlayer
+{
+    GKLocalPlayer *localPlayer = [GKLocalPlayer localPlayer];
+    [localPlayer authenticateWithCompletionHandler:^(NSError *error) {
+        if (localPlayer.isAuthenticated)
+        {
+            // Perform additional tasks for the authenticated player.
+        }
+    }];
 }
 
 - (void)dealloc {
