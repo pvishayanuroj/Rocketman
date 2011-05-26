@@ -19,4 +19,8 @@
 
 - (id) initWithPos:(CGPoint)pos;
 
+- (void) initActions;
+
+- (void) showIdle;
+
 @end
