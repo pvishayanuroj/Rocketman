@@ -38,6 +38,8 @@
     NSUInteger numCats_;
     
     NSInteger yCutoff_;
+    
+	CCParticleSystem *engineFlame_;    
 }
 
 - (void) cloudGenerator;
@@ -48,5 +50,6 @@
 
 - (void) collisionDetect;
 
+- (void) startEngineFlame;
 
 @end

@@ -24,4 +24,8 @@
 
 - (void) initActions;
 
+- (void) showFlying;
+
+- (void) showBurning;
+
 @end

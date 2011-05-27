@@ -13,6 +13,7 @@
 #import "Cloud.h"
 #import "Alien.h"
 #import "Dino.h"
+#import "EngineParticleSystem.h"
 
 @implementation GameLayer
 
@@ -40,6 +41,8 @@
         CGPoint startPos = CGPointMake(screenWidth_ * 0.5, screenHeight_ * 0.2);
         rocket_ = [Rocket rocketWithPos:startPos];
         [self addChild:rocket_ z:kRocketDepth];
+        [rocket_ showFlying];
+        [self startEngineFlame];
         
         obstacles_ = [[NSMutableArray arrayWithCapacity:20] retain];
         firedCats_ = [[NSMutableArray arrayWithCapacity:5] retain];
@@ -73,9 +76,6 @@
 
 - (void) slowUpdate:(ccTime)dt
 {
-    NSLog(@"doodads: %d", [doodads_ count]);
-    NSLog(@"obstacles: %d", [obstacles_ count]);    
-    
     [self cloudGenerator];
     [self obstacleGenerator];    
 }
@@ -152,6 +152,34 @@
         [obstacles_ addObject:obstacle];
         
     }
+}
+
+- (void) startEngineFlame
+{
+	engineFlame_ = [EngineParticleSystem engineParticleSystem:300];
+	[self addChild:engineFlame_ z:kRocketFlameDepth];
+    
+    engineFlame_.gravity = ccp(0, -100);
+    ccColor4B orange = ccc4(255, 165, 0, 255);
+    ccColor4F c1 = ccc4FFromccc4B(orange);
+    ccColor4F c2 = c1;
+    c2.a = 0;
+    engineFlame_.startColor = c1;
+    engineFlame_.endColor = c2;
+    
+    
+    engineFlame_.startSize = 10.0f;
+    engineFlame_.startSizeVar = 5.0f;
+    engineFlame_.endSize = kCCParticleStartSizeEqualToEndSize;    
+    
+    // life of particles
+    engineFlame_.life = 0.5;
+    engineFlame_.lifeVar = 0.25f;
+    
+    // emits per seconds
+    engineFlame_.emissionRate = engineFlame_.totalParticles/engineFlame_.life;
+    
+	engineFlame_.position = CGPointMake(rocket_.position.x, rocket_.position.y - 30);;
 }
 
 

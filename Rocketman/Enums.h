@@ -10,5 +10,6 @@ enum {
     kBackgroundDepth = 0,
 	kCloudDepth = 1,
 	kObstacleDepth = 2,    
-	kRocketDepth = 3,
+    kRocketFlameDepth = 3,
+	kRocketDepth = 4
 };

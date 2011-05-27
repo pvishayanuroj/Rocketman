@@ -23,7 +23,7 @@
         sprite_ = [[CCSprite spriteWithSpriteFrameName:@"Rocket Fly 01.png"] retain];
         [self addChild:sprite_];
         
-        sprite_.position = pos;
+        self.position = pos;
         
         [self initActions];
         
