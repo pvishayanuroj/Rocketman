@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		353E11B9138ECB370064BC71 /* MainMenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 353E11B8138ECB370064BC71 /* MainMenuScene.m */; };
+		353E11BC138ECBA90064BC71 /* MainMenuLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 353E11BB138ECBA90064BC71 /* MainMenuLayer.m */; };
+		353E11C2138ED4C30064BC71 /* GameOvaa.png in Resources */ = {isa = PBXBuildFile; fileRef = 353E11C1138ED4C30064BC71 /* GameOvaa.png */; };
+		353E11C6138ED6BD0064BC71 /* MenuButton01.png in Resources */ = {isa = PBXBuildFile; fileRef = 353E11C3138ED6BD0064BC71 /* MenuButton01.png */; };
+		353E11C7138ED6BD0064BC71 /* MenuButton02.png in Resources */ = {isa = PBXBuildFile; fileRef = 353E11C4138ED6BD0064BC71 /* MenuButton02.png */; };
+		353E11C8138ED6BD0064BC71 /* MenuButton03.png in Resources */ = {isa = PBXBuildFile; fileRef = 353E11C5138ED6BD0064BC71 /* MenuButton03.png */; };
+		353E11CA138EDB650064BC71 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 353E11C9138EDB650064BC71 /* GameKit.framework */; };
 		DA346D66138E593D000881D6 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA346D65138E593D000881D6 /* QuartzCore.framework */; };
 		DA346D68138E593D000881D6 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA346D67138E593D000881D6 /* OpenGLES.framework */; };
 		DA346D6A138E593D000881D6 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA346D69138E593D000881D6 /* OpenAL.framework */; };
@@ -141,6 +148,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		353E11B7138ECB370064BC71 /* MainMenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuScene.h; sourceTree = "<group>"; };
+		353E11B8138ECB370064BC71 /* MainMenuScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuScene.m; sourceTree = "<group>"; };
+		353E11BA138ECBA90064BC71 /* MainMenuLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuLayer.h; sourceTree = "<group>"; };
+		353E11BB138ECBA90064BC71 /* MainMenuLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuLayer.m; sourceTree = "<group>"; };
+		353E11C1138ED4C30064BC71 /* GameOvaa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = GameOvaa.png; path = Rocketman/Resources/GameOvaa.png; sourceTree = SOURCE_ROOT; };
+		353E11C3138ED6BD0064BC71 /* MenuButton01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = MenuButton01.png; path = Rocketman/Resources/MenuButton01.png; sourceTree = SOURCE_ROOT; };
+		353E11C4138ED6BD0064BC71 /* MenuButton02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = MenuButton02.png; path = Rocketman/Resources/MenuButton02.png; sourceTree = SOURCE_ROOT; };
+		353E11C5138ED6BD0064BC71 /* MenuButton03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = MenuButton03.png; path = Rocketman/Resources/MenuButton03.png; sourceTree = SOURCE_ROOT; };
+		353E11C9138EDB650064BC71 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		DA346D61138E593D000881D6 /* Rocketman.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rocketman.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA346D65138E593D000881D6 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		DA346D67138E593D000881D6 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -411,6 +427,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				353E11CA138EDB650064BC71 /* GameKit.framework in Frameworks */,
 				DA346D66138E593D000881D6 /* QuartzCore.framework in Frameworks */,
 				DA346D68138E593D000881D6 /* OpenGLES.framework in Frameworks */,
 				DA346D6A138E593D000881D6 /* OpenAL.framework in Frameworks */,
@@ -445,6 +462,7 @@
 		DA346D64138E593D000881D6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				353E11C9138EDB650064BC71 /* GameKit.framework */,
 				DA346D65138E593D000881D6 /* QuartzCore.framework */,
 				DA346D67138E593D000881D6 /* OpenGLES.framework */,
 				DA346D69138E593D000881D6 /* OpenAL.framework */,
@@ -493,6 +511,10 @@
 				DAE1BEB6138ED833000378DE /* Cloud.m */,
 				DAB132E2138F23B6001294BB /* EngineParticleSystem.h */,
 				DAB132E3138F23BD001294BB /* EngineParticleSystem.m */,
+				353E11B7138ECB370064BC71 /* MainMenuScene.h */,
+				353E11B8138ECB370064BC71 /* MainMenuScene.m */,
+				353E11BA138ECBA90064BC71 /* MainMenuLayer.h */,
+				353E11BB138ECBA90064BC71 /* MainMenuLayer.m */,
 			);
 			path = Rocketman;
 			sourceTree = "<group>";
@@ -832,6 +854,10 @@
 			children = (
 				DAB132DF138F1D9A001294BB /* fire.png */,
 				DA346F17138ECB7C000881D6 /* background.png */,
+				353E11C1138ED4C30064BC71 /* GameOvaa.png */,
+				353E11C3138ED6BD0064BC71 /* MenuButton01.png */,
+				353E11C4138ED6BD0064BC71 /* MenuButton02.png */,
+				353E11C5138ED6BD0064BC71 /* MenuButton03.png */,
 			);
 			name = "Game Art";
 			path = "Resources/Game Art";
@@ -911,6 +937,10 @@
 				DA346F14138ECB56000881D6 /* sheet01.png in Resources */,
 				DA346F18138ECB7C000881D6 /* background.png in Resources */,
 				DAB132E0138F1D9A001294BB /* fire.png in Resources */,
+				353E11C2138ED4C30064BC71 /* GameOvaa.png in Resources */,
+				353E11C6138ED6BD0064BC71 /* MenuButton01.png in Resources */,
+				353E11C7138ED6BD0064BC71 /* MenuButton02.png in Resources */,
+				353E11C8138ED6BD0064BC71 /* MenuButton03.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1030,6 +1060,8 @@
 				DAE1BEB3138ED7AF000378DE /* Doodad.m in Sources */,
 				DAE1BEB7138ED833000378DE /* Cloud.m in Sources */,
 				DAB132E4138F23C4001294BB /* EngineParticleSystem.m in Sources */,
+				353E11B9138ECB370064BC71 /* MainMenuScene.m in Sources */,
+				353E11BC138ECBA90064BC71 /* MainMenuLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
