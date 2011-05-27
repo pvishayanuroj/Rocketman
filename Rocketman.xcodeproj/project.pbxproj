@@ -148,6 +148,7 @@
 		DAB132F2138F2BED001294BB /* boost_button.png in Resources */ = {isa = PBXBuildFile; fileRef = DAB132EE138F2BED001294BB /* boost_button.png */; };
 		DAB132F3138F2BED001294BB /* cat_button_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = DAB132EF138F2BED001294BB /* cat_button_pressed.png */; };
 		DAB132F4138F2BED001294BB /* cat_button.png in Resources */ = {isa = PBXBuildFile; fileRef = DAB132F0138F2BED001294BB /* cat_button.png */; };
+		DAB132FF138F3B87001294BB /* PButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DAB132FE138F3B71001294BB /* PButton.m */; };
 		DAE1BEB3138ED7AF000378DE /* Doodad.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE1BEB2138ED7AF000378DE /* Doodad.m */; };
 		DAE1BEB7138ED833000378DE /* Cloud.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE1BEB6138ED833000378DE /* Cloud.m */; };
 /* End PBXBuildFile section */
@@ -427,6 +428,9 @@
 		DAB132EE138F2BED001294BB /* boost_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = boost_button.png; sourceTree = "<group>"; };
 		DAB132EF138F2BED001294BB /* cat_button_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cat_button_pressed.png; sourceTree = "<group>"; };
 		DAB132F0138F2BED001294BB /* cat_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cat_button.png; sourceTree = "<group>"; };
+		DAB132FD138F3B67001294BB /* PButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PButton.h; sourceTree = "<group>"; };
+		DAB132FE138F3B71001294BB /* PButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PButton.m; sourceTree = "<group>"; };
+		DAB13308138F406A001294BB /* PButtonDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PButtonDelegate.h; sourceTree = "<group>"; };
 		DAE1BEB1138ED7AF000378DE /* Doodad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Doodad.h; sourceTree = "<group>"; };
 		DAE1BEB2138ED7AF000378DE /* Doodad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Doodad.m; sourceTree = "<group>"; };
 		DAE1BEB5138ED832000378DE /* Cloud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cloud.h; sourceTree = "<group>"; };
@@ -489,6 +493,9 @@
 		DA346D75138E593D000881D6 /* Rocketman */ = {
 			isa = PBXGroup;
 			children = (
+				DAB13308138F406A001294BB /* PButtonDelegate.h */,
+				DAB132FD138F3B67001294BB /* PButton.h */,
+				DAB132FE138F3B71001294BB /* PButton.m */,
 				DA346EFC138EC4BA000881D6 /* TargetedAction.h */,
 				DA346EFD138EC4BE000881D6 /* TargetedAction.m */,
 				DA346EC7138E5942000881D6 /* AppDelegate.h */,
@@ -1084,6 +1091,7 @@
 				353E11B9138ECB370064BC71 /* MainMenuScene.m in Sources */,
 				353E11BC138ECBA90064BC71 /* MainMenuLayer.m in Sources */,
 				DAB132EB138F2979001294BB /* HUDLayer.m in Sources */,
+				DAB132FF138F3B87001294BB /* PButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1094,6 +1102,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Paul Vishayanuroj (8GPS98FCV8)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -1106,6 +1115,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				PROVISIONING_PROFILE = "7DE6867D-F020-41FC-84D1-2C3EB54C0941";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;

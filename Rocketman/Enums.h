@@ -13,3 +13,8 @@ enum {
     kRocketFlameDepth = 3,
 	kRocketDepth = 4
 };
+
+typedef enum {
+	kLeftButton,
+    kRightButton
+} ButtonType;

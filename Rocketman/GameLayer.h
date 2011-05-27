@@ -7,10 +7,11 @@
 //
 
 #import "cocos2d.h"
+#import "PButtonDelegate.h"
 
 @class Rocket;
 
-@interface GameLayer : CCLayer {
+@interface GameLayer : CCLayer <PButtonDelegate> {
  
     Rocket *rocket_;
  
@@ -41,6 +42,14 @@
     
 	CCParticleSystem *engineFlame_;    
     
+    BOOL leftPressed_;
+    
+    BOOL rightPressed_;
+    
+    NSUInteger pressedTime_;
+    
+    CGFloat maxSideMoveSpeed_;
+    
     BOOL temp;
 }
 
@@ -51,6 +60,8 @@
 - (void) applyGravity;
 
 - (void) collisionDetect;
+
+- (void) moveRocketHorizontally;
 
 - (void) startEngineFlame;
 

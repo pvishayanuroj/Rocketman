@@ -8,6 +8,7 @@
 
 #import "HUDLayer.h"
 #import "GameLayer.h"
+#import "PButton.h"
 
 @implementation HUDLayer
 
@@ -40,6 +41,18 @@
     [menu alignItemsHorizontallyWithPadding:50];
     
     [self addChild:menu];    
+}
+
+- (void) displayDirectional:(GameLayer *)gameLayer
+{
+    PButton *leftButton = [PButton pButton:@"Icon-Small.png" toggledImage:@"Icon.png" buttonType:kLeftButton withDelegate:gameLayer];
+    PButton *rightButton = [PButton pButton:@"Icon-Small.png" toggledImage:@"Icon.png" buttonType:kRightButton withDelegate:gameLayer];   
+    
+    leftButton.position = CGPointMake(100, 100);
+    rightButton.position = CGPointMake(200, 100);
+    
+    [self addChild:leftButton];
+    [self addChild:rightButton];
 }
 
 @end

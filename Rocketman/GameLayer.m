@@ -55,6 +55,10 @@
         numCats_ = 0;
         numBoosts_ = 0;
         
+        leftPressed_ = NO;
+        rightPressed_ = NO;
+        pressedTime_ = 0;
+        maxSideMoveSpeed_ = 8;
         temp = NO;
         
         [self schedule:@selector(update:) interval:1.0/60.0];
@@ -78,6 +82,7 @@
 - (void) update:(ccTime)dt
 {
     [self applyGravity];
+    [self moveRocketHorizontally];
     [self collisionDetect];        
 }
 
@@ -186,6 +191,39 @@
     }
 }
 
+- (void) moveRocketHorizontally
+{
+    NSUInteger base = 7;
+    CGFloat dx;
+    CGFloat maxDx = 10;
+    CGPoint moveAmt;
+    CGFloat modifier;    
+    NSUInteger divider = 10;
+    
+    if (rightPressed_ || leftPressed_) {
+        
+        //modifier = pressedTime_ / divider;
+        //dx = base + modifier;
+        modifier = 1.00 + pressedTime_ * 0.01;
+        dx = base * modifier;
+        
+        NSLog(@"modifier: %2.4f, dx: %2.4f", modifier, dx);
+        
+        /*
+        if (dx > maxDx) {
+            dx = maxDx;
+        }
+         */
+        
+        dx = leftPressed_ ? -dx : dx;
+        
+        moveAmt = CGPointMake(dx, 0);
+        rocket_.position = ccpAdd(rocket_.position, moveAmt);        
+        engineFlame_.position = ccpAdd(engineFlame_.position, moveAmt);        
+        pressedTime_++;
+    }
+}
+
 - (void) startEngineFlame
 {
 	engineFlame_ = [[EngineParticleSystem engineParticleSystem:300] retain];
@@ -234,6 +272,28 @@
 	CGFloat t1 = a.x - b.x;
 	CGFloat t2 = a.y - b.y;
 	return t1*t1 + t2*t2;
+}
+
+- (void) leftButtonPressed
+{
+    leftPressed_ = YES;
+    pressedTime_ = 0;    
+}
+
+- (void) rightButtonPressed
+{
+    rightPressed_ = YES;
+    pressedTime_ = 0;    
+}
+
+- (void) leftButtonDepressed
+{
+    leftPressed_ = NO;        
+}
+
+- (void) rightButtonDepressed
+{
+    rightPressed_ = NO;        
 }
 
 @end

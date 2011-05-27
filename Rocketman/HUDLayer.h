@@ -18,4 +18,6 @@
 
 - (void) displayControls:(GameLayer *)gameLayer;
 
+- (void) displayDirectional:(GameLayer *)gameLayer;
+
 @end

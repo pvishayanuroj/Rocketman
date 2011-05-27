@@ -25,6 +25,7 @@
         [self addChild:hudLayer z:1];
         
         [hudLayer displayControls:gameLayer];
+        [hudLayer displayDirectional:gameLayer];
     }
 	return self;
 }
