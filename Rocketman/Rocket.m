@@ -25,6 +25,8 @@
         
         self.position = pos;
         
+        isBurning_ = NO;
+        
         [self initActions];
         
 	}
@@ -56,6 +58,11 @@
 
 - (void) showBurning
 {
+    if (isBurning_) {
+        return;
+    }
+    
+    isBurning_ = YES;
 	[sprite_ stopAllActions];	
 	
 	TargetedAction *animation = [TargetedAction actionWithTarget:sprite_ actionIn:(CCFiniteTimeAction *)burningAnimation_];
@@ -65,7 +72,8 @@
          
 - (void) doneBurning
 {
-    
+    isBurning_ = NO;
+    [self showFlying];
 }
 
 @end

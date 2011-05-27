@@ -38,7 +38,9 @@ static GameManager *_gameManager = nil;
 - (id) init
 {
 	if ((self = [super init])) {
+        
 		gameLayer_ = nil;
+        
 	}
 	return self;
 }
@@ -57,8 +59,9 @@ static GameManager *_gameManager = nil;
 	[gameLayer_ retain];
 }
 
-- (void) addRocket
+- (void) rocketBurn
 {
+    
     
 }
 

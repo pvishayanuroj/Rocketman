@@ -23,7 +23,7 @@
         sprite_ = [[CCSprite spriteWithSpriteFrameName:@"Alien Idle 01.png"] retain];
         [self addChild:sprite_];
         
-        sprite_.position = pos;
+        self.position = pos;
         
         [self initActions];
         [self showIdle];        
@@ -35,6 +35,7 @@
 - (void) dealloc
 {
     [sprite_ release];
+    [idleAnimation_ release];
     
     [super dealloc];
 }

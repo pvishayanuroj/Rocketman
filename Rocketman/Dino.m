@@ -8,6 +8,7 @@
 
 #import "Dino.h"
 #import "TargetedAction.h"
+#import "GameLayer.h"
 
 @implementation Dino
 
@@ -23,7 +24,11 @@
         sprite_ = [[CCSprite spriteWithSpriteFrameName:@"Dino Idle 01.png"] retain];
         [self addChild:sprite_];
         
-        sprite_.position = pos;
+        self.position = pos;
+        
+        // Attributes
+        radius_ = 100;
+        radiusSquared_ = radius_*radius_;
         
         [self initActions];
         [self showIdle];
@@ -35,6 +40,8 @@
 - (void) dealloc
 {
     [sprite_ release];
+    [idleAnimation_ release];
+    [flameAnimation_ release];
     
     [super dealloc];
 }
@@ -62,6 +69,19 @@
 	TargetedAction *animation = [TargetedAction actionWithTarget:sprite_ actionIn:(CCFiniteTimeAction *)flameAnimation_];
 	CCFiniteTimeAction *method = [CCCallFunc actionWithTarget:self selector:@selector(doneAttacking)];	
 	[self runAction:[CCSequence actions:animation, method, nil]];	
+}
+
+- (void) doneAttacking
+{
+    GameLayer *gameLayer = (GameLayer *)[self parent];
+    [gameLayer rocketBurn];
+}
+
+- (void) collide
+{
+    [self showAttacking];
+    
+    [super collide];
 }
          
 @end

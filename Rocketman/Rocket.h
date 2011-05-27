@@ -16,6 +16,8 @@
     
     CCAction *burningAnimation_;
     
+    BOOL isBurning_;
+    
 }
 
 + (id) rocketWithPos:(CGPoint)pos;

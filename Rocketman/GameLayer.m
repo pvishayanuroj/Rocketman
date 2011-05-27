@@ -38,7 +38,7 @@
         bg.anchorPoint = CGPointZero;
         
         // Add the rocket
-        CGPoint startPos = CGPointMake(screenWidth_ * 0.5, screenHeight_ * 0.2);
+        CGPoint startPos = CGPointMake(screenWidth_ * 0.5, screenHeight_ * 0.5);
         rocket_ = [Rocket rocketWithPos:startPos];
         [self addChild:rocket_ z:kRocketDepth];
         
@@ -54,6 +54,8 @@
         rocketSpeed_ = 4;
         numCats_ = 0;
         numBoosts_ = 0;
+        
+        temp = NO;
         
         [self schedule:@selector(update:) interval:1.0/60.0];
         [self schedule:@selector(slowUpdate:) interval:60.0/60.0];
@@ -87,7 +89,24 @@
 
 - (void) collisionDetect
 {
+    CGFloat distance;
     
+    for (Obstacle *obstacle in obstacles_) {
+        
+        if (obstacle.collided) {
+            continue;
+        }
+        
+        distance = [self distanceNoRoot:rocket_.position b:obstacle.position];
+        
+        //NSLog(@"distance: %3.2f, radius: %3.2f", distance, obstacle.radiusSquared);
+        
+        if (distance < obstacle.radiusSquared) {
+            NSLog(@"COLLIDE!");
+            [obstacle collide];
+        }
+        
+    }
 }
 
 - (void) applyGravity
@@ -139,6 +158,14 @@
         NSUInteger type = arc4random() % 2;
         NSInteger xCoord = arc4random() % screenWidth_;
         
+        // DEBUG
+        type = 0;
+        xCoord = screenWidth_ / 2;
+        if (temp) {
+            return;
+        }
+        //temp = YES;
+        
         CGPoint pos = CGPointMake(xCoord, screenHeight_);
         
         switch (type) {
@@ -187,6 +214,11 @@
 	engineFlame_.position = CGPointMake(rocket_.position.x, rocket_.position.y - 30);;
 }
 
+- (void) rocketBurn
+{
+    [rocket_ showBurning];
+}
+
 - (void) fireCat
 {
     
@@ -197,5 +229,11 @@
     
 }
 
+- (CGFloat) distanceNoRoot:(CGPoint)a b:(CGPoint)b
+{
+	CGFloat t1 = a.x - b.x;
+	CGFloat t2 = a.y - b.y;
+	return t1*t1 + t2*t2;
+}
 
 @end

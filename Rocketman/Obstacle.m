@@ -11,10 +11,13 @@
 @implementation Obstacle
 
 @synthesize radiusSquared = radiusSquared_;
+@synthesize collided = collided_;
 
 - (id) init
 {
     if ((self = [super init])) {
+     
+        collided_ = NO;
         
     }
     return self;
@@ -34,6 +37,16 @@
 - (void) hit
 {
     NSAssert(NO, @"Hit must be implemented in the child class of Obstacle");    
+}
+
+- (void) collide
+{
+    collided_ = YES;
+}
+
+- (void) destroy
+{
+    
 }
 
 @end

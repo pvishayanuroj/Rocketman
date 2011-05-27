@@ -40,6 +40,8 @@
     NSInteger yCutoff_;
     
 	CCParticleSystem *engineFlame_;    
+    
+    BOOL temp;
 }
 
 - (void) cloudGenerator;
@@ -52,8 +54,12 @@
 
 - (void) startEngineFlame;
 
+- (void) rocketBurn;
+
 - (void) fireCat;
 
 - (void) useBoost;
+
+- (CGFloat) distanceNoRoot:(CGPoint)a b:(CGPoint)b;
 
 @end

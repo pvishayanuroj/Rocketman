@@ -12,13 +12,19 @@
  
     CCSprite *sprite_;
     
+    CGFloat radius_;
+    
     CGFloat radiusSquared_;
     
+    BOOL collided_;
 }
 
-@property CGFloat radiusSquared;
+@property (nonatomic, readonly) CGFloat radiusSquared;
+@property (nonatomic, readonly) BOOL collided;
 
 - (void) fall:(CGFloat)speed;
+
+- (void) hit;
 
 - (void) collide;
 
