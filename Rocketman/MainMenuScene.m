@@ -23,7 +23,4 @@
 	return self;
 }
 
-
-@end
-
 @end

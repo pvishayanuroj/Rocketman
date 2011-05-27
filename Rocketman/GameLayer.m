@@ -41,6 +41,8 @@
         CGPoint startPos = CGPointMake(screenWidth_ * 0.5, screenHeight_ * 0.2);
         rocket_ = [Rocket rocketWithPos:startPos];
         [self addChild:rocket_ z:kRocketDepth];
+        
+        // DEBUG
         [rocket_ showFlying];
         [self startEngineFlame];
         
@@ -50,6 +52,8 @@
         
         rocketInitSpeed_ = 5.0;
         rocketSpeed_ = 4;
+        numCats_ = 0;
+        numBoosts_ = 0;
         
         [self schedule:@selector(update:) interval:1.0/60.0];
         [self schedule:@selector(slowUpdate:) interval:60.0/60.0];
@@ -64,6 +68,7 @@
     [obstacles_ release];
     [firedCats_ release];
     [doodads_ release];
+    [engineFlame_ release];
     
     [super dealloc];
 }
@@ -156,7 +161,7 @@
 
 - (void) startEngineFlame
 {
-	engineFlame_ = [EngineParticleSystem engineParticleSystem:300];
+	engineFlame_ = [[EngineParticleSystem engineParticleSystem:300] retain];
 	[self addChild:engineFlame_ z:kRocketFlameDepth];
     
     engineFlame_.gravity = ccp(0, -100);
@@ -182,8 +187,15 @@
 	engineFlame_.position = CGPointMake(rocket_.position.x, rocket_.position.y - 30);;
 }
 
+- (void) fireCat
+{
+    
+}
 
-
+- (void) useBoost
+{
+    
+}
 
 
 @end

@@ -52,4 +52,8 @@
 
 - (void) startEngineFlame;
 
+- (void) fireCat;
+
+- (void) useBoost;
+
 @end

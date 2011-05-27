@@ -10,9 +10,9 @@
 
 #import "AppDelegate.h"
 #import "GameConfig.h"
-#import "HelloWorldLayer.h"
 #import "RootViewController.h"
 #import "MainMenuScene.h"
+#import "GameScene.h"
 
 #import <GameKit/GameKit.h>
 
@@ -115,8 +115,8 @@
     [self authenticateLocalPlayer];
 	
 	// Run the intro Scene
-	//[[CCDirector sharedDirector] runWithScene: [HelloWorldLayer scene]];
-    [[CCDirector sharedDirector] runWithScene: [MainMenuScene node]];
+    //[[CCDirector sharedDirector] runWithScene: [MainMenuScene node]];
+    [[CCDirector sharedDirector] runWithScene: [GameScene node]];
 }
 
 

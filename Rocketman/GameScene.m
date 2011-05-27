@@ -8,6 +8,7 @@
 
 #import "GameScene.h"
 #import "GameLayer.h"
+#import "HUDLayer.h"
 
 @implementation GameScene
 
@@ -18,7 +19,12 @@
         [self animationLoader:@"sheet01_animations" spriteSheetName:@"sheet01"];		
         
         GameLayer *gameLayer = [GameLayer node];
-		[self addChild:gameLayer];
+		[self addChild:gameLayer z:0];
+        
+        HUDLayer *hudLayer = [HUDLayer node];
+        [self addChild:hudLayer z:1];
+        
+        [hudLayer displayControls:gameLayer];
     }
 	return self;
 }

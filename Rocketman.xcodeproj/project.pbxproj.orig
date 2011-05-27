@@ -143,11 +143,6 @@
 		DA346F18138ECB7C000881D6 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = DA346F17138ECB7C000881D6 /* background.png */; };
 		DAB132E0138F1D9A001294BB /* fire.png in Resources */ = {isa = PBXBuildFile; fileRef = DAB132DF138F1D9A001294BB /* fire.png */; };
 		DAB132E4138F23C4001294BB /* EngineParticleSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = DAB132E3138F23BD001294BB /* EngineParticleSystem.m */; };
-		DAB132EB138F2979001294BB /* HUDLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DAB132EA138F2976001294BB /* HUDLayer.m */; };
-		DAB132F1138F2BED001294BB /* boost_button_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = DAB132ED138F2BED001294BB /* boost_button_pressed.png */; };
-		DAB132F2138F2BED001294BB /* boost_button.png in Resources */ = {isa = PBXBuildFile; fileRef = DAB132EE138F2BED001294BB /* boost_button.png */; };
-		DAB132F3138F2BED001294BB /* cat_button_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = DAB132EF138F2BED001294BB /* cat_button_pressed.png */; };
-		DAB132F4138F2BED001294BB /* cat_button.png in Resources */ = {isa = PBXBuildFile; fileRef = DAB132F0138F2BED001294BB /* cat_button.png */; };
 		DAE1BEB3138ED7AF000378DE /* Doodad.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE1BEB2138ED7AF000378DE /* Doodad.m */; };
 		DAE1BEB7138ED833000378DE /* Cloud.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE1BEB6138ED833000378DE /* Cloud.m */; };
 /* End PBXBuildFile section */
@@ -421,12 +416,6 @@
 		DAB132DF138F1D9A001294BB /* fire.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fire.png; sourceTree = "<group>"; };
 		DAB132E2138F23B6001294BB /* EngineParticleSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EngineParticleSystem.h; sourceTree = "<group>"; };
 		DAB132E3138F23BD001294BB /* EngineParticleSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EngineParticleSystem.m; sourceTree = "<group>"; };
-		DAB132E9138F2974001294BB /* HUDLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HUDLayer.h; sourceTree = "<group>"; };
-		DAB132EA138F2976001294BB /* HUDLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HUDLayer.m; sourceTree = "<group>"; };
-		DAB132ED138F2BED001294BB /* boost_button_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = boost_button_pressed.png; sourceTree = "<group>"; };
-		DAB132EE138F2BED001294BB /* boost_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = boost_button.png; sourceTree = "<group>"; };
-		DAB132EF138F2BED001294BB /* cat_button_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cat_button_pressed.png; sourceTree = "<group>"; };
-		DAB132F0138F2BED001294BB /* cat_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cat_button.png; sourceTree = "<group>"; };
 		DAE1BEB1138ED7AF000378DE /* Doodad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Doodad.h; sourceTree = "<group>"; };
 		DAE1BEB2138ED7AF000378DE /* Doodad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Doodad.m; sourceTree = "<group>"; };
 		DAE1BEB5138ED832000378DE /* Cloud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cloud.h; sourceTree = "<group>"; };
@@ -520,14 +509,15 @@
 				DAE1BEB2138ED7AF000378DE /* Doodad.m */,
 				DAE1BEB5138ED832000378DE /* Cloud.h */,
 				DAE1BEB6138ED833000378DE /* Cloud.m */,
+<<<<<<< HEAD
 				DAB132E2138F23B6001294BB /* EngineParticleSystem.h */,
 				DAB132E3138F23BD001294BB /* EngineParticleSystem.m */,
+=======
 				353E11B7138ECB370064BC71 /* MainMenuScene.h */,
 				353E11B8138ECB370064BC71 /* MainMenuScene.m */,
 				353E11BA138ECBA90064BC71 /* MainMenuLayer.h */,
 				353E11BB138ECBA90064BC71 /* MainMenuLayer.m */,
-				DAB132E9138F2974001294BB /* HUDLayer.h */,
-				DAB132EA138F2976001294BB /* HUDLayer.m */,
+>>>>>>> b858ddc05ba981c05298fdecae5671a9634d9856
 			);
 			path = Rocketman;
 			sourceTree = "<group>";
@@ -865,10 +855,6 @@
 		DA346EE4138E5D53000881D6 /* Game Art */ = {
 			isa = PBXGroup;
 			children = (
-				DAB132ED138F2BED001294BB /* boost_button_pressed.png */,
-				DAB132EE138F2BED001294BB /* boost_button.png */,
-				DAB132EF138F2BED001294BB /* cat_button_pressed.png */,
-				DAB132F0138F2BED001294BB /* cat_button.png */,
 				DAB132DF138F1D9A001294BB /* fire.png */,
 				DA346F17138ECB7C000881D6 /* background.png */,
 				353E11C1138ED4C30064BC71 /* GameOvaa.png */,
@@ -953,15 +939,14 @@
 				DA346F13138ECB56000881D6 /* sheet01.plist in Resources */,
 				DA346F14138ECB56000881D6 /* sheet01.png in Resources */,
 				DA346F18138ECB7C000881D6 /* background.png in Resources */,
+<<<<<<< HEAD
 				DAB132E0138F1D9A001294BB /* fire.png in Resources */,
+=======
 				353E11C2138ED4C30064BC71 /* GameOvaa.png in Resources */,
 				353E11C6138ED6BD0064BC71 /* MenuButton01.png in Resources */,
 				353E11C7138ED6BD0064BC71 /* MenuButton02.png in Resources */,
 				353E11C8138ED6BD0064BC71 /* MenuButton03.png in Resources */,
-				DAB132F1138F2BED001294BB /* boost_button_pressed.png in Resources */,
-				DAB132F2138F2BED001294BB /* boost_button.png in Resources */,
-				DAB132F3138F2BED001294BB /* cat_button_pressed.png in Resources */,
-				DAB132F4138F2BED001294BB /* cat_button.png in Resources */,
+>>>>>>> b858ddc05ba981c05298fdecae5671a9634d9856
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1080,10 +1065,12 @@
 				DA346EFE138EC4C5000881D6 /* TargetedAction.m in Sources */,
 				DAE1BEB3138ED7AF000378DE /* Doodad.m in Sources */,
 				DAE1BEB7138ED833000378DE /* Cloud.m in Sources */,
+<<<<<<< HEAD
 				DAB132E4138F23C4001294BB /* EngineParticleSystem.m in Sources */,
+=======
 				353E11B9138ECB370064BC71 /* MainMenuScene.m in Sources */,
 				353E11BC138ECBA90064BC71 /* MainMenuLayer.m in Sources */,
-				DAB132EB138F2979001294BB /* HUDLayer.m in Sources */,
+>>>>>>> b858ddc05ba981c05298fdecae5671a9634d9856
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
