@@ -11,7 +11,7 @@
 
 @class Rocket;
 
-@interface GameLayer : CCLayer <PButtonDelegate> {
+@interface GameLayer : CCLayer <UIAccelerometerDelegate, PButtonDelegate> {
  
     Rocket *rocket_;
  
@@ -50,7 +50,11 @@
     
     CGFloat maxSideMoveSpeed_;
     
+    CGFloat sideMoveSpeed_;
+    
     BOOL temp;
+    
+    float accel[3];     
 }
 
 - (void) cloudGenerator;

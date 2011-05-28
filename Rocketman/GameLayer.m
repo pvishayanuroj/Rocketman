@@ -25,6 +25,8 @@
 {
 	if ((self = [super init])) {
 
+        [[UIAccelerometer sharedAccelerometer] setDelegate:self];
+        
 		CGSize size = [[CCDirector sharedDirector] winSize];        
         
         screenWidth_ = size.width;
@@ -55,6 +57,7 @@
         numCats_ = 0;
         numBoosts_ = 0;
         
+        sideMoveSpeed_ = 0;
         leftPressed_ = NO;
         rightPressed_ = NO;
         pressedTime_ = 0;
@@ -164,12 +167,8 @@
         NSInteger xCoord = arc4random() % screenWidth_;
         
         // DEBUG
-        type = 0;
-        xCoord = screenWidth_ / 2;
-        if (temp) {
-            return;
-        }
-        //temp = YES;
+        //type = 0;
+        //xCoord = screenWidth_ / 2;
         
         CGPoint pos = CGPointMake(xCoord, screenHeight_);
         
@@ -193,35 +192,10 @@
 
 - (void) moveRocketHorizontally
 {
-    NSUInteger base = 7;
-    CGFloat dx;
-    CGFloat maxDx = 10;
-    CGPoint moveAmt;
-    CGFloat modifier;    
-    NSUInteger divider = 10;
-    
-    if (rightPressed_ || leftPressed_) {
-        
-        //modifier = pressedTime_ / divider;
-        //dx = base + modifier;
-        modifier = 1.00 + pressedTime_ * 0.01;
-        dx = base * modifier;
-        
-        NSLog(@"modifier: %2.4f, dx: %2.4f", modifier, dx);
-        
-        /*
-        if (dx > maxDx) {
-            dx = maxDx;
-        }
-         */
-        
-        dx = leftPressed_ ? -dx : dx;
-        
-        moveAmt = CGPointMake(dx, 0);
-        rocket_.position = ccpAdd(rocket_.position, moveAmt);        
-        engineFlame_.position = ccpAdd(engineFlame_.position, moveAmt);        
-        pressedTime_++;
-    }
+    CGFloat dx = sideMoveSpeed_;
+    CGPoint moveAmt = CGPointMake(dx, 0);
+    rocket_.position = ccpAdd(rocket_.position, moveAmt);        
+    engineFlame_.position = ccpAdd(engineFlame_.position, moveAmt);            
 }
 
 - (void) startEngineFlame
@@ -272,6 +246,50 @@
 	CGFloat t1 = a.x - b.x;
 	CGFloat t2 = a.y - b.y;
 	return t1*t1 + t2*t2;
+}
+
+- (void)accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration
+{
+    //ramp-speed - play with this value until satisfied
+    const float kFilteringFactor = 0.1f;
+    
+    //last result storage - keep definition outside of this function, eg. in wrapping object
+
+    
+    //acceleration.x,.y,.z is the input from the sensor
+    
+    //result.x,.y,.z is the filtered result
+    
+    //high-pass filter to eleminate gravity
+    accel[0] = acceleration.x * kFilteringFactor + accel[0] * (1.0f - kFilteringFactor);
+    accel[1] = acceleration.y * kFilteringFactor + accel[1] * (1.0f - kFilteringFactor);
+    accel[2] = acceleration.z * kFilteringFactor + accel[2] * (1.0f - kFilteringFactor);
+    CGFloat resultx = acceleration.x - accel[0];
+    CGFloat resulty = acceleration.y - accel[1];
+    CGFloat resultz = acceleration.z - accel[2];    
+
+    CGFloat ddx;
+    ddx = resultx > 0.5 ? 0.5 : resultx;
+    ddx = resultx < 0.5 ? -0.5 : resultx;    
+    
+    if (resultx < 0.03 && resultx > -0.03) {
+        ddx = 0;
+    }
+    else if (ddx < 0) {
+        ddx += 0.03;
+        ddx /= 0.47;
+        ddx *= 2;
+    }
+    else if (ddx > 0) {
+        ddx -= 0.03;
+        ddx /= 0.47;
+        ddx *= 2;
+    }
+    
+    
+    NSLog(@"x accel: %4.2f, speed: %4.2f", resultx, ddx);        
+    sideMoveSpeed_ = resultx*15;    
+
 }
 
 - (void) leftButtonPressed
