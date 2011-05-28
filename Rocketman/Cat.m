@@ -26,6 +26,7 @@
         self.position = pos;
         
         // Attributes
+        shootable_ = NO;
         radius_ = 10;
         radiusSquared_ = radius_*radius_;
         

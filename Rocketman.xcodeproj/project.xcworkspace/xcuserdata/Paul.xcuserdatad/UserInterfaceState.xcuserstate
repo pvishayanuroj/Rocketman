@@ -2599,10 +2599,10 @@
 		<string>PrimaryDocumentVisibleCharacterRange</string>
 		<string>HideAllIssues</string>
 		<string>PrimaryDocumentSelectedCharacterRange</string>
-		<real>328255175.819345</real>
-		<string>{5148, 943}</string>
-		<string>{8273, 0}</string>
-		<string>-accelerometer:didAccelerate:</string>
+		<real>328256265.77701497</real>
+		<string>{3634, 908}</string>
+		<string>{2863, 0}</string>
+		<string>-collisionDetect</string>
 		<string>Xcode.IDEKit.EditorDocument.SourceCode</string>
 		<dict>
 			<key>$class</key>
@@ -3402,7 +3402,7 @@
 		<string>IDESCMStatusFilteringEnabled</string>
 		<string>IDESelectedObjects</string>
 		<string>IDEExpandedItemsSet</string>
-		<string>{{0, 156}, {244, 725}}</string>
+		<string>{{0, 101}, {244, 725}}</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -14024,19 +14024,19 @@
 			<array>
 				<dict>
 					<key>CF$UID</key>
-					<integer>385</integer>
+					<integer>233</integer>
 				</dict>
 				<dict>
 					<key>CF$UID</key>
-					<integer>386</integer>
+					<integer>234</integer>
 				</dict>
 				<dict>
 					<key>CF$UID</key>
-					<integer>387</integer>
+					<integer>235</integer>
 				</dict>
 				<dict>
 					<key>CF$UID</key>
-					<integer>388</integer>
+					<integer>236</integer>
 				</dict>
 			</array>
 			<key>NS.objects</key>
@@ -14059,8 +14059,8 @@
 				</dict>
 			</array>
 		</dict>
-		<real>328153154.15240401</real>
-		<string>{709, 1032}</string>
+		<real>328256001.072658</real>
+		<string>{708, 1033}</string>
 		<string>{1317, 0}</string>
 		<dict>
 			<key>$class</key>
@@ -15061,9 +15061,9 @@
 				</dict>
 			</array>
 		</dict>
-		<real>328255175.817792</real>
-		<string>{5148, 943}</string>
-		<string>{8273, 0}</string>
+		<real>328256265.77548099</real>
+		<string>{3634, 908}</string>
+		<string>{2863, 0}</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -15347,9 +15347,9 @@
 				</dict>
 			</array>
 		</dict>
-		<real>328253556.84020001</real>
-		<string>{155, 964}</string>
-		<string>{689, 0}</string>
+		<real>328256113.76954299</real>
+		<string>{0, 714}</string>
+		<string>{542, 0}</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -15491,9 +15491,9 @@
 				</dict>
 			</array>
 		</dict>
-		<real>328254066.82886201</real>
-		<string>{138, 1219}</string>
-		<string>{741, 0}</string>
+		<real>328256029.17284101</real>
+		<string>{138, 713}</string>
+		<string>{682, 0}</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -15729,7 +15729,7 @@
 				</dict>
 			</array>
 		</dict>
-		<real>328253107.51864499</real>
+		<real>328256046.01567799</real>
 		<string>{0, 419}</string>
 		<string>{197, 96}</string>
 		<dict>
@@ -16014,9 +16014,9 @@
 				</dict>
 			</array>
 		</dict>
-		<real>328254030.09020001</real>
-		<string>{0, 524}</string>
-		<string>{303, 0}</string>
+		<real>328256093.79627198</real>
+		<string>{0, 484}</string>
+		<string>{244, 0}</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -16027,19 +16027,19 @@
 			<array>
 				<dict>
 					<key>CF$UID</key>
-					<integer>385</integer>
+					<integer>233</integer>
 				</dict>
 				<dict>
 					<key>CF$UID</key>
-					<integer>386</integer>
+					<integer>234</integer>
 				</dict>
 				<dict>
 					<key>CF$UID</key>
-					<integer>387</integer>
+					<integer>235</integer>
 				</dict>
 				<dict>
 					<key>CF$UID</key>
-					<integer>388</integer>
+					<integer>236</integer>
 				</dict>
 			</array>
 			<key>NS.objects</key>
@@ -16062,9 +16062,9 @@
 				</dict>
 			</array>
 		</dict>
-		<real>328152591.771703</real>
-		<string>{29, 1065}</string>
-		<string>{1087, 0}</string>
+		<real>328255874.105416</real>
+		<string>{15, 1107}</string>
+		<string>{558, 0}</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -16349,9 +16349,9 @@
 				</dict>
 			</array>
 		</dict>
-		<real>328254067.45749497</real>
-		<string>{0, 499}</string>
-		<string>{429, 0}</string>
+		<real>328256139.15234298</real>
+		<string>{0, 627}</string>
+		<string>{524, 0}</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -16493,9 +16493,9 @@
 				</dict>
 			</array>
 		</dict>
-		<real>328254124.52965999</real>
-		<string>{0, 986}</string>
-		<string>{923, 0}</string>
+		<real>328255526.81475502</real>
+		<string>{0, 755}</string>
+		<string>{222, 0}</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -16589,9 +16589,9 @@
 				</dict>
 			</array>
 		</dict>
-		<real>328254073.762775</real>
-		<string>{0, 722}</string>
-		<string>{456, 88}</string>
+		<real>328256144.574139</real>
+		<string>{35, 735}</string>
+		<string>{409, 0}</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -16732,7 +16732,7 @@
 				</dict>
 			</array>
 		</dict>
-		<real>328253254.254915</real>
+		<real>328255859.52894801</real>
 		<string>{0, 410}</string>
 		<string>{379, 0}</string>
 		<dict>
@@ -18699,7 +18699,7 @@
 				</dict>
 				<dict>
 					<key>CF$UID</key>
-					<integer>1413</integer>
+					<integer>170</integer>
 				</dict>
 			</array>
 		</dict>
@@ -18953,7 +18953,7 @@
 				<integer>1429</integer>
 			</dict>
 			<key>NS.time</key>
-			<real>328255073.37815398</real>
+			<real>328256170.763183</real>
 		</dict>
 		<dict>
 			<key>$classes</key>
@@ -18964,7 +18964,7 @@
 			<key>$classname</key>
 			<string>NSDate</string>
 		</dict>
-		<string>Today at 1:57 AM</string>
+		<string>Today at 2:16 AM</string>
 		<integer>106</integer>
 		<dict>
 			<key>$class</key>
@@ -19192,7 +19192,7 @@
 				<integer>1448</integer>
 			</dict>
 		</dict>
-		<string>file://localhost/Users/Paul/Dropbox/Projects/Rocketman/Rocketman/Enums.h</string>
+		<string>file://localhost/Users/Paul/Dropbox/Projects/Rocketman/Rocketman/Obstacle.m</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -19210,7 +19210,7 @@
 				<integer>1450</integer>
 			</dict>
 		</dict>
-		<string>file://localhost/Users/Paul/Dropbox/Projects/Rocketman/Rocketman/GameScene.m</string>
+		<string>file://localhost/Users/Paul/Dropbox/Projects/Rocketman/Rocketman/Obstacle.h</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -19228,7 +19228,7 @@
 				<integer>1452</integer>
 			</dict>
 		</dict>
-		<string>file://localhost/Users/Paul/Dropbox/Projects/Rocketman/Rocketman/HUDLayer.m</string>
+		<string>file://localhost/Users/Paul/Dropbox/Projects/Rocketman/Rocketman/Cat.m</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -19246,7 +19246,7 @@
 				<integer>1454</integer>
 			</dict>
 		</dict>
-		<string>file://localhost/Users/Paul/Dropbox/Projects/Rocketman/Rocketman/Debugging.h</string>
+		<string>file://localhost/Users/Paul/Dropbox/Projects/Rocketman/Rocketman/CatBullet.h</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -19264,7 +19264,7 @@
 				<integer>1456</integer>
 			</dict>
 		</dict>
-		<string>file://localhost/Users/Paul/Dropbox/Projects/Rocketman/Rocketman/Prefix.pch</string>
+		<string>file://localhost/Users/Paul/Dropbox/Projects/Rocketman/Rocketman/Alien.h</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -19282,7 +19282,7 @@
 				<integer>1458</integer>
 			</dict>
 		</dict>
-		<string>file://localhost/Users/Paul/Dropbox/Projects/Rocketman/Rocketman/EngineParticleSystem.h</string>
+		<string>file://localhost/Users/Paul/Dropbox/Projects/Rocketman/Rocketman/Dino.m</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -19300,7 +19300,7 @@
 				<integer>1460</integer>
 			</dict>
 		</dict>
-		<string>file://localhost/Users/Paul/Dropbox/Projects/Rocketman/Rocketman/CatBullet.m</string>
+		<string>file://localhost/Users/Paul/Dropbox/Projects/Rocketman/Rocketman/Rocket.m</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -19318,7 +19318,7 @@
 				<integer>1462</integer>
 			</dict>
 		</dict>
-		<string>file://localhost/Users/Paul/Dropbox/Projects/Rocketman/Rocketman/Obstacle.m</string>
+		<string>file://localhost/Users/Paul/Dropbox/Projects/Rocketman/Rocketman/Alien.m</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -19336,7 +19336,7 @@
 				<integer>1464</integer>
 			</dict>
 		</dict>
-		<string>file://localhost/Users/Paul/Dropbox/Projects/Rocketman/Rocketman/Obstacle.h</string>
+		<string>file://localhost/Users/Paul/Dropbox/Projects/Rocketman/Rocketman/Dino.h</string>
 	</array>
 	<key>$top</key>
 	<dict>

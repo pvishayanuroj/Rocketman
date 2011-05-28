@@ -10,14 +10,17 @@
 
 @implementation Obstacle
 
+@synthesize radius = radius_;
 @synthesize radiusSquared = radiusSquared_;
 @synthesize collided = collided_;
+@synthesize shootable = shootable_;
 
 - (id) init
 {
     if ((self = [super init])) {
      
         collided_ = NO;
+        shootable_ = YES;
         
     }
     return self;
@@ -34,9 +37,10 @@
     self.position = ccpSub(self.position, p);    
 }
 
-- (void) hit
+- (void) bulletHit
 {
-    NSAssert(NO, @"Hit must be implemented in the child class of Obstacle");    
+    NSLog(@"bullet hit");
+    //NSAssert(NO, @"Hit must be implemented in the child class of Obstacle");    
 }
 
 - (void) collide

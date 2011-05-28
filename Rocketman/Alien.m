@@ -25,6 +25,10 @@
         
         self.position = pos;
         
+        // Attributes
+        radius_ = 10;
+        radiusSquared_ = radius_*radius_;        
+        
         [self initActions];
         [self showIdle];        
         

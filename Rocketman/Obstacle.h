@@ -17,14 +17,18 @@
     CGFloat radiusSquared_;
     
     BOOL collided_;
+    
+    BOOL shootable_;
 }
 
+@property (nonatomic, readonly) CGFloat radius;
 @property (nonatomic, readonly) CGFloat radiusSquared;
 @property (nonatomic, readonly) BOOL collided;
+@property (nonatomic, readonly) BOOL shootable;
 
 - (void) fall:(CGFloat)speed;
 
-- (void) hit;
+- (void) bulletHit;
 
 - (void) collide;
 

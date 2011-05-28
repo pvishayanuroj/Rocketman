@@ -11,7 +11,7 @@
 
 @implementation CatBullet
 
-@synthesize radiusSquared = radiusSquared_;
+@synthesize radius = radius_;
 
 + (id) catBulletWithPos:(CGPoint)pos withSpeed:(CGFloat)speed
 {
@@ -29,7 +29,6 @@
         
         velocity_ = speed;
         radius_ = 3;
-        radiusSquared_ = radius_ * radius_;
     }
     return self;
 }

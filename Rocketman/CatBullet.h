@@ -14,12 +14,10 @@
  
     CGFloat radius_;
     
-    CGFloat radiusSquared_;
-    
     CGFloat velocity_;
 }
 
-@property (nonatomic, readonly) CGFloat radiusSquared;
+@property (nonatomic, readonly) CGFloat radius;
 
 + (id) catBulletWithPos:(CGPoint)pos withSpeed:(CGFloat)speed;
 

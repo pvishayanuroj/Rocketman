@@ -100,6 +100,7 @@
 - (void) collisionDetect
 {
     CGFloat distance;
+    CGFloat threshold;
     
     // For checking if the rocket collides with obstacles
     for (Obstacle *obstacle in obstacles_) {
@@ -119,7 +120,29 @@
     
     // For checking cat collisions with obstacles
     for (CatBullet *cat in firedCats_) {
-        
+        for (Obstacle *obstacle in obstacles_) {
+            
+            if (!obstacle.shootable) {
+                continue;
+            }
+            
+            distance = [self distanceNoRoot:cat.position b:obstacle.position];
+            threshold = cat.radius + obstacle.radius;
+            
+            if (distance < (threshold * threshold)) {
+                [obstacle bulletHit];
+                
+                [cat removeFromParentAndCleanup:YES];
+                [firedCats_ removeObject:cat];
+                
+                [obstacle removeFromParentAndCleanup:YES];
+                [obstacles_ removeObject:obstacle];
+                
+                // Get out of inner loop
+                break; 
+            }
+            
+        }
     }
 }
 
