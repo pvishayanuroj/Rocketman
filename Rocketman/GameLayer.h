@@ -40,6 +40,10 @@
     
     NSInteger yCutoff_;
     
+    NSInteger leftCutoff_;
+    
+    NSInteger rightCutoff_;
+    
 	CCParticleSystem *engineFlame_;    
     
     BOOL leftPressed_;

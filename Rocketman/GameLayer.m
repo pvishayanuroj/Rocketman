@@ -35,6 +35,8 @@
         screenHeight_ = size.height;        
         
         yCutoff_ = -(screenHeight_ + 100);
+        leftCutoff_ = SIDE_MARGIN;
+        rightCutoff_ = screenWidth_ - SIDE_MARGIN;
         
         // Add background
         CCSprite *bg = [CCSprite spriteWithFile:@"background.png"];
@@ -233,6 +235,7 @@
 
 - (void) moveRocketHorizontally
 {
+    CGPoint pos;
     CGFloat dx = 0;
     
 #if DEBUG_MOVEBUTTONS
@@ -250,8 +253,11 @@
 #endif
     
     CGPoint moveAmt = CGPointMake(dx, 0);
-    rocket_.position = ccpAdd(rocket_.position, moveAmt);        
-    engineFlame_.position = ccpAdd(engineFlame_.position, moveAmt);            
+    pos = ccpAdd(rocket_.position, moveAmt);
+    if (pos.x > leftCutoff_ && pos.x < rightCutoff_) {
+        rocket_.position = pos;
+        engineFlame_.position = ccpAdd(engineFlame_.position, moveAmt);            
+    }
 }
 
 - (void) startEngineFlame
