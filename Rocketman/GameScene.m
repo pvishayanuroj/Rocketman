@@ -25,7 +25,9 @@
         [self addChild:hudLayer z:1];
         
         [hudLayer displayControls:gameLayer];
+#if DEBUG_MOVEBUTTONS
         [hudLayer displayDirectional:gameLayer];
+#endif
     }
 	return self;
 }

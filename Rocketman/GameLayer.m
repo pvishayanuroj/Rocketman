@@ -13,6 +13,8 @@
 #import "Cloud.h"
 #import "Alien.h"
 #import "Dino.h"
+#import "Cat.h"
+#import "CatBullet.h"
 #import "EngineParticleSystem.h"
 
 @implementation GameLayer
@@ -99,6 +101,7 @@
 {
     CGFloat distance;
     
+    // For checking if the rocket collides with obstacles
     for (Obstacle *obstacle in obstacles_) {
         
         if (obstacle.collided) {
@@ -110,9 +113,12 @@
         //NSLog(@"distance: %3.2f, radius: %3.2f", distance, obstacle.radiusSquared);
         
         if (distance < obstacle.radiusSquared) {
-            NSLog(@"COLLIDE!");
             [obstacle collide];
-        }
+        }   
+    }
+    
+    // For checking cat collisions with obstacles
+    for (CatBullet *cat in firedCats_) {
         
     }
 }
@@ -136,6 +142,15 @@
             [obstacles_ removeObject:obstacle];
         }
     }    
+    
+    for (CatBullet *cat in firedCats_) {
+        [cat fall:rocketSpeed_];
+        
+        if (cat.position.y > screenHeight_) {
+            [cat removeFromParentAndCleanup:YES];
+            [firedCats_ removeObject:cat];
+        }
+    }
 }
 
 - (void) cloudGenerator
@@ -163,7 +178,7 @@
     if (randNum < chance) {
     
         Obstacle *obstacle;
-        NSUInteger type = arc4random() % 2;
+        NSUInteger type = arc4random() % 3;
         NSInteger xCoord = arc4random() % screenWidth_;
         
         // DEBUG
@@ -179,6 +194,9 @@
             case 1:
                 obstacle = [Alien alienWithPos:pos];
                 break;
+            case 2:
+                obstacle = [Cat catWithPos:pos];
+                break;
             default:
                 NSAssert(NO, @"Invalid obstacle number selected");
                 break;
@@ -192,7 +210,22 @@
 
 - (void) moveRocketHorizontally
 {
-    CGFloat dx = sideMoveSpeed_;
+    CGFloat dx = 0;
+    
+#if DEBUG_MOVEBUTTONS
+    NSUInteger base = 7;
+    CGFloat modifier;    
+    
+    if (rightPressed_ || leftPressed_) {
+        modifier = 1.00 + pressedTime_ * 0.01;
+        dx = base * modifier;
+
+        dx = leftPressed_ ? -dx : dx;    
+    }
+#else
+    dx = sideMoveSpeed_;
+#endif
+    
     CGPoint moveAmt = CGPointMake(dx, 0);
     rocket_.position = ccpAdd(rocket_.position, moveAmt);        
     engineFlame_.position = ccpAdd(engineFlame_.position, moveAmt);            
@@ -233,7 +266,9 @@
 
 - (void) fireCat
 {
-    
+    CatBullet *bullet = [CatBullet catBulletWithPos:rocket_.position withSpeed:10];
+    [self addChild:bullet z:kBulletDepth];
+    [firedCats_ addObject:bullet];
 }
 
 - (void) useBoost
@@ -262,11 +297,11 @@
     
     //high-pass filter to eleminate gravity
     accel[0] = acceleration.x * kFilteringFactor + accel[0] * (1.0f - kFilteringFactor);
-    accel[1] = acceleration.y * kFilteringFactor + accel[1] * (1.0f - kFilteringFactor);
-    accel[2] = acceleration.z * kFilteringFactor + accel[2] * (1.0f - kFilteringFactor);
+    //accel[1] = acceleration.y * kFilteringFactor + accel[1] * (1.0f - kFilteringFactor);
+    //accel[2] = acceleration.z * kFilteringFactor + accel[2] * (1.0f - kFilteringFactor);
     CGFloat resultx = acceleration.x - accel[0];
-    CGFloat resulty = acceleration.y - accel[1];
-    CGFloat resultz = acceleration.z - accel[2];    
+    //CGFloat resulty = acceleration.y - accel[1];
+    //CGFloat resultz = acceleration.z - accel[2];    
 
     CGFloat ddx;
     ddx = resultx > 0.5 ? 0.5 : resultx;
@@ -287,8 +322,8 @@
     }
     
     
-    NSLog(@"x accel: %4.2f, speed: %4.2f", resultx, ddx);        
-    sideMoveSpeed_ = resultx*15;    
+    //NSLog(@"x accel: %4.2f, speed: %4.2f", resultx, ddx);        
+    sideMoveSpeed_ = resultx*17;    
 
 }
 

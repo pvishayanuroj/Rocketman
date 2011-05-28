@@ -27,7 +27,7 @@
         self.position = pos;
         
         // Attributes
-        radius_ = 100;
+        radius_ = 30;
         radiusSquared_ = radius_*radius_;
         
         [self initActions];

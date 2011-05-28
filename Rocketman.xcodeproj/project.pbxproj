@@ -141,6 +141,8 @@
 		DA346F13138ECB56000881D6 /* sheet01.plist in Resources */ = {isa = PBXBuildFile; fileRef = DA346F10138ECB56000881D6 /* sheet01.plist */; };
 		DA346F14138ECB56000881D6 /* sheet01.png in Resources */ = {isa = PBXBuildFile; fileRef = DA346F11138ECB56000881D6 /* sheet01.png */; };
 		DA346F18138ECB7C000881D6 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = DA346F17138ECB7C000881D6 /* background.png */; };
+		DA8215021390BE0600F3892E /* Cat.m in Sources */ = {isa = PBXBuildFile; fileRef = DA8215011390BE0500F3892E /* Cat.m */; };
+		DA8215061390BFC700F3892E /* CatBullet.m in Sources */ = {isa = PBXBuildFile; fileRef = DA8215051390BFC400F3892E /* CatBullet.m */; };
 		DAB132E0138F1D9A001294BB /* fire.png in Resources */ = {isa = PBXBuildFile; fileRef = DAB132DF138F1D9A001294BB /* fire.png */; };
 		DAB132E4138F23C4001294BB /* EngineParticleSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = DAB132E3138F23BD001294BB /* EngineParticleSystem.m */; };
 		DAB132EB138F2979001294BB /* HUDLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DAB132EA138F2976001294BB /* HUDLayer.m */; };
@@ -419,6 +421,11 @@
 		DA346F11138ECB56000881D6 /* sheet01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sheet01.png; path = Resources/Spritesheets/sheet01.png; sourceTree = "<group>"; };
 		DA346F17138ECB7C000881D6 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		DA346F21138ED4D0000881D6 /* Enums.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Enums.h; sourceTree = "<group>"; };
+		DA8215001390BE0400F3892E /* Cat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cat.h; sourceTree = "<group>"; };
+		DA8215011390BE0500F3892E /* Cat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cat.m; sourceTree = "<group>"; };
+		DA8215041390BFC100F3892E /* CatBullet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CatBullet.h; sourceTree = "<group>"; };
+		DA8215051390BFC400F3892E /* CatBullet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CatBullet.m; sourceTree = "<group>"; };
+		DA8215071390C39E00F3892E /* Debugging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Debugging.h; sourceTree = "<group>"; };
 		DAB132DF138F1D9A001294BB /* fire.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fire.png; sourceTree = "<group>"; };
 		DAB132E2138F23B6001294BB /* EngineParticleSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EngineParticleSystem.h; sourceTree = "<group>"; };
 		DAB132E3138F23BD001294BB /* EngineParticleSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EngineParticleSystem.m; sourceTree = "<group>"; };
@@ -523,6 +530,7 @@
 				DA346EF9138EBA49000881D6 /* Dino.h */,
 				DA346EFA138EBA4C000881D6 /* Dino.m */,
 				DA346F21138ED4D0000881D6 /* Enums.h */,
+				DA8215071390C39E00F3892E /* Debugging.h */,
 				DAE1BEB1138ED7AF000378DE /* Doodad.h */,
 				DAE1BEB2138ED7AF000378DE /* Doodad.m */,
 				DAE1BEB5138ED832000378DE /* Cloud.h */,
@@ -535,6 +543,10 @@
 				353E11BB138ECBA90064BC71 /* MainMenuLayer.m */,
 				DAB132E9138F2974001294BB /* HUDLayer.h */,
 				DAB132EA138F2976001294BB /* HUDLayer.m */,
+				DA8215001390BE0400F3892E /* Cat.h */,
+				DA8215011390BE0500F3892E /* Cat.m */,
+				DA8215041390BFC100F3892E /* CatBullet.h */,
+				DA8215051390BFC400F3892E /* CatBullet.m */,
 			);
 			path = Rocketman;
 			sourceTree = "<group>";
@@ -1092,6 +1104,8 @@
 				353E11BC138ECBA90064BC71 /* MainMenuLayer.m in Sources */,
 				DAB132EB138F2979001294BB /* HUDLayer.m in Sources */,
 				DAB132FF138F3B87001294BB /* PButton.m in Sources */,
+				DA8215021390BE0600F3892E /* Cat.m in Sources */,
+				DA8215061390BFC700F3892E /* CatBullet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
