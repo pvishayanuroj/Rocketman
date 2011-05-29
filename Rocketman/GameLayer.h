@@ -39,7 +39,7 @@
     
     NSUInteger numCats_;
     
-    NSInteger yCutoff_;
+    CGFloat yCutoff_;
     
     NSInteger leftCutoff_;
     
@@ -57,9 +57,19 @@
     
     CGFloat sideMoveSpeed_;
     
-    BOOL temp;
-    
     float accel[3];     
+    
+    BOOL boostEngaged_;
+    
+    CGFloat height_;
+    
+    CGFloat maxHeight_;
+    
+    CGFloat nextCloudHeight_;
+    
+    CGFloat lastCloudHeight_;
+    
+    CCLabelAtlas *heightLabel_;
 }
 
 - (void) cloudGenerator;
@@ -67,6 +77,8 @@
 - (void) obstacleGenerator;
 
 - (void) applyGravity;
+
+- (void) applyBoost;
 
 - (void) collisionDetect;
 
@@ -79,6 +91,8 @@
 - (void) fireCat;
 
 - (void) useBoost;
+
+- (void) doneBoosting;
 
 - (void) collectCat:(Cat *)cat;
 

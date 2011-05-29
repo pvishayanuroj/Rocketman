@@ -20,10 +20,11 @@
 {
 	if ((self = [super init])) {
         
-        sprite_ = [[CCSprite spriteWithSpriteFrameName:@"Cloud 01.png"] retain];
+        NSInteger rand = 1 + arc4random() % 2;
+        sprite_ = [[CCSprite spriteWithSpriteFrameName:[NSString stringWithFormat:@"Cloud %02d.png", rand]] retain];
         [self addChild:sprite_];
         
-        sprite_.position = pos;
+        self.position = pos;
         
     }
     return self;

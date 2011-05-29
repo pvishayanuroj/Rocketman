@@ -16,6 +16,7 @@
 #import "Cat.h"
 #import "CatBullet.h"
 #import "EngineParticleSystem.h"
+#import "MoveToY.h"
 
 @implementation GameLayer
 
@@ -34,7 +35,7 @@
         screenWidth_ = size.width;
         screenHeight_ = size.height;        
         
-        yCutoff_ = -(screenHeight_ + 100);
+        yCutoff_ = -screenHeight_*3;
         leftCutoff_ = SIDE_MARGIN;
         rightCutoff_ = screenWidth_ - SIDE_MARGIN;
         
@@ -44,7 +45,7 @@
         bg.anchorPoint = CGPointZero;
         
         // Add the rocket
-        CGPoint startPos = CGPointMake(screenWidth_ * 0.5, screenHeight_ * 0.5);
+        CGPoint startPos = CGPointMake(screenWidth_ * 0.5, screenHeight_ * 0.3);
         rocket_ = [Rocket rocketWithPos:startPos];
         [self addChild:rocket_ z:kRocketDepth];
         
@@ -57,19 +58,33 @@
         doodads_ = [[NSMutableArray arrayWithCapacity:20] retain];
         
         rocketInitSpeed_ = 5.0;
-        rocketSpeed_ = 4;
+        rocketSpeed_ = 8;
         numCats_ = 0;
         numBoosts_ = 0;
+        height_ = 0;
+        maxHeight_ = 0;
+        nextCloudHeight_ = 400;
         
         sideMoveSpeed_ = 0;
         leftPressed_ = NO;
         rightPressed_ = NO;
         pressedTime_ = 0;
         maxSideMoveSpeed_ = 8;
-        temp = NO;
+        boostEngaged_ = NO;
+        
+		// create and initialize a Label
+		//CCLabelTTF *label = [CCLabelTTF labelWithString:@"Hello World" fontName:@"Marker Felt" fontSize:64];
+		CCLabelAtlas *heightLabel = [[CCLabelAtlas labelWithString:@"00.0" charMapFile:@"fps_images.png" itemWidth:16 itemHeight:24 startCharMap:'.'] retain];        
+		// ask director the the window size
+        
+		// position the label on the center of the screen
+        heightLabel.position =  ccp(size.width /2, size.height/2);
+		
+		// add the label as a child to this Layer
+		[self addChild:heightLabel];        
         
         [self schedule:@selector(update:) interval:1.0/60.0];
-        [self schedule:@selector(slowUpdate:) interval:60.0/60.0];
+        [self schedule:@selector(slowUpdate:) interval:10.0/60.0];    
         
 	}
 	return self;
@@ -88,15 +103,19 @@
 
 - (void) update:(ccTime)dt
 {
+
+
+    
     [self applyGravity];
+    [self applyBoost];
     [self moveRocketHorizontally];
     [self collisionDetect];        
 }
 
 - (void) slowUpdate:(ccTime)dt
 {
-    [self cloudGenerator];
-    [self obstacleGenerator];    
+    [self cloudGenerator];    
+    //[self obstacleGenerator];        
 }
 
 - (void) collisionDetect
@@ -150,6 +169,27 @@
 
 - (void) applyGravity
 {
+    /*
+    if (rocketSpeed_ <= 0) {
+        rocketSpeed_ -= 0.05f;
+    }
+    else {
+        rocketSpeed_ -= 0.008f;       
+    }
+     */
+    
+    rocketSpeed_ -= 0.02f;
+    if (rocketSpeed_ < 0) {
+        engineFlame_.emissionRate = 0;
+    }
+    
+    // Keep track of height
+    height_ += rocketSpeed_;
+    if (height_ > maxHeight_) {
+        maxHeight_ = height_;
+    }
+    
+    NSLog(@"%d doodads", [doodads_ count]);
     for (Doodad *doodad in doodads_) {
         [doodad fall:rocketSpeed_];
 
@@ -180,24 +220,42 @@
 
 - (void) cloudGenerator
 {
-    NSUInteger chance = 35;
-    NSUInteger randNum = arc4random() % 100;
-    
-    if (randNum < chance) {    
+    if (height_ > nextCloudHeight_) {
+        
+        nextCloudHeight_ += 400;
         
         NSInteger xCoord = arc4random() % screenWidth_;
+        NSInteger yCoord = screenHeight_ + arc4random() % screenHeight_;
         
-        CGPoint pos = CGPointMake(xCoord, screenHeight_);        
+        CGPoint pos = CGPointMake(xCoord, screenHeight_ + yCoord);        
+        Doodad *doodad = [Cloud cloudWithPos:pos];
+        
+        [self addChild:doodad z:kCloudDepth];   
+        [doodads_ addObject:doodad];        
+        
+    }
+    
+    /*
+    NSUInteger chance = 20;
+    NSUInteger randNum = arc4random() % 100;
+    
+    if (randNum < chance && [doodads_ count] < 15) {    
+        
+        NSInteger xCoord = arc4random() % screenWidth_;
+        NSInteger yCoord = screenHeight_ + arc4random() % screenHeight_;
+        
+        CGPoint pos = CGPointMake(xCoord, screenHeight_ + yCoord);        
         Doodad *doodad = [Cloud cloudWithPos:pos];
         
         [self addChild:doodad z:kCloudDepth];   
         [doodads_ addObject:doodad];
     }
+     */
 }
 
 - (void) obstacleGenerator
 {
-    NSUInteger chance = 50;
+    NSUInteger chance = 90;
     NSUInteger randNum = arc4random() % 100;
     
     if (randNum < chance) {
@@ -235,6 +293,28 @@
         [obstacles_ addObject:obstacle];
         
     }
+}
+
+- (void) applyBoost
+{
+    if (boostEngaged_) {
+        boostEngaged_ = NO;
+        CGPoint newPos = CGPointMake(rocket_.position.x, rocket_.position.y + 200);
+        CCActionInterval *boost = [MoveToY actionWithDuration:1.5 position:newPos];
+        CCFiniteTimeAction *ease = [CCEaseIn actionWithAction:boost rate:3];
+        CCFiniteTimeAction *delay = [CCDelayTime actionWithDuration:2.0];
+        CCFiniteTimeAction *method = [CCCallFunc actionWithTarget:self selector:@selector(doneBoosting)];	    
+        CCAction *seq = [CCSequence actions:ease, delay, method, nil];        
+        [rocket_ runAction:seq];
+        
+    }
+}
+
+- (void) doneBoosting
+{
+    CGPoint newPos = CGPointMake(rocket_.position.x, rocket_.position.y - 200);
+    CCActionInterval *boost = [MoveToY actionWithDuration:1.5 position:newPos];    
+    [rocket_ runAction:boost];
 }
 
 - (void) moveRocketHorizontally
@@ -306,7 +386,8 @@
 
 - (void) useBoost
 {
-    
+    rocketSpeed_ += 3;
+    //boostEngaged_ = YES;
 }
 
 - (void) collectBoost
