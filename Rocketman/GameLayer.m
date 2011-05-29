@@ -203,6 +203,7 @@
     if (randNum < chance) {
     
         Obstacle *obstacle;
+        NSInteger z;
         NSUInteger type = arc4random() % 3;
         NSInteger xCoord = arc4random() % screenWidth_;
         
@@ -215,19 +216,22 @@
         switch (type) {
             case 0:
                 obstacle = [Dino dinoWithPos:pos];
+                z = kObstacleDepth;
                 break;
             case 1:
                 obstacle = [Alien alienWithPos:pos];
+                z = kObstacleDepth;
                 break;
             case 2:
                 obstacle = [Cat catWithPos:pos];
+                z = kCatDepth;
                 break;
             default:
                 NSAssert(NO, @"Invalid obstacle number selected");
                 break;
         }
         
-        [self addChild:obstacle z:kObstacleDepth];
+        [self addChild:obstacle z:z];
         [obstacles_ addObject:obstacle];
         
     }
@@ -303,6 +307,18 @@
 - (void) useBoost
 {
     
+}
+
+- (void) collectBoost
+{
+    
+}
+
+- (void) collectCat:(Cat *)cat
+{
+    numCats_++;
+    
+    [obstacles_ removeObject:cat];
 }
 
 - (CGFloat) distanceNoRoot:(CGPoint)a b:(CGPoint)b

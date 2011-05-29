@@ -12,6 +12,8 @@
 
 	/** Stored idle animation (this is RepeatForever action) */
 	CCAction *idleAnimation_;             
+ 
+    CCAction *collectAnimation_;
     
 }
 
@@ -22,5 +24,7 @@
 - (void) initActions;
 
 - (void) showIdle;
+
+- (void) showCollect;
 
 @end

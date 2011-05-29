@@ -10,6 +10,7 @@
 #import "PButtonDelegate.h"
 
 @class Rocket;
+@class Cat;
 
 @interface GameLayer : CCLayer <UIAccelerometerDelegate, PButtonDelegate> {
  
@@ -78,6 +79,8 @@
 - (void) fireCat;
 
 - (void) useBoost;
+
+- (void) collectCat:(Cat *)cat;
 
 - (CGFloat) distanceNoRoot:(CGPoint)a b:(CGPoint)b;
 

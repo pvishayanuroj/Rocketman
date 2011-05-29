@@ -7,7 +7,7 @@
 //
 
 #import "Cat.h"
-
+#import "GameLayer.h"
 
 @implementation Cat
 
@@ -49,6 +49,11 @@
 {
     CCActionInterval *animate = [CCRotateBy actionWithDuration:2.0 angle:360];
 	idleAnimation_ = [[CCRepeatForever actionWithAction:animate] retain];		    
+    
+    CCActionInterval *scaleUp = [CCScaleBy actionWithDuration:0.15 scale:2.0];
+    CCActionInterval *scaleDown = [CCScaleBy actionWithDuration:0.1 scale:0.01];    
+	CCFiniteTimeAction *method = [CCCallFunc actionWithTarget:self selector:@selector(destroy)];	    
+    collectAnimation_ = [[CCSequence actions:scaleUp, scaleDown, method, nil] retain];
 }
 
 - (void) showIdle
@@ -57,9 +62,27 @@
     [sprite_ runAction:idleAnimation_];	    
 }
 
+- (void) showCollect
+{
+    [sprite_ stopAllActions];
+    [sprite_ runAction:collectAnimation_];	        
+}
+
 - (void) collide
 {
+    GameLayer *gameLayer = (GameLayer *)[self parent];
+    [gameLayer collectCat:self];    
+    
+    [self showCollect];
+    
     [super collide];
+}
+
+- (void) destroy
+{
+    [self removeFromParentAndCleanup:YES];
+    
+    [super destroy];
 }
 
 @end

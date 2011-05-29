@@ -501,18 +501,13 @@
 		DA346D75138E593D000881D6 /* Rocketman */ = {
 			isa = PBXGroup;
 			children = (
+				DA8215121390CECF00F3892E /* Utility */,
+				DA8215111390CE5000F3892E /* Cocos2D Base */,
 				DAB13308138F406A001294BB /* PButtonDelegate.h */,
 				DAB132FD138F3B67001294BB /* PButton.h */,
 				DAB132FE138F3B71001294BB /* PButton.m */,
-				DA346EFC138EC4BA000881D6 /* TargetedAction.h */,
-				DA346EFD138EC4BE000881D6 /* TargetedAction.m */,
-				DA346EC7138E5942000881D6 /* AppDelegate.h */,
-				DA346EC8138E5942000881D6 /* AppDelegate.m */,
-				DA346ECA138E5942000881D6 /* RootViewController.h */,
-				DA346ECB138E5942000881D6 /* RootViewController.m */,
 				DA346ECD138E5942000881D6 /* HelloWorldLayer.h */,
 				DA346ECE138E5942000881D6 /* HelloWorldLayer.m */,
-				DA346ED0138E5942000881D6 /* GameConfig.h */,
 				DA346D76138E593D000881D6 /* Resources */,
 				DA346D8A138E593D000881D6 /* libs */,
 				DA346EC3138E5942000881D6 /* Supporting Files */,
@@ -530,8 +525,6 @@
 				DA346EF3138EB179000881D6 /* Alien.m */,
 				DA346EF9138EBA49000881D6 /* Dino.h */,
 				DA346EFA138EBA4C000881D6 /* Dino.m */,
-				DA346F21138ED4D0000881D6 /* Enums.h */,
-				DA8215071390C39E00F3892E /* Debugging.h */,
 				DAE1BEB1138ED7AF000378DE /* Doodad.h */,
 				DAE1BEB2138ED7AF000378DE /* Doodad.m */,
 				DAE1BEB5138ED832000378DE /* Cloud.h */,
@@ -548,7 +541,6 @@
 				DA8215011390BE0500F3892E /* Cat.m */,
 				DA8215041390BFC100F3892E /* CatBullet.h */,
 				DA8215051390BFC400F3892E /* CatBullet.m */,
-				DA8215081390CC6500F3892E /* Constants.h */,
 			);
 			path = Rocketman;
 			sourceTree = "<group>";
@@ -909,6 +901,30 @@
 				DA346F11138ECB56000881D6 /* sheet01.png */,
 			);
 			name = Spritesheets;
+			sourceTree = "<group>";
+		};
+		DA8215111390CE5000F3892E /* Cocos2D Base */ = {
+			isa = PBXGroup;
+			children = (
+				DA346EC7138E5942000881D6 /* AppDelegate.h */,
+				DA346EC8138E5942000881D6 /* AppDelegate.m */,
+				DA346ECA138E5942000881D6 /* RootViewController.h */,
+				DA346ECB138E5942000881D6 /* RootViewController.m */,
+				DA346ED0138E5942000881D6 /* GameConfig.h */,
+			);
+			name = "Cocos2D Base";
+			sourceTree = "<group>";
+		};
+		DA8215121390CECF00F3892E /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				DA346EFC138EC4BA000881D6 /* TargetedAction.h */,
+				DA346EFD138EC4BE000881D6 /* TargetedAction.m */,
+				DA346F21138ED4D0000881D6 /* Enums.h */,
+				DA8215081390CC6500F3892E /* Constants.h */,
+				DA8215071390C39E00F3892E /* Debugging.h */,
+			);
+			name = Utility;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
