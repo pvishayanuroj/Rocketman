@@ -67,9 +67,11 @@
     
     CGFloat nextCloudHeight_;
     
-    CGFloat lastCloudHeight_;
+    CGFloat nextSlowCloudHeight_;
     
     CCLabelAtlas *heightLabel_;
+    
+    CCLabelAtlas *speedLabel_;    
 }
 
 - (void) cloudGenerator;

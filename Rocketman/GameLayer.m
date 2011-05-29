@@ -11,6 +11,7 @@
 #import "Obstacle.h"
 #import "Doodad.h"
 #import "Cloud.h"
+#import "SlowCloud.h"
 #import "Alien.h"
 #import "Dino.h"
 #import "Cat.h"
@@ -58,12 +59,13 @@
         doodads_ = [[NSMutableArray arrayWithCapacity:20] retain];
         
         rocketInitSpeed_ = 5.0;
-        rocketSpeed_ = 8;
+        rocketSpeed_ = 10;
         numCats_ = 0;
         numBoosts_ = 0;
         height_ = 0;
         maxHeight_ = 0;
-        nextCloudHeight_ = 400;
+        nextCloudHeight_ = 100;
+        nextSlowCloudHeight_ = 0;
         
         sideMoveSpeed_ = 0;
         leftPressed_ = NO;
@@ -72,16 +74,12 @@
         maxSideMoveSpeed_ = 8;
         boostEngaged_ = NO;
         
-		// create and initialize a Label
-		//CCLabelTTF *label = [CCLabelTTF labelWithString:@"Hello World" fontName:@"Marker Felt" fontSize:64];
-		CCLabelAtlas *heightLabel = [[CCLabelAtlas labelWithString:@"00.0" charMapFile:@"fps_images.png" itemWidth:16 itemHeight:24 startCharMap:'.'] retain];        
-		// ask director the the window size
-        
-		// position the label on the center of the screen
-        heightLabel.position =  ccp(size.width /2, size.height/2);
-		
-		// add the label as a child to this Layer
-		[self addChild:heightLabel];        
+		heightLabel_ = [[CCLabelAtlas labelWithString:@"00.0" charMapFile:@"fps_images.png" itemWidth:16 itemHeight:24 startCharMap:'.'] retain];         
+        heightLabel_.position =  ccp(0, screenHeight_*0.05);
+		[self addChild:heightLabel_];        
+		speedLabel_ = [[CCLabelAtlas labelWithString:@"00.0" charMapFile:@"fps_images.png" itemWidth:16 itemHeight:24 startCharMap:'.'] retain];         
+        speedLabel_.position =  ccp(0, screenHeight_*0.1);
+		[self addChild:speedLabel_];                
         
         [self schedule:@selector(update:) interval:1.0/60.0];
         [self schedule:@selector(slowUpdate:) interval:10.0/60.0];    
@@ -97,6 +95,8 @@
     [firedCats_ release];
     [doodads_ release];
     [engineFlame_ release];
+    [heightLabel_ release];
+    [speedLabel_ release];    
     
     [super dealloc];
 }
@@ -188,8 +188,10 @@
     if (height_ > maxHeight_) {
         maxHeight_ = height_;
     }
+    [heightLabel_ setString:[NSString stringWithFormat:@"%6.1f", height_]];
+    [speedLabel_ setString:[NSString stringWithFormat:@"%3.2f", rocketSpeed_]];    
     
-    NSLog(@"%d doodads", [doodads_ count]);
+    //NSLog(@"%d doodads", [doodads_ count]);
     for (Doodad *doodad in doodads_) {
         [doodad fall:rocketSpeed_];
 
@@ -222,7 +224,7 @@
 {
     if (height_ > nextCloudHeight_) {
         
-        nextCloudHeight_ += 400;
+        nextCloudHeight_ += 300;
         
         NSInteger xCoord = arc4random() % screenWidth_;
         NSInteger yCoord = screenHeight_ + arc4random() % screenHeight_;
@@ -234,6 +236,20 @@
         [doodads_ addObject:doodad];        
         
     }
+    if (height_ > nextSlowCloudHeight_) {
+        NSLog(@"next slow cloud height %4.0f", nextSlowCloudHeight_);
+        nextSlowCloudHeight_ += 1500;
+        
+        NSInteger xCoord = arc4random() % screenWidth_;
+        NSInteger yCoord = screenHeight_ + arc4random() % screenHeight_;
+        
+        CGPoint pos = CGPointMake(xCoord, screenHeight_ + yCoord);        
+        Doodad *doodad = [SlowCloud slowCloudWithPos:pos];
+        
+        [self addChild:doodad z:kCloudDepth];   
+        [doodads_ addObject:doodad];        
+        
+    }    
     
     /*
     NSUInteger chance = 20;
@@ -379,7 +395,7 @@
 
 - (void) fireCat
 {
-    CatBullet *bullet = [CatBullet catBulletWithPos:rocket_.position withSpeed:10];
+    CatBullet *bullet = [CatBullet catBulletWithPos:rocket_.position withSpeed:(rocketSpeed_ + 10)];
     [self addChild:bullet z:kBulletDepth];
     [firedCats_ addObject:bullet];
 }

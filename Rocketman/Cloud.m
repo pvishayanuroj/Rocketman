@@ -24,6 +24,11 @@
         sprite_ = [[CCSprite spriteWithSpriteFrameName:[NSString stringWithFormat:@"Cloud %02d.png", rand]] retain];
         [self addChild:sprite_];
         
+        CGFloat rand2 = arc4random() % 10;
+        rand2 *= 0.02;
+        rand2 -= 0.1;
+        sprite_.scale = 1 + rand2;
+        
         self.position = pos;
         
     }
