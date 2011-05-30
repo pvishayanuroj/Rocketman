@@ -19,12 +19,18 @@
     BOOL collided_;
     
     BOOL shootable_;
+    
+    CCAction *destroyAnimation_;    
 }
 
 @property (nonatomic, readonly) CGFloat radius;
 @property (nonatomic, readonly) CGFloat radiusSquared;
 @property (nonatomic, readonly) BOOL collided;
 @property (nonatomic, readonly) BOOL shootable;
+
+- (void) initDestroyAction;
+
+- (void) showDestroy;
 
 - (void) fall:(CGFloat)speed;
 

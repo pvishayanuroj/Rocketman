@@ -83,9 +83,7 @@
 }
 
 - (void) destroy
-{
-    [self removeFromParentAndCleanup:YES];
-    
+{   
     [super destroy];
 }
 

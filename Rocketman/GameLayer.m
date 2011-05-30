@@ -74,7 +74,7 @@
         
         v_ = 0;
         v0_ = 8;
-        vBoost_ = 6;
+        vBoost_ = 5;
         vBoostRing_ = 4; 
         dv_ = 0;
         vMax_ = 12;
@@ -283,7 +283,7 @@
 - (void) obstacleGenerator
 {
     if (height_ > nextObstacleHeight_) {
-        nextObstacleHeight_ += 400;
+        nextObstacleHeight_ += 200;
         
         Obstacle *obstacle;
         
@@ -531,7 +531,7 @@
     //CGFloat resulty = acceleration.y - accel[1];
     //CGFloat resultz = acceleration.z - accel[2];    
       
-    sideMoveSpeed_ = resultx*25;    
+    sideMoveSpeed_ = resultx*30;    
 
 }
 

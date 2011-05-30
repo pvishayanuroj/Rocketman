@@ -77,11 +77,48 @@
     [gameLayer rocketBurn];
 }
 
+- (void) addCloud
+{
+    CCSprite *blastCloud = [CCSprite spriteWithSpriteFrameName:@"Blast Cloud.png"];
+    [self addChild:blastCloud];
+    blastCloud.scale = 1.5;
+}
+
+- (void) addBlast
+{
+    CCSprite *blast = [CCSprite spriteWithSpriteFrameName:@"Blast.png"];   
+    [self addChild:blast];    
+    blast.scale = 1.25;
+}
+
+- (void) addText
+{
+    CCSprite *text = [CCSprite spriteWithSpriteFrameName:@"Bam Text.png"];
+    [self addChild:text];
+    
+    text.scale = 0.85;
+}
+
+- (void) bulletHit
+{    
+    [super showDestroy];
+    
+    [super bulletHit];
+}
+
 - (void) collide
 {
     [self showAttacking];
     
     [super collide];
+}
+
+- (void) destroy
+{
+    GameLayer *gameLayer = (GameLayer *)[self parent];
+    [gameLayer removeObstacle:self];    
+    
+    [super destroy];
 }
          
 @end
