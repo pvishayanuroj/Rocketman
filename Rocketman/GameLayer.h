@@ -13,6 +13,7 @@
 @class Cat;
 @class Boost;
 @class Fuel;
+@class Obstacle;
 
 @interface GameLayer : CCLayer <UIAccelerometerDelegate, PButtonDelegate> {
  
@@ -128,7 +129,7 @@
 
 - (void) useBoost;
 
-- (void) engageBoost;
+- (void) engageBoost:(CGFloat)force;
 
 - (void) collectCat:(Cat *)cat;
 
@@ -137,5 +138,7 @@
 - (void) collectBoost:(Boost *)boost;
 
 - (CGFloat) distanceNoRoot:(CGPoint)a b:(CGPoint)b;
+
+- (void) removeObstacle:(Obstacle *)obstacle;
 
 @end

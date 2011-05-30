@@ -920,6 +920,10 @@
 				DA346EFA138EBA4C000881D6 /* Dino.m */,
 				DA8215001390BE0400F3892E /* Cat.h */,
 				DA8215011390BE0500F3892E /* Cat.m */,
+				DAE1B3ED13938F39007244D8 /* Boost.h */,
+				DAE1B3EE13938F3B007244D8 /* Boost.m */,
+				DAFA3CF11393972C0048D211 /* Fuel.h */,
+				DAFA3CF21393972C0048D211 /* Fuel.m */,
 			);
 			name = Obstacles;
 			sourceTree = "<group>";
@@ -933,10 +937,6 @@
 				DAE1BEB6138ED833000378DE /* Cloud.m */,
 				DAE1B3E9139309D4007244D8 /* SlowCloud.h */,
 				DAE1B3EA139309D4007244D8 /* SlowCloud.m */,
-				DAE1B3ED13938F39007244D8 /* Boost.h */,
-				DAE1B3EE13938F3B007244D8 /* Boost.m */,
-				DAFA3CF11393972C0048D211 /* Fuel.h */,
-				DAFA3CF21393972C0048D211 /* Fuel.m */,
 			);
 			name = Doodads;
 			sourceTree = "<group>";

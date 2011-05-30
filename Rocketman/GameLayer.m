@@ -56,7 +56,7 @@
         doodads_ = [[NSMutableArray arrayWithCapacity:20] retain];
         
         rocketInitSpeed_ = 5.0;
-        rocketSpeed_ = 10;
+        rocketSpeed_ = 5;
         rocketAcceleration_ = 1;
         numCats_ = 0;
         numBoosts_ = 0;
@@ -73,9 +73,9 @@
         maxSideMoveSpeed_ = 8;
         boostEngaged_ = NO;
         
-        v_ = 8;
+        v_ = 7;
         dv_ = 0;
-        vMax_ = 14;
+        vMax_ = 12;
         
 		heightLabel_ = [[CCLabelAtlas labelWithString:@"00.0" charMapFile:@"fps_images.png" itemWidth:16 itemHeight:24 startCharMap:'.'] retain];         
         heightLabel_.position =  ccp(0, screenHeight_*0.95);
@@ -156,8 +156,8 @@
                 [cat removeFromParentAndCleanup:YES];
                 [firedCats_ removeObject:cat];
                 
-                [obstacle removeFromParentAndCleanup:YES];
-                [obstacles_ removeObject:obstacle];
+                //[obstacle removeFromParentAndCleanup:YES];
+                //[obstacles_ removeObject:obstacle];
                 
                 // Get out of inner loop
                 break; 
@@ -169,9 +169,10 @@
 
 - (void) physicsStep
 {
+#if !DEBUG_CONSTANTSPEED
     v_ += dv_;
     rocketSpeed_ = v_;
-    
+
     dv_ -= 0.00005;
     
     if (boostEngaged_) {
@@ -188,6 +189,8 @@
     if (rocketSpeed_ < 0) {
         engineFlame_.emissionRate = 0;
     }
+    
+#endif
     
     // Keep track of height
     height_ += rocketSpeed_;
@@ -275,6 +278,7 @@
         
         NSInteger z;
         NSUInteger type = arc4random() % 4;
+        //type = 1;
         
         switch (type) {
             case 0:
@@ -412,10 +416,10 @@
 - (void) useBoost
 {
     numBoosts_--;
-    [self engageBoost];
+    [self engageBoost:3];
 }
 
-- (void) engageBoost
+- (void) engageBoost:(CGFloat)force
 {
     dv_ = 0;
     
@@ -425,7 +429,7 @@
         boostRate_ = 0.1;
     }
     else {
-        boostTarget_ = v_ + 5;
+        boostTarget_ = v_ + 4;
         boostRate_ = 0.1;
     }
     
@@ -435,7 +439,7 @@
 - (void) collectBoost:(Boost *)boost
 {
     [obstacles_ removeObject:boost];
-    [self engageBoost];    
+    [self engageBoost:4];    
 }
 
 - (void) collectFuel:(Fuel *)fuel
@@ -448,6 +452,11 @@
 {
     numCats_++;
     [obstacles_ removeObject:cat];
+}
+
+- (void) removeObstacle:(Obstacle *)obstacle
+{
+    [obstacles_ removeObject:obstacle];
 }
 
 - (CGFloat) distanceNoRoot:(CGPoint)a b:(CGPoint)b

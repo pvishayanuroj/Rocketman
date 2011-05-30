@@ -13,6 +13,12 @@
 	/** Stored idle animation (this is RepeatForever action) */
 	CCAction *idleAnimation_;         
     
+    CCAction *destroyAnimation_;         
+    
+    //CCSprite *blast_;
+    
+    //CCSprite *blastCloud_;
+    
 }
 
 + (id) alienWithPos:(CGPoint)pos;
@@ -22,5 +28,13 @@
 - (void) initActions;
 
 - (void) showIdle;
+
+- (void) showDestroy;
+
+- (void) addCloud;
+
+- (void) addBlast;
+
+- (void) addText;
 
 @end
