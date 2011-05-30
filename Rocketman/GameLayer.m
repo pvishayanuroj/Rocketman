@@ -308,8 +308,10 @@
             case 2:
                 obstacle = [Cat catWithPos:pos];
                 z = kCatDepth;
+                break;
             case 3:
                 obstacle = [Boost boostWithPos:pos];
+                z = kObstacleDepth;
                 break;
             default:
                 NSAssert(NO, @"Invalid obstacle number selected");

@@ -27,7 +27,7 @@
         
         // Attributes
         shootable_ = NO;
-        radius_ = 10;
+        radius_ = 20;
         radiusSquared_ = radius_*radius_;
         
         [self initActions];
