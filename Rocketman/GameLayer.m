@@ -214,8 +214,10 @@
         maxHeight_ = height_;
         lossHeight_ = height_ - screenHeight_ * 3;
     }
+    
+    // Check for lose condition
     if (height_ < lossHeight_) {
-        NSLog(@"loss");
+        [self loss];
     }
     
     [heightLabel_ setString:[NSString stringWithFormat:@"%7.0f", height_]];
@@ -349,7 +351,7 @@
     CGPoint moveAmt = CGPointMake(dx, 0);
     pos = ccpAdd(rocket_.position, moveAmt);
     if (pos.x > leftCutoff_ && pos.x < rightCutoff_ && !onGround_ && !inputLocked_) {
-        //rocket_.position = pos;
+        rocket_.position = pos;
     }
 }
 
@@ -360,6 +362,15 @@
 }
 
 - (void) loss
+{
+    onGround_ = YES;
+    rocketSpeed_ = 0;
+    
+    CCFiniteTimeAction *fall = [CCMoveBy actionWithDuration:0.2 position:CGPointMake(0, -300)];
+    [rocket_ runAction:fall];
+}
+
+- (void) clearStage
 {
     
 }

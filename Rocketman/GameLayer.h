@@ -121,6 +121,8 @@
 
 - (void) updateFlame;
 
+- (void) loss;
+
 - (void) startEngineFlame;
 
 - (void) toggleBoostFlame:(BOOL)on;
