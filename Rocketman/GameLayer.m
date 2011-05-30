@@ -19,7 +19,6 @@
 #import "Fuel.h"
 #import "Boost.h"
 #import "EngineParticleSystem.h"
-#import "MoveToY.h"
 
 @implementation GameLayer
 
@@ -335,7 +334,7 @@
 	engineFlame_ = [[EngineParticleSystem engineParticleSystem:300] retain];
 	[self addChild:engineFlame_ z:kRocketFlameDepth];
     
-	boostFlame_ = [[EngineParticleSystem engineParticleSystem:600] retain];
+	boostFlame_ = [[EngineParticleSystem engineParticleSystem:700] retain];
 	[self addChild:boostFlame_ z:kRocketFlameDepth];    
     
     engineFlame_.gravity = ccp(0, -100);
@@ -477,28 +476,8 @@
     CGFloat resultx = acceleration.x - accel[0];
     //CGFloat resulty = acceleration.y - accel[1];
     //CGFloat resultz = acceleration.z - accel[2];    
-
-    CGFloat ddx;
-    ddx = resultx > 0.5 ? 0.5 : resultx;
-    ddx = resultx < 0.5 ? -0.5 : resultx;    
-    
-    if (resultx < 0.03 && resultx > -0.03) {
-        ddx = 0;
-    }
-    else if (ddx < 0) {
-        ddx += 0.03;
-        ddx /= 0.47;
-        ddx *= 2;
-    }
-    else if (ddx > 0) {
-        ddx -= 0.03;
-        ddx /= 0.47;
-        ddx *= 2;
-    }
-    
-    
-    //NSLog(@"x accel: %4.2f, speed: %4.2f", resultx, ddx);        
-    sideMoveSpeed_ = resultx*17;    
+      
+    sideMoveSpeed_ = resultx*25;    
 
 }
 
