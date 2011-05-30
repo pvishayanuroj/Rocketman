@@ -212,6 +212,10 @@
     height_ += rocketSpeed_;
     if (height_ > maxHeight_) {
         maxHeight_ = height_;
+        lossHeight_ = height_ - screenHeight_ * 3;
+    }
+    if (height_ < lossHeight_) {
+        NSLog(@"loss");
     }
     
     [heightLabel_ setString:[NSString stringWithFormat:@"%7.0f", height_]];
@@ -345,7 +349,7 @@
     CGPoint moveAmt = CGPointMake(dx, 0);
     pos = ccpAdd(rocket_.position, moveAmt);
     if (pos.x > leftCutoff_ && pos.x < rightCutoff_ && !onGround_ && !inputLocked_) {
-        rocket_.position = pos;
+        //rocket_.position = pos;
     }
 }
 
@@ -353,6 +357,11 @@
 {
     engineFlame_.position = CGPointMake(rocket_.position.x, rocket_.position.y - 30);
     boostFlame_.position = engineFlame_.position;        
+}
+
+- (void) loss
+{
+    
 }
 
 - (void) startEngineFlame
@@ -465,21 +474,21 @@
 - (void) useBoost
 {
     if (!inputLocked_) {
-    // The first time the player pressed the boost button
-    if (onGround_) {
-        onGround_ = NO;
-        inputLocked_ = YES;
-        [self engageBoost:v0_ amt:0.001 rate:0.0005];
-        CCActionInstant *done = [CCCallFunc actionWithTarget:self selector:@selector(takeOffComplete)];
-        CCFiniteTimeAction *move = [CCMoveTo actionWithDuration:6.0 position:CGPointMake(rocket_.position.x, screenHeight_ * 0.3)];
-        CCActionInterval *seq = [CCSequence actions:move, done, nil];
-        [rocket_ runAction:seq];
-        [rocket_ showShaking];
-    }
-    else {
-        numBoosts_--;
-        [self engageBoost:vBoost_ amt:0.01 rate:0.005];
-    }
+        // The first time the player pressed the boost button
+        if (onGround_) {
+            onGround_ = NO;
+            inputLocked_ = YES;
+            [self engageBoost:v0_ amt:0.001 rate:0.0005];
+            CCActionInstant *done = [CCCallFunc actionWithTarget:self selector:@selector(takeOffComplete)];
+            CCFiniteTimeAction *move = [CCMoveTo actionWithDuration:6.0 position:CGPointMake(rocket_.position.x, screenHeight_ * 0.3)];
+            CCActionInterval *seq = [CCSequence actions:move, done, nil];
+            [rocket_ runAction:seq];
+            [rocket_ showShaking];
+        }
+        else {
+            numBoosts_--;
+            [self engageBoost:vBoost_ amt:0.01 rate:0.005];
+        }
     }
 }
 

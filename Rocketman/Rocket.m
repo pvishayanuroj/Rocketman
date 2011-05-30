@@ -48,23 +48,33 @@
 	CCAnimation *animation = [[CCAnimationCache sharedAnimationCache] animationByName:@"Rocket Fly"];
 	CCActionInterval *animate = [CCAnimate actionWithAnimation:animation];
 	flyingAnimation_ = [[CCRepeatForever actionWithAction:animate] retain];		
+
+#if defined(__ARM_NEON__) || defined(__MAC_OS_X_VERSION_MAX_ALLOWED) || TARGET_IPHONE_SIMULATOR
+    CGFloat speed = 0.04;
+    NSUInteger times = 25;    
+#elif __arm__
+    CGFloat speed = 0.02;
+    NSUInteger times = 50;    
+#else
+    #error(unknown architecture)
+#endif    
     
-    CCActionInterval *l1 = [CCMoveTo actionWithDuration:0.02 position:CGPointMake(-1.25, 0)];
-    CCActionInterval *r1 = [CCMoveTo actionWithDuration:0.02 position:CGPointMake(1.25, 0)];    
-    CCActionInterval *l2 = [CCMoveTo actionWithDuration:0.02 position:CGPointMake(-1, 0)];
-    CCActionInterval *r2 = [CCMoveTo actionWithDuration:0.02 position:CGPointMake(1, 0)];    
-    CCActionInterval *l3 = [CCMoveTo actionWithDuration:0.02 position:CGPointMake(-0.75, 0)];
-    CCActionInterval *r3 = [CCMoveTo actionWithDuration:0.02 position:CGPointMake(0.75, 0)];        
+    CCActionInterval *l1 = [CCMoveTo actionWithDuration:speed position:CGPointMake(-1.25, 0)];
+    CCActionInterval *r1 = [CCMoveTo actionWithDuration:speed position:CGPointMake(1.25, 0)];    
+    CCActionInterval *l2 = [CCMoveTo actionWithDuration:speed position:CGPointMake(-1, 0)];
+    CCActionInterval *r2 = [CCMoveTo actionWithDuration:speed position:CGPointMake(1, 0)];    
+    CCActionInterval *l3 = [CCMoveTo actionWithDuration:speed position:CGPointMake(-0.75, 0)];
+    CCActionInterval *r3 = [CCMoveTo actionWithDuration:speed position:CGPointMake(0.75, 0)];        
 	
     CCActionInterval *s1 = [CCSequence actions:l1, r1, nil];
     CCActionInterval *s2 = [CCSequence actions:l2, r2, nil];
     CCActionInterval *s3 = [CCSequence actions:l3, r3, nil];    
     
-    CCActionInterval *a1 = [CCRepeat actionWithAction:s1 times:50];
-    CCActionInterval *a2 = [CCRepeat actionWithAction:s2 times:50];
-    CCActionInterval *a3 = [CCRepeat actionWithAction:s3 times:50];    
-    CCActionInterval *a4 = [CCMoveTo actionWithDuration:0.02 position:CGPointZero];
-    
+    CCActionInterval *a1 = [CCRepeat actionWithAction:s1 times:times];
+    CCActionInterval *a2 = [CCRepeat actionWithAction:s2 times:times];
+    CCActionInterval *a3 = [CCRepeat actionWithAction:s3 times:times];    
+    CCActionInterval *a4 = [CCMoveTo actionWithDuration:speed position:CGPointZero];
+
     shakingAnimation_ = [[CCSequence actions:a1, a2, a3, a4, nil] retain];
     
 	animation = [[CCAnimationCache sharedAnimationCache] animationByName:@"Rocket Burn"];

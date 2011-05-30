@@ -74,6 +74,8 @@
     
     CGFloat maxHeight_;
     
+    CGFloat lossHeight_;
+    
     CGFloat nextCloudHeight_;
     
     CGFloat nextSlowCloudHeight_;
