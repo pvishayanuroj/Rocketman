@@ -140,7 +140,6 @@
 		DA346F13138ECB56000881D6 /* sheet01.plist in Resources */ = {isa = PBXBuildFile; fileRef = DA346F10138ECB56000881D6 /* sheet01.plist */; };
 		DA346F14138ECB56000881D6 /* sheet01.png in Resources */ = {isa = PBXBuildFile; fileRef = DA346F11138ECB56000881D6 /* sheet01.png */; };
 		DA346F18138ECB7C000881D6 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = DA346F17138ECB7C000881D6 /* background.png */; };
-		DA4994131391E92C00E394F8 /* MoveToY.m in Sources */ = {isa = PBXBuildFile; fileRef = DA4994121391E91E00E394F8 /* MoveToY.m */; };
 		DA8215021390BE0600F3892E /* Cat.m in Sources */ = {isa = PBXBuildFile; fileRef = DA8215011390BE0500F3892E /* Cat.m */; };
 		DA8215061390BFC700F3892E /* CatBullet.m in Sources */ = {isa = PBXBuildFile; fileRef = DA8215051390BFC400F3892E /* CatBullet.m */; };
 		DAB132E0138F1D9A001294BB /* fire.png in Resources */ = {isa = PBXBuildFile; fileRef = DAB132DF138F1D9A001294BB /* fire.png */; };
@@ -422,8 +421,6 @@
 		DA346F11138ECB56000881D6 /* sheet01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sheet01.png; path = Resources/Spritesheets/sheet01.png; sourceTree = "<group>"; };
 		DA346F17138ECB7C000881D6 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		DA346F21138ED4D0000881D6 /* Enums.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Enums.h; sourceTree = "<group>"; };
-		DA4994111391E90D00E394F8 /* MoveToY.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoveToY.h; sourceTree = "<group>"; };
-		DA4994121391E91E00E394F8 /* MoveToY.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoveToY.m; sourceTree = "<group>"; };
 		DA8215001390BE0400F3892E /* Cat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cat.h; sourceTree = "<group>"; };
 		DA8215011390BE0500F3892E /* Cat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cat.m; sourceTree = "<group>"; };
 		DA8215041390BFC100F3892E /* CatBullet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CatBullet.h; sourceTree = "<group>"; };
@@ -510,52 +507,15 @@
 		DA346D75138E593D000881D6 /* Rocketman */ = {
 			isa = PBXGroup;
 			children = (
+				DAFA3CF713939AE30048D211 /* Layers & Scenes */,
 				DA8215121390CECF00F3892E /* Utility */,
 				DA8215111390CE5000F3892E /* Cocos2D Base */,
-				DAB13308138F406A001294BB /* PButtonDelegate.h */,
-				DAB132FD138F3B67001294BB /* PButton.h */,
-				DAB132FE138F3B71001294BB /* PButton.m */,
+				DAFA3CF6139399F30048D211 /* Doodads */,
+				DAFA3CF5139399EA0048D211 /* Obstacles */,
+				DAFA3CF813939B530048D211 /* Player Objects */,
 				DA346D76138E593D000881D6 /* Resources */,
 				DA346D8A138E593D000881D6 /* libs */,
 				DA346EC3138E5942000881D6 /* Supporting Files */,
-				DA346ED6138E5B70000881D6 /* GameLayer.h */,
-				DA346ED7138E5B71000881D6 /* GameLayer.m */,
-				DA346EE1138E5BED000881D6 /* GameScene.h */,
-				DA346EE2138E5BEF000881D6 /* GameScene.m */,
-				DA346EEC138EB036000881D6 /* Rocket.h */,
-				DA346EED138EB03C000881D6 /* Rocket.m */,
-				DA346EEF138EB098000881D6 /* GameManager.h */,
-				DA346EF0138EB0A0000881D6 /* GameManager.m */,
-				DA346EF6138EB6D8000881D6 /* Obstacle.h */,
-				DA346EF7138EB6E5000881D6 /* Obstacle.m */,
-				DA346EF2138EB177000881D6 /* Alien.h */,
-				DA346EF3138EB179000881D6 /* Alien.m */,
-				DA346EF9138EBA49000881D6 /* Dino.h */,
-				DA346EFA138EBA4C000881D6 /* Dino.m */,
-				DAE1BEB1138ED7AF000378DE /* Doodad.h */,
-				DAE1BEB2138ED7AF000378DE /* Doodad.m */,
-				DAE1BEB5138ED832000378DE /* Cloud.h */,
-				DAE1BEB6138ED833000378DE /* Cloud.m */,
-				DAE1B3E9139309D4007244D8 /* SlowCloud.h */,
-				DAE1B3EA139309D4007244D8 /* SlowCloud.m */,
-				DAB132E2138F23B6001294BB /* EngineParticleSystem.h */,
-				DAB132E3138F23BD001294BB /* EngineParticleSystem.m */,
-				353E11B7138ECB370064BC71 /* MainMenuScene.h */,
-				353E11B8138ECB370064BC71 /* MainMenuScene.m */,
-				353E11BA138ECBA90064BC71 /* MainMenuLayer.h */,
-				353E11BB138ECBA90064BC71 /* MainMenuLayer.m */,
-				DAB132E9138F2974001294BB /* HUDLayer.h */,
-				DAB132EA138F2976001294BB /* HUDLayer.m */,
-				DA8215001390BE0400F3892E /* Cat.h */,
-				DA8215011390BE0500F3892E /* Cat.m */,
-				DA8215041390BFC100F3892E /* CatBullet.h */,
-				DA8215051390BFC400F3892E /* CatBullet.m */,
-				DA4994111391E90D00E394F8 /* MoveToY.h */,
-				DA4994121391E91E00E394F8 /* MoveToY.m */,
-				DAE1B3ED13938F39007244D8 /* Boost.h */,
-				DAE1B3EE13938F3B007244D8 /* Boost.m */,
-				DAFA3CF11393972C0048D211 /* Fuel.h */,
-				DAFA3CF21393972C0048D211 /* Fuel.m */,
 			);
 			path = Rocketman;
 			sourceTree = "<group>";
@@ -933,6 +893,13 @@
 		DA8215121390CECF00F3892E /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				DA346EEF138EB098000881D6 /* GameManager.h */,
+				DA346EF0138EB0A0000881D6 /* GameManager.m */,
+				DAB13308138F406A001294BB /* PButtonDelegate.h */,
+				DAB132FD138F3B67001294BB /* PButton.h */,
+				DAB132FE138F3B71001294BB /* PButton.m */,
+				DAB132E2138F23B6001294BB /* EngineParticleSystem.h */,
+				DAB132E3138F23BD001294BB /* EngineParticleSystem.m */,
 				DA346EFC138EC4BA000881D6 /* TargetedAction.h */,
 				DA346EFD138EC4BE000881D6 /* TargetedAction.m */,
 				DA346F21138ED4D0000881D6 /* Enums.h */,
@@ -940,6 +907,66 @@
 				DA8215071390C39E00F3892E /* Debugging.h */,
 			);
 			name = Utility;
+			sourceTree = "<group>";
+		};
+		DAFA3CF5139399EA0048D211 /* Obstacles */ = {
+			isa = PBXGroup;
+			children = (
+				DA346EF6138EB6D8000881D6 /* Obstacle.h */,
+				DA346EF7138EB6E5000881D6 /* Obstacle.m */,
+				DA346EF2138EB177000881D6 /* Alien.h */,
+				DA346EF3138EB179000881D6 /* Alien.m */,
+				DA346EF9138EBA49000881D6 /* Dino.h */,
+				DA346EFA138EBA4C000881D6 /* Dino.m */,
+				DA8215001390BE0400F3892E /* Cat.h */,
+				DA8215011390BE0500F3892E /* Cat.m */,
+			);
+			name = Obstacles;
+			sourceTree = "<group>";
+		};
+		DAFA3CF6139399F30048D211 /* Doodads */ = {
+			isa = PBXGroup;
+			children = (
+				DAE1BEB1138ED7AF000378DE /* Doodad.h */,
+				DAE1BEB2138ED7AF000378DE /* Doodad.m */,
+				DAE1BEB5138ED832000378DE /* Cloud.h */,
+				DAE1BEB6138ED833000378DE /* Cloud.m */,
+				DAE1B3E9139309D4007244D8 /* SlowCloud.h */,
+				DAE1B3EA139309D4007244D8 /* SlowCloud.m */,
+				DAE1B3ED13938F39007244D8 /* Boost.h */,
+				DAE1B3EE13938F3B007244D8 /* Boost.m */,
+				DAFA3CF11393972C0048D211 /* Fuel.h */,
+				DAFA3CF21393972C0048D211 /* Fuel.m */,
+			);
+			name = Doodads;
+			sourceTree = "<group>";
+		};
+		DAFA3CF713939AE30048D211 /* Layers & Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				DA346ED6138E5B70000881D6 /* GameLayer.h */,
+				DA346ED7138E5B71000881D6 /* GameLayer.m */,
+				DA346EE1138E5BED000881D6 /* GameScene.h */,
+				DA346EE2138E5BEF000881D6 /* GameScene.m */,
+				353E11B7138ECB370064BC71 /* MainMenuScene.h */,
+				353E11B8138ECB370064BC71 /* MainMenuScene.m */,
+				353E11BA138ECBA90064BC71 /* MainMenuLayer.h */,
+				353E11BB138ECBA90064BC71 /* MainMenuLayer.m */,
+				DAB132E9138F2974001294BB /* HUDLayer.h */,
+				DAB132EA138F2976001294BB /* HUDLayer.m */,
+			);
+			name = "Layers & Scenes";
+			sourceTree = "<group>";
+		};
+		DAFA3CF813939B530048D211 /* Player Objects */ = {
+			isa = PBXGroup;
+			children = (
+				DA346EEC138EB036000881D6 /* Rocket.h */,
+				DA346EED138EB03C000881D6 /* Rocket.m */,
+				DA8215041390BFC100F3892E /* CatBullet.h */,
+				DA8215051390BFC400F3892E /* CatBullet.m */,
+			);
+			name = "Player Objects";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1138,7 +1165,6 @@
 				DAB132FF138F3B87001294BB /* PButton.m in Sources */,
 				DA8215021390BE0600F3892E /* Cat.m in Sources */,
 				DA8215061390BFC700F3892E /* CatBullet.m in Sources */,
-				DA4994131391E92C00E394F8 /* MoveToY.m in Sources */,
 				DAE1B3EB139309D5007244D8 /* SlowCloud.m in Sources */,
 				DAE1B3EF13938F3E007244D8 /* Boost.m in Sources */,
 				DAFA3CF31393972C0048D211 /* Fuel.m in Sources */,

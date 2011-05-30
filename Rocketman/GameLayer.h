@@ -110,6 +110,8 @@
 
 - (void) obstacleGenerator;
 
+- (void) physicsStep;
+
 - (void) applyGravity;
 
 - (void) collisionDetect;

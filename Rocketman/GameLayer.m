@@ -23,10 +23,6 @@
 
 @implementation GameLayer
 
-/**
- Game layer initialization method
- @returns Returns the created game layer
- */
 - (id) init
 {
 	if ((self = [super init])) {
@@ -111,24 +107,7 @@
 
 - (void) update:(ccTime)dt
 {    
-    v_ += dv_;
-    rocketSpeed_ = v_;
-    
-    dv_ -= 0.00005;
-    
-    if (boostEngaged_) {
-        if (v_ > boostTarget_ || v_ > vMax_) {
-            boostEngaged_ = NO;
-            [self toggleBoostFlame:NO];            
-        }
-        else {
-            v_ += boostRate_;
-            boostRate_ += 0.01;
-        }
-    }
-    
-    //NSLog(@"y: %4.2f, dx: %4.2f", x, dx_);
-    
+    [self physicsStep];
     [self applyGravity];
     [self moveRocketHorizontally];
     [self collisionDetect];        
@@ -189,8 +168,24 @@
     }
 }
 
-- (void) applyGravity
+- (void) physicsStep
 {
+    v_ += dv_;
+    rocketSpeed_ = v_;
+    
+    dv_ -= 0.00005;
+    
+    if (boostEngaged_) {
+        if (v_ > boostTarget_ || v_ > vMax_) {
+            boostEngaged_ = NO;
+            [self toggleBoostFlame:NO];            
+        }
+        else {
+            v_ += boostRate_;
+            boostRate_ += 0.01;
+        }
+    }    
+    
     if (rocketSpeed_ < 0) {
         engineFlame_.emissionRate = 0;
     }
@@ -200,10 +195,13 @@
     if (height_ > maxHeight_) {
         maxHeight_ = height_;
     }
-    [heightLabel_ setString:[NSString stringWithFormat:@"%7.0f", height_]];
-    [speedLabel_ setString:[NSString stringWithFormat:@"%6.1f", rocketSpeed_]];    
     
-    //NSLog(@"%d doodads", [doodads_ count]);
+    [heightLabel_ setString:[NSString stringWithFormat:@"%7.0f", height_]];
+    [speedLabel_ setString:[NSString stringWithFormat:@"%6.1f", rocketSpeed_]];        
+}
+
+- (void) applyGravity
+{
     for (Doodad *doodad in doodads_) {
         [doodad fall:rocketSpeed_];
 
@@ -248,6 +246,7 @@
         [doodads_ addObject:doodad];        
         
     }
+    
     if (height_ > nextSlowCloudHeight_) {
         nextSlowCloudHeight_ += 1500;
         
