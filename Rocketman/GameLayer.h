@@ -11,6 +11,8 @@
 
 @class Rocket;
 @class Cat;
+@class Boost;
+@class Fuel;
 
 @interface GameLayer : CCLayer <UIAccelerometerDelegate, PButtonDelegate> {
  
@@ -73,6 +75,8 @@
     
     CGFloat nextSlowCloudHeight_;
     
+    CGFloat nextObstacleHeight_;
+    
     CCLabelAtlas *heightLabel_;
     
     CCLabelAtlas *speedLabel_;    
@@ -88,6 +92,8 @@
     CGFloat xn_;
     
     CGFloat v_, dv_;
+    
+    CGFloat vMax_;
     
     CGFloat a_;
     
@@ -120,7 +126,13 @@
 
 - (void) useBoost;
 
+- (void) engageBoost;
+
 - (void) collectCat:(Cat *)cat;
+
+- (void) collectFuel:(Fuel *)fuel;
+
+- (void) collectBoost:(Boost *)boost;
 
 - (CGFloat) distanceNoRoot:(CGPoint)a b:(CGPoint)b;
 

@@ -16,6 +16,8 @@
 #import "Dino.h"
 #import "Cat.h"
 #import "CatBullet.h"
+#import "Fuel.h"
+#import "Boost.h"
 #import "EngineParticleSystem.h"
 #import "MoveToY.h"
 
@@ -65,8 +67,9 @@
         numBoosts_ = 0;
         height_ = 0;
         maxHeight_ = 0;
-        nextCloudHeight_ = 100;
+        nextCloudHeight_ = 0;
         nextSlowCloudHeight_ = 0;
+        nextObstacleHeight_ = 0;
         
         sideMoveSpeed_ = 0;
         leftPressed_ = NO;
@@ -75,8 +78,9 @@
         maxSideMoveSpeed_ = 8;
         boostEngaged_ = NO;
         
-        v_ = 10;
+        v_ = 8;
         dv_ = 0;
+        vMax_ = 14;
         
 		heightLabel_ = [[CCLabelAtlas labelWithString:@"00.0" charMapFile:@"fps_images.png" itemWidth:16 itemHeight:24 startCharMap:'.'] retain];         
         heightLabel_.position =  ccp(0, screenHeight_*0.95);
@@ -113,7 +117,7 @@
     dv_ -= 0.00005;
     
     if (boostEngaged_) {
-        if (v_ > boostTarget_) {
+        if (v_ > boostTarget_ || v_ > vMax_) {
             boostEngaged_ = NO;
             [self toggleBoostFlame:NO];            
         }
@@ -133,7 +137,7 @@
 - (void) slowUpdate:(ccTime)dt
 {
     [self cloudGenerator];    
-    //[self obstacleGenerator];        
+    [self obstacleGenerator];        
 }
 
 - (void) collisionDetect
@@ -257,42 +261,22 @@
         [doodads_ addObject:doodad];        
         
     }    
-    
-    /*
-    NSUInteger chance = 20;
-    NSUInteger randNum = arc4random() % 100;
-    
-    if (randNum < chance && [doodads_ count] < 15) {    
-        
-        NSInteger xCoord = arc4random() % screenWidth_;
-        NSInteger yCoord = screenHeight_ + arc4random() % screenHeight_;
-        
-        CGPoint pos = CGPointMake(xCoord, screenHeight_ + yCoord);        
-        Doodad *doodad = [Cloud cloudWithPos:pos];
-        
-        [self addChild:doodad z:kCloudDepth];   
-        [doodads_ addObject:doodad];
-    }
-     */
 }
 
 - (void) obstacleGenerator
 {
-    NSUInteger chance = 90;
-    NSUInteger randNum = arc4random() % 100;
-    
-    if (randNum < chance) {
-    
+    if (height_ > nextObstacleHeight_) {
+        nextObstacleHeight_ += 400;
+        
         Obstacle *obstacle;
+        
+        NSInteger xCoord = arc4random() % screenWidth_;   
+        //NSInteger yCoord = screenHeight_ + arc4random() % screenHeight_;        
+        NSInteger yCoord = screenHeight_ + 100;
+        CGPoint pos = CGPointMake(xCoord, screenHeight_ + yCoord);                
+        
         NSInteger z;
-        NSUInteger type = arc4random() % 3;
-        NSInteger xCoord = arc4random() % screenWidth_;
-        
-        // DEBUG
-        //type = 0;
-        //xCoord = screenWidth_ / 2;
-        
-        CGPoint pos = CGPointMake(xCoord, screenHeight_);
+        NSUInteger type = arc4random() % 4;
         
         switch (type) {
             case 0:
@@ -306,6 +290,8 @@
             case 2:
                 obstacle = [Cat catWithPos:pos];
                 z = kCatDepth;
+            case 3:
+                obstacle = [Boost boostWithPos:pos];
                 break;
             default:
                 NSAssert(NO, @"Invalid obstacle number selected");
@@ -313,9 +299,8 @@
         }
         
         [self addChild:obstacle z:z];
-        [obstacles_ addObject:obstacle];
-        
-    }
+        [obstacles_ addObject:obstacle];        
+    }    
 }
 
 - (void) moveRocketHorizontally
@@ -428,6 +413,12 @@
 
 - (void) useBoost
 {
+    numBoosts_--;
+    [self engageBoost];
+}
+
+- (void) engageBoost
+{
     dv_ = 0;
     
     boostEngaged_ = YES;
@@ -436,22 +427,28 @@
         boostRate_ = 0.1;
     }
     else {
-        boostTarget_ = v_ + 10;
+        boostTarget_ = v_ + 5;
         boostRate_ = 0.1;
     }
     
-    [self toggleBoostFlame:YES];
+    [self toggleBoostFlame:YES];    
 }
 
-- (void) collectBoost
+- (void) collectBoost:(Boost *)boost
 {
-    
+    [obstacles_ removeObject:boost];
+    [self engageBoost];    
+}
+
+- (void) collectFuel:(Fuel *)fuel
+{
+    numBoosts_++;
+    [obstacles_ removeObject:fuel];
 }
 
 - (void) collectCat:(Cat *)cat
 {
     numCats_++;
-    
     [obstacles_ removeObject:cat];
 }
 

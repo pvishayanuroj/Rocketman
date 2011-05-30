@@ -128,7 +128,6 @@
 		DA346EC6138E5942000881D6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DA346EC5138E5942000881D6 /* main.m */; };
 		DA346EC9138E5942000881D6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DA346EC8138E5942000881D6 /* AppDelegate.m */; };
 		DA346ECC138E5942000881D6 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA346ECB138E5942000881D6 /* RootViewController.m */; };
-		DA346ECF138E5942000881D6 /* HelloWorldLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DA346ECE138E5942000881D6 /* HelloWorldLayer.m */; };
 		DA346ED8138E5B72000881D6 /* GameLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DA346ED7138E5B71000881D6 /* GameLayer.m */; };
 		DA346EE3138E5BF0000881D6 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = DA346EE2138E5BEF000881D6 /* GameScene.m */; };
 		DA346EEE138EB042000881D6 /* Rocket.m in Sources */ = {isa = PBXBuildFile; fileRef = DA346EED138EB03C000881D6 /* Rocket.m */; };
@@ -153,8 +152,10 @@
 		DAB132F4138F2BED001294BB /* cat_button.png in Resources */ = {isa = PBXBuildFile; fileRef = DAB132F0138F2BED001294BB /* cat_button.png */; };
 		DAB132FF138F3B87001294BB /* PButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DAB132FE138F3B71001294BB /* PButton.m */; };
 		DAE1B3EB139309D5007244D8 /* SlowCloud.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE1B3EA139309D4007244D8 /* SlowCloud.m */; };
+		DAE1B3EF13938F3E007244D8 /* Boost.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE1B3EE13938F3B007244D8 /* Boost.m */; };
 		DAE1BEB3138ED7AF000378DE /* Doodad.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE1BEB2138ED7AF000378DE /* Doodad.m */; };
 		DAE1BEB7138ED833000378DE /* Cloud.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE1BEB6138ED833000378DE /* Cloud.m */; };
+		DAFA3CF31393972C0048D211 /* Fuel.m in Sources */ = {isa = PBXBuildFile; fileRef = DAFA3CF21393972C0048D211 /* Fuel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -399,8 +400,6 @@
 		DA346EC8138E5942000881D6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		DA346ECA138E5942000881D6 /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		DA346ECB138E5942000881D6 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
-		DA346ECD138E5942000881D6 /* HelloWorldLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HelloWorldLayer.h; sourceTree = "<group>"; };
-		DA346ECE138E5942000881D6 /* HelloWorldLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelloWorldLayer.m; sourceTree = "<group>"; };
 		DA346ED0138E5942000881D6 /* GameConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameConfig.h; sourceTree = "<group>"; };
 		DA346ED6138E5B70000881D6 /* GameLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameLayer.h; sourceTree = "<group>"; };
 		DA346ED7138E5B71000881D6 /* GameLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameLayer.m; sourceTree = "<group>"; };
@@ -445,10 +444,14 @@
 		DAB13308138F406A001294BB /* PButtonDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PButtonDelegate.h; sourceTree = "<group>"; };
 		DAE1B3E9139309D4007244D8 /* SlowCloud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlowCloud.h; sourceTree = "<group>"; };
 		DAE1B3EA139309D4007244D8 /* SlowCloud.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlowCloud.m; sourceTree = "<group>"; };
+		DAE1B3ED13938F39007244D8 /* Boost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Boost.h; sourceTree = "<group>"; };
+		DAE1B3EE13938F3B007244D8 /* Boost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Boost.m; sourceTree = "<group>"; };
 		DAE1BEB1138ED7AF000378DE /* Doodad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Doodad.h; sourceTree = "<group>"; };
 		DAE1BEB2138ED7AF000378DE /* Doodad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Doodad.m; sourceTree = "<group>"; };
 		DAE1BEB5138ED832000378DE /* Cloud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cloud.h; sourceTree = "<group>"; };
 		DAE1BEB6138ED833000378DE /* Cloud.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cloud.m; sourceTree = "<group>"; };
+		DAFA3CF11393972C0048D211 /* Fuel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fuel.h; sourceTree = "<group>"; };
+		DAFA3CF21393972C0048D211 /* Fuel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Fuel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -512,8 +515,6 @@
 				DAB13308138F406A001294BB /* PButtonDelegate.h */,
 				DAB132FD138F3B67001294BB /* PButton.h */,
 				DAB132FE138F3B71001294BB /* PButton.m */,
-				DA346ECD138E5942000881D6 /* HelloWorldLayer.h */,
-				DA346ECE138E5942000881D6 /* HelloWorldLayer.m */,
 				DA346D76138E593D000881D6 /* Resources */,
 				DA346D8A138E593D000881D6 /* libs */,
 				DA346EC3138E5942000881D6 /* Supporting Files */,
@@ -551,6 +552,10 @@
 				DA8215051390BFC400F3892E /* CatBullet.m */,
 				DA4994111391E90D00E394F8 /* MoveToY.h */,
 				DA4994121391E91E00E394F8 /* MoveToY.m */,
+				DAE1B3ED13938F39007244D8 /* Boost.h */,
+				DAE1B3EE13938F3B007244D8 /* Boost.m */,
+				DAFA3CF11393972C0048D211 /* Fuel.h */,
+				DAFA3CF21393972C0048D211 /* Fuel.m */,
 			);
 			path = Rocketman;
 			sourceTree = "<group>";
@@ -1116,7 +1121,6 @@
 				DA346EC6138E5942000881D6 /* main.m in Sources */,
 				DA346EC9138E5942000881D6 /* AppDelegate.m in Sources */,
 				DA346ECC138E5942000881D6 /* RootViewController.m in Sources */,
-				DA346ECF138E5942000881D6 /* HelloWorldLayer.m in Sources */,
 				DA346ED8138E5B72000881D6 /* GameLayer.m in Sources */,
 				DA346EE3138E5BF0000881D6 /* GameScene.m in Sources */,
 				DA346EEE138EB042000881D6 /* Rocket.m in Sources */,
@@ -1136,6 +1140,8 @@
 				DA8215061390BFC700F3892E /* CatBullet.m in Sources */,
 				DA4994131391E92C00E394F8 /* MoveToY.m in Sources */,
 				DAE1B3EB139309D5007244D8 /* SlowCloud.m in Sources */,
+				DAE1B3EF13938F3E007244D8 /* Boost.m in Sources */,
+				DAFA3CF31393972C0048D211 /* Fuel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

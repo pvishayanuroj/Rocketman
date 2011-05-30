@@ -1,23 +1,23 @@
 //
-//  Cat.h
+//  Boost.h
 //  Rocketman
 //
-//  Created by Paul Vishayanuroj on 5/28/11.
+//  Created by Paul Vishayanuroj on 5/30/11.
 //  Copyright 2011 Paul Vishayanuroj. All rights reserved.
 //
 
 #import "Obstacle.h"
 
-@interface Cat : Obstacle {
-
+@interface Boost : Obstacle {
+ 
 	/** Stored idle animation (this is RepeatForever action) */
 	CCAction *idleAnimation_;             
- 
-    CCAction *collectAnimation_;
+    
+    CCAction *collectAnimation_;    
     
 }
 
-+ (id) catWithPos:(CGPoint)pos;
++ (id) boostWithPos:(CGPoint)pos;
 
 - (id) initWithPos:(CGPoint)pos;
 
