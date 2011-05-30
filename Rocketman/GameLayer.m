@@ -60,6 +60,7 @@
         
         rocketInitSpeed_ = 5.0;
         rocketSpeed_ = 10;
+        rocketAcceleration_ = 1;
         numCats_ = 0;
         numBoosts_ = 0;
         height_ = 0;
@@ -74,11 +75,14 @@
         maxSideMoveSpeed_ = 8;
         boostEngaged_ = NO;
         
+        v_ = 10;
+        dv_ = 0;
+        
 		heightLabel_ = [[CCLabelAtlas labelWithString:@"00.0" charMapFile:@"fps_images.png" itemWidth:16 itemHeight:24 startCharMap:'.'] retain];         
-        heightLabel_.position =  ccp(0, screenHeight_*0.05);
+        heightLabel_.position =  ccp(0, screenHeight_*0.95);
 		[self addChild:heightLabel_];        
 		speedLabel_ = [[CCLabelAtlas labelWithString:@"00.0" charMapFile:@"fps_images.png" itemWidth:16 itemHeight:24 startCharMap:'.'] retain];         
-        speedLabel_.position =  ccp(0, screenHeight_*0.1);
+        speedLabel_.position =  ccp(0, screenHeight_*0.9);
 		[self addChild:speedLabel_];                
         
         [self schedule:@selector(update:) interval:1.0/60.0];
@@ -102,12 +106,26 @@
 }
 
 - (void) update:(ccTime)dt
-{
-
-
+{    
+    v_ += dv_;
+    rocketSpeed_ = v_;
+    
+    dv_ -= 0.00005;
+    
+    if (boostEngaged_) {
+        if (v_ > boostTarget_) {
+            boostEngaged_ = NO;
+            [self toggleBoostFlame:NO];            
+        }
+        else {
+            v_ += boostRate_;
+            boostRate_ += 0.01;
+        }
+    }
+    
+    //NSLog(@"y: %4.2f, dx: %4.2f", x, dx_);
     
     [self applyGravity];
-    [self applyBoost];
     [self moveRocketHorizontally];
     [self collisionDetect];        
 }
@@ -169,16 +187,6 @@
 
 - (void) applyGravity
 {
-    /*
-    if (rocketSpeed_ <= 0) {
-        rocketSpeed_ -= 0.05f;
-    }
-    else {
-        rocketSpeed_ -= 0.008f;       
-    }
-     */
-    
-    rocketSpeed_ -= 0.02f;
     if (rocketSpeed_ < 0) {
         engineFlame_.emissionRate = 0;
     }
@@ -188,8 +196,8 @@
     if (height_ > maxHeight_) {
         maxHeight_ = height_;
     }
-    [heightLabel_ setString:[NSString stringWithFormat:@"%6.1f", height_]];
-    [speedLabel_ setString:[NSString stringWithFormat:@"%3.2f", rocketSpeed_]];    
+    [heightLabel_ setString:[NSString stringWithFormat:@"%7.0f", height_]];
+    [speedLabel_ setString:[NSString stringWithFormat:@"%6.1f", rocketSpeed_]];    
     
     //NSLog(@"%d doodads", [doodads_ count]);
     for (Doodad *doodad in doodads_) {
@@ -224,7 +232,7 @@
 {
     if (height_ > nextCloudHeight_) {
         
-        nextCloudHeight_ += 300;
+        nextCloudHeight_ += 100;
         
         NSInteger xCoord = arc4random() % screenWidth_;
         NSInteger yCoord = screenHeight_ + arc4random() % screenHeight_;
@@ -237,7 +245,6 @@
         
     }
     if (height_ > nextSlowCloudHeight_) {
-        NSLog(@"next slow cloud height %4.0f", nextSlowCloudHeight_);
         nextSlowCloudHeight_ += 1500;
         
         NSInteger xCoord = arc4random() % screenWidth_;
@@ -311,28 +318,6 @@
     }
 }
 
-- (void) applyBoost
-{
-    if (boostEngaged_) {
-        boostEngaged_ = NO;
-        CGPoint newPos = CGPointMake(rocket_.position.x, rocket_.position.y + 200);
-        CCActionInterval *boost = [MoveToY actionWithDuration:1.5 position:newPos];
-        CCFiniteTimeAction *ease = [CCEaseIn actionWithAction:boost rate:3];
-        CCFiniteTimeAction *delay = [CCDelayTime actionWithDuration:2.0];
-        CCFiniteTimeAction *method = [CCCallFunc actionWithTarget:self selector:@selector(doneBoosting)];	    
-        CCAction *seq = [CCSequence actions:ease, delay, method, nil];        
-        [rocket_ runAction:seq];
-        
-    }
-}
-
-- (void) doneBoosting
-{
-    CGPoint newPos = CGPointMake(rocket_.position.x, rocket_.position.y - 200);
-    CCActionInterval *boost = [MoveToY actionWithDuration:1.5 position:newPos];    
-    [rocket_ runAction:boost];
-}
-
 - (void) moveRocketHorizontally
 {
     CGPoint pos;
@@ -356,7 +341,8 @@
     pos = ccpAdd(rocket_.position, moveAmt);
     if (pos.x > leftCutoff_ && pos.x < rightCutoff_) {
         rocket_.position = pos;
-        engineFlame_.position = ccpAdd(engineFlame_.position, moveAmt);            
+        engineFlame_.position = ccpAdd(engineFlame_.position, moveAmt);         
+        boostFlame_.position = engineFlame_.position;
     }
 }
 
@@ -364,6 +350,9 @@
 {
 	engineFlame_ = [[EngineParticleSystem engineParticleSystem:300] retain];
 	[self addChild:engineFlame_ z:kRocketFlameDepth];
+    
+	boostFlame_ = [[EngineParticleSystem engineParticleSystem:600] retain];
+	[self addChild:boostFlame_ z:kRocketFlameDepth];    
     
     engineFlame_.gravity = ccp(0, -100);
     ccColor4B orange = ccc4(255, 165, 0, 255);
@@ -385,7 +374,44 @@
     // emits per seconds
     engineFlame_.emissionRate = engineFlame_.totalParticles/engineFlame_.life;
     
-	engineFlame_.position = CGPointMake(rocket_.position.x, rocket_.position.y - 30);;
+	engineFlame_.position = CGPointMake(rocket_.position.x, rocket_.position.y - 30);
+    
+    
+    // BOOST
+    boostFlame_.gravity = ccp(0, -300);
+    ccColor4B purple = ccc4(255, 20, 147, 255);
+    c1 = ccc4FFromccc4B(purple);
+    c2 = c1;
+    c2.a = 0;
+    boostFlame_.startColor = c1;
+    boostFlame_.endColor = c2;
+    
+    
+    boostFlame_.startSize = 20.0f;
+    boostFlame_.startSizeVar = 5.0f;
+    boostFlame_.endSize = kCCParticleStartSizeEqualToEndSize;    
+    
+    // life of particles
+    boostFlame_.life = 0.5;
+    boostFlame_.lifeVar = 0.25f;
+    
+    // emits per seconds
+    //boostFlame_.emissionRate = boostFlame_.totalParticles/boostFlame_.life;
+    boostFlame_.emissionRate = 0;
+    
+	boostFlame_.position = CGPointMake(rocket_.position.x, rocket_.position.y - 30);    
+}
+
+- (void) toggleBoostFlame:(BOOL)on
+{
+    if (on) {
+        engineFlame_.emissionRate = 0;
+        boostFlame_.emissionRate = boostFlame_.totalParticles/boostFlame_.life;
+    }
+    else {
+        boostFlame_.emissionRate = 0;
+        engineFlame_.emissionRate = engineFlame_.totalParticles/engineFlame_.life;        
+    }
 }
 
 - (void) rocketBurn
@@ -402,8 +428,19 @@
 
 - (void) useBoost
 {
-    rocketSpeed_ += 3;
-    //boostEngaged_ = YES;
+    dv_ = 0;
+    
+    boostEngaged_ = YES;
+    if (v_ < 0) {
+        boostTarget_ = 10;
+        boostRate_ = 0.1;
+    }
+    else {
+        boostTarget_ = v_ + 10;
+        boostRate_ = 0.1;
+    }
+    
+    [self toggleBoostFlame:YES];
 }
 
 - (void) collectBoost

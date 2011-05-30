@@ -28,6 +28,8 @@
     
     CGFloat rocketSpeed_;
     
+    CGFloat rocketAcceleration_;
+    
     NSMutableArray *doodads_;
     
     NSMutableArray *backgroundClouds_;    
@@ -46,6 +48,8 @@
     NSInteger rightCutoff_;
     
 	CCParticleSystem *engineFlame_;    
+    
+	CCParticleSystem *boostFlame_;        
     
     BOOL leftPressed_;
     
@@ -72,6 +76,28 @@
     CCLabelAtlas *heightLabel_;
     
     CCLabelAtlas *speedLabel_;    
+    
+    CGFloat dt_;
+    
+    CGFloat dx_;
+    
+    CGFloat x0_;
+    
+    CGFloat v0_;    
+    
+    CGFloat xn_;
+    
+    CGFloat v_, dv_;
+    
+    CGFloat a_;
+    
+    CGFloat g_;
+    
+    CGFloat boostRate_;
+    
+    CGFloat boostAmt_;
+    
+    CGFloat boostTarget_;
 }
 
 - (void) cloudGenerator;
@@ -80,21 +106,19 @@
 
 - (void) applyGravity;
 
-- (void) applyBoost;
-
 - (void) collisionDetect;
 
 - (void) moveRocketHorizontally;
 
 - (void) startEngineFlame;
 
+- (void) toggleBoostFlame:(BOOL)on;
+
 - (void) rocketBurn;
 
 - (void) fireCat;
 
 - (void) useBoost;
-
-- (void) doneBoosting;
 
 - (void) collectCat:(Cat *)cat;
 
