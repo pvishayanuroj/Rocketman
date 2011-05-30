@@ -75,6 +75,8 @@
 {
     GameLayer *gameLayer = (GameLayer *)[self parent];
     [gameLayer rocketBurn];
+    
+    [self showIdle];
 }
 
 - (void) addCloud
