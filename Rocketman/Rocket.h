@@ -16,6 +16,8 @@
     
     CCAction *burningAnimation_;
     
+    CCAction *shakingAnimation_;    
+    
     BOOL isBurning_;
     
 }
@@ -26,7 +28,11 @@
 
 - (void) initActions;
 
+- (void) realignSprite;
+
 - (void) showFlying;
+
+- (void) showShaking;
 
 - (void) showBurning;
 

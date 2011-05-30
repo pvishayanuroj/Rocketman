@@ -31,8 +31,6 @@
     
     CGFloat rocketSpeed_;
     
-    CGFloat rocketAcceleration_;
-    
     NSMutableArray *doodads_;
     
     NSMutableArray *backgroundClouds_;    
@@ -68,6 +66,10 @@
     
     BOOL boostEngaged_;
     
+    BOOL onGround_;
+    
+    BOOL inputLocked_;
+    
     CGFloat height_;
     
     CGFloat maxHeight_;
@@ -82,27 +84,21 @@
     
     CCLabelAtlas *speedLabel_;    
     
-    CGFloat dt_;
-    
-    CGFloat dx_;
-    
-    CGFloat x0_;
-    
     CGFloat v0_;    
     
-    CGFloat xn_;
+    CGFloat v_;
     
-    CGFloat v_, dv_;
+    CGFloat dv_;
     
     CGFloat vMax_;
     
-    CGFloat a_;
+    CGFloat vBoost_;
     
-    CGFloat g_;
+    CGFloat vBoostRing_;
+    
+    CGFloat boost_;    
     
     CGFloat boostRate_;
-    
-    CGFloat boostAmt_;
     
     CGFloat boostTarget_;
 }
@@ -115,9 +111,13 @@
 
 - (void) applyGravity;
 
+- (void) updateCounters;
+
 - (void) collisionDetect;
 
 - (void) moveRocketHorizontally;
+
+- (void) updateFlame;
 
 - (void) startEngineFlame;
 
@@ -127,9 +127,11 @@
 
 - (void) fireCat;
 
+- (void) takeOffComplete;
+
 - (void) useBoost;
 
-- (void) engageBoost:(CGFloat)force;
+- (void) engageBoost:(CGFloat)speedup amt:(CGFloat)amt rate:(CGFloat)rate;
 
 - (void) collectCat:(Cat *)cat;
 

@@ -10,6 +10,7 @@
 #import "Rocket.h"
 #import "Obstacle.h"
 #import "Doodad.h"
+#import "Ground.h"
 #import "Cloud.h"
 #import "SlowCloud.h"
 #import "Alien.h"
@@ -43,21 +44,17 @@
         bg.anchorPoint = CGPointZero;
         
         // Add the rocket
-        CGPoint startPos = CGPointMake(screenWidth_ * 0.5, screenHeight_ * 0.3);
+        CGPoint startPos = CGPointMake(screenWidth_ * 0.5, screenHeight_ * 0.15);
         rocket_ = [Rocket rocketWithPos:startPos];
         [self addChild:rocket_ z:kRocketDepth];
         
-        // DEBUG
-        [rocket_ showFlying];
         [self startEngineFlame];
         
         obstacles_ = [[NSMutableArray arrayWithCapacity:20] retain];
         firedCats_ = [[NSMutableArray arrayWithCapacity:5] retain];
         doodads_ = [[NSMutableArray arrayWithCapacity:20] retain];
         
-        rocketInitSpeed_ = 5.0;
-        rocketSpeed_ = 5;
-        rocketAcceleration_ = 1;
+        rocketSpeed_ = 0;
         numCats_ = 0;
         numBoosts_ = 0;
         height_ = 0;
@@ -72,11 +69,22 @@
         pressedTime_ = 0;
         maxSideMoveSpeed_ = 8;
         boostEngaged_ = NO;
+        onGround_ = YES;
+        inputLocked_ = NO;
         
-        v_ = 7;
+        v_ = 0;
+        v0_ = 8;
+        vBoost_ = 6;
+        vBoostRing_ = 4; 
         dv_ = 0;
         vMax_ = 12;
         
+        // Add ground 
+        Doodad *ground = [Ground groundWithPos:CGPointMake(0, 0)];
+        [self addChild:ground];
+        [doodads_ addObject:ground];        
+
+        // Add stats
 		heightLabel_ = [[CCLabelAtlas labelWithString:@"00.0" charMapFile:@"fps_images.png" itemWidth:16 itemHeight:24 startCharMap:'.'] retain];         
         heightLabel_.position =  ccp(0, screenHeight_*0.95);
 		[self addChild:heightLabel_];        
@@ -98,6 +106,7 @@
     [firedCats_ release];
     [doodads_ release];
     [engineFlame_ release];
+    [boostFlame_ release];
     [heightLabel_ release];
     [speedLabel_ release];    
     
@@ -106,9 +115,13 @@
 
 - (void) update:(ccTime)dt
 {    
+#if !DEBUG_CONSTANTSPEED    
     [self physicsStep];
+#endif
+    [self updateCounters];
     [self applyGravity];
     [self moveRocketHorizontally];
+    [self updateFlame];
     [self collisionDetect];        
 }
 
@@ -169,29 +182,32 @@
 
 - (void) physicsStep
 {
-#if !DEBUG_CONSTANTSPEED
-    v_ += dv_;
-    rocketSpeed_ = v_;
+    if (!onGround_) {
+        
+        v_ += dv_;
+        rocketSpeed_ = v_;
 
-    dv_ -= 0.00005;
-    
-    if (boostEngaged_) {
-        if (v_ > boostTarget_ || v_ > vMax_) {
-            boostEngaged_ = NO;
-            [self toggleBoostFlame:NO];            
+        dv_ -= 0.00004;
+        
+        if (boostEngaged_) {
+            if (v_ > boostTarget_ || v_ > vMax_) {
+                boostEngaged_ = NO;
+                [self toggleBoostFlame:NO];            
+            }
+            else {
+                v_ += boost_;
+                boost_ += boostRate_;
+            }
+        }    
+        
+        if (rocketSpeed_ < 0) {
+            engineFlame_.emissionRate = 0;
         }
-        else {
-            v_ += boostRate_;
-            boostRate_ += 0.01;
-        }
-    }    
-    
-    if (rocketSpeed_ < 0) {
-        engineFlame_.emissionRate = 0;
     }
-    
-#endif
-    
+}
+
+- (void) updateCounters
+{
     // Keep track of height
     height_ += rocketSpeed_;
     if (height_ > maxHeight_) {
@@ -199,7 +215,7 @@
     }
     
     [heightLabel_ setString:[NSString stringWithFormat:@"%7.0f", height_]];
-    [speedLabel_ setString:[NSString stringWithFormat:@"%6.1f", rocketSpeed_]];        
+    [speedLabel_ setString:[NSString stringWithFormat:@"%6.1f", rocketSpeed_]];            
 }
 
 - (void) applyGravity
@@ -326,11 +342,15 @@
     
     CGPoint moveAmt = CGPointMake(dx, 0);
     pos = ccpAdd(rocket_.position, moveAmt);
-    if (pos.x > leftCutoff_ && pos.x < rightCutoff_) {
+    if (pos.x > leftCutoff_ && pos.x < rightCutoff_ && !onGround_ && !inputLocked_) {
         rocket_.position = pos;
-        engineFlame_.position = ccpAdd(engineFlame_.position, moveAmt);         
-        boostFlame_.position = engineFlame_.position;
     }
+}
+
+- (void) updateFlame
+{
+    engineFlame_.position = CGPointMake(rocket_.position.x, rocket_.position.y - 30);
+    boostFlame_.position = engineFlame_.position;        
 }
 
 - (void) startEngineFlame
@@ -359,7 +379,7 @@
     engineFlame_.lifeVar = 0.25f;
     
     // emits per seconds
-    engineFlame_.emissionRate = engineFlame_.totalParticles/engineFlame_.life;
+    engineFlame_.emissionRate = 0;
     
 	engineFlame_.position = CGPointMake(rocket_.position.x, rocket_.position.y - 30);
     
@@ -383,7 +403,6 @@
     boostFlame_.lifeVar = 0.25f;
     
     // emits per seconds
-    //boostFlame_.emissionRate = boostFlame_.totalParticles/boostFlame_.life;
     boostFlame_.emissionRate = 0;
     
 	boostFlame_.position = CGPointMake(rocket_.position.x, rocket_.position.y - 30);    
@@ -408,38 +427,64 @@
 
 - (void) fireCat
 {
-    CatBullet *bullet = [CatBullet catBulletWithPos:rocket_.position withSpeed:(rocketSpeed_ + 10)];
-    [self addChild:bullet z:kBulletDepth];
-    [firedCats_ addObject:bullet];
+    if (!onGround_ && !inputLocked_) {
+        CatBullet *bullet = [CatBullet catBulletWithPos:rocket_.position withSpeed:(rocketSpeed_ + 10)];
+        [self addChild:bullet z:kBulletDepth];
+        [firedCats_ addObject:bullet];
+    }
 }
 
-- (void) useBoost
+- (void) takeOffComplete
 {
-    numBoosts_--;
-    [self engageBoost:3];
+    inputLocked_ = NO;
+    [rocket_ realignSprite];
+    [rocket_ showFlying];
 }
 
-- (void) engageBoost:(CGFloat)force
+- (void) engageBoost:(CGFloat)speedup amt:(CGFloat)amt rate:(CGFloat)rate
 {
     dv_ = 0;
     
     boostEngaged_ = YES;
     if (v_ < 0) {
         boostTarget_ = 10;
-        boostRate_ = 0.1;
+        boost_ = amt;
+        boostRate_ = rate;
     }
     else {
-        boostTarget_ = v_ + 4;
-        boostRate_ = 0.1;
+        boostTarget_ = v_ + speedup;
+        boost_ = amt;
+        boostRate_ = rate;
     }
     
     [self toggleBoostFlame:YES];    
 }
 
+- (void) useBoost
+{
+    if (!inputLocked_) {
+    // The first time the player pressed the boost button
+    if (onGround_) {
+        onGround_ = NO;
+        inputLocked_ = YES;
+        [self engageBoost:v0_ amt:0.001 rate:0.0005];
+        CCActionInstant *done = [CCCallFunc actionWithTarget:self selector:@selector(takeOffComplete)];
+        CCFiniteTimeAction *move = [CCMoveTo actionWithDuration:6.0 position:CGPointMake(rocket_.position.x, screenHeight_ * 0.3)];
+        CCActionInterval *seq = [CCSequence actions:move, done, nil];
+        [rocket_ runAction:seq];
+        [rocket_ showShaking];
+    }
+    else {
+        numBoosts_--;
+        [self engageBoost:vBoost_ amt:0.01 rate:0.005];
+    }
+    }
+}
+
 - (void) collectBoost:(Boost *)boost
 {
     [obstacles_ removeObject:boost];
-    [self engageBoost:4];    
+    [self engageBoost:vBoostRing_ amt:0.01 rate:0.005];    
 }
 
 - (void) collectFuel:(Fuel *)fuel

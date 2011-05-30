@@ -36,6 +36,9 @@
 - (void) dealloc
 {
     [sprite_ release];
+    [flyingAnimation_ release];
+    [shakingAnimation_ release];
+    [burningAnimation_ release];
     
     [super dealloc];
 }
@@ -46,9 +49,32 @@
 	CCActionInterval *animate = [CCAnimate actionWithAnimation:animation];
 	flyingAnimation_ = [[CCRepeatForever actionWithAction:animate] retain];		
     
+    CCActionInterval *l1 = [CCMoveTo actionWithDuration:0.02 position:CGPointMake(-1.25, 0)];
+    CCActionInterval *r1 = [CCMoveTo actionWithDuration:0.02 position:CGPointMake(1.25, 0)];    
+    CCActionInterval *l2 = [CCMoveTo actionWithDuration:0.02 position:CGPointMake(-1, 0)];
+    CCActionInterval *r2 = [CCMoveTo actionWithDuration:0.02 position:CGPointMake(1, 0)];    
+    CCActionInterval *l3 = [CCMoveTo actionWithDuration:0.02 position:CGPointMake(-0.75, 0)];
+    CCActionInterval *r3 = [CCMoveTo actionWithDuration:0.02 position:CGPointMake(0.75, 0)];        
+	
+    CCActionInterval *s1 = [CCSequence actions:l1, r1, nil];
+    CCActionInterval *s2 = [CCSequence actions:l2, r2, nil];
+    CCActionInterval *s3 = [CCSequence actions:l3, r3, nil];    
+    
+    CCActionInterval *a1 = [CCRepeat actionWithAction:s1 times:50];
+    CCActionInterval *a2 = [CCRepeat actionWithAction:s2 times:50];
+    CCActionInterval *a3 = [CCRepeat actionWithAction:s3 times:50];    
+    CCActionInterval *a4 = [CCMoveTo actionWithDuration:0.02 position:CGPointZero];
+    
+    shakingAnimation_ = [[CCSequence actions:a1, a2, a3, a4, nil] retain];
+    
 	animation = [[CCAnimationCache sharedAnimationCache] animationByName:@"Rocket Burn"];
 	burningAnimation_ = [[CCAnimate actionWithAnimation:animation] retain];
 }        
+
+- (void) realignSprite
+{
+    sprite_.position = CGPointZero;
+}
 
 - (void) showFlying
 {
@@ -56,6 +82,12 @@
 	[sprite_ runAction:flyingAnimation_];	
 }
 
+- (void) showShaking
+{
+    [sprite_ stopAllActions];
+    [sprite_ runAction:shakingAnimation_];
+}
+                             
 - (void) showBurning
 {
     if (isBurning_) {
@@ -69,7 +101,7 @@
 	CCFiniteTimeAction *method = [CCCallFunc actionWithTarget:self selector:@selector(doneBurning)];	
 	[self runAction:[CCSequence actions:animation, method, nil]];	
 }
-         
+
 - (void) doneBurning
 {
     isBurning_ = NO;

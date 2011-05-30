@@ -155,6 +155,8 @@
 		DAE1BEB3138ED7AF000378DE /* Doodad.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE1BEB2138ED7AF000378DE /* Doodad.m */; };
 		DAE1BEB7138ED833000378DE /* Cloud.m in Sources */ = {isa = PBXBuildFile; fileRef = DAE1BEB6138ED833000378DE /* Cloud.m */; };
 		DAFA3CF31393972C0048D211 /* Fuel.m in Sources */ = {isa = PBXBuildFile; fileRef = DAFA3CF21393972C0048D211 /* Fuel.m */; };
+		DAFA3CFB1393B19A0048D211 /* Ground.m in Sources */ = {isa = PBXBuildFile; fileRef = DAFA3CFA1393B1970048D211 /* Ground.m */; };
+		DAFA3CFD1393B1F20048D211 /* ground.png in Resources */ = {isa = PBXBuildFile; fileRef = DAFA3CFC1393B1F20048D211 /* ground.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -449,6 +451,9 @@
 		DAE1BEB6138ED833000378DE /* Cloud.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cloud.m; sourceTree = "<group>"; };
 		DAFA3CF11393972C0048D211 /* Fuel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fuel.h; sourceTree = "<group>"; };
 		DAFA3CF21393972C0048D211 /* Fuel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Fuel.m; sourceTree = "<group>"; };
+		DAFA3CF91393B1940048D211 /* Ground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ground.h; sourceTree = "<group>"; };
+		DAFA3CFA1393B1970048D211 /* Ground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ground.m; sourceTree = "<group>"; };
+		DAFA3CFC1393B1F20048D211 /* ground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ground.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -853,6 +858,7 @@
 		DA346EE4138E5D53000881D6 /* Game Art */ = {
 			isa = PBXGroup;
 			children = (
+				DAFA3CFC1393B1F20048D211 /* ground.png */,
 				DAB132ED138F2BED001294BB /* boost_button_pressed.png */,
 				DAB132EE138F2BED001294BB /* boost_button.png */,
 				DAB132EF138F2BED001294BB /* cat_button_pressed.png */,
@@ -937,6 +943,8 @@
 				DAE1BEB6138ED833000378DE /* Cloud.m */,
 				DAE1B3E9139309D4007244D8 /* SlowCloud.h */,
 				DAE1B3EA139309D4007244D8 /* SlowCloud.m */,
+				DAFA3CF91393B1940048D211 /* Ground.h */,
+				DAFA3CFA1393B1970048D211 /* Ground.m */,
 			);
 			name = Doodads;
 			sourceTree = "<group>";
@@ -1041,6 +1049,7 @@
 				DAB132F2138F2BED001294BB /* boost_button.png in Resources */,
 				DAB132F3138F2BED001294BB /* cat_button_pressed.png in Resources */,
 				DAB132F4138F2BED001294BB /* cat_button.png in Resources */,
+				DAFA3CFD1393B1F20048D211 /* ground.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1168,6 +1177,7 @@
 				DAE1B3EB139309D5007244D8 /* SlowCloud.m in Sources */,
 				DAE1B3EF13938F3E007244D8 /* Boost.m in Sources */,
 				DAFA3CF31393972C0048D211 /* Fuel.m in Sources */,
+				DAFA3CFB1393B19A0048D211 /* Ground.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
