@@ -12,6 +12,8 @@
 
 @implementation Dino
 
+static NSUInteger countID = 0;
+
 + (id) dinoWithPos:(CGPoint)pos
 {
     return [[[self alloc] initWithPos:pos] autorelease];
@@ -20,6 +22,8 @@
 - (id) initWithPos:(CGPoint)pos
 {
 	if ((self = [super init])) {
+        
+		unitID_ = countID++;                        
         
         sprite_ = [[CCSprite spriteWithSpriteFrameName:@"Dino Idle 01.png"] retain];
         [self addChild:sprite_];
@@ -39,12 +43,21 @@
 
 - (void) dealloc
 {
+#if DEBUG_DEALLOCS
+    NSLog(@"%@ dealloc'd", self);    
+#endif
+    
     [sprite_ release];
     [idleAnimation_ release];
     [flameAnimation_ release];
     
     [super dealloc];
 }
+
+- (NSString *) description
+{
+    return [NSString stringWithFormat:@"Dino %d", unitID_];
+}    
 
 - (void) initActions
 {

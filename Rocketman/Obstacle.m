@@ -18,35 +18,50 @@
 - (id) init
 {
     if ((self = [super init])) {
-     
+        
         collided_ = NO;
         shootable_ = YES;
         
-        [self initDestroyAction];
+        //[self initDestroyAction];    
     }
     return self;
 }
 
 - (void) dealloc
 {
-    [destroyAnimation_ release];
+    //[destroyAnimation_ release];
     
     [super dealloc];
 }
 
 - (void) initDestroyAction
 {
+    /*  ********* VERY IMPORTANT *************
+        Calling CCCallFunc with target self will increase our retain count by 1 every time
+        This means that the object will never get to the dealloc function unless the destroyAnimation_
+        object is released first, creating a circular reference. Hence we do not use this and instead
+        instantiate the action every time it's called.
+     */
+    /*
     CCFiniteTimeAction *m1 = [CCCallFunc actionWithTarget:self selector:@selector(addCloud)];     
 	CCFiniteTimeAction *m2 = [CCCallFunc actionWithTarget:self selector:@selector(addBlast)];
 	CCFiniteTimeAction *m3 = [CCCallFunc actionWithTarget:self selector:@selector(addText)];    
     CCFiniteTimeAction *m4 = [CCDelayTime actionWithDuration:0.3];    
 	CCFiniteTimeAction *m5 = [CCCallFunc actionWithTarget:self selector:@selector(destroy)];    
     destroyAnimation_ = [[CCSequence actions:m1, m2, m3, m4, m5, nil] retain];  
+     */
 }
 
 - (void) showDestroy
 {
-	[self runAction:destroyAnimation_];	    
+    CCFiniteTimeAction *m1 = [CCCallFunc actionWithTarget:self selector:@selector(addCloud)];     
+	CCFiniteTimeAction *m2 = [CCCallFunc actionWithTarget:self selector:@selector(addBlast)];
+	CCFiniteTimeAction *m3 = [CCCallFunc actionWithTarget:self selector:@selector(addText)];    
+    CCFiniteTimeAction *m4 = [CCDelayTime actionWithDuration:0.3];    
+	CCFiniteTimeAction *m5 = [CCCallFunc actionWithTarget:self selector:@selector(destroy)];    
+    [self runAction:[CCSequence actions:m1, m2, m3, m4, m5, nil]];      
+    
+	//[self runAction:destroyAnimation_];	    
 }
 
 - (void) fall:(CGFloat)speed
@@ -83,7 +98,7 @@
 }
 
 - (void) destroy
-{
+{       
     [self removeFromParentAndCleanup:YES];
 }
 

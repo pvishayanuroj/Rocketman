@@ -11,6 +11,8 @@
 
 @implementation Boost
 
+static NSUInteger countID = 0;
+
 + (id) boostWithPos:(CGPoint)pos
 {
     return [[[self alloc] initWithPos:pos] autorelease];
@@ -19,6 +21,8 @@
 - (id) initWithPos:(CGPoint)pos
 {
 	if ((self = [super init])) {
+        
+        unitID_ = countID++;
         
         sprite_ = [[CCSprite spriteWithSpriteFrameName:@"Boost Ring.png"] retain];
         [self addChild:sprite_];
@@ -39,11 +43,20 @@
 
 - (void) dealloc
 {
+#if DEBUG_DEALLOCS
+    NSLog(@"%@ dealloc'd", self);    
+#endif
+    
     [sprite_ release];
     [idleAnimation_ release];
     
     [super dealloc];
 }
+
+- (NSString *) description
+{
+    return [NSString stringWithFormat:@"Boost %d", unitID_];
+}    
 
 - (void) initActions
 {

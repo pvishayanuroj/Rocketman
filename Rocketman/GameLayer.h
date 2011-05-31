@@ -82,9 +82,11 @@
     
     CGFloat nextObstacleHeight_;
     
-    CCLabelAtlas *heightLabel_;
+    CCLabelTTF *heightLabel_;
     
-    CCLabelAtlas *speedLabel_;    
+    CCLabelTTF *speedLabel_;   
+    
+    CCLabelTTF *tiltLabel_;
     
     CGFloat v0_;    
     
@@ -109,7 +111,7 @@
 
 - (void) obstacleGenerator;
 
-- (void) physicsStep;
+- (void) physicsStep:(ccTime)dt;
 
 - (void) applyGravity;
 

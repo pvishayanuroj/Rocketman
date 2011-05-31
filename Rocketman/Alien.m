@@ -12,6 +12,8 @@
 
 @implementation Alien
 
+static NSUInteger countID = 0;
+
 + (id) alienWithPos:(CGPoint)pos
 {
     return [[[self alloc] initWithPos:pos] autorelease];
@@ -20,6 +22,8 @@
 - (id) initWithPos:(CGPoint)pos
 {
 	if ((self = [super init])) {
+
+		unitID_ = countID++;                
         
         sprite_ = [[CCSprite spriteWithSpriteFrameName:@"Alien Idle 01.png"] retain];
         [self addChild:sprite_];
@@ -32,19 +36,27 @@
         
         [self initActions];
         [self showIdle];        
-        
     }
     return self;
 }
 
 - (void) dealloc
 {
+#if DEBUG_DEALLOCS
+    NSLog(@"%@ dealloc'd", self);    
+#endif
+    
     [sprite_ release];
     [idleAnimation_ release];
     
     [super dealloc];
 }
 
+- (NSString *) description
+{
+    return [NSString stringWithFormat:@"Alien %d", unitID_];
+}    
+    
 - (void) initActions
 {
 	CCAnimation *animation = [[CCAnimationCache sharedAnimationCache] animationByName:@"Alien Idle"];
@@ -96,10 +108,7 @@
 }
 
 - (void) destroy
-{
-    GameLayer *gameLayer = (GameLayer *)[self parent];
-    [gameLayer removeObstacle:self];    
-    
+{    
     [super destroy];
 }
 

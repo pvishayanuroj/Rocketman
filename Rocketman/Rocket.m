@@ -35,6 +35,8 @@
 
 - (void) dealloc
 {
+    NSLog(@"Game Layer dealloc'd");    
+    
     [sprite_ release];
     [flyingAnimation_ release];
     [shakingAnimation_ release];

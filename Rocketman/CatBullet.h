@@ -15,6 +15,8 @@
     CGFloat radius_;
     
     CGFloat velocity_;
+    
+	NSUInteger unitID_;       
 }
 
 @property (nonatomic, readonly) CGFloat radius;

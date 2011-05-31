@@ -85,12 +85,18 @@
         [doodads_ addObject:ground];        
 
         // Add stats
-		heightLabel_ = [[CCLabelAtlas labelWithString:@"00.0" charMapFile:@"fps_images.png" itemWidth:16 itemHeight:24 startCharMap:'.'] retain];         
-        heightLabel_.position =  ccp(0, screenHeight_*0.95);
+		heightLabel_ = [[CCLabelTTF labelWithString:@"00.0" fontName:@"Courier" fontSize:16] retain];
+        heightLabel_.position =  ccp(50, screenHeight_*0.95);
+        heightLabel_.color = ccc3(0, 0, 0);
 		[self addChild:heightLabel_];        
-		speedLabel_ = [[CCLabelAtlas labelWithString:@"00.0" charMapFile:@"fps_images.png" itemWidth:16 itemHeight:24 startCharMap:'.'] retain];         
-        speedLabel_.position =  ccp(0, screenHeight_*0.9);
-		[self addChild:speedLabel_];                
+		speedLabel_ = [[CCLabelTTF labelWithString:@"00.0" fontName:@"Courier" fontSize:16] retain];
+        speedLabel_.position =  ccp(50, screenHeight_*0.9);
+        speedLabel_.color = ccc3(0, 0, 0);        
+		[self addChild:speedLabel_];           
+		tiltLabel_ = [[CCLabelTTF labelWithString:@"00.0" fontName:@"Courier" fontSize:16] retain];
+        tiltLabel_.position =  ccp(50, screenHeight_*0.85);
+        tiltLabel_.color = ccc3(0, 0, 0);        
+		[self addChild:tiltLabel_];                   
         
         [self schedule:@selector(update:) interval:1.0/60.0];
         [self schedule:@selector(slowUpdate:) interval:10.0/60.0];    
@@ -101,6 +107,8 @@
 
 - (void) dealloc
 {
+    NSLog(@"Game Layer dealloc'd");
+    
     [rocket_ release];
     [obstacles_ release];
     [firedCats_ release];
@@ -109,14 +117,16 @@
     [boostFlame_ release];
     [heightLabel_ release];
     [speedLabel_ release];    
+    [tiltLabel_ release];
     
     [super dealloc];
 }
 
 - (void) update:(ccTime)dt
 {    
+    //NSLog(@"dt: %1.3f", dt); 
 #if !DEBUG_CONSTANTSPEED    
-    [self physicsStep];
+    [self physicsStep:dt];
 #endif
     [self updateCounters];
     [self applyGravity];
@@ -152,6 +162,9 @@
         }   
     }
     
+    NSMutableIndexSet *remove = [NSMutableIndexSet indexSet];
+    NSUInteger index = 0;    
+    
     // For checking cat collisions with obstacles
     for (CatBullet *cat in firedCats_) {
         for (Obstacle *obstacle in obstacles_) {
@@ -163,30 +176,33 @@
             distance = [self distanceNoRoot:cat.position b:obstacle.position];
             threshold = cat.radius + obstacle.radius;
             
+            // If a collision occurred, remove the cat bullet and notify the obstacle of the hit
             if (distance < (threshold * threshold)) {
+                [remove addIndex:index];
                 [obstacle bulletHit];
-                
                 [cat removeFromParentAndCleanup:YES];
-                [firedCats_ removeObject:cat];
-                
-                //[obstacle removeFromParentAndCleanup:YES];
-                //[obstacles_ removeObject:obstacle];
                 
                 // Get out of inner loop
                 break; 
-            }
-            
+            }   
         }
+        index++;
     }
+    
+    // Remove outside the loop
+    [firedCats_ removeObjectsAtIndexes:remove];
 }
 
-- (void) physicsStep
+- (void) physicsStep:(ccTime)dt
 {
     if (!onGround_) {
         
         v_ += dv_;
+        
         rocketSpeed_ = v_;
 
+        //dv_ -= (dt*0.002352941176471);
+        //dv_ -= (dt*0.000002352941176);
         dv_ -= 0.00004;
         
         if (boostEngaged_) {
@@ -200,6 +216,7 @@
             }
         }    
         
+        // Turn the engine off if we are falling
         if (rocketSpeed_ < 0) {
             engineFlame_.emissionRate = 0;
         }
@@ -226,32 +243,62 @@
 
 - (void) applyGravity
 {
+    NSMutableIndexSet *remove;
+    NSUInteger index;
+    
+    // Doodads
+    
+    remove = [NSMutableIndexSet indexSet];
+    index = 0;
+    
     for (Doodad *doodad in doodads_) {
         [doodad fall:rocketSpeed_];
 
+        // If past the cutoff boundary, delete
         if (doodad.position.y < yCutoff_) {
+            [remove addIndex:index];            
             [doodad removeFromParentAndCleanup:YES];
-            [doodads_ removeObject:doodad];
         }
+        index++;
     }    
+    // Remove outside the loop
+    [doodads_ removeObjectsAtIndexes:remove];
+    
+    // Obstacles
+    
+    remove = [NSMutableIndexSet indexSet];
+    index = 0;    
     
     for (Obstacle *obstacle in obstacles_) {
         [obstacle fall:rocketSpeed_];
         
+        // If past the cutoff boundary, delete        
         if (obstacle.position.y < yCutoff_) {
-            [obstacle removeFromParentAndCleanup:YES];
-            [obstacles_ removeObject:obstacle];
+            [remove addIndex:index];
+            [obstacle destroy];
         }
+        index++;
     }    
+    // Remove outside the loop
+    [obstacles_ removeObjectsAtIndexes:remove];    
+    
+    // Bullets
+
+    remove = [NSMutableIndexSet indexSet];
+    index = 0;    
     
     for (CatBullet *cat in firedCats_) {
         [cat fall:rocketSpeed_];
         
-        if (cat.position.y > screenHeight_) {
+        // If past the cutoff boundary, delete        
+        if (cat.position.y > screenHeight_ || cat.position.y < yCutoff_) {
+            [remove addIndex:index];            
             [cat removeFromParentAndCleanup:YES];
-            [firedCats_ removeObject:cat];
         }
+        index++;
     }
+    // Remove outside the loop
+    [firedCats_ removeObjectsAtIndexes:remove];    
 }
 
 - (void) cloudGenerator
@@ -289,7 +336,7 @@
 - (void) obstacleGenerator
 {
     if (height_ > nextObstacleHeight_) {
-        nextObstacleHeight_ += 200;
+        nextObstacleHeight_ += 300;
         
         Obstacle *obstacle;
         
@@ -325,7 +372,9 @@
         }
         
         [self addChild:obstacle z:z];
-        [obstacles_ addObject:obstacle];        
+        [obstacles_ addObject:obstacle]; 
+        
+        //NSLog(@"added %@, rc: %d", obstacle, [obstacle retainCount]);
     }    
 }
 
@@ -552,7 +601,9 @@
     CGFloat resultx = acceleration.x - accel[0];
     //CGFloat resulty = acceleration.y - accel[1];
     //CGFloat resultz = acceleration.z - accel[2];    
-      
+
+    [tiltLabel_ setString:[NSString stringWithFormat:@"%1.3f", resultx]];
+    
     sideMoveSpeed_ = resultx*30;    
 
 }

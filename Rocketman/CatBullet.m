@@ -13,6 +13,8 @@
 
 @synthesize radius = radius_;
 
+static NSUInteger countID = 0;
+
 + (id) catBulletWithPos:(CGPoint)pos withSpeed:(CGFloat)speed
 {
     return [[[self alloc] initWithPos:pos withSpeed:speed] autorelease];
@@ -21,6 +23,8 @@
 - (id) initWithPos:(CGPoint)pos withSpeed:(CGFloat)speed;
 {
     if ((self = [super init])) {
+        
+        unitID_ = countID++;        
         
         sprite_ = [[CCSprite spriteWithSpriteFrameName:@"Cat Bullet.png"] retain];
         [self addChild:sprite_];
@@ -35,10 +39,19 @@
 
 - (void) dealloc
 {
+#if DEBUG_DEALLOCS
+    NSLog(@"%@ dealloc'd", self);    
+#endif
+    
     [sprite_ release];
     
     [super dealloc];
 }
+
+- (NSString *) description
+{
+    return [NSString stringWithFormat:@"Cat Bullet %d", unitID_];
+}    
 
 - (void) fall:(CGFloat)speed
 {

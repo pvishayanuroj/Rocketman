@@ -20,7 +20,9 @@
     
     BOOL shootable_;
     
-    CCAction *destroyAnimation_;    
+    CCAction *destroyAnimation_;   
+    
+	NSUInteger unitID_;    
 }
 
 @property (nonatomic, readonly) CGFloat radius;

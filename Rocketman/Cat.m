@@ -8,8 +8,11 @@
 
 #import "Cat.h"
 #import "GameLayer.h"
+#import "CallFuncWeak.h"
 
 @implementation Cat
+
+static NSUInteger countID = 0;
 
 + (id) catWithPos:(CGPoint)pos
 {
@@ -19,6 +22,8 @@
 - (id) initWithPos:(CGPoint)pos
 {
 	if ((self = [super init])) {
+        
+		unitID_ = countID++;                     
         
         sprite_ = [[CCSprite spriteWithSpriteFrameName:@"Cat Idle 01.png"] retain];
         [self addChild:sprite_];
@@ -39,12 +44,21 @@
 
 - (void) dealloc
 {
+#if DEBUG_DEALLOCS
+    NSLog(@"%@ dealloc'd", self);    
+#endif
+    
     [sprite_ release];
     [idleAnimation_ release];
     [collectAnimation_ release];
     
     [super dealloc];
 }
+
+- (NSString *) description
+{
+    return [NSString stringWithFormat:@"Cat %d", unitID_];
+}    
 
 - (void) initActions
 {
@@ -53,7 +67,7 @@
     
     CCActionInterval *scaleUp = [CCScaleBy actionWithDuration:0.15 scale:2.0];
     CCActionInterval *scaleDown = [CCScaleBy actionWithDuration:0.1 scale:0.01];    
-	CCFiniteTimeAction *method = [CCCallFunc actionWithTarget:self selector:@selector(destroy)];	    
+	CCFiniteTimeAction *method = [CallFuncWeak actionWithTarget:self selector:@selector(destroy)];	    
     collectAnimation_ = [[CCSequence actions:scaleUp, scaleDown, method, nil] retain];
 }
 
