@@ -585,7 +585,7 @@
 - (void)accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration
 {
     //ramp-speed - play with this value until satisfied
-    const float kFilteringFactor = 0.1f;
+    const float kFilteringFactor = 0.2f;
     
     //last result storage - keep definition outside of this function, eg. in wrapping object
 
@@ -606,6 +606,12 @@
     
     sideMoveSpeed_ = resultx*30;    
 
+    if (sideMoveSpeed_ > 6) {
+        sideMoveSpeed_ = 6;
+    }
+    if (sideMoveSpeed_ < -6) {
+        sideMoveSpeed_ = -6;
+    }
 }
 
 - (void) leftButtonPressed
