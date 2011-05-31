@@ -678,12 +678,12 @@
     
     switch (type) {
         case kTheme01:
-            name = [NSString stringWithFormat:@"SRSMTheme01.caf"];
+            name = [NSString stringWithFormat:@"SRSMTheme01.mp3"];
             [engine playBackgroundMusic:name];
             break;
         case kMeow:
             rand = arc4random() % 2 + 1;
-            name = [NSString stringWithFormat:@"meow%02d.caf", rand];
+            name = [NSString stringWithFormat:@"meow%02d.mp3", rand];
             engine.effectsVolume = 0.7;
             [engine playEffect:name];            
             break;
