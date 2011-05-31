@@ -143,11 +143,17 @@
 
 - (void) engageBoost:(CGFloat)speedup amt:(CGFloat)amt rate:(CGFloat)rate;
 
+- (void) slowDown:(CGFloat)factor;
+
 - (void) collectCat:(Cat *)cat;
 
 - (void) collectFuel:(Fuel *)fuel;
 
 - (void) collectBoost:(Boost *)boost;
+
+- (void) showText:(EventText)event;
+
+- (void) removeText:(id)node data:(CCSprite *)text;
 
 - (CGFloat) distanceNoRoot:(CGPoint)a b:(CGPoint)b;
 

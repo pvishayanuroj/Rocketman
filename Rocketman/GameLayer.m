@@ -88,15 +88,15 @@
 		heightLabel_ = [[CCLabelTTF labelWithString:@"00.0" fontName:@"Courier" fontSize:16] retain];
         heightLabel_.position =  ccp(50, screenHeight_*0.95);
         heightLabel_.color = ccc3(0, 0, 0);
-		[self addChild:heightLabel_];        
+		[self addChild:heightLabel_ z:kLabelDepth];        
 		speedLabel_ = [[CCLabelTTF labelWithString:@"00.0" fontName:@"Courier" fontSize:16] retain];
         speedLabel_.position =  ccp(50, screenHeight_*0.9);
         speedLabel_.color = ccc3(0, 0, 0);        
-		[self addChild:speedLabel_];           
+		[self addChild:speedLabel_ z:kLabelDepth];           
 		tiltLabel_ = [[CCLabelTTF labelWithString:@"00.0" fontName:@"Courier" fontSize:16] retain];
         tiltLabel_.position =  ccp(50, screenHeight_*0.85);
         tiltLabel_.color = ccc3(0, 0, 0);        
-		[self addChild:tiltLabel_];                   
+		[self addChild:tiltLabel_ z:kLabelDepth];                   
         
         // Button counters
         numCatsLabel_ = [[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d", numCats_] fontName:@"Marker Felt" fontSize:48] retain];
@@ -105,8 +105,8 @@
         numBoostsLabel_.position = ccp(275, 35);        
         numCatsLabel_.color  = ccc3(0, 0, 0);
         numBoostsLabel_.color  = ccc3(0, 0, 0);        
-        [self addChild:numCatsLabel_];
-        [self addChild:numBoostsLabel_];        
+        [self addChild:numCatsLabel_ z:kLabelDepth];
+        [self addChild:numBoostsLabel_ z:kLabelDepth];        
         
         [self schedule:@selector(update:) interval:1.0/60.0];
         [self schedule:@selector(slowUpdate:) interval:10.0/60.0];    
@@ -215,7 +215,8 @@
 
         //dv_ -= (dt*0.002352941176471);
         //dv_ -= (dt*0.000002352941176);
-        dv_ -= 0.00004;
+        //dv_ -= 0.00004;
+        dv_ -= 0.00002;        
         
         if (boostEngaged_) {
             if (v_ > boostTarget_ || v_ > vMax_) {
@@ -573,6 +574,7 @@
                 numBoosts_--;
                 [numBoostsLabel_ setString:[NSString stringWithFormat:@"%d", numBoosts_]];
                 [self engageBoost:vBoost_ amt:0.01 rate:0.005];
+                [self showText:kSpeedUp];                
 #if !DEBUG_UNLIMITED_BOOSTS                
             }
 #endif
@@ -580,16 +582,28 @@
     }
 }
 
+- (void) slowDown:(CGFloat)factor
+{
+    v_ *= factor;
+    if (v_ < 1) {
+        v_ = 1;
+        dv_ = 0;
+    }
+    [self showText:kSpeedDown];
+}
+
 - (void) collectBoost:(Boost *)boost
 {
     [obstacles_ removeObject:boost];
+    [self showText:kSpeedUp];    
     [self engageBoost:vBoostRing_ amt:0.01 rate:0.005];    
 }
 
 - (void) collectFuel:(Fuel *)fuel
 {
     numBoosts_++;
-    [numBoostsLabel_ setString:[NSString stringWithFormat:@"%d", numBoosts_]];    
+    [numBoostsLabel_ setString:[NSString stringWithFormat:@"%d", numBoosts_]];
+    [self showText:kBoostPlus];    
     [obstacles_ removeObject:fuel];
 }
 
@@ -597,7 +611,56 @@
 {
     numCats_++;
     [numCatsLabel_ setString:[NSString stringWithFormat:@"%d", numCats_]];    
+    [self showText:kCatPlus];    
     [obstacles_ removeObject:cat];
+}
+
+- (void) showText:(EventText)event
+{
+    CCSprite *text;
+    
+    switch (event) {
+        case kSpeedUp:
+            text = [CCSprite spriteWithSpriteFrameName:@"Speed Up Text.png"];
+            break;
+        case kSpeedDown:
+            text = [CCSprite spriteWithSpriteFrameName:@"Speed Down Text.png"];            
+            break;
+        case kCatPlus:
+            text = [CCSprite spriteWithSpriteFrameName:@"Cat Plus Text.png"];            
+            break;
+        case kBoostPlus:
+            text = [CCSprite spriteWithSpriteFrameName:@"Boosters Plus Text.png"];            
+            break;
+        default:
+            NSAssert(NO, @"Invalid event type");
+    }
+    
+    [rocket_ addChild:text z:kLabelDepth];
+    
+    NSUInteger rand = arc4random() % 2;
+    switch (rand) {
+        case 0:
+            text.position = CGPointMake(-15, 35);            
+            text.rotation = -15;
+            break;
+        case 1:
+            text.position = CGPointMake(15, 35);            
+            text.rotation = 15;
+            break;
+        default:
+            text.position = CGPointMake(0, 35);            
+    }
+    
+    CCFiniteTimeAction *delay = [CCDelayTime actionWithDuration:0.2];
+    CCFiniteTimeAction *fade = [CCFadeOut actionWithDuration:0.5];
+    CCCallFuncND *clean = [CCCallFuncND actionWithTarget:self selector:@selector(removeText:data:) data:text];
+    [text runAction:[CCSequence actions:delay, fade, clean, nil]];
+}
+
+- (void) removeText:(id)node data:(CCSprite *)text
+{
+    [text removeFromParentAndCleanup:YES];
 }
 
 - (void) removeObstacle:(Obstacle *)obstacle

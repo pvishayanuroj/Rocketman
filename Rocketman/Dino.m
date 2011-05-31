@@ -125,6 +125,9 @@ static NSUInteger countID = 0;
 {
     [self showAttacking];
     
+    GameLayer *gameLayer = (GameLayer *)[self parent];
+    [gameLayer slowDown:0.66];        
+    
     [super collide];
 }
 

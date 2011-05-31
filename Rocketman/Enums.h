@@ -13,8 +13,16 @@ enum {
     kBulletDepth = 3,    
     kRocketFlameDepth = 4,
 	kRocketDepth = 5,
-    kCatDepth = 6
+    kCatDepth = 6,
+    kLabelDepth = 7
 };
+
+typedef enum {
+    kSpeedUp,
+    kSpeedDown,
+    kCatPlus,
+    kBoostPlus
+} EventText;
 
 typedef enum {
 	kLeftButton,
