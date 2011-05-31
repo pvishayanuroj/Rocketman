@@ -37,7 +37,7 @@
     CCMenuItemSprite *boostButton = [CCMenuItemSprite itemFromNormalSprite:[CCSprite spriteWithFile:@"boost_button.png"] selectedSprite:[CCSprite spriteWithFile:@"boost_button_pressed.png"] target:gameLayer selector:@selector(useBoost)];        
     
     CCMenu *menu = [CCMenu menuWithItems:catButton, boostButton, nil];
-    menu.position = CGPointMake(160, 32);
+    menu.position = CGPointMake(140, 32);
     [menu alignItemsHorizontallyWithPadding:50];
     
     [self addChild:menu];    

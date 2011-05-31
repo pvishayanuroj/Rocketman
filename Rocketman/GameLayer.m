@@ -83,7 +83,7 @@
         Doodad *ground = [Ground groundWithPos:CGPointMake(0, 0)];
         [self addChild:ground];
         [doodads_ addObject:ground];        
-
+        
         // Add stats
 		heightLabel_ = [[CCLabelTTF labelWithString:@"00.0" fontName:@"Courier" fontSize:16] retain];
         heightLabel_.position =  ccp(50, screenHeight_*0.95);
@@ -97,6 +97,16 @@
         tiltLabel_.position =  ccp(50, screenHeight_*0.85);
         tiltLabel_.color = ccc3(0, 0, 0);        
 		[self addChild:tiltLabel_];                   
+        
+        // Button counters
+        numCatsLabel_ = [[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d", numCats_] fontName:@"Marker Felt" fontSize:48] retain];
+        numBoostsLabel_ = [[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d", numBoosts_] fontName:@"Marker Felt" fontSize:48] retain];        
+        numCatsLabel_.position = ccp(130, 35);
+        numBoostsLabel_.position = ccp(275, 35);        
+        numCatsLabel_.color  = ccc3(0, 0, 0);
+        numBoostsLabel_.color  = ccc3(0, 0, 0);        
+        [self addChild:numCatsLabel_];
+        [self addChild:numBoostsLabel_];        
         
         [self schedule:@selector(update:) interval:1.0/60.0];
         [self schedule:@selector(slowUpdate:) interval:10.0/60.0];    
@@ -118,6 +128,8 @@
     [heightLabel_ release];
     [speedLabel_ release];    
     [tiltLabel_ release];
+    [numCatsLabel_ release];
+    [numBoostsLabel_ release];
     
     [super dealloc];
 }
@@ -498,10 +510,19 @@
 
 - (void) fireCat
 {
-    if (!onGround_ && !inputLocked_) {
-        CatBullet *bullet = [CatBullet catBulletWithPos:rocket_.position withSpeed:(rocketSpeed_ + 10)];
-        [self addChild:bullet z:kBulletDepth];
-        [firedCats_ addObject:bullet];
+    if (!onGround_ && !inputLocked_) {        
+#if !DEBUG_UNLIMTED_CATS        
+        if (numCats_ > 0) {
+#endif
+            numCats_--;
+            [numCatsLabel_ setString:[NSString stringWithFormat:@"%d", numCats_]];            
+            
+            CatBullet *bullet = [CatBullet catBulletWithPos:rocket_.position withSpeed:(rocketSpeed_ + 10)];
+            [self addChild:bullet z:kBulletDepth];
+            [firedCats_ addObject:bullet];
+#if !DEBUG_UNLIMTED_CATS
+        }
+#endif
     }
 }
 
@@ -546,8 +567,15 @@
             [rocket_ showShaking];
         }
         else {
-            numBoosts_--;
-            [self engageBoost:vBoost_ amt:0.01 rate:0.005];
+#if !DEBUG_UNLIMITED_BOOSTS
+            if (numBoosts_ > 0) {
+#endif
+                numBoosts_--;
+                [numBoostsLabel_ setString:[NSString stringWithFormat:@"%d", numBoosts_]];
+                [self engageBoost:vBoost_ amt:0.01 rate:0.005];
+#if !DEBUG_UNLIMITED_BOOSTS                
+            }
+#endif
         }
     }
 }
@@ -561,12 +589,14 @@
 - (void) collectFuel:(Fuel *)fuel
 {
     numBoosts_++;
+    [numBoostsLabel_ setString:[NSString stringWithFormat:@"%d", numBoosts_]];    
     [obstacles_ removeObject:fuel];
 }
 
 - (void) collectCat:(Cat *)cat
 {
     numCats_++;
+    [numCatsLabel_ setString:[NSString stringWithFormat:@"%d", numCats_]];    
     [obstacles_ removeObject:cat];
 }
 

@@ -32,7 +32,7 @@ static NSUInteger countID = 0;
         
         // Attributes
         shootable_ = NO;
-        radius_ = 20;
+        radius_ = 25;
         radiusSquared_ = radius_*radius_;
         
         [self initActions];

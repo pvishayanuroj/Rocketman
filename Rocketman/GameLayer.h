@@ -88,6 +88,10 @@
     
     CCLabelTTF *tiltLabel_;
     
+    CCLabelTTF *numCatsLabel_;
+    
+    CCLabelTTF *numBoostsLabel_;    
+    
     CGFloat v0_;    
     
     CGFloat v_;
