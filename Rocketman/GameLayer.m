@@ -23,7 +23,7 @@
 #import "SimpleAudioEngine.h"
 
 
-#define SND_ID_ENGINE 0
+#define SND_ID_ENGINE 1746
 
 @implementation GameLayer
 
@@ -112,21 +112,9 @@
         [self addChild:numCatsLabel_ z:kLabelDepth];
         [self addChild:numBoostsLabel_ z:kLabelDepth];        
         
-        //Wait for the audio manager if it is not initialised yet
-        while ([CDAudioManager sharedManagerState] != kAMStateInitialised) {
-            [NSThread sleepForTimeInterval:0.1];
-        }	
-        
-        //Load the buffers with audio data. There is no correspondence between voices/channels and
-        //buffers.  For example you can play the same sound in multiple channel groups with different
-        //pitch, pan and gain settings.
-        //Buffers can be loaded with different sounds simply by calling loadBuffer again, however,
-        //any sources attached to the buffer will be stopped if they are currently playing
-        //Use: afconvert -f caff -d ima4 yourfile.wav to create an ima4 compressed version of a wave file
-        CDSoundEngine *sse = [CDAudioManager sharedManager].soundEngine;        
-        BOOL b = [sse loadBuffer:SND_ID_ENGINE filePath:@"engine.wav"];
-        NSLog(@"Buffer load return: %d", b);
-        
+        // Load sounds
+        SimpleAudioEngine *sae = [SimpleAudioEngine sharedEngine];
+        engineSound_ = [[sae soundSourceForFile:@"engine.wav"] retain];
         
         [self schedule:@selector(update:) interval:1.0/60.0];
         [self schedule:@selector(slowUpdate:) interval:10.0/60.0];    
@@ -150,6 +138,7 @@
     [tiltLabel_ release];
     [numCatsLabel_ release];
     [numBoostsLabel_ release];
+    [engineSound_ release];
     
     [super dealloc];
 }
@@ -520,26 +509,12 @@
     if (on) {
         engineFlame_.emissionRate = 0;
         boostFlame_.emissionRate = boostFlame_.totalParticles/boostFlame_.life;
+        [self playSound:kEngine];
     }
     else {
         boostFlame_.emissionRate = 0;
         engineFlame_.emissionRate = engineFlame_.totalParticles/engineFlame_.life;        
-    }
-
-#if DEBUG_NOSOUND
-    return;
-#endif
-    
-    // Handle sound    
-    CDSoundEngine *sse = [CDAudioManager sharedManager].soundEngine;              
-
-    if (on) {
-        // Play the engine noise            
-        engineSoundID_ = [sse playSound:SND_ID_ENGINE sourceGroupId:0 pitch:1.0f pan:0.0f gain:1.0 loop:YES];                
-    }
-    else {
-        // Cut the engine noise
-        [sse stopSound:engineSoundID_];        
+        [self stopSound:kEngine];
     }
 }
 
@@ -721,8 +696,31 @@
             engine.effectsVolume = 0.7;
             [engine playEffect:name];            
             break;
+        case kPlop:
+            name = [NSString stringWithFormat:@"plop.wav"];
+            [engine playEffect:name];
+            break;
+        case kEngine:
+            engineSound_.looping = YES;
+            [engineSound_ play];
+            break;
         default:
             NSAssert(NO, @"Invalid effect type");
+    }
+}
+
+- (void) stopSound:(SoundType)type
+{
+#if DEBUG_NOSOUND
+    return;
+#endif
+    
+    switch (type) {
+        case kEngine:
+            [engineSound_ stop];
+            break;
+        default:
+            NSAssert(NO, @"Invalid effect type");        
     }
 }
 

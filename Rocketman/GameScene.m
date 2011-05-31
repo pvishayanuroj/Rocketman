@@ -107,9 +107,10 @@
 
 - (void) preloadAudio
 {
-    [[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"SRSMTheme01.caf"];
-    [[SimpleAudioEngine sharedEngine] preloadEffect:@"meow01.caf"];
-    [[SimpleAudioEngine sharedEngine] preloadEffect:@"meow02.caf"];    
+    [[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"SRSMTheme01.mp3"];
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"meow01.mp3"];
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"meow02.mp3"];
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"plop.wav"];    
 }
 
 @end

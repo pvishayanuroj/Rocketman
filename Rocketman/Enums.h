@@ -27,6 +27,8 @@ typedef enum {
 typedef enum {
     kTheme01,
     kMeow,
+    kPlop,
+    kEngine
 } SoundType;
 
 typedef enum {

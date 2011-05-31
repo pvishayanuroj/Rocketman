@@ -93,6 +93,9 @@ static NSUInteger countID = 0;
 
 - (void) bulletHit
 {
+    GameLayer *gameLayer = (GameLayer *)[self parent];
+    [gameLayer playSound:kPlop];        
+    
     [super showDestroy];
     
     [super bulletHit];

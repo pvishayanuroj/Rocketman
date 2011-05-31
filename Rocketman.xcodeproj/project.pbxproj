@@ -146,6 +146,7 @@
 		DA907C401394DCAD009ADD27 /* meow01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DA907C3E1394DCAD009ADD27 /* meow01.mp3 */; };
 		DA907C411394DCAD009ADD27 /* meow02.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DA907C3F1394DCAD009ADD27 /* meow02.mp3 */; };
 		DA907CB51394EFB4009ADD27 /* engine.wav in Resources */ = {isa = PBXBuildFile; fileRef = DA907CB41394EFB4009ADD27 /* engine.wav */; };
+		DA907CB71394FB76009ADD27 /* plop.wav in Resources */ = {isa = PBXBuildFile; fileRef = DA907CB61394FB76009ADD27 /* plop.wav */; };
 		DAB132E0138F1D9A001294BB /* fire.png in Resources */ = {isa = PBXBuildFile; fileRef = DAB132DF138F1D9A001294BB /* fire.png */; };
 		DAB132E4138F23C4001294BB /* EngineParticleSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = DAB132E3138F23BD001294BB /* EngineParticleSystem.m */; };
 		DAB132EB138F2979001294BB /* HUDLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DAB132EA138F2976001294BB /* HUDLayer.m */; };
@@ -439,6 +440,7 @@
 		DA907C3E1394DCAD009ADD27 /* meow01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = meow01.mp3; sourceTree = "<group>"; };
 		DA907C3F1394DCAD009ADD27 /* meow02.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = meow02.mp3; sourceTree = "<group>"; };
 		DA907CB41394EFB4009ADD27 /* engine.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = engine.wav; sourceTree = "<group>"; };
+		DA907CB61394FB76009ADD27 /* plop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = plop.wav; sourceTree = "<group>"; };
 		DAB132DF138F1D9A001294BB /* fire.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fire.png; sourceTree = "<group>"; };
 		DAB132E2138F23B6001294BB /* EngineParticleSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EngineParticleSystem.h; sourceTree = "<group>"; };
 		DAB132E3138F23BD001294BB /* EngineParticleSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EngineParticleSystem.m; sourceTree = "<group>"; };
@@ -899,6 +901,7 @@
 		DA720DAB1394C9AB00A76F3D /* Audio */ = {
 			isa = PBXGroup;
 			children = (
+				DA907CB61394FB76009ADD27 /* plop.wav */,
 				DA907CB41394EFB4009ADD27 /* engine.wav */,
 				DA907C3E1394DCAD009ADD27 /* meow01.mp3 */,
 				DA907C3F1394DCAD009ADD27 /* meow02.mp3 */,
@@ -1080,6 +1083,7 @@
 				DA907C401394DCAD009ADD27 /* meow01.mp3 in Resources */,
 				DA907C411394DCAD009ADD27 /* meow02.mp3 in Resources */,
 				DA907CB51394EFB4009ADD27 /* engine.wav in Resources */,
+				DA907CB71394FB76009ADD27 /* plop.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
