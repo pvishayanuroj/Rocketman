@@ -25,6 +25,11 @@ typedef enum {
 } EventText;
 
 typedef enum {
+    kTheme01,
+    kMeow,
+} SoundType;
+
+typedef enum {
 	kLeftButton,
     kRightButton
 } ButtonType;

@@ -155,6 +155,8 @@
 
 - (void) removeText:(id)node data:(CCSprite *)text;
 
+- (void) playSound:(SoundType)type;
+
 - (CGFloat) distanceNoRoot:(CGPoint)a b:(CGPoint)b;
 
 - (void) removeObstacle:(Obstacle *)obstacle;

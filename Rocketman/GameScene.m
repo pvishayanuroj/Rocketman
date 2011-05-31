@@ -9,6 +9,7 @@
 #import "GameScene.h"
 #import "GameLayer.h"
 #import "HUDLayer.h"
+#import "SimpleAudioEngine.h"
 
 @implementation GameScene
 
@@ -17,6 +18,8 @@
 	if ((self = [super init])) {
 
         [self animationLoader:@"sheet01_animations" spriteSheetName:@"sheet01"];		
+        
+        [self preloadAudio];
         
         GameLayer *gameLayer = [GameLayer node];
 		[self addChild:gameLayer z:0];
@@ -100,6 +103,13 @@
 			
 		} // end for-loop of animations
 	} // end for-loop of units
+}
+
+- (void) preloadAudio
+{
+    [[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"SRSMTheme01.caf"];
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"meow01.caf"];
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"meow02.caf"];    
 }
 
 @end

@@ -20,6 +20,7 @@
 #import "Fuel.h"
 #import "Boost.h"
 #import "EngineParticleSystem.h"
+#import "SimpleAudioEngine.h"
 
 @implementation GameLayer
 
@@ -218,7 +219,9 @@
         //dv_ -= 0.00004;
         dv_ -= 0.00002;        
         
+        // If boosting
         if (boostEngaged_) {
+            // Limit the boost to the target speed or vmax
             if (v_ > boostTarget_ || v_ > vMax_) {
                 boostEngaged_ = NO;
                 [self toggleBoostFlame:NO];            
@@ -521,6 +524,7 @@
             CatBullet *bullet = [CatBullet catBulletWithPos:rocket_.position withSpeed:(rocketSpeed_ + 10)];
             [self addChild:bullet z:kBulletDepth];
             [firedCats_ addObject:bullet];
+            [self playSound:kMeow];
 #if !DEBUG_UNLIMTED_CATS
         }
 #endif
@@ -530,8 +534,8 @@
 - (void) takeOffComplete
 {
     inputLocked_ = NO;
-    [rocket_ realignSprite];
-    [rocket_ showFlying];
+    //[rocket_ realignSprite];
+    //[rocket_ showFlying];
 }
 
 - (void) engageBoost:(CGFloat)speedup amt:(CGFloat)amt rate:(CGFloat)rate
@@ -561,12 +565,12 @@
             onGround_ = NO;
             inputLocked_ = YES;
             [self engageBoost:v0_ amt:0.001 rate:0.0005];
-            CCActionInstant *done = [CCCallFunc actionWithTarget:self selector:@selector(takeOffComplete)];
             CCFiniteTimeAction *move = [CCMoveTo actionWithDuration:6.0 position:CGPointMake(rocket_.position.x, screenHeight_ * 0.3)];
-            CCActionInterval *seq = [CCSequence actions:move, done, nil];
-            [rocket_ runAction:seq];
+            [rocket_ runAction:move];
             [rocket_ showShaking];
+            [self playSound:kTheme01];
         }
+        // Else the typical case when player is already flying
         else {
 #if !DEBUG_UNLIMITED_BOOSTS
             if (numBoosts_ > 0) {
@@ -661,6 +665,31 @@
 - (void) removeText:(id)node data:(CCSprite *)text
 {
     [text removeFromParentAndCleanup:YES];
+}
+
+- (void) playSound:(SoundType)type
+{
+#if DEBUG_NOSOUND
+    return;
+#endif
+    NSUInteger rand;
+    NSString *name;
+    SimpleAudioEngine *engine = [SimpleAudioEngine sharedEngine];
+    
+    switch (type) {
+        case kTheme01:
+            name = [NSString stringWithFormat:@"SRSMTheme01.caf"];
+            [engine playBackgroundMusic:name];
+            break;
+        case kMeow:
+            rand = arc4random() % 2 + 1;
+            name = [NSString stringWithFormat:@"meow%02d.caf", rand];
+            engine.effectsVolume = 0.7;
+            [engine playEffect:name];            
+            break;
+        default:
+            NSAssert(NO, @"Invalid effect type");
+    }
 }
 
 - (void) removeObstacle:(Obstacle *)obstacle

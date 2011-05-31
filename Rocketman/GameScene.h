@@ -15,4 +15,6 @@
 
 - (void) animationLoader:(NSString *)unitListName spriteSheetName:(NSString *)spriteSheetName;
 
+- (void) preloadAudio;
+
 @end

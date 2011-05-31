@@ -7,7 +7,9 @@
 //
 
 #import "Rocket.h"
+#import "GameLayer.h"
 #import "TargetedAction.h"
+#import "CallFuncWeak.h"
 
 @implementation Rocket
 
@@ -51,6 +53,7 @@
 	CCActionInterval *animate = [CCAnimate actionWithAnimation:animation];
 	flyingAnimation_ = [[CCRepeatForever actionWithAction:animate] retain];		
 
+    // Issue where simulator runs slower than the iPhone
 #if defined(__ARM_NEON__) || defined(__MAC_OS_X_VERSION_MAX_ALLOWED) || TARGET_IPHONE_SIMULATOR
     CGFloat speed = 0.04;
     NSUInteger times = 25;    
@@ -74,8 +77,9 @@
     
     CCActionInterval *a1 = [CCRepeat actionWithAction:s1 times:times];
     CCActionInterval *a2 = [CCRepeat actionWithAction:s2 times:times];
-    CCActionInterval *a3 = [CCRepeat actionWithAction:s3 times:times];    
-    CCActionInterval *a4 = [CCMoveTo actionWithDuration:speed position:CGPointZero];
+    CCActionInterval *a3 = [CCRepeat actionWithAction:s3 times:times];
+    CCActionInstant *a4 = [CallFuncWeak actionWithTarget:self selector:@selector(doneShaking)];
+    //CCActionInterval *a4 = [CCMoveTo actionWithDuration:speed position:CGPointZero];
 
     shakingAnimation_ = [[CCSequence actions:a1, a2, a3, a4, nil] retain];
     
@@ -98,6 +102,16 @@
 {
     [sprite_ stopAllActions];
     [sprite_ runAction:shakingAnimation_];
+}
+                           
+- (void) doneShaking
+{
+    sprite_.position = CGPointZero;
+    
+    GameLayer *gameLayer = (GameLayer *)[self parent];
+    [gameLayer takeOffComplete];
+    
+    [self showFlying];
 }
                              
 - (void) showBurning
