@@ -22,6 +22,9 @@
 #import "EngineParticleSystem.h"
 #import "SimpleAudioEngine.h"
 
+
+#define SND_ID_ENGINE 0
+
 @implementation GameLayer
 
 - (id) init
@@ -108,6 +111,22 @@
         numBoostsLabel_.color  = ccc3(0, 0, 0);        
         [self addChild:numCatsLabel_ z:kLabelDepth];
         [self addChild:numBoostsLabel_ z:kLabelDepth];        
+        
+        //Wait for the audio manager if it is not initialised yet
+        while ([CDAudioManager sharedManagerState] != kAMStateInitialised) {
+            [NSThread sleepForTimeInterval:0.1];
+        }	
+        
+        //Load the buffers with audio data. There is no correspondence between voices/channels and
+        //buffers.  For example you can play the same sound in multiple channel groups with different
+        //pitch, pan and gain settings.
+        //Buffers can be loaded with different sounds simply by calling loadBuffer again, however,
+        //any sources attached to the buffer will be stopped if they are currently playing
+        //Use: afconvert -f caff -d ima4 yourfile.wav to create an ima4 compressed version of a wave file
+        CDSoundEngine *sse = [CDAudioManager sharedManager].soundEngine;        
+        BOOL b = [sse loadBuffer:SND_ID_ENGINE filePath:@"engine.wav"];
+        NSLog(@"Buffer load return: %d", b);
+        
         
         [self schedule:@selector(update:) interval:1.0/60.0];
         [self schedule:@selector(slowUpdate:) interval:10.0/60.0];    
@@ -496,7 +515,8 @@
 }
 
 - (void) toggleBoostFlame:(BOOL)on
-{
+{    
+    // Handle particle engine
     if (on) {
         engineFlame_.emissionRate = 0;
         boostFlame_.emissionRate = boostFlame_.totalParticles/boostFlame_.life;
@@ -504,6 +524,22 @@
     else {
         boostFlame_.emissionRate = 0;
         engineFlame_.emissionRate = engineFlame_.totalParticles/engineFlame_.life;        
+    }
+
+#if DEBUG_NOSOUND
+    return;
+#endif
+    
+    // Handle sound    
+    CDSoundEngine *sse = [CDAudioManager sharedManager].soundEngine;              
+
+    if (on) {
+        // Play the engine noise            
+        engineSoundID_ = [sse playSound:SND_ID_ENGINE sourceGroupId:0 pitch:1.0f pan:0.0f gain:1.0 loop:YES];                
+    }
+    else {
+        // Cut the engine noise
+        [sse stopSound:engineSoundID_];        
     }
 }
 
@@ -515,7 +551,7 @@
 - (void) fireCat
 {
     if (!onGround_ && !inputLocked_) {        
-#if !DEBUG_UNLIMTED_CATS        
+#if !DEBUG_UNLIMITED_CATS        
         if (numCats_ > 0) {
 #endif
             numCats_--;
@@ -525,7 +561,7 @@
             [self addChild:bullet z:kBulletDepth];
             [firedCats_ addObject:bullet];
             [self playSound:kMeow];
-#if !DEBUG_UNLIMTED_CATS
+#if !DEBUG_UNLIMITED_CATS
         }
 #endif
     }
@@ -534,8 +570,6 @@
 - (void) takeOffComplete
 {
     inputLocked_ = NO;
-    //[rocket_ realignSprite];
-    //[rocket_ showFlying];
 }
 
 - (void) engageBoost:(CGFloat)speedup amt:(CGFloat)amt rate:(CGFloat)rate

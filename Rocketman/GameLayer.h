@@ -7,6 +7,7 @@
 //
 
 #import "cocos2d.h"
+#import "CDAudioManager.h"
 #import "PButtonDelegate.h"
 
 @class Rocket;
@@ -14,6 +15,8 @@
 @class Boost;
 @class Fuel;
 @class Obstacle;
+@class CDAudioManager;
+@class CDSoundEngine;
 
 @interface GameLayer : CCLayer <UIAccelerometerDelegate, PButtonDelegate> {
  
@@ -109,6 +112,8 @@
     CGFloat boostRate_;
     
     CGFloat boostTarget_;
+    
+    ALuint engineSoundID_;
 }
 
 - (void) cloudGenerator;
