@@ -20,7 +20,10 @@
     
     BOOL isBurning_;
     
+    CGRect rect_;
 }
+
+@property (nonatomic, readonly) CGRect rect;
 
 + (id) rocketWithPos:(CGPoint)pos;
 

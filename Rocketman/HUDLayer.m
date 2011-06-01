@@ -48,8 +48,8 @@
     PButton *leftButton = [PButton pButton:@"Icon-Small.png" toggledImage:@"Icon.png" buttonType:kLeftButton withDelegate:gameLayer];
     PButton *rightButton = [PButton pButton:@"Icon-Small.png" toggledImage:@"Icon.png" buttonType:kRightButton withDelegate:gameLayer];   
     
-    leftButton.position = CGPointMake(100, 100);
-    rightButton.position = CGPointMake(200, 100);
+    leftButton.position = CGPointMake(50, 100);
+    rightButton.position = CGPointMake(270, 100);
     
     [self addChild:leftButton];
     [self addChild:rightButton];

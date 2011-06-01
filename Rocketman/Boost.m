@@ -25,14 +25,15 @@ static NSUInteger countID = 0;
         unitID_ = countID++;
         
         sprite_ = [[CCSprite spriteWithSpriteFrameName:@"Boost Ring.png"] retain];
-        [self addChild:sprite_];
+        [self addChild:sprite_ z:-1];
         
         self.position = pos;
         
         // Attributes
         shootable_ = NO;
-        radius_ = 20;
-        radiusSquared_ = radius_*radius_;
+        circular_ = NO;
+        size_.width = 50;
+        size_.height = 10;
         
         [self initActions];
         [self showIdle];

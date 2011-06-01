@@ -26,7 +26,7 @@ static NSUInteger countID = 0;
 		unitID_ = countID++;                
         
         sprite_ = [[CCSprite spriteWithSpriteFrameName:@"Alien Idle 01.png"] retain];
-        [self addChild:sprite_];
+        [self addChild:sprite_ z:-1];
         
         self.position = pos;
         

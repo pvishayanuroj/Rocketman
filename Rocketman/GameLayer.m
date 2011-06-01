@@ -166,21 +166,32 @@
 {
     CGFloat distance;
     CGFloat threshold;
+    CGRect rocketBox;
+    CGRect obstacleBox;
+    rocketBox.size = rocket_.rect.size;
+    rocketBox.origin = rocket_.position;
     
     // For checking if the rocket collides with obstacles
     for (Obstacle *obstacle in obstacles_) {
         
+        // Cannot collide twice with something
         if (obstacle.collided) {
             continue;
         }
         
-        distance = [self distanceNoRoot:rocket_.position b:obstacle.position];
-        
-        //NSLog(@"distance: %3.2f, radius: %3.2f", distance, obstacle.radiusSquared);
-        
-        if (distance < obstacle.radiusSquared) {
-            [obstacle collide];
-        }   
+        // Do a rectangle on circle collision check
+        if (obstacle.circular) {
+            if ([self intersects:obstacle.position radius:obstacle.radius rect:rocketBox]) {
+                [obstacle collide];
+            }
+        }
+        // Do a rectangle and rectangle collision check
+        else {
+            obstacleBox = CGRectMake(obstacle.position.x, obstacle.position.y, obstacle.size.width, obstacle.size.height);
+            if ([self intersects:rocketBox b:obstacleBox]) {
+                [obstacle collide];
+            }
+        }
     }
     
     NSMutableIndexSet *remove = [NSMutableIndexSet indexSet];
@@ -226,8 +237,8 @@
         //dv_ -= (dt*0.002352941176471);
         //dv_ -= (dt*0.000002352941176);
         //dv_ -= 0.00004;
-        dv_ -= 0.00002;        
-#endif
+        dv_ -= 0.00002;       
+#endif        
         
         // If boosting
         if (boostEngaged_) {
@@ -241,7 +252,7 @@
                 boost_ += boostRate_;
             }
         }    
-        
+
         // Turn the engine off if we are falling
         if (rocketSpeed_ < 0) {
             engineFlame_.emissionRate = 0;
@@ -362,18 +373,21 @@
 - (void) obstacleGenerator
 {
     if (height_ > nextObstacleHeight_) {
-        nextObstacleHeight_ += 300;
+        nextObstacleHeight_ += 200;
         
         Obstacle *obstacle;
         
         NSInteger xCoord = arc4random() % screenWidth_;   
+        
         //NSInteger yCoord = screenHeight_ + arc4random() % screenHeight_;        
         NSInteger yCoord = screenHeight_ + 100;
         CGPoint pos = CGPointMake(xCoord, screenHeight_ + yCoord);                
         
         NSInteger z;
         NSUInteger type = arc4random() % 4;
-        //type = 1;
+        
+        //pos = ccp(100, 800);
+        //type = 3;
         
         switch (type) {
             case 0:
@@ -409,19 +423,7 @@
     CGPoint pos;
     CGFloat dx = 0;
     
-#if DEBUG_MOVEBUTTONS
-    NSUInteger base = 7;
-    CGFloat modifier;    
-    
-    if (rightPressed_ || leftPressed_) {
-        modifier = 1.00 + pressedTime_ * 0.01;
-        dx = base * modifier;
-
-        dx = leftPressed_ ? -dx : dx;    
-    }
-#else
     dx = sideMoveSpeed_;
-#endif
     
     CGPoint moveAmt = CGPointMake(dx, 0);
     pos = ccpAdd(rocket_.position, moveAmt);
@@ -599,11 +601,13 @@
 
 - (void) slowDown:(CGFloat)factor
 {
+#if !DEBUG_CONSTANTSPEED    
     v_ *= factor;
     if (v_ < 1) {
         v_ = 1;
         dv_ = 0;
     }
+#endif
     [self showText:kSpeedDown];
 }
 
@@ -611,6 +615,11 @@
 {
     [obstacles_ removeObject:boost];
     [self showText:kSpeedUp];    
+    
+#if DEBUG_CONSTANTSPEED
+    return;
+#endif    
+    
     [self engageBoost:vBoostRing_ amt:0.01 rate:0.005];    
 }
 
@@ -731,11 +740,62 @@
     [obstacles_ removeObject:obstacle];
 }
 
+- (void) stopRocket
+{
+    v_ = 0;
+}
+
+- (void) startRocket
+{
+    v_ = v0_;
+}
+
 - (CGFloat) distanceNoRoot:(CGPoint)a b:(CGPoint)b
 {
 	CGFloat t1 = a.x - b.x;
 	CGFloat t2 = a.y - b.y;
 	return t1*t1 + t2*t2;
+}
+
+- (BOOL) intersects:(CGPoint)circle radius:(CGFloat)r rect:(CGRect)rect
+{
+    CGPoint circleDistance;
+    circleDistance.x = fabs(circle.x - rect.origin.x);// - rect.size.width/2);
+    circleDistance.y = fabs(circle.y - rect.origin.y);// - rect.size.height/2);
+ 
+    /*
+    if (v_ == 0) {
+        NSLog(@"circle: (%3.2f, %3.2f)", circle.x, circle.y);
+        NSLog(@"rect origin: (%3.2f, %3.2f)", rect.origin.x, rect.origin.y); 
+        NSLog(@"circle dist: (%3.2f, %3.2f)", circleDistance.x, circleDistance.y);        
+    } 
+     */
+    
+    if (circleDistance.x > (rect.size.width/2 + r)) { return NO; }
+    if (circleDistance.y > (rect.size.height/2 + r)) { return NO; }
+    
+    if (circleDistance.x <= (rect.size.width/2)) { return YES; } 
+    if (circleDistance.y <= (rect.size.height/2)) { return YES; }
+    
+    CGFloat a = circleDistance.x - rect.size.width/2;
+    CGFloat b = circleDistance.y - rect.size.height/2;
+    
+    return (a*a + b*b) <= r*r;
+}
+
+- (BOOL) intersects:(CGRect)a b:(CGRect)b
+{
+    // Top left
+    CGPoint a1 = ccp(a.origin.x - a.size.width/2, a.origin.y + a.size.height/2);
+    // Bottom right
+    CGPoint a2 = ccp(a.origin.x + a.size.width/2, a.origin.y - a.size.height/2);    
+    
+    // Top left
+    CGPoint b1 = ccp(b.origin.x - b.size.width/2, b.origin.y + b.size.height/2);
+    // Bottom right
+    CGPoint b2 = ccp(b.origin.x + b.size.width/2, b.origin.y - b.size.height/2);        
+    
+    return (a1.x < b2.x) && (a2.x > b1.x) && (a1.y > b2.y) && (a2.y < b1.y);
 }
 
 - (void)accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration
@@ -772,24 +832,20 @@
 
 - (void) leftButtonPressed
 {
-    leftPressed_ = YES;
-    pressedTime_ = 0;    
+    [self stopRocket];
 }
 
 - (void) rightButtonPressed
 {
-    rightPressed_ = YES;
-    pressedTime_ = 0;    
+    [self startRocket];
 }
 
 - (void) leftButtonDepressed
 {
-    leftPressed_ = NO;        
 }
 
 - (void) rightButtonDepressed
 {
-    rightPressed_ = NO;        
 }
 
 @end

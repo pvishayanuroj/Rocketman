@@ -12,6 +12,8 @@
 
 @synthesize radius = radius_;
 @synthesize radiusSquared = radiusSquared_;
+@synthesize size = size_;
+@synthesize circular = circular_;
 @synthesize collided = collided_;
 @synthesize shootable = shootable_;
 
@@ -19,8 +21,15 @@
 {
     if ((self = [super init])) {
         
+        circular_ = YES;
         collided_ = NO;
         shootable_ = YES;
+        
+        // Default sizes (override this)
+        radius_ = 10;
+        radiusSquared_ = radius_ * radius_;
+        size_.width = 10;
+        size_.height = 10;
         
         //[self initDestroyAction];    
     }
@@ -105,8 +114,26 @@
 #if DEBUG_BOUNDINGBOX
 - (void) draw
 {
-    glColor4f(1.0, 0, 0, 1.0);        
-    ccDrawCircle(CGPointZero, radius_, 0, 24, NO);    
+    if (circular_) {
+        glColor4f(1.0, 0, 0, 1.0);        
+        ccDrawCircle(CGPointZero, radius_, 0, 48, NO);    
+    }
+    else {
+        // top left
+        CGPoint p1 = ccp(-size_.width / 2, size_.height / 2);
+        // top right
+        CGPoint p2 = ccp(size_.width / 2, size_.height / 2);
+        // bottom left
+        CGPoint p3 = ccp(-size_.width / 2, -size_.height / 2);
+        // bottom right
+        CGPoint p4 = ccp(size_.width / 2, -size_.height / 2);    
+        
+        glColor4f(1.0, 0, 0, 1.0);            
+        ccDrawLine(p1, p2);
+        ccDrawLine(p3, p4);    
+        ccDrawLine(p2, p4);
+        ccDrawLine(p1, p3);            
+    }
 }
 #endif
 

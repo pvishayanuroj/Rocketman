@@ -16,6 +16,10 @@
     
     CGFloat radiusSquared_;
     
+    CGSize size_;
+    
+    BOOL circular_;
+    
     BOOL collided_;
     
     BOOL shootable_;
@@ -27,6 +31,8 @@
 
 @property (nonatomic, readonly) CGFloat radius;
 @property (nonatomic, readonly) CGFloat radiusSquared;
+@property (nonatomic, readonly) CGSize size;
+@property (nonatomic, readonly) BOOL circular;
 @property (nonatomic, readonly) BOOL collided;
 @property (nonatomic, readonly) BOOL shootable;
 

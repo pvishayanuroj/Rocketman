@@ -13,6 +13,8 @@
 
 @implementation Rocket
 
+@synthesize rect = rect_;
+
 + (id) rocketWithPos:(CGPoint)pos
 {
     return [[[self alloc] initWithPos:pos] autorelease];
@@ -23,11 +25,15 @@
 	if ((self = [super init])) {
         
         sprite_ = [[CCSprite spriteWithSpriteFrameName:@"Rocket Fly 01.png"] retain];
-        [self addChild:sprite_];
+        [self addChild:sprite_ z:-1];
         
         self.position = pos;
         
         isBurning_ = NO;
+        
+        rect_.origin = CGPointZero;
+        rect_.size.height = 60;
+        rect_.size.width = 10;
         
         [self initActions];
         
@@ -137,7 +143,20 @@
 #if DEBUG_BOUNDINGBOX
 - (void) draw
 {
+    // top left
+    CGPoint p1 = ccp(rect_.origin.x - rect_.size.width / 2, rect_.origin.y + rect_.size.height / 2);
+    // top right
+    CGPoint p2 = ccp(rect_.origin.x + rect_.size.width / 2, rect_.origin.y + rect_.size.height / 2);
+    // bottom left
+    CGPoint p3 = ccp(rect_.origin.x - rect_.size.width / 2, rect_.origin.y - rect_.size.height / 2);
+    // bottom right
+    CGPoint p4 = ccp(rect_.origin.x + rect_.size.width / 2, rect_.origin.y - rect_.size.height / 2);    
     
+    glColor4f(1.0, 0, 0, 1.0);            
+    ccDrawLine(p1, p2);
+    ccDrawLine(p3, p4);    
+    ccDrawLine(p2, p4);
+    ccDrawLine(p1, p3);    
 }
 #endif
 
