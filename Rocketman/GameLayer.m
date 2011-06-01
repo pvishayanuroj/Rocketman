@@ -615,6 +615,7 @@
 {
     [obstacles_ removeObject:boost];
     [self showText:kSpeedUp];    
+    [self playSound:kKerrum];
     
 #if DEBUG_CONSTANTSPEED
     return;
@@ -635,7 +636,7 @@
 {
     numCats_++;
     [numCatsLabel_ setString:[NSString stringWithFormat:@"%d", numCats_]];    
-    [self showText:kCatPlus];    
+    [self showText:kCatPlus];
     [obstacles_ removeObject:cat];
 }
 
@@ -704,13 +705,24 @@
         case kMeow:
             rand = arc4random() % 2 + 1;
             name = [NSString stringWithFormat:@"meow%02d.mp3", rand];
-            engine.effectsVolume = 0.7;
             [engine playEffect:name];            
             break;
         case kPlop:
             name = [NSString stringWithFormat:@"plop.wav"];
             [engine playEffect:name];
             break;
+        case kKerrum:
+            name = [NSString stringWithFormat:@"kerrum.wav"];
+            [engine playEffect:name];
+            break;            
+        case kWerr:
+            name = [NSString stringWithFormat:@"werr.wav"];
+            [engine playEffect:name];
+            break;            
+        case kExplosion01:
+            name = [NSString stringWithFormat:@"explosion01.wav"];
+            [engine playEffect:name];
+            break;                        
         case kEngine:
             engineSound_.looping = YES;
             [engineSound_ play];

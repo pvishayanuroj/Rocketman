@@ -29,7 +29,10 @@ typedef enum {
     kTheme01,
     kMeow,
     kPlop,
-    kEngine
+    kEngine,
+    kKerrum,
+    kWerr,
+    kExplosion01
 } SoundType;
 
 typedef enum {

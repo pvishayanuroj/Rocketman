@@ -111,6 +111,9 @@
     [[SimpleAudioEngine sharedEngine] preloadEffect:@"meow01.mp3"];
     [[SimpleAudioEngine sharedEngine] preloadEffect:@"meow02.mp3"];
     [[SimpleAudioEngine sharedEngine] preloadEffect:@"plop.wav"];    
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"kerrum.wav"];    
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"werr.wav"];    
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"explosion01.wav"];        
 }
 
 @end

@@ -103,9 +103,10 @@ static NSUInteger countID = 0;
 
 - (void) collide
 {
-    sprite_.visible = NO;
+    sprite_.visible = NO;    
     
     GameLayer *gameLayer = (GameLayer *)[self parent];
+    [gameLayer playSound:kWerr];                
     [gameLayer slowDown:0.66];    
     
     [super showDestroy];
