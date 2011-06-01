@@ -8,13 +8,14 @@
 
 enum {
     kBackgroundDepth = 0,
-	kCloudDepth = 1,
-	kObstacleDepth = 2,    
-    kBulletDepth = 3,    
-    kRocketFlameDepth = 4,
-	kRocketDepth = 5,
-    kCatDepth = 6,
-    kLabelDepth = 7
+    kGroundDepth = 1,
+	kCloudDepth = 2,
+	kObstacleDepth = 3,    
+    kBulletDepth = 4,    
+    kRocketFlameDepth = 5,
+	kRocketDepth = 6,
+    kCatDepth = 7,
+    kLabelDepth = 8
 };
 
 typedef enum {

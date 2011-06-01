@@ -37,7 +37,7 @@
 
 - (void) dealloc
 {
-    NSLog(@"Game Layer dealloc'd");    
+    NSLog(@"Rocket dealloc'd");    
     
     [sprite_ release];
     [flyingAnimation_ release];
@@ -133,5 +133,12 @@
     isBurning_ = NO;
     [self showFlying];
 }
+
+#if DEBUG_BOUNDINGBOX
+- (void) draw
+{
+    
+}
+#endif
 
 @end

@@ -102,4 +102,12 @@
     [self removeFromParentAndCleanup:YES];
 }
 
+#if DEBUG_BOUNDINGBOX
+- (void) draw
+{
+    glColor4f(1.0, 0, 0, 1.0);        
+    ccDrawCircle(CGPointZero, radius_, 0, 24, NO);    
+}
+#endif
+
 @end

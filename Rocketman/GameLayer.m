@@ -42,10 +42,20 @@
         leftCutoff_ = SIDE_MARGIN;
         rightCutoff_ = screenWidth_ - SIDE_MARGIN;
         
+        // Array initialization
+        obstacles_ = [[NSMutableArray arrayWithCapacity:20] retain];
+        firedCats_ = [[NSMutableArray arrayWithCapacity:5] retain];
+        doodads_ = [[NSMutableArray arrayWithCapacity:20] retain];        
+        
         // Add background
         CCSprite *bg = [CCSprite spriteWithFile:@"background.png"];
         [self addChild:bg z:kBackgroundDepth];
         bg.anchorPoint = CGPointZero;
+        
+        // Add ground 
+        Doodad *ground = [Ground groundWithPos:CGPointMake(0, 0)];
+        [self addChild:ground z:kGroundDepth];
+        [doodads_ addObject:ground];                
         
         // Add the rocket
         CGPoint startPos = CGPointMake(screenWidth_ * 0.5, screenHeight_ * 0.15);
@@ -54,10 +64,7 @@
         
         [self startEngineFlame];
         
-        obstacles_ = [[NSMutableArray arrayWithCapacity:20] retain];
-        firedCats_ = [[NSMutableArray arrayWithCapacity:5] retain];
-        doodads_ = [[NSMutableArray arrayWithCapacity:20] retain];
-        
+        // Game variables
         rocketSpeed_ = 0;
         numCats_ = 0;
         numBoosts_ = 0;
@@ -82,11 +89,6 @@
         vBoostRing_ = 4; 
         dv_ = 0;
         vMax_ = 12;
-        
-        // Add ground 
-        Doodad *ground = [Ground groundWithPos:CGPointMake(0, 0)];
-        [self addChild:ground];
-        [doodads_ addObject:ground];        
         
         // Add stats
 		heightLabel_ = [[CCLabelTTF labelWithString:@"00.0" fontName:@"Courier" fontSize:16] retain];
@@ -146,9 +148,7 @@
 - (void) update:(ccTime)dt
 {    
     //NSLog(@"dt: %1.3f", dt); 
-#if !DEBUG_CONSTANTSPEED    
     [self physicsStep:dt];
-#endif
     [self updateCounters];
     [self applyGravity];
     [self moveRocketHorizontally];
@@ -219,13 +219,15 @@
     if (!onGround_) {
         
         v_ += dv_;
-        
+              
         rocketSpeed_ = v_;
 
+#if !DEBUG_CONSTANTSPEED      
         //dv_ -= (dt*0.002352941176471);
         //dv_ -= (dt*0.000002352941176);
         //dv_ -= 0.00004;
         dv_ -= 0.00002;        
+#endif
         
         // If boosting
         if (boostEngaged_) {
