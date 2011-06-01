@@ -63,5 +63,20 @@
 		<key>Name</key>
 		<string>Alien</string>
 	</dict>
+	<dict>
+		<key>Animations</key>
+		<array>
+			<dict>
+				<key>Animate Delay</key>
+				<real>0.1</real>
+				<key>Name</key>
+				<string>Idle</string>
+				<key>Num Frames</key>
+				<integer>3</integer>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>Turtle</string>
+	</dict>
 </array>
 </plist>

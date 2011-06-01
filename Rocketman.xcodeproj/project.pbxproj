@@ -142,6 +142,7 @@
 		DA4934D5139605FA008FA14F /* explosion01.wav in Resources */ = {isa = PBXBuildFile; fileRef = DA4934D2139605FA008FA14F /* explosion01.wav */; };
 		DA4934D6139605FA008FA14F /* kerrum.wav in Resources */ = {isa = PBXBuildFile; fileRef = DA4934D3139605FA008FA14F /* kerrum.wav */; };
 		DA4934D7139605FA008FA14F /* werr.wav in Resources */ = {isa = PBXBuildFile; fileRef = DA4934D4139605FA008FA14F /* werr.wav */; };
+		DA71AD2B139682FB00EBC17A /* Shell.m in Sources */ = {isa = PBXBuildFile; fileRef = DA71AD2A139682FB00EBC17A /* Shell.m */; };
 		DA8215021390BE0600F3892E /* Cat.m in Sources */ = {isa = PBXBuildFile; fileRef = DA8215011390BE0500F3892E /* Cat.m */; };
 		DA8215061390BFC700F3892E /* CatBullet.m in Sources */ = {isa = PBXBuildFile; fileRef = DA8215051390BFC400F3892E /* CatBullet.m */; };
 		DA8A35231394889E007E2295 /* CallFuncWeak.m in Sources */ = {isa = PBXBuildFile; fileRef = DA8A35221394889D007E2295 /* CallFuncWeak.m */; };
@@ -434,6 +435,8 @@
 		DA4934D2139605FA008FA14F /* explosion01.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = explosion01.wav; sourceTree = "<group>"; };
 		DA4934D3139605FA008FA14F /* kerrum.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = kerrum.wav; sourceTree = "<group>"; };
 		DA4934D4139605FA008FA14F /* werr.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = werr.wav; sourceTree = "<group>"; };
+		DA71AD29139682FB00EBC17A /* Shell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shell.h; sourceTree = "<group>"; };
+		DA71AD2A139682FB00EBC17A /* Shell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Shell.m; sourceTree = "<group>"; };
 		DA8215001390BE0400F3892E /* Cat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cat.h; sourceTree = "<group>"; };
 		DA8215011390BE0500F3892E /* Cat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cat.m; sourceTree = "<group>"; };
 		DA8215041390BFC100F3892E /* CatBullet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CatBullet.h; sourceTree = "<group>"; };
@@ -960,6 +963,8 @@
 				DA346EF7138EB6E5000881D6 /* Obstacle.m */,
 				DA346EF2138EB177000881D6 /* Alien.h */,
 				DA346EF3138EB179000881D6 /* Alien.m */,
+				DA71AD29139682FB00EBC17A /* Shell.h */,
+				DA71AD2A139682FB00EBC17A /* Shell.m */,
 				DA346EF9138EBA49000881D6 /* Dino.h */,
 				DA346EFA138EBA4C000881D6 /* Dino.m */,
 				DA8215001390BE0400F3892E /* Cat.h */,
@@ -1225,6 +1230,7 @@
 				DAFA3CF31393972C0048D211 /* Fuel.m in Sources */,
 				DAFA3CFB1393B19A0048D211 /* Ground.m in Sources */,
 				DA8A35231394889E007E2295 /* CallFuncWeak.m in Sources */,
+				DA71AD2B139682FB00EBC17A /* Shell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

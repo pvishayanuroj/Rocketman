@@ -101,6 +101,8 @@
     
     CGFloat dv_;
     
+    CGFloat ddv_;
+    
     CGFloat vMax_;
     
     CGFloat vBoost_;
@@ -116,6 +118,8 @@
     ALuint engineSoundID_;
     
     CDSoundSource *engineSound_;
+    
+    CGFloat dt_;
 }
 
 - (void) cloudGenerator;

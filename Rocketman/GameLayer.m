@@ -15,6 +15,7 @@
 #import "SlowCloud.h"
 #import "Alien.h"
 #import "Dino.h"
+#import "Shell.h"
 #import "Cat.h"
 #import "CatBullet.h"
 #import "Fuel.h"
@@ -88,7 +89,10 @@
         vBoost_ = 5;
         vBoostRing_ = 4; 
         dv_ = 0;
+        ddv_ = 0.00002;
         vMax_ = 12;
+        
+        dt_ = 0;
         
         // Add stats
 		heightLabel_ = [[CCLabelTTF labelWithString:@"00.0" fontName:@"Courier" fontSize:16] retain];
@@ -229,16 +233,23 @@
 {
     if (!onGround_) {
         
+        // Hack sol'n
         v_ += dv_;
-              
         rocketSpeed_ = v_;
 
 #if !DEBUG_CONSTANTSPEED      
         //dv_ -= (dt*0.002352941176471);
         //dv_ -= (dt*0.000002352941176);
         //dv_ -= 0.00004;
-        dv_ -= 0.00002;       
+        dv_ -= ddv_;      
+        ddv_ += 0.00000001;
 #endif        
+        
+        
+        // Gravity sol'n
+        //dt_ += dt;
+        
+        
         
         // If boosting
         if (boostEngaged_) {
@@ -384,7 +395,7 @@
         CGPoint pos = CGPointMake(xCoord, screenHeight_ + yCoord);                
         
         NSInteger z;
-        NSUInteger type = arc4random() % 4;
+        NSUInteger type = arc4random() % 5;
         
         //pos = ccp(100, 800);
         //type = 3;
@@ -404,6 +415,14 @@
                 break;
             case 3:
                 obstacle = [Boost boostWithPos:pos];
+                z = kObstacleDepth;
+                break;
+            case 4:
+                obstacle = [Shell shellWithPos:pos];
+                z = kObstacleDepth;
+                break;
+            case 5:
+                //obstacle = [Fuel fuelWithPos:pos];
                 z = kObstacleDepth;
                 break;
             default:
@@ -554,6 +573,7 @@
 - (void) engageBoost:(CGFloat)speedup amt:(CGFloat)amt rate:(CGFloat)rate
 {
     dv_ = 0;
+    ddv_ = 0.00002;
     
     boostEngaged_ = YES;
     if (v_ < 0) {
@@ -606,6 +626,7 @@
     if (v_ < 1) {
         v_ = 1;
         dv_ = 0;
+        ddv_ = 0.0002;
     }
 #endif
     [self showText:kSpeedDown];
