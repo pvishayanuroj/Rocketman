@@ -74,6 +74,7 @@
         nextCloudHeight_ = 0;
         nextSlowCloudHeight_ = 0;
         nextObstacleHeight_ = 0;
+        boostTimer_ = 0;
         
         sideMoveSpeed_ = 0;
         leftPressed_ = NO;
@@ -90,7 +91,7 @@
         vBoostRing_ = 4; 
         dv_ = 0;
         ddv_ = 0.00002;
-        vMax_ = 12;
+        vMax_ = 15;
         
         dt_ = 0;
         
@@ -253,14 +254,28 @@
         
         // If boosting
         if (boostEngaged_) {
-            // Limit the boost to the target speed or vmax
-            if (v_ > boostTarget_ || v_ > vMax_) {
+            
+            boostTimer_ -= dt;
+            
+            // Actual boosting
+            v_ += boost_;
+            boost_ += boostRate_;
+            
+            BOOL vCond = v_ > vMax_ || v_ > boostTarget_;
+            BOOL tCond = (boostTimer_ <= 0);
+            
+            // Cut the boost when either vtarget/vmax is reached or the timer runs out, whichever is longer
+            if (vCond && tCond) {
                 boostEngaged_ = NO;
-                [self toggleBoostFlame:NO];            
+                [self toggleBoostFlame:NO];
             }
-            else {
-                v_ += boost_;
-                boost_ += boostRate_;
+            
+            // Limit the boost to the target speed or vmax
+            if (v_ > vMax_) {
+                v_ = vMax_;
+            }
+            if (v_ > boostTarget_) {
+                v_ = boostTarget_;
             }
         }    
 
@@ -570,12 +585,14 @@
     inputLocked_ = NO;
 }
 
-- (void) engageBoost:(CGFloat)speedup amt:(CGFloat)amt rate:(CGFloat)rate
+- (void) engageBoost:(CGFloat)speedup amt:(CGFloat)amt rate:(CGFloat)rate time:(CGFloat)time
 {
     dv_ = 0;
     ddv_ = 0.00002;
     
     boostEngaged_ = YES;
+    boostTimer_ = time;
+    
     if (v_ < 0) {
         boostTarget_ = 10;
         boost_ = amt;
@@ -597,7 +614,8 @@
         if (onGround_) {
             onGround_ = NO;
             inputLocked_ = YES;
-            [self engageBoost:v0_ amt:0.001 rate:0.0005];
+            // Engage boost, slow boosting, so we don't care about time
+            [self engageBoost:v0_ amt:0.001 rate:0.0005 time:1];
             CCFiniteTimeAction *move = [CCMoveTo actionWithDuration:6.0 position:CGPointMake(rocket_.position.x, screenHeight_ * 0.3)];
             [rocket_ runAction:move];
             [rocket_ showShaking];
@@ -610,7 +628,8 @@
 #endif
                 numBoosts_--;
                 [numBoostsLabel_ setString:[NSString stringWithFormat:@"%d", numBoosts_]];
-                [self engageBoost:vBoost_ amt:0.01 rate:0.005];
+                // Engage fast boost, make sure it lasts longer
+                [self engageBoost:vBoost_ amt:0.5 rate:0 time:1.5];
                 [self showText:kSpeedUp];                
 #if !DEBUG_UNLIMITED_BOOSTS                
             }
@@ -622,12 +641,22 @@
 - (void) slowDown:(CGFloat)factor
 {
 #if !DEBUG_CONSTANTSPEED    
-    v_ *= factor;
+    if (v_ > 0) {
+        v_ *= factor;
+    }
+    
+    // Cancel boost if on
+    if (boostEngaged_) {
+        boostEngaged_ = NO;
+        [self toggleBoostFlame:NO];        
+    }
+    /*
     if (v_ < 1) {
         v_ = 1;
         dv_ = 0;
         ddv_ = 0.0002;
     }
+     */
 #endif
     [self showText:kSpeedDown];
 }
@@ -641,8 +670,8 @@
 #if DEBUG_CONSTANTSPEED
     return;
 #endif    
-    
-    [self engageBoost:vBoostRing_ amt:0.01 rate:0.005];    
+    // Engage fast boost, make sure it lasts longer    
+    [self engageBoost:vBoostRing_ amt:0.5 rate:0 time:1.5];    
 }
 
 - (void) collectFuel:(Fuel *)fuel

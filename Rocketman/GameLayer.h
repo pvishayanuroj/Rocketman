@@ -115,6 +115,8 @@
     
     CGFloat boostTarget_;
     
+    CGFloat boostTimer_;
+    
     ALuint engineSoundID_;
     
     CDSoundSource *engineSound_;
@@ -152,7 +154,7 @@
 
 - (void) useBoost;
 
-- (void) engageBoost:(CGFloat)speedup amt:(CGFloat)amt rate:(CGFloat)rate;
+- (void) engageBoost:(CGFloat)speedup amt:(CGFloat)amt rate:(CGFloat)rate time:(CGFloat)time;
 
 - (void) slowDown:(CGFloat)factor;
 

@@ -1307,6 +1307,45 @@
 			};
 			name = Release;
 		};
+		DA71AD2D139687BA00EBC17A /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Paul Vishayanuroj (8GPS98FCV8)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Paul Vishayanuroj";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					DEBUG,
+					"COCOS2D_DEBUG=1",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				PROVISIONING_PROFILE = "7DE6867D-F020-41FC-84D1-2C3EB54C0941";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A181E475-A8C4-4636-BBD1-1C06E1103D04";
+				SDKROOT = iphoneos;
+			};
+			name = Distribution;
+		};
+		DA71AD2E139687BA00EBC17A /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Rocketman/Prefix.pch;
+				"GCC_THUMB_SUPPORT[arch=armv6]" = "";
+				INFOPLIST_FILE = Rocketman/Resources/Info.plist;
+				OTHER_LDFLAGS = "-lz";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Distribution;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1314,6 +1353,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DA346ED1138E5942000881D6 /* Debug */,
+				DA71AD2D139687BA00EBC17A /* Distribution */,
 				DA346ED2138E5942000881D6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -1323,6 +1363,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DA346ED4138E5942000881D6 /* Debug */,
+				DA71AD2E139687BA00EBC17A /* Distribution */,
 				DA346ED5138E5942000881D6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
