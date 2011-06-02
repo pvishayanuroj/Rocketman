@@ -14,6 +14,7 @@
 #import "Cloud.h"
 #import "SlowCloud.h"
 #import "Alien.h"
+#import "UFO.h"
 #import "Dino.h"
 #import "Angel.h"
 #import "Shell.h"
@@ -76,14 +77,14 @@
         nextSlowCloudHeight_ = 0;
         
         // Obstacle and powerup generation
-        nextObstacleHeight_ = 600;
-        obstableFrequency_ = 600;
+        nextObstacleHeight_ = 800;
+        obstableFrequency_ = 400;
         nextRingHeight_ = 1600;
-        ringFrequency_ = 1600;
+        ringFrequency_ = 2000;
         nextCatHeight_ = 700;
-        catFrequency_ = 700;
+        catFrequency_ = 1200;
         nextFuelHeight_ = 2000;
-        fuelFrequency_ = 2000;
+        fuelFrequency_ = 2400;
 
         sideMoveSpeed_ = 0;
         maxSideMoveSpeed_ = 8;
@@ -423,7 +424,7 @@
         y = screenHeight_ + 100;
         pos = ccp(x, y);                
 
-        NSUInteger type = arc4random() % 4;
+        NSUInteger type = arc4random() % 5; 
         
         switch (type) {
             case 0:
@@ -438,6 +439,9 @@
             case 3:
                 obstacle = [Angel angelWithPos:pos];
                 break;                
+            case 4:
+                obstacle = [UFO ufoWithPos:pos];
+                break;
             default:
                 NSAssert(NO, @"Invalid obstacle number selected");
                 break;
