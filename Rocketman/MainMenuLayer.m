@@ -8,7 +8,7 @@
 
 #import "MainMenuLayer.h"
 #import "GameScene.h"
-
+#import "StoryScene.h"
 
 @implementation MainMenuLayer
 
@@ -20,21 +20,15 @@
 {
 	if ((self = [super init])) {
         
-        CGSize size = [[CCDirector sharedDirector] winSize];     
-        
-        NSUInteger screenWidth = size.width;
-        NSUInteger screenHeight = size.height;
-        
-        CCSprite *backgroundImage = [CCSprite spriteWithFile:@"GameOvaa.png"];
-        
-        backgroundImage.position = ccp(screenWidth/2, screenHeight/2);
+        CCSprite *backgroundImage = [CCSprite spriteWithFile:@"menu_splash.png"];
+        backgroundImage.anchorPoint = CGPointZero;
         
         CCMenuItemSprite *menuButton1 = [CCMenuItemSprite itemFromNormalSprite:[CCSprite spriteWithFile:@"MenuButton01.png"] selectedSprite:[CCSprite spriteWithFile:@"MenuButton01.png"] target:self selector:@selector(startGame)];
         CCMenuItemSprite *menuButton2 = [CCMenuItemSprite itemFromNormalSprite:[CCSprite spriteWithFile:@"MenuButton02.png"] selectedSprite:[CCSprite spriteWithFile:@"MenuButton02.png"] target:self selector:@selector(viewHighScore)];
         CCMenuItemSprite *menuButton3 = [CCMenuItemSprite itemFromNormalSprite:[CCSprite spriteWithFile:@"MenuButton03.png"] selectedSprite:[CCSprite spriteWithFile:@"MenuButton03.png"] target:self selector:@selector(viewCredits)];
         
         CCMenu *menu = [CCMenu menuWithItems:menuButton1, menuButton2, menuButton3, nil];
-        [menu alignItemsVertically];
+        [menu alignItemsVerticallyWithPadding:40];
         
         [self addChild:backgroundImage z:0];
         [self addChild:menu z:1];
@@ -44,7 +38,10 @@
 }
 
 - (void) startGame {
-    [[CCDirector sharedDirector] replaceScene:[GameScene node]];
+    
+    StoryScene *scene = [StoryScene storyWithName:@"Intro" num:1 endNum:5];
+    [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:scene]];
+    
 }
 
 - (void) viewHighScore {

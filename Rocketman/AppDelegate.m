@@ -115,8 +115,8 @@
     [self authenticateLocalPlayer];
 	
 	// Run the intro Scene
-    //[[CCDirector sharedDirector] runWithScene: [MainMenuScene node]];
-    [[CCDirector sharedDirector] runWithScene: [GameScene node]];
+    [[CCDirector sharedDirector] runWithScene: [MainMenuScene node]];
+    //[[CCDirector sharedDirector] runWithScene: [GameScene node]];
 }
 
 

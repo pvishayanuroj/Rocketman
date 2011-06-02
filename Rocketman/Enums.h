@@ -30,10 +30,12 @@ typedef enum {
 typedef enum {
     kTheme01,
     kMeow,
+    kCollectMeow,
     kPlop,
     kEngine,
     kKerrum,
     kWerr,
+    kPowerup,
     kExplosion01
 } SoundType;
 

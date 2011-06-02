@@ -65,13 +65,6 @@ static NSUInteger countID = 0;
     CCActionInterval *scaleUp = [CCScaleTo actionWithDuration:0.5 scaleX:1.0 scaleY:1.0];    
     CCActionInterval *seq = [CCSequence actions:scaleDown, scaleUp, nil];
 	idleAnimation_ = [[CCRepeatForever actionWithAction:seq] retain];		    
-    
-    /*
-    CCActionInterval *scaleUp = [CCScaleBy actionWithDuration:0.15 scale:2.0];
-    CCActionInterval *scaleDown = [CCScaleBy actionWithDuration:0.1 scale:0.01];    
-	CCFiniteTimeAction *method = [CCCallFunc actionWithTarget:self selector:@selector(destroy)];	    
-    collectAnimation_ = [[CCSequence actions:scaleUp, scaleDown, method, nil] retain];
-     */
 }
 
 - (void) showIdle
@@ -80,16 +73,11 @@ static NSUInteger countID = 0;
     [sprite_ runAction:idleAnimation_];	    
 }
 
-- (void) showCollect
-{
-    [sprite_ stopAllActions];
-    [sprite_ runAction:collectAnimation_];	        
-}
-
 - (void) collide
 {
     GameLayer *gameLayer = (GameLayer *)[self parent];
     [gameLayer collectBoost:self];
+    [gameLayer removeObstacle:self];
     
     [super collide];
     

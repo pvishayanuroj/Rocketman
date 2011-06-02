@@ -75,14 +75,14 @@
         nextSlowCloudHeight_ = 0;
         
         // Obstacle and powerup generation
-        nextObstacleHeight_ = 400;
-        obstableFrequency_ = 1000;
-        nextRingHeight_ = 1000;
-        ringFrequency_ = 1000;
+        nextObstacleHeight_ = 600;
+        obstableFrequency_ = 600;
+        nextRingHeight_ = 1600;
+        ringFrequency_ = 1600;
         nextCatHeight_ = 700;
         catFrequency_ = 700;
-        nextFuelHeight_ = 1500;
-        fuelFrequency_ = 1500;
+        nextFuelHeight_ = 2000;
+        fuelFrequency_ = 2000;
 
         sideMoveSpeed_ = 0;
         maxSideMoveSpeed_ = 8;
@@ -410,10 +410,10 @@
 {
     NSInteger x;
     NSInteger y;
-    NSInteger z;
     CGPoint pos;
     Obstacle *obstacle;    
     
+#if !DEBUG_NOOBSTACLES
     // "Bad" obstacles
     if (height_ > nextObstacleHeight_) {
         nextObstacleHeight_ += obstableFrequency_;
@@ -427,24 +427,22 @@
         switch (type) {
             case 0:
                 obstacle = [Dino dinoWithPos:pos];
-                z = kObstacleDepth;
                 break;
             case 1:
                 obstacle = [Alien alienWithPos:pos];
-                z = kObstacleDepth;
                 break;
             case 2:
                 obstacle = [Shell shellWithPos:pos];
-                z = kObstacleDepth;
                 break;
             default:
                 NSAssert(NO, @"Invalid obstacle number selected");
                 break;
         }
         
-        [self addChild:obstacle z:z];
+        [self addChild:obstacle z:kObstacleDepth];
         [obstacles_ addObject:obstacle]; 
     }    
+#endif
     
 #if !DEBUG_NORINGS
     // Boost rings
@@ -455,8 +453,7 @@
         y = screenHeight_ + 100;
         pos = ccp(x, y);
         
-        obstacle = [Boost boostWithPos:pos];
-        
+        obstacle = [Boost boostWithPos:pos];        
         [self addChild:obstacle z:kObstacleDepth];
         [obstacles_ addObject:obstacle];
     }
@@ -471,12 +468,10 @@
         pos = ccp(x, y);
         
         obstacle = [Cat catWithPos:pos];
-        
         [self addChild:obstacle z:kObstacleDepth];
         [obstacles_ addObject:obstacle];
     }
     
-    /*
     // Fuel
     if (height_ > nextFuelHeight_) {
         nextFuelHeight_ += fuelFrequency_;
@@ -486,11 +481,9 @@
         pos = ccp(x, y);
         
         obstacle = [Fuel fuelWithPos:pos];
-        
         [self addChild:obstacle z:kObstacleDepth];
         [obstacles_ addObject:obstacle];
     }    
-    */
 }
 
 - (void) moveRocketHorizontally
@@ -704,7 +697,6 @@
 
 - (void) collectBoost:(Boost *)boost
 {
-    [obstacles_ removeObject:boost];
     [self showText:kSpeedUp];    
     [self playSound:kKerrum];
     
@@ -719,8 +711,8 @@
 {
     numBoosts_++;
     [numBoostsLabel_ setString:[NSString stringWithFormat:@"%d", numBoosts_]];
-    [self showText:kBoostPlus];    
-    [obstacles_ removeObject:fuel];
+    [self showText:kBoostPlus];   
+    [self playSound:kPowerup];
 }
 
 - (void) collectCat:(Cat *)cat
@@ -728,7 +720,7 @@
     numCats_++;
     [numCatsLabel_ setString:[NSString stringWithFormat:@"%d", numCats_]];    
     [self showText:kCatPlus];
-    [obstacles_ removeObject:cat];
+    [self playSound:kCollectMeow];    
 }
 
 - (void) showText:(EventText)event
@@ -810,6 +802,14 @@
             name = [NSString stringWithFormat:@"werr.wav"];
             [engine playEffect:name];
             break;            
+        case kPowerup:
+            name = [NSString stringWithFormat:@"powerup.wav"];
+            [engine playEffect:name];
+            break;                   
+        case kCollectMeow:
+            name = [NSString stringWithFormat:@"meow03.wav"];
+            [engine playEffect:name];
+            break;                 
         case kExplosion01:
             name = [NSString stringWithFormat:@"explosion01.wav"];
             [engine playEffect:name];

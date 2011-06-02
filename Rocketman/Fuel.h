@@ -10,6 +10,23 @@
 
 @interface Fuel : Obstacle {
     
+	/** Stored idle animation (this is RepeatForever action) */
+	CCAction *idleAnimation_;              
+    
+    CCAction *collectAnimation_;    
+    
 }
+
++ (id) fuelWithPos:(CGPoint)pos;
+
+- (id) initWithPos:(CGPoint)pos;
+
+- (void) initActions;
+
+- (void) showIdle;
+
+- (void) showCollect;
+
+- (void) destroy;
 
 @end

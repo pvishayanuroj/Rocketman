@@ -87,10 +87,12 @@ static NSUInteger countID = 0;
 {
     GameLayer *gameLayer = (GameLayer *)[self parent];
     [gameLayer collectCat:self];    
-    
+    [gameLayer removeObstacle:self];
     [self showCollect];
     
     [super collide];
+    
+    // Note that destroy is called from the collect animation    
 }
 
 - (void) destroy
