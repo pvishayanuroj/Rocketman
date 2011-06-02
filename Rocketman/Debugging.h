@@ -23,3 +23,5 @@
 #define DEBUG_NORINGS 0
 
 #define DEBUG_NOOBSTACLES 0
+
+#define DEBUG_GOTOGAME 0

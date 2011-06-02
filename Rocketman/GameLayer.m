@@ -15,6 +15,7 @@
 #import "SlowCloud.h"
 #import "Alien.h"
 #import "Dino.h"
+#import "Angel.h"
 #import "Shell.h"
 #import "Cat.h"
 #import "CatBullet.h"
@@ -422,7 +423,7 @@
         y = screenHeight_ + 100;
         pos = ccp(x, y);                
 
-        NSUInteger type = arc4random() % 3;
+        NSUInteger type = arc4random() % 4;
         
         switch (type) {
             case 0:
@@ -434,6 +435,9 @@
             case 2:
                 obstacle = [Shell shellWithPos:pos];
                 break;
+            case 3:
+                obstacle = [Angel angelWithPos:pos];
+                break;                
             default:
                 NSAssert(NO, @"Invalid obstacle number selected");
                 break;
@@ -813,7 +817,11 @@
         case kExplosion01:
             name = [NSString stringWithFormat:@"explosion01.wav"];
             [engine playEffect:name];
-            break;                        
+            break;                   
+        case kSlap:
+            name = [NSString stringWithFormat:@"slap.wav"];
+            [engine playEffect:name];
+            break;                             
         case kEngine:
             engineSound_.looping = YES;
             [engineSound_ play];

@@ -110,6 +110,7 @@
     [[SimpleAudioEngine sharedEngine] preloadEffect:@"werr.wav"];    
     [[SimpleAudioEngine sharedEngine] preloadEffect:@"explosion01.wav"];        
     [[SimpleAudioEngine sharedEngine] preloadEffect:@"powerup.wav"];        
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"slap.wav"];          
 }
 
 @end

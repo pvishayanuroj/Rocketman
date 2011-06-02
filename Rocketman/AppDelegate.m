@@ -115,8 +115,12 @@
     [self authenticateLocalPlayer];
 	
 	// Run the intro Scene
+#if DEBUG_GOTOGAME
+    [[CCDirector sharedDirector] runWithScene: [GameScene node]];    
+#else
     [[CCDirector sharedDirector] runWithScene: [MainMenuScene node]];
-    //[[CCDirector sharedDirector] runWithScene: [GameScene node]];
+#endif
+
 }
 
 

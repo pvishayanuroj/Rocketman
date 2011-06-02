@@ -137,7 +137,7 @@
 		<array>
 			<dict>
 				<key>Animate Delay</key>
-				<real>0.1</real>
+				<real>0.2</real>
 				<key>Name</key>
 				<string>Idle</string>
 				<key>Num Frames</key>
@@ -145,11 +145,11 @@
 			</dict>
 			<dict>
 				<key>Animate Delay</key>
-				<real>0.1</real>
+				<real>0.15</real>
 				<key>Name</key>
 				<string>Attack</string>
 				<key>Num Frames</key>
-				<integer>2</integer>
+				<integer>1</integer>
 			</dict>
 		</array>
 		<key>Name</key>

@@ -36,7 +36,8 @@ typedef enum {
     kKerrum,
     kWerr,
     kPowerup,
-    kExplosion01
+    kExplosion01,
+    kSlap
 } SoundType;
 
 typedef enum {
