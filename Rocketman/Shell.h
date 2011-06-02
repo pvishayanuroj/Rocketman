@@ -27,6 +27,6 @@
 
 - (void) addBlast;
 
-- (void) addText;
+- (void) addText:(id)node data:(void *)data;
 
 @end

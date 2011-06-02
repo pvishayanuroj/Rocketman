@@ -106,12 +106,25 @@ static NSUInteger countID = 0;
     blast.scale = 1.25;
 }
 
-- (void) addText
+- (void) addText:(id)node data:(void *)data
 {
-    CCSprite *text = [CCSprite spriteWithSpriteFrameName:@"Bam Text.png"];
-    [self addChild:text];
+    EventText text = (EventText)data;
+    CCSprite *textSprite;
     
-    text.scale = 0.85;
+    switch (text) {
+        case kBamText:
+            textSprite = [CCSprite spriteWithSpriteFrameName:@"Bam Text.png"];            
+            break;
+        case kPlopText:
+            textSprite = [CCSprite spriteWithSpriteFrameName:@"Plop Text.png"];            
+            break;            
+        default:
+            textSprite = [CCSprite spriteWithSpriteFrameName:@"Bam Text.png"];            
+    }
+    
+    [self addChild:textSprite];
+    
+    textSprite.scale = 0.85;
 }
 
 - (void) bulletHit
@@ -119,7 +132,7 @@ static NSUInteger countID = 0;
     GameLayer *gameLayer = (GameLayer *)[self parent];
     [gameLayer playSound:kExplosion01];            
     
-    [super showDestroy];
+    [super showDestroy:kBamText];
     
     [super bulletHit];
 }

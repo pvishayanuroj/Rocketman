@@ -61,16 +61,15 @@
      */
 }
 
-- (void) showDestroy
+- (void) showDestroy:(EventText)text
 {
     CCFiniteTimeAction *m1 = [CCCallFunc actionWithTarget:self selector:@selector(addCloud)];     
 	CCFiniteTimeAction *m2 = [CCCallFunc actionWithTarget:self selector:@selector(addBlast)];
-	CCFiniteTimeAction *m3 = [CCCallFunc actionWithTarget:self selector:@selector(addText)];    
+	//CCFiniteTimeAction *m3 = [CCCallFunc actionWithTarget:self selector:@selector(addText)];    
+    CCCallFuncND *m3 = [CCCallFuncND actionWithTarget:self selector:@selector(addText:data:) data:(void *)text];    
     CCFiniteTimeAction *m4 = [CCDelayTime actionWithDuration:0.3];    
 	CCFiniteTimeAction *m5 = [CCCallFunc actionWithTarget:self selector:@selector(destroy)];    
     [self runAction:[CCSequence actions:m1, m2, m3, m4, m5, nil]];      
-    
-	//[self runAction:destroyAnimation_];	    
 }
 
 - (void) fall:(CGFloat)speed
@@ -103,7 +102,7 @@
     NSAssert(NO, @"addBlast must be implemented in the child class of Obstacle");    
 }
 
-- (void) addText
+- (void) addText:(id)node data:(void *)data
 {
     NSAssert(NO, @"addText must be implemented in the child class of Obstacle");    
 }

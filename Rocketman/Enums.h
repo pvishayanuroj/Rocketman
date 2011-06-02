@@ -22,7 +22,9 @@ typedef enum {
     kSpeedUp,
     kSpeedDown,
     kCatPlus,
-    kBoostPlus
+    kBoostPlus,
+    kBamText,
+    kPlopText
 } EventText;
 
 typedef enum {

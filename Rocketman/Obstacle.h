@@ -38,7 +38,7 @@
 
 - (void) initDestroyAction;
 
-- (void) showDestroy;
+- (void) showDestroy:(EventText)text;
 
 - (void) fall:(CGFloat)speed;
 
