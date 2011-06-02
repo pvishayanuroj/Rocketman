@@ -48,7 +48,9 @@
 
 - (void) dealloc
 {
+#if DEBUG_DEALLOCS
     NSLog(@"%@ dealloc'd", self);
+#endif
     
     [sceneName_ release];
     [gameScene_ release];
