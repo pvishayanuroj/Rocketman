@@ -73,15 +73,21 @@
         maxHeight_ = 0;
         nextCloudHeight_ = 0;
         nextSlowCloudHeight_ = 0;
-        nextObstacleHeight_ = 0;
-        boostTimer_ = 0;
         
+        // Obstacle and powerup generation
+        nextObstacleHeight_ = 400;
+        obstableFrequency_ = 1000;
+        nextRingHeight_ = 1000;
+        ringFrequency_ = 1000;
+        nextCatHeight_ = 700;
+        catFrequency_ = 700;
+        nextFuelHeight_ = 1500;
+        fuelFrequency_ = 1500;
+
         sideMoveSpeed_ = 0;
-        leftPressed_ = NO;
-        rightPressed_ = NO;
-        pressedTime_ = 0;
         maxSideMoveSpeed_ = 8;
         boostEngaged_ = NO;
+        boostTimer_ = 0;        
         onGround_ = YES;
         inputLocked_ = NO;
         
@@ -370,7 +376,7 @@
         
         nextCloudHeight_ += 100;
         
-        NSInteger xCoord = arc4random() % screenWidth_;
+        NSInteger xCoord = [self getRandomX];
         NSInteger yCoord = screenHeight_ + arc4random() % screenHeight_;
         
         CGPoint pos = CGPointMake(xCoord, screenHeight_ + yCoord);        
@@ -398,22 +404,21 @@
 
 - (void) obstacleGenerator
 {
+    NSInteger x;
+    NSInteger y;
+    NSInteger z;
+    CGPoint pos;
+    Obstacle *obstacle;    
+    
+    // "Bad" obstacles
     if (height_ > nextObstacleHeight_) {
-        nextObstacleHeight_ += 200;
+        nextObstacleHeight_ += obstableFrequency_;
         
-        Obstacle *obstacle;
-        
-        NSInteger xCoord = arc4random() % screenWidth_;   
-        
-        //NSInteger yCoord = screenHeight_ + arc4random() % screenHeight_;        
-        NSInteger yCoord = screenHeight_ + 100;
-        CGPoint pos = CGPointMake(xCoord, screenHeight_ + yCoord);                
-        
-        NSInteger z;
-        NSUInteger type = arc4random() % 5;
-        
-        //pos = ccp(100, 800);
-        //type = 3;
+        x = [self getRandomX];
+        y = screenHeight_ + 100;
+        pos = ccp(x, y);                
+
+        NSUInteger type = arc4random() % 3;
         
         switch (type) {
             case 0:
@@ -425,19 +430,7 @@
                 z = kObstacleDepth;
                 break;
             case 2:
-                obstacle = [Cat catWithPos:pos];
-                z = kCatDepth;
-                break;
-            case 3:
-                obstacle = [Boost boostWithPos:pos];
-                z = kObstacleDepth;
-                break;
-            case 4:
                 obstacle = [Shell shellWithPos:pos];
-                z = kObstacleDepth;
-                break;
-            case 5:
-                //obstacle = [Fuel fuelWithPos:pos];
                 z = kObstacleDepth;
                 break;
             default:
@@ -447,9 +440,53 @@
         
         [self addChild:obstacle z:z];
         [obstacles_ addObject:obstacle]; 
-        
-        //NSLog(@"added %@, rc: %d", obstacle, [obstacle retainCount]);
     }    
+    
+#if !DEBUG_NORINGS
+    // Boost rings
+    if (height_ > nextRingHeight_) {
+        nextRingHeight_ += ringFrequency_;
+        
+        x = [self getRandomX];
+        y = screenHeight_ + 100;
+        pos = ccp(x, y);
+        
+        obstacle = [Boost boostWithPos:pos];
+        
+        [self addChild:obstacle z:kObstacleDepth];
+        [obstacles_ addObject:obstacle];
+    }
+#endif
+    
+    // Cats
+    if (height_ > nextCatHeight_) {
+        nextCatHeight_ += catFrequency_;
+        
+        x = [self getRandomX];
+        y = screenHeight_ + 100;
+        pos = ccp(x, y);
+        
+        obstacle = [Cat catWithPos:pos];
+        
+        [self addChild:obstacle z:kObstacleDepth];
+        [obstacles_ addObject:obstacle];
+    }
+    
+    /*
+    // Fuel
+    if (height_ > nextFuelHeight_) {
+        nextFuelHeight_ += fuelFrequency_;
+        
+        x = [self getRandomX];
+        y = screenHeight_ + 100;
+        pos = ccp(x, y);
+        
+        obstacle = [Fuel fuelWithPos:pos];
+        
+        [self addChild:obstacle z:kObstacleDepth];
+        [obstacles_ addObject:obstacle];
+    }    
+    */
 }
 
 - (void) moveRocketHorizontally
@@ -464,6 +501,14 @@
     if (pos.x > leftCutoff_ && pos.x < rightCutoff_ && !onGround_ && !inputLocked_) {
         rocket_.position = pos;
     }
+}
+
+- (NSInteger) getRandomX
+{
+    NSInteger xCoord = arc4random() % (screenWidth_ - (SIDE_MARGIN * 2));       
+    xCoord += SIDE_MARGIN;
+    
+    return xCoord;
 }
 
 - (void) updateFlame
@@ -644,19 +689,11 @@
     if (v_ > 0) {
         v_ *= factor;
     }
-    
     // Cancel boost if on
     if (boostEngaged_) {
         boostEngaged_ = NO;
         [self toggleBoostFlame:NO];        
     }
-    /*
-    if (v_ < 1) {
-        v_ = 1;
-        dv_ = 0;
-        ddv_ = 0.0002;
-    }
-     */
 #endif
     [self showText:kSpeedDown];
 }
@@ -822,16 +859,8 @@
 - (BOOL) intersects:(CGPoint)circle radius:(CGFloat)r rect:(CGRect)rect
 {
     CGPoint circleDistance;
-    circleDistance.x = fabs(circle.x - rect.origin.x);// - rect.size.width/2);
-    circleDistance.y = fabs(circle.y - rect.origin.y);// - rect.size.height/2);
- 
-    /*
-    if (v_ == 0) {
-        NSLog(@"circle: (%3.2f, %3.2f)", circle.x, circle.y);
-        NSLog(@"rect origin: (%3.2f, %3.2f)", rect.origin.x, rect.origin.y); 
-        NSLog(@"circle dist: (%3.2f, %3.2f)", circleDistance.x, circleDistance.y);        
-    } 
-     */
+    circleDistance.x = fabs(circle.x - rect.origin.x);
+    circleDistance.y = fabs(circle.y - rect.origin.y);
     
     if (circleDistance.x > (rect.size.width/2 + r)) { return NO; }
     if (circleDistance.y > (rect.size.height/2 + r)) { return NO; }
@@ -864,13 +893,6 @@
 {
     //ramp-speed - play with this value until satisfied
     const float kFilteringFactor = 0.2f;
-    
-    //last result storage - keep definition outside of this function, eg. in wrapping object
-
-    
-    //acceleration.x,.y,.z is the input from the sensor
-    
-    //result.x,.y,.z is the filtered result
     
     //high-pass filter to eleminate gravity
     accel[0] = acceleration.x * kFilteringFactor + accel[0] * (1.0f - kFilteringFactor);

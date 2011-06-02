@@ -82,6 +82,7 @@
 - (void) bulletHit
 {
     sprite_.visible = NO;
+    collided_ = YES;
     shootable_ = NO; 
     //NSAssert(NO, @"hit must be implemented in the child class of Obstacle");    
 }
@@ -89,6 +90,7 @@
 - (void) collide
 {
     collided_ = YES;
+    shootable_ = NO;
 }
 
 - (void) addCloud

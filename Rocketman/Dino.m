@@ -137,7 +137,7 @@ static NSUInteger countID = 0;
 
 - (void) destroy
 {
-    GameLayer *gameLayer = (GameLayer *)[self parent];
+    GameLayer *gameLayer = (GameLayer *)[self parent];    
     [gameLayer removeObstacle:self];    
     
     [super destroy];

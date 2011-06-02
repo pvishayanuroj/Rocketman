@@ -39,6 +39,7 @@
     NSMutableArray *backgroundClouds_;    
     
     NSInteger screenWidth_;
+    
     NSInteger screenHeight_;
     
     NSUInteger numBoosts_;
@@ -54,13 +55,7 @@
 	CCParticleSystem *engineFlame_;    
     
 	CCParticleSystem *boostFlame_;        
-    
-    BOOL leftPressed_;
-    
-    BOOL rightPressed_;
-    
-    NSUInteger pressedTime_;
-    
+
     CGFloat maxSideMoveSpeed_;
     
     CGFloat sideMoveSpeed_;
@@ -84,6 +79,20 @@
     CGFloat nextSlowCloudHeight_;
     
     CGFloat nextObstacleHeight_;
+    
+    CGFloat obstableFrequency_;
+    
+    CGFloat nextRingHeight_;
+
+    CGFloat ringFrequency_;    
+    
+    CGFloat nextCatHeight_;
+
+    CGFloat catFrequency_;    
+    
+    CGFloat nextFuelHeight_;
+    
+    CGFloat fuelFrequency_;    
     
     CCLabelTTF *heightLabel_;
     
@@ -137,6 +146,8 @@
 - (void) collisionDetect;
 
 - (void) moveRocketHorizontally;
+
+- (NSInteger) getRandomX;
 
 - (void) updateFlame;
 

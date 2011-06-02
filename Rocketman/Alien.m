@@ -107,7 +107,7 @@ static NSUInteger countID = 0;
     
     GameLayer *gameLayer = (GameLayer *)[self parent];
     [gameLayer playSound:kWerr];                
-    [gameLayer slowDown:0.66];    
+    [gameLayer slowDown:0.66];       
     
     [super showDestroy];
     
@@ -116,6 +116,9 @@ static NSUInteger countID = 0;
 
 - (void) destroy
 {    
+    GameLayer *gameLayer = (GameLayer *)[self parent];    
+    [gameLayer removeObstacle:self];     
+    
     [super destroy];
 }
 

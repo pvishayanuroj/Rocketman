@@ -42,8 +42,6 @@
 	NSString *animationName;
 	NSUInteger numFr;
 	CGFloat delay;
-	NSMutableDictionary *animationDictionary;
-	NSMutableDictionary *actionDictionary;
 	NSMutableArray *frames;
 	CCAnimation *animation;
 	
@@ -68,10 +66,6 @@
 		
 		// Retrieve the array holding information for each animation
 		unitAnimations = [NSArray arrayWithArray:[obj objectForKey:@"Animations"]];		
-		
-		// Initialize where we store this unit's animations
-		animationDictionary = [NSMutableDictionary dictionaryWithCapacity:4];
-		actionDictionary = [NSMutableDictionary dictionaryWithCapacity:4];		
 		
 		// Go through all the different animations for this unit (different dictionaries)
 		for (id unitAnimation in unitAnimations) {
