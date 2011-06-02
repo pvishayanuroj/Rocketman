@@ -92,7 +92,11 @@
         inputLocked_ = NO;
         
         v_ = 0;
+#if DEBUG_CONSTANTSPEED
+        v0_ = 5;
+#else
         v0_ = 8;
+#endif
         vBoost_ = 5;
         vBoostRing_ = 4; 
         dv_ = 0;

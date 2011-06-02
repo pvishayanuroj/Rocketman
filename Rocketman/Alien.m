@@ -31,7 +31,7 @@ static NSUInteger countID = 0;
         self.position = pos;
         
         // Attributes
-        radius_ = 20;
+        radius_ = 16;
         radiusSquared_ = radius_*radius_;        
         
         [self initActions];
