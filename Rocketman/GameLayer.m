@@ -213,6 +213,7 @@
     
     NSMutableIndexSet *remove = [NSMutableIndexSet indexSet];
     NSUInteger index = 0;    
+    BOOL collide;
     
     // For checking cat collisions with obstacles
     for (CatBullet *cat in firedCats_) {
@@ -222,11 +223,25 @@
                 continue;
             }
             
+            collide = NO;
+            
+            // The obstacle is a circle, do a circle on circle check
+            if (obstacle.circular) {
+                distance = [self distanceNoRoot:cat.position b:obstacle.position];
+                threshold = cat.radius + obstacle.radius;
+                collide = (distance < threshold * threshold);
+            }
+            // The obstacle is a rectangle, do a rectangle on circle check
+            else {
+                obstacleBox = CGRectMake(obstacle.position.x, obstacle.position.y, obstacle.size.width, obstacle.size.height);                
+                collide = [self intersects:cat.position radius:cat.radius rect:obstacleBox];
+            }
+            
             distance = [self distanceNoRoot:cat.position b:obstacle.position];
             threshold = cat.radius + obstacle.radius;
             
             // If a collision occurred, remove the cat bullet and notify the obstacle of the hit
-            if (distance < (threshold * threshold)) {
+            if (collide) {
                 [remove addIndex:index];
                 [obstacle bulletHit];
                 [cat removeFromParentAndCleanup:YES];
