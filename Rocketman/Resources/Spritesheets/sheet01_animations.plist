@@ -30,6 +30,45 @@
 		<array>
 			<dict>
 				<key>Animate Delay</key>
+				<real>0.1</real>
+				<key>Name</key>
+				<string>Fly</string>
+				<key>Num Frames</key>
+				<integer>2</integer>
+			</dict>
+			<dict>
+				<key>Animate Delay</key>
+				<real>0.15</real>
+				<key>Name</key>
+				<string>Burn</string>
+				<key>Num Frames</key>
+				<integer>8</integer>
+			</dict>
+			<dict>
+				<key>Animate Delay</key>
+				<real>0.15</real>
+				<key>Name</key>
+				<string>Salute</string>
+				<key>Num Frames</key>
+				<integer>3</integer>
+			</dict>
+			<dict>
+				<key>Animate Delay</key>
+				<real>0.15</real>
+				<key>Name</key>
+				<string>Wobble</string>
+				<key>Num Frames</key>
+				<integer>6</integer>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>Rocket2</string>
+	</dict>
+	<dict>
+		<key>Animations</key>
+		<array>
+			<dict>
+				<key>Animate Delay</key>
 				<real>0.05</real>
 				<key>Name</key>
 				<string>Idle</string>
@@ -77,6 +116,44 @@
 		</array>
 		<key>Name</key>
 		<string>Turtle</string>
+	</dict>
+	<dict>
+		<key>Animations</key>
+		<array>
+			<dict>
+				<key>Animate Delay</key>
+				<real>0.1</real>
+				<key>Name</key>
+				<string>Idle</string>
+				<key>Num Frames</key>
+				<integer>2</integer>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>UFO</string>
+	</dict>
+	<dict>
+		<key>Animations</key>
+		<array>
+			<dict>
+				<key>Animate Delay</key>
+				<real>0.1</real>
+				<key>Name</key>
+				<string>Idle</string>
+				<key>Num Frames</key>
+				<integer>2</integer>
+			</dict>
+			<dict>
+				<key>Animate Delay</key>
+				<real>0.1</real>
+				<key>Name</key>
+				<string>Attack</string>
+				<key>Num Frames</key>
+				<integer>2</integer>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>Angel</string>
 	</dict>
 </array>
 </plist>
