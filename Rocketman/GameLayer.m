@@ -95,7 +95,7 @@
         
         v_ = 0;
 #if DEBUG_CONSTANTSPEED
-        v0_ = 5;
+        v0_ = 9;
 #else
         v0_ = 8;
 #endif
@@ -433,7 +433,8 @@
 #if !DEBUG_NOOBSTACLES
     // "Bad" obstacles
     if (height_ > nextObstacleHeight_) {
-        nextObstacleHeight_ += obstableFrequency_;
+        //nextObstacleHeight_ += obstableFrequency_;
+        nextObstacleHeight_ += [self getRandomY:obstableFrequency_];
         
         x = [self getRandomX];
         y = screenHeight_ + 100;
@@ -470,7 +471,7 @@
 #if !DEBUG_NORINGS
     // Boost rings
     if (height_ > nextRingHeight_) {
-        nextRingHeight_ += ringFrequency_;
+        nextRingHeight_ += [self getRandomY:ringFrequency_];
         
         x = [self getRandomX];
         y = screenHeight_ + 100;
@@ -484,7 +485,7 @@
     
     // Cats
     if (height_ > nextCatHeight_) {
-        nextCatHeight_ += catFrequency_;
+        nextCatHeight_ += [self getRandomY:catFrequency_];
         
         x = [self getRandomX];
         y = screenHeight_ + 100;
@@ -497,7 +498,7 @@
     
     // Fuel
     if (height_ > nextFuelHeight_) {
-        nextFuelHeight_ += fuelFrequency_;
+        nextFuelHeight_ += [self getRandomY:fuelFrequency_];
         
         x = [self getRandomX];
         y = screenHeight_ + 100;
@@ -529,6 +530,15 @@
     xCoord += SIDE_MARGIN;
     
     return xCoord;
+}
+
+- (NSInteger) getRandomY:(CGFloat)freq
+{
+    NSInteger range = freq * 0.2;
+    NSInteger var = arc4random() % (range * 2);       
+    var -= range;
+    
+    return (freq + var);
 }
 
 - (void) updateFlame

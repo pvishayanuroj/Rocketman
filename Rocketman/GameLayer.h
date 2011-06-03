@@ -149,6 +149,8 @@
 
 - (NSInteger) getRandomX;
 
+- (NSInteger) getRandomY:(CGFloat)freq;
+
 - (void) updateFlame;
 
 - (void) loss;
