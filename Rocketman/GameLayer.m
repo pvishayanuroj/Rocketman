@@ -950,7 +950,7 @@
 - (void)accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration
 {
     //ramp-speed - play with this value until satisfied
-    const float kFilteringFactor = 0.2f;
+    const float kFilteringFactor = 0.15f;
     
     //high-pass filter to eleminate gravity
     accel[0] = acceleration.x * kFilteringFactor + accel[0] * (1.0f - kFilteringFactor);
@@ -964,12 +964,30 @@
     
     sideMoveSpeed_ = resultx*30;    
 
+    //NSLog(@"side speed: %4.2f", sideMoveSpeed_);
+    /*
+    // Move towards middle
+    if (fabs(sideMoveSpeed_) < 0.5) {
+        if (fabs(rocket_.position.x - 160)  > 10) {
+            // Currently the left
+            if (rocket_.position.x - 160 < 0) {
+                sideMoveSpeed_ = 1;
+            }
+            // Currently to the right
+            else {
+                sideMoveSpeed_ = -1;
+            }
+        }
+    }
+    else {
+    */
     if (sideMoveSpeed_ > 6) {
         sideMoveSpeed_ = 6;
     }
     if (sideMoveSpeed_ < -6) {
         sideMoveSpeed_ = -6;
     }
+    //}
 }
 
 - (void) leftButtonPressed

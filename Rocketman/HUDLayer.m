@@ -19,7 +19,11 @@
 		self.isTouchEnabled = YES;        
         
 		CGSize size = [[CCDirector sharedDirector] winSize];        
-        screenHeight_ = size.height;                
+        screenHeight_ = size.height;            
+        
+        CCSprite *bar = [CCSprite spriteWithFile:@"ui_bar.png"];
+        bar.anchorPoint = CGPointZero;
+        [self addChild:bar];
 	}
 	return self;
 }
@@ -36,11 +40,13 @@
     
     CCMenuItemSprite *boostButton = [CCMenuItemSprite itemFromNormalSprite:[CCSprite spriteWithFile:@"boost_button.png"] selectedSprite:[CCSprite spriteWithFile:@"boost_button_pressed.png"] target:gameLayer selector:@selector(useBoost)];        
     
-    CCMenu *menu = [CCMenu menuWithItems:catButton, boostButton, nil];
-    menu.position = CGPointMake(140, 32);
-    [menu alignItemsHorizontallyWithPadding:50];
+    CCMenu *m1 = [CCMenu menuWithItems:catButton, nil];
+    CCMenu *m2 = [CCMenu menuWithItems:boostButton, nil];    
+    m1.position = CGPointMake(45, 57);
+    m2.position = CGPointMake(268, 32);
     
-    [self addChild:menu];    
+    [self addChild:m1];    
+    [self addChild:m2];        
 }
 
 - (void) displayDirectional:(GameLayer *)gameLayer

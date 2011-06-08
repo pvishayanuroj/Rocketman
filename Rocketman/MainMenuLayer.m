@@ -23,9 +23,9 @@
         CCSprite *backgroundImage = [CCSprite spriteWithFile:@"menu_splash.png"];
         backgroundImage.anchorPoint = CGPointZero;
         
-        CCMenuItemSprite *menuButton1 = [CCMenuItemSprite itemFromNormalSprite:[CCSprite spriteWithFile:@"MenuButton01.png"] selectedSprite:[CCSprite spriteWithFile:@"MenuButton01.png"] target:self selector:@selector(startGame)];
-        CCMenuItemSprite *menuButton2 = [CCMenuItemSprite itemFromNormalSprite:[CCSprite spriteWithFile:@"MenuButton02.png"] selectedSprite:[CCSprite spriteWithFile:@"MenuButton02.png"] target:self selector:@selector(viewHighScore)];
-        CCMenuItemSprite *menuButton3 = [CCMenuItemSprite itemFromNormalSprite:[CCSprite spriteWithFile:@"MenuButton03.png"] selectedSprite:[CCSprite spriteWithFile:@"MenuButton03.png"] target:self selector:@selector(viewCredits)];
+        CCMenuItemSprite *menuButton1 = [CCMenuItemSprite itemFromNormalSprite:[CCSprite spriteWithFile:@"play_button.png"] selectedSprite:[CCSprite spriteWithFile:@"play_button.png"] target:self selector:@selector(startGame)];
+        CCMenuItemSprite *menuButton2 = [CCMenuItemSprite itemFromNormalSprite:[CCSprite spriteWithFile:@"help_button.png"] selectedSprite:[CCSprite spriteWithFile:@"help_button.png"] target:self selector:@selector(viewHighScore)];
+        CCMenuItemSprite *menuButton3 = [CCMenuItemSprite itemFromNormalSprite:[CCSprite spriteWithFile:@"scores_button.png"] selectedSprite:[CCSprite spriteWithFile:@"scores_button.png"] target:self selector:@selector(viewCredits)];
         
         CCMenu *menu = [CCMenu menuWithItems:menuButton1, menuButton2, menuButton3, nil];
         [menu alignItemsVerticallyWithPadding:40];
