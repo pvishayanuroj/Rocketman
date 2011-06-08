@@ -139,6 +139,8 @@
 
 - (void) physicsStep:(ccTime)dt;
 
+- (void) applyBoost:(ccTime)dt;
+
 - (void) applyGravity;
 
 - (void) updateCounters;

@@ -97,7 +97,7 @@
 #if DEBUG_CONSTANTSPEED
         v0_ = 9;
 #else
-        v0_ = 8;
+        v0_ = 9;
 #endif
         vBoost_ = 5;
         vBoostRing_ = 4; 
@@ -105,7 +105,7 @@
         ddv_ = 0.00002;
         vMax_ = 15;
         
-        dt_ = 0;
+        dt_ = 0;    
         
         // Add stats
 		heightLabel_ = [[CCLabelTTF labelWithString:@"00.0" fontName:@"Courier" fontSize:16] retain];
@@ -166,6 +166,7 @@
 {    
     //NSLog(@"dt: %1.3f", dt); 
     [self physicsStep:dt];
+    [self applyBoost:dt];
     [self updateCounters];
     [self applyGravity];
     [self moveRocketHorizontally];
@@ -177,6 +178,96 @@
 {
     [self cloudGenerator];    
     [self obstacleGenerator];        
+}
+
+- (void) physicsStep:(ccTime)dt
+{
+#if DEBUG_CONSTANTSPEED
+    return;
+#endif
+    
+    if (!onGround_) {
+        /*
+        if (v_ < 7) {
+            v_ -= 0.02;
+        }
+        else if (v_ < 4) {
+            v_ -= 0.03;
+        }
+        else {
+            v_ -= 0.0022222;
+        }
+        
+        rocketSpeed_ = v_;
+        */
+            
+        v_ += dv_;
+        rocketSpeed_ = v_;
+
+        dv_ -= ddv_;      
+        if (v_ < 7) {
+            ddv_ += 0.000001;
+        }
+        else {
+            ddv_ = 0.00001;
+//            ddv_ += 0.000000001;
+        }
+
+        // Turn the engine off if we are falling
+        if (rocketSpeed_ < 0) {
+            engineFlame_.emissionRate = 0;
+        }
+    }
+}
+
+- (void) applyBoost:(ccTime)dt
+{
+    // If boosting
+    if (boostEngaged_) {
+        
+        boostTimer_ -= dt;
+        
+        // Actual boosting
+        v_ += boost_;
+        boost_ += boostRate_;
+        
+        BOOL vCond = v_ > vMax_ || v_ > boostTarget_;
+        BOOL tCond = (boostTimer_ <= 0);
+        
+        // Cut the boost when either vtarget/vmax is reached or the timer runs out, whichever is longer
+        if (vCond && tCond) {
+            boostEngaged_ = NO;
+            [self toggleBoostFlame:NO];
+        }
+        
+        // Limit the boost to the target speed or vmax
+        if (v_ > vMax_) {
+            v_ = vMax_;
+        }
+        if (v_ > boostTarget_) {
+            v_ = boostTarget_;
+        }
+        
+        rocketSpeed_= v_;
+    }    
+}
+
+- (void) updateCounters
+{
+    // Keep track of height
+    height_ += rocketSpeed_;
+    if (height_ > maxHeight_) {
+        maxHeight_ = height_;
+        lossHeight_ = height_ - screenHeight_ * 3;
+    }
+    
+    // Check for lose condition
+    if (height_ < lossHeight_) {
+        [self loss];
+    }
+    
+    [heightLabel_ setString:[NSString stringWithFormat:@"%7.0f", height_]];
+    [speedLabel_ setString:[NSString stringWithFormat:@"%6.1f", rocketSpeed_]];            
 }
 
 - (void) collisionDetect
@@ -255,80 +346,6 @@
     
     // Remove outside the loop
     [firedCats_ removeObjectsAtIndexes:remove];
-}
-
-- (void) physicsStep:(ccTime)dt
-{
-    if (!onGround_) {
-        
-        // Hack sol'n
-        v_ += dv_;
-        rocketSpeed_ = v_;
-
-#if !DEBUG_CONSTANTSPEED      
-        //dv_ -= (dt*0.002352941176471);
-        //dv_ -= (dt*0.000002352941176);
-        //dv_ -= 0.00004;
-        dv_ -= ddv_;      
-        ddv_ += 0.00000001;
-#endif        
-        
-        
-        // Gravity sol'n
-        //dt_ += dt;
-        
-        
-        
-        // If boosting
-        if (boostEngaged_) {
-            
-            boostTimer_ -= dt;
-            
-            // Actual boosting
-            v_ += boost_;
-            boost_ += boostRate_;
-            
-            BOOL vCond = v_ > vMax_ || v_ > boostTarget_;
-            BOOL tCond = (boostTimer_ <= 0);
-            
-            // Cut the boost when either vtarget/vmax is reached or the timer runs out, whichever is longer
-            if (vCond && tCond) {
-                boostEngaged_ = NO;
-                [self toggleBoostFlame:NO];
-            }
-            
-            // Limit the boost to the target speed or vmax
-            if (v_ > vMax_) {
-                v_ = vMax_;
-            }
-            if (v_ > boostTarget_) {
-                v_ = boostTarget_;
-            }
-        }    
-
-        // Turn the engine off if we are falling
-        if (rocketSpeed_ < 0) {
-            engineFlame_.emissionRate = 0;
-        }
-    }
-}
-
-- (void) updateCounters
-{
-    // Keep track of height
-    height_ += rocketSpeed_;
-    if (height_ > maxHeight_) {
-        maxHeight_ = height_;
-        lossHeight_ = height_ - screenHeight_ * 3;
-    }
-    
-    // Check for lose condition
-    if (height_ < lossHeight_) {
-        [self loss];
-    }
-    
-    [heightLabel_ setString:[NSString stringWithFormat:@"%7.0f", height_]];
-    [speedLabel_ setString:[NSString stringWithFormat:@"%6.1f", rocketSpeed_]];            
 }
 
 - (void) applyGravity
@@ -657,6 +674,7 @@
 
 - (void) takeOffComplete
 {
+    onGround_ = NO;    
     inputLocked_ = NO;
 }
 
@@ -669,12 +687,12 @@
     boostTimer_ = time;
     
     if (v_ < 0) {
-        boostTarget_ = 10;
+        boostTarget_ = v0_;
         boost_ = amt;
         boostRate_ = rate;
     }
     else {
-        boostTarget_ = v_ + speedup;
+        boostTarget_ = v0_;
         boost_ = amt;
         boostRate_ = rate;
     }
@@ -687,7 +705,6 @@
     if (!inputLocked_) {
         // The first time the player pressed the boost button
         if (onGround_) {
-            onGround_ = NO;
             inputLocked_ = YES;
             // Engage boost, slow boosting, so we don't care about time
             [self engageBoost:v0_ amt:0.001 rate:0.0005 time:1];
@@ -704,7 +721,7 @@
                 numBoosts_--;
                 [numBoostsLabel_ setString:[NSString stringWithFormat:@"%d", numBoosts_]];
                 // Engage fast boost, make sure it lasts longer
-                [self engageBoost:vBoost_ amt:0.5 rate:0 time:1.5];
+                [self engageBoost:vBoost_ amt:v0_-v_ rate:0 time:1.5];
                 [self showText:kSpeedUp];                
 #if !DEBUG_UNLIMITED_BOOSTS                
             }

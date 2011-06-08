@@ -24,7 +24,7 @@
 {
 	if ((self = [super init])) {
         
-        sprite_ = [[CCSprite spriteWithSpriteFrameName:@"Rocket Fly 01.png"] retain];
+        sprite_ = [[CCSprite spriteWithSpriteFrameName:@"Rocket2 Fly 01.png"] retain];
         [self addChild:sprite_ z:-1];
         
         self.position = pos;
@@ -55,7 +55,7 @@
 
 - (void) initActions
 {
-	CCAnimation *animation = [[CCAnimationCache sharedAnimationCache] animationByName:@"Rocket Fly"];
+	CCAnimation *animation = [[CCAnimationCache sharedAnimationCache] animationByName:@"Rocket2 Fly"];
 	CCActionInterval *animate = [CCAnimate actionWithAnimation:animation];
 	flyingAnimation_ = [[CCRepeatForever actionWithAction:animate] retain];		
 
@@ -89,7 +89,7 @@
 
     shakingAnimation_ = [[CCSequence actions:a1, a2, a3, a4, nil] retain];
     
-	animation = [[CCAnimationCache sharedAnimationCache] animationByName:@"Rocket Burn"];
+	animation = [[CCAnimationCache sharedAnimationCache] animationByName:@"Rocket2 Burn"];
 	burningAnimation_ = [[CCAnimate actionWithAnimation:animation] retain];
 }        
 
