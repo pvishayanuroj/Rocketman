@@ -7,6 +7,8 @@
 //
 
 #import "GameManager.h"
+#import "GameLayer.h"
+#import "HUDLayer.h"
 
 // For singleton
 static GameManager *_gameManager = nil;
@@ -40,6 +42,7 @@ static GameManager *_gameManager = nil;
 	if ((self = [super init])) {
         
 		gameLayer_ = nil;
+        hudLayer_ = nil;
         
 	}
 	return self;
@@ -48,6 +51,7 @@ static GameManager *_gameManager = nil;
 - (void) dealloc
 {	
 	[gameLayer_ release];
+    [hudLayer_ release];
 	
 	[super dealloc];
 }
@@ -59,10 +63,36 @@ static GameManager *_gameManager = nil;
 	[gameLayer_ retain];
 }
 
-- (void) rocketBurn
+- (void) registerHUDLayer:(HUDLayer *)hudLayer
 {
-    
-    
+	NSAssert(hudLayer_ == nil, @"Trying to register a HUD Layer when one already exists");
+	hudLayer_ = hudLayer;
+	[hudLayer_ retain];
+}
+
+- (void) setNumCats:(NSUInteger)numCats
+{
+    [hudLayer_ setNumCats:numCats];
+}
+
+- (void) setNumBoosts:(NSUInteger)numBoosts
+{
+    [hudLayer_ setNumBoosts:numBoosts];
+}
+
+- (void) setHeight:(CGFloat)height
+{
+    [hudLayer_ setHeight:height];
+}
+
+- (void) setSpeed:(CGFloat)speed
+{
+    [hudLayer_ setSpeed:speed];
+}
+
+- (void) setTilt:(CGFloat)tilt
+{
+    [hudLayer_ setTilt:tilt];
 }
 
 @end

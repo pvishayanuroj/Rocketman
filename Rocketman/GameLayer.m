@@ -7,6 +7,7 @@
 //
 
 #import "GameLayer.h"
+#import "GameManager.h"
 #import "Rocket.h"
 #import "Obstacle.h"
 #import "Doodad.h"
@@ -35,6 +36,7 @@
 	if ((self = [super init])) {
 
         [[UIAccelerometer sharedAccelerometer] setDelegate:self];
+        [[GameManager gameManager] registerGameLayer:self];
         
 		CGSize size = [[CCDirector sharedDirector] winSize];        
         
@@ -107,30 +109,6 @@
         
         dt_ = 0;    
         
-        // Add stats
-		heightLabel_ = [[CCLabelTTF labelWithString:@"00.0" fontName:@"Courier" fontSize:16] retain];
-        heightLabel_.position =  ccp(50, screenHeight_*0.95);
-        heightLabel_.color = ccc3(0, 0, 0);
-		[self addChild:heightLabel_ z:kLabelDepth];        
-		speedLabel_ = [[CCLabelTTF labelWithString:@"00.0" fontName:@"Courier" fontSize:16] retain];
-        speedLabel_.position =  ccp(50, screenHeight_*0.9);
-        speedLabel_.color = ccc3(0, 0, 0);        
-		[self addChild:speedLabel_ z:kLabelDepth];           
-		tiltLabel_ = [[CCLabelTTF labelWithString:@"00.0" fontName:@"Courier" fontSize:16] retain];
-        tiltLabel_.position =  ccp(50, screenHeight_*0.85);
-        tiltLabel_.color = ccc3(0, 0, 0);        
-		[self addChild:tiltLabel_ z:kLabelDepth];                   
-        
-        // Button counters
-        numCatsLabel_ = [[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d", numCats_] fontName:@"Marker Felt" fontSize:48] retain];
-        numBoostsLabel_ = [[CCLabelTTF labelWithString:[NSString stringWithFormat:@"%d", numBoosts_] fontName:@"Marker Felt" fontSize:48] retain];        
-        numCatsLabel_.position = ccp(130, 35);
-        numBoostsLabel_.position = ccp(275, 35);        
-        numCatsLabel_.color  = ccc3(0, 0, 0);
-        numBoostsLabel_.color  = ccc3(0, 0, 0);        
-        [self addChild:numCatsLabel_ z:kLabelDepth];
-        [self addChild:numBoostsLabel_ z:kLabelDepth];        
-        
         // Load sounds
         SimpleAudioEngine *sae = [SimpleAudioEngine sharedEngine];
         engineSound_ = [[sae soundSourceForFile:@"engine.wav"] retain];
@@ -152,11 +130,6 @@
     [doodads_ release];
     [engineFlame_ release];
     [boostFlame_ release];
-    [heightLabel_ release];
-    [speedLabel_ release];    
-    [tiltLabel_ release];
-    [numCatsLabel_ release];
-    [numBoostsLabel_ release];
     [engineSound_ release];
     
     [super dealloc];
@@ -266,8 +239,8 @@
         [self loss];
     }
     
-    [heightLabel_ setString:[NSString stringWithFormat:@"%7.0f", height_]];
-    [speedLabel_ setString:[NSString stringWithFormat:@"%6.1f", rocketSpeed_]];            
+    [[GameManager gameManager] setHeight:height_];
+    [[GameManager gameManager] setSpeed:rocketSpeed_];
 }
 
 - (void) collisionDetect
@@ -660,7 +633,7 @@
         if (numCats_ > 0) {
 #endif
             numCats_--;
-            [numCatsLabel_ setString:[NSString stringWithFormat:@"%d", numCats_]];            
+            [[GameManager gameManager] setNumCats:numCats_];                     
             
             CatBullet *bullet = [CatBullet catBulletWithPos:rocket_.position withSpeed:(rocketSpeed_ + 10)];
             [self addChild:bullet z:kBulletDepth];
@@ -719,7 +692,7 @@
             if (numBoosts_ > 0) {
 #endif
                 numBoosts_--;
-                [numBoostsLabel_ setString:[NSString stringWithFormat:@"%d", numBoosts_]];
+                [[GameManager gameManager] setNumBoosts:numBoosts_];
                 // Engage fast boost, make sure it lasts longer
                 [self engageBoost:vBoost_ amt:v0_-v_ rate:0 time:1.5];
                 [self showText:kSpeedUp];                
@@ -760,7 +733,7 @@
 - (void) collectFuel:(Fuel *)fuel
 {
     numBoosts_++;
-    [numBoostsLabel_ setString:[NSString stringWithFormat:@"%d", numBoosts_]];
+    [[GameManager gameManager] setNumBoosts:numBoosts_];
     [self showText:kBoostPlus];   
     [self playSound:kPowerup];
 }
@@ -768,7 +741,7 @@
 - (void) collectCat:(Cat *)cat
 {
     numCats_++;
-    [numCatsLabel_ setString:[NSString stringWithFormat:@"%d", numCats_]];    
+    [[GameManager gameManager] setNumCats:numCats_];
     [self showText:kCatPlus];
     [self playSound:kCollectMeow];    
 }
@@ -950,7 +923,7 @@
 - (void)accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration
 {
     //ramp-speed - play with this value until satisfied
-    const float kFilteringFactor = 0.15f;
+    const float kFilteringFactor = 0.2f;
     
     //high-pass filter to eleminate gravity
     accel[0] = acceleration.x * kFilteringFactor + accel[0] * (1.0f - kFilteringFactor);
@@ -960,9 +933,9 @@
     //CGFloat resulty = acceleration.y - accel[1];
     //CGFloat resultz = acceleration.z - accel[2];    
 
-    [tiltLabel_ setString:[NSString stringWithFormat:@"%1.3f", resultx]];
+    [[GameManager gameManager] setTilt:resultx];
     
-    sideMoveSpeed_ = resultx*30;    
+    sideMoveSpeed_ = resultx*50;    
 
     //NSLog(@"side speed: %4.2f", sideMoveSpeed_);
     /*
@@ -981,11 +954,13 @@
     }
     else {
     */
-    if (sideMoveSpeed_ > 6) {
-        sideMoveSpeed_ = 6;
+    CGFloat maxSpeed = 7;
+    
+    if (sideMoveSpeed_ > maxSpeed) {
+        sideMoveSpeed_ = maxSpeed;
     }
-    if (sideMoveSpeed_ < -6) {
-        sideMoveSpeed_ = -6;
+    if (sideMoveSpeed_ < -maxSpeed) {
+        sideMoveSpeed_ = -maxSpeed;
     }
     //}
 }

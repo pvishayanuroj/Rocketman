@@ -9,11 +9,30 @@
 #import "cocos2d.h"
 
 @class GameLayer;
+@class HUDLayer;
 
 @interface GameManager : CCNode {
  
     GameLayer *gameLayer_;
     
+    HUDLayer *hudLayer_;
 }
 
++ (GameManager *) gameManager;
+
+- (void) registerGameLayer:(GameLayer *)gameLayer;
+
+- (void) registerHUDLayer:(HUDLayer *)hudLayer;
+
+- (void) setNumCats:(NSUInteger)numCats;
+
+- (void) setNumBoosts:(NSUInteger)numBoosts;
+
+- (void) setHeight:(CGFloat)height;
+
+- (void) setSpeed:(CGFloat)speed;
+
+- (void) setTilt:(CGFloat)tilt;
+
 @end
+

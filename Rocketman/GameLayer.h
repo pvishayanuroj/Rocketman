@@ -92,17 +92,7 @@
     
     CGFloat nextFuelHeight_;
     
-    CGFloat fuelFrequency_;    
-    
-    CCLabelTTF *heightLabel_;
-    
-    CCLabelTTF *speedLabel_;   
-    
-    CCLabelTTF *tiltLabel_;
-    
-    CCLabelTTF *numCatsLabel_;
-    
-    CCLabelTTF *numBoostsLabel_;    
+    CGFloat fuelFrequency_;     
     
     CGFloat v0_;    
     
