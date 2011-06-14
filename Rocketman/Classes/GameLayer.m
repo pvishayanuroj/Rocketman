@@ -700,7 +700,7 @@
     // Cancel boost if on
     if (boostEngaged_) {
         boostEngaged_ = NO;
-        [self toggleBoostFlame:NO];        
+        [rocket_ toggleBoostOn:NO];        
     }
 #endif
     [self showText:kSpeedDown];
