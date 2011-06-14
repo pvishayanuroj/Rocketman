@@ -19,6 +19,7 @@
 #import "Dino.h"
 #import "Angel.h"
 #import "Shell.h"
+#import "BossTurtle.h"
 #import "Cat.h"
 #import "CatBullet.h"
 #import "Fuel.h"
@@ -94,6 +95,7 @@
         boostTimer_ = 0;        
         onGround_ = YES;
         inputLocked_ = NO;
+        bossAdded_ = NO;
         
         v_ = 0;
 #if DEBUG_CONSTANTSPEED
@@ -151,6 +153,7 @@
 {
     [self cloudGenerator];    
     [self obstacleGenerator];        
+    [self bossGenerator]; 
 }
 
 - (void) physicsStep:(ccTime)dt
@@ -411,6 +414,21 @@
         [doodads_ addObject:doodad];        
         
     }    
+}
+
+- (void) bossGenerator
+{
+    if (height_ > 500) {
+        if (!bossAdded_) {
+            bossAdded_ = YES;
+            NSInteger x = [self getRandomX];
+            NSInteger y = screenHeight_ + 100;
+            CGPoint pos = ccp(x, y);                     
+            Obstacle *obstacle = [BossTurtle bossTurtleWithPos:pos];
+            [self addChild:obstacle z:kObstacleDepth];
+            [obstacles_ addObject:obstacle];
+        }
+    }
 }
 
 - (void) obstacleGenerator

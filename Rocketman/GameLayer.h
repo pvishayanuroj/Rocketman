@@ -60,7 +60,7 @@
     
     CGFloat sideMoveSpeed_;
     
-    CGFloat targetX_, ttargetX_;
+    CGFloat targetX_;
     
     CGFloat avg_[2];
     
@@ -125,9 +125,13 @@
     CDSoundSource *engineSound_;
     
     CGFloat dt_;
+    
+    BOOL bossAdded_;
 }
 
 - (void) cloudGenerator;
+
+- (void) bossGenerator;
 
 - (void) obstacleGenerator;
 

@@ -12,6 +12,9 @@
  
     CCSprite *sprite_;
  
+	/** Stored idle animation (this is RepeatForever action) */
+	CCAction *idleAnimation_;    
+    
     CGFloat radius_;
     
     CGFloat velocity_;
@@ -24,6 +27,10 @@
 + (id) catBulletWithPos:(CGPoint)pos withSpeed:(CGFloat)speed;
 
 - (id) initWithPos:(CGPoint)pos withSpeed:(CGFloat)speed;
+
+- (void) initActions;
+
+- (void) showIdle;
 
 - (void) fall:(CGFloat)speed;
 

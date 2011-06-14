@@ -26,13 +26,16 @@ static NSUInteger countID = 0;
         
         unitID_ = countID++;        
         
-        sprite_ = [[CCSprite spriteWithSpriteFrameName:@"Cat Bullet.png"] retain];
+        sprite_ = [[CCSprite spriteWithSpriteFrameName:@"Cat Normal 01.png"] retain];
         [self addChild:sprite_];
         
         self.position = pos;        
         
         velocity_ = speed;
         radius_ = 3;
+        
+        [self initActions];
+        [self showIdle];
     }
     return self;
 }
@@ -44,6 +47,7 @@ static NSUInteger countID = 0;
 #endif
     
     [sprite_ release];
+    [idleAnimation_ release];
     
     [super dealloc];
 }
@@ -52,6 +56,19 @@ static NSUInteger countID = 0;
 {
     return [NSString stringWithFormat:@"Cat Bullet %d", unitID_];
 }    
+
+- (void) initActions
+{
+	CCAnimation *animation = [[CCAnimationCache sharedAnimationCache] animationByName:@"Cat Normal"];
+	CCActionInterval *animate = [CCAnimate actionWithAnimation:animation];
+	idleAnimation_ = [[CCRepeatForever actionWithAction:animate] retain];
+}                 
+
+- (void) showIdle
+{
+	[sprite_ stopAllActions];
+	[sprite_ runAction:idleAnimation_];	
+}
 
 - (void) fall:(CGFloat)speed
 {

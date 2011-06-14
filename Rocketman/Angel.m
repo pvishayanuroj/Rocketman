@@ -25,7 +25,7 @@ static NSUInteger countID = 0;
         
 		unitID_ = countID++;                        
         
-        sprite_ = [[CCSprite spriteWithSpriteFrameName:@"Angel Idle 01.png"] retain];
+        sprite_ = [[CCSprite spriteWithSpriteFrameName:@"Angel2 Idle 01.png"] retain];
         [self addChild:sprite_ z:-1];
         
         self.position = pos;
@@ -61,11 +61,11 @@ static NSUInteger countID = 0;
 
 - (void) initActions
 {
-	CCAnimation *animation = [[CCAnimationCache sharedAnimationCache] animationByName:@"Angel Idle"];
+	CCAnimation *animation = [[CCAnimationCache sharedAnimationCache] animationByName:@"Angel2 Idle"];
 	CCActionInterval *animate = [CCAnimate actionWithAnimation:animation];
 	idleAnimation_ = [[CCRepeatForever actionWithAction:animate] retain];		
     
-	animation = [[CCAnimationCache sharedAnimationCache] animationByName:@"Angel Attack"];
+	animation = [[CCAnimationCache sharedAnimationCache] animationByName:@"Angel2 Kiss"];
 	slapAnimation_ = [[CCAnimate actionWithAnimation:animation] retain];
 }   
 

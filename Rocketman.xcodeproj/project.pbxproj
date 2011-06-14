@@ -163,6 +163,7 @@
 		DA907CB71394FB76009ADD27 /* plop.wav in Resources */ = {isa = PBXBuildFile; fileRef = DA907CB61394FB76009ADD27 /* plop.wav */; };
 		DAA7A5FB13973B2200D6DA68 /* powerup.wav in Resources */ = {isa = PBXBuildFile; fileRef = DAA7A5FA13973B2200D6DA68 /* powerup.wav */; };
 		DAA7A5FD13973C1800D6DA68 /* meow03.wav in Resources */ = {isa = PBXBuildFile; fileRef = DAA7A5FC13973C1800D6DA68 /* meow03.wav */; };
+		DAAD1DA013A7140C005D37B1 /* BossTurtle.m in Sources */ = {isa = PBXBuildFile; fileRef = DAAD1D9F13A7140B005D37B1 /* BossTurtle.m */; };
 		DAB132E0138F1D9A001294BB /* fire.png in Resources */ = {isa = PBXBuildFile; fileRef = DAB132DF138F1D9A001294BB /* fire.png */; };
 		DAB132E4138F23C4001294BB /* EngineParticleSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = DAB132E3138F23BD001294BB /* EngineParticleSystem.m */; };
 		DAB132EB138F2979001294BB /* HUDLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DAB132EA138F2976001294BB /* HUDLayer.m */; };
@@ -485,6 +486,8 @@
 		DA907CB61394FB76009ADD27 /* plop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = plop.wav; sourceTree = "<group>"; };
 		DAA7A5FA13973B2200D6DA68 /* powerup.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = powerup.wav; sourceTree = "<group>"; };
 		DAA7A5FC13973C1800D6DA68 /* meow03.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = meow03.wav; sourceTree = "<group>"; };
+		DAAD1D9E13A7140A005D37B1 /* BossTurtle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BossTurtle.h; sourceTree = "<group>"; };
+		DAAD1D9F13A7140B005D37B1 /* BossTurtle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BossTurtle.m; sourceTree = "<group>"; };
 		DAB132DF138F1D9A001294BB /* fire.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fire.png; sourceTree = "<group>"; };
 		DAB132E2138F23B6001294BB /* EngineParticleSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EngineParticleSystem.h; sourceTree = "<group>"; };
 		DAB132E3138F23BD001294BB /* EngineParticleSystem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EngineParticleSystem.m; sourceTree = "<group>"; };
@@ -1040,6 +1043,8 @@
 				DAE1B3EE13938F3B007244D8 /* Boost.m */,
 				DAFA3CF11393972C0048D211 /* Fuel.h */,
 				DAFA3CF21393972C0048D211 /* Fuel.m */,
+				DAAD1D9E13A7140A005D37B1 /* BossTurtle.h */,
+				DAAD1D9F13A7140B005D37B1 /* BossTurtle.m */,
 			);
 			name = Obstacles;
 			sourceTree = "<group>";
@@ -1322,6 +1327,7 @@
 				DA08ACF41397931100F97492 /* StorySceneWithCat.m in Sources */,
 				DA08ACFD1397ACAA00F97492 /* Angel.m in Sources */,
 				DA08AD021397D6A200F97492 /* UFO.m in Sources */,
+				DAAD1DA013A7140C005D37B1 /* BossTurtle.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
