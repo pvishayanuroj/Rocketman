@@ -15,9 +15,15 @@
     
     CCAction *damageAnimation_;
     
+    CCParticleSystem *engineFlame_;            
+    
     BOOL movingLeft_;
     
-	CCParticleSystem *engineFlame_;        
+    BOOL deployedShells_;
+    
+    NSUInteger numShells_;
+    
+    NSUInteger maxShells_;
     
     CGFloat leftCutoff_;
     
@@ -38,6 +44,10 @@
 - (void) showIdle;
 
 - (void) showDamage;
+
+- (void) startShellSequence;
+
+- (void) deployShell;
 
 - (void) engineFlameGoingRight:(BOOL)right;
 

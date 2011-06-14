@@ -9,11 +9,14 @@
 #import "BossTurtle.h"
 #import "TargetedAction.h"
 #import "GameLayer.h"
+#import "GameManager.h"
 #import "EngineParticleSystem.h"
 
 @implementation BossTurtle
 
 static NSUInteger countID = 0;
+
+#pragma mark - Object Lifecycle
 
 + (id) bossTurtleWithPos:(CGPoint)pos
 {
@@ -32,7 +35,7 @@ static NSUInteger countID = 0;
         self.position = pos;
         
         // Attributes
-        radius_ = 16;
+        radius_ = 64;
         radiusSquared_ = radius_*radius_;        
         
         CGSize size = [[CCDirector sharedDirector] winSize];        
@@ -41,7 +44,10 @@ static NSUInteger countID = 0;
         yTarget_ = 0.66 * size.height;
         
         movingLeft_ = YES;
+        deployedShells_ = NO;
         sprite_.flipX = YES;
+        numShells_ = 0;
+        maxShells_ = 6;
         
         [self initActions];
         [self showIdle];        
@@ -97,6 +103,19 @@ static NSUInteger countID = 0;
 	[self runAction:[CCSequence actions:animation, delay, method, nil]];	
 }
 
+- (void) startShellSequence
+{
+    CCActionInterval *delay = [CCDelayTime actionWithDuration:0.1];
+    CCFiniteTimeAction *deploy = [CCCallFunc actionWithTarget:self selector:@selector(deployShell)];
+    CCActionInterval *seq = [CCSequence actions:deploy, delay, nil];
+    [self runAction:[CCRepeat actionWithAction:seq times:maxShells_]];
+}
+
+- (void) deployShell
+{
+    [[GameManager gameManager] addShell:self.position];
+}
+
 - (void) addCloud
 {
     CCSprite *blastCloud = [CCSprite spriteWithSpriteFrameName:@"Blast Cloud.png"];
@@ -140,6 +159,7 @@ static NSUInteger countID = 0;
         if (self.position.x < leftCutoff_) {
             movingLeft_ = NO;
             sprite_.flipX = NO;           
+            deployedShells_ = NO;            
             [self engineFlameGoingRight:NO];
         }
         else {
@@ -150,6 +170,7 @@ static NSUInteger countID = 0;
         if (self.position.x > rightCutoff_) {
             movingLeft_ = YES;
             sprite_.flipX = YES; 
+            deployedShells_ = NO;
             [self engineFlameGoingRight:YES];            
         }
         else {
@@ -159,6 +180,16 @@ static NSUInteger countID = 0;
     
     if (self.position.y > yTarget_) {
         dy = -1;
+    }
+    // Deploy shells each turn
+    else {
+        if (!deployedShells_) {
+            CGFloat xTrigger = 160;
+            if ((movingLeft_ && self.position.x < xTrigger) || (!movingLeft_ && self.position.x > xTrigger)) {
+                deployedShells_ = YES;
+                [self startShellSequence];                
+            }
+        }
     }
     
     CGPoint p = CGPointMake(dx, dy);
@@ -185,6 +216,8 @@ static NSUInteger countID = 0;
     
     [super destroy];
 }
+
+#pragma mark - Particle System
 
 - (void) initEngineFlame
 {

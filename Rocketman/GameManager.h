@@ -24,6 +24,8 @@
 
 - (void) registerHUDLayer:(HUDLayer *)hudLayer;
 
+- (void) addShell:(CGPoint)pos;
+
 - (void) setNumCats:(NSUInteger)numCats;
 
 - (void) setNumBoosts:(NSUInteger)numBoosts;

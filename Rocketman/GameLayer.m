@@ -32,6 +32,8 @@
 
 @implementation GameLayer
 
+#pragma mark - Object Lifecycle
+
 - (id) init
 {
 	if ((self = [super init])) {
@@ -68,7 +70,8 @@
         rocket_ = [Rocket rocketWithPos:startPos];
         [self addChild:rocket_ z:kRocketDepth];
         
-        [self startEngineFlame];
+        // Add the particle systems
+        [self initEngineFlame];
         
         // Game variables
         rocketSpeed_ = 0;
@@ -136,6 +139,8 @@
     
     [super dealloc];
 }
+
+#pragma mark - Update Loops
 
 - (void) update:(ccTime)dt
 {    
@@ -576,6 +581,15 @@
     }
 }
 
+#pragma mark - Misc Methods
+
+- (void) addShell:(CGPoint)pos
+{
+    Obstacle *obstacle = [Shell shellWithPos:pos];
+    [self addChild:obstacle z:kObstacleDepth];
+    [obstacles_ addObject:obstacle];     
+}
+
 - (NSInteger) getRandomX
 {
     NSInteger xCoord = arc4random() % (screenWidth_ - (SIDE_MARGIN * 2));       
@@ -613,7 +627,7 @@
     
 }
 
-- (void) startEngineFlame
+- (void) initEngineFlame
 {
     engineFlame_ = [[EngineParticleSystem PSForRocketFlame] retain];
 	[self addChild:engineFlame_ z:kRocketFlameDepth];

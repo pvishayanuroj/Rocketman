@@ -147,6 +147,8 @@
 
 - (void) moveRocketHorizontally;
 
+- (void) addShell:(CGPoint)pos;
+
 - (NSInteger) getRandomX;
 
 - (NSInteger) getRandomY:(CGFloat)freq;
@@ -155,7 +157,7 @@
 
 - (void) loss;
 
-- (void) startEngineFlame;
+- (void) initEngineFlame;
 
 - (void) toggleBoostFlame:(BOOL)on;
 

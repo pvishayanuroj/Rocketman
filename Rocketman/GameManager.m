@@ -15,7 +15,7 @@ static GameManager *_gameManager = nil;
 
 @implementation GameManager
 
-//@synthesize gameLayer = gameLayer_;
+#pragma mark - Object Lifecycle
 
 + (GameManager *) gameManager
 {
@@ -56,6 +56,8 @@ static GameManager *_gameManager = nil;
 	[super dealloc];
 }
 
+#pragma mark - Registration Methods
+
 - (void) registerGameLayer:(GameLayer *)gameLayer
 {
 	NSAssert(gameLayer_ == nil, @"Trying to register a Game Layer when one already exists");
@@ -69,6 +71,15 @@ static GameManager *_gameManager = nil;
 	hudLayer_ = hudLayer;
 	[hudLayer_ retain];
 }
+
+#pragma mark - Game Layer Methods
+
+- (void) addShell:(CGPoint)pos
+{
+    [gameLayer_ addShell:pos];
+}
+
+#pragma mark - HUD Methods
 
 - (void) setNumCats:(NSUInteger)numCats
 {
