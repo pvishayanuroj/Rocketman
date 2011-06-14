@@ -60,6 +60,10 @@
     
     CGFloat sideMoveSpeed_;
     
+    CGFloat targetX_, ttargetX_;
+    
+    CGFloat avg_[2];
+    
     float accel[3];     
     
     BOOL boostEngaged_;

@@ -506,6 +506,50 @@
     CGFloat dx = 0;
     
     dx = sideMoveSpeed_;
+
+    /*
+    CGFloat deltax = targetX_ - rocket_.position.x;
+
+    CGFloat maxSpeed = 1;
+    
+    if (deltax > maxSpeed) {
+        deltax = maxSpeed;
+    }
+    if (deltax < -maxSpeed) {
+        deltax = -maxSpeed ;
+    }    
+    
+    dx += deltax;
+    */
+    /*
+    // NEW
+    CGFloat deltax = targetX_ - rocket_.position.x;
+
+    CGFloat maxSpeed = 7;
+    
+    if (deltax > maxSpeed) {
+        deltax = maxSpeed;
+    }
+    if (deltax < -maxSpeed) {
+        deltax = -maxSpeed ;
+    }
+    
+    dx = deltax;
+    
+    for (int i = 0; i < 1; i++) {
+        avg_[i] = avg_[i+1];
+    }    
+    avg_[1] = dx;
+    //NSLog(@"%2.4f", dx);
+    
+    CGFloat sum = 0;
+    for (int i = 0; i < 2; i++) {
+        sum += avg_[i];
+    }
+    CGFloat avgX = sum/2.0;
+    NSLog(@"%2.4f, %2.4f", dx, avgX);
+    dx = avgX;
+     */
     
     CGPoint moveAmt = CGPointMake(dx, 0);
     pos = ccpAdd(rocket_.position, moveAmt);
@@ -665,7 +709,7 @@
         boostRate_ = rate;
     }
     else {
-        boostTarget_ = v0_;
+        boostTarget_ = v_ + 8;
         boost_ = amt;
         boostRate_ = rate;
     }
@@ -927,42 +971,34 @@
     
     //high-pass filter to eleminate gravity
     accel[0] = acceleration.x * kFilteringFactor + accel[0] * (1.0f - kFilteringFactor);
-    //accel[1] = acceleration.y * kFilteringFactor + accel[1] * (1.0f - kFilteringFactor);
-    //accel[2] = acceleration.z * kFilteringFactor + accel[2] * (1.0f - kFilteringFactor);
-    CGFloat resultx = acceleration.x - accel[0];
-    //CGFloat resulty = acceleration.y - accel[1];
-    //CGFloat resultz = acceleration.z - accel[2];    
-
+    
+    CGFloat resultx = acceleration.x - accel[0]; 
+    
     [[GameManager gameManager] setTilt:resultx];
     
+    /*
+    CGFloat ax = accel[0];
+    
+    if (ax < -0.4) {
+        ax = -0.4;
+    }
+    if (ax > 0.4) {
+        ax = 0.4;
+    }
+    
+    CGFloat tx = ax * 400 + 160;
+    targetX_ = tx;
+    */
     sideMoveSpeed_ = resultx*50;    
 
-    //NSLog(@"side speed: %4.2f", sideMoveSpeed_);
-    /*
-    // Move towards middle
-    if (fabs(sideMoveSpeed_) < 0.5) {
-        if (fabs(rocket_.position.x - 160)  > 10) {
-            // Currently the left
-            if (rocket_.position.x - 160 < 0) {
-                sideMoveSpeed_ = 1;
-            }
-            // Currently to the right
-            else {
-                sideMoveSpeed_ = -1;
-            }
-        }
-    }
-    else {
-    */
-    CGFloat maxSpeed = 7;
+    CGFloat maxSpeed = 8;
     
     if (sideMoveSpeed_ > maxSpeed) {
         sideMoveSpeed_ = maxSpeed;
     }
     if (sideMoveSpeed_ < -maxSpeed) {
-        sideMoveSpeed_ = -maxSpeed;
+        sideMoveSpeed_ = -maxSpeed ;
     }
-    //}
 }
 
 - (void) leftButtonPressed
