@@ -70,9 +70,6 @@
         rocket_ = [Rocket rocketWithPos:startPos];
         [self addChild:rocket_ z:kRocketDepth];
         
-        // Add the particle systems
-        [self initEngineFlame];
-        
         // Game variables
         rocketSpeed_ = 0;
         numCats_ = 0;
@@ -133,8 +130,6 @@
     [obstacles_ release];
     [firedCats_ release];
     [doodads_ release];
-    [engineFlame_ release];
-    [boostFlame_ release];
     [engineSound_ release];
     
     [super dealloc];
@@ -150,7 +145,6 @@
     [self updateCounters];
     [self applyGravity];
     [self moveRocketHorizontally];
-    [self updateFlame];
     [self collisionDetect];        
 }
 
@@ -196,7 +190,7 @@
 
         // Turn the engine off if we are falling
         if (rocketSpeed_ < 0) {
-            engineFlame_.emissionRate = 0;
+            [rocket_ turnFlameOff];
         }
     }
 }
@@ -607,12 +601,6 @@
     return (freq + var);
 }
 
-- (void) updateFlame
-{
-    engineFlame_.position = CGPointMake(rocket_.position.x, rocket_.position.y - 30);
-    boostFlame_.position = engineFlame_.position;        
-}
-
 - (void) loss
 {
     onGround_ = YES;
@@ -627,28 +615,15 @@
     
 }
 
-- (void) initEngineFlame
-{
-    engineFlame_ = [[EngineParticleSystem PSForRocketFlame] retain];
-	[self addChild:engineFlame_ z:kRocketFlameDepth];
-    engineFlame_.position = CGPointMake(rocket_.position.x, rocket_.position.y - 30);
-    
-    boostFlame_ = [[EngineParticleSystem PSForBoostFlame] retain];
-	[self addChild:boostFlame_ z:kRocketFlameDepth];    
-    boostFlame_.position = CGPointMake(rocket_.position.x, rocket_.position.y - 30);    
-}
-
 - (void) toggleBoostFlame:(BOOL)on
 {    
+    [rocket_ toggleBoostOn:on];
+    
     // Handle particle engine
     if (on) {
-        engineFlame_.emissionRate = 0;
-        boostFlame_.emissionRate = boostFlame_.totalParticles/boostFlame_.life;
         [self playSound:kEngine];
     }
     else {
-        boostFlame_.emissionRate = 0;
-        engineFlame_.emissionRate = engineFlame_.totalParticles/engineFlame_.life;        
         [self stopSound:kEngine];
     }
 }
@@ -902,16 +877,6 @@
     [obstacles_ removeObject:obstacle];
 }
 
-- (void) stopRocket
-{
-    v_ = 0;
-}
-
-- (void) startRocket
-{
-    v_ = v0_;
-}
-
 - (CGFloat) distanceNoRoot:(CGPoint)a b:(CGPoint)b
 {
 	CGFloat t1 = a.x - b.x;
@@ -987,24 +952,6 @@
     if (sideMoveSpeed_ < -maxSpeed) {
         sideMoveSpeed_ = -maxSpeed ;
     }
-}
-
-- (void) leftButtonPressed
-{
-    [self stopRocket];
-}
-
-- (void) rightButtonPressed
-{
-    [self startRocket];
-}
-
-- (void) leftButtonDepressed
-{
-}
-
-- (void) rightButtonDepressed
-{
 }
 
 @end

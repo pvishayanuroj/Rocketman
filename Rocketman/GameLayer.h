@@ -18,7 +18,7 @@
 @class CDAudioManager;
 @class CDSoundEngine;
 
-@interface GameLayer : CCLayer <UIAccelerometerDelegate, PButtonDelegate> {
+@interface GameLayer : CCLayer <UIAccelerometerDelegate> {
  
     Rocket *rocket_;
  
@@ -51,10 +51,6 @@
     NSInteger leftCutoff_;
     
     NSInteger rightCutoff_;
-    
-	CCParticleSystem *engineFlame_;    
-    
-	CCParticleSystem *boostFlame_;        
 
     CGFloat maxSideMoveSpeed_;
     
@@ -153,11 +149,7 @@
 
 - (NSInteger) getRandomY:(CGFloat)freq;
 
-- (void) updateFlame;
-
 - (void) loss;
-
-- (void) initEngineFlame;
 
 - (void) toggleBoostFlame:(BOOL)on;
 

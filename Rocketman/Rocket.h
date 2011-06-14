@@ -21,6 +21,10 @@
     BOOL isBurning_;
     
     CGRect rect_;
+    
+	CCParticleSystem *engineFlame_;    
+    
+	CCParticleSystem *boostFlame_;         
 }
 
 @property (nonatomic, readonly) CGRect rect;
@@ -28,6 +32,8 @@
 + (id) rocketWithPos:(CGPoint)pos;
 
 - (id) initWithPos:(CGPoint)pos;
+
+- (void) initEngineFlame;
 
 - (void) initActions;
 
@@ -38,5 +44,9 @@
 - (void) showShaking;
 
 - (void) showBurning;
+
+- (void) toggleBoostOn:(BOOL)on;
+
+- (void) turnFlameOff;
 
 @end

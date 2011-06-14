@@ -95,6 +95,7 @@
 
 - (void) displayDirectional:(GameLayer *)gameLayer
 {
+    /*
     PButton *leftButton = [PButton pButton:@"Icon-Small.png" toggledImage:@"Icon.png" buttonType:kLeftButton withDelegate:gameLayer];
     PButton *rightButton = [PButton pButton:@"Icon-Small.png" toggledImage:@"Icon.png" buttonType:kRightButton withDelegate:gameLayer];   
     
@@ -103,6 +104,7 @@
     
     [self addChild:leftButton];
     [self addChild:rightButton];
+     */
 }
 
 - (void) setNumCats:(NSUInteger)val

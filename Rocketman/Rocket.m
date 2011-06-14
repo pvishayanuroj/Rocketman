@@ -10,10 +10,13 @@
 #import "GameLayer.h"
 #import "TargetedAction.h"
 #import "CallFuncWeak.h"
+#import "EngineParticleSystem.h"
 
 @implementation Rocket
 
 @synthesize rect = rect_;
+
+#pragma mark - Object Lifecycle
 
 + (id) rocketWithPos:(CGPoint)pos
 {
@@ -35,6 +38,7 @@
         rect_.size.height = 60;
         rect_.size.width = 10;
         
+        [self initEngineFlame];
         [self initActions];
         
 	}
@@ -49,8 +53,26 @@
     [flyingAnimation_ release];
     [shakingAnimation_ release];
     [burningAnimation_ release];
+    [engineFlame_ release];
+    [boostFlame_ release];
     
     [super dealloc];
+}
+
+- (NSString *) description
+{
+    return [NSString stringWithFormat:@"Player Rocket"];
+}    
+
+- (void) initEngineFlame
+{
+    engineFlame_ = [[EngineParticleSystem PSForRocketFlame] retain];
+	[self addChild:engineFlame_ z:-2];
+    engineFlame_.position = CGPointMake(0, -30);
+    
+    boostFlame_ = [[EngineParticleSystem PSForBoostFlame] retain];
+	[self addChild:boostFlame_ z:-2];    
+    boostFlame_.position = CGPointMake(0, -30);    
 }
 
 - (void) initActions
@@ -138,6 +160,24 @@
 {
     isBurning_ = NO;
     [self showFlying];
+}
+
+- (void) toggleBoostOn:(BOOL)on
+{
+    if (on) {
+        engineFlame_.emissionRate = 0;
+        boostFlame_.emissionRate = boostFlame_.totalParticles/boostFlame_.life;
+    }
+    else {
+        boostFlame_.emissionRate = 0;
+        engineFlame_.emissionRate = engineFlame_.totalParticles/engineFlame_.life;        
+    }
+}
+
+- (void) turnFlameOff
+{
+    engineFlame_.emissionRate = 0;
+    boostFlame_.emissionRate = 0;
 }
 
 #if DEBUG_BOUNDINGBOX
