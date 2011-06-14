@@ -206,7 +206,7 @@
         // Cut the boost when either vtarget/vmax is reached or the timer runs out, whichever is longer
         if (vCond && tCond) {
             boostEngaged_ = NO;
-            [self toggleBoostFlame:NO];
+            [rocket_ toggleBoostOn:NO];
         }
         
         // Limit the boost to the target speed or vmax
@@ -609,11 +609,6 @@
     
 }
 
-- (void) toggleBoostFlame:(BOOL)on
-{    
-    [rocket_ toggleBoostOn:on];
-}
-
 - (void) rocketBurn
 {
     [rocket_ showBurning];
@@ -663,7 +658,7 @@
         boostRate_ = rate;
     }
     
-    [self toggleBoostFlame:YES];    
+    [rocket_ toggleBoostOn:YES];    
 }
 
 - (void) useBoost

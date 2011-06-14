@@ -147,8 +147,6 @@
 
 - (void) loss;
 
-- (void) toggleBoostFlame:(BOOL)on;
-
 - (void) rocketBurn;
 
 - (void) fireCat;
