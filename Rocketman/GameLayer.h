@@ -171,12 +171,6 @@
 
 - (void) removeText:(id)node data:(CCSprite *)text;
 
-- (CGFloat) distanceNoRoot:(CGPoint)a b:(CGPoint)b;
-
-- (BOOL) intersects:(CGPoint)circle radius:(CGFloat)r rect:(CGRect)rect;
-
-- (BOOL) intersects:(CGRect)a b:(CGRect)b;
-
 - (void) removeObstacle:(Obstacle *)obstacle;
 
 @end

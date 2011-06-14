@@ -12,6 +12,7 @@
 		353E11C2138ED4C30064BC71 /* GameOvaa.png in Resources */ = {isa = PBXBuildFile; fileRef = 353E11C1138ED4C30064BC71 /* GameOvaa.png */; };
 		353E11CA138EDB650064BC71 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 353E11C9138EDB650064BC71 /* GameKit.framework */; };
 		DA05939F13A7CA3E00565D76 /* AudioManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DA05939E13A7CA3D00565D76 /* AudioManager.m */; };
+		DA0593AB13A7D19500565D76 /* UtilFuncs.m in Sources */ = {isa = PBXBuildFile; fileRef = DA0593AA13A7D19000565D76 /* UtilFuncs.m */; };
 		DA08ACDD13975DBE00F97492 /* StoryScene.m in Sources */ = {isa = PBXBuildFile; fileRef = DA08ACDC13975DBE00F97492 /* StoryScene.m */; };
 		DA08ACE113975E8600F97492 /* StoryLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DA08ACE013975E8600F97492 /* StoryLayer.m */; };
 		DA08ACEE1397620D00F97492 /* Intro 01.png in Resources */ = {isa = PBXBuildFile; fileRef = DA08ACEA1397620D00F97492 /* Intro 01.png */; };
@@ -198,6 +199,8 @@
 		353E11C9138EDB650064BC71 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		DA05939D13A7CA3C00565D76 /* AudioManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioManager.h; sourceTree = "<group>"; };
 		DA05939E13A7CA3D00565D76 /* AudioManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioManager.m; sourceTree = "<group>"; };
+		DA0593A913A7D18F00565D76 /* UtilFuncs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UtilFuncs.h; sourceTree = "<group>"; };
+		DA0593AA13A7D19000565D76 /* UtilFuncs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UtilFuncs.m; sourceTree = "<group>"; };
 		DA08ACDB13975DBE00F97492 /* StoryScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryScene.h; sourceTree = "<group>"; };
 		DA08ACDC13975DBE00F97492 /* StoryScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryScene.m; sourceTree = "<group>"; };
 		DA08ACDF13975E8600F97492 /* StoryLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryLayer.h; sourceTree = "<group>"; };
@@ -545,6 +548,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DA0593AC13A7D26400565D76 /* Singletons */ = {
+			isa = PBXGroup;
+			children = (
+				DA346EEF138EB098000881D6 /* GameManager.h */,
+				DA346EF0138EB0A0000881D6 /* GameManager.m */,
+				DA05939D13A7CA3C00565D76 /* AudioManager.h */,
+				DA05939E13A7CA3D00565D76 /* AudioManager.m */,
+			);
+			name = Singletons;
+			sourceTree = "<group>";
+		};
 		DA346D56138E593D000881D6 = {
 			isa = PBXGroup;
 			children = (
@@ -581,6 +595,7 @@
 		DA346D75138E593D000881D6 /* Rocketman */ = {
 			isa = PBXGroup;
 			children = (
+				DA0593AC13A7D26400565D76 /* Singletons */,
 				DAFA3CF713939AE30048D211 /* Layers & Scenes */,
 				DA8215121390CECF00F3892E /* Utility */,
 				DA8215111390CE5000F3892E /* Cocos2D Base */,
@@ -997,10 +1012,6 @@
 		DA8215121390CECF00F3892E /* Utility */ = {
 			isa = PBXGroup;
 			children = (
-				DA346EEF138EB098000881D6 /* GameManager.h */,
-				DA346EF0138EB0A0000881D6 /* GameManager.m */,
-				DA05939D13A7CA3C00565D76 /* AudioManager.h */,
-				DA05939E13A7CA3D00565D76 /* AudioManager.m */,
 				DAB13308138F406A001294BB /* PButtonDelegate.h */,
 				DAB132FD138F3B67001294BB /* PButton.h */,
 				DAB132FE138F3B71001294BB /* PButton.m */,
@@ -1013,6 +1024,8 @@
 				DA8215071390C39E00F3892E /* Debugging.h */,
 				DA8A35211394889C007E2295 /* CallFuncWeak.h */,
 				DA8A35221394889D007E2295 /* CallFuncWeak.m */,
+				DA0593A913A7D18F00565D76 /* UtilFuncs.h */,
+				DA0593AA13A7D19000565D76 /* UtilFuncs.m */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -1334,6 +1347,7 @@
 				DA08AD021397D6A200F97492 /* UFO.m in Sources */,
 				DAAD1DA013A7140C005D37B1 /* BossTurtle.m in Sources */,
 				DA05939F13A7CA3E00565D76 /* AudioManager.m in Sources */,
+				DA0593AB13A7D19500565D76 /* UtilFuncs.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

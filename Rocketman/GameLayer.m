@@ -25,6 +25,7 @@
 #import "CatBullet.h"
 #import "Fuel.h"
 #import "Boost.h"
+#import "UtilFuncs.h"
 
 @implementation GameLayer
 
@@ -257,14 +258,14 @@
         
         // Do a rectangle on circle collision check
         if (obstacle.circular) {
-            if ([self intersects:obstacle.position radius:obstacle.radius rect:rocketBox]) {
+            if ([UtilFuncs intersects:obstacle.position radius:obstacle.radius rect:rocketBox]) {
                 [obstacle collide];
             }
         }
         // Do a rectangle and rectangle collision check
         else {
             obstacleBox = CGRectMake(obstacle.position.x, obstacle.position.y, obstacle.size.width, obstacle.size.height);
-            if ([self intersects:rocketBox b:obstacleBox]) {
+            if ([UtilFuncs intersects:rocketBox b:obstacleBox]) {
                 [obstacle collide];
             }
         }
@@ -286,17 +287,17 @@
             
             // The obstacle is a circle, do a circle on circle check
             if (obstacle.circular) {
-                distance = [self distanceNoRoot:cat.position b:obstacle.position];
+                distance = [UtilFuncs distanceNoRoot:cat.position b:obstacle.position];
                 threshold = cat.radius + obstacle.radius;
                 collide = (distance < threshold * threshold);
             }
             // The obstacle is a rectangle, do a rectangle on circle check
             else {
                 obstacleBox = CGRectMake(obstacle.position.x, obstacle.position.y, obstacle.size.width, obstacle.size.height);                
-                collide = [self intersects:cat.position radius:cat.radius rect:obstacleBox];
+                collide = [UtilFuncs intersects:cat.position radius:cat.radius rect:obstacleBox];
             }
             
-            distance = [self distanceNoRoot:cat.position b:obstacle.position];
+            distance = [UtilFuncs distanceNoRoot:cat.position b:obstacle.position];
             threshold = cat.radius + obstacle.radius;
             
             // If a collision occurred, remove the cat bullet and notify the obstacle of the hit
@@ -789,46 +790,6 @@
 - (void) removeObstacle:(Obstacle *)obstacle
 {
     [obstacles_ removeObject:obstacle];
-}
-
-- (CGFloat) distanceNoRoot:(CGPoint)a b:(CGPoint)b
-{
-	CGFloat t1 = a.x - b.x;
-	CGFloat t2 = a.y - b.y;
-	return t1*t1 + t2*t2;
-}
-
-- (BOOL) intersects:(CGPoint)circle radius:(CGFloat)r rect:(CGRect)rect
-{
-    CGPoint circleDistance;
-    circleDistance.x = fabs(circle.x - rect.origin.x);
-    circleDistance.y = fabs(circle.y - rect.origin.y);
-    
-    if (circleDistance.x > (rect.size.width/2 + r)) { return NO; }
-    if (circleDistance.y > (rect.size.height/2 + r)) { return NO; }
-    
-    if (circleDistance.x <= (rect.size.width/2)) { return YES; } 
-    if (circleDistance.y <= (rect.size.height/2)) { return YES; }
-    
-    CGFloat a = circleDistance.x - rect.size.width/2;
-    CGFloat b = circleDistance.y - rect.size.height/2;
-    
-    return (a*a + b*b) <= r*r;
-}
-
-- (BOOL) intersects:(CGRect)a b:(CGRect)b
-{
-    // Top left
-    CGPoint a1 = ccp(a.origin.x - a.size.width/2, a.origin.y + a.size.height/2);
-    // Bottom right
-    CGPoint a2 = ccp(a.origin.x + a.size.width/2, a.origin.y - a.size.height/2);    
-    
-    // Top left
-    CGPoint b1 = ccp(b.origin.x - b.size.width/2, b.origin.y + b.size.height/2);
-    // Bottom right
-    CGPoint b2 = ccp(b.origin.x + b.size.width/2, b.origin.y - b.size.height/2);        
-    
-    return (a1.x < b2.x) && (a2.x > b1.x) && (a1.y > b2.y) && (a2.y < b1.y);
 }
 
 - (void)accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration

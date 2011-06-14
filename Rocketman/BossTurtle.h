@@ -6,7 +6,7 @@
 //  Copyright 2011 Paul Vishayanuroj. All rights reserved.
 //
 
-#include "Obstacle.h"
+#import "Obstacle.h"
 
 @interface BossTurtle : Obstacle {
     
