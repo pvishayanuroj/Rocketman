@@ -11,9 +11,104 @@
 
 @implementation EngineParticleSystem
 
-+ (id) engineParticleSystem:(NSUInteger)p
++ (id) PSForRocketFlame
 {
-    return [[[self alloc] initWithTotalParticles:p] autorelease];
+    return [[[self alloc] initPSForRocketFlame] autorelease];
+}
+
++ (id) PSForBoostFlame
+{
+    return [[[self alloc] initPSForBoostFlame] autorelease];
+}
+
++ (id) PSForBossTurtleFlame
+{
+    return [[[self alloc] initPSForBossTurtleFlame] autorelease];
+}
+
+- (id) initPSForRocketFlame
+{
+    if ((self = [self initWithTotalParticles:300])) {
+        
+        ccColor4B orange = ccc4(255, 165, 0, 255);
+        ccColor4F c1 = ccc4FFromccc4B(orange);
+        ccColor4F c2 = c1;
+        c2.a = 0;
+        self.startColor = c1;
+        self.endColor = c2;
+        
+        self.startSize = 10.0f;
+        self.startSizeVar = 5.0f;
+        self.endSize = kCCParticleStartSizeEqualToEndSize;    
+        
+        // Gravity & Speed
+        self.gravity = ccp(0, -100);        
+		self.speed = 20;
+		self.speedVar = 5;               
+        
+        // life of particles
+        self.life = 0.5;
+        self.lifeVar = 0.25f;
+        
+        // emits per seconds
+        self.emissionRate = 0;    
+    }
+    return self;
+}
+
+- (id) initPSForBoostFlame
+{
+    if ((self = [self initWithTotalParticles:700])) {
+     
+        ccColor4B purple = ccc4(255, 20, 147, 255);
+        ccColor4F c1 = ccc4FFromccc4B(purple);
+        ccColor4F c2 = c1;
+        c2.a = 0;
+        self.startColor = c1;
+        self.endColor = c2;
+        
+        self.startSize = 20.0f;
+        self.startSizeVar = 5.0f;
+        self.endSize = kCCParticleStartSizeEqualToEndSize;    
+        
+        // Gravity & Speed
+        self.gravity = ccp(0, -300);        
+		self.speed = 20;
+		self.speedVar = 5;        
+        
+        // life of particles
+        self.life = 0.5;
+        self.lifeVar = 0.25f;
+        
+        // emits per seconds
+        self.emissionRate = 0;             
+        
+    }
+    return self;
+}
+
+- (id) initPSForBossTurtleFlame
+{
+    if ((self = [self initWithTotalParticles:500])) {
+   
+        ccColor4B purple = ccc4(255, 20, 147, 255);
+        ccColor4F c1 = ccc4FFromccc4B(purple);
+        self.startColor = c1;
+        self.endColor = c1;
+        
+        self.startSize = 25.0f;
+        self.startSizeVar = 5.0f;
+        self.endSize = kCCParticleStartSizeEqualToEndSize;    
+        
+        // life of particles
+        self.life = 0.4f;
+        self.lifeVar = 0.1f;
+        
+        // emits per seconds
+        self.emissionRate = self.totalParticles/self.life;        
+        
+    }
+    return self;
 }
 
 - (id) initWithTotalParticles:(NSUInteger)p
@@ -24,65 +119,21 @@
 		self.blendAdditive = YES;
         
 		// duration
-		duration = kCCParticleDurationInfinity;
+		self.duration = kCCParticleDurationInfinity;
 		
 		// Gravity Mode
 		self.emitterMode = kCCParticleModeGravity;
-		
-		// Gravity Mode: gravity
-		self.gravity = ccp(0,0);
 		
 		// Gravity mode: radial acceleration
 		self.radialAccel = 0;
 		self.radialAccelVar = 0;
 		
-		// Gravity mode: speed of particles
-		self.speed = 20;
-		self.speedVar = 5;
-        
-		
 		// angle
-		angle = 90;
-		angleVar = 360;
-		
-		// emitter position
-		CGSize winSize = [[CCDirector sharedDirector] winSize];
-		self.position = ccp(winSize.width/2, winSize.height/2);
-		posVar = CGPointZero;
-		
-		// life of particles
-		life = 1;
-		lifeVar = 0.5f;
-		
-		// size, in pixels
-		startSize = 30.0f;
-		startSizeVar = 10.0f;
-		endSize = kCCParticleStartSizeEqualToEndSize;
-        
-		// emits per seconds
-		emissionRate = totalParticles/life;
-		
-		// color of particles
-		startColor.r = 0.76f;
-		startColor.g = 0.25f;
-		startColor.b = 0.12f;
-		startColor.a = 1.0f;
-		startColorVar.r = 0.0f;
-		startColorVar.g = 0.0f;
-		startColorVar.b = 0.0f;
-		startColorVar.a = 0.0f;
-		endColor.r = 0.0f;
-		endColor.g = 0.0f;
-		endColor.b = 0.0f;
-		endColor.a = 1.0f;
-		endColorVar.r = 0.0f;
-		endColorVar.g = 0.0f;
-		endColorVar.b = 0.0f;
-		endColorVar.a = 0.0f;
+		self.angle = 90;
+		self.angleVar = 360;
 		
 		self.texture = [[CCTextureCache sharedTextureCache] addImage: @"fire.png"];
 	}
-    
 	return self;
 }
 

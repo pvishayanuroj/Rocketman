@@ -61,6 +61,7 @@ static NSUInteger countID = 0;
     [sprite_ release];
     [idleAnimation_ release];
     [damageAnimation_ release];
+    [engineFlame_ release];
     
     [super dealloc];
 }
@@ -187,24 +188,8 @@ static NSUInteger countID = 0;
 
 - (void) initEngineFlame
 {
-	engineFlame_ = [[EngineParticleSystem engineParticleSystem:500] retain];
+    engineFlame_ = [[EngineParticleSystem PSForBossTurtleFlame] retain];
 	[self addChild:engineFlame_ z:-2];
-    
-    ccColor4B purple = ccc4(255, 20, 147, 255);
-    ccColor4F c1 = ccc4FFromccc4B(purple);
-    engineFlame_.startColor = c1;
-    engineFlame_.endColor = c1;
-    
-    engineFlame_.startSize = 25.0f;
-    engineFlame_.startSizeVar = 5.0f;
-    engineFlame_.endSize = kCCParticleStartSizeEqualToEndSize;    
-    
-    // life of particles
-    engineFlame_.life = 0.4f;
-    engineFlame_.lifeVar = 0.1f;
-    
-    // emits per seconds
-    engineFlame_.emissionRate = engineFlame_.totalParticles/engineFlame_.life;
 }
 
 - (void) engineFlameGoingRight:(BOOL)right

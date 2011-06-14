@@ -22,8 +22,18 @@
     
 }
 
-+ (id) engineParticleSystem:(NSUInteger)p;
++ (id) PSForRocketFlame;
+
++ (id) PSForBoostFlame;
+
++ (id) PSForBossTurtleFlame;
 
 - (id) initWithTotalParticles:(NSUInteger)p;
+
+- (id) initPSForRocketFlame;
+
+- (id) initPSForBoostFlame;
+
+- (id) initPSForBossTurtleFlame;
 
 @end

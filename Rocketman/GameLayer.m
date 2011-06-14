@@ -615,57 +615,13 @@
 
 - (void) startEngineFlame
 {
-	engineFlame_ = [[EngineParticleSystem engineParticleSystem:300] retain];
+    engineFlame_ = [[EngineParticleSystem PSForRocketFlame] retain];
 	[self addChild:engineFlame_ z:kRocketFlameDepth];
+    engineFlame_.position = CGPointMake(rocket_.position.x, rocket_.position.y - 30);
     
-	boostFlame_ = [[EngineParticleSystem engineParticleSystem:700] retain];
+    boostFlame_ = [[EngineParticleSystem PSForBoostFlame] retain];
 	[self addChild:boostFlame_ z:kRocketFlameDepth];    
-    
-    engineFlame_.gravity = ccp(0, -100);
-    ccColor4B orange = ccc4(255, 165, 0, 255);
-    ccColor4F c1 = ccc4FFromccc4B(orange);
-    ccColor4F c2 = c1;
-    c2.a = 0;
-    engineFlame_.startColor = c1;
-    engineFlame_.endColor = c2;
-    
-    
-    engineFlame_.startSize = 10.0f;
-    engineFlame_.startSizeVar = 5.0f;
-    engineFlame_.endSize = kCCParticleStartSizeEqualToEndSize;    
-    
-    // life of particles
-    engineFlame_.life = 0.5;
-    engineFlame_.lifeVar = 0.25f;
-    
-    // emits per seconds
-    engineFlame_.emissionRate = 0;
-    
-	engineFlame_.position = CGPointMake(rocket_.position.x, rocket_.position.y - 30);
-    
-    
-    // BOOST
-    boostFlame_.gravity = ccp(0, -300);
-    ccColor4B purple = ccc4(255, 20, 147, 255);
-    c1 = ccc4FFromccc4B(purple);
-    c2 = c1;
-    c2.a = 0;
-    boostFlame_.startColor = c1;
-    boostFlame_.endColor = c2;
-    
-    
-    boostFlame_.startSize = 20.0f;
-    boostFlame_.startSizeVar = 5.0f;
-    boostFlame_.endSize = kCCParticleStartSizeEqualToEndSize;    
-    
-    // life of particles
-    boostFlame_.life = 0.5;
-    boostFlame_.lifeVar = 0.25f;
-    
-    // emits per seconds
-    boostFlame_.emissionRate = 0;
-    
-	boostFlame_.position = CGPointMake(rocket_.position.x, rocket_.position.y - 30);    
+    boostFlame_.position = CGPointMake(rocket_.position.x, rocket_.position.y - 30);    
 }
 
 - (void) toggleBoostFlame:(BOOL)on
