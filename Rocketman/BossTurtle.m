@@ -11,6 +11,7 @@
 #import "GameLayer.h"
 #import "GameManager.h"
 #import "EngineParticleSystem.h"
+#import "AudioManager.h"
 
 @implementation BossTurtle
 
@@ -198,8 +199,7 @@ static NSUInteger countID = 0;
 
 - (void) bulletHit
 {
-    GameLayer *gameLayer = (GameLayer *)[self parent];
-    [gameLayer playSound:kPlop];        
+    [[AudioManager audioManager] playSound:kPlop];        
     
     [self showDamage];
 }

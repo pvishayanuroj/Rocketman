@@ -8,6 +8,7 @@
 
 #import "Shell.h"
 #import "GameLayer.h"
+#import "AudioManager.h"
 
 @implementation Shell
 
@@ -105,8 +106,7 @@ static NSUInteger countID = 0;
 
 - (void) bulletHit
 {
-    GameLayer *gameLayer = (GameLayer *)[self parent];
-    [gameLayer playSound:kPlop];        
+    [[AudioManager audioManager] playSound:kPlop];        
     
     [super showDestroy:kBamText];
     
@@ -118,7 +118,7 @@ static NSUInteger countID = 0;
     sprite_.visible = NO;    
     
     GameLayer *gameLayer = (GameLayer *)[self parent];
-    [gameLayer playSound:kWerr];                
+    [[AudioManager audioManager] playSound:kWerr];                
     [gameLayer slowDown:0.66];    
     
     [super showDestroy:kPlopText];

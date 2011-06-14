@@ -6,11 +6,18 @@
 //  Copyright 2011 Paul Vishayanuroj. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import "cocos2d.h"
+@class CDSoundSource;
 
 @interface AudioManager : NSObject {
     
+    CDSoundSource *engineSound_;    
+    
 }
+
++ (AudioManager *) audioManager;
+
+- (void) playSound:(SoundType)type;
+
+- (void) stopSound:(SoundType)type;
 
 @end

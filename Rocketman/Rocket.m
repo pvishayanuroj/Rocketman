@@ -11,6 +11,7 @@
 #import "TargetedAction.h"
 #import "CallFuncWeak.h"
 #import "EngineParticleSystem.h"
+#import "AudioManager.h"
 
 @implementation Rocket
 
@@ -167,10 +168,12 @@
     if (on) {
         engineFlame_.emissionRate = 0;
         boostFlame_.emissionRate = boostFlame_.totalParticles/boostFlame_.life;
+        [[AudioManager audioManager] playSound:kEngine];
     }
     else {
         boostFlame_.emissionRate = 0;
         engineFlame_.emissionRate = engineFlame_.totalParticles/engineFlame_.life;        
+        [[AudioManager audioManager] stopSound:kEngine];
     }
 }
 

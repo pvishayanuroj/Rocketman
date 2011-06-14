@@ -8,6 +8,7 @@
 
 #import "GameLayer.h"
 #import "GameManager.h"
+#import "AudioManager.h"
 #import "Rocket.h"
 #import "Obstacle.h"
 #import "Doodad.h"
@@ -24,11 +25,6 @@
 #import "CatBullet.h"
 #import "Fuel.h"
 #import "Boost.h"
-#import "EngineParticleSystem.h"
-#import "SimpleAudioEngine.h"
-
-
-#define SND_ID_ENGINE 1746
 
 @implementation GameLayer
 
@@ -70,6 +66,9 @@
         rocket_ = [Rocket rocketWithPos:startPos];
         [self addChild:rocket_ z:kRocketDepth];
         
+        // Load sounds
+        [AudioManager audioManager];        
+        
         // Game variables
         rocketSpeed_ = 0;
         numCats_ = 0;
@@ -110,11 +109,7 @@
         vMax_ = 15;
         
         dt_ = 0;    
-        
-        // Load sounds
-        SimpleAudioEngine *sae = [SimpleAudioEngine sharedEngine];
-        engineSound_ = [[sae soundSourceForFile:@"engine.wav"] retain];
-        
+
         [self schedule:@selector(update:) interval:1.0/60.0];
         [self schedule:@selector(slowUpdate:) interval:10.0/60.0];    
         
@@ -130,7 +125,6 @@
     [obstacles_ release];
     [firedCats_ release];
     [doodads_ release];
-    [engineSound_ release];
     
     [super dealloc];
 }
@@ -139,7 +133,6 @@
 
 - (void) update:(ccTime)dt
 {    
-    //NSLog(@"dt: %1.3f", dt); 
     [self physicsStep:dt];
     [self applyBoost:dt];
     [self updateCounters];
@@ -618,14 +611,6 @@
 - (void) toggleBoostFlame:(BOOL)on
 {    
     [rocket_ toggleBoostOn:on];
-    
-    // Handle particle engine
-    if (on) {
-        [self playSound:kEngine];
-    }
-    else {
-        [self stopSound:kEngine];
-    }
 }
 
 - (void) rocketBurn
@@ -645,7 +630,7 @@
             CatBullet *bullet = [CatBullet catBulletWithPos:rocket_.position withSpeed:(rocketSpeed_ + 10)];
             [self addChild:bullet z:kBulletDepth];
             [firedCats_ addObject:bullet];
-            [self playSound:kMeow];
+            [[AudioManager audioManager] playSound:kMeow];
 #if !DEBUG_UNLIMITED_CATS
         }
 #endif
@@ -691,7 +676,7 @@
             CCFiniteTimeAction *move = [CCMoveTo actionWithDuration:6.0 position:CGPointMake(rocket_.position.x, screenHeight_ * 0.3)];
             [rocket_ runAction:move];
             [rocket_ showShaking];
-            [self playSound:kTheme01];
+            [[AudioManager audioManager] playSound:kTheme01];
         }
         // Else the typical case when player is already flying
         else {
@@ -728,7 +713,7 @@
 - (void) collectBoost:(Boost *)boost
 {
     [self showText:kSpeedUp];    
-    [self playSound:kKerrum];
+    [[AudioManager audioManager] playSound:kKerrum];
     
 #if DEBUG_CONSTANTSPEED
     return;
@@ -742,7 +727,7 @@
     numBoosts_++;
     [[GameManager gameManager] setNumBoosts:numBoosts_];
     [self showText:kBoostPlus];   
-    [self playSound:kPowerup];
+    [[AudioManager audioManager] playSound:kPowerup];
 }
 
 - (void) collectCat:(Cat *)cat
@@ -750,7 +735,7 @@
     numCats_++;
     [[GameManager gameManager] setNumCats:numCats_];
     [self showText:kCatPlus];
-    [self playSound:kCollectMeow];    
+    [[AudioManager audioManager] playSound:kCollectMeow];    
 }
 
 - (void) showText:(EventText)event
@@ -799,77 +784,6 @@
 - (void) removeText:(id)node data:(CCSprite *)text
 {
     [text removeFromParentAndCleanup:YES];
-}
-
-- (void) playSound:(SoundType)type
-{
-#if DEBUG_NOSOUND
-    return;
-#endif
-    NSUInteger rand;
-    NSString *name;
-    SimpleAudioEngine *engine = [SimpleAudioEngine sharedEngine];
-    
-    switch (type) {
-        case kTheme01:
-            name = [NSString stringWithFormat:@"SRSMTheme01.mp3"];
-            [engine playBackgroundMusic:name];
-            break;
-        case kMeow:
-            rand = arc4random() % 2 + 1;
-            name = [NSString stringWithFormat:@"meow%02d.mp3", rand];
-            [engine playEffect:name];            
-            break;
-        case kPlop:
-            name = [NSString stringWithFormat:@"plop.wav"];
-            [engine playEffect:name];
-            break;
-        case kKerrum:
-            name = [NSString stringWithFormat:@"kerrum.wav"];
-            [engine playEffect:name];
-            break;            
-        case kWerr:
-            name = [NSString stringWithFormat:@"werr.wav"];
-            [engine playEffect:name];
-            break;            
-        case kPowerup:
-            name = [NSString stringWithFormat:@"powerup.wav"];
-            [engine playEffect:name];
-            break;                   
-        case kCollectMeow:
-            name = [NSString stringWithFormat:@"meow03.wav"];
-            [engine playEffect:name];
-            break;                 
-        case kExplosion01:
-            name = [NSString stringWithFormat:@"explosion01.wav"];
-            [engine playEffect:name];
-            break;                   
-        case kSlap:
-            name = [NSString stringWithFormat:@"slap.wav"];
-            [engine playEffect:name];
-            break;                             
-        case kEngine:
-            engineSound_.looping = YES;
-            [engineSound_ play];
-            break;
-        default:
-            NSAssert(NO, @"Invalid effect type");
-    }
-}
-
-- (void) stopSound:(SoundType)type
-{
-#if DEBUG_NOSOUND
-    return;
-#endif
-    
-    switch (type) {
-        case kEngine:
-            [engineSound_ stop];
-            break;
-        default:
-            NSAssert(NO, @"Invalid effect type");        
-    }
 }
 
 - (void) removeObstacle:(Obstacle *)obstacle

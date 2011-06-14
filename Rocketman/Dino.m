@@ -9,6 +9,7 @@
 #import "Dino.h"
 #import "TargetedAction.h"
 #import "GameLayer.h"
+#import "AudioManager.h"
 
 @implementation Dino
 
@@ -129,8 +130,7 @@ static NSUInteger countID = 0;
 
 - (void) bulletHit
 {    
-    GameLayer *gameLayer = (GameLayer *)[self parent];
-    [gameLayer playSound:kExplosion01];            
+    [[AudioManager audioManager] playSound:kExplosion01];            
     
     [super showDestroy:kBamText];
     
@@ -140,7 +140,7 @@ static NSUInteger countID = 0;
 - (void) collide
 {
     GameLayer *gameLayer = (GameLayer *)[self parent];
-    [gameLayer playSound:kWerr];            
+    [[AudioManager audioManager] playSound:kWerr];            
     [gameLayer slowDown:0.66];    
     
     [self showAttacking];

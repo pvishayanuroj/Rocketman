@@ -19,8 +19,6 @@
 
         [self animationLoader:@"sheet01_animations" spriteSheetName:@"sheet01"];		
         
-        [self preloadAudio];
-        
         GameLayer *gameLayer = [GameLayer node];
 		[self addChild:gameLayer z:0];
         
@@ -97,20 +95,6 @@
 			
 		} // end for-loop of animations
 	} // end for-loop of units
-}
-
-- (void) preloadAudio
-{
-    [[SimpleAudioEngine sharedEngine] preloadBackgroundMusic:@"SRSMTheme01.mp3"];
-    [[SimpleAudioEngine sharedEngine] preloadEffect:@"meow01.mp3"];
-    [[SimpleAudioEngine sharedEngine] preloadEffect:@"meow02.mp3"];
-    [[SimpleAudioEngine sharedEngine] preloadEffect:@"meow03.wav"];    
-    [[SimpleAudioEngine sharedEngine] preloadEffect:@"plop.wav"];    
-    [[SimpleAudioEngine sharedEngine] preloadEffect:@"kerrum.wav"];    
-    [[SimpleAudioEngine sharedEngine] preloadEffect:@"werr.wav"];    
-    [[SimpleAudioEngine sharedEngine] preloadEffect:@"explosion01.wav"];        
-    [[SimpleAudioEngine sharedEngine] preloadEffect:@"powerup.wav"];        
-    [[SimpleAudioEngine sharedEngine] preloadEffect:@"slap.wav"];          
 }
 
 @end

@@ -116,10 +116,6 @@
     
     CGFloat boostTimer_;
     
-    ALuint engineSoundID_;
-    
-    CDSoundSource *engineSound_;
-    
     CGFloat dt_;
     
     BOOL bossAdded_;
@@ -174,10 +170,6 @@
 - (void) showText:(EventText)event;
 
 - (void) removeText:(id)node data:(CCSprite *)text;
-
-- (void) playSound:(SoundType)type;
-
-- (void) stopSound:(SoundType)type;
 
 - (CGFloat) distanceNoRoot:(CGPoint)a b:(CGPoint)b;
 
