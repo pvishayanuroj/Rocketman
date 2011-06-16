@@ -36,7 +36,7 @@
     
     NSMutableArray *doodads_;
     
-    NSMutableArray *backgroundClouds_;    
+    NSMutableArray *blasts_;
     
     NSInteger screenWidth_;
     
@@ -140,6 +140,8 @@
 - (void) moveRocketHorizontally;
 
 - (void) addShell:(CGPoint)pos;
+
+- (void) addBlast:(CGPoint)pos scale:(CGFloat)scale text:(EventText)text;
 
 - (NSInteger) getRandomX;
 

@@ -36,8 +36,6 @@
 @property (nonatomic, readonly) BOOL collided;
 @property (nonatomic, readonly) BOOL shootable;
 
-- (void) initDestroyAction;
-
 - (void) showDestroy:(EventText)text;
 
 - (void) fall:(CGFloat)speed;

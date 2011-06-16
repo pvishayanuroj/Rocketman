@@ -23,10 +23,4 @@
 
 - (void) showIdle;
 
-- (void) addCloud;
-
-- (void) addBlast;
-
-- (void) addText:(id)node data:(void *)data;
-
 @end

@@ -161,6 +161,7 @@
 		DA907C411394DCAD009ADD27 /* meow02.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DA907C3F1394DCAD009ADD27 /* meow02.mp3 */; };
 		DA907CB51394EFB4009ADD27 /* engine.wav in Resources */ = {isa = PBXBuildFile; fileRef = DA907CB41394EFB4009ADD27 /* engine.wav */; };
 		DA907CB71394FB76009ADD27 /* plop.wav in Resources */ = {isa = PBXBuildFile; fileRef = DA907CB61394FB76009ADD27 /* plop.wav */; };
+		DAA699DC13A8528A004AF844 /* BlastCloud.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA699DB13A8528A004AF844 /* BlastCloud.m */; };
 		DAA7A5FB13973B2200D6DA68 /* powerup.wav in Resources */ = {isa = PBXBuildFile; fileRef = DAA7A5FA13973B2200D6DA68 /* powerup.wav */; };
 		DAA7A5FD13973C1800D6DA68 /* meow03.wav in Resources */ = {isa = PBXBuildFile; fileRef = DAA7A5FC13973C1800D6DA68 /* meow03.wav */; };
 		DAB132E0138F1D9A001294BB /* fire.png in Resources */ = {isa = PBXBuildFile; fileRef = DAB132DF138F1D9A001294BB /* fire.png */; };
@@ -487,6 +488,8 @@
 		DA907C3F1394DCAD009ADD27 /* meow02.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = meow02.mp3; sourceTree = "<group>"; };
 		DA907CB41394EFB4009ADD27 /* engine.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = engine.wav; sourceTree = "<group>"; };
 		DA907CB61394FB76009ADD27 /* plop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = plop.wav; sourceTree = "<group>"; };
+		DAA699DA13A8528A004AF844 /* BlastCloud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlastCloud.h; sourceTree = "<group>"; };
+		DAA699DB13A8528A004AF844 /* BlastCloud.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlastCloud.m; sourceTree = "<group>"; };
 		DAA7A5FA13973B2200D6DA68 /* powerup.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = powerup.wav; sourceTree = "<group>"; };
 		DAA7A5FC13973C1800D6DA68 /* meow03.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = meow03.wav; sourceTree = "<group>"; };
 		DAB132DF138F1D9A001294BB /* fire.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fire.png; sourceTree = "<group>"; };
@@ -1078,6 +1081,8 @@
 				DA7DCC9F13A7D68A0065A566 /* SlowCloud.m */,
 				DA7DCC9C13A7D68A0065A566 /* Ground.h */,
 				DA7DCC9D13A7D68A0065A566 /* Ground.m */,
+				DAA699DA13A8528A004AF844 /* BlastCloud.h */,
+				DAA699DB13A8528A004AF844 /* BlastCloud.m */,
 			);
 			name = Doodads;
 			sourceTree = "<group>";
@@ -1348,6 +1353,7 @@
 				DAF8AB4113A7D6F100A838CE /* UFO.m in Sources */,
 				DAF8AB4613A7D71A00A838CE /* CatBullet.m in Sources */,
 				DAF8AB4713A7D71A00A838CE /* Rocket.m in Sources */,
+				DAA699DC13A8528A004AF844 /* BlastCloud.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

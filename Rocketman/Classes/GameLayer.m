@@ -25,6 +25,7 @@
 #import "CatBullet.h"
 #import "Fuel.h"
 #import "Boost.h"
+#import "BlastCloud.h"
 #import "UtilFuncs.h"
 
 @implementation GameLayer
@@ -50,7 +51,8 @@
         // Array initialization
         obstacles_ = [[NSMutableArray arrayWithCapacity:20] retain];
         firedCats_ = [[NSMutableArray arrayWithCapacity:5] retain];
-        doodads_ = [[NSMutableArray arrayWithCapacity:20] retain];        
+        doodads_ = [[NSMutableArray arrayWithCapacity:20] retain];    
+        blasts_ = [[NSMutableArray arrayWithCapacity:20] retain];
         
         // Add background
         CCSprite *bg = [CCSprite spriteWithFile:@"background.png"];
@@ -126,6 +128,7 @@
     [obstacles_ release];
     [firedCats_ release];
     [doodads_ release];
+    [blasts_ release];
     
     [super dealloc];
 }
@@ -375,6 +378,23 @@
     }
     // Remove outside the loop
     [firedCats_ removeObjectsAtIndexes:remove];    
+    
+    // Blasts
+    
+    remove = [NSMutableIndexSet indexSet];
+    index = 0;    
+    
+    for (BlastCloud *blast in blasts_) {
+        [blast fall:rocketSpeed_];
+        
+        // If past the cutoff boundary, delete        
+        if (blast.destroyed) {
+            [remove addIndex:index];
+        }
+        index++;
+    }    
+    // Remove outside the loop
+    [blasts_ removeObjectsAtIndexes:remove];    
 }
 
 - (void) cloudGenerator
@@ -576,6 +596,13 @@
     Obstacle *obstacle = [Shell shellWithPos:pos];
     [self addChild:obstacle z:kObstacleDepth];
     [obstacles_ addObject:obstacle];     
+}
+
+- (void) addBlast:(CGPoint)pos scale:(CGFloat)scale text:(EventText)text
+{
+    BlastCloud *blast = [BlastCloud blastCloudAt:pos size:scale text:text];
+    [self addChild:blast];
+    [blasts_ addObject:blast];
 }
 
 - (NSInteger) getRandomX

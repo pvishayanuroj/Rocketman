@@ -70,40 +70,6 @@ static NSUInteger countID = 0;
 	[sprite_ runAction:idleAnimation_];	
 }
 
-- (void) addCloud
-{
-    CCSprite *blastCloud = [CCSprite spriteWithSpriteFrameName:@"Blast Cloud.png"];
-    [self addChild:blastCloud];
-    blastCloud.scale = 1.2;
-}
-
-- (void) addBlast
-{
-    CCSprite *blast = [CCSprite spriteWithSpriteFrameName:@"Blast.png"];   
-    [self addChild:blast];    
-}
-
-- (void) addText:(id)node data:(void *)data
-{
-    EventText text = (EventText)data;
-    CCSprite *textSprite;
-    
-    switch (text) {
-        case kBamText:
-            textSprite = [CCSprite spriteWithSpriteFrameName:@"Bam Text.png"];            
-            break;
-        case kPlopText:
-            textSprite = [CCSprite spriteWithSpriteFrameName:@"Plop Text.png"];            
-            break;            
-        default:
-            textSprite = [CCSprite spriteWithSpriteFrameName:@"Bam Text.png"];            
-    }
-    
-    [self addChild:textSprite];
-    
-    textSprite.scale = 0.7;
-}
-
 - (void) bulletHit
 {
     [[AudioManager audioManager] playSound:kPlop];        

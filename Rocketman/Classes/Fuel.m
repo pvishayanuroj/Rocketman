@@ -51,6 +51,7 @@ static NSUInteger countID = 0;
     
     [sprite_ release];
     [idleAnimation_ release];
+    [collectAnimation_ release];
     
     [super dealloc];
 }
