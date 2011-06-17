@@ -9,6 +9,8 @@
 #import "MainMenuLayer.h"
 #import "GameScene.h"
 #import "StoryScene.h"
+#import "HighscoreScene.h"
+#import "Constants.h"
 
 @implementation MainMenuLayer
 
@@ -24,8 +26,8 @@
         backgroundImage.anchorPoint = CGPointZero;
         
         CCMenuItemSprite *menuButton1 = [CCMenuItemSprite itemFromNormalSprite:[CCSprite spriteWithFile:@"play_button.png"] selectedSprite:[CCSprite spriteWithFile:@"play_button.png"] target:self selector:@selector(startGame)];
-        CCMenuItemSprite *menuButton2 = [CCMenuItemSprite itemFromNormalSprite:[CCSprite spriteWithFile:@"help_button.png"] selectedSprite:[CCSprite spriteWithFile:@"help_button.png"] target:self selector:@selector(viewHighScore)];
-        CCMenuItemSprite *menuButton3 = [CCMenuItemSprite itemFromNormalSprite:[CCSprite spriteWithFile:@"scores_button.png"] selectedSprite:[CCSprite spriteWithFile:@"scores_button.png"] target:self selector:@selector(viewCredits)];
+        CCMenuItemSprite *menuButton2 = [CCMenuItemSprite itemFromNormalSprite:[CCSprite spriteWithFile:@"help_button.png"] selectedSprite:[CCSprite spriteWithFile:@"help_button.png"] target:self selector:@selector(viewCredits)];
+        CCMenuItemSprite *menuButton3 = [CCMenuItemSprite itemFromNormalSprite:[CCSprite spriteWithFile:@"scores_button.png"] selectedSprite:[CCSprite spriteWithFile:@"scores_button.png"] target:self selector:@selector(viewHighscore)];
         
         CCMenu *menu = [CCMenu menuWithItems:menuButton1, menuButton2, menuButton3, nil];
         [menu alignItemsVerticallyWithPadding:40];
@@ -40,12 +42,13 @@
 - (void) startGame {
     
     StoryScene *scene = [StoryScene storyWithName:@"Intro" num:1 endNum:5];
-    [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:scene]];
+    [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:SCENE_TRANSITION_DURATION scene:scene]];
     
 }
 
-- (void) viewHighScore {
-    
+- (void) viewHighscore {
+    HighscoreScene *scene = [HighscoreScene node];
+    [[CCDirector sharedDirector] replaceScene:[CCTransitionMoveInR transitionWithDuration:SCENE_TRANSITION_DURATION scene:scene]];
 }
 
 - (void) viewCredits {

@@ -28,6 +28,8 @@
 #import "BlastCloud.h"
 #import "UtilFuncs.h"
 
+#import "HighscoreManager.h"
+
 @implementation GameLayer
 
 #pragma mark - Object Lifecycle
@@ -113,8 +115,7 @@
         dt_ = 0;    
 
         [self schedule:@selector(update:) interval:1.0/60.0];
-        [self schedule:@selector(slowUpdate:) interval:10.0/60.0];    
-        
+        [self schedule:@selector(slowUpdate:) interval:10.0/60.0];
 	}
 	return self;
 }
