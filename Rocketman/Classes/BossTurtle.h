@@ -31,6 +31,8 @@
     
     CGFloat yTarget_;
     
+    NSInteger HP_;
+    
 }
 
 + (id) bossTurtleWithPos:(CGPoint)pos;
@@ -47,7 +49,11 @@
 
 - (void) startShellSequence;
 
+- (void) startDeathSequence;
+
 - (void) deployShell;
+
+- (void) addBlast;
 
 - (void) engineFlameGoingRight:(BOOL)right;
 

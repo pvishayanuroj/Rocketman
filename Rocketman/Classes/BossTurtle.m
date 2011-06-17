@@ -12,6 +12,7 @@
 #import "GameManager.h"
 #import "EngineParticleSystem.h"
 #import "AudioManager.h"
+#import "BlastCloud.h"
 
 @implementation BossTurtle
 
@@ -36,6 +37,7 @@ static NSUInteger countID = 0;
         self.position = pos;
         
         // Attributes
+        HP_ = 3;
         radius_ = 64;
         radiusSquared_ = radius_*radius_;        
         
@@ -112,50 +114,47 @@ static NSUInteger countID = 0;
     [self runAction:[CCRepeat actionWithAction:seq times:maxShells_]];
 }
 
+- (void) startDeathSequence
+{
+    CCFiniteTimeAction *delay = [CCDelayTime actionWithDuration:0.05];
+    CCFiniteTimeAction *blast = [CCCallFunc actionWithTarget:self selector:@selector(addBlast)];
+    CCFiniteTimeAction *seq = [CCSequence actions:blast, delay, nil];
+    CCFiniteTimeAction *repeat = [CCRepeat actionWithAction:seq times:100];
+    CCFiniteTimeAction *end = [CCCallFunc actionWithTarget:self selector:@selector(destroy)];
+    [self runAction:[CCSequence actions:repeat, end, nil]];
+}
+
 - (void) deployShell
 {
     [[GameManager gameManager] addShell:self.position];
 }
 
-- (void) addCloud
-{
-    CCSprite *blastCloud = [CCSprite spriteWithSpriteFrameName:@"Blast Cloud.png"];
-    [self addChild:blastCloud];
-    blastCloud.scale = 1.2;
-}
-
 - (void) addBlast
 {
-    CCSprite *blast = [CCSprite spriteWithSpriteFrameName:@"Blast.png"];   
-    [self addChild:blast];    
-}
-
-- (void) addText:(id)node data:(void *)data
-{
-    EventText text = (EventText)data;
-    CCSprite *textSprite;
+    CGPoint pos;
     
-    switch (text) {
-        case kBamText:
-            textSprite = [CCSprite spriteWithSpriteFrameName:@"Bam Text.png"];            
-            break;
-        case kPlopText:
-            textSprite = [CCSprite spriteWithSpriteFrameName:@"Plop Text.png"];            
-            break;            
-        default:
-            textSprite = [CCSprite spriteWithSpriteFrameName:@"Bam Text.png"];            
+    // Randomize
+    NSInteger x = 150;
+    NSInteger y = 100;
+    pos.x = arc4random() % x;
+    pos.y = arc4random() % y;
+    // Weirdest issue - combining these two operations does not seem to work
+    pos.x -= x/2;
+    pos.y -= y/2;
+    
+    BlastCloud *blast = [BlastCloud blastCloudAt:pos size:1.0 text:kBamText];
+    [self addChild:blast];
+    
+    if (arc4random() % 100 < 25) {
+        [[AudioManager audioManager] playSound:kExplosion01];
     }
-    
-    [self addChild:textSprite];
-    
-    textSprite.scale = 0.7;
 }
 
 - (void) fall:(CGFloat)speed
 {
     CGFloat dx;
     CGFloat dy = 0;
-    
+
     if (movingLeft_) {
         if (self.position.x < leftCutoff_) {
             movingLeft_ = NO;
@@ -178,30 +177,44 @@ static NSUInteger countID = 0;
             dx = 3;
         }
     }
-    
-    if (self.position.y > yTarget_) {
-        dy = -1;
-    }
-    // Deploy shells each turn
-    else {
-        if (!deployedShells_) {
-            CGFloat xTrigger = 160;
-            if ((movingLeft_ && self.position.x < xTrigger) || (!movingLeft_ && self.position.x > xTrigger)) {
-                deployedShells_ = YES;
-                [self startShellSequence];                
+        
+    // Only launch shells if not in death sequence
+    if (shootable_) {
+        if (self.position.y > yTarget_) {
+            dy = -1;
+        }
+        // Deploy shells each turn
+        else {
+            if (!deployedShells_) {
+                CGFloat xTrigger = 160;
+                if ((movingLeft_ && self.position.x < xTrigger) || (!movingLeft_ && self.position.x > xTrigger)) {
+                    deployedShells_ = YES;
+                    [self startShellSequence];                
+                }
             }
         }
     }
     
+    // When dying, slow down
+    if (!shootable_) {
+        dx *= 0.3;
+    }
+        
     CGPoint p = CGPointMake(dx, dy);
     self.position = ccpAdd(self.position, p);    
 }
 
 - (void) bulletHit
 {
-    [[AudioManager audioManager] playSound:kPlop];        
-    
-    [self showDamage];
+    // Creature death
+    if (--HP_ == 0) {
+        shootable_ = NO;         
+        engineFlame_.emissionRate = 0;
+        [self startDeathSequence];
+    }
+    else {
+        [self showDamage];        
+    }
 }
 
 - (void) collide
