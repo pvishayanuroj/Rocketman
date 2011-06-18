@@ -561,47 +561,23 @@
 
     /*
     CGFloat deltax = targetX_ - rocket_.position.x;
-
-    CGFloat maxSpeed = 1;
-    
-    if (deltax > maxSpeed) {
-        deltax = maxSpeed;
+    CGFloat absoluteMax = 7;
+    CGFloat maxSpeed = fabs(deltax)/3.0f;
+    if (maxSpeed > absoluteMax) {
+        maxSpeed = absoluteMax;
     }
-    if (deltax < -maxSpeed) {
-        deltax = -maxSpeed ;
-    }    
-    
-    dx += deltax;
+        
+    if (deltax > maxSpeed) {
+        dx = maxSpeed;
+    }
+    else if (deltax < -maxSpeed) {
+        dx = -maxSpeed ;
+    }
+    else {
+        dx = deltax;
+    }
+    //NSLog(@"deltax: %3.2f, dx: %2.2f", deltax, dx);
     */
-    /*
-    // NEW
-    CGFloat deltax = targetX_ - rocket_.position.x;
-
-    CGFloat maxSpeed = 7;
-    
-    if (deltax > maxSpeed) {
-        deltax = maxSpeed;
-    }
-    if (deltax < -maxSpeed) {
-        deltax = -maxSpeed ;
-    }
-    
-    dx = deltax;
-    
-    for (int i = 0; i < 1; i++) {
-        avg_[i] = avg_[i+1];
-    }    
-    avg_[1] = dx;
-    //NSLog(@"%2.4f", dx);
-    
-    CGFloat sum = 0;
-    for (int i = 0; i < 2; i++) {
-        sum += avg_[i];
-    }
-    CGFloat avgX = sum/2.0;
-    NSLog(@"%2.4f, %2.4f", dx, avgX);
-    dx = avgX;
-     */
     
     CGPoint moveAmt = CGPointMake(dx, 0);
     pos = ccpAdd(rocket_.position, moveAmt);
@@ -870,18 +846,19 @@
     [[GameManager gameManager] setTilt:resultx];
     
     /*
+    CGFloat cutoff = 0.25;
     CGFloat ax = accel[0];
-    
-    if (ax < -0.4) {
-        ax = -0.4;
+    if (ax < -cutoff) {
+        ax = -cutoff;
     }
-    if (ax > 0.4) {
-        ax = 0.4;
+    if (ax > cutoff) {
+        ax = cutoff;
     }
     
-    CGFloat tx = ax * 400 + 160;
+    CGFloat tx = ax * 160/cutoff + 160;
     targetX_ = tx;
     */
+    
     sideMoveSpeed_ = resultx*50;    
 
     CGFloat maxSpeed = 8;
