@@ -18,7 +18,11 @@
     
     CCAction *shakingAnimation_;    
     
+    CCAction *wobblingAnimation_;
+    
     BOOL isBurning_;
+    
+    BOOL isWobbling_;
     
     CGRect rect_;
     
@@ -44,6 +48,12 @@
 - (void) showShaking;
 
 - (void) showBurning;
+
+- (void) doneBurning;
+
+- (void) showWobbling;
+
+- (void) doneWobbling;
 
 - (void) toggleBoostOn:(BOOL)on;
 

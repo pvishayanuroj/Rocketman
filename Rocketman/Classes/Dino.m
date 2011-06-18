@@ -10,6 +10,7 @@
 #import "TargetedAction.h"
 #import "GameLayer.h"
 #import "AudioManager.h"
+#import "GameManager.h"
 
 @implementation Dino
 
@@ -88,7 +89,7 @@ static NSUInteger countID = 0;
 - (void) doneAttacking
 {
     GameLayer *gameLayer = (GameLayer *)[self parent];
-    [gameLayer rocketBurn];
+    [gameLayer setRocketCondition:kRocketBurning];
     
     [self showIdle];
 }
@@ -110,7 +111,9 @@ static NSUInteger countID = 0;
     
     [self showAttacking];
     
-    [super collide];
+    // Do not call super collide, so that wobble animation does not override burning animation
+    collided_ = YES;
+    shootable_ = NO;    
 }
 
 - (void) destroy

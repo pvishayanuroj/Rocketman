@@ -247,6 +247,7 @@
 
 - (void) collisionDetect
 {
+    BOOL collide;    
     CGFloat distance;
     CGFloat threshold;
     CGRect rocketBox;
@@ -258,28 +259,28 @@
     for (Obstacle *obstacle in obstacles_) {
         
         // Cannot collide twice with something
-        if (obstacle.collided) {
+        if (obstacle.collided) {    
             continue;
         }
         
         // Do a rectangle on circle collision check
         if (obstacle.circular) {
-            if ([UtilFuncs intersects:obstacle.position radius:obstacle.radius rect:rocketBox]) {
-                [obstacle collide];
-            }
+            collide = [UtilFuncs intersects:obstacle.position radius:obstacle.radius rect:rocketBox];
         }
         // Do a rectangle and rectangle collision check
         else {
             obstacleBox = CGRectMake(obstacle.position.x, obstacle.position.y, obstacle.size.width, obstacle.size.height);
-            if ([UtilFuncs intersects:rocketBox b:obstacleBox]) {
-                [obstacle collide];
-            }
+            collide = [UtilFuncs intersects:rocketBox b:obstacleBox];
+        }
+        
+        // Rocket collided
+        if (collide) {
+            [obstacle collide];
         }
     }
     
     NSMutableIndexSet *remove = [NSMutableIndexSet indexSet];
     NSUInteger index = 0;    
-    BOOL collide;
     
     // For checking cat bullet collisions with obstacles
     for (CatBullet *cat in firedCats_) {
@@ -649,11 +650,6 @@
     
 }
 
-- (void) rocketBurn
-{
-    [rocket_ showBurning];
-}
-
 - (void) fireCat
 {
     if (!onGround_ && !inputLocked_) {        
@@ -694,6 +690,22 @@
 {
     onGround_ = NO;    
     inputLocked_ = NO;
+}
+
+- (void) setRocketCondition:(RocketCondition)condition
+{
+    switch (condition) {
+        case kRocketBurning:
+            [rocket_ showBurning];
+            break;
+        case kRocketWobbling:
+            [rocket_ showWobbling];
+            break;
+        case kRocketHearts:
+            break;
+        default:
+            NSAssert(NO, @"Invalid Rocket Condition");
+    }
 }
 
 - (void) engageBoost:(CGFloat)speedup amt:(CGFloat)amt rate:(CGFloat)rate time:(CGFloat)time

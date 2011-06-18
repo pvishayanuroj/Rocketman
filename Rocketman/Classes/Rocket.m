@@ -54,6 +54,7 @@
     [flyingAnimation_ release];
     [shakingAnimation_ release];
     [burningAnimation_ release];
+    [wobblingAnimation_ release];
     [engineFlame_ release];
     [boostFlame_ release];
     
@@ -64,6 +65,8 @@
 {
     return [NSString stringWithFormat:@"Player Rocket"];
 }    
+
+#pragma mark - Initialization Methods
 
 - (void) initEngineFlame
 {
@@ -114,6 +117,9 @@
     
 	animation = [[CCAnimationCache sharedAnimationCache] animationByName:@"Rocket2 Burn"];
 	burningAnimation_ = [[CCAnimate actionWithAnimation:animation] retain];
+    
+    animation = [[CCAnimationCache sharedAnimationCache] animationByName:@"Rocket2 Wobble"];
+	wobblingAnimation_ = [[CCAnimate actionWithAnimation:animation] retain];
 }        
 
 - (void) realignSprite
@@ -123,8 +129,8 @@
 
 - (void) showFlying
 {
-	[sprite_ stopAllActions];
-	[sprite_ runAction:flyingAnimation_];	
+	//[sprite_ stopAllActions];
+	//[sprite_ runAction:flyingAnimation_];	
 }
 
 - (void) showShaking
@@ -145,7 +151,7 @@
                              
 - (void) showBurning
 {
-    if (isBurning_) {
+    if (isBurning_ || isWobbling_) {
         return;
     }
     
@@ -157,9 +163,29 @@
 	[self runAction:[CCSequence actions:animation, method, nil]];	
 }
 
+- (void) showWobbling
+{
+    if (isWobbling_ || isBurning_) {
+        return;
+    }
+    
+    isWobbling_ = YES;
+	[sprite_ stopAllActions];	
+	
+	TargetedAction *animation = [TargetedAction actionWithTarget:sprite_ actionIn:(CCFiniteTimeAction *)wobblingAnimation_];
+	CCFiniteTimeAction *method = [CCCallFunc actionWithTarget:self selector:@selector(doneWobbling)];	
+	[self runAction:[CCSequence actions:animation, method, nil]];	
+}
+
 - (void) doneBurning
 {
     isBurning_ = NO;
+    [self showFlying];
+}
+
+- (void) doneWobbling
+{
+    isWobbling_ = NO;
     [self showFlying];
 }
 

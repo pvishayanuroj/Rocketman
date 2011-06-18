@@ -8,6 +8,7 @@
 
 #import "Obstacle.h"
 #import "BlastCloud.h"
+#import "GameLayer.h"
 
 @implementation Obstacle
 
@@ -63,13 +64,15 @@
     sprite_.visible = NO;
     collided_ = YES;
     shootable_ = NO; 
-    //NSAssert(NO, @"hit must be implemented in the child class of Obstacle");    
 }
 
 - (void) collide
 {
     collided_ = YES;
     shootable_ = NO;
+    
+    GameLayer *gameLayer = (GameLayer *)[self parent];
+    [gameLayer setRocketCondition:kRocketWobbling];
 }
 
 - (void) destroy

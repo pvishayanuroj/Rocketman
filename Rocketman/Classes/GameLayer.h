@@ -148,11 +148,11 @@
 
 - (void) loss;
 
-- (void) rocketBurn;
-
 - (void) fireCat;
 
 - (void) takeOffComplete;
+
+- (void) setRocketCondition:(RocketCondition)condition;
 
 - (void) useBoost;
 

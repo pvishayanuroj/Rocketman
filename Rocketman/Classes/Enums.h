@@ -47,6 +47,12 @@ typedef enum {
 } CatType;
 
 typedef enum {
+    kRocketBurning,
+    kRocketWobbling,
+    kRocketHearts
+} RocketCondition;
+
+typedef enum {
 	kLeftButton,
     kRightButton
 } ButtonType;
