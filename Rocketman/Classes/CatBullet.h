@@ -20,15 +20,25 @@
     CGFloat velocity_;
     
 	NSUInteger unitID_;       
+    
+    CGFloat explosionRadius_;
+    
+    NSInteger remainingImpacts_;
 }
 
 @property (nonatomic, readonly) CGFloat radius;
+@property (nonatomic, readonly) CGFloat explosionRadius;
+@property (nonatomic, assign) NSInteger remainingImpacts;
 
 + (id) catBulletWithPos:(CGPoint)pos withSpeed:(CGFloat)speed;
 
-- (id) initWithPos:(CGPoint)pos withSpeed:(CGFloat)speed;
++ (id) fatBulletWithPos:(CGPoint)pos withSpeed:(CGFloat)speed;
 
-- (void) initActions;
++ (id) longBulletWithPos:(CGPoint)pos withSpeed:(CGFloat)speed;
+
+- (id) initWithPos:(CGPoint)pos withSpeed:(CGFloat)speed explosionRadius:(CGFloat)radius remainingImpacts:(NSInteger)impacts catType:(CatType)type;
+
+- (void) initActions:(CatType)type;
 
 - (void) showIdle;
 

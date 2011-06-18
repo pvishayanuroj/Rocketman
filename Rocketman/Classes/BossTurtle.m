@@ -37,14 +37,14 @@ static NSUInteger countID = 0;
         self.position = pos;
         
         // Attributes
-        HP_ = 3;
+        HP_ = 8;
         radius_ = 64;
         radiusSquared_ = radius_*radius_;        
         
         CGSize size = [[CCDirector sharedDirector] winSize];        
         leftCutoff_ = - 0.5 * size.width;
         rightCutoff_ = size.width + 0.5 * size.width;
-        yTarget_ = 0.66 * size.height;
+        yTarget_ = 0.80 * size.height;
         
         movingLeft_ = YES;
         deployedShells_ = NO;

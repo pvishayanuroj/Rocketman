@@ -98,14 +98,18 @@
         boostTimer_ = 0;        
         onGround_ = YES;
         inputLocked_ = NO;
+        
+        // DEBUG
         bossAdded_ = NO;
+        ammoType_ = 0;
         
         v_ = 0;
 #if DEBUG_CONSTANTSPEED
-        v0_ = 9;
+        v0_ = 6;
 #else
         v0_ = 9;
 #endif
+        NSLog(@"speed set to %2.2f", v0_);
         vBoost_ = 5;
         vBoostRing_ = 4; 
         dv_ = 0;
@@ -277,15 +281,13 @@
     NSUInteger index = 0;    
     BOOL collide;
     
-    // For checking cat collisions with obstacles
+    // For checking cat bullet collisions with obstacles
     for (CatBullet *cat in firedCats_) {
         for (Obstacle *obstacle in obstacles_) {
             
             if (!obstacle.shootable) {
                 continue;
             }
-            
-            collide = NO;
             
             // The obstacle is a circle, do a circle on circle check
             if (obstacle.circular) {
@@ -299,14 +301,50 @@
                 collide = [UtilFuncs intersects:cat.position radius:cat.radius rect:obstacleBox];
             }
             
-            distance = [UtilFuncs distanceNoRoot:cat.position b:obstacle.position];
-            threshold = cat.radius + obstacle.radius;
+            //distance = [UtilFuncs distanceNoRoot:cat.position b:obstacle.position];
+            //threshold = cat.radius + obstacle.radius;
             
             // If a collision occurred, remove the cat bullet and notify the obstacle of the hit
             if (collide) {
-                [remove addIndex:index];
-                [obstacle bulletHit];
-                [cat removeFromParentAndCleanup:YES];
+                
+                // Decrement the number of impacts the bullet can have
+                cat.remainingImpacts--;
+                
+                // Only remove the bullet if it has hit enough times
+                if (cat.remainingImpacts <= 0) {
+                    [remove addIndex:index];
+                    [cat removeFromParentAndCleanup:YES];                    
+                }
+                
+                // Check if the bullet is "explosive"
+                if (cat.explosionRadius > 0) {
+                    // This is quite inefficient, fix this if time permits!
+                    for (Obstacle *obs in obstacles_) {
+                        
+                        if (!obs.shootable) {
+                            continue;
+                        }
+                        
+                        // The obstacle is a circle, do a circle on circle check
+                        if (obs.circular) {
+                            distance = [UtilFuncs distanceNoRoot:cat.position b:obs.position];
+                            threshold = cat.explosionRadius + obs.radius;
+                            collide = (distance < threshold * threshold);
+                        }
+                        // The obstacle is a rectangle, do a rectangle on circle check
+                        else {
+                            obstacleBox = CGRectMake(obs.position.x, obs.position.y, obs.size.width, obs.size.height);                
+                            collide = [UtilFuncs intersects:cat.position radius:cat.explosionRadius rect:obstacleBox];
+                        }                        
+                        
+                        if (collide) {
+                            [obs bulletHit];
+                        }
+                    }
+                }
+                else {
+                    [obstacle bulletHit];
+                }
                 
                 // Get out of inner loop
                 break; 
@@ -625,7 +663,24 @@
             numCats_--;
             [[GameManager gameManager] setNumCats:numCats_];                     
             
-            CatBullet *bullet = [CatBullet catBulletWithPos:rocket_.position withSpeed:(rocketSpeed_ + 10)];
+            CatBullet *bullet;
+            
+            // DEBUG!!
+            NSInteger s = ammoType_++ % 3;
+            switch (s) {
+                case 0:
+                    bullet = [CatBullet catBulletWithPos:rocket_.position withSpeed:(rocketSpeed_ + 10)];
+                    break;
+                case 1:
+                    bullet = [CatBullet fatBulletWithPos:rocket_.position withSpeed:(rocketSpeed_ + 10)];
+                    break;
+                case 2:
+                    bullet = [CatBullet longBulletWithPos:rocket_.position withSpeed:(rocketSpeed_ + 10)];
+                    break;
+                default:
+                    bullet = [CatBullet catBulletWithPos:rocket_.position withSpeed:(rocketSpeed_ + 10)];
+            }
+            
             [self addChild:bullet z:kBulletDepth];
             [firedCats_ addObject:bullet];
             [[AudioManager audioManager] playSound:kMeow];
@@ -655,7 +710,8 @@
         boostRate_ = rate;
     }
     else {
-        boostTarget_ = v_ + 8;
+        //boostTarget_ = v_ + 8;
+        boostTarget_ = v_ + speedup;
         boost_ = amt;
         boostRate_ = rate;
     }

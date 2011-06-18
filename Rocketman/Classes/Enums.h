@@ -41,6 +41,12 @@ typedef enum {
 } SoundType;
 
 typedef enum {
+    kCatNormal,
+    kCatBomb,
+    kCatPierce
+} CatType;
+
+typedef enum {
 	kLeftButton,
     kRightButton
 } ButtonType;

@@ -116,7 +116,10 @@
     
     CGFloat dt_;
     
+    // Temp variables for debugging
     BOOL bossAdded_;
+    
+    NSInteger ammoType_;
 }
 
 - (void) cloudGenerator;
