@@ -28,4 +28,6 @@
 
 - (void) nextScene;
 
+- (void) startGame;
+
 @end

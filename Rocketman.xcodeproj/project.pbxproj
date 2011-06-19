@@ -173,6 +173,7 @@
 		DA99E82E13ADC30E0075896F /* Intro 09.png in Resources */ = {isa = PBXBuildFile; fileRef = DA99E82313ADC30E0075896F /* Intro 09.png */; };
 		DA99E83113ADCA8D0075896F /* SpinningElement.m in Sources */ = {isa = PBXBuildFile; fileRef = DA99E83013ADCA840075896F /* SpinningElement.m */; };
 		DA99E94813ADD4980075896F /* Intro Cat.png in Resources */ = {isa = PBXBuildFile; fileRef = DA99E94713ADD4980075896F /* Intro Cat.png */; };
+		DA99E94A13ADE5030075896F /* skip_button.png in Resources */ = {isa = PBXBuildFile; fileRef = DA99E94913ADE5020075896F /* skip_button.png */; };
 		DAA699DC13A8528A004AF844 /* BlastCloud.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA699DB13A8528A004AF844 /* BlastCloud.m */; };
 		DAA7A5FB13973B2200D6DA68 /* powerup.wav in Resources */ = {isa = PBXBuildFile; fileRef = DAA7A5FA13973B2200D6DA68 /* powerup.wav */; };
 		DAA7A5FD13973C1800D6DA68 /* meow03.wav in Resources */ = {isa = PBXBuildFile; fileRef = DAA7A5FC13973C1800D6DA68 /* meow03.wav */; };
@@ -518,6 +519,7 @@
 		DA99E82F13ADCA7F0075896F /* SpinningElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SpinningElement.h; path = Classes/SpinningElement.h; sourceTree = "<group>"; };
 		DA99E83013ADCA840075896F /* SpinningElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpinningElement.m; path = Classes/SpinningElement.m; sourceTree = "<group>"; };
 		DA99E94713ADD4980075896F /* Intro Cat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Intro Cat.png"; sourceTree = "<group>"; };
+		DA99E94913ADE5020075896F /* skip_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = skip_button.png; sourceTree = "<group>"; };
 		DAA699DA13A8528A004AF844 /* BlastCloud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlastCloud.h; sourceTree = "<group>"; };
 		DAA699DB13A8528A004AF844 /* BlastCloud.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlastCloud.m; sourceTree = "<group>"; };
 		DAA7A5FA13973B2200D6DA68 /* powerup.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = powerup.wav; sourceTree = "<group>"; };
@@ -982,6 +984,7 @@
 		DA346EE4138E5D53000881D6 /* Game Art */ = {
 			isa = PBXGroup;
 			children = (
+				DA99E94913ADE5020075896F /* skip_button.png */,
 				DAC8F0CB139F44B200D06CDB /* ui_bar.png */,
 				DAC8F0C5139F351400D06CDB /* help_button.png */,
 				DAC8F0C6139F351400D06CDB /* play_button.png */,
@@ -1282,6 +1285,7 @@
 				DA99E82D13ADC30E0075896F /* Intro 08.png in Resources */,
 				DA99E82E13ADC30E0075896F /* Intro 09.png in Resources */,
 				DA99E94813ADD4980075896F /* Intro Cat.png in Resources */,
+				DA99E94A13ADE5030075896F /* skip_button.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

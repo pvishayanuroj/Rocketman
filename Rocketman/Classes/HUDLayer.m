@@ -59,7 +59,7 @@
         numCatsLabel_ = [[CCLabelBMFont labelWithString:@"0" fntFile:@"SRSM_font.fnt"] retain];
         numBoostsLabel_ = [[CCLabelBMFont labelWithString:@"0" fntFile:@"SRSM_font.fnt"] retain];
         numCatsLabel_.position = ccp(45, 35);
-        numBoostsLabel_.position = ccp(285, 35);           
+        numBoostsLabel_.position = ccp(295, 35);           
         [self addChild:numCatsLabel_ z:1];
         [self addChild:numBoostsLabel_ z:1];
 	}

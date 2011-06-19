@@ -29,6 +29,14 @@
         StoryLayer *storyLayer = [StoryLayer node];
         [self addChild:storyLayer z:1];
 
+        
+        CCMenuItemSprite *skipButton = [CCMenuItemSprite itemFromNormalSprite:[CCSprite spriteWithFile:@"skip_button.png"] selectedSprite:[CCSprite spriteWithFile:@"skip_button.png"] target:self selector:@selector(skip)];
+        
+        CCMenu *menu = [CCMenu menuWithItems:skipButton, nil];
+        //[menu alignItemsVerticallyWithPadding:5];
+        menu.position = ccp(280, 30);
+        
+        [self addChild:menu];        
     }
     return self;
 }
@@ -52,6 +60,11 @@
 - (void) nextScene
 {
     [[StoryManager storyManager] nextScene];
+}
+
+- (void) skip
+{
+    [[StoryManager storyManager] startGame];
 }
 
 @end

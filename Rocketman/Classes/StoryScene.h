@@ -22,4 +22,6 @@
 
 - (void) nextScene;
 
+- (void) skip;
+
 @end

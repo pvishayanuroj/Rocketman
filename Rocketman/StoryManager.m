@@ -46,7 +46,7 @@ static StoryManager *_storyManager = nil;
         storyElements_ = [[NSMutableDictionary dictionaryWithCapacity:10] retain];
         
         sceneName_ = [[NSString stringWithString:@"Intro"] retain];
-        sceneNum_ = 4;
+        sceneNum_ = 0;
         endSceneNum_ = 9;
         
         [self initStoryElements];
@@ -104,8 +104,7 @@ static StoryManager *_storyManager = nil;
     
     // If we've reached the end of the sequence, start the game
     if (sceneNum_ > endSceneNum_) {
-        scene = [GameScene node];        
-        [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:scene]];            
+        [self startGame];
     }
     // Otherwise go to the next scene
     else {
@@ -113,11 +112,9 @@ static StoryManager *_storyManager = nil;
         [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:scene]];            
         
         // Check if there are any story elements to add
-        NSLog(@"checking scene %d", sceneNum_);
         NSArray *elements = [storyElements_ objectForKey:[NSNumber numberWithUnsignedInteger:sceneNum_]];
         if (elements) {
             for (StoryElement *se in elements) {
-                NSLog(@"adding element at scene %d", sceneNum_);
                 [scene addChild:se];
                 [se play];
             }
@@ -126,6 +123,12 @@ static StoryManager *_storyManager = nil;
         // Make sure the scene afterwards will get run
         [scene startTimer];
     }
+}
+
+- (void) startGame
+{
+    CCScene *scene = [GameScene node];        
+    [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:scene]];                
 }
 
 
