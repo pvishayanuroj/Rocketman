@@ -20,6 +20,8 @@
 
 + (GameManager *) gameManager;
 
++ (void) purgeGameManager;
+
 - (void) registerGameLayer:(GameLayer *)gameLayer;
 
 - (void) registerHUDLayer:(HUDLayer *)hudLayer;

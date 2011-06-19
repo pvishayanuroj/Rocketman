@@ -38,8 +38,8 @@
 
 - (void) ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    StoryScene *scene = (StoryScene *)[self parent];
-    [scene nextScene];
+    //StoryScene *scene = (StoryScene *)[self parent];
+    //[scene nextScene];
 }
 
 

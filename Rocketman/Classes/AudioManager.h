@@ -16,6 +16,8 @@
 
 + (AudioManager *) audioManager;
 
++ (void) purgeAudioManager;
+
 - (void) playSound:(SoundType)type;
 
 - (void) stopSound:(SoundType)type;

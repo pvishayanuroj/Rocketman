@@ -8,9 +8,9 @@
 
 #import "MainMenuLayer.h"
 #import "GameScene.h"
-#import "StoryScene.h"
 #import "HighscoreScene.h"
 #import "Constants.h"
+#import "StoryManager.h"
 
 @implementation MainMenuLayer
 
@@ -30,7 +30,8 @@
         CCMenuItemSprite *menuButton3 = [CCMenuItemSprite itemFromNormalSprite:[CCSprite spriteWithFile:@"scores_button.png"] selectedSprite:[CCSprite spriteWithFile:@"scores_button.png"] target:self selector:@selector(viewHighscore)];
         
         CCMenu *menu = [CCMenu menuWithItems:menuButton1, menuButton2, menuButton3, nil];
-        [menu alignItemsVerticallyWithPadding:40];
+        [menu alignItemsVerticallyWithPadding:5];
+        menu.position = ccp(120, 200);
         
         [self addChild:backgroundImage z:0];
         [self addChild:menu z:1];
@@ -39,11 +40,9 @@
 	return self;
 }
 
-- (void) startGame {
-    
-    StoryScene *scene = [StoryScene storyWithName:@"Intro" num:1 endNum:5];
-    [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:SCENE_TRANSITION_DURATION scene:scene]];
-    
+- (void) startGame 
+{
+    [[StoryManager storyManager] nextScene];
 }
 
 - (void) viewHighscore {
