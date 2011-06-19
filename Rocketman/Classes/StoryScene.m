@@ -7,7 +7,6 @@
 //
 
 #import "StoryScene.h"
-#import "StoryLayer.h"
 #import "StoryManager.h"
 
 @implementation StoryScene
@@ -21,21 +20,16 @@
 {
     if ((self = [super init])) {
         
+        // The actual scene image
         NSString *filename = [NSString stringWithFormat:@"%@ %02d.png", name, num];
         CCSprite *sprite = [CCSprite spriteWithFile:filename];
         sprite.anchorPoint = CGPointZero;
         [self addChild:sprite];
-        
-        StoryLayer *storyLayer = [StoryLayer node];
-        [self addChild:storyLayer z:1];
 
-        
-        CCMenuItemSprite *skipButton = [CCMenuItemSprite itemFromNormalSprite:[CCSprite spriteWithFile:@"skip_button.png"] selectedSprite:[CCSprite spriteWithFile:@"skip_button.png"] target:self selector:@selector(skip)];
-        
+        // Skip button
+        CCMenuItemSprite *skipButton = [CCMenuItemSprite itemFromNormalSprite:[CCSprite spriteWithFile:@"skip_button.png"] selectedSprite:[CCSprite spriteWithFile:@"skip_button.png"] target:self selector:@selector(skip)];        
         CCMenu *menu = [CCMenu menuWithItems:skipButton, nil];
-        //[menu alignItemsVerticallyWithPadding:5];
         menu.position = ccp(280, 30);
-        
         [self addChild:menu];        
     }
     return self;
