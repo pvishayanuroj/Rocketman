@@ -62,7 +62,7 @@
 			</dict>
 			<dict>
 				<key>Animate Delay</key>
-				<real>0.15</real>
+				<real>0.5</real>
 				<key>Name</key>
 				<string>Heart</string>
 				<key>Num Frames</key>

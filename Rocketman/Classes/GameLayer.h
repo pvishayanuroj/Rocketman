@@ -158,6 +158,8 @@
 
 - (void) engageBoost:(CGFloat)speedup amt:(CGFloat)amt rate:(CGFloat)rate time:(CGFloat)time;
 
+- (void) engageFixedBoost:(CGFloat)speed amt:(CGFloat)amt rate:(CGFloat)rate time:(CGFloat)time;
+
 - (void) slowDown:(CGFloat)factor;
 
 - (void) collectCat:(Cat *)cat;

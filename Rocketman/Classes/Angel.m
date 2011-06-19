@@ -105,12 +105,14 @@ static NSUInteger countID = 0;
 - (void) collide
 {
     GameLayer *gameLayer = (GameLayer *)[self parent];
-    [[AudioManager audioManager] playSound:kSlap];            
-    [gameLayer slowDown:0.66];    
+    [gameLayer setRocketCondition:kRocketHearts];
+    [gameLayer engageFixedBoost:12 amt:12 rate:0 time:3.0];
     
     [self showAttacking];
     
-    [super collide];
+    // Do not call super collide, so that wobble animation does not override burning animation
+    collided_ = YES;
+    shootable_ = NO;  
 }
 
 - (void) destroy

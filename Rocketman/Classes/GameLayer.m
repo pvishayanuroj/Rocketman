@@ -114,7 +114,7 @@
         vBoostRing_ = 4; 
         dv_ = 0;
         ddv_ = 0.00002;
-        vMax_ = 15;
+        vMax_ = 13;
         
         dt_ = 0;    
 
@@ -452,7 +452,7 @@
 
 - (void) bossGenerator
 {
-    if (height_ > 500) {
+    if (height_ > 10000) {
         if (!bossAdded_) {
             bossAdded_ = YES;
             NSInteger x = [self getRandomX];
@@ -678,6 +678,7 @@
             [rocket_ showWobbling];
             break;
         case kRocketHearts:
+            [rocket_ showHeart];
             break;
         default:
             NSAssert(NO, @"Invalid Rocket Condition");
@@ -686,6 +687,9 @@
 
 - (void) engageBoost:(CGFloat)speedup amt:(CGFloat)amt rate:(CGFloat)rate time:(CGFloat)time
 {
+    // The boost amount is how much is speed is added per tick
+    // The rate is how much the boost amount is changed per tick
+    
     dv_ = 0;
     ddv_ = 0.00002;
     
@@ -705,6 +709,25 @@
     }
     
     [rocket_ toggleBoostOn:YES];    
+}
+
+- (void) engageFixedBoost:(CGFloat)speed amt:(CGFloat)amt rate:(CGFloat)rate time:(CGFloat)time
+{
+    // The speed is the target speed to stop at
+    // The boost amount is how much is speed is added per tick
+    // The rate is how much the boost amount is changed per tick    
+    
+    dv_ = 0;
+    ddv_ = 0.00002;
+    
+    boostEngaged_ = YES;
+    boostTimer_ = time;
+    
+    boostTarget_ = speed;
+    boost_ = amt;
+    boostRate_ = rate;
+    
+    [rocket_ toggleBoostOn:YES];        
 }
 
 - (void) useBoost

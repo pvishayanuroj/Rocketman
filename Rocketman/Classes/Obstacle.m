@@ -80,6 +80,8 @@
     [self removeFromParentAndCleanup:YES];
 }
 
+#pragma mark - Debug Methods
+
 #if DEBUG_BOUNDINGBOX
 - (void) draw
 {
