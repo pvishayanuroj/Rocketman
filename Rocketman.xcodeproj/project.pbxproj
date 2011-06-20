@@ -176,6 +176,7 @@
 		DA99E94D13ADE62F0075896F /* StoryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DA99E94C13ADE62E0075896F /* StoryManager.m */; };
 		DA99E95213ADE6650075896F /* HighscoreLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DA99E94F13ADE64B0075896F /* HighscoreLayer.m */; };
 		DA99E95313ADE6650075896F /* HighscoreScene.m in Sources */ = {isa = PBXBuildFile; fileRef = DA99E95113ADE6590075896F /* HighscoreScene.m */; };
+		DAA1157E13AF996E00ACD4BD /* Flybot.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA1157D13AF996E00ACD4BD /* Flybot.m */; };
 		DAA7A5FB13973B2200D6DA68 /* powerup.wav in Resources */ = {isa = PBXBuildFile; fileRef = DAA7A5FA13973B2200D6DA68 /* powerup.wav */; };
 		DAA7A5FD13973C1800D6DA68 /* meow03.wav in Resources */ = {isa = PBXBuildFile; fileRef = DAA7A5FC13973C1800D6DA68 /* meow03.wav */; };
 		DAB132E0138F1D9A001294BB /* fire.png in Resources */ = {isa = PBXBuildFile; fileRef = DAB132DF138F1D9A001294BB /* fire.png */; };
@@ -523,6 +524,8 @@
 		DA99E94F13ADE64B0075896F /* HighscoreLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HighscoreLayer.m; path = Classes/HighscoreLayer.m; sourceTree = "<group>"; };
 		DA99E95013ADE6500075896F /* HighscoreScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HighscoreScene.h; path = Classes/HighscoreScene.h; sourceTree = "<group>"; };
 		DA99E95113ADE6590075896F /* HighscoreScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HighscoreScene.m; path = Classes/HighscoreScene.m; sourceTree = "<group>"; };
+		DAA1157C13AF996E00ACD4BD /* Flybot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Flybot.h; path = Classes/Flybot.h; sourceTree = "<group>"; };
+		DAA1157D13AF996E00ACD4BD /* Flybot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Flybot.m; path = Classes/Flybot.m; sourceTree = "<group>"; };
 		DAA7A5FA13973B2200D6DA68 /* powerup.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = powerup.wav; sourceTree = "<group>"; };
 		DAA7A5FC13973C1800D6DA68 /* meow03.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = meow03.wav; sourceTree = "<group>"; };
 		DAB132DF138F1D9A001294BB /* fire.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fire.png; sourceTree = "<group>"; };
@@ -1135,6 +1138,8 @@
 				DAF8AB2913A7D6F100A838CE /* Boost.m */,
 				DAF8AB3013A7D6F100A838CE /* Fuel.h */,
 				DAF8AB3113A7D6F100A838CE /* Fuel.m */,
+				DAA1157C13AF996E00ACD4BD /* Flybot.h */,
+				DAA1157D13AF996E00ACD4BD /* Flybot.m */,
 			);
 			name = Obstacles;
 			sourceTree = "<group>";
@@ -1437,6 +1442,7 @@
 				DA99E95313ADE6650075896F /* HighscoreScene.m in Sources */,
 				DA0C242B13ADE76C00544DF1 /* BlastCloud.m in Sources */,
 				DA0C243213ADE8A700544DF1 /* HighScoreManager.m in Sources */,
+				DAA1157E13AF996E00ACD4BD /* Flybot.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

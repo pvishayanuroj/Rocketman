@@ -17,6 +17,7 @@
 #import "SlowCloud.h"
 #import "Alien.h"
 #import "UFO.h"
+#import "Flybot.h"
 #import "Dino.h"
 #import "Angel.h"
 #import "Shell.h"
@@ -482,7 +483,7 @@
         y = screenHeight_ + 100;
         pos = ccp(x, y);                
 
-        NSUInteger type = arc4random() % 5; 
+        NSUInteger type = arc4random() % 6; 
         
         switch (type) {
             case 0:
@@ -499,6 +500,9 @@
                 break;                
             case 4:
                 obstacle = [UFO ufoWithPos:pos];
+                break;
+            case 5:
+                obstacle = [Flybot flyBotWithPos:pos];
                 break;
             default:
                 NSAssert(NO, @"Invalid obstacle number selected");
