@@ -247,6 +247,10 @@
 
 - (void) collisionDetect
 {
+#if DEBUG_NOCOLLISIONS
+    return;
+#endif
+    
     BOOL collide;    
     CGFloat distance;
     CGFloat threshold;
@@ -362,6 +366,10 @@
 {
     NSMutableIndexSet *remove;
     NSUInteger index;
+    
+#if DEBUG_SHOWNUMOBJECTS
+    NSLog(@"DOODADS: %d - - OBSTACLES: %d - - BULLETS: %d", [doodads_ count], [obstacles_ count], [firedCats_ count]); 
+#endif
     
     // Doodads
     
@@ -765,7 +773,9 @@
 
 - (void) slowDown:(CGFloat)factor
 {
-#if !DEBUG_CONSTANTSPEED    
+#if DEBUG_CONSTANTSPEED || DEBUG_NOSLOWDOWN
+    return;
+#endif
     if (v_ > 0) {
         v_ *= factor;
     }
@@ -774,7 +784,7 @@
         boostEngaged_ = NO;
         [rocket_ toggleBoostOn:NO];        
     }
-#endif
+
     [self showText:kSpeedDown];
 }
 

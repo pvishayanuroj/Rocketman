@@ -19366,7 +19366,7 @@
 				</dict>
 			</array>
 		</dict>
-		<real>330328068.92692</real>
+		<real>330341812.86543697</real>
 		<string>{0, 205}</string>
 		<dict>
 			<key>$class</key>
@@ -20890,9 +20890,9 @@
 				</dict>
 			</array>
 		</dict>
-		<real>330329226.36314797</real>
-		<string>{2588, 1056}</string>
-		<string>{2929, 0}</string>
+		<real>330341974.690548</real>
+		<string>{20618, 1382}</string>
+		<string>{21517, 0}</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -22171,9 +22171,9 @@
 				</dict>
 			</array>
 		</dict>
-		<real>330328535.556283</real>
-		<string>{0, 459}</string>
-		<string>{459, 0}</string>
+		<real>330345056.11515701</real>
+		<string>{0, 549}</string>
+		<string>{402, 0}</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -25956,8 +25956,8 @@
     s = 0;
 }</string>
 		</dict>
-		<real>330329315.95663702</real>
-		<string>{3271, 677}</string>
+		<real>330341268.37207198</real>
+		<string>{3193, 1740}</string>
 		<string>{1299, 0}</string>
 		<dict>
 			<key>$class</key>
@@ -32661,7 +32661,7 @@
 				<integer>2285</integer>
 			</dict>
 			<key>NS.time</key>
-			<real>330329253.49395603</real>
+			<real>330342175.04891402</real>
 		</dict>
 		<dict>
 			<key>$classes</key>
@@ -32672,7 +32672,7 @@
 			<key>$classname</key>
 			<string>NSDate</string>
 		</dict>
-		<string>Today at 2:07 AM</string>
+		<string>Today at 5:42 AM</string>
 		<integer>106</integer>
 		<string>Rocketman</string>
 		<dict>
@@ -33453,7 +33453,7 @@
 				<integer>2353</integer>
 			</dict>
 		</dict>
-		<string>file://localhost/Users/Paul/Dropbox/Projects/Rocketman/Rocketman/Classes/StoryManager.m</string>
+		<string>file://localhost/Users/Paul/Dropbox/Projects/Rocketman/Rocketman/Classes/Debugging.h</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -33471,7 +33471,7 @@
 				<integer>2355</integer>
 			</dict>
 		</dict>
-		<string>file://localhost/Users/Paul/Dropbox/Projects/Rocketman/Rocketman/Classes/GameManager.m</string>
+		<string>file://localhost/Users/Paul/Dropbox/Projects/Rocketman/Rocketman/Classes/GameLayer.m</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -33489,7 +33489,7 @@
 				<integer>2357</integer>
 			</dict>
 		</dict>
-		<string>file://localhost/Users/Paul/Dropbox/Projects/Rocketman/Rocketman/Classes/GameLayer.m</string>
+		<string>file://localhost/Users/Paul/Dropbox/Projects/Rocketman/Rocketman/Classes/Constants.h</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -33507,7 +33507,7 @@
 				<integer>2359</integer>
 			</dict>
 		</dict>
-		<string>file://localhost/Users/Paul/Dropbox/Projects/Rocketman/Rocketman/Classes/GameLayer.h</string>
+		<string>file://localhost/Users/Paul/Dropbox/Projects/Rocketman/Rocketman/Classes/StoryManager.m</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -33525,7 +33525,7 @@
 				<integer>2361</integer>
 			</dict>
 		</dict>
-		<string>file://localhost/Users/Paul/Dropbox/Projects/Rocketman/Rocketman/Classes/StoryManager.h</string>
+		<string>file://localhost/Users/Paul/Dropbox/Projects/Rocketman/Rocketman/Classes/GameManager.m</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -33543,7 +33543,7 @@
 				<integer>2363</integer>
 			</dict>
 		</dict>
-		<string>file://localhost/Users/Paul/Dropbox/Projects/Rocketman/Rocketman/Classes/StoryScene.m</string>
+		<string>file://localhost/Users/Paul/Dropbox/Projects/Rocketman/Rocketman/Classes/GameLayer.h</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -33561,7 +33561,7 @@
 				<integer>2365</integer>
 			</dict>
 		</dict>
-		<string>file://localhost/Users/Paul/Dropbox/Projects/Rocketman/Rocketman/Classes/Debugging.h</string>
+		<string>file://localhost/Users/Paul/Dropbox/Projects/Rocketman/Rocketman/Classes/StoryManager.h</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -33579,7 +33579,7 @@
 				<integer>2367</integer>
 			</dict>
 		</dict>
-		<string>file://localhost/Users/Paul/Dropbox/Projects/Rocketman/Rocketman/Classes/Constants.h</string>
+		<string>file://localhost/Users/Paul/Dropbox/Projects/Rocketman/Rocketman/Classes/StoryScene.m</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -50846,7 +50846,7 @@
 		<string>IDEWorkspaceTabControllerDesignAreaSplitView</string>
 		<string>IDEShowUtilities</string>
 		<string>IDEEditorArea</string>
-		<string>StoryManager.m</string>
+		<string>Debugging.h</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -51579,8 +51579,8 @@
 			</array>
 		</dict>
 		<string>Rocketman</string>
-		<string>Singletons</string>
-		<string>StoryManager.m</string>
+		<string>Utility</string>
+		<string>Debugging.h</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -51603,87 +51603,88 @@
 				</dict>
 				<dict>
 					<key>CF$UID</key>
+					<integer>3309</integer>
+				</dict>
+				<dict>
+					<key>CF$UID</key>
+					<integer>3311</integer>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>$class</key>
+			<dict>
+				<key>CF$UID</key>
+				<integer>93</integer>
+			</dict>
+			<key>NS.objects</key>
+			<array>
+				<dict>
+					<key>CF$UID</key>
+					<integer>3301</integer>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>$class</key>
+			<dict>
+				<key>CF$UID</key>
+				<integer>93</integer>
+			</dict>
+			<key>NS.objects</key>
+			<array>
+				<dict>
+					<key>CF$UID</key>
+					<integer>3301</integer>
+				</dict>
+				<dict>
+					<key>CF$UID</key>
+					<integer>2288</integer>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>$class</key>
+			<dict>
+				<key>CF$UID</key>
+				<integer>93</integer>
+			</dict>
+			<key>NS.objects</key>
+			<array>
+				<dict>
+					<key>CF$UID</key>
+					<integer>3301</integer>
+				</dict>
+				<dict>
+					<key>CF$UID</key>
+					<integer>2288</integer>
+				</dict>
+				<dict>
+					<key>CF$UID</key>
 					<integer>3308</integer>
+				</dict>
+			</array>
+		</dict>
+		<string>Singletons</string>
+		<dict>
+			<key>$class</key>
+			<dict>
+				<key>CF$UID</key>
+				<integer>93</integer>
+			</dict>
+			<key>NS.objects</key>
+			<array>
+				<dict>
+					<key>CF$UID</key>
+					<integer>3301</integer>
+				</dict>
+				<dict>
+					<key>CF$UID</key>
+					<integer>2288</integer>
 				</dict>
 				<dict>
 					<key>CF$UID</key>
 					<integer>3310</integer>
-				</dict>
-			</array>
-		</dict>
-		<dict>
-			<key>$class</key>
-			<dict>
-				<key>CF$UID</key>
-				<integer>93</integer>
-			</dict>
-			<key>NS.objects</key>
-			<array>
-				<dict>
-					<key>CF$UID</key>
-					<integer>3301</integer>
-				</dict>
-			</array>
-		</dict>
-		<dict>
-			<key>$class</key>
-			<dict>
-				<key>CF$UID</key>
-				<integer>93</integer>
-			</dict>
-			<key>NS.objects</key>
-			<array>
-				<dict>
-					<key>CF$UID</key>
-					<integer>3301</integer>
-				</dict>
-				<dict>
-					<key>CF$UID</key>
-					<integer>2288</integer>
-				</dict>
-			</array>
-		</dict>
-		<dict>
-			<key>$class</key>
-			<dict>
-				<key>CF$UID</key>
-				<integer>93</integer>
-			</dict>
-			<key>NS.objects</key>
-			<array>
-				<dict>
-					<key>CF$UID</key>
-					<integer>3301</integer>
-				</dict>
-				<dict>
-					<key>CF$UID</key>
-					<integer>2288</integer>
-				</dict>
-				<dict>
-					<key>CF$UID</key>
-					<integer>3302</integer>
-				</dict>
-			</array>
-		</dict>
-		<dict>
-			<key>$class</key>
-			<dict>
-				<key>CF$UID</key>
-				<integer>93</integer>
-			</dict>
-			<key>NS.objects</key>
-			<array>
-				<dict>
-					<key>CF$UID</key>
-					<integer>3301</integer>
-				</dict>
-				<dict>
-					<key>CF$UID</key>
-					<integer>2288</integer>
-				</dict>
-				<dict>
-					<key>CF$UID</key>
-					<integer>3309</integer>
 				</dict>
 			</array>
 		</dict>
@@ -51706,11 +51707,10 @@
 				</dict>
 				<dict>
 					<key>CF$UID</key>
-					<integer>3311</integer>
+					<integer>3302</integer>
 				</dict>
 			</array>
 		</dict>
-		<string>Utility</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -51973,7 +51973,7 @@
 			<array>
 				<dict>
 					<key>CF$UID</key>
-					<integer>135</integer>
+					<integer>40</integer>
 				</dict>
 				<dict>
 					<key>CF$UID</key>
@@ -52160,11 +52160,11 @@
 				</dict>
 				<dict>
 					<key>CF$UID</key>
-					<integer>3361</integer>
+					<integer>3362</integer>
 				</dict>
 				<dict>
 					<key>CF$UID</key>
-					<integer>3365</integer>
+					<integer>3303</integer>
 				</dict>
 				<dict>
 					<key>CF$UID</key>
@@ -52187,7 +52187,7 @@
 		<string>DocumentNavigableItemName</string>
 		<string>DocumentExtensionIdentifier</string>
 		<string>DocumentURL</string>
-		<string>public.objective-c-source</string>
+		<string>public.c-header</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -52299,7 +52299,7 @@
 			<key>documentURL</key>
 			<dict>
 				<key>CF$UID</key>
-				<integer>1003</integer>
+				<integer>3361</integer>
 			</dict>
 			<key>timestamp</key>
 			<dict>
@@ -52311,25 +52311,30 @@
 			<key>$class</key>
 			<dict>
 				<key>CF$UID</key>
+				<integer>81</integer>
+			</dict>
+			<key>NS.string</key>
+			<string>file://localhost/Users/Paul/Dropbox/Projects/Rocketman/Rocketman/Classes/Debugging.h</string>
+		</dict>
+		<dict>
+			<key>$class</key>
+			<dict>
+				<key>CF$UID</key>
 				<integer>97</integer>
 			</dict>
 			<key>NS.keys</key>
 			<array>
 				<dict>
 					<key>CF$UID</key>
-					<integer>1630</integer>
-				</dict>
-				<dict>
-					<key>CF$UID</key>
 					<integer>1072</integer>
 				</dict>
 				<dict>
 					<key>CF$UID</key>
-					<integer>1074</integer>
+					<integer>1073</integer>
 				</dict>
 				<dict>
 					<key>CF$UID</key>
-					<integer>1073</integer>
+					<integer>1074</integer>
 				</dict>
 				<dict>
 					<key>CF$UID</key>
@@ -52340,11 +52345,11 @@
 			<array>
 				<dict>
 					<key>CF$UID</key>
-					<integer>1782</integer>
+					<integer>3363</integer>
 				</dict>
 				<dict>
 					<key>CF$UID</key>
-					<integer>3362</integer>
+					<integer>3364</integer>
 				</dict>
 				<dict>
 					<key>CF$UID</key>
@@ -52352,18 +52357,13 @@
 				</dict>
 				<dict>
 					<key>CF$UID</key>
-					<integer>3363</integer>
-				</dict>
-				<dict>
-					<key>CF$UID</key>
-					<integer>3364</integer>
+					<integer>3365</integer>
 				</dict>
 			</array>
 		</dict>
-		<real>330329315.957681</real>
-		<string>{3271, 677}</string>
-		<string>{1299, 0}</string>
-		<string>-dealloc</string>
+		<real>330345056.116023</real>
+		<string>{0, 549}</string>
+		<string>{402, 0}</string>
 		<string>Xcode.IDEKit.EditorDocument.SourceCode</string>
 		<dict>
 			<key>$class</key>
@@ -52382,7 +52382,7 @@
 				<integer>3368</integer>
 			</dict>
 		</dict>
-		<string>file://localhost/Users/Paul/Dropbox/Projects/Rocketman/Rocketman/Classes/StoryManager.m</string>
+		<string>file://localhost/Users/Paul/Dropbox/Projects/Rocketman/Rocketman/Classes/Debugging.h</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -52397,7 +52397,7 @@
 				</dict>
 			</array>
 		</dict>
-		<string>{{0, 0}, {1140, 334}}</string>
+		<string>{{0, 0}, {1140, 769}}</string>
 		<dict>
 			<key>$class</key>
 			<dict>
