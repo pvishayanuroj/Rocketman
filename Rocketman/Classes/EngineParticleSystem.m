@@ -33,7 +33,7 @@
 
 - (id) initPSForRocketFlame
 {
-    if ((self = [self initWithTotalParticles:300])) {
+    if ((self = [self initWithTotalParticles:150])) {
         
         ccColor4B orange = ccc4(255, 165, 0, 255);
         ccColor4F c1 = ccc4FFromccc4B(orange);
@@ -63,7 +63,7 @@
 
 - (id) initPSForBoostFlame
 {
-    if ((self = [self initWithTotalParticles:700])) {
+    if ((self = [self initWithTotalParticles:350])) {
      
         ccColor4B purple = ccc4(255, 20, 147, 255);
         ccColor4F c1 = ccc4FFromccc4B(purple);
@@ -94,7 +94,7 @@
 
 - (id) initPSForBossTurtleFlame
 {
-    if ((self = [self initWithTotalParticles:500])) {
+    if ((self = [self initWithTotalParticles:250])) {
    
         ccColor4B purple = ccc4(255, 20, 147, 255);
         ccColor4F c1 = ccc4FFromccc4B(purple);
