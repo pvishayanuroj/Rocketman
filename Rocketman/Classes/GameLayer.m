@@ -886,9 +886,9 @@
     targetX_ = tx;
 #endif
     
-    sideMoveSpeed_ = resultx*50;    
+    sideMoveSpeed_ = resultx*70;    
 
-    CGFloat maxSpeed = 8;
+    CGFloat maxSpeed = 10;
     
     if (sideMoveSpeed_ > maxSpeed) {
         sideMoveSpeed_ = maxSpeed;
