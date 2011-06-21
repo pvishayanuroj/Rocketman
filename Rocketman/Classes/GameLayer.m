@@ -110,7 +110,6 @@
 #else
         v0_ = 9;
 #endif
-        NSLog(@"speed set to %2.2f", v0_);
         vBoost_ = 5;
         vBoostRing_ = 4; 
         dv_ = 0;

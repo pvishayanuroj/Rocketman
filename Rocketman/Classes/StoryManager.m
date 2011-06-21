@@ -45,6 +45,7 @@ static StoryManager *_storyManager = nil;
 	if ((self = [super init])) {
         
         storyElements_ = [[NSMutableDictionary dictionaryWithCapacity:10] retain];
+        currentScene_ = nil;
         sceneTiming_ = nil;
         
         sceneName_ = [[NSString stringWithString:@"Intro"] retain];
@@ -61,6 +62,7 @@ static StoryManager *_storyManager = nil;
 - (void) dealloc
 {	
     [storyElements_ release];
+    [currentScene_ release];
     [sceneName_ release];
     [sceneTiming_ release];
     
@@ -113,7 +115,7 @@ static StoryManager *_storyManager = nil;
 
 - (void) nextScene
 {    
-    StoryScene *scene;
+    //StoryScene *scene;
     NSString *key;
     CGFloat duration;
     sceneNum_++;
@@ -129,25 +131,30 @@ static StoryManager *_storyManager = nil;
         duration = [[sceneTiming_ objectForKey:key] floatValue];
         
         // Setup the scene and transition
-        scene = [StoryScene storyWithName:sceneName_ num:sceneNum_ duration:duration];    
-        [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:scene]];            
+        [currentScene_ release];
+        currentScene_ = [[StoryScene storyWithName:sceneName_ num:sceneNum_ duration:duration] retain];    
+        [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:currentScene_]];            
         
         // Check if there are any story elements to add
         NSArray *elements = [storyElements_ objectForKey:[NSNumber numberWithUnsignedInteger:sceneNum_]];
         if (elements) {
             for (StoryElement *se in elements) {
-                [scene addChild:se z:1];
+                [currentScene_ addChild:se z:1];
                 [se play];
             }
         }
         
         // Make sure the scene afterwards will get run
-        [scene startTimer];
+        [currentScene_ startTimer];
     }
 }
 
 - (void) startGame
 {
+    [currentScene_ stopAllActions];
+    [currentScene_ release];
+    currentScene_ = nil;
+    
     CCScene *scene = [GameScene node];        
     [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:scene]];                
 }

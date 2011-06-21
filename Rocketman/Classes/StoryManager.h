@@ -8,6 +8,8 @@
 
 #import "cocos2d.h"
 
+@class StoryScene;
+
 @interface StoryManager : CCNode {
  
     NSMutableDictionary *storyElements_;
@@ -20,6 +22,7 @@
     
     NSUInteger endSceneNum_;
     
+    StoryScene *currentScene_;
 }
 
 + (StoryManager *) storyManager;
