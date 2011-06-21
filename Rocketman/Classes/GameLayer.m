@@ -755,7 +755,7 @@
                 numBoosts_--;
                 [[GameManager gameManager] setNumBoosts:numBoosts_];
                 // Engage fast boost, make sure it lasts longer
-                [self engageBoost:vBoost_ amt:v0_-v_ rate:0 time:1.5];
+                [self engageBoost:vBoost_ amt:5 rate:0 time:1.5];
                 [self showText:kSpeedUp];                
 #if !DEBUG_UNLIMITED_BOOSTS                
             }

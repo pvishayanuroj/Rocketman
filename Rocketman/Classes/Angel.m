@@ -32,6 +32,7 @@ static NSUInteger countID = 0;
         self.position = pos;
         
         // Attributes
+        shootable_ = NO;
         radius_ = 30;
         radiusSquared_ = radius_*radius_;
         
