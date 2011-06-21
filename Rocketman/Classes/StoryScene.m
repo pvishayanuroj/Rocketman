@@ -11,12 +11,12 @@
 
 @implementation StoryScene
 
-+ (id) storyWithName:(NSString *)name num:(NSUInteger)num
++ (id) storyWithName:(NSString *)name num:(NSUInteger)num duration:(CGFloat)duration
 {
-    return [[[self alloc] initWithName:name num:num] autorelease];
+    return [[[self alloc] initWithName:name num:num duration:duration] autorelease];
 }
 
-- (id) initWithName:(NSString *)name num:(NSUInteger)num
+- (id) initWithName:(NSString *)name num:(NSUInteger)num duration:(CGFloat)duration
 {
     if ((self = [super init])) {
         
@@ -24,13 +24,15 @@
         NSString *filename = [NSString stringWithFormat:@"%@ %02d.png", name, num];
         CCSprite *sprite = [CCSprite spriteWithFile:filename];
         sprite.anchorPoint = CGPointZero;
-        [self addChild:sprite];
+        [self addChild:sprite z:0];
+        
+        sceneDuration_ = duration;
 
         // Skip button
         CCMenuItemSprite *skipButton = [CCMenuItemSprite itemFromNormalSprite:[CCSprite spriteWithFile:@"skip_button.png"] selectedSprite:[CCSprite spriteWithFile:@"skip_button.png"] target:self selector:@selector(skip)];        
         CCMenu *menu = [CCMenu menuWithItems:skipButton, nil];
         menu.position = ccp(280, 30);
-        [self addChild:menu];        
+        [self addChild:menu z:2];        
     }
     return self;
 }
@@ -46,7 +48,7 @@
 
 - (void) startTimer
 {
-    CCFiniteTimeAction *delay = [CCDelayTime actionWithDuration:5.0];
+    CCFiniteTimeAction *delay = [CCDelayTime actionWithDuration:sceneDuration_];
     CCFiniteTimeAction *next = [CCCallFunc actionWithTarget:self selector:@selector(nextScene)];
     [self runAction:[CCSequence actions:delay, next, nil]];
 }

@@ -11,12 +11,14 @@
 @class GameScene;
 
 @interface StoryScene : CCScene {
+ 
+    CGFloat sceneDuration_;
     
 }
 
-+ (id) storyWithName:(NSString *)name num:(NSUInteger)num;
++ (id) storyWithName:(NSString *)name num:(NSUInteger)num duration:(CGFloat)duration;
 
-- (id) initWithName:(NSString *)name num:(NSUInteger)num;
+- (id) initWithName:(NSString *)name num:(NSUInteger)num duration:(CGFloat)duration;
 
 - (void) startTimer;
 

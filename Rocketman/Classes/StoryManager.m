@@ -10,6 +10,7 @@
 #import "StoryScene.h"
 #import "SpinningElement.h"
 #import "TextElement.h"
+#import "MovingElement.h"
 #import "GameScene.h"
     
 // For singleton
@@ -44,12 +45,14 @@ static StoryManager *_storyManager = nil;
 	if ((self = [super init])) {
         
         storyElements_ = [[NSMutableDictionary dictionaryWithCapacity:10] retain];
+        sceneTiming_ = nil;
         
         sceneName_ = [[NSString stringWithString:@"Intro"] retain];
         sceneNum_ = 0;
         endSceneNum_ = 9;
         
         [self initStoryElements];
+        [self loadSceneTimings:@"Cinematics" forScene:@"Intro"];
 
 	}
 	return self;
@@ -59,6 +62,7 @@ static StoryManager *_storyManager = nil;
 {	
     [storyElements_ release];
     [sceneName_ release];
+    [sceneTiming_ release];
     
 	[super dealloc];
 }
@@ -84,10 +88,12 @@ static StoryManager *_storyManager = nil;
     CGSize size = [[CCDirector sharedDirector] winSize];    
     CGPoint halfPos = ccp(size.width * 0.5, size.height * 0.5);
     
-    // Scene 7 Text
-    element = [TextElement textElementWithFile:@"Intro 07 Text.png" at:halfPos];
-    array = [NSMutableArray arrayWithCapacity:1];
+    // Scene 7 Text & Phone animation
+    array = [NSMutableArray arrayWithCapacity:2];    
+    element = [TextElement textElementWithFile:@"Intro 07 Text.png" at:ccp(halfPos.x, size.height*0.7)];
     [array addObject:element];
+    element = [MovingElement movingElementWithFile:@"Intro 07 Hand.png" from:ccp(450, 100) to:ccp(200, 100) delay:2.0 duration:1.0];
+    [array addObject:element];    
     [storyElements_ setObject:array forKey:[NSNumber numberWithUnsignedInt:7]];
     
     // Scene 8 Text
@@ -97,9 +103,19 @@ static StoryManager *_storyManager = nil;
     [storyElements_ setObject:array forKey:[NSNumber numberWithUnsignedInt:8]];    
 }
 
+- (void) loadSceneTimings:(NSString *)filename forScene:(NSString *)sceneName
+{
+	NSString *path = [[NSBundle mainBundle] pathForResource:filename ofType:@"plist"];
+	NSDictionary *scenes = [NSDictionary dictionaryWithContentsOfFile:path];    
+    NSDictionary *sceneInfo = [scenes objectForKey:sceneName];
+    sceneTiming_ = [[sceneInfo objectForKey:@"Scene Timing"] retain];
+}
+
 - (void) nextScene
 {    
     StoryScene *scene;
+    NSString *key;
+    CGFloat duration;
     sceneNum_++;
     
     // If we've reached the end of the sequence, start the game
@@ -108,14 +124,19 @@ static StoryManager *_storyManager = nil;
     }
     // Otherwise go to the next scene
     else {
-        scene = [StoryScene storyWithName:sceneName_ num:sceneNum_];    
+        // Determine scene duration
+        key = [NSString stringWithFormat:@"%02d", sceneNum_];
+        duration = [[sceneTiming_ objectForKey:key] floatValue];
+        
+        // Setup the scene and transition
+        scene = [StoryScene storyWithName:sceneName_ num:sceneNum_ duration:duration];    
         [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:scene]];            
         
         // Check if there are any story elements to add
         NSArray *elements = [storyElements_ objectForKey:[NSNumber numberWithUnsignedInteger:sceneNum_]];
         if (elements) {
             for (StoryElement *se in elements) {
-                [scene addChild:se];
+                [scene addChild:se z:1];
                 [se play];
             }
         }

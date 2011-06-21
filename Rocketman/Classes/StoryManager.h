@@ -12,6 +12,8 @@
  
     NSMutableDictionary *storyElements_;
     
+    NSMutableDictionary *sceneTiming_;
+    
     NSString *sceneName_;
     
     NSUInteger sceneNum_;
@@ -25,6 +27,8 @@
 + (void) purgeStoryManager;
 
 - (void) initStoryElements;
+
+- (void) loadSceneTimings:(NSString *)filename forScene:(NSString *)sceneName;
 
 - (void) nextScene;
 
