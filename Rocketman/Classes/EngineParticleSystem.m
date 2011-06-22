@@ -26,9 +26,14 @@
     return [[[self alloc] initPSForBossTurtleFlame] autorelease];
 }
 
++ (id) PSForRocketHearts
+{
+    return [[[self alloc] initPSForRocketHearts] autorelease];
+}
+
 - (id) initPSForRocketFlame
 {
-    if ((self = [self initWithTotalParticles:300])) {
+    if ((self = [self initWithTotalParticles:150])) {
         
         ccColor4B orange = ccc4(255, 165, 0, 255);
         ccColor4F c1 = ccc4FFromccc4B(orange);
@@ -58,7 +63,7 @@
 
 - (id) initPSForBoostFlame
 {
-    if ((self = [self initWithTotalParticles:700])) {
+    if ((self = [self initWithTotalParticles:350])) {
      
         ccColor4B purple = ccc4(255, 20, 147, 255);
         ccColor4F c1 = ccc4FFromccc4B(purple);
@@ -89,7 +94,7 @@
 
 - (id) initPSForBossTurtleFlame
 {
-    if ((self = [self initWithTotalParticles:500])) {
+    if ((self = [self initWithTotalParticles:250])) {
    
         ccColor4B purple = ccc4(255, 20, 147, 255);
         ccColor4F c1 = ccc4FFromccc4B(purple);
@@ -107,6 +112,34 @@
         // emits per seconds
         self.emissionRate = self.totalParticles/self.life;        
         
+    }
+    return self;
+}
+
+- (id) initPSForRocketHearts
+{
+    if ((self = [self initWithTotalHearts:10])) {
+        
+        ccColor4B purple = ccc4(255, 20, 147, 255);
+        ccColor4F c1 = ccc4FFromccc4B(purple);
+        self.startColor = c1;
+        self.endColor = c1; 
+        
+        self.startSize = 10.0f;
+        self.startSizeVar = 0;
+        self.endSize = kCCParticleStartSizeEqualToEndSize;    
+        
+        // Gravity & Speed
+        self.gravity = ccp(0, -70);        
+		self.speed = 20;
+		self.speedVar = 5;               
+        
+        // life of particles
+        self.life = 0.5;
+        self.lifeVar = 0.25f;
+        
+        // emits per seconds
+        self.emissionRate = 0;    
     }
     return self;
 }
@@ -135,6 +168,32 @@
 		self.texture = [[CCTextureCache sharedTextureCache] addImage: @"fire.png"];
 	}
 	return self;
+}
+
+- (id) initWithTotalHearts:(NSUInteger)p
+{
+	if( (self = [super initWithTotalParticles:p]) ) {
+        
+		// additive
+		self.blendAdditive = NO;
+        
+		// duration
+		self.duration = kCCParticleDurationInfinity;
+		
+		// Gravity Mode
+		self.emitterMode = kCCParticleModeGravity;
+		
+		// Gravity mode: radial acceleration
+		self.radialAccel = 0;
+		self.radialAccelVar = 0;
+		
+		// angle
+		self.angle = 270;
+		self.angleVar = 180;
+		
+		self.texture = [[CCTextureCache sharedTextureCache] addImage: @"heart.png"];
+	}
+	return self;    
 }
 
 @end

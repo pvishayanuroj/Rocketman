@@ -20,15 +20,22 @@
     
     CCAction *wobblingAnimation_;
     
+    CCAction *heartAnimation_;
+    
     BOOL isBurning_;
     
     BOOL isWobbling_;
+    
+    BOOL isHeart_;
     
     CGRect rect_;
     
 	CCParticleSystem *engineFlame_;    
     
 	CCParticleSystem *boostFlame_;         
+    
+	CCParticleSystem *heartParticles_;
+    
 }
 
 @property (nonatomic, readonly) CGRect rect;
@@ -41,13 +48,17 @@
 
 - (void) initActions;
 
-- (void) realignSprite;
-
 - (void) showFlying;
 
 - (void) showShaking;
 
 - (void) showBurning;
+
+- (void) showHeart;
+
+- (void) doneHeartAnimation;
+
+- (void) doneHeartSequence;
 
 - (void) doneBurning;
 

@@ -60,17 +60,17 @@
     return self;
 }
 
-- (void) play   
-{
-    [self runAction:action_];
-}
-
 - (void) dealloc
 {
     [sprite_ release];
     [action_ release];
     
     [super dealloc];
+}
+
+- (void) play   
+{
+    [self runAction:action_];
 }
 
 @end

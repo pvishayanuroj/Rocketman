@@ -29,11 +29,13 @@
 	if ((self = [super init])) {
         
         sprite_ = [[CCSprite spriteWithSpriteFrameName:@"Rocket2 Fly 01.png"] retain];
-        [self addChild:sprite_ z:-1];
+        [self addChild:sprite_ z:-2];
         
         self.position = pos;
         
         isBurning_ = NO;
+        isWobbling_ = NO;
+        isHeart_ = NO;
         
         rect_.origin = CGPointZero;
         rect_.size.height = 60;
@@ -55,8 +57,10 @@
     [shakingAnimation_ release];
     [burningAnimation_ release];
     [wobblingAnimation_ release];
+    [heartAnimation_ release];
     [engineFlame_ release];
     [boostFlame_ release];
+    [heartParticles_ release];
     
     [super dealloc];
 }
@@ -71,12 +75,16 @@
 - (void) initEngineFlame
 {
     engineFlame_ = [[EngineParticleSystem PSForRocketFlame] retain];
-	[self addChild:engineFlame_ z:-2];
+	[self addChild:engineFlame_ z:-3];
     engineFlame_.position = CGPointMake(0, -30);
     
     boostFlame_ = [[EngineParticleSystem PSForBoostFlame] retain];
-	[self addChild:boostFlame_ z:-2];    
-    boostFlame_.position = CGPointMake(0, -30);    
+	[self addChild:boostFlame_ z:-3];    
+    boostFlame_.position = CGPointMake(0, -30);  
+    
+    heartParticles_ = [[EngineParticleSystem PSForRocketHearts] retain];
+	[self addChild:heartParticles_ z:-1];    
+    heartParticles_.position = CGPointMake(0, -30);      
 }
 
 - (void) initActions
@@ -111,7 +119,6 @@
     CCActionInterval *a2 = [CCRepeat actionWithAction:s2 times:times];
     CCActionInterval *a3 = [CCRepeat actionWithAction:s3 times:times];
     CCActionInstant *a4 = [CallFuncWeak actionWithTarget:self selector:@selector(doneShaking)];
-    //CCActionInterval *a4 = [CCMoveTo actionWithDuration:speed position:CGPointZero];
 
     shakingAnimation_ = [[CCSequence actions:a1, a2, a3, a4, nil] retain];
     
@@ -120,12 +127,12 @@
     
     animation = [[CCAnimationCache sharedAnimationCache] animationByName:@"Rocket2 Wobble"];
 	wobblingAnimation_ = [[CCAnimate actionWithAnimation:animation] retain];
+    
+    animation = [[CCAnimationCache sharedAnimationCache] animationByName:@"Rocket2 Heart"];
+	heartAnimation_ = [[CCAnimate actionWithAnimation:animation] retain];    
 }        
 
-- (void) realignSprite
-{
-    sprite_.position = CGPointZero;
-}
+#pragma mark - Animated Sequences
 
 - (void) showFlying
 {
@@ -163,6 +170,12 @@
 	[self runAction:[CCSequence actions:animation, method, nil]];	
 }
 
+- (void) doneBurning
+{
+    isBurning_ = NO;
+    [self showFlying];
+}
+
 - (void) showWobbling
 {
     if (isWobbling_ || isBurning_) {
@@ -177,17 +190,55 @@
 	[self runAction:[CCSequence actions:animation, method, nil]];	
 }
 
-- (void) doneBurning
-{
-    isBurning_ = NO;
-    [self showFlying];
-}
-
 - (void) doneWobbling
 {
     isWobbling_ = NO;
     [self showFlying];
 }
+
+- (void) showHeart
+{
+    if (isHeart_) {
+        return;
+    }
+    
+    isHeart_ = YES;
+    [sprite_ stopAllActions];
+    
+	TargetedAction *animation = [TargetedAction actionWithTarget:sprite_ actionIn:(CCFiniteTimeAction *)heartAnimation_];
+	CCFiniteTimeAction *method = [CCCallFunc actionWithTarget:self selector:@selector(doneHeartAnimation)];	
+	[self runAction:[CCSequence actions:animation, method, nil]];	
+    
+    // Activate particle system
+    heartParticles_.emissionRate = heartParticles_.totalParticles/heartParticles_.life;
+}
+
+- (void) doneHeartAnimation
+{
+    [sprite_ removeFromParentAndCleanup:YES];
+    [sprite_ release];
+    sprite_ = [[CCSprite spriteWithSpriteFrameName:@"Rocket2 Heart 03.png"] retain];
+    [self addChild:sprite_ z:-2];    
+    
+    CCFiniteTimeAction *delay = [CCDelayTime actionWithDuration:2.0f];
+	CCFiniteTimeAction *method = [CCCallFunc actionWithTarget:self selector:@selector(doneHeartSequence)];	    
+    
+    [self runAction:[CCSequence actions:delay, method, nil]];
+}
+
+- (void) doneHeartSequence
+{
+    isHeart_ = NO;    
+    
+    [sprite_ removeFromParentAndCleanup:YES];
+    [sprite_ release];
+    sprite_ = [[CCSprite spriteWithSpriteFrameName:@"Rocket2 Fly 01.png"] retain];
+    [self addChild:sprite_ z:-2];        
+    
+    heartParticles_.emissionRate = 0;    
+}
+
+#pragma mark - Particle System
 
 - (void) toggleBoostOn:(BOOL)on
 {
@@ -208,6 +259,8 @@
     engineFlame_.emissionRate = 0;
     boostFlame_.emissionRate = 0;
 }
+
+#pragma mark - Debug Methods
 
 #if DEBUG_BOUNDINGBOX
 - (void) draw

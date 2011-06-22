@@ -17,6 +17,7 @@
 #import "SlowCloud.h"
 #import "Alien.h"
 #import "UFO.h"
+#import "Flybot.h"
 #import "Dino.h"
 #import "Angel.h"
 #import "Shell.h"
@@ -110,12 +111,11 @@
 #else
         v0_ = 9;
 #endif
-        NSLog(@"speed set to %2.2f", v0_);
         vBoost_ = 5;
         vBoostRing_ = 4; 
         dv_ = 0;
         ddv_ = 0.00002;
-        vMax_ = 15;
+        vMax_ = 13;
         
         dt_ = 0;    
 
@@ -248,6 +248,10 @@
 
 - (void) collisionDetect
 {
+#if DEBUG_NOCOLLISIONS
+    return;
+#endif
+    
     BOOL collide;    
     CGFloat distance;
     CGFloat threshold;
@@ -364,6 +368,10 @@
     NSMutableIndexSet *remove;
     NSUInteger index;
     
+#if DEBUG_SHOWNUMOBJECTS
+    NSLog(@"DOODADS: %d - - OBSTACLES: %d - - BULLETS: %d", [doodads_ count], [obstacles_ count], [firedCats_ count]); 
+#endif
+    
     // Doodads
     
     remove = [NSMutableIndexSet indexSet];
@@ -453,7 +461,7 @@
 
 - (void) bossGenerator
 {
-    if (height_ > 500) {
+    if (height_ > 10000) {
         if (!bossAdded_) {
             bossAdded_ = YES;
             NSInteger x = [self getRandomX];
@@ -483,7 +491,7 @@
         y = screenHeight_ + 100;
         pos = ccp(x, y);                
 
-        NSUInteger type = arc4random() % 5; 
+        NSUInteger type = arc4random() % 6; 
         
         switch (type) {
             case 0:
@@ -500,6 +508,9 @@
                 break;                
             case 4:
                 obstacle = [UFO ufoWithPos:pos];
+                break;
+            case 5:
+                obstacle = [Flybot flyBotWithPos:pos];
                 break;
             default:
                 NSAssert(NO, @"Invalid obstacle number selected");
@@ -560,7 +571,7 @@
     
     dx = sideMoveSpeed_;
 
-    /*
+#if DEBUG_ALTERNATETILT
     CGFloat deltax = targetX_ - rocket_.position.x;
     CGFloat absoluteMax = 7;
     CGFloat maxSpeed = fabs(deltax)/3.0f;
@@ -578,7 +589,7 @@
         dx = deltax;
     }
     //NSLog(@"deltax: %3.2f, dx: %2.2f", deltax, dx);
-    */
+#endif
     
     CGPoint moveAmt = CGPointMake(dx, 0);
     pos = ccpAdd(rocket_.position, moveAmt);
@@ -701,6 +712,7 @@
             [rocket_ showWobbling];
             break;
         case kRocketHearts:
+            [rocket_ showHeart];
             break;
         default:
             NSAssert(NO, @"Invalid Rocket Condition");
@@ -709,6 +721,9 @@
 
 - (void) engageBoost:(CGFloat)speedup amt:(CGFloat)amt rate:(CGFloat)rate time:(CGFloat)time
 {
+    // The boost amount is how much is speed is added per tick
+    // The rate is how much the boost amount is changed per tick
+    
     dv_ = 0;
     ddv_ = 0.00002;
     
@@ -728,6 +743,25 @@
     }
     
     [rocket_ toggleBoostOn:YES];    
+}
+
+- (void) engageFixedBoost:(CGFloat)speed amt:(CGFloat)amt rate:(CGFloat)rate time:(CGFloat)time
+{
+    // The speed is the target speed to stop at
+    // The boost amount is how much is speed is added per tick
+    // The rate is how much the boost amount is changed per tick    
+    
+    dv_ = 0;
+    ddv_ = 0.00002;
+    
+    boostEngaged_ = YES;
+    boostTimer_ = time;
+    
+    boostTarget_ = speed;
+    boost_ = amt;
+    boostRate_ = rate;
+    
+    [rocket_ toggleBoostOn:YES];        
 }
 
 - (void) useBoost
@@ -751,7 +785,7 @@
                 numBoosts_--;
                 [[GameManager gameManager] setNumBoosts:numBoosts_];
                 // Engage fast boost, make sure it lasts longer
-                [self engageBoost:vBoost_ amt:v0_-v_ rate:0 time:1.5];
+                [self engageBoost:vBoost_ amt:5 rate:0 time:1.5];
                 [self showText:kSpeedUp];                
 #if !DEBUG_UNLIMITED_BOOSTS                
             }
@@ -762,7 +796,9 @@
 
 - (void) slowDown:(CGFloat)factor
 {
-#if !DEBUG_CONSTANTSPEED    
+#if DEBUG_CONSTANTSPEED || DEBUG_NOSLOWDOWN
+    return;
+#endif
     if (v_ > 0) {
         v_ *= factor;
     }
@@ -771,7 +807,7 @@
         boostEngaged_ = NO;
         [rocket_ toggleBoostOn:NO];        
     }
-#endif
+
     [self showText:kSpeedDown];
 }
 
@@ -868,7 +904,7 @@
     
     [[GameManager gameManager] setTilt:resultx];
     
-    /*
+#if DEBUG_ALTERNATETILT
     CGFloat cutoff = 0.25;
     CGFloat ax = accel[0];
     if (ax < -cutoff) {
@@ -880,11 +916,11 @@
     
     CGFloat tx = ax * 160/cutoff + 160;
     targetX_ = tx;
-    */
+#endif
     
-    sideMoveSpeed_ = resultx*50;    
+    sideMoveSpeed_ = resultx*70;    
 
-    CGFloat maxSpeed = 8;
+    CGFloat maxSpeed = 10;
     
     if (sideMoveSpeed_ > maxSpeed) {
         sideMoveSpeed_ = maxSpeed;

@@ -28,12 +28,18 @@
 
 + (id) PSForBossTurtleFlame;
 
++ (id) PSForRocketHearts;
+
 - (id) initWithTotalParticles:(NSUInteger)p;
+
+- (id) initWithTotalHearts:(NSUInteger)p;
 
 - (id) initPSForRocketFlame;
 
 - (id) initPSForBoostFlame;
 
 - (id) initPSForBossTurtleFlame;
+
+- (id) initPSForRocketHearts;
 
 @end

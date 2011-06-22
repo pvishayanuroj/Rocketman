@@ -8,9 +8,13 @@
 
 #import "cocos2d.h"
 
+@class StoryScene;
+
 @interface StoryManager : CCNode {
  
     NSMutableDictionary *storyElements_;
+    
+    NSMutableDictionary *sceneTiming_;
     
     NSString *sceneName_;
     
@@ -18,6 +22,7 @@
     
     NSUInteger endSceneNum_;
     
+    StoryScene *currentScene_;
 }
 
 + (StoryManager *) storyManager;
@@ -25,6 +30,8 @@
 + (void) purgeStoryManager;
 
 - (void) initStoryElements;
+
+- (void) loadSceneTimings:(NSString *)filename forScene:(NSString *)sceneName;
 
 - (void) nextScene;
 
