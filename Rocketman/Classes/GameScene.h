@@ -11,7 +11,11 @@
 
 @interface GameScene : CCScene {
     
+    BOOL catBombEnabled_;
+    
 }
+// Creating the 
+@property (nonatomic, readonly) BOOL catBombEnabled_;
 
 - (void) animationLoader:(NSString *)unitListName spriteSheetName:(NSString *)spriteSheetName;
 

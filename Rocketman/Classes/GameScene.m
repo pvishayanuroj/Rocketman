@@ -13,6 +13,8 @@
 
 @implementation GameScene
 
+@synthesize catBombEnabled_;
+
 - (id) init 
 {
 	if ((self = [super init])) {
@@ -24,6 +26,11 @@
         
         HUDLayer *hudLayer = [HUDLayer node];
         [self addChild:hudLayer z:1];
+        
+        // DEBUG.
+        // When the stage plist is implemented, it should be set
+        // using the plist variable.
+        catBombEnabled_ = YES;
         
         [hudLayer displayControls:gameLayer];
 #if DEBUG_MOVEBUTTONS

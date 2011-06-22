@@ -75,7 +75,8 @@
         
         // Game variables
         rocketSpeed_ = 0;
-        numCats_ = 0;
+        numCats01_ = 0;
+        numCats02_ = 0;
         numBoosts_ = 0;
         height_ = 0;
         maxHeight_ = 0;
@@ -626,36 +627,58 @@
     
 }
 
-- (void) fireCat
+- (void) fireCat01
 {
     if (!onGround_ && !inputLocked_) {        
 #if !DEBUG_UNLIMITED_CATS        
-        if (numCats_ > 0) {
+        if (numCats01_ > 0) {
 #endif
-            numCats_--;
-            [[GameManager gameManager] setNumCats:numCats_];                     
-            
             CatBullet *bullet;
             
             // DEBUG!!
-            NSInteger s = ammoType_++ % 3;
+            NSInteger s = ammoType_++ % 2;
+            
             switch (s) {
                 case 0:
+                    numCats01_--;
+                    [[GameManager gameManager] setNumCats01:numCats01_]; 
                     bullet = [CatBullet catBulletWithPos:rocket_.position withSpeed:(rocketSpeed_ + 10)];
                     break;
                 case 1:
-                    bullet = [CatBullet fatBulletWithPos:rocket_.position withSpeed:(rocketSpeed_ + 10)];
-                    break;
-                case 2:
+                    numCats01_--;
+                    [[GameManager gameManager] setNumCats01:numCats01_]; 
                     bullet = [CatBullet longBulletWithPos:rocket_.position withSpeed:(rocketSpeed_ + 10)];
                     break;
                 default:
+                    numCats01_--;
+                    [[GameManager gameManager] setNumCats01:numCats01_]; 
                     bullet = [CatBullet catBulletWithPos:rocket_.position withSpeed:(rocketSpeed_ + 10)];
             }
             
             [self addChild:bullet z:kBulletDepth];
             [firedCats_ addObject:bullet];
             [[AudioManager audioManager] playSound:kMeow];
+#if !DEBUG_UNLIMITED_CATS
+        }
+#endif
+    }
+}
+
+- (void) fireCat02
+{
+    if (!onGround_ && !inputLocked_) {   
+#if !DEBUG_UNLIMITED_CATS        
+        if (numCats02_ > 0) {
+#endif
+            CatBullet *bullet;
+            numCats02_--;
+            [[GameManager gameManager] setNumCats02:numCats02_]; 
+            bullet = [CatBullet fatBulletWithPos:rocket_.position withSpeed:(rocketSpeed_ + 10)];
+            
+            [self addChild:bullet z:kBulletDepth];
+            [firedCats_ addObject:bullet];
+            [[AudioManager audioManager] playSound:kMeow];
+            
 #if !DEBUG_UNLIMITED_CATS
         }
 #endif
@@ -774,8 +797,8 @@
 
 - (void) collectCat:(Cat *)cat
 {
-    numCats_++;
-    [[GameManager gameManager] setNumCats:numCats_];
+    numCats01_++;
+    [[GameManager gameManager] setNumCats01:numCats01_];
     [self showText:kCatPlus];
     [[AudioManager audioManager] playSound:kCollectMeow];    
 }

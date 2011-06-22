@@ -81,9 +81,14 @@ static GameManager *_gameManager = nil;
 
 #pragma mark - HUD Methods
 
-- (void) setNumCats:(NSUInteger)numCats
+- (void) setNumCats01:(NSUInteger)numCats
 {
-    [hudLayer_ setNumCats:numCats];
+    [hudLayer_ setNumCats01:numCats];
+}
+
+- (void) setNumCats02:(NSUInteger)numCats
+{
+    [hudLayer_ setNumCats02:numCats];
 }
 
 - (void) setNumBoosts:(NSUInteger)numBoosts

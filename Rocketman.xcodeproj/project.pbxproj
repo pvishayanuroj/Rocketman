@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		353E11C2138ED4C30064BC71 /* GameOvaa.png in Resources */ = {isa = PBXBuildFile; fileRef = 353E11C1138ED4C30064BC71 /* GameOvaa.png */; };
 		353E11CA138EDB650064BC71 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 353E11C9138EDB650064BC71 /* GameKit.framework */; };
+		355D23AE13AF7521003845CF /* cat_button_bomb_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 355D23AC13AF7521003845CF /* cat_button_bomb_pressed.png */; };
+		355D23AF13AF7521003845CF /* cat_button_bomb.png in Resources */ = {isa = PBXBuildFile; fileRef = 355D23AD13AF7521003845CF /* cat_button_bomb.png */; };
 		35E521AC13ABAE3100D0E671 /* Highscores.plist in Resources */ = {isa = PBXBuildFile; fileRef = 35E521AB13ABAE3100D0E671 /* Highscores.plist */; };
 		DA0593B113A7D50600565D76 /* AudioManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DA0593AE13A7D50600565D76 /* AudioManager.m */; };
 		DA0593B213A7D50600565D76 /* GameManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DA0593B013A7D50600565D76 /* GameManager.m */; };
@@ -207,6 +209,8 @@
 /* Begin PBXFileReference section */
 		353E11C1138ED4C30064BC71 /* GameOvaa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = GameOvaa.png; path = Rocketman/Resources/GameOvaa.png; sourceTree = SOURCE_ROOT; };
 		353E11C9138EDB650064BC71 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		355D23AC13AF7521003845CF /* cat_button_bomb_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cat_button_bomb_pressed.png; sourceTree = "<group>"; };
+		355D23AD13AF7521003845CF /* cat_button_bomb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cat_button_bomb.png; sourceTree = "<group>"; };
 		35E521AB13ABAE3100D0E671 /* Highscores.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Highscores.plist; sourceTree = "<group>"; };
 		DA0593AD13A7D50600565D76 /* AudioManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioManager.h; path = Classes/AudioManager.h; sourceTree = "<group>"; };
 		DA0593AE13A7D50600565D76 /* AudioManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AudioManager.m; path = Classes/AudioManager.m; sourceTree = "<group>"; };
@@ -1005,6 +1009,8 @@
 				DAFA3CFC1393B1F20048D211 /* ground.png */,
 				DAB132ED138F2BED001294BB /* boost_button_pressed.png */,
 				DAB132EE138F2BED001294BB /* boost_button.png */,
+				355D23AC13AF7521003845CF /* cat_button_bomb_pressed.png */,
+				355D23AD13AF7521003845CF /* cat_button_bomb.png */,
 				DAB132EF138F2BED001294BB /* cat_button_pressed.png */,
 				DAB132F0138F2BED001294BB /* cat_button.png */,
 				DAB132DF138F1D9A001294BB /* fire.png */,
@@ -1289,6 +1295,8 @@
 				DA99E82E13ADC30E0075896F /* Intro 09.png in Resources */,
 				DA99E94813ADD4980075896F /* Intro Cat.png in Resources */,
 				DA99E94A13ADE5030075896F /* skip_button.png in Resources */,
+				355D23AE13AF7521003845CF /* cat_button_bomb_pressed.png in Resources */,
+				355D23AF13AF7521003845CF /* cat_button_bomb.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

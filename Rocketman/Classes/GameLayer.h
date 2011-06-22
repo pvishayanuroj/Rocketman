@@ -42,7 +42,9 @@
     
     NSUInteger numBoosts_;
     
-    NSUInteger numCats_;
+    NSUInteger numCats01_;
+    
+    NSUInteger numCats02_;
     
     CGFloat yCutoff_;
     
@@ -148,7 +150,9 @@
 
 - (void) loss;
 
-- (void) fireCat;
+- (void) fireCat01;
+
+- (void) fireCat02;
 
 - (void) takeOffComplete;
 

@@ -8,6 +8,7 @@
 
 #import "HUDLayer.h"
 #import "GameLayer.h"
+#import "GameScene.h"
 #import "PButton.h"
 #import "GameManager.h"
 
@@ -54,14 +55,6 @@
         tiltLabel_.position =  ccp(50, screenHeight_*0.89);
         tiltLabel_.scale = 0.4f;
 		[self addChild:tiltLabel_ z:1];                   
-        
-        // Button counters
-        numCatsLabel_ = [[CCLabelBMFont labelWithString:@"0" fntFile:@"SRSM_font.fnt"] retain];
-        numBoostsLabel_ = [[CCLabelBMFont labelWithString:@"0" fntFile:@"SRSM_font.fnt"] retain];
-        numCatsLabel_.position = ccp(45, 35);
-        numBoostsLabel_.position = ccp(295, 35);           
-        [self addChild:numCatsLabel_ z:1];
-        [self addChild:numBoostsLabel_ z:1];
 	}
 	return self;
 }
@@ -71,7 +64,8 @@
     [heightLabel_ release];
     [speedLabel_ release];    
     [tiltLabel_ release];
-    [numCatsLabel_ release];
+    [numCats01Label_ release];
+    [numCats02Label_ release];
     [numBoostsLabel_ release];    
     
     [super dealloc];
@@ -80,17 +74,46 @@
 
 - (void) displayControls:(GameLayer *)gameLayer
 {
-    CCMenuItemSprite *catButton = [CCMenuItemSprite itemFromNormalSprite:[CCSprite spriteWithFile:@"cat_button.png"] selectedSprite:[CCSprite spriteWithFile:@"cat_button_pressed.png"] target:gameLayer selector:@selector(fireCat)];
+    
+    // Cat Button 01
+    // Add Button counter
+    numCats01Label_ = [[CCLabelBMFont labelWithString:@"0" fntFile:@"SRSM_font.fnt"] retain];
+    numCats01Label_.position = ccp(45, 35);
+    [self addChild:numCats01Label_ z:1];
+    
+    CCMenuItemSprite *catButton01 = [CCMenuItemSprite itemFromNormalSprite:[CCSprite spriteWithFile:@"cat_button.png"] selectedSprite:[CCSprite spriteWithFile:@"cat_button_pressed.png"] target:gameLayer selector:@selector(fireCat01)];
+    
+    CCMenu *m1 = [CCMenu menuWithItems:catButton01, nil];
+    m1.position = CGPointMake(45, 57);
+    [self addChild:m1];
+    
+    // Cat Button 02
+    // Disable catButton02 if catBomb isn't enabled.
+    if (((GameScene *)self.parent).catBombEnabled_) {
+        
+        // Add Button counter
+        numCats02Label_ = [[CCLabelBMFont labelWithString:@"0" fntFile:@"SRSM_font.fnt"] retain];
+        numCats02Label_.position = ccp(130, 10);
+        [self addChild:numCats02Label_ z:1];
+        
+        CCMenuItemSprite *catButton02 = [CCMenuItemSprite itemFromNormalSprite:[CCSprite spriteWithFile:@"cat_button_bomb.png"] selectedSprite:[CCSprite spriteWithFile:@"cat_button_bomb_pressed.png"] target:gameLayer selector:@selector(fireCat02)];
+        
+        CCMenu *m2 = [CCMenu menuWithItems:catButton02, nil];
+        m2.position = CGPointMake(125, 30);
+        [self addChild:m2];
+    }
+    
+    // Boost Button
+    // Add Button counter
+    numBoostsLabel_ = [[CCLabelBMFont labelWithString:@"0" fntFile:@"SRSM_font.fnt"] retain];
+    numBoostsLabel_.position = ccp(295, 35);           
+    [self addChild:numBoostsLabel_ z:1];
     
     CCMenuItemSprite *boostButton = [CCMenuItemSprite itemFromNormalSprite:[CCSprite spriteWithFile:@"boost_button.png"] selectedSprite:[CCSprite spriteWithFile:@"boost_button_pressed.png"] target:gameLayer selector:@selector(useBoost)];        
-    
-    CCMenu *m1 = [CCMenu menuWithItems:catButton, nil];
-    CCMenu *m2 = [CCMenu menuWithItems:boostButton, nil];    
-    m1.position = CGPointMake(45, 57);
-    m2.position = CGPointMake(268, 32);
-    
-    [self addChild:m1];    
-    [self addChild:m2];        
+
+    CCMenu *m3 = [CCMenu menuWithItems:boostButton, nil];        
+    m3.position = CGPointMake(268, 32);
+    [self addChild:m3];        
 }
 
 - (void) displayDirectional:(GameLayer *)gameLayer
@@ -107,9 +130,14 @@
      */
 }
 
-- (void) setNumCats:(NSUInteger)val
+- (void) setNumCats01:(NSUInteger)val
 {
-    [numCatsLabel_ setString:[NSString stringWithFormat:@"%d", val]];
+    [numCats01Label_ setString:[NSString stringWithFormat:@"%d", val]];
+}
+
+- (void) setNumCats02:(NSUInteger)val
+{
+    [numCats02Label_ setString:[NSString stringWithFormat:@"%d", val]];
 }
 
 - (void) setNumBoosts:(NSUInteger)val

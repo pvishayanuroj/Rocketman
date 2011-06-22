@@ -28,7 +28,9 @@
 
 - (void) addShell:(CGPoint)pos;
 
-- (void) setNumCats:(NSUInteger)numCats;
+- (void) setNumCats01:(NSUInteger)numCats;
+
+- (void) setNumCats02:(NSUInteger)numCats;
 
 - (void) setNumBoosts:(NSUInteger)numBoosts;
 

@@ -20,7 +20,9 @@
     
     CCLabelBMFont *tiltLabel_;
     
-    CCLabelBMFont *numCatsLabel_;
+    CCLabelBMFont *numCats01Label_;
+    
+    CCLabelBMFont *numCats02Label_;
     
     CCLabelBMFont *numBoostsLabel_;        
     
@@ -30,7 +32,9 @@
 
 - (void) displayDirectional:(GameLayer *)gameLayer;
 
-- (void) setNumCats:(NSUInteger)val;
+- (void) setNumCats01:(NSUInteger)val;
+
+- (void) setNumCats02:(NSUInteger)val;
 
 - (void) setNumBoosts:(NSUInteger)val;
 
