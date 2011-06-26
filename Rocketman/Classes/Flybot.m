@@ -31,8 +31,8 @@ static NSUInteger countID = 0;
         self.position = pos;
         
         // Attributes
-        radius_ = 30;
-        radiusSquared_ = radius_*radius_;
+        collision_.radius = 30;
+        collision_.radiusSquared = collision_.radius * collision_.radius;
         
         [self initActions];
         [self showIdle];        

@@ -38,8 +38,8 @@ static NSUInteger countID = 0;
         
         // Attributes
         HP_ = 8;
-        radius_ = 64;
-        radiusSquared_ = radius_*radius_;        
+        collision_.radius = 64;
+        collision_.radiusSquared = collision_.radius * collision_.radius;        
         
         CGSize size = [[CCDirector sharedDirector] winSize];        
         leftCutoff_ = - 0.5 * size.width;

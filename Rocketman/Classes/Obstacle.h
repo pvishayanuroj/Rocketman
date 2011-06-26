@@ -12,13 +12,7 @@
  
     CCSprite *sprite_;
     
-    CGFloat radius_;
-    
-    CGFloat radiusSquared_;
-    
-    CGSize size_;
-    
-    BOOL circular_;
+    PVCollide collision_;
     
     BOOL collided_;
     
@@ -29,10 +23,7 @@
 	NSUInteger unitID_;    
 }
 
-@property (nonatomic, readonly) CGFloat radius;
-@property (nonatomic, readonly) CGFloat radiusSquared;
-@property (nonatomic, readonly) CGSize size;
-@property (nonatomic, readonly) BOOL circular;
+@property (nonatomic, readonly) PVCollide collision;
 @property (nonatomic, readonly) BOOL collided;
 @property (nonatomic, readonly) BOOL shootable;
 

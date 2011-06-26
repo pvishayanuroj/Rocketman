@@ -504,6 +504,7 @@
 		DA7DCC9D13A7D68A0065A566 /* Ground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Ground.m; path = Classes/Ground.m; sourceTree = "<group>"; };
 		DA7DCC9E13A7D68A0065A566 /* SlowCloud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SlowCloud.h; path = Classes/SlowCloud.h; sourceTree = "<group>"; };
 		DA7DCC9F13A7D68A0065A566 /* SlowCloud.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SlowCloud.m; path = Classes/SlowCloud.m; sourceTree = "<group>"; };
+		DA8966B613B73DAC000AC29F /* Structs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Structs.h; path = Classes/Structs.h; sourceTree = "<group>"; };
 		DA907C3B1394DBDB009ADD27 /* SRSMTheme01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = SRSMTheme01.mp3; sourceTree = "<group>"; };
 		DA907C3E1394DCAD009ADD27 /* meow01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = meow01.mp3; sourceTree = "<group>"; };
 		DA907C3F1394DCAD009ADD27 /* meow02.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = meow02.mp3; sourceTree = "<group>"; };
@@ -1084,6 +1085,7 @@
 				DA7DCC8713A7D6650065A566 /* Constants.h */,
 				DA7DCC8813A7D6650065A566 /* Debugging.h */,
 				DA7DCC8B13A7D6650065A566 /* Enums.h */,
+				DA8966B613B73DAC000AC29F /* Structs.h */,
 				DA7DCC8913A7D6650065A566 /* EngineParticleSystem.h */,
 				DA7DCC8A13A7D6650065A566 /* EngineParticleSystem.m */,
 				DA7DCC8C13A7D6650065A566 /* PButton.h */,

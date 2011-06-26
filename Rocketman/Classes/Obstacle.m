@@ -12,10 +12,7 @@
 
 @implementation Obstacle
 
-@synthesize radius = radius_;
-@synthesize radiusSquared = radiusSquared_;
-@synthesize size = size_;
-@synthesize circular = circular_;
+@synthesize collision = collision_;
 @synthesize collided = collided_;
 @synthesize shootable = shootable_;
 
@@ -23,16 +20,16 @@
 {
     if ((self = [super init])) {
         
-        circular_ = YES;
         collided_ = NO;
         shootable_ = YES;
         
-        // Default sizes (override this)
-        radius_ = 10;
-        radiusSquared_ = radius_ * radius_;
-        size_.width = 10;
-        size_.height = 10;
-
+        // Default collision parameters (override some of these)
+        collision_.circular = YES;
+        collision_.active = YES;
+        collision_.radius = 10;
+        collision_.radiusSquared = collision_.radius * collision_.radius;
+        collision_.size.width = 10;
+        collision_.size.height = 10;
     }
     return self;
 }

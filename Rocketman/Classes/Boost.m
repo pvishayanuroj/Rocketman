@@ -31,9 +31,9 @@ static NSUInteger countID = 0;
         
         // Attributes
         shootable_ = NO;
-        circular_ = NO;
-        size_.width = 50;
-        size_.height = 10;
+        collision_.circular = NO;
+        collision_.size.width = 50;
+        collision_.size.height = 10;
         
         [self initActions];
         [self showIdle];

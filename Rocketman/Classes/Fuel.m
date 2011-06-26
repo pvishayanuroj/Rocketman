@@ -33,8 +33,8 @@ static NSUInteger countID = 0;
         
         // Attributes
         shootable_ = NO;
-        radius_ = 20;
-        radiusSquared_ = radius_*radius_;
+        collision_.radius = 20;
+        collision_.radiusSquared = collision_.radius * collision_.radius;
         
         [self initActions];
         [self showIdle];

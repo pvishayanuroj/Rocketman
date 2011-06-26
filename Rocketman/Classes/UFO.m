@@ -31,9 +31,9 @@ static NSUInteger countID = 0;
         self.position = pos;
         
         // Attributes
-        circular_ = NO;
-        size_.width = 65;
-        size_.height = 20;
+        collision_.circular = NO;
+        collision_.size.width = 65;
+        collision_.size.height = 20;
         
         [self initActions];
         [self showIdle];        

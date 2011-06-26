@@ -269,12 +269,12 @@
         }
         
         // Do a rectangle on circle collision check
-        if (obstacle.circular) {
-            collide = [UtilFuncs intersects:obstacle.position radius:obstacle.radius rect:rocketBox];
+        if (obstacle.collision.circular) {
+            collide = [UtilFuncs intersects:obstacle.position radius:obstacle.collision.radius rect:rocketBox];
         }
         // Do a rectangle and rectangle collision check
         else {
-            obstacleBox = CGRectMake(obstacle.position.x, obstacle.position.y, obstacle.size.width, obstacle.size.height);
+            obstacleBox = CGRectMake(obstacle.position.x, obstacle.position.y, obstacle.collision.size.width, obstacle.collision.size.height);
             collide = [UtilFuncs intersects:rocketBox b:obstacleBox];
         }
         
@@ -296,19 +296,16 @@
             }
             
             // The obstacle is a circle, do a circle on circle check
-            if (obstacle.circular) {
+            if (obstacle.collision.circular) {
                 distance = [UtilFuncs distanceNoRoot:cat.position b:obstacle.position];
-                threshold = cat.radius + obstacle.radius;
+                threshold = cat.radius + obstacle.collision.radius;
                 collide = (distance < threshold * threshold);
             }
             // The obstacle is a rectangle, do a rectangle on circle check
             else {
-                obstacleBox = CGRectMake(obstacle.position.x, obstacle.position.y, obstacle.size.width, obstacle.size.height);                
+                obstacleBox = CGRectMake(obstacle.position.x, obstacle.position.y, obstacle.collision.size.width, obstacle.collision.size.height);                
                 collide = [UtilFuncs intersects:cat.position radius:cat.radius rect:obstacleBox];
             }
-            
-            //distance = [UtilFuncs distanceNoRoot:cat.position b:obstacle.position];
-            //threshold = cat.radius + obstacle.radius;
             
             // If a collision occurred, remove the cat bullet and notify the obstacle of the hit
             if (collide) {
@@ -332,14 +329,14 @@
                         }
                         
                         // The obstacle is a circle, do a circle on circle check
-                        if (obs.circular) {
+                        if (obs.collision.circular) {
                             distance = [UtilFuncs distanceNoRoot:cat.position b:obs.position];
-                            threshold = cat.explosionRadius + obs.radius;
+                            threshold = cat.explosionRadius + obs.collision.radius;
                             collide = (distance < threshold * threshold);
                         }
                         // The obstacle is a rectangle, do a rectangle on circle check
                         else {
-                            obstacleBox = CGRectMake(obs.position.x, obs.position.y, obs.size.width, obs.size.height);                
+                            obstacleBox = CGRectMake(obs.position.x, obs.position.y, obs.collision.size.width, obs.collision.size.height);                
                             collide = [UtilFuncs intersects:cat.position radius:cat.explosionRadius rect:obstacleBox];
                         }                        
                         
