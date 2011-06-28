@@ -35,8 +35,7 @@ static NSUInteger countID = 0;
         
         // Attributes
         primaryPVCollide_ = defaultPVCollide_;
-        primaryPVCollide_.radius = 16;
-        primaryPVCollide_.radiusSquared = primaryPVCollide_.radius * primaryPVCollide_.radius;        
+        primaryPVCollide_.radius = 16;        
         
         [self initActions];
         [self showIdle];        

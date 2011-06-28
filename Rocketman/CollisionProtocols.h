@@ -22,3 +22,18 @@
 
 @end
 
+@protocol SecondaryCollisionProtocol <NSObject>
+
+- (void) secondaryCollision;
+
+@property (nonatomic, readonly) PVCollide secondaryPVCollide;
+
+@end
+
+@protocol SecondaryHitProtocol <NSObject>
+
+- (void) secondaryHit;
+
+@property (nonatomic, readonly) PVCollide secondaryPVCollide;
+
+@end

@@ -21,9 +21,9 @@
         defaultPVCollide_.collideActive = YES;        
         defaultPVCollide_.hitActive = YES;
         defaultPVCollide_.radius = 10;
-        defaultPVCollide_.radiusSquared = defaultPVCollide_.radius * defaultPVCollide_.radius;
         defaultPVCollide_.size.width = 10;
         defaultPVCollide_.size.height = 10;
+        defaultPVCollide_.offset = CGPointZero;
 
     }
     return self;
@@ -69,9 +69,9 @@
 
 #pragma mark - Debug Methods
 
-#if DEBUG_BOUNDINGBOX
+/*
 - (void) draw
-{
+{         
     if (circular_) {
         glColor4f(1.0, 0, 0, 1.0);        
         ccDrawCircle(CGPointZero, radius_, 0, 48, NO);    
@@ -93,6 +93,6 @@
         ccDrawLine(p1, p3);            
     }
 }
-#endif
+*/
 
 @end

@@ -287,6 +287,7 @@
                 Obstacle<PrimaryHitProtocol> *o = obstacle;
                 
                 if (o.primaryPVCollide.hitActive) {
+                    // Check if there was a collision
                     if ([UtilFuncs collides:o.primaryPVCollide objectPos:o.position catPos:cat.position catRadius:cat.radius]) {
                      
                         // Decrement the number of impacts the bullet can have
@@ -300,7 +301,7 @@
                         
                         // Check if the bullet is "explosive"
                         if (cat.explosionRadius > 0) {
-                            // This is quite inefficient, fix this if time permits!
+                            // If it is, check to see if any other obstacle in proximity will be affected
                             for (Obstacle *obs in obstacles_) {
                                 
                                 if ([obs conformsToProtocol:@protocol(PrimaryHitProtocol)]) {
@@ -321,13 +322,35 @@
                         
                         // Get out of inner loop
                         break;                           
-                        
                     }
                 }
             } // end if conforms to PrimaryHitProtocol
-        }
+            
+            // Check for secondary collision bounds
+            if ([obstacle conformsToProtocol:@protocol(SecondaryHitProtocol)]) {
+                Obstacle<SecondaryHitProtocol> *o = obstacle;
+                
+                if (o.secondaryPVCollide.hitActive) {
+                    
+                    if ([UtilFuncs collides:o.secondaryPVCollide objectPos:o.position catPos:cat.position catRadius:cat.radius]) {
+                        
+                        // Decrement the number of impacts the bullet can have
+                        cat.remainingImpacts--;
+                        
+                        // Only remove the bullet if it has hit enough times
+                        if (cat.remainingImpacts <= 0) {
+                            [remove addIndex:index];
+                            [cat removeFromParentAndCleanup:YES];                    
+                        }                
+                        
+                        [o secondaryHit];
+                    }
+                }
+            } // end if conforms for SecondaryHitProtocol
+            
+        } // end inner for
         index++;
-    }
+    } // end outer for
     
     // Remove outside the loop
     [firedCats_ removeObjectsAtIndexes:remove];

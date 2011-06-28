@@ -17,6 +17,7 @@
 @implementation BossTurtle
 
 @synthesize primaryPVCollide = primaryPVCollide_;
+@synthesize secondaryPVCollide = secondaryPVCollide_;
 
 static NSUInteger countID = 0;
 
@@ -40,9 +41,15 @@ static NSUInteger countID = 0;
         
         // Attributes
         HP_ = 8;
+        headOffset_ = ccp(70, 0);
+        
+        // Set up the bounding circles
         primaryPVCollide_ = defaultPVCollide_;
-        primaryPVCollide_.radius = 64;
-        primaryPVCollide_.radiusSquared = primaryPVCollide_.radius * primaryPVCollide_.radius;                                                          
+        primaryPVCollide_.radius = 52;
+        
+        secondaryPVCollide_ = defaultPVCollide_;
+        secondaryPVCollide_.radius = 22;
+        secondaryPVCollide_.offset = ccp(-headOffset_.x, headOffset_.y);
         
         CGSize size = [[CCDirector sharedDirector] winSize];        
         leftCutoff_ = - 0.5 * size.width;
@@ -159,22 +166,26 @@ static NSUInteger countID = 0;
     CGFloat dy = 0;
 
     if (movingLeft_) {
+        // Check if we got to the turnaround point to move right again
         if (self.position.x < leftCutoff_) {
             movingLeft_ = NO;
             sprite_.flipX = NO;           
             deployedShells_ = NO;            
             [self engineFlameGoingRight:NO];
+            secondaryPVCollide_.offset = headOffset_;
         }
         else {
             dx = -3;
         }
     }
     else {
+        // Check if we got to the turnaround point to move left
         if (self.position.x > rightCutoff_) {
             movingLeft_ = YES;
             sprite_.flipX = YES; 
             deployedShells_ = NO;
             [self engineFlameGoingRight:YES];            
+            secondaryPVCollide_.offset = ccp(-headOffset_.x, headOffset_.y);            
         }
         else {
             dx = 3;
@@ -222,7 +233,12 @@ static NSUInteger countID = 0;
 
 - (void) primaryHit
 {
-    [self bulletHit];    
+    // Turtle takes no damage on shell hit
+}
+
+- (void) secondaryHit
+{
+    [self bulletHit];        
 }
 
 - (void) destroy
@@ -252,5 +268,16 @@ static NSUInteger countID = 0;
         engineFlame_.position = ccp(-80, 27);
     }
 }
+
+#pragma mark - Debug Methods
+
+#if DEBUG_BOUNDINGBOX
+- (void) draw
+{         
+    glColor4f(1.0, 0, 0, 1.0);        
+    ccDrawCircle(primaryPVCollide_.offset, primaryPVCollide_.radius, 0, 48, NO);
+    ccDrawCircle(secondaryPVCollide_.offset, secondaryPVCollide_.radius, 0, 48, NO);    
+}
+#endif
 
 @end

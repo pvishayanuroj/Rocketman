@@ -53,9 +53,13 @@
 
 + (BOOL) collides:(PVCollide)collide objectPos:(CGPoint)objectPos rocketBox:(CGRect)rocketBox
 {
+    objectPos = ccpAdd(objectPos, collide.offset);
+    
+    // Handle rectangle on circle checks
     if (collide.circular) {
         return [self intersects:objectPos radius:collide.radius rect:rocketBox];
     }
+    // Handle rectangle on rectangle checks
     else {
         CGRect obstacleBox = CGRectMake(objectPos.x, objectPos.y, collide.size.width, collide.size.height);        
         return [self intersects:rocketBox b:obstacleBox];
@@ -64,11 +68,15 @@
 
 + (BOOL) collides:(PVCollide)collide objectPos:(CGPoint)objectPos catPos:(CGPoint)catPos catRadius:(CGFloat)catRadius
 {
+    objectPos = ccpAdd(objectPos, collide.offset);
+    
+    // Handle circle on circle checks
     if (collide.circular) {
         CGFloat distance = [self distanceNoRoot:objectPos b:catPos];
         CGFloat threshold = catRadius + collide.radius;
         return (distance < threshold * threshold);        
     }
+    // Handle circle on rectangle checks
     else {
         CGRect obstacleBox = CGRectMake(objectPos.x, objectPos.y, collide.size.width, collide.size.height);                
         return [self intersects:catPos radius:catRadius rect:obstacleBox];
