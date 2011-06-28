@@ -8,11 +8,12 @@
 
 #import "Obstacle.h"
 
-@interface Shell : Obstacle {
- 
+@interface Shell : Obstacle <PrimaryCollisionProtocol, PrimaryHitProtocol> {
+    
 	/** Stored idle animation (this is RepeatForever action) */
 	CCAction *idleAnimation_;             
     
+    PVCollide primaryPVCollide_;    
 }
 
 + (id) shellWithPos:(CGPoint)pos;

@@ -8,12 +8,14 @@
 
 #import "Obstacle.h"
 
-@interface BossTurtle : Obstacle {
+@interface BossTurtle : Obstacle <PrimaryHitProtocol> {
     
 	/** Stored idle animation (this is RepeatForever action) */
 	CCAction *idleAnimation_;         
     
     CCAction *damageAnimation_;
+    
+    PVCollide primaryPVCollide_;
     
     CCParticleSystem *engineFlame_;            
     

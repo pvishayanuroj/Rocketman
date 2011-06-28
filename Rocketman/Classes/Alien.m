@@ -13,6 +13,8 @@
 
 @implementation Alien
 
+@synthesize primaryPVCollide = primaryPVCollide_;
+
 static NSUInteger countID = 0;
 
 + (id) alienWithPos:(CGPoint)pos
@@ -32,8 +34,9 @@ static NSUInteger countID = 0;
         self.position = pos;
         
         // Attributes
-        collision_.radius = 16;
-        collision_.radiusSquared = collision_.radius * collision_.radius;        
+        primaryPVCollide_ = defaultPVCollide_;
+        primaryPVCollide_.radius = 16;
+        primaryPVCollide_.radiusSquared = primaryPVCollide_.radius * primaryPVCollide_.radius;                  
         
         [self initActions];
         [self showIdle];        
@@ -69,6 +72,20 @@ static NSUInteger countID = 0;
 {
 	[sprite_ stopAllActions];
 	[sprite_ runAction:idleAnimation_];	
+}
+
+- (void) primaryCollision
+{
+    primaryPVCollide_.collideActive = NO;
+    primaryPVCollide_.hitActive = NO;
+    [self collide];
+}
+
+- (void) primaryHit
+{
+    primaryPVCollide_.collideActive = NO;
+    primaryPVCollide_.hitActive = NO;
+    [self bulletHit];
 }
 
 - (void) bulletHit

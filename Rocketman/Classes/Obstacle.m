@@ -12,24 +12,19 @@
 
 @implementation Obstacle
 
-@synthesize collision = collision_;
-@synthesize collided = collided_;
-@synthesize shootable = shootable_;
-
 - (id) init
 {
     if ((self = [super init])) {
         
-        collided_ = NO;
-        shootable_ = YES;
-        
         // Default collision parameters (override some of these)
-        collision_.circular = YES;
-        collision_.active = YES;
-        collision_.radius = 10;
-        collision_.radiusSquared = collision_.radius * collision_.radius;
-        collision_.size.width = 10;
-        collision_.size.height = 10;
+        defaultPVCollide_.circular = YES;
+        defaultPVCollide_.collideActive = YES;        
+        defaultPVCollide_.hitActive = YES;
+        defaultPVCollide_.radius = 10;
+        defaultPVCollide_.radiusSquared = defaultPVCollide_.radius * defaultPVCollide_.radius;
+        defaultPVCollide_.size.width = 10;
+        defaultPVCollide_.size.height = 10;
+
     }
     return self;
 }
@@ -59,15 +54,10 @@
 - (void) bulletHit
 {
     sprite_.visible = NO;
-    collided_ = YES;
-    shootable_ = NO; 
 }
 
 - (void) collide
-{
-    collided_ = YES;
-    shootable_ = NO;
-    
+{    
     GameLayer *gameLayer = (GameLayer *)[self parent];
     [gameLayer setRocketCondition:kRocketWobbling];
 }

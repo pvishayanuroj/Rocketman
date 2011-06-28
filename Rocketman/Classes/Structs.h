@@ -8,7 +8,9 @@
 
 typedef struct {
     
-    BOOL active;
+    BOOL hitActive;
+    
+    BOOL collideActive;
     
     BOOL circular;
     

@@ -28,6 +28,7 @@
 #import "Boost.h"
 #import "BlastCloud.h"
 #import "UtilFuncs.h"
+#import "CollisionProtocols.h"
 
 #import "HighscoreManager.h"
 
@@ -253,34 +254,23 @@
 #endif
     
     BOOL collide;    
-    CGFloat distance;
-    CGFloat threshold;
     CGRect rocketBox;
-    CGRect obstacleBox;
     rocketBox.size = rocket_.rect.size;
     rocketBox.origin = rocket_.position;
     
     // For checking if the rocket collides with obstacles
     for (Obstacle *obstacle in obstacles_) {
-        
-        // Cannot collide twice with something
-        if (obstacle.collided) {    
-            continue;
-        }
-        
-        // Do a rectangle on circle collision check
-        if (obstacle.collision.circular) {
-            collide = [UtilFuncs intersects:obstacle.position radius:obstacle.collision.radius rect:rocketBox];
-        }
-        // Do a rectangle and rectangle collision check
-        else {
-            obstacleBox = CGRectMake(obstacle.position.x, obstacle.position.y, obstacle.collision.size.width, obstacle.collision.size.height);
-            collide = [UtilFuncs intersects:rocketBox b:obstacleBox];
-        }
-        
-        // Rocket collided
-        if (collide) {
-            [obstacle collide];
+
+        // Colliding obstacles must implement the protocol
+        if ([obstacle conformsToProtocol:@protocol(PrimaryCollisionProtocol)]) {
+            Obstacle<PrimaryCollisionProtocol> *o = obstacle;
+            
+            // Only look at obstacles that are allowed to collide
+            if (o.primaryPVCollide.collideActive) {
+                if ([UtilFuncs collides:o.primaryPVCollide objectPos:o.position rocketBox:rocketBox]) {
+                    [o primaryCollision];                
+                }
+            }
         }
     }
     
@@ -291,67 +281,50 @@
     for (CatBullet *cat in firedCats_) {
         for (Obstacle *obstacle in obstacles_) {
             
-            if (!obstacle.shootable) {
-                continue;
-            }
+            collide = NO;            
             
-            // The obstacle is a circle, do a circle on circle check
-            if (obstacle.collision.circular) {
-                distance = [UtilFuncs distanceNoRoot:cat.position b:obstacle.position];
-                threshold = cat.radius + obstacle.collision.radius;
-                collide = (distance < threshold * threshold);
-            }
-            // The obstacle is a rectangle, do a rectangle on circle check
-            else {
-                obstacleBox = CGRectMake(obstacle.position.x, obstacle.position.y, obstacle.collision.size.width, obstacle.collision.size.height);                
-                collide = [UtilFuncs intersects:cat.position radius:cat.radius rect:obstacleBox];
-            }
-            
-            // If a collision occurred, remove the cat bullet and notify the obstacle of the hit
-            if (collide) {
+            if ([obstacle conformsToProtocol:@protocol(PrimaryHitProtocol)]) {
+                Obstacle<PrimaryHitProtocol> *o = obstacle;
                 
-                // Decrement the number of impacts the bullet can have
-                cat.remainingImpacts--;
-                
-                // Only remove the bullet if it has hit enough times
-                if (cat.remainingImpacts <= 0) {
-                    [remove addIndex:index];
-                    [cat removeFromParentAndCleanup:YES];                    
-                }
-                
-                // Check if the bullet is "explosive"
-                if (cat.explosionRadius > 0) {
-                    // This is quite inefficient, fix this if time permits!
-                    for (Obstacle *obs in obstacles_) {
+                if (o.primaryPVCollide.hitActive) {
+                    if ([UtilFuncs collides:o.primaryPVCollide objectPos:o.position catPos:cat.position catRadius:cat.radius]) {
+                     
+                        // Decrement the number of impacts the bullet can have
+                        cat.remainingImpacts--;
                         
-                        if (!obs.shootable) {
-                            continue;
-                        }
+                        // Only remove the bullet if it has hit enough times
+                        if (cat.remainingImpacts <= 0) {
+                            [remove addIndex:index];
+                            [cat removeFromParentAndCleanup:YES];                    
+                        }                  
                         
-                        // The obstacle is a circle, do a circle on circle check
-                        if (obs.collision.circular) {
-                            distance = [UtilFuncs distanceNoRoot:cat.position b:obs.position];
-                            threshold = cat.explosionRadius + obs.collision.radius;
-                            collide = (distance < threshold * threshold);
+                        // Check if the bullet is "explosive"
+                        if (cat.explosionRadius > 0) {
+                            // This is quite inefficient, fix this if time permits!
+                            for (Obstacle *obs in obstacles_) {
+                                
+                                if ([obs conformsToProtocol:@protocol(PrimaryHitProtocol)]) {
+                                    Obstacle<PrimaryHitProtocol> *o2 = obs;
+                                    
+                                    if (o2.primaryPVCollide.hitActive) {
+                                        if ([UtilFuncs collides:o2.primaryPVCollide objectPos:o2.position catPos:cat.position catRadius:cat.explosionRadius]) {
+                                            [o2 primaryHit];
+                                        }
+                                    }
+                                }             
+                            }
                         }
-                        // The obstacle is a rectangle, do a rectangle on circle check
+                        // Else bullet is not explosive, just register a single hit on the original obstacle
                         else {
-                            obstacleBox = CGRectMake(obs.position.x, obs.position.y, obs.collision.size.width, obs.collision.size.height);                
-                            collide = [UtilFuncs intersects:cat.position radius:cat.explosionRadius rect:obstacleBox];
-                        }                        
-                        
-                        if (collide) {
-                            [obs bulletHit];
+                            [o primaryHit];
                         }
+                        
+                        // Get out of inner loop
+                        break;                           
+                        
                     }
                 }
-                else {
-                    [obstacle bulletHit];
-                }
-                
-                // Get out of inner loop
-                break; 
-            }   
+            } // end if conforms to PrimaryHitProtocol
         }
         index++;
     }
@@ -489,6 +462,7 @@
         pos = ccp(x, y);                
 
         NSUInteger type = arc4random() % 6; 
+        //type = 2;
         
         switch (type) {
             case 0:

@@ -11,6 +11,8 @@
 
 @implementation Boost
 
+@synthesize primaryPVCollide = primaryPVCollide_;
+
 static NSUInteger countID = 0;
 
 + (id) boostWithPos:(CGPoint)pos
@@ -30,11 +32,11 @@ static NSUInteger countID = 0;
         self.position = pos;
         
         // Attributes
-        shootable_ = NO;
-        collision_.circular = NO;
-        collision_.size.width = 50;
-        collision_.size.height = 10;
-        
+        primaryPVCollide_ = defaultPVCollide_;
+        primaryPVCollide_.circular = NO;
+        primaryPVCollide_.size.width = 50;
+        primaryPVCollide_.size.height = 10;
+
         [self initActions];
         [self showIdle];
         
@@ -71,6 +73,12 @@ static NSUInteger countID = 0;
 {
     [sprite_ stopAllActions];
     [sprite_ runAction:idleAnimation_];	    
+}
+
+- (void) primaryCollision
+{
+    primaryPVCollide_.collideActive = NO;
+    [self collide];
 }
 
 - (void) collide

@@ -8,10 +8,12 @@
 
 #import "Obstacle.h"
 
-@interface Flybot : Obstacle {
+@interface Flybot : Obstacle <PrimaryCollisionProtocol, PrimaryHitProtocol> {
     
 	/** Stored idle animation (this is RepeatForever action) */
 	CCAction *idleAnimation_;     
+    
+    PVCollide primaryPVCollide_;
     
 }
 

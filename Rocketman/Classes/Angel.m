@@ -13,6 +13,8 @@
 
 @implementation Angel
 
+@synthesize primaryPVCollide = primaryPVCollide_;
+
 static NSUInteger countID = 0;
 
 + (id) angelWithPos:(CGPoint)pos
@@ -32,9 +34,10 @@ static NSUInteger countID = 0;
         self.position = pos;
         
         // Attributes
-        shootable_ = NO;
-        collision_.radius = 30;
-        collision_.radiusSquared = collision_.radius * collision_.radius;
+        primaryPVCollide_ = defaultPVCollide_;
+        primaryPVCollide_.hitActive = NO;
+        primaryPVCollide_.radius = 30;
+        primaryPVCollide_.radiusSquared = primaryPVCollide_.radius * primaryPVCollide_.radius;
         
         [self initActions];
         [self showIdle];
@@ -94,13 +97,11 @@ static NSUInteger countID = 0;
     [self runAction:[CCSequence actions:delay, method, nil]];
 }
 
-- (void) bulletHit
-{    
-    [[AudioManager audioManager] playSound:kExplosion01];            
-    
-    [super showDestroy:kBamText];
-    
-    [super bulletHit];
+- (void) primaryCollision
+{
+    primaryPVCollide_.collideActive = NO;
+    primaryPVCollide_.hitActive = NO;
+    [self collide];
 }
 
 - (void) collide
@@ -110,10 +111,6 @@ static NSUInteger countID = 0;
     [gameLayer engageFixedBoost:12 amt:12 rate:0 time:3.0];
     
     [self showAttacking];
-    
-    // Do not call super collide, so that wobble animation does not override burning animation
-    collided_ = YES;
-    shootable_ = NO;  
 }
 
 - (void) destroy

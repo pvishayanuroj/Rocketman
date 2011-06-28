@@ -16,6 +16,8 @@
 
 @implementation BossTurtle
 
+@synthesize primaryPVCollide = primaryPVCollide_;
+
 static NSUInteger countID = 0;
 
 #pragma mark - Object Lifecycle
@@ -38,8 +40,9 @@ static NSUInteger countID = 0;
         
         // Attributes
         HP_ = 8;
-        collision_.radius = 64;
-        collision_.radiusSquared = collision_.radius * collision_.radius;        
+        primaryPVCollide_ = defaultPVCollide_;
+        primaryPVCollide_.radius = 64;
+        primaryPVCollide_.radiusSquared = primaryPVCollide_.radius * primaryPVCollide_.radius;                                                          
         
         CGSize size = [[CCDirector sharedDirector] winSize];        
         leftCutoff_ = - 0.5 * size.width;
@@ -179,7 +182,7 @@ static NSUInteger countID = 0;
     }
         
     // Only launch shells if not in death sequence
-    if (shootable_) {
+    if (primaryPVCollide_.hitActive) {
         if (self.position.y > yTarget_) {
             dy = -1;
         }
@@ -196,7 +199,7 @@ static NSUInteger countID = 0;
     }
     
     // When dying, slow down
-    if (!shootable_) {
+    if (!primaryPVCollide_.hitActive) {
         dx *= 0.3;
     }
         
@@ -208,7 +211,7 @@ static NSUInteger countID = 0;
 {
     // Creature death
     if (--HP_ == 0) {
-        shootable_ = NO;         
+        primaryPVCollide_.hitActive = NO;        
         engineFlame_.emissionRate = 0;
         [self startDeathSequence];
     }
@@ -217,9 +220,9 @@ static NSUInteger countID = 0;
     }
 }
 
-- (void) collide
-{    
-    [super collide];    
+- (void) primaryHit
+{
+    [self bulletHit];    
 }
 
 - (void) destroy

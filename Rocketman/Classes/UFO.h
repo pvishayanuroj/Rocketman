@@ -8,11 +8,12 @@
 
 #import "Obstacle.h"
 
-@interface UFO : Obstacle {
+@interface UFO : Obstacle <PrimaryCollisionProtocol, PrimaryHitProtocol> {
     
 	/** Stored idle animation (this is RepeatForever action) */
 	CCAction *idleAnimation_;     
     
+    PVCollide primaryPVCollide_;
 }
 
 + (id) ufoWithPos:(CGPoint)pos;

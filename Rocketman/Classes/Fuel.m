@@ -12,6 +12,8 @@
 
 @implementation Fuel
 
+@synthesize primaryPVCollide = primaryPVCollide_;
+
 static NSUInteger countID = 0;
 
 + (id) fuelWithPos:(CGPoint)pos
@@ -32,9 +34,9 @@ static NSUInteger countID = 0;
         self.position = pos;
         
         // Attributes
-        shootable_ = NO;
-        collision_.radius = 20;
-        collision_.radiusSquared = collision_.radius * collision_.radius;
+        primaryPVCollide_ = defaultPVCollide_;
+        primaryPVCollide_.radius = 20;
+        primaryPVCollide_.radiusSquared = primaryPVCollide_.radius * primaryPVCollide_.radius;                                                  
         
         [self initActions];
         [self showIdle];
@@ -86,6 +88,12 @@ static NSUInteger countID = 0;
 {
     [sprite_ stopAllActions];
     [sprite_ runAction:collectAnimation_];	        
+}
+
+- (void) primaryCollision
+{
+    primaryPVCollide_.collideActive = NO;
+    [self collide];
 }
 
 - (void) collide

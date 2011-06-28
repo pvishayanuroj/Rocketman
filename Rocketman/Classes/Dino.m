@@ -14,6 +14,8 @@
 
 @implementation Dino
 
+@synthesize primaryPVCollide = primaryPVCollide_;
+
 static NSUInteger countID = 0;
 
 + (id) dinoWithPos:(CGPoint)pos
@@ -33,8 +35,9 @@ static NSUInteger countID = 0;
         self.position = pos;
         
         // Attributes
-        collision_.radius = 30;
-        collision_.radiusSquared = collision_.radius * collision_.radius;
+        primaryPVCollide_ = defaultPVCollide_;
+        primaryPVCollide_.radius = 30;
+        primaryPVCollide_.radiusSquared = primaryPVCollide_.radius * primaryPVCollide_.radius;                                          
         
         [self initActions];
         [self showIdle];
@@ -94,6 +97,20 @@ static NSUInteger countID = 0;
     [self showIdle];
 }
 
+- (void) primaryCollision
+{
+    primaryPVCollide_.collideActive = NO;
+    primaryPVCollide_.hitActive = NO;
+    [self collide];
+}
+
+- (void) primaryHit
+{
+    primaryPVCollide_.collideActive = NO;
+    primaryPVCollide_.hitActive = NO;
+    [self bulletHit];
+}
+
 - (void) bulletHit
 {    
     [[AudioManager audioManager] playSound:kExplosion01];            
@@ -110,10 +127,6 @@ static NSUInteger countID = 0;
     [gameLayer slowDown:0.66];    
     
     [self showAttacking];
-    
-    // Do not call super collide, so that wobble animation does not override burning animation
-    collided_ = YES;
-    shootable_ = NO;    
 }
 
 - (void) destroy

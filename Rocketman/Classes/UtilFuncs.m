@@ -51,4 +51,28 @@
     return (a1.x < b2.x) && (a2.x > b1.x) && (a1.y > b2.y) && (a2.y < b1.y);
 }
 
++ (BOOL) collides:(PVCollide)collide objectPos:(CGPoint)objectPos rocketBox:(CGRect)rocketBox
+{
+    if (collide.circular) {
+        return [self intersects:objectPos radius:collide.radius rect:rocketBox];
+    }
+    else {
+        CGRect obstacleBox = CGRectMake(objectPos.x, objectPos.y, collide.size.width, collide.size.height);        
+        return [self intersects:rocketBox b:obstacleBox];
+    }
+}
+
++ (BOOL) collides:(PVCollide)collide objectPos:(CGPoint)objectPos catPos:(CGPoint)catPos catRadius:(CGFloat)catRadius
+{
+    if (collide.circular) {
+        CGFloat distance = [self distanceNoRoot:objectPos b:catPos];
+        CGFloat threshold = catRadius + collide.radius;
+        return (distance < threshold * threshold);        
+    }
+    else {
+        CGRect obstacleBox = CGRectMake(objectPos.x, objectPos.y, collide.size.width, collide.size.height);                
+        return [self intersects:catPos radius:catRadius rect:obstacleBox];
+    }
+}
+
 @end

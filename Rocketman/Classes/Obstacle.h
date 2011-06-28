@@ -7,25 +7,18 @@
 //
 
 #import "cocos2d.h"
+#import "CollisionProtocols.h"
 
 @interface Obstacle : CCNode {
  
     CCSprite *sprite_;
     
-    PVCollide collision_;
-    
-    BOOL collided_;
-    
-    BOOL shootable_;
+    PVCollide defaultPVCollide_;
     
     CCAction *destroyAnimation_;   
     
 	NSUInteger unitID_;    
 }
-
-@property (nonatomic, readonly) PVCollide collision;
-@property (nonatomic, readonly) BOOL collided;
-@property (nonatomic, readonly) BOOL shootable;
 
 - (void) showDestroy:(EventText)text;
 

@@ -12,6 +12,8 @@
 
 @implementation UFO
 
+@synthesize primaryPVCollide = primaryPVCollide_;
+
 static NSUInteger countID = 0;
 
 + (id) ufoWithPos:(CGPoint)pos
@@ -31,9 +33,9 @@ static NSUInteger countID = 0;
         self.position = pos;
         
         // Attributes
-        collision_.circular = NO;
-        collision_.size.width = 65;
-        collision_.size.height = 20;
+        primaryPVCollide_ = defaultPVCollide_;
+        primaryPVCollide_.radius = 30;
+        primaryPVCollide_.radiusSquared = primaryPVCollide_.radius * primaryPVCollide_.radius;                          
         
         [self initActions];
         [self showIdle];        
@@ -69,6 +71,20 @@ static NSUInteger countID = 0;
 {
 	[sprite_ stopAllActions];
 	[sprite_ runAction:idleAnimation_];	
+}
+
+- (void) primaryCollision
+{
+    primaryPVCollide_.collideActive = NO;
+    primaryPVCollide_.hitActive = NO;
+    [self collide];
+}
+
+- (void) primaryHit
+{
+    primaryPVCollide_.collideActive = NO;
+    primaryPVCollide_.hitActive = NO;
+    [self bulletHit];
 }
 
 - (void) bulletHit

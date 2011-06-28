@@ -8,7 +8,6 @@
 
 #import "cocos2d.h"
 #import "CDAudioManager.h"
-#import "PButtonDelegate.h"
 
 @class Rocket;
 @class Cat;
