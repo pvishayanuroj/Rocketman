@@ -9,10 +9,9 @@
 #import "Flybot.h"
 #import "GameLayer.h"
 #import "AudioManager.h"
+#import "Boundary.h"
 
 @implementation Flybot
-
-@synthesize primaryPVCollide = primaryPVCollide_;
 
 static NSUInteger countID = 0;
 
@@ -31,10 +30,14 @@ static NSUInteger countID = 0;
         [self addChild:sprite_ z:-1];
         
         self.position = pos;
-        
+
         // Attributes
-        primaryPVCollide_ = defaultPVCollide_;
-        primaryPVCollide_.radius = 30;                                  
+        PVCollide collide = defaultPVCollide_;
+        collide.radius = 30;
+        
+        // Bounding box setup
+        [boundaries_ addObject:[Boundary boundaryWithTarget:self collide:@selector(primaryCollision) hit:@selector(primaryHit) colStruct:collide]];        
+        
         
         [self initActions];
         [self showIdle];        
@@ -74,15 +77,11 @@ static NSUInteger countID = 0;
 
 - (void) primaryCollision
 {
-    primaryPVCollide_.collideActive = NO;
-    primaryPVCollide_.hitActive = NO;
     [self collide];
 }
 
 - (void) primaryHit
 {
-    primaryPVCollide_.collideActive = NO;
-    primaryPVCollide_.hitActive = NO;
     [self bulletHit];
 }
 

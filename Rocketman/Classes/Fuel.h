@@ -8,14 +8,12 @@
 
 #import "Obstacle.h"
 
-@interface Fuel : Obstacle <PrimaryCollisionProtocol> {
+@interface Fuel : Obstacle {
     
 	/** Stored idle animation (this is RepeatForever action) */
 	CCAction *idleAnimation_;              
     
     CCAction *collectAnimation_;    
-    
-    PVCollide primaryPVCollide_;
     
 }
 

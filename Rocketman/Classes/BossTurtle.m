@@ -13,11 +13,9 @@
 #import "EngineParticleSystem.h"
 #import "AudioManager.h"
 #import "BlastCloud.h"
+#import "Boundary.h"
 
 @implementation BossTurtle
-
-@synthesize primaryPVCollide = primaryPVCollide_;
-@synthesize secondaryPVCollide = secondaryPVCollide_;
 
 static NSUInteger countID = 0;
 
@@ -43,13 +41,23 @@ static NSUInteger countID = 0;
         HP_ = 8;
         headOffset_ = ccp(70, 0);
         
-        // Set up the bounding circles
-        primaryPVCollide_ = defaultPVCollide_;
-        primaryPVCollide_.radius = 52;
+        // Attributes
+        PVCollide bodyCollide = defaultPVCollide_;
+        bodyCollide.radius = 52;
+        bodyCollide.collideActive = NO;
+        bodyCollide.autoInactive = NO;
         
-        secondaryPVCollide_ = defaultPVCollide_;
-        secondaryPVCollide_.radius = 22;
-        secondaryPVCollide_.offset = ccp(-headOffset_.x, headOffset_.y);
+        PVCollide headCollide = defaultPVCollide_;
+        headCollide.radius = 22;
+        headCollide.offset = ccp(-headOffset_.x, headOffset_.y);
+        headCollide.collideActive = NO;
+        headCollide.autoInactive = NO;
+        
+        // Bounding box setup
+        bodyBoundary_ = [[Boundary boundaryWithTarget:self collide:nil hit:@selector(primaryHit) colStruct:bodyCollide] retain];
+        headBoundary_ = [[Boundary boundaryWithTarget:self collide:nil hit:@selector(secondaryHit) colStruct:headCollide] retain];
+        [boundaries_ addObject:bodyBoundary_];
+        [boundaries_ addObject:headBoundary_];        
         
         CGSize size = [[CCDirector sharedDirector] winSize];        
         leftCutoff_ = - 0.5 * size.width;
@@ -81,6 +89,8 @@ static NSUInteger countID = 0;
     [idleAnimation_ release];
     [damageAnimation_ release];
     [engineFlame_ release];
+    [headBoundary_ release];
+    [bodyBoundary_ release];
     
     [super dealloc];
 }
@@ -172,7 +182,9 @@ static NSUInteger countID = 0;
             sprite_.flipX = NO;           
             deployedShells_ = NO;            
             [self engineFlameGoingRight:NO];
-            secondaryPVCollide_.offset = headOffset_;
+            PVCollide c = headBoundary_.collide;
+            c.offset = headOffset_;
+            headBoundary_.collide = c;
         }
         else {
             dx = -3;
@@ -184,8 +196,10 @@ static NSUInteger countID = 0;
             movingLeft_ = YES;
             sprite_.flipX = YES; 
             deployedShells_ = NO;
-            [self engineFlameGoingRight:YES];            
-            secondaryPVCollide_.offset = ccp(-headOffset_.x, headOffset_.y);            
+            [self engineFlameGoingRight:YES];       
+            PVCollide c = headBoundary_.collide;
+            c.offset = ccp(-headOffset_.x, headOffset_.y);
+            headBoundary_.collide = c;
         }
         else {
             dx = 3;
@@ -193,7 +207,7 @@ static NSUInteger countID = 0;
     }
         
     // Only launch shells if not in death sequence
-    if (primaryPVCollide_.hitActive) {
+    if (HP_ > 0) {
         if (self.position.y > yTarget_) {
             dy = -1;
         }
@@ -210,7 +224,7 @@ static NSUInteger countID = 0;
     }
     
     // When dying, slow down
-    if (!primaryPVCollide_.hitActive) {
+    if (HP_ <= 0) {
         dx *= 0.3;
     }
         
@@ -222,7 +236,13 @@ static NSUInteger countID = 0;
 {
     // Creature death
     if (--HP_ == 0) {
-        primaryPVCollide_.hitActive = NO;        
+        // Deactivate hit boundaries
+        PVCollide c1 = headBoundary_.collide;
+        PVCollide c2 = bodyBoundary_.collide;
+        c1.hitActive = NO;
+        c2.hitActive = NO;
+        headBoundary_.collide = c1;
+        bodyBoundary_.collide = c2;
         engineFlame_.emissionRate = 0;
         [self startDeathSequence];
     }
@@ -268,16 +288,5 @@ static NSUInteger countID = 0;
         engineFlame_.position = ccp(-80, 27);
     }
 }
-
-#pragma mark - Debug Methods
-
-#if DEBUG_BOUNDINGBOX
-- (void) draw
-{         
-    glColor4f(1.0, 0, 0, 1.0);        
-    ccDrawCircle(primaryPVCollide_.offset, primaryPVCollide_.radius, 0, 48, NO);
-    ccDrawCircle(secondaryPVCollide_.offset, secondaryPVCollide_.radius, 0, 48, NO);    
-}
-#endif
 
 @end

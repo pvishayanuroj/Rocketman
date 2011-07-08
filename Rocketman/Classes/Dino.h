@@ -8,14 +8,12 @@
 
 #import "Obstacle.h"
 
-@interface Dino : Obstacle <PrimaryCollisionProtocol, PrimaryHitProtocol> {
+@interface Dino : Obstacle {
     
     CCAction *idleAnimation_;
     
     CCAction *flameAnimation_;
-    
-    PVCollide primaryPVCollide_;
-    
+
 }
 
 + (id) dinoWithPos:(CGPoint)pos;

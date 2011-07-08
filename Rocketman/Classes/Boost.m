@@ -8,10 +8,9 @@
 
 #import "Boost.h"
 #import "GameLayer.h"
+#import "Boundary.h"
 
 @implementation Boost
-
-@synthesize primaryPVCollide = primaryPVCollide_;
 
 static NSUInteger countID = 0;
 
@@ -30,13 +29,17 @@ static NSUInteger countID = 0;
         [self addChild:sprite_ z:-1];
         
         self.position = pos;
-        
-        // Attributes
-        primaryPVCollide_ = defaultPVCollide_;
-        primaryPVCollide_.circular = NO;
-        primaryPVCollide_.size.width = 50;
-        primaryPVCollide_.size.height = 10;
 
+        // Attributes
+        PVCollide collide = defaultPVCollide_;
+        collide.circular = NO;
+        collide.size.width = 50;
+        collide.size.height = 10;
+        collide.hitActive = NO;
+        
+        // Bounding box setup
+        [boundaries_ addObject:[Boundary boundaryWithTarget:self collide:@selector(primaryCollision) hit:nil colStruct:collide]];        
+        
         [self initActions];
         [self showIdle];
         
@@ -77,7 +80,6 @@ static NSUInteger countID = 0;
 
 - (void) primaryCollision
 {
-    primaryPVCollide_.collideActive = NO;
     [self collide];
 }
 

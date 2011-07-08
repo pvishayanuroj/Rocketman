@@ -8,13 +8,11 @@
 
 #import "Obstacle.h"
 
-@interface Angel : Obstacle <PrimaryCollisionProtocol> {
+@interface Angel : Obstacle {
  
     CCAction *idleAnimation_;
     
     CCAction *slapAnimation_;
-    
-    PVCollide primaryPVCollide_;
     
 }
 

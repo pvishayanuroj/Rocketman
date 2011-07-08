@@ -9,8 +9,11 @@
 #import "Obstacle.h"
 #import "BlastCloud.h"
 #import "GameLayer.h"
+#import "Boundary.h"
 
 @implementation Obstacle
+
+@synthesize boundaries = boundaries_;
 
 - (id) init
 {
@@ -20,17 +23,21 @@
         defaultPVCollide_.circular = YES;
         defaultPVCollide_.collideActive = YES;        
         defaultPVCollide_.hitActive = YES;
+        defaultPVCollide_.autoInactive = YES;
         defaultPVCollide_.radius = 10;
         defaultPVCollide_.size.width = 10;
         defaultPVCollide_.size.height = 10;
         defaultPVCollide_.offset = CGPointZero;
-
+        
+        boundaries_ = [[NSMutableArray arrayWithCapacity:1] retain];
     }
     return self;
 }
 
 - (void) dealloc
 {
+    //[boundaries_ release];
+    
     [super dealloc];
 }
 
@@ -65,34 +72,45 @@
 - (void) destroy
 {       
     [self removeFromParentAndCleanup:YES];
+    
+    // Do this here, otherwise the boundaries' ref to obstacles will never be release, thus causing a circular reference
+    [boundaries_ release];
+    boundaries_ = nil;
 }
 
 #pragma mark - Debug Methods
 
-/*
+#if DEBUG_BOUNDINGBOX
 - (void) draw
 {         
-    if (circular_) {
-        glColor4f(1.0, 0, 0, 1.0);        
-        ccDrawCircle(CGPointZero, radius_, 0, 48, NO);    
-    }
-    else {
-        // top left
-        CGPoint p1 = ccp(-size_.width / 2, size_.height / 2);
-        // top right
-        CGPoint p2 = ccp(size_.width / 2, size_.height / 2);
-        // bottom left
-        CGPoint p3 = ccp(-size_.width / 2, -size_.height / 2);
-        // bottom right
-        CGPoint p4 = ccp(size_.width / 2, -size_.height / 2);    
-        
-        glColor4f(1.0, 0, 0, 1.0);            
-        ccDrawLine(p1, p2);
-        ccDrawLine(p3, p4);    
-        ccDrawLine(p2, p4);
-        ccDrawLine(p1, p3);            
+    glColor4f(1.0, 0, 0, 1.0);    
+    for (Boundary *b in boundaries_) {
+        if (b.collide.circular) {
+            glColor4f(1.0, 0, 0, 1.0);        
+            ccDrawCircle(b.collide.offset, b.collide.radius, 0, 48, NO);    
+        }
+        else {
+            // top left
+            CGPoint p1 = ccp(-b.collide.size.width / 2, b.collide.size.height / 2);
+            p1 = ccpAdd(p1, b.collide.offset);
+            // top right
+            CGPoint p2 = ccp(b.collide.size.width / 2, b.collide.size.height / 2);
+            p2 = ccpAdd(p2, b.collide.offset);            
+            // bottom left
+            CGPoint p3 = ccp(-b.collide.size.width / 2, -b.collide.size.height / 2);
+            p3 = ccpAdd(p3, b.collide.offset);            
+            // bottom right
+            CGPoint p4 = ccp(b.collide.size.width / 2, -b.collide.size.height / 2);    
+            p4 = ccpAdd(p4, b.collide.offset);            
+            
+            glColor4f(1.0, 0, 0, 1.0);            
+            ccDrawLine(p1, p2);
+            ccDrawLine(p3, p4);    
+            ccDrawLine(p2, p4);
+            ccDrawLine(p1, p3);            
+        }
     }
 }
-*/
+#endif
 
 @end

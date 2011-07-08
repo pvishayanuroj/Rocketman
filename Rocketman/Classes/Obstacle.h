@@ -7,11 +7,12 @@
 //
 
 #import "cocos2d.h"
-#import "CollisionProtocols.h"
 
 @interface Obstacle : CCNode {
  
     CCSprite *sprite_;
+
+    NSMutableArray *boundaries_;
     
     PVCollide defaultPVCollide_;
     
@@ -19,6 +20,8 @@
     
 	NSUInteger unitID_;    
 }
+
+@property (nonatomic, readonly) NSMutableArray *boundaries;
 
 - (void) showDestroy:(EventText)text;
 

@@ -9,10 +9,9 @@
 #import "Fuel.h"
 #import "GameLayer.h"
 #import "CallFuncWeak.h"
+#import "Boundary.h"
 
 @implementation Fuel
-
-@synthesize primaryPVCollide = primaryPVCollide_;
 
 static NSUInteger countID = 0;
 
@@ -32,10 +31,14 @@ static NSUInteger countID = 0;
         sprite_.scale = 1.0;
         
         self.position = pos;
-        
+    
         // Attributes
-        primaryPVCollide_ = defaultPVCollide_;
-        primaryPVCollide_.radius = 20;                                                  
+        PVCollide collide = defaultPVCollide_;
+        collide.radius = 20;
+        collide.hitActive = NO;
+        
+        // Bounding box setup
+        [boundaries_ addObject:[Boundary boundaryWithTarget:self collide:@selector(primaryCollision) hit:nil colStruct:collide]];        
         
         [self initActions];
         [self showIdle];
@@ -91,7 +94,6 @@ static NSUInteger countID = 0;
 
 - (void) primaryCollision
 {
-    primaryPVCollide_.collideActive = NO;
     [self collide];
 }
 

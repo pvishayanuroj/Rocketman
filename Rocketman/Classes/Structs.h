@@ -15,6 +15,9 @@ typedef struct {
     /** Whether or not the rocket can collide with the object */
     BOOL collideActive;
     
+    /** If true, boundary will automatically become inactive when hit or collided with */
+    BOOL autoInactive;    
+    
     /** Whether or not this object's collision boundary is circular or rectangular */
     BOOL circular;
 

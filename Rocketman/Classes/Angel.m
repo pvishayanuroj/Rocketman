@@ -10,10 +10,9 @@
 #import "TargetedAction.h"
 #import "GameLayer.h"
 #import "AudioManager.h"
+#import "Boundary.h"
 
 @implementation Angel
-
-@synthesize primaryPVCollide = primaryPVCollide_;
 
 static NSUInteger countID = 0;
 
@@ -32,11 +31,14 @@ static NSUInteger countID = 0;
         [self addChild:sprite_ z:-1];
         
         self.position = pos;
-        
+
         // Attributes
-        primaryPVCollide_ = defaultPVCollide_;
-        primaryPVCollide_.hitActive = NO;
-        primaryPVCollide_.radius = 30;
+        PVCollide collide = defaultPVCollide_;
+        collide.hitActive = NO;
+        collide.radius = 30;
+        
+        // Bounding box setup (Angels can't get hit)
+        [boundaries_ addObject:[Boundary boundaryWithTarget:self collide:@selector(primaryCollision) hit:nil colStruct:collide]];        
         
         [self initActions];
         [self showIdle];
@@ -98,8 +100,6 @@ static NSUInteger countID = 0;
 
 - (void) primaryCollision
 {
-    primaryPVCollide_.collideActive = NO;
-    primaryPVCollide_.hitActive = NO;
     [self collide];
 }
 

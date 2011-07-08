@@ -8,12 +8,10 @@
 
 #import "Obstacle.h"
 
-@interface Alien : Obstacle <PrimaryCollisionProtocol, PrimaryHitProtocol> {
+@interface Alien : Obstacle {
     
 	/** Stored idle animation (this is RepeatForever action) */
 	CCAction *idleAnimation_;         
-    
-    PVCollide primaryPVCollide_;    
     
 }
 

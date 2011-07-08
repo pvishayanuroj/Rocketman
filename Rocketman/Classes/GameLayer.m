@@ -28,7 +28,7 @@
 #import "Boost.h"
 #import "BlastCloud.h"
 #import "UtilFuncs.h"
-#import "CollisionProtocols.h"
+#import "Boundary.h"
 
 #import "HighscoreManager.h"
 
@@ -253,105 +253,53 @@
     return;
 #endif
     
-    BOOL collide;    
+    // Setup the bounding box of the rocket
     CGRect rocketBox;
     rocketBox.size = rocket_.rect.size;
     rocketBox.origin = rocket_.position;
     
     // For checking if the rocket collides with obstacles
     for (Obstacle *obstacle in obstacles_) {
-
-        // Colliding obstacles must implement the protocol
-        if ([obstacle conformsToProtocol:@protocol(PrimaryCollisionProtocol)]) {
-            Obstacle<PrimaryCollisionProtocol> *o = obstacle;
-            
-            // Only look at obstacles that are allowed to collide
-            if (o.primaryPVCollide.collideActive) {
-                if ([UtilFuncs collides:o.primaryPVCollide objectPos:o.position rocketBox:rocketBox]) {
-                    [o primaryCollision];                
-                }
-            }
+        // Each object may have multiple boundaries to collide with
+        for (Boundary *boundary in obstacle.boundaries) {
+            [boundary collisionCheckAndHandle:obstacle.position rocketBox:rocketBox];
         }
     }
     
+    // For removal of bullets
     NSMutableIndexSet *remove = [NSMutableIndexSet indexSet];
     NSUInteger index = 0;    
     
     // For checking cat bullet collisions with obstacles
     for (CatBullet *cat in firedCats_) {
         for (Obstacle *obstacle in obstacles_) {
-            
-            collide = NO;            
-            
-            if ([obstacle conformsToProtocol:@protocol(PrimaryHitProtocol)]) {
-                Obstacle<PrimaryHitProtocol> *o = obstacle;
-                
-                if (o.primaryPVCollide.hitActive) {
-                    // Check if there was a collision
-                    if ([UtilFuncs collides:o.primaryPVCollide objectPos:o.position catPos:cat.position catRadius:cat.radius]) {
-                     
-                        // Decrement the number of impacts the bullet can have
-                        cat.remainingImpacts--;
-                        
-                        // Only remove the bullet if it has hit enough times
-                        if (cat.remainingImpacts <= 0) {
-                            [remove addIndex:index];
-                            [cat removeFromParentAndCleanup:YES];                    
-                        }                  
-                        
-                        // Check if the bullet is "explosive"
-                        if (cat.explosionRadius > 0) {
-                            // If it is, check to see if any other obstacle in proximity will be affected
-                            for (Obstacle *obs in obstacles_) {
-                                
-                                if ([obs conformsToProtocol:@protocol(PrimaryHitProtocol)]) {
-                                    Obstacle<PrimaryHitProtocol> *o2 = obs;
-                                    
-                                    if (o2.primaryPVCollide.hitActive) {
-                                        if ([UtilFuncs collides:o2.primaryPVCollide objectPos:o2.position catPos:cat.position catRadius:cat.explosionRadius]) {
-                                            [o2 primaryHit];
-                                        }
-                                    }
-                                }             
-                            }
-                        }
-                        // Else bullet is not explosive, just register a single hit on the original obstacle
-                        else {
-                            [o primaryHit];
-                        }
-                        
-                        // Get out of inner loop
-                        break;                           
-                    }
-                }
-            } // end if conforms to PrimaryHitProtocol
-            
-            // Check for secondary collision bounds
-            if ([obstacle conformsToProtocol:@protocol(SecondaryHitProtocol)]) {
-                Obstacle<SecondaryHitProtocol> *o = obstacle;
-                
-                if (o.secondaryPVCollide.hitActive) {
+            // Check all boundaries of an object (may be many)
+            for (Boundary *boundary in obstacle.boundaries) {
+                if ([boundary hitCheckAndHandle:obstacle.position catPos:cat.position catRadius:cat.radius]) {
+                    // Decrement the number of impacts the bullet can have
+                    cat.remainingImpacts--;
                     
-                    if ([UtilFuncs collides:o.secondaryPVCollide objectPos:o.position catPos:cat.position catRadius:cat.radius]) {
-                        
-                        // Decrement the number of impacts the bullet can have
-                        cat.remainingImpacts--;
-                        
-                        // Only remove the bullet if it has hit enough times
-                        if (cat.remainingImpacts <= 0) {
-                            [remove addIndex:index];
-                            [cat removeFromParentAndCleanup:YES];                    
-                        }                
-                        
-                        [o secondaryHit];
-                    }
+                    // Only remove the bullet if it has hit enough times
+                    if (cat.remainingImpacts <= 0) {
+                        [remove addIndex:index];
+                        [cat removeFromParentAndCleanup:YES];       
+                    }                            
+                    
+                    // Check if the bullet is "explosive"
+                    if (cat.explosionRadius > 0) {
+                        // If it is, check to see if any other obstacle in proximity will be affected
+                        for (Obstacle *obs in obstacles_) {
+                            for (Boundary *b in obs.boundaries) {
+                                [b hitCheckAndHandle:obs.position catPos:cat.position catRadius:cat.explosionRadius];
+                            }             
+                        }
+                    }                    
                 }
-            } // end if conforms for SecondaryHitProtocol
-            
-        } // end inner for
+            } // end boundary loop
+        } // end obstacle loop
         index++;
-    } // end outer for
-    
+    } // end cat bullet collision loop
+
     // Remove outside the loop
     [firedCats_ removeObjectsAtIndexes:remove];
 }

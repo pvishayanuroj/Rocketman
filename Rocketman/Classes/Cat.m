@@ -9,10 +9,9 @@
 #import "Cat.h"
 #import "GameLayer.h"
 #import "CallFuncWeak.h"
+#import "Boundary.h"
 
 @implementation Cat
-
-@synthesize primaryPVCollide = primaryPVCollide_;
 
 static NSUInteger countID = 0;
 
@@ -31,10 +30,14 @@ static NSUInteger countID = 0;
         [self addChild:sprite_ z:-1];
         
         self.position = pos;
-        
+                                                
         // Attributes
-        primaryPVCollide_ = defaultPVCollide_;
-        primaryPVCollide_.radius = 16;                                          
+        PVCollide collide = defaultPVCollide_;
+        collide.radius = 16;
+        collide.hitActive = NO;
+        
+        // Bounding box setup
+        [boundaries_ addObject:[Boundary boundaryWithTarget:self collide:@selector(primaryCollision) hit:nil colStruct:collide]];        
         
         [self initActions];
         [self showIdle];
@@ -86,7 +89,6 @@ static NSUInteger countID = 0;
 
 - (void) primaryCollision
 {
-    primaryPVCollide_.collideActive = NO;
     [self collide];
 }
 

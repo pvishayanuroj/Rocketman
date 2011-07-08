@@ -8,16 +8,18 @@
 
 #import "Obstacle.h"
 
-@interface BossTurtle : Obstacle <PrimaryHitProtocol, SecondaryHitProtocol> {
+@class Boundary;
+
+@interface BossTurtle : Obstacle {
     
 	/** Stored idle animation (this is RepeatForever action) */
 	CCAction *idleAnimation_;         
     
     CCAction *damageAnimation_;
     
-    PVCollide primaryPVCollide_;
+    Boundary *headBoundary_;
     
-    PVCollide secondaryPVCollide_;
+    Boundary *bodyBoundary_;
     
     CGPoint headOffset_;
     
