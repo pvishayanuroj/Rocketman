@@ -14,8 +14,6 @@
     
 }
 
-@property (nonatomic, readonly) BOOL destroyed;
-
 + (id) blastCloudAt:(CGPoint)pos size:(CGFloat)size text:(EventText)text;
 
 - (id) initBlastCloudAt:(CGPoint)pos size:(CGFloat)size text:(EventText)text;

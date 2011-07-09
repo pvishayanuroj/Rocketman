@@ -402,7 +402,7 @@
 
 - (void) bossGenerator
 {
-    if (height_ > 10000) {
+    if (height_ > 1000) {
         if (!bossAdded_) {
             bossAdded_ = YES;
             NSInteger x = [self getRandomX];

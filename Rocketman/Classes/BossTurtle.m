@@ -13,6 +13,7 @@
 #import "EngineParticleSystem.h"
 #import "AudioManager.h"
 #import "BlastCloud.h"
+#import "BigExplosion.h"
 #import "Boundary.h"
 
 @implementation BossTurtle
@@ -38,7 +39,7 @@ static NSUInteger countID = 0;
         self.position = pos;
         
         // Attributes
-        HP_ = 8;
+        HP_ = 1;
         headOffset_ = ccp(70, 0);
         
         // Attributes
@@ -139,9 +140,11 @@ static NSUInteger countID = 0;
     CCFiniteTimeAction *delay = [CCDelayTime actionWithDuration:0.05];
     CCFiniteTimeAction *blast = [CCCallFunc actionWithTarget:self selector:@selector(addBlast)];
     CCFiniteTimeAction *seq = [CCSequence actions:blast, delay, nil];
-    CCFiniteTimeAction *repeat = [CCRepeat actionWithAction:seq times:100];
+    CCFiniteTimeAction *repeat = [CCRepeat actionWithAction:seq times:80];
+    CCFiniteTimeAction *explosion = [CCCallFunc actionWithTarget:self selector:@selector(addBigExplosion)];
+    CCFiniteTimeAction *delay2 = [CCDelayTime actionWithDuration:3.5];
     CCFiniteTimeAction *end = [CCCallFunc actionWithTarget:self selector:@selector(destroy)];
-    [self runAction:[CCSequence actions:repeat, end, nil]];
+    [self runAction:[CCSequence actions:repeat, explosion, delay2, end, nil]];
 }
 
 - (void) deployShell
@@ -168,6 +171,13 @@ static NSUInteger countID = 0;
     if (arc4random() % 100 < 25) {
         [[AudioManager audioManager] playSound:kExplosion01];
     }
+}
+
+- (void) addBigExplosion
+{
+    sprite_.visible = NO;
+    BigExplosion *explosion = [BigExplosion bigExplosionAt:CGPointZero];
+    [self addChild:explosion];
 }
 
 - (void) fall:(CGFloat)speed
@@ -223,9 +233,9 @@ static NSUInteger countID = 0;
         }
     }
     
-    // When dying, slow down
+    // When dying, move slowly
     if (HP_ <= 0) {
-        dx *= 0.3;
+        dx *= 0.2;
     }
         
     CGPoint p = CGPointMake(dx, dy);

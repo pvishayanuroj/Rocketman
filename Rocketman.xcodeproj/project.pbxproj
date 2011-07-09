@@ -195,6 +195,7 @@
 		DAC8F0C9139F351400D06CDB /* play_button.png in Resources */ = {isa = PBXBuildFile; fileRef = DAC8F0C6139F351400D06CDB /* play_button.png */; };
 		DAC8F0CA139F351400D06CDB /* scores_button.png in Resources */ = {isa = PBXBuildFile; fileRef = DAC8F0C7139F351400D06CDB /* scores_button.png */; };
 		DAC8F0CC139F44B200D06CDB /* ui_bar.png in Resources */ = {isa = PBXBuildFile; fileRef = DAC8F0CB139F44B200D06CDB /* ui_bar.png */; };
+		DACF5B4C13C7F6A80034C281 /* BigExplosion.m in Sources */ = {isa = PBXBuildFile; fileRef = DACF5B4B13C7F6A60034C281 /* BigExplosion.m */; };
 		DAF3E79313AFA41F00E8A119 /* Cinematics.plist in Resources */ = {isa = PBXBuildFile; fileRef = DAF3E79213AFA41E00E8A119 /* Cinematics.plist */; };
 		DAF8AB3813A7D6F100A838CE /* Alien.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF8AB2513A7D6F100A838CE /* Alien.m */; };
 		DAF8AB3913A7D6F100A838CE /* Angel.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF8AB2713A7D6F100A838CE /* Angel.m */; };
@@ -553,6 +554,8 @@
 		DAC8F0C6139F351400D06CDB /* play_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play_button.png; sourceTree = "<group>"; };
 		DAC8F0C7139F351400D06CDB /* scores_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scores_button.png; sourceTree = "<group>"; };
 		DAC8F0CB139F44B200D06CDB /* ui_bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ui_bar.png; sourceTree = "<group>"; };
+		DACF5B4A13C7F6A60034C281 /* BigExplosion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BigExplosion.h; path = Classes/BigExplosion.h; sourceTree = "<group>"; };
+		DACF5B4B13C7F6A60034C281 /* BigExplosion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BigExplosion.m; path = Classes/BigExplosion.m; sourceTree = "<group>"; };
 		DAF3E79213AFA41E00E8A119 /* Cinematics.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Cinematics.plist; sourceTree = "<group>"; };
 		DAF8AB2413A7D6F100A838CE /* Alien.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Alien.h; path = Classes/Alien.h; sourceTree = "<group>"; };
 		DAF8AB2513A7D6F100A838CE /* Alien.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Alien.m; path = Classes/Alien.m; sourceTree = "<group>"; };
@@ -1181,6 +1184,8 @@
 				DA7DCC9D13A7D68A0065A566 /* Ground.m */,
 				DA0C242913ADE76C00544DF1 /* BlastCloud.h */,
 				DA0C242A13ADE76C00544DF1 /* BlastCloud.m */,
+				DACF5B4A13C7F6A60034C281 /* BigExplosion.h */,
+				DACF5B4B13C7F6A60034C281 /* BigExplosion.m */,
 			);
 			name = Doodads;
 			sourceTree = "<group>";
@@ -1473,6 +1478,7 @@
 				DAA1157E13AF996E00ACD4BD /* Flybot.m in Sources */,
 				DA2F101513B05B3A00738D08 /* MovingElement.m in Sources */,
 				DAA8514F13BB40ED009ED314 /* Boundary.m in Sources */,
+				DACF5B4C13C7F6A80034C281 /* BigExplosion.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

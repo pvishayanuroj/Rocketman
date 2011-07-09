@@ -10,8 +10,6 @@
 
 @implementation BlastCloud
 
-@synthesize destroyed = destroyed_;
-
 + (id) blastCloudAt:(CGPoint)pos size:(CGFloat)size text:(EventText)text
 {
     return [[[self alloc] initBlastCloudAt:pos size:size text:text] autorelease];
@@ -22,7 +20,6 @@
     if ((self = [super init])) {
         
         self.position = pos;
-        destroyed_ = NO;
         
         [self addSprites:text size:size];
         
@@ -61,7 +58,7 @@
     }    
     
     blastCloud.scale = 1.2 * size;
-    blast.scale = size;
+    blast.scale = 1.0 * size;
     textSprite.scale = 0.7 * size;
     
     [self addChild:blastCloud];
@@ -77,7 +74,6 @@
 
 - (void) destroy
 {
-    destroyed_ = YES;
     [self removeFromParentAndCleanup:YES];
 }
 
