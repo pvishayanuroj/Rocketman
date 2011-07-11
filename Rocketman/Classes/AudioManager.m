@@ -51,7 +51,9 @@ static AudioManager *_audioManager = nil;
         [sae preloadEffect:@"explosion01.wav"];        
         [sae preloadEffect:@"powerup.wav"];        
         [sae preloadEffect:@"slap.wav"];                
-        engineSound_ = [[sae soundSourceForFile:@"engine.wav"] retain];        
+        engineSound_ = [[sae soundSourceForFile:@"engine.wav"] retain];       
+        enginePlaying_ = NO;
+        backgroundMusicPlaying_ = NO;
         
 	}
 	return self;
@@ -79,6 +81,7 @@ static AudioManager *_audioManager = nil;
         case kTheme01:
             name = [NSString stringWithFormat:@"SRSMTheme01.mp3"];
             [engine playBackgroundMusic:name];
+            backgroundMusicPlaying_ = YES;
             break;
         case kMeow:
             rand = arc4random() % 2 + 1;
@@ -115,6 +118,7 @@ static AudioManager *_audioManager = nil;
             break;                             
         case kEngine:
             engineSound_.looping = YES;
+            enginePlaying_ = YES;
             [engineSound_ play];
             break;
         default:
@@ -131,9 +135,34 @@ static AudioManager *_audioManager = nil;
     switch (type) {
         case kEngine:
             [engineSound_ stop];
+            enginePlaying_ = NO;
             break;
         default:
             NSAssert(NO, @"Invalid effect type");        
+    }
+}
+
+- (void) pauseSound
+{
+    SimpleAudioEngine *engine = [SimpleAudioEngine sharedEngine];
+    
+    [engine pauseBackgroundMusic];
+    
+    if (enginePlaying_) {
+        [engineSound_ stop];
+    }
+}
+
+- (void) resumeSound
+{
+    SimpleAudioEngine *engine = [SimpleAudioEngine sharedEngine];    
+    
+    if (backgroundMusicPlaying_) {
+        [engine resumeBackgroundMusic];
+    }
+    
+    if (enginePlaying_) {
+        [engineSound_ play];
     }
 }
 

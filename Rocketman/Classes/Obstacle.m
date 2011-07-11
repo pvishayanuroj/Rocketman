@@ -36,6 +36,7 @@
 
 - (void) dealloc
 {
+    // Do this in the destroy function to avoid circular referencing
     //[boundaries_ release];
     
     [super dealloc];
@@ -82,8 +83,7 @@
 
 #if DEBUG_BOUNDINGBOX
 - (void) draw
-{         
-    glColor4f(1.0, 0, 0, 1.0);    
+{    
     for (Boundary *b in boundaries_) {
         if (b.collide.circular) {
             glColor4f(1.0, 0, 0, 1.0);        

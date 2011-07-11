@@ -28,33 +28,7 @@
         bar.anchorPoint = CGPointZero;
         [self addChild:bar z:0];
         
-        // Height
-        CCLabelBMFont *staticHeightLabel = [CCLabelBMFont labelWithString:@"HEIGHT:" fntFile:@"SRSM_font.fnt"];
-        staticHeightLabel.position = ccp(50, screenHeight_*0.95);
-        staticHeightLabel.scale = 0.4;
-        [self addChild:staticHeightLabel];
-		heightLabel_ = [[CCLabelBMFont labelWithString:@"0" fntFile:@"SRSM_font.fnt"] retain];
-        heightLabel_.position =  ccp(82, screenHeight_*0.95);
-        heightLabel_.scale = 0.4f;
-        heightLabel_.anchorPoint = ccp(0, 0.5);
-		[self addChild:heightLabel_ z:1];     
-        
-        // Speed
-        CCLabelBMFont *staticSpeedLabel = [CCLabelBMFont labelWithString:@"SPEED:" fntFile:@"SRSM_font.fnt"];
-        staticSpeedLabel.position = ccp(50, screenHeight_*0.92);
-        staticSpeedLabel.scale = 0.4;  
-        [self addChild:staticSpeedLabel];
-		speedLabel_ = [[CCLabelBMFont labelWithString:@"0.0" fntFile:@"SRSM_font.fnt"] retain];
-        speedLabel_.position =  ccp(78, screenHeight_*0.92);
-        speedLabel_.scale = 0.4f;
-        speedLabel_.anchorPoint = ccp(0, 0.5);
-		[self addChild:speedLabel_ z:1]; 
-        
-        // Tilt
-		tiltLabel_ = [[CCLabelBMFont labelWithString:@"0.000" fntFile:@"SRSM_font.fnt"] retain];
-        tiltLabel_.position =  ccp(50, screenHeight_*0.89);
-        tiltLabel_.scale = 0.4f;
-		[self addChild:tiltLabel_ z:1];                   
+        [self addLabels];
 	}
 	return self;
 }
@@ -67,10 +41,43 @@
     [numCats01Label_ release];
     [numCats02Label_ release];
     [numBoostsLabel_ release];    
+    [m1_ release];
+    [m2_ release];
+    [m3_ release];
     
     [super dealloc];
 }
 
+- (void) addLabels
+{
+    // Height
+    CCLabelBMFont *staticHeightLabel = [CCLabelBMFont labelWithString:@"HEIGHT:" fntFile:@"SRSM_font.fnt"];
+    staticHeightLabel.position = ccp(50, screenHeight_*0.95);
+    staticHeightLabel.scale = 0.4;
+    [self addChild:staticHeightLabel];
+    heightLabel_ = [[CCLabelBMFont labelWithString:@"0" fntFile:@"SRSM_font.fnt"] retain];
+    heightLabel_.position =  ccp(82, screenHeight_*0.95);
+    heightLabel_.scale = 0.4f;
+    heightLabel_.anchorPoint = ccp(0, 0.5);
+    [self addChild:heightLabel_ z:1];     
+    
+    // Speed
+    CCLabelBMFont *staticSpeedLabel = [CCLabelBMFont labelWithString:@"SPEED:" fntFile:@"SRSM_font.fnt"];
+    staticSpeedLabel.position = ccp(50, screenHeight_*0.92);
+    staticSpeedLabel.scale = 0.4;  
+    [self addChild:staticSpeedLabel];
+    speedLabel_ = [[CCLabelBMFont labelWithString:@"0.0" fntFile:@"SRSM_font.fnt"] retain];
+    speedLabel_.position =  ccp(78, screenHeight_*0.92);
+    speedLabel_.scale = 0.4f;
+    speedLabel_.anchorPoint = ccp(0, 0.5);
+    [self addChild:speedLabel_ z:1]; 
+    
+    // Tilt
+    tiltLabel_ = [[CCLabelBMFont labelWithString:@"0.000" fntFile:@"SRSM_font.fnt"] retain];
+    tiltLabel_.position =  ccp(50, screenHeight_*0.89);
+    tiltLabel_.scale = 0.4f;
+    [self addChild:tiltLabel_ z:1];                   
+}
 
 - (void) displayControls:(GameLayer *)gameLayer
 {
@@ -83,9 +90,9 @@
     
     CCMenuItemSprite *catButton01 = [CCMenuItemSprite itemFromNormalSprite:[CCSprite spriteWithFile:@"cat_button.png"] selectedSprite:[CCSprite spriteWithFile:@"cat_button_pressed.png"] target:gameLayer selector:@selector(fireCat01)];
     
-    CCMenu *m1 = [CCMenu menuWithItems:catButton01, nil];
-    m1.position = CGPointMake(45, 57);
-    [self addChild:m1];
+    m1_ = [[CCMenu menuWithItems:catButton01, nil] retain];
+    m1_.position = CGPointMake(45, 57);
+    [self addChild:m1_];
     
     // Cat Button 02
     // Disable catButton02 if catBomb isn't enabled.
@@ -98,9 +105,9 @@
         
         CCMenuItemSprite *catButton02 = [CCMenuItemSprite itemFromNormalSprite:[CCSprite spriteWithFile:@"cat_button_bomb.png"] selectedSprite:[CCSprite spriteWithFile:@"cat_button_bomb_pressed.png"] target:gameLayer selector:@selector(fireCat02)];
         
-        CCMenu *m2 = [CCMenu menuWithItems:catButton02, nil];
-        m2.position = CGPointMake(125, 30);
-        [self addChild:m2];
+        m2_= [[CCMenu menuWithItems:catButton02, nil] retain];
+        m2_.position = CGPointMake(125, 30);
+        [self addChild:m2_];
     }
     
     // Boost Button
@@ -111,9 +118,23 @@
     
     CCMenuItemSprite *boostButton = [CCMenuItemSprite itemFromNormalSprite:[CCSprite spriteWithFile:@"boost_button.png"] selectedSprite:[CCSprite spriteWithFile:@"boost_button_pressed.png"] target:gameLayer selector:@selector(useBoost)];        
 
-    CCMenu *m3 = [CCMenu menuWithItems:boostButton, nil];        
-    m3.position = CGPointMake(268, 32);
-    [self addChild:m3];        
+    m3_ = [[CCMenu menuWithItems:boostButton, nil] retain];        
+    m3_.position = CGPointMake(268, 32);
+    [self addChild:m3_];    
+}
+
+- (void) pause
+{
+    m1_.isTouchEnabled = NO;
+    m2_.isTouchEnabled = NO;
+    m3_.isTouchEnabled = NO;    
+}
+
+- (void) resume
+{
+    m1_.isTouchEnabled = YES;
+    m2_.isTouchEnabled = YES;
+    m3_.isTouchEnabled = YES;    
 }
 
 - (void) displayDirectional:(GameLayer *)gameLayer

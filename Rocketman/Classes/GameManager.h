@@ -10,12 +10,15 @@
 
 @class GameLayer;
 @class HUDLayer;
+@class PauseLayer;
 
 @interface GameManager : CCNode {
  
     GameLayer *gameLayer_;
     
     HUDLayer *hudLayer_;
+    
+    PauseLayer *pauseLayer_;
 }
 
 + (GameManager *) gameManager;
@@ -25,6 +28,8 @@
 - (void) registerGameLayer:(GameLayer *)gameLayer;
 
 - (void) registerHUDLayer:(HUDLayer *)hudLayer;
+
+- (void) registerPauseLayer:(PauseLayer *)pauseLayer;
 
 - (void) addShell:(CGPoint)pos;
 
@@ -39,6 +44,10 @@
 - (void) setSpeed:(CGFloat)speed;
 
 - (void) setTilt:(CGFloat)tilt;
+
+- (void) pause;
+
+- (void) resume;
 
 @end
 

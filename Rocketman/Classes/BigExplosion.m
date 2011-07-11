@@ -28,7 +28,6 @@
         CCFiniteTimeAction *scaleText = [CCScaleTo actionWithDuration:0.15 scale:1.0];
         CCFiniteTimeAction *scaleCloud = [CCScaleTo actionWithDuration:0.15 scale:1.0];
         CCFiniteTimeAction *rotateText = [CCRotateBy actionWithDuration:0.3 angle:20];
-        //CCFiniteTimeAction *delay = [CCDelayTime actionWithDuration:0.5];
         TargetedAction *t1 = [TargetedAction actionWithTarget:blast_ actionIn:scaleBlast];
         TargetedAction *t2 = [TargetedAction actionWithTarget:text_ actionIn:scaleText];
         TargetedAction *t3 = [TargetedAction actionWithTarget:smoke_ actionIn:scaleCloud];

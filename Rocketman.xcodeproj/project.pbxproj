@@ -196,6 +196,10 @@
 		DAC8F0CA139F351400D06CDB /* scores_button.png in Resources */ = {isa = PBXBuildFile; fileRef = DAC8F0C7139F351400D06CDB /* scores_button.png */; };
 		DAC8F0CC139F44B200D06CDB /* ui_bar.png in Resources */ = {isa = PBXBuildFile; fileRef = DAC8F0CB139F44B200D06CDB /* ui_bar.png */; };
 		DACF5B4C13C7F6A80034C281 /* BigExplosion.m in Sources */ = {isa = PBXBuildFile; fileRef = DACF5B4B13C7F6A60034C281 /* BigExplosion.m */; };
+		DACF5CBF13C9DC4F0034C281 /* CCNode+PauseResume.m in Sources */ = {isa = PBXBuildFile; fileRef = DACF5CBE13C9DC4B0034C281 /* CCNode+PauseResume.m */; };
+		DACF5CC213CA005D0034C281 /* PauseLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DACF5CC113CA00570034C281 /* PauseLayer.m */; };
+		DACF5CC513CA02FD0034C281 /* pause_button.png in Resources */ = {isa = PBXBuildFile; fileRef = DACF5CC313CA02FD0034C281 /* pause_button.png */; };
+		DACF5CC613CA02FD0034C281 /* resume_button.png in Resources */ = {isa = PBXBuildFile; fileRef = DACF5CC413CA02FD0034C281 /* resume_button.png */; };
 		DAF3E79313AFA41F00E8A119 /* Cinematics.plist in Resources */ = {isa = PBXBuildFile; fileRef = DAF3E79213AFA41E00E8A119 /* Cinematics.plist */; };
 		DAF8AB3813A7D6F100A838CE /* Alien.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF8AB2513A7D6F100A838CE /* Alien.m */; };
 		DAF8AB3913A7D6F100A838CE /* Angel.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF8AB2713A7D6F100A838CE /* Angel.m */; };
@@ -556,6 +560,12 @@
 		DAC8F0CB139F44B200D06CDB /* ui_bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ui_bar.png; sourceTree = "<group>"; };
 		DACF5B4A13C7F6A60034C281 /* BigExplosion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BigExplosion.h; path = Classes/BigExplosion.h; sourceTree = "<group>"; };
 		DACF5B4B13C7F6A60034C281 /* BigExplosion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BigExplosion.m; path = Classes/BigExplosion.m; sourceTree = "<group>"; };
+		DACF5CBD13C9DC4A0034C281 /* CCNode+PauseResume.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "CCNode+PauseResume.h"; path = "Classes/CCNode+PauseResume.h"; sourceTree = "<group>"; };
+		DACF5CBE13C9DC4B0034C281 /* CCNode+PauseResume.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "CCNode+PauseResume.m"; path = "Classes/CCNode+PauseResume.m"; sourceTree = "<group>"; };
+		DACF5CC013CA00540034C281 /* PauseLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PauseLayer.h; path = Classes/PauseLayer.h; sourceTree = "<group>"; };
+		DACF5CC113CA00570034C281 /* PauseLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PauseLayer.m; path = Classes/PauseLayer.m; sourceTree = "<group>"; };
+		DACF5CC313CA02FD0034C281 /* pause_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pause_button.png; sourceTree = "<group>"; };
+		DACF5CC413CA02FD0034C281 /* resume_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = resume_button.png; sourceTree = "<group>"; };
 		DAF3E79213AFA41E00E8A119 /* Cinematics.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Cinematics.plist; sourceTree = "<group>"; };
 		DAF8AB2413A7D6F100A838CE /* Alien.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Alien.h; path = Classes/Alien.h; sourceTree = "<group>"; };
 		DAF8AB2513A7D6F100A838CE /* Alien.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Alien.m; path = Classes/Alien.m; sourceTree = "<group>"; };
@@ -1021,6 +1031,8 @@
 		DA346EE4138E5D53000881D6 /* Game Art */ = {
 			isa = PBXGroup;
 			children = (
+				DACF5CC313CA02FD0034C281 /* pause_button.png */,
+				DACF5CC413CA02FD0034C281 /* resume_button.png */,
 				DA0C26FB13AE0F8900544DF1 /* heart.png */,
 				DA99E94913ADE5020075896F /* skip_button.png */,
 				DAC8F0CB139F44B200D06CDB /* ui_bar.png */,
@@ -1107,6 +1119,8 @@
 				DA7DCC9213A7D6650065A566 /* UtilFuncs.m */,
 				DAA8514D13BB40ED009ED314 /* Boundary.h */,
 				DAA8514E13BB40ED009ED314 /* Boundary.m */,
+				DACF5CBD13C9DC4A0034C281 /* CCNode+PauseResume.h */,
+				DACF5CBE13C9DC4B0034C281 /* CCNode+PauseResume.m */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -1199,6 +1213,8 @@
 				DA7DCC6F13A7D63C0065A566 /* GameScene.m */,
 				DA7DCC7013A7D63C0065A566 /* HUDLayer.h */,
 				DA7DCC7113A7D63C0065A566 /* HUDLayer.m */,
+				DACF5CC013CA00540034C281 /* PauseLayer.h */,
+				DACF5CC113CA00570034C281 /* PauseLayer.m */,
 				DA7DCC7213A7D63C0065A566 /* MainMenuLayer.h */,
 				DA7DCC7313A7D63C0065A566 /* MainMenuLayer.m */,
 				DA7DCC7413A7D63C0065A566 /* MainMenuScene.h */,
@@ -1331,6 +1347,8 @@
 				DA2F101813B05CD700738D08 /* Intro 07 Hand.png in Resources */,
 				355D23AE13AF7521003845CF /* cat_button_bomb_pressed.png in Resources */,
 				355D23AF13AF7521003845CF /* cat_button_bomb.png in Resources */,
+				DACF5CC513CA02FD0034C281 /* pause_button.png in Resources */,
+				DACF5CC613CA02FD0034C281 /* resume_button.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1479,6 +1497,8 @@
 				DA2F101513B05B3A00738D08 /* MovingElement.m in Sources */,
 				DAA8514F13BB40ED009ED314 /* Boundary.m in Sources */,
 				DACF5B4C13C7F6A80034C281 /* BigExplosion.m in Sources */,
+				DACF5CBF13C9DC4F0034C281 /* CCNode+PauseResume.m in Sources */,
+				DACF5CC213CA005D0034C281 /* PauseLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

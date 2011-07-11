@@ -12,6 +12,10 @@
     
     CDSoundSource *engineSound_;    
     
+    BOOL backgroundMusicPlaying_;
+    
+    BOOL enginePlaying_;
+    
 }
 
 + (AudioManager *) audioManager;
@@ -21,5 +25,9 @@
 - (void) playSound:(SoundType)type;
 
 - (void) stopSound:(SoundType)type;
+
+- (void) pauseSound;
+
+- (void) resumeSound;
 
 @end

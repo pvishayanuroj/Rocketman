@@ -9,7 +9,7 @@
 #import "GameScene.h"
 #import "GameLayer.h"
 #import "HUDLayer.h"
-#import "SimpleAudioEngine.h"
+#import "PauseLayer.h"
 
 @implementation GameScene
 
@@ -36,6 +36,10 @@
 #if DEBUG_MOVEBUTTONS
         [hudLayer displayDirectional:gameLayer];
 #endif
+        
+        PauseLayer *pauseLayer = [PauseLayer node];
+        [self addChild:pauseLayer z:2];
+        
     }
 	return self;
 }

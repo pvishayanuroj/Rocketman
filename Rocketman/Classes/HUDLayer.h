@@ -26,11 +26,22 @@
     
     CCLabelBMFont *numBoostsLabel_;        
     
+    CCMenu *m1_;
+    
+    CCMenu *m2_;
+    
+    CCMenu *m3_;
 }
+
+- (void) addLabels;
 
 - (void) displayControls:(GameLayer *)gameLayer;
 
 - (void) displayDirectional:(GameLayer *)gameLayer;
+
+- (void) pause;
+
+- (void) resume;
 
 - (void) setNumCats01:(NSUInteger)val;
 

@@ -9,6 +9,8 @@
 #import "GameManager.h"
 #import "GameLayer.h"
 #import "HUDLayer.h"
+#import "PauseLayer.h"
+#import "CCNode+PauseResume.h"
 
 // For singleton
 static GameManager *_gameManager = nil;
@@ -43,6 +45,7 @@ static GameManager *_gameManager = nil;
         
 		gameLayer_ = nil;
         hudLayer_ = nil;
+        pauseLayer_ = nil;
         
 	}
 	return self;
@@ -52,6 +55,7 @@ static GameManager *_gameManager = nil;
 {	
 	[gameLayer_ release];
     [hudLayer_ release];
+    [pauseLayer_ release];
 	
 	[super dealloc];
 }
@@ -70,6 +74,13 @@ static GameManager *_gameManager = nil;
 	NSAssert(hudLayer_ == nil, @"Trying to register a HUD Layer when one already exists");
 	hudLayer_ = hudLayer;
 	[hudLayer_ retain];
+}
+
+- (void) registerPauseLayer:(PauseLayer *)pauseLayer
+{
+	NSAssert(pauseLayer_ == nil, @"Trying to register a Pause Layer when one already exists");
+	pauseLayer_ = pauseLayer;
+	[pauseLayer_ retain];
 }
 
 #pragma mark - Game Layer Methods
@@ -109,6 +120,23 @@ static GameManager *_gameManager = nil;
 - (void) setTilt:(CGFloat)tilt
 {
     [hudLayer_ setTilt:tilt];
+}
+
+#pragma mark - Pause / Resume
+
+- (void) pause
+{
+    [gameLayer_ pauseHierarchy];
+    [hudLayer_ pauseHierarchy];
+    // Because pauseHiearchy doesn't seem to stop button presses
+    [hudLayer_ pause];
+}
+
+- (void) resume
+{
+    [hudLayer_ resume];
+    [hudLayer_ resumeHierarchy];
+    [gameLayer_ resumeHierarchy];
 }
 
 @end
