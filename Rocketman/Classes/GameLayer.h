@@ -149,6 +149,10 @@
 
 - (void) loss;
 
+- (void) addTurtlingSwarm:(NSInteger)size;
+
+- (void) addObstacle:(ObstacleType)type pos:(CGPoint)pos;
+
 - (void) fireCat01;
 
 - (void) fireCat02;

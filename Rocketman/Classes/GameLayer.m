@@ -21,6 +21,8 @@
 #import "Dino.h"
 #import "Angel.h"
 #import "Shell.h"
+#import "Turtling.h"
+#import "TurtlingSwarm.h"
 #import "BossTurtle.h"
 #import "Cat.h"
 #import "CatBullet.h"
@@ -87,7 +89,7 @@
         
         // Obstacle and powerup generation
         nextObstacleHeight_ = 800;
-        obstableFrequency_ = 400;
+        obstableFrequency_ = 3000;
         nextRingHeight_ = 1600;
         ringFrequency_ = 2000;
         nextCatHeight_ = 700;
@@ -407,10 +409,8 @@
             bossAdded_ = YES;
             NSInteger x = [self getRandomX];
             NSInteger y = screenHeight_ + 100;
-            CGPoint pos = ccp(x, y);                     
-            Obstacle *obstacle = [BossTurtle bossTurtleWithPos:pos];
-            [self addChild:obstacle z:kObstacleDepth];
-            [obstacles_ addObject:obstacle];
+            CGPoint pos = ccp(x, y);          
+            //[self addObstacle:kBossTurtle pos:pos];
         }
     }
 }
@@ -434,33 +434,8 @@
 
         NSUInteger type = arc4random() % 6; 
         //type = 2;
-        
-        switch (type) {
-            case 0:
-                obstacle = [Dino dinoWithPos:pos];
-                break;
-            case 1:
-                obstacle = [Alien alienWithPos:pos];
-                break;
-            case 2:
-                obstacle = [Shell shellWithPos:pos];
-                break;
-            case 3:
-                obstacle = [Angel angelWithPos:pos];
-                break;                
-            case 4:
-                obstacle = [UFO ufoWithPos:pos];
-                break;
-            case 5:
-                obstacle = [Flybot flyBotWithPos:pos];
-                break;
-            default:
-                NSAssert(NO, @"Invalid obstacle number selected");
-                break;
-        }
-        
-        [self addChild:obstacle z:kObstacleDepth];
-        [obstacles_ addObject:obstacle]; 
+        //[self addObstacle:type pos:pos];
+        [self addTurtlingSwarm:5];        
     }    
 #endif
     
@@ -578,6 +553,58 @@
 - (void) clearStage
 {
     
+}
+
+- (void) addTurtlingSwarm:(NSInteger)size
+{
+    [TurtlingSwarm addSwarm:size gameLayer:self];
+}
+
+- (void) addObstacle:(ObstacleType)type pos:(CGPoint)pos
+{
+    Obstacle *obstacle;
+    
+    switch (type) {
+        case kDino:
+            obstacle = [Dino dinoWithPos:pos];
+            break;
+        case kAlien:
+            obstacle = [Alien alienWithPos:pos];
+            break;
+        case kShell:
+            obstacle = [Shell shellWithPos:pos];
+            break;
+        case kAngel:
+            obstacle = [Angel angelWithPos:pos];
+            break;                
+        case kUFO:
+            obstacle = [UFO ufoWithPos:pos];
+            break;
+        case kFlybot:
+            obstacle = [Flybot flyBotWithPos:pos];
+            break;
+        case kBoost:
+            obstacle = [Boost boostWithPos:pos];    
+            break;
+        case kCat:
+            obstacle = [Cat catWithPos:pos];            
+            break;
+        case kFuel:
+            obstacle = [Fuel fuelWithPos:pos];            
+            break;
+        case kBossTurtle:
+            obstacle = [BossTurtle bossTurtleWithPos:pos];            
+            break;
+        case kTurtling:
+            obstacle = [Turtling turtlingWithPos:pos];
+            break;
+        default:
+            NSAssert(NO, @"Invalid obstacle number selected");
+            break;
+    }
+    
+    [self addChild:obstacle z:kObstacleDepth];
+    [obstacles_ addObject:obstacle]; 
 }
 
 - (void) fireCat01

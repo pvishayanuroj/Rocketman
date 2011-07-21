@@ -87,7 +87,12 @@ static GameManager *_gameManager = nil;
 
 - (void) addShell:(CGPoint)pos
 {
-    [gameLayer_ addShell:pos];
+    [gameLayer_ addObstacle:kShell pos:pos];
+}
+
+- (void) addTurtling:(CGPoint)pos
+{
+    [gameLayer_ addObstacle:kTurtling pos:pos];
 }
 
 #pragma mark - HUD Methods

@@ -200,6 +200,8 @@
 		DACF5CC213CA005D0034C281 /* PauseLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DACF5CC113CA00570034C281 /* PauseLayer.m */; };
 		DACF5CC513CA02FD0034C281 /* pause_button.png in Resources */ = {isa = PBXBuildFile; fileRef = DACF5CC313CA02FD0034C281 /* pause_button.png */; };
 		DACF5CC613CA02FD0034C281 /* resume_button.png in Resources */ = {isa = PBXBuildFile; fileRef = DACF5CC413CA02FD0034C281 /* resume_button.png */; };
+		DAD925E113D33B7C0057FFD7 /* Turtling.m in Sources */ = {isa = PBXBuildFile; fileRef = DAD925E013D33B7C0057FFD7 /* Turtling.m */; };
+		DAD925E513D345270057FFD7 /* TurtlingSwarm.m in Sources */ = {isa = PBXBuildFile; fileRef = DAD925E413D345200057FFD7 /* TurtlingSwarm.m */; };
 		DAF3E79313AFA41F00E8A119 /* Cinematics.plist in Resources */ = {isa = PBXBuildFile; fileRef = DAF3E79213AFA41E00E8A119 /* Cinematics.plist */; };
 		DAF8AB3813A7D6F100A838CE /* Alien.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF8AB2513A7D6F100A838CE /* Alien.m */; };
 		DAF8AB3913A7D6F100A838CE /* Angel.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF8AB2713A7D6F100A838CE /* Angel.m */; };
@@ -566,6 +568,10 @@
 		DACF5CC113CA00570034C281 /* PauseLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PauseLayer.m; path = Classes/PauseLayer.m; sourceTree = "<group>"; };
 		DACF5CC313CA02FD0034C281 /* pause_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pause_button.png; sourceTree = "<group>"; };
 		DACF5CC413CA02FD0034C281 /* resume_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = resume_button.png; sourceTree = "<group>"; };
+		DAD925DF13D33B7C0057FFD7 /* Turtling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Turtling.h; path = Classes/Turtling.h; sourceTree = "<group>"; };
+		DAD925E013D33B7C0057FFD7 /* Turtling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Turtling.m; path = Classes/Turtling.m; sourceTree = "<group>"; };
+		DAD925E313D3451F0057FFD7 /* TurtlingSwarm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TurtlingSwarm.h; path = Classes/TurtlingSwarm.h; sourceTree = "<group>"; };
+		DAD925E413D345200057FFD7 /* TurtlingSwarm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TurtlingSwarm.m; path = Classes/TurtlingSwarm.m; sourceTree = "<group>"; };
 		DAF3E79213AFA41E00E8A119 /* Cinematics.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Cinematics.plist; sourceTree = "<group>"; };
 		DAF8AB2413A7D6F100A838CE /* Alien.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Alien.h; path = Classes/Alien.h; sourceTree = "<group>"; };
 		DAF8AB2513A7D6F100A838CE /* Alien.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Alien.m; path = Classes/Alien.m; sourceTree = "<group>"; };
@@ -1181,6 +1187,10 @@
 				DAF8AB2913A7D6F100A838CE /* Boost.m */,
 				DAF8AB3013A7D6F100A838CE /* Fuel.h */,
 				DAF8AB3113A7D6F100A838CE /* Fuel.m */,
+				DAD925DF13D33B7C0057FFD7 /* Turtling.h */,
+				DAD925E013D33B7C0057FFD7 /* Turtling.m */,
+				DAD925E313D3451F0057FFD7 /* TurtlingSwarm.h */,
+				DAD925E413D345200057FFD7 /* TurtlingSwarm.m */,
 			);
 			name = Obstacles;
 			sourceTree = "<group>";
@@ -1499,6 +1509,8 @@
 				DACF5B4C13C7F6A80034C281 /* BigExplosion.m in Sources */,
 				DACF5CBF13C9DC4F0034C281 /* CCNode+PauseResume.m in Sources */,
 				DACF5CC213CA005D0034C281 /* PauseLayer.m in Sources */,
+				DAD925E113D33B7C0057FFD7 /* Turtling.m in Sources */,
+				DAD925E513D345270057FFD7 /* TurtlingSwarm.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

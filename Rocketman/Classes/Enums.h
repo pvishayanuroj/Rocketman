@@ -47,6 +47,20 @@ typedef enum {
 } CatType;
 
 typedef enum {
+    kDino,
+    kAlien,
+    kShell,
+    kAngel,
+    kUFO,
+    kFlybot,
+    kBoost,
+    kCat,
+    kFuel,
+    kBossTurtle,
+    kTurtling
+} ObstacleType;
+
+typedef enum {
     kRocketBurning,
     kRocketWobbling,
     kRocketHearts

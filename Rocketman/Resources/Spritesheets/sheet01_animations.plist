@@ -209,5 +209,28 @@
 		<key>Name</key>
 		<string>BossTurtle</string>
 	</dict>
+	<dict>
+		<key>Animations</key>
+		<array>
+			<dict>
+				<key>Animate Delay</key>
+				<real>0.15</real>
+				<key>Name</key>
+				<string>Idle</string>
+				<key>Num Frames</key>
+				<integer>3</integer>
+			</dict>
+			<dict>
+				<key>Animate Delay</key>
+				<real>0.15</real>
+				<key>Name</key>
+				<string>Shock</string>
+				<key>Num Frames</key>
+				<integer>4</integer>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>Turtling</string>
+	</dict>
 </array>
 </plist>

@@ -1,22 +1,21 @@
 //
-//  Shell.m
+//  Turtling.m
 //  Rocketman
 //
-//  Created by Paul Vishayanuroj on 6/1/11.
+//  Created by Paul Vishayanuroj on 7/17/11.
 //  Copyright 2011 Paul Vishayanuroj. All rights reserved.
 //
 
-#import "Shell.h"
+#import "Turtling.h"
+#import "Boundary.h"
 #import "GameLayer.h"
 #import "AudioManager.h"
-#import "UtilFuncs.h"
-#import "Boundary.h"
 
-@implementation Shell
+@implementation Turtling
 
 static NSUInteger countID = 0;
 
-+ (id) shellWithPos:(CGPoint)pos
++ (id) turtlingWithPos:(CGPoint)pos
 {
     return [[[self alloc] initWithPos:pos] autorelease];
 }
@@ -27,7 +26,7 @@ static NSUInteger countID = 0;
         
 		unitID_ = countID++;                
         
-        sprite_ = [[CCSprite spriteWithSpriteFrameName:@"Shell Idle 01.png"] retain];
+        sprite_ = [[CCSprite spriteWithSpriteFrameName:@"Turtling Idle 01.png"] retain];
         [self addChild:sprite_ z:-1];
         
         self.position = pos;
@@ -64,7 +63,7 @@ static NSUInteger countID = 0;
 
 - (void) initActions
 {
-	CCAnimation *animation = [[CCAnimationCache sharedAnimationCache] animationByName:@"Turtle Idle"];
+	CCAnimation *animation = [[CCAnimationCache sharedAnimationCache] animationByName:@"Turtling Idle"];
 	CCActionInterval *animate = [CCAnimate actionWithAnimation:animation];
 	idleAnimation_ = [[CCRepeatForever actionWithAction:animate] retain];	
 }                 
@@ -73,6 +72,13 @@ static NSUInteger countID = 0;
 {
 	[sprite_ stopAllActions];
 	[sprite_ runAction:idleAnimation_];	
+}
+
+- (void) fall:(CGFloat)speed
+{
+    // Fall diagonally
+    CGPoint p = ccp(1, -1);
+    self.position = ccpAdd(self.position, p);    
 }
 
 - (void) primaryCollision
