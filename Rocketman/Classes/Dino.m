@@ -75,12 +75,6 @@ static NSUInteger countID = 0;
 	flameAnimation_ = [[CCAnimate actionWithAnimation:animation] retain];
 }   
 
-- (void) showIdle
-{
-	[sprite_ stopAllActions];
-	[sprite_ runAction:idleAnimation_];	
-}
-
 - (void) showAttacking
 {
 	[sprite_ stopAllActions];	
@@ -100,25 +94,6 @@ static NSUInteger countID = 0;
 
 - (void) primaryCollision
 {
-    [self collide];
-}
-
-- (void) primaryHit
-{
-    [self bulletHit];
-}
-
-- (void) bulletHit
-{    
-    [[AudioManager audioManager] playSound:kExplosion01];            
-    
-    [super showDestroy:kBamText];
-    
-    [super bulletHit];
-}
-
-- (void) collide
-{
     GameLayer *gameLayer = (GameLayer *)[self parent];
     [[AudioManager audioManager] playSound:kWerr];            
     [gameLayer slowDown:0.66];    
@@ -126,7 +101,15 @@ static NSUInteger countID = 0;
     [self showAttacking];
 }
 
-- (void) destroy
+- (void) primaryHit
+{
+    [[AudioManager audioManager] playSound:kExplosion01];            
+    [super showDeath:kBamText];
+    
+    [super bulletHit];
+}
+
+- (void) death
 {
     GameLayer *gameLayer = (GameLayer *)[self parent];    
     [gameLayer removeObstacle:self];    

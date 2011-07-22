@@ -42,10 +42,16 @@
     [super dealloc];
 }
 
-- (void) showDestroy:(EventText)text
+- (void) showIdle
+{
+	[sprite_ stopAllActions];
+	[sprite_ runAction:idleAnimation_];	
+}
+
+- (void) showDeath:(EventText)text
 {
     CCFiniteTimeAction *delay = [CCDelayTime actionWithDuration:0.3];    
-	CCFiniteTimeAction *method = [CCCallFunc actionWithTarget:self selector:@selector(destroy)];    
+	CCFiniteTimeAction *method = [CCCallFunc actionWithTarget:self selector:@selector(death)];    
     
     BlastCloud *blast = [BlastCloud blastCloudAt:CGPointZero size:1.0 text:text];
     [self addChild:blast];

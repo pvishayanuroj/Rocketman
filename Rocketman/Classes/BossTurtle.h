@@ -12,9 +12,6 @@
 
 @interface BossTurtle : Obstacle {
     
-	/** Stored idle animation (this is RepeatForever action) */
-	CCAction *idleAnimation_;         
-    
     CCAction *damageAnimation_;
     
     Boundary *headBoundary_;
@@ -50,8 +47,6 @@
 - (void) initActions;
 
 - (void) initEngineFlame;
-
-- (void) showIdle;
 
 - (void) showDamage;
 

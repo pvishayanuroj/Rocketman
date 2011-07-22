@@ -47,17 +47,17 @@ typedef enum {
 } CatType;
 
 typedef enum {
-    kDino,
-    kAlien,
-    kShell,
-    kAngel,
-    kUFO,
-    kFlybot,
-    kBoost,
-    kCat,
-    kFuel,
-    kBossTurtle,
-    kTurtling
+    kDino = 0,
+    kAlien = 1,
+    kShell = 2,
+    kAngel = 3,
+    kUFO = 4,
+    kFlybot = 5,
+    kBoost = 6,
+    kCat = 7,
+    kFuel = 8,
+    kBossTurtle = 9,
+    kTurtling = 10
 } ObstacleType;
 
 typedef enum {

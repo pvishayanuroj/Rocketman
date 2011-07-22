@@ -89,7 +89,7 @@
         
         // Obstacle and powerup generation
         nextObstacleHeight_ = 800;
-        obstableFrequency_ = 3000;
+        obstableFrequency_ = 8000;
         nextRingHeight_ = 1600;
         ringFrequency_ = 2000;
         nextCatHeight_ = 700;
@@ -316,7 +316,6 @@
 #endif
     
     // Doodads
-    
     remove = [NSMutableIndexSet indexSet];
     index = 0;
     
@@ -334,7 +333,6 @@
     [doodads_ removeObjectsAtIndexes:remove];
     
     // Obstacles
-    
     remove = [NSMutableIndexSet indexSet];
     index = 0;    
     
@@ -352,7 +350,6 @@
     [obstacles_ removeObjectsAtIndexes:remove];    
     
     // Bullets
-
     remove = [NSMutableIndexSet indexSet];
     index = 0;    
     
@@ -410,7 +407,7 @@
             NSInteger x = [self getRandomX];
             NSInteger y = screenHeight_ + 100;
             CGPoint pos = ccp(x, y);          
-            //[self addObstacle:kBossTurtle pos:pos];
+            [self addObstacle:kBossTurtle pos:pos];
         }
     }
 }
@@ -425,7 +422,6 @@
 #if !DEBUG_NOOBSTACLES
     // "Bad" obstacles
     if (height_ > nextObstacleHeight_) {
-        //nextObstacleHeight_ += obstableFrequency_;
         nextObstacleHeight_ += [self getRandomY:obstableFrequency_];
         
         x = [self getRandomX];
@@ -434,8 +430,8 @@
 
         NSUInteger type = arc4random() % 6; 
         //type = 2;
-        //[self addObstacle:type pos:pos];
-        [self addTurtlingSwarm:5];        
+        [self addObstacle:type pos:pos];
+        //[self addTurtlingSwarm:36];        
     }    
 #endif
     
@@ -516,13 +512,6 @@
 }
 
 #pragma mark - Misc Methods
-
-- (void) addShell:(CGPoint)pos
-{
-    Obstacle *obstacle = [Shell shellWithPos:pos];
-    [self addChild:obstacle z:kObstacleDepth];
-    [obstacles_ addObject:obstacle];     
-}
 
 - (NSInteger) getRandomX
 {

@@ -141,8 +141,6 @@
 
 - (void) moveRocketHorizontally;
 
-- (void) addShell:(CGPoint)pos;
-
 - (NSInteger) getRandomX;
 
 - (NSInteger) getRandomY:(CGFloat)freq;

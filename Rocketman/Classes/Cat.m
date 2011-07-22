@@ -75,12 +75,6 @@ static NSUInteger countID = 0;
     collectAnimation_ = [[CCSequence actions:scaleUp, scaleDown, method, nil] retain];
 }
 
-- (void) showIdle
-{
-    [sprite_ stopAllActions];
-    [sprite_ runAction:idleAnimation_];	    
-}
-
 - (void) showCollect
 {
     [sprite_ stopAllActions];
@@ -88,11 +82,6 @@ static NSUInteger countID = 0;
 }
 
 - (void) primaryCollision
-{
-    [self collide];
-}
-
-- (void) collide
 {
     GameLayer *gameLayer = (GameLayer *)[self parent];
     [gameLayer collectCat:self];    

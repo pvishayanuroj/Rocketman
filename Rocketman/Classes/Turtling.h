@@ -9,9 +9,6 @@
 #import "Obstacle.h"
 
 @interface Turtling : Obstacle {
- 
-	/** Stored idle animation (this is RepeatForever action) */
-	CCAction *idleAnimation_;      
     
 }
 
@@ -20,7 +17,5 @@
 - (id) initWithPos:(CGPoint)pos;
 
 - (void) initActions;
-
-- (void) showIdle;
 
 @end

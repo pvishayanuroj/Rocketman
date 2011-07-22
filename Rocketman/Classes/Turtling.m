@@ -58,7 +58,7 @@ static NSUInteger countID = 0;
 
 - (NSString *) description
 {
-    return [NSString stringWithFormat:@"Turtle %d", unitID_];
+    return [NSString stringWithFormat:@"Turtling %d", unitID_];
 }    
 
 - (void) initActions
@@ -68,39 +68,16 @@ static NSUInteger countID = 0;
 	idleAnimation_ = [[CCRepeatForever actionWithAction:animate] retain];	
 }                 
 
-- (void) showIdle
-{
-	[sprite_ stopAllActions];
-	[sprite_ runAction:idleAnimation_];	
-}
-
 - (void) fall:(CGFloat)speed
 {
+    CGFloat dx = 2;
+    CGFloat dy = 3;
     // Fall diagonally
-    CGPoint p = ccp(1, -1);
+    CGPoint p = ccp(dx, -dy);
     self.position = ccpAdd(self.position, p);    
 }
 
 - (void) primaryCollision
-{
-    [self collide];
-}
-
-- (void) primaryHit
-{
-    [self bulletHit];
-}
-
-- (void) bulletHit
-{
-    [[AudioManager audioManager] playSound:kPlop];        
-    
-    [super showDestroy:kBamText];
-    
-    [super bulletHit];
-}
-
-- (void) collide
 {
     sprite_.visible = NO;    
     
@@ -108,12 +85,20 @@ static NSUInteger countID = 0;
     [[AudioManager audioManager] playSound:kWerr];                
     [gameLayer slowDown:0.66];    
     
-    [super showDestroy:kPlopText];
+    [super showDeath:kPlopText];
     
-    [super collide];    
+    [super collide];   
 }
 
-- (void) destroy
+- (void) primaryHit
+{
+    [[AudioManager audioManager] playSound:kPlop];        
+    [super showDeath:kBamText];
+    
+    [super bulletHit];
+}
+
+- (void) death
 {    
     GameLayer *gameLayer = (GameLayer *)[self parent];    
     [gameLayer removeObstacle:self];      

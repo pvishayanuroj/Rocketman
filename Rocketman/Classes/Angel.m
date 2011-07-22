@@ -75,12 +75,6 @@ static NSUInteger countID = 0;
 	slapAnimation_ = [[CCAnimate actionWithAnimation:animation] retain];
 }   
 
-- (void) showIdle
-{
-	[sprite_ stopAllActions];
-	[sprite_ runAction:idleAnimation_];	
-}
-
 - (void) showAttacking
 {
 	[sprite_ stopAllActions];	
@@ -100,25 +94,11 @@ static NSUInteger countID = 0;
 
 - (void) primaryCollision
 {
-    [self collide];
-}
-
-- (void) collide
-{
     GameLayer *gameLayer = (GameLayer *)[self parent];
     [gameLayer setRocketCondition:kRocketHearts];
     [gameLayer engageFixedBoost:12 amt:12 rate:0 time:3.0];
     
     [self showAttacking];
 }
-
-- (void) destroy
-{
-    GameLayer *gameLayer = (GameLayer *)[self parent];    
-    [gameLayer removeObstacle:self];    
-    
-    [super destroy];
-}
-
 
 @end

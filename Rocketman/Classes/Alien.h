@@ -10,9 +10,6 @@
 
 @interface Alien : Obstacle {
     
-	/** Stored idle animation (this is RepeatForever action) */
-	CCAction *idleAnimation_;         
-    
 }
 
 + (id) alienWithPos:(CGPoint)pos;
@@ -20,7 +17,5 @@
 - (id) initWithPos:(CGPoint)pos;
 
 - (void) initActions;
-
-- (void) showIdle;
 
 @end

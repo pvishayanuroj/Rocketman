@@ -10,9 +10,6 @@
 
 @interface Cat : Obstacle {
 
-	/** Stored idle animation (this is RepeatForever action) */
-	CCAction *idleAnimation_;             
- 
     CCAction *collectAnimation_;
     
 }
@@ -22,8 +19,6 @@
 - (id) initWithPos:(CGPoint)pos;
 
 - (void) initActions;
-
-- (void) showIdle;
 
 - (void) showCollect;
 

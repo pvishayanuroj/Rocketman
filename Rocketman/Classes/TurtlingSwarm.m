@@ -13,10 +13,11 @@
 
 + (void) addSwarm:(NSUInteger)size gameLayer:(GameLayer *)gameLayer
 {
-    NSInteger x = 100;
-    NSInteger y = 200;
-    NSInteger dx = 24;
-    NSInteger dy = 24;
+    NSInteger x = -100;
+    NSInteger y = 600;
+    NSInteger dx = 30;
+    NSInteger dy = 30;
+    NSInteger varx = 5;    
     CGPoint pos;
     CGPoint leadPos = ccp(x,y);
     CGPoint lagPos = ccp(x - dx, y);
@@ -31,6 +32,7 @@
         if (r == 1 && lastRowSize == 1) {
             r = arc4random() % 2 + 2;
         }
+        lastRowSize = r;
         
         // Randomly determine whether to place the row starting at the leading position or the lagging position
         // If the row size is 1, always choose the lagging position
@@ -52,7 +54,9 @@
                 numAdded++;
                 // If this was the first turtle added, calculate a new leading and lagging position for the next row
                 if (i == 0) {
-                    leadPos = ccp(pos.x + dx/2, pos.y + dy);
+                    // Give the x location some variance so the rows don't look so lined up
+                    NSInteger rx = arc4random() % (varx * 2 + 1) - varx;
+                    leadPos = ccp(rx + pos.x + dx/2, pos.y + dy);
                     lagPos = ccp(pos.x - dx/2, pos.y + dy);
                 }
                 // The next turtle in this row goes behind this turtle

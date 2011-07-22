@@ -111,12 +111,6 @@ static NSUInteger countID = 0;
 	damageAnimation_ = [[CCAnimate actionWithAnimation:animation] retain];    
 }                 
 
-- (void) showIdle
-{
-	[sprite_ stopAllActions];
-	[sprite_ runAction:idleAnimation_];	
-}
-
 - (void) showDamage
 {
 	[sprite_ stopAllActions];	
@@ -143,7 +137,7 @@ static NSUInteger countID = 0;
     CCFiniteTimeAction *repeat = [CCRepeat actionWithAction:seq times:80];
     CCFiniteTimeAction *explosion = [CCCallFunc actionWithTarget:self selector:@selector(addBigExplosion)];
     CCFiniteTimeAction *delay2 = [CCDelayTime actionWithDuration:3.5];
-    CCFiniteTimeAction *end = [CCCallFunc actionWithTarget:self selector:@selector(destroy)];
+    CCFiniteTimeAction *end = [CCCallFunc actionWithTarget:self selector:@selector(death)];
     [self runAction:[CCSequence actions:repeat, explosion, delay2, end, nil]];
 }
 
@@ -271,7 +265,7 @@ static NSUInteger countID = 0;
     [self bulletHit];        
 }
 
-- (void) destroy
+- (void) death
 {    
     GameLayer *gameLayer = (GameLayer *)[self parent];    
     [gameLayer removeObstacle:self];     

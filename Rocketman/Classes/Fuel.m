@@ -80,12 +80,6 @@ static NSUInteger countID = 0;
     collectAnimation_ = [[CCSequence actions:scaleUp, scaleDown, method, nil] retain];
 }
 
-- (void) showIdle
-{
-    [sprite_ stopAllActions];
-    [sprite_ runAction:idleAnimation_];	    
-}
-
 - (void) showCollect
 {
     [sprite_ stopAllActions];
@@ -94,19 +88,12 @@ static NSUInteger countID = 0;
 
 - (void) primaryCollision
 {
-    [self collide];
-}
-
-- (void) collide
-{
     GameLayer *gameLayer = (GameLayer *)[self parent];
     [gameLayer collectFuel:self];
     [gameLayer removeObstacle:self];
     [self showCollect];    
     
     [super collide];
-    
-    // Note that destroy is called from the collect animation        
 }
 
 - (void) destroy

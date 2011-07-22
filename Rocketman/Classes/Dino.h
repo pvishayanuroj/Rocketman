@@ -10,8 +10,6 @@
 
 @interface Dino : Obstacle {
     
-    CCAction *idleAnimation_;
-    
     CCAction *flameAnimation_;
 
 }
@@ -21,8 +19,6 @@
 - (id) initWithPos:(CGPoint)pos;
 
 - (void) initActions;
-
-- (void) showIdle;
 
 - (void) showAttacking;
 

@@ -9,9 +9,7 @@
 #import "Obstacle.h"
 
 @interface UFO : Obstacle {
-    
-	/** Stored idle animation (this is RepeatForever action) */
-	CCAction *idleAnimation_;     
+
 }
 
 + (id) ufoWithPos:(CGPoint)pos;
@@ -19,7 +17,5 @@
 - (id) initWithPos:(CGPoint)pos;
 
 - (void) initActions;
-
-- (void) showIdle;
 
 @end

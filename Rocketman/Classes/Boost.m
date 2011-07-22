@@ -72,18 +72,7 @@ static NSUInteger countID = 0;
 	idleAnimation_ = [[CCRepeatForever actionWithAction:seq] retain];		    
 }
 
-- (void) showIdle
-{
-    [sprite_ stopAllActions];
-    [sprite_ runAction:idleAnimation_];	    
-}
-
 - (void) primaryCollision
-{
-    [self collide];
-}
-
-- (void) collide
 {
     GameLayer *gameLayer = (GameLayer *)[self parent];
     [gameLayer collectBoost:self];

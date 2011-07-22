@@ -16,6 +16,9 @@
     
     PVCollide defaultPVCollide_;
     
+	/** Stored idle animation for all obstacles*/
+	CCAction *idleAnimation_;                 
+    
     CCAction *destroyAnimation_;   
     
 	NSUInteger unitID_;    
@@ -23,7 +26,9 @@
 
 @property (nonatomic, readonly) NSMutableArray *boundaries;
 
-- (void) showDestroy:(EventText)text;
+- (void) showIdle;
+
+- (void) showDeath:(EventText)text;
 
 - (void) fall:(CGFloat)speed;
 
