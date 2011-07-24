@@ -67,6 +67,7 @@ static NSUInteger countID = 0;
         
         movingLeft_ = YES;
         deployedShells_ = NO;
+        freeFall_ = NO;
         sprite_.flipX = YES;
         numShells_ = 0;
         maxShells_ = 6;
@@ -135,15 +136,21 @@ static NSUInteger countID = 0;
     CCFiniteTimeAction *blast = [CCCallFunc actionWithTarget:self selector:@selector(addBlast)];
     CCFiniteTimeAction *seq = [CCSequence actions:blast, delay, nil];
     CCFiniteTimeAction *repeat = [CCRepeat actionWithAction:seq times:80];
+    CCFiniteTimeAction *startFall = [CCCallFunc actionWithTarget:self selector:@selector(startFreeFall)];
     CCFiniteTimeAction *explosion = [CCCallFunc actionWithTarget:self selector:@selector(addBigExplosion)];
     CCFiniteTimeAction *delay2 = [CCDelayTime actionWithDuration:3.5];
     CCFiniteTimeAction *end = [CCCallFunc actionWithTarget:self selector:@selector(death)];
-    [self runAction:[CCSequence actions:repeat, explosion, delay2, end, nil]];
+    [self runAction:[CCSequence actions:repeat, startFall, explosion, delay2, end, nil]];
 }
 
 - (void) deployShell
 {
     [[GameManager gameManager] addShell:self.position];
+}
+
+- (void) startFreeFall
+{
+    freeFall_ = YES;
 }
 
 - (void) addBlast
@@ -179,6 +186,14 @@ static NSUInteger countID = 0;
     CGFloat dx;
     CGFloat dy = 0;
 
+    // If turtle is in free fall, fall normally
+    if (freeFall_) {
+        CGPoint p = CGPointMake(0, speed*0.5);
+        self.position = ccpSub(self.position, p);            
+        return;
+    }
+
+    
     if (movingLeft_) {
         // Check if we got to the turnaround point to move right again
         if (self.position.x < leftCutoff_) {

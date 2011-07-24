@@ -26,6 +26,8 @@
     
     BOOL deployedShells_;
     
+    BOOL freeFall_;
+    
     NSUInteger numShells_;
     
     NSUInteger maxShells_;
@@ -55,6 +57,8 @@
 - (void) startDeathSequence;
 
 - (void) deployShell;
+
+- (void) startFreeFall;
 
 - (void) addBlast;
 
