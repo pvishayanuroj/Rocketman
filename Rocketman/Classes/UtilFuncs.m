@@ -11,6 +11,22 @@
 
 @implementation UtilFuncs
 
++ (CGPoint) parseCoords:(NSString *)coords
+{
+    NSScanner *scanner = [NSScanner scannerWithString:coords];
+	// Ignore new lines, spaces, and commas and enclosing symbols
+	NSCharacterSet *toIgnore = [NSCharacterSet characterSetWithCharactersInString:@", \n\r()[]{}<>"];
+	[scanner setCharactersToBeSkipped:toIgnore];
+	
+	// Scan
+    NSInteger x;
+    NSInteger y;
+    [scanner scanInteger:&x];    
+    [scanner scanInteger:&y];
+    
+    return CGPointMake(x, y);
+}
+
 + (CGFloat) distanceNoRoot:(CGPoint)a b:(CGPoint)b
 {
 	CGFloat t1 = a.x - b.x;

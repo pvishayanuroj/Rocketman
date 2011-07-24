@@ -12,6 +12,7 @@
 #import "TextElement.h"
 #import "MovingElement.h"
 #import "GameScene.h"
+#import "GameStateManager.h"
     
 // For singleton
 static StoryManager *_storyManager = nil;
@@ -122,7 +123,7 @@ static StoryManager *_storyManager = nil;
     
     // If we've reached the end of the sequence, start the game
     if (sceneNum_ > endSceneNum_) {
-        [self startGame];
+        [self endScene];
     }
     // Otherwise go to the next scene
     else {
@@ -149,6 +150,16 @@ static StoryManager *_storyManager = nil;
     }
 }
 
+- (void) endScene
+{
+    [currentScene_ stopAllActions];
+    [currentScene_ release];
+    currentScene_ = nil;
+    
+    [[GameStateManager gameStateManager] endStory];
+}
+
+/*
 - (void) startGame
 {
     [currentScene_ stopAllActions];
@@ -158,6 +169,6 @@ static StoryManager *_storyManager = nil;
     CCScene *scene = [GameScene node];        
     [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:scene]];                
 }
-
+*/
 
 @end

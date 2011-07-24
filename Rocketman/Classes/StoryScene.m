@@ -60,7 +60,7 @@
 
 - (void) skip
 {
-    [[StoryManager storyManager] startGame];
+    [[StoryManager storyManager] endScene];
 }
 
 @end

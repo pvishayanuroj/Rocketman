@@ -35,6 +35,8 @@
 
 - (void) nextScene;
 
-- (void) startGame;
+- (void) endScene;
+
+//- (void) startGame;
 
 @end

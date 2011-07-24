@@ -12,10 +12,16 @@
     
 }
 
+/** Takes a string containing 2D coordindates and returns the representative CGPoint */
++ (CGPoint) parseCoords:(NSString *)coords;
+
+/** Returns the 2D Euclidean distance squared (without the final square root) */
 + (CGFloat) distanceNoRoot:(CGPoint)a b:(CGPoint)b;
 
+/** Returns whether or not the given circle intersects with the rectangle */
 + (BOOL) intersects:(CGPoint)circle radius:(CGFloat)r rect:(CGRect)rect;
 
+/** Returns whether or not two rectangles intersect with each other */
 + (BOOL) intersects:(CGRect)a b:(CGRect)b;
 
 /** Collision method used for circular or retangular collisions with the rocket (modeled as a rectangular box) */

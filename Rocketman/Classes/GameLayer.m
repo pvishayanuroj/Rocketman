@@ -74,9 +74,6 @@
         rocket_ = [Rocket rocketWithPos:startPos];
         [self addChild:rocket_ z:kRocketDepth];
         
-        // Load sounds
-        [AudioManager audioManager];        
-        
         // Game variables
         rocketSpeed_ = 0;
         numCats01_ = 0;
@@ -430,8 +427,8 @@
 
         NSUInteger type = arc4random() % 6; 
         //type = 2;
-        [self addObstacle:type pos:pos];
-        //[self addTurtlingSwarm:36];        
+        //[self addObstacle:type pos:pos];
+        [self addTurtlingSwarm:8];        
     }    
 #endif
     
