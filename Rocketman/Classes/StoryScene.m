@@ -60,7 +60,7 @@
 
 - (void) skip
 {
-    [[StoryManager storyManager] endScene];
+    [[StoryManager storyManager] endCutscene];
 }
 
 @end

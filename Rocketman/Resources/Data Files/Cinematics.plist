@@ -4,27 +4,63 @@
 <dict>
 	<key>Intro</key>
 	<dict>
-		<key>Scene Timing</key>
-		<dict>
-			<key>01</key>
-			<integer>3</integer>
-			<key>02</key>
-			<integer>2</integer>
-			<key>03</key>
-			<integer>3</integer>
-			<key>04</key>
-			<integer>3</integer>
-			<key>05</key>
-			<integer>5</integer>
-			<key>06</key>
-			<integer>5</integer>
-			<key>07</key>
-			<integer>5</integer>
-			<key>08</key>
-			<integer>4</integer>
-			<key>09</key>
-			<integer>3</integer>
-		</dict>
+		<key>Scene</key>
+		<array>
+			<dict>
+				<key>Transition</key>
+				<string>Fade</string>
+				<key>Timing</key>
+				<string>3</string>
+			</dict>
+			<dict>
+				<key>Transition</key>
+				<string>Fade</string>
+				<key>Timing</key>
+				<string>2</string>
+			</dict>
+			<dict>
+				<key>Transition</key>
+				<string>Instant</string>
+				<key>Timing</key>
+				<string>3</string>
+			</dict>
+			<dict>
+				<key>Transition</key>
+				<string>Fade</string>
+				<key>Timing</key>
+				<string>3</string>
+			</dict>
+			<dict>
+				<key>Transition</key>
+				<string>Fade</string>
+				<key>Timing</key>
+				<string>5</string>
+			</dict>
+			<dict>
+				<key>Transition</key>
+				<string>Fade</string>
+				<key>Timing</key>
+				<string>5</string>
+			</dict>
+			<dict>
+				<key>Transition</key>
+				<string>Fade</string>
+				<key>Timing</key>
+				<string>5</string>
+			</dict>
+			<dict>
+				<key>Transition</key>
+				<string>Fade</string>
+				<key>Timing</key>
+				<string>4</string>
+			</dict>
+			<dict>
+				<key>Transition</key>
+				<string>Fade</string>
+				<key>Timing</key>
+				<string>3</string>
+			</dict>
+		</array>
 	</dict>
 </dict>
 </plist>

@@ -42,7 +42,7 @@
 
 - (void) startGame 
 {
-    [[StoryManager storyManager] nextScene];
+    [[StoryManager storyManager] beginCutscene:@"Intro"];
 }
 
 - (void) viewHighscore {
