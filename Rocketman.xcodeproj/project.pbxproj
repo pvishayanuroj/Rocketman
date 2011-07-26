@@ -137,6 +137,8 @@
 		DA346F13138ECB56000881D6 /* sheet01.plist in Resources */ = {isa = PBXBuildFile; fileRef = DA346F10138ECB56000881D6 /* sheet01.plist */; };
 		DA346F14138ECB56000881D6 /* sheet01.png in Resources */ = {isa = PBXBuildFile; fileRef = DA346F11138ECB56000881D6 /* sheet01.png */; };
 		DA346F18138ECB7C000881D6 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = DA346F17138ECB7C000881D6 /* background.png */; };
+		DA3B39D913DCCC190079D34C /* MapText.m in Sources */ = {isa = PBXBuildFile; fileRef = DA3B39D813DCCC180079D34C /* MapText.m */; };
+		DA3B39DC13DD22EF0079D34C /* text_background.png in Resources */ = {isa = PBXBuildFile; fileRef = DA3B39DB13DD22EF0079D34C /* text_background.png */; };
 		DA4934D5139605FA008FA14F /* explosion01.wav in Resources */ = {isa = PBXBuildFile; fileRef = DA4934D2139605FA008FA14F /* explosion01.wav */; };
 		DA4934D6139605FA008FA14F /* kerrum.wav in Resources */ = {isa = PBXBuildFile; fileRef = DA4934D3139605FA008FA14F /* kerrum.wav */; };
 		DA4934D7139605FA008FA14F /* werr.wav in Resources */ = {isa = PBXBuildFile; fileRef = DA4934D4139605FA008FA14F /* werr.wav */; };
@@ -482,6 +484,10 @@
 		DA346F10138ECB56000881D6 /* sheet01.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = sheet01.plist; path = Resources/Spritesheets/sheet01.plist; sourceTree = "<group>"; };
 		DA346F11138ECB56000881D6 /* sheet01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sheet01.png; path = Resources/Spritesheets/sheet01.png; sourceTree = "<group>"; };
 		DA346F17138ECB7C000881D6 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
+		DA3B39D713DCCC170079D34C /* MapText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapText.h; path = Classes/MapText.h; sourceTree = "<group>"; };
+		DA3B39D813DCCC180079D34C /* MapText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapText.m; path = Classes/MapText.m; sourceTree = "<group>"; };
+		DA3B39DA13DCE9E60079D34C /* MapTextDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapTextDelegate.h; path = Classes/MapTextDelegate.h; sourceTree = "<group>"; };
+		DA3B39DB13DD22EF0079D34C /* text_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = text_background.png; sourceTree = "<group>"; };
 		DA4934D2139605FA008FA14F /* explosion01.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = explosion01.wav; sourceTree = "<group>"; };
 		DA4934D3139605FA008FA14F /* kerrum.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = kerrum.wav; sourceTree = "<group>"; };
 		DA4934D4139605FA008FA14F /* werr.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = werr.wav; sourceTree = "<group>"; };
@@ -660,6 +666,8 @@
 		DA0C242C13ADE7C200544DF1 /* Story */ = {
 			isa = PBXGroup;
 			children = (
+				DA7DCC7813A7D63C0065A566 /* StoryScene.h */,
+				DA7DCC7913A7D63C0065A566 /* StoryScene.m */,
 				DA99E6FE13ADA1A00075896F /* StoryElement.h */,
 				DA99E6FF13ADA1A00075896F /* StoryElement.m */,
 				DA99E70213ADA2840075896F /* TextElement.h */,
@@ -709,6 +717,7 @@
 			isa = PBXGroup;
 			children = (
 				DA0593AC13A7D26400565D76 /* Singletons */,
+				DA99B74013DC618400DB361F /* World Map */,
 				DAFA3CF713939AE30048D211 /* Layers & Scenes */,
 				DA0C242C13ADE7C200544DF1 /* Story */,
 				DA8215121390CECF00F3892E /* Utility */,
@@ -1059,6 +1068,7 @@
 		DA346EE4138E5D53000881D6 /* Game Art */ = {
 			isa = PBXGroup;
 			children = (
+				DA3B39DB13DD22EF0079D34C /* text_background.png */,
 				DA99B5C013DA7AB400DB361F /* map_cat_active.png */,
 				DA99B5C113DA7AB400DB361F /* map_cat_inactive.png */,
 				DA99B5C213DA7AB400DB361F /* world_map.png */,
@@ -1167,6 +1177,23 @@
 			path = "Resources/Data Files";
 			sourceTree = "<group>";
 		};
+		DA99B74013DC618400DB361F /* World Map */ = {
+			isa = PBXGroup;
+			children = (
+				DA99B5BD13DA79C700DB361F /* MapScene.h */,
+				DA99B5BE13DA79CA00DB361F /* MapScene.m */,
+				DA99B5C613DA7B7000DB361F /* MapLayer.h */,
+				DA99B5C713DA7B7800DB361F /* MapLayer.m */,
+				DA3B39D713DCCC170079D34C /* MapText.h */,
+				DA3B39D813DCCC180079D34C /* MapText.m */,
+				DA99B5C913DA7E0600DB361F /* CatMapButton.h */,
+				DA99B5CA13DA7E0F00DB361F /* CatMapButton.m */,
+				DA99B5CC13DA822900DB361F /* CatButtonDelegate.h */,
+				DA3B39DA13DCE9E60079D34C /* MapTextDelegate.h */,
+			);
+			name = "World Map";
+			sourceTree = "<group>";
+		};
 		DA99E81813ADC30E0075896F /* Story Scenes */ = {
 			isa = PBXGroup;
 			children = (
@@ -1269,15 +1296,6 @@
 				DA99E94F13ADE64B0075896F /* HighscoreLayer.m */,
 				DA99E95013ADE6500075896F /* HighscoreScene.h */,
 				DA99E95113ADE6590075896F /* HighscoreScene.m */,
-				DA7DCC7813A7D63C0065A566 /* StoryScene.h */,
-				DA7DCC7913A7D63C0065A566 /* StoryScene.m */,
-				DA99B5BD13DA79C700DB361F /* MapScene.h */,
-				DA99B5BE13DA79CA00DB361F /* MapScene.m */,
-				DA99B5C613DA7B7000DB361F /* MapLayer.h */,
-				DA99B5C713DA7B7800DB361F /* MapLayer.m */,
-				DA99B5C913DA7E0600DB361F /* CatMapButton.h */,
-				DA99B5CA13DA7E0F00DB361F /* CatMapButton.m */,
-				DA99B5CC13DA822900DB361F /* CatButtonDelegate.h */,
 			);
 			name = "Layers & Scenes";
 			sourceTree = "<group>";
@@ -1406,6 +1424,7 @@
 				DA99B5D113DA85F400DB361F /* Cinematics.plist in Resources */,
 				DA99B5D213DA85F400DB361F /* HighScores.plist in Resources */,
 				DA99B5D313DA85F400DB361F /* WorldMap.plist in Resources */,
+				DA3B39DC13DD22EF0079D34C /* text_background.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1562,6 +1581,7 @@
 				DA99B5BF13DA79CD00DB361F /* MapScene.m in Sources */,
 				DA99B5C813DA7B7D00DB361F /* MapLayer.m in Sources */,
 				DA99B5CB13DA7E1600DB361F /* CatMapButton.m in Sources */,
+				DA3B39D913DCCC190079D34C /* MapText.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

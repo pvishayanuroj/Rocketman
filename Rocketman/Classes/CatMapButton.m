@@ -15,6 +15,9 @@
 @synthesize levelNum = levelNum_;
 @synthesize delegate = delegate_;
 
+const CGFloat BUTTON_SCALE = 0.8f;
+const CGFloat BUTTON_SCALE_BIG = 1.0f;
+
 #pragma mark - Object Lifecycle
 
 + (id) inactiveButtonAt:(CGPoint)pos levelNum:(NSUInteger)levelNum
@@ -34,6 +37,7 @@
         buttonType_ = kInactiveButton;
         
         sprite_ = [CCSprite spriteWithFile:@"map_cat_inactive.png"];
+        sprite_.scale = BUTTON_SCALE;
         [self addChild:sprite_];
     }
     return self;    
@@ -46,6 +50,7 @@
         buttonType_ = kActiveButton;
         
         sprite_ = [CCSprite spriteWithFile:@"map_cat_active.png"];
+        sprite_.scale = BUTTON_SCALE;        
         [self addChild:sprite_];   
     }
     return self;
@@ -57,6 +62,8 @@
         
         self.position = pos;
         levelNum_ = levelNum;
+        isLocked_ = NO;
+        isPulsing_ = NO;
     }
     return self;
 }
@@ -90,15 +97,10 @@
 
 - (BOOL) ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
-	if (![self containsTouchLocation:touch])
+	if (![self containsTouchLocation:touch] || isLocked_) {
 		return NO;
-    
+    }
 	return YES;
-}
-
-- (void) ccTouchMoved:(UITouch *)touch withEvent:(UIEvent *)event
-{
-    
 }
 
 - (void) ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event
@@ -114,19 +116,33 @@
     }
 }
 
+- (void) lock
+{
+    isLocked_ = YES;
+}
+
+- (void) unlock
+{
+    isLocked_ = NO;
+}
+
 #pragma mark - Animation Methods
 
 - (void) pop
 {
     CGFloat duration = 0.07;
-    CCActionInterval *grow = [CCScaleTo actionWithDuration:duration scale:1.2];
-    CCActionInterval *shrink = [CCScaleTo actionWithDuration:duration scale:1.0];
+    CCActionInterval *grow = [CCScaleTo actionWithDuration:duration scale:BUTTON_SCALE_BIG];
+    CCActionInterval *shrink = [CCScaleTo actionWithDuration:duration scale:BUTTON_SCALE];
     [sprite_ stopAllActions];
     [sprite_ runAction:[CCSequence actions:grow, shrink, nil]];
 }
 
 - (void) selectSpin
 {
+    if (isPulsing_) {
+        sprite_.scale = BUTTON_SCALE;
+    }
+    
     CCActionInterval *animate = [CCRotateBy actionWithDuration:2.0 angle:360];
 	CCAction *spin = [CCRepeatForever actionWithAction:animate];	    
 	[sprite_ stopAllActions];
@@ -136,6 +152,26 @@
 - (void) stopSpin
 {
     [sprite_ stopAllActions];
+    if (isPulsing_) {
+        [self setToPulse];
+    }
+}
+
+- (void) setToPulse
+{
+    CGFloat duration = 0.05;
+    CGFloat delay = 0.3;
+    CCActionInterval *grow = [CCScaleTo actionWithDuration:duration scale:BUTTON_SCALE];
+    CCActionInterval *growEase = [CCEaseIn actionWithAction:grow rate:2.0];
+    CCActionInterval *shrink = [CCScaleTo actionWithDuration:duration scale:BUTTON_SCALE_BIG];    
+    CCActionInterval *shrinkEase = [CCEaseIn actionWithAction:shrink rate:2.0];    
+    CCActionInterval *delay1 = [CCDelayTime actionWithDuration:delay];
+    CCActionInterval *delay2 = [CCDelayTime actionWithDuration:delay];    
+    CCAction *pulse = [CCRepeatForever actionWithAction:[CCSequence actions:growEase, delay1, shrinkEase, delay2, nil]];
+    [sprite_ stopAllActions];
+    [sprite_ runAction:pulse];
+    
+    isPulsing_ = YES;
 }
 
 - (void) disappearSpin

@@ -8,23 +8,39 @@
 
 #import "cocos2d.h"
 #import "CatButtonDelegate.h"
+#import "MapTextDelegate.h"
 
 @class CatMapButton;
+@class MapText;
 
 typedef enum {
     kStateNeutral,
     kStateSelected
 } MapState;
 
-@interface MapLayer : CCLayer <CatButtonDelegate> {
+@interface MapLayer : CCLayer <CatButtonDelegate, MapTextDelegate, CCTargetedTouchDelegate> {
     
     MapState mapState_;
     
     CatMapButton *selectedButton_;
     
+    MapText *mapText_;    
+    
+    BOOL mapTextDown_;
+    
+    BOOL mapTextSwitch_;
+    
+    BOOL inputLocked_;
+    
     NSMutableArray *levelTitles_;
     
     NSMutableArray *levelDescs_;
+    
+    NSMutableArray *buttons_;
+    
+    CCLabelTTF *title_;
+    
+    CCLabelTTF *desc_;
     
 }
 
@@ -35,5 +51,17 @@ typedef enum {
 - (id) initWithFile:(NSString *)filename;
 
 - (void) catButtonPressed:(CatMapButton *)button;
+
+- (void) catButtonSpinComplete:(CatMapButton *)button;
+
+- (void) showLevelInfo:(NSUInteger)levelNum;
+
+- (void) hideLevelInfo;
+
+/** Does not allow user input for the map screen */
+- (void) lockInput;
+
+/** Allows user input for the map screen */
+- (void) unlockInput;
 
 @end

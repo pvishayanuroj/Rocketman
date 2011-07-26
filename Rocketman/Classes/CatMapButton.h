@@ -14,6 +14,9 @@ typedef enum {
     kInactiveButton
 } CatButtonType;
 
+const CGFloat BUTTON_SCALE;
+const CGFloat BUTTON_SCALE_BIG;
+
 @interface CatMapButton : CCNode <CCTargetedTouchDelegate> {
     
     /** The image used for this button */
@@ -21,6 +24,11 @@ typedef enum {
     
     /** The level that this button corresponds to */
     NSUInteger levelNum_;
+    
+    /** Whether or not this button can be pressed */
+    BOOL isLocked_;
+    
+    BOOL isPulsing_;
     
     /** Specifies whether button is active or inactive */
     CatButtonType buttonType_;
@@ -47,8 +55,14 @@ typedef enum {
 /** Common initializer for all cat buttons */
 - (id) initButton:(CGPoint)pos levelNum:(NSUInteger)levelNum;
 
+/** Does not allow this button to be pressed */
+- (void) lock;
+
+/** Allows this button to be pressed */
+- (void) unlock;
+
 /** Animation to indicate the last unlocked level */
-//- (void) setToPulse;
+- (void) setToPulse;
 
 /** Animation used when user selects a locked level - button gets bigger momentarily */
 - (void) pop;
