@@ -11,6 +11,7 @@
 #import "MainMenuScene.h"
 #import "MapScene.h"
 #import "GameScene.h"
+#import "EndScene.h"
 
 // For singleton
 static GameStateManager *_gameStateManager = nil;
@@ -70,6 +71,12 @@ static GameStateManager *_gameStateManager = nil;
 - (void) startGame
 {
     CCScene *scene = [GameScene node];        
+    [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:scene]];    
+}
+
+- (void) endLevel
+{
+    CCScene *scene = [EndScene endSceneWithLevel:1 score:10000];
     [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:scene]];    
 }
 

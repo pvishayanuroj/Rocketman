@@ -31,6 +31,11 @@
     return [[[self alloc] initPSForRocketHearts] autorelease];
 }
 
++ (id) PSForBrokenRocket
+{
+    return [[[self alloc] initPSForBrokenRocket] autorelease];
+}
+
 - (id) initPSForRocketFlame
 {
     if ((self = [self initWithTotalParticles:150])) {
@@ -172,7 +177,7 @@
 
 - (id) initWithTotalHearts:(NSUInteger)p
 {
-	if( (self = [super initWithTotalParticles:p]) ) {
+	if ((self = [super initWithTotalParticles:p])) {
         
 		// additive
 		self.blendAdditive = NO;
@@ -194,6 +199,49 @@
 		self.texture = [[CCTextureCache sharedTextureCache] addImage: @"heart.png"];
 	}
 	return self;    
+}
+
+- (id) initPSForBrokenRocket
+{
+	if ((self = [super initWithTotalParticles:1000])) {
+    
+		self.texture = [[CCTextureCache sharedTextureCache] addImage: @"fire.png"];        
+        ccBlendFunc blendFunc = {GL_DST_ALPHA, GL_ONE_MINUS_SRC_ALPHA};
+        self.blendFunc = blendFunc;
+        self.duration = -1;
+        self.emitterMode = kCCParticleModeGravity;
+        ccColor4F startClr = {0.12, 0.11, 0.11, 1.00};
+        self.startColor = startClr;
+        ccColor4F startClrVar = {0, 0, 0, 0.45};
+        self.startColorVar = startClrVar;
+        ccColor4F endClr = {0.35, 0.31, 0.27, 0.11};
+        self.endColor = endClr;
+        ccColor4F endClrVar = {0, 0, 0, 0.25};
+        self.endColorVar = endClrVar;
+        self.startSize = 15;
+        self.startSpinVar = 0;
+        self.endSize = 25;
+        self.endSizeVar = 0;
+        self.angle = 50;
+        self.angleVar = 10;        
+        self.gravity = ccp(0, 50);
+        self.radialAccel = 0;
+        self.radialAccelVar = 30;
+        self.speed = 40;
+        self.speedVar = 15;
+        self.tangentialAccel = 0;
+        self.tangentialAccelVar = 0;
+        self.totalParticles = 1000;
+        self.life = 3;
+        self.lifeVar = 0.10;
+        self.startSpin = 0;
+        self.startSpinVar = 0;
+        self.endSpin = 0;
+        self.endSpinVar = 0;
+        self.posVar = ccp(5, 0);
+        self.emissionRate = self.totalParticles/self.life;
+    }
+    return self;
 }
 
 @end

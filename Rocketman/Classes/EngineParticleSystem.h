@@ -30,6 +30,9 @@
 
 + (id) PSForRocketHearts;
 
+/** Particle system for end scene with the crashed rocket smoking */
++ (id) PSForBrokenRocket;
+
 - (id) initWithTotalParticles:(NSUInteger)p;
 
 - (id) initWithTotalHearts:(NSUInteger)p;
@@ -41,5 +44,7 @@
 - (id) initPSForBossTurtleFlame;
 
 - (id) initPSForRocketHearts;
+
+- (id) initPSForBrokenRocket;
 
 @end
