@@ -26,6 +26,8 @@
 
 - (void) stopSound:(SoundType)type;
 
+- (void) stopMusic;
+
 - (void) pauseSound;
 
 - (void) resumeSound;

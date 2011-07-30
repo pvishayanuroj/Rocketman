@@ -100,11 +100,13 @@ static GameStateManager *_gameStateManager = nil;
 
 - (void) stageSelectedFromMap:(NSUInteger)levelNum
 {
+    [[AudioManager audioManager] stopMusic];
     [self startGameWithLevel:levelNum];
 }
 
 - (void) restartFromGameOver
 {
+    [[AudioManager audioManager] stopMusic];    
     [self startGameWithLevel:currentLevel_];
 }
 

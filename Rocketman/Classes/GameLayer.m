@@ -102,6 +102,7 @@
         boostTimer_ = 0;        
         onGround_ = YES;
         inputLocked_ = NO;
+        test = NO;
         
         // DEBUG
         bossAdded_ = NO;
@@ -546,21 +547,25 @@
 
 - (void) loss
 {
+    if (!test) {
+        test = YES;
     onGround_ = YES;
     rocketSpeed_ = 0;
 
     // Very important to do this, since the accelerometer singleton is holding a ref to us
     [[UIAccelerometer sharedAccelerometer] setDelegate:nil];
     
-    CCFiniteTimeAction *fall = [CCMoveBy actionWithDuration:0.2 position:CGPointMake(0, -300)];
+    CCFiniteTimeAction *fall = [CCMoveBy actionWithDuration:0.2f position:CGPointMake(0, -300)];
     TargetedAction *rocketFall = [TargetedAction actionWithTarget:rocket_ actionIn:fall];
+    CCFiniteTimeAction *delay = [CCDelayTime actionWithDuration:2.0f];
     CCActionInstant *method = [CCCallFunc actionWithTarget:self selector:@selector(endLevel)];
-    [self runAction:[CCSequence actions:rocketFall, method, nil]];
+    [self runAction:[CCSequence actions:rocketFall, delay, method, nil]];
+    }
 }
 
 - (void) endLevel
 {
-    [self removeFromParentAndCleanup:YES];    
+    //[self removeFromParentAndCleanup:YES];    
     [[GameStateManager gameStateManager] endGame:height_];   
 }
 

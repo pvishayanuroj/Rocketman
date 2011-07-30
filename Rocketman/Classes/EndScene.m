@@ -23,16 +23,21 @@ const CGFloat ES_SCORE_TIME = 3.0f;
 {
     if ((self = [super init])) {
     
-        // Background
-        NSString *backgroundName = [NSString stringWithFormat:@"parallax_level%d.png", levelNum];
-        CCSprite *bg = [CCSprite spriteWithFile:backgroundName];
-        bg.anchorPoint = CGPointZero;
+        // Add background sky
+        CCSprite *bg = [CCSprite spriteWithFile:@"background.png"];
         [self addChild:bg z:0];
+        bg.anchorPoint = CGPointZero;        
+        
+        // Add foreground element
+        NSString *foregroundName = [NSString stringWithFormat:@"parallax_level%d.png", levelNum];
+        CCSprite *fg = [CCSprite spriteWithFile:foregroundName];
+        fg.anchorPoint = CGPointZero;
+        [self addChild:fg z:1];
 
         // Wrecked ship & smoke
         CCParticleSystem *smoke = [EngineParticleSystem PSForBrokenRocket];
         smoke.position = CGPointMake(200, 15);
-        [self addChild:smoke z:1];        
+        [self addChild:smoke z:2];        
         
         // Game over text
 		CGSize size = [[CCDirector sharedDirector] winSize];        
@@ -43,7 +48,7 @@ const CGFloat ES_SCORE_TIME = 3.0f;
         // Score
         score_ = 0;
         finalScore_ = score;
-        incrementSpeed_ = score/ES_SCORE_TIME;
+        incrementSpeed_ = score/(ES_SCORE_TIME * 60);
         scoreLabel_ = [[CCLabelBMFont labelWithString:@"0" fntFile:@"SRSM_font.fnt"] retain];
         scoreLabel_.position =  CGPointMake(size.width * 0.5, size.height *0.5);
         [self addChild:scoreLabel_ z:3];

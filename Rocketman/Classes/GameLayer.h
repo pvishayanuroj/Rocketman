@@ -20,6 +20,8 @@
 @interface GameLayer : CCLayer <UIAccelerometerDelegate> {
  
     Rocket *rocket_;
+    
+    BOOL test;
  
     NSMutableArray *obstacles_;
     
