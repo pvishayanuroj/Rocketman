@@ -94,7 +94,7 @@
 
 - (void) ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event
 {
-    [self unexpand];	
+    [self unexpand];
 	if ([self containsTouchLocation:touch]) {
         [invocation_ invoke];
     }

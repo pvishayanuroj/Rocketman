@@ -12,7 +12,7 @@
 
 @implementation EndScene
 
-const CGFloat ES_SCORE_TIME = 3.0f;
+const CGFloat ES_SCORE_TIME = 2.0f;
 
 + (id) endSceneWithLevel:(NSUInteger)levelNum score:(NSUInteger)score
 {
@@ -42,7 +42,7 @@ const CGFloat ES_SCORE_TIME = 3.0f;
         // Game over text
 		CGSize size = [[CCDirector sharedDirector] winSize];        
         CCSprite *text = [CCSprite spriteWithFile:@"gameover_text.png"];
-        text.position = CGPointMake(size.width * 0.5, size.height * 0.6);
+        text.position = CGPointMake(size.width * 0.5, size.height * 0.65);
         [self addChild:text z:3];
         
         // Score
@@ -50,7 +50,7 @@ const CGFloat ES_SCORE_TIME = 3.0f;
         finalScore_ = score;
         incrementSpeed_ = score/(ES_SCORE_TIME * 60);
         scoreLabel_ = [[CCLabelBMFont labelWithString:@"0" fntFile:@"SRSM_font.fnt"] retain];
-        scoreLabel_.position =  CGPointMake(size.width * 0.5, size.height *0.5);
+        scoreLabel_.position =  CGPointMake(size.width * 0.5, size.height * 0.5);
         [self addChild:scoreLabel_ z:3];
         
         EndLayer *endLayer = [EndLayer node];

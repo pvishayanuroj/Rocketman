@@ -11,6 +11,7 @@
 #import "HighscoreScene.h"
 #import "Constants.h"
 #import "StoryManager.h"
+#import "AnimatedButton.h"
 
 @implementation MainMenuLayer
 
@@ -25,17 +26,18 @@
         CCSprite *backgroundImage = [CCSprite spriteWithFile:@"menu_splash.png"];
         backgroundImage.anchorPoint = CGPointZero;
         
-        CCMenuItemSprite *menuButton1 = [CCMenuItemSprite itemFromNormalSprite:[CCSprite spriteWithFile:@"play_button.png"] selectedSprite:[CCSprite spriteWithFile:@"play_button.png"] target:self selector:@selector(startGame)];
-        CCMenuItemSprite *menuButton2 = [CCMenuItemSprite itemFromNormalSprite:[CCSprite spriteWithFile:@"help_button.png"] selectedSprite:[CCSprite spriteWithFile:@"help_button.png"] target:self selector:@selector(viewCredits)];
-        CCMenuItemSprite *menuButton3 = [CCMenuItemSprite itemFromNormalSprite:[CCSprite spriteWithFile:@"scores_button.png"] selectedSprite:[CCSprite spriteWithFile:@"scores_button.png"] target:self selector:@selector(viewHighscore)];
+        AnimatedButton *startButton = [AnimatedButton buttonWithImage:@"play_button.png" target:self selector:@selector(startGame)];
+        AnimatedButton *helpButton = [AnimatedButton buttonWithImage:@"help_button.png" target:self selector:@selector(viewCredits)];
+        AnimatedButton *highScoreButton = [AnimatedButton buttonWithImage:@"scores_button.png" target:self selector:@selector(viewHighscore)];        
         
-        CCMenu *menu = [CCMenu menuWithItems:menuButton1, menuButton2, menuButton3, nil];
-        [menu alignItemsVerticallyWithPadding:5];
-        menu.position = ccp(120, 200);
+        startButton.position = CGPointMake(120, 260);
+        helpButton.position = CGPointMake(120, 200);
+        highScoreButton.position = CGPointMake(120, 140);        
         
         [self addChild:backgroundImage z:0];
-        [self addChild:menu z:1];
-        
+        [self addChild:startButton z:1];
+        [self addChild:helpButton z:1];
+        [self addChild:highScoreButton z:1];        
 	}
 	return self;
 }
