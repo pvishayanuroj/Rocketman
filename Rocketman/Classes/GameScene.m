@@ -15,7 +15,12 @@
 
 @synthesize catBombEnabled_;
 
-- (id) init 
++ (id) stage:(NSUInteger)levelNum
+{
+    return [[[self alloc] initStage:levelNum] autorelease];
+}
+
+- (id) initStage:(NSUInteger)levelNum 
 {
 	if ((self = [super init])) {
 
@@ -100,7 +105,9 @@
 			// Create the animation object from the frames we just processed
 			animation = [CCAnimation animationWithFrames:frames delay:delay];
 			
+#if DEBUG_SHOWLOADEDANIMATIONS
 			NSLog(@"Loaded animation: %@", animationName);
+#endif
 			// Store the animation
 			[[CCAnimationCache sharedAnimationCache] addAnimation:animation name:animationName];
 			

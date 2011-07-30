@@ -13,6 +13,7 @@
 
 @implementation Obstacle
 
+@synthesize markToRemove = markToRemove_;
 @synthesize boundaries = boundaries_;
 
 - (id) init
@@ -29,6 +30,7 @@
         defaultPVCollide_.size.height = 10;
         defaultPVCollide_.offset = CGPointZero;
         
+        markToRemove_ = NO;
         boundaries_ = [[NSMutableArray arrayWithCapacity:1] retain];
     }
     return self;

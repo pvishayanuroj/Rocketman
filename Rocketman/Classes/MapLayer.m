@@ -16,12 +16,12 @@
 
 @synthesize selectedButton = selectedButton_;
 
-+ (id) mapWithFile:(NSString *)filename
++ (id) mapWithFile:(NSString *)filename lastUnlocked:(NSUInteger)lastUnlockedLevel;
 {
-    return [[[self alloc] initWithFile:filename] autorelease];
+    return [[[self alloc] initWithFile:filename lastUnlocked:lastUnlockedLevel] autorelease];
 }
 
-- (id) initWithFile:(NSString *)filename
+- (id) initWithFile:(NSString *)filename lastUnlocked:(NSUInteger)lastUnlockedLevel;
 {
 	if ((self = [super init])) {
         
@@ -36,9 +36,6 @@
         mapTextSwitch_ = NO;
         inputLocked_ = NO;
         [self addChild:mapText_];
-        
-        // Get the last unlocked levels
-        NSUInteger lastUnlockedLevel = [[GameStateManager gameStateManager] lastUnlockedLevel];
         
         // Load coordinates from file
         NSString *path = [[NSBundle mainBundle] pathForResource:filename ofType:@"plist"];     
@@ -146,7 +143,9 @@
 
 - (void) catButtonSpinComplete:(CatMapButton *)button
 {
-    [[GameStateManager gameStateManager] startGame];
+    // Important: +1 because in the map we use zero-indexing for easier array access,
+    // but game stage files use one-indexing
+    [[GameStateManager gameStateManager] stageSelectedFromMap:button.levelNum + 1];
 }
 
 - (void) showLevelInfo:(NSUInteger)levelNum

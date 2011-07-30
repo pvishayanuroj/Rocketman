@@ -74,6 +74,7 @@ static NSUInteger countID = 0;
 
 - (void) primaryCollision
 {
+    NSLog(@"boost primar collide");
     GameLayer *gameLayer = (GameLayer *)[self parent];
     [gameLayer collectBoost:self];
     [gameLayer removeObstacle:self];
@@ -85,6 +86,7 @@ static NSUInteger countID = 0;
 
 - (void) destroy
 {   
+    NSLog(@"boost destroy");
     [super destroy];
 }
 

@@ -7,6 +7,7 @@
 //
 
 #import "GameStateManager.h"
+#import "GameManager.h"
 #import "AudioManager.h"
 #import "MainMenuScene.h"
 #import "MapScene.h"
@@ -17,8 +18,6 @@
 static GameStateManager *_gameStateManager = nil;
 
 @implementation GameStateManager
-
-@synthesize lastUnlockedLevel = lastUnlockedLevel_;
 
 #pragma mark - Object Lifecycle
 
@@ -60,27 +59,58 @@ static GameStateManager *_gameStateManager = nil;
 	[super dealloc];
 }
 
-# pragma mark - Transitions
+# pragma mark - Start Methods
+
+- (void) startGameWithLevel:(NSUInteger)levelNum
+{
+    // Initalize a game manager singleton. This should only exist for this stage
+    [GameManager gameManager];
+    
+    currentLevel_ = levelNum;
+    CCScene *scene = [GameScene stage:levelNum];
+    [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:scene]];    
+}
+
+- (void) showWorldMap
+{
+    CCScene *scene = [MapScene mapWithLastUnlocked:lastUnlockedLevel_];
+    [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:scene]];        
+}
+
+- (void) showGameOver:(NSUInteger)levelNum score:(NSUInteger)score
+{
+    CCScene *scene = [EndScene endSceneWithLevel:levelNum score:score];
+    [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:2.0 scene:scene]];    
+}
+
+# pragma mark - Receiver Methods
+
+- (void) endGame:(NSUInteger)score
+{    
+    // Cleanup
+    [GameManager purgeGameManager];
+    
+    [self showGameOver:currentLevel_ score:score];
+}
 
 - (void) endStory
 {
-    [self endLevel];
-    /*
-    CCScene *mapScene = [MapScene node];
-    [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:mapScene]];                    
-     */
+    [self showWorldMap];
 }
 
-- (void) startGame
+- (void) stageSelectedFromMap:(NSUInteger)levelNum
 {
-    CCScene *scene = [GameScene node];        
-    [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:scene]];    
+    [self startGameWithLevel:levelNum];
 }
 
-- (void) endLevel
+- (void) restartFromGameOver
 {
-    CCScene *scene = [EndScene endSceneWithLevel:1 score:10000];
-    [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:scene]];    
+    [self startGameWithLevel:currentLevel_];
+}
+
+- (void) stageSelectFromGameOver
+{
+    [self showWorldMap];
 }
 
 @end

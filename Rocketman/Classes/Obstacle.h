@@ -21,9 +21,12 @@
     
     CCAction *destroyAnimation_;   
     
-	NSUInteger unitID_;    
+	NSUInteger unitID_;
+    
+    BOOL markToRemove_;
 }
 
+@property (nonatomic, assign) BOOL markToRemove;
 @property (nonatomic, readonly) NSMutableArray *boundaries;
 
 - (void) showIdle;

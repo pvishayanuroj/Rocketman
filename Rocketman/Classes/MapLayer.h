@@ -46,12 +46,20 @@ typedef enum {
 
 @property (nonatomic, retain) CatMapButton *selectedButton;
 
-+ (id) mapWithFile:(NSString *)filename;
++ (id) mapWithFile:(NSString *)filename lastUnlocked:(NSUInteger)lastUnlockedLevel;
 
-- (id) initWithFile:(NSString *)filename;
+- (id) initWithFile:(NSString *)filename lastUnlocked:(NSUInteger)lastUnlockedLevel;
 
+/** 
+ * Delegate method, user has pressed a cat button. Need to determine which state map is
+ * in and act accordingly
+ */
 - (void) catButtonPressed:(CatMapButton *)button;
 
+/** 
+ * Delegate method, called when a cat button's spin animation completes
+ * Indicates a level has been chosen
+ */ 
 - (void) catButtonSpinComplete:(CatMapButton *)button;
 
 - (void) showLevelInfo:(NSUInteger)levelNum;

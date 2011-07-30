@@ -10,6 +10,14 @@
 
 @interface EndScene : CCScene {
     
+    CCLabelBMFont *scoreLabel_;    
+    
+    NSUInteger score_;
+    
+    NSUInteger finalScore_;
+    
+    NSUInteger incrementSpeed_;
+    
 }
 
 + (id) endSceneWithLevel:(NSUInteger)levelNum score:(NSUInteger)score;

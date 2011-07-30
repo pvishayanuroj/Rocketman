@@ -8,6 +8,7 @@
 
 #import "EndLayer.h"
 #import "AnimatedButton.h"
+#import "GameStateManager.h"
 
 @implementation EndLayer
 
@@ -71,12 +72,12 @@ const CGFloat EL_RESTART_ROTATE_TIME = 2.0f;
 
 - (void) restart
 {
-    NSLog(@"restart");
+    [[GameStateManager gameStateManager] restartFromGameOver];
 }
 
 - (void) stageSelect
 {
-    NSLog(@"stage sel");
+    [[GameStateManager gameStateManager] stageSelectFromGameOver];
 }
 
 @end

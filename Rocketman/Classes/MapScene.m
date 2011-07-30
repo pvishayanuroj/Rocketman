@@ -11,7 +11,12 @@
 
 @implementation MapScene
 
-- (id) init 
++ (id) mapWithLastUnlocked:(NSUInteger)lastUnlockedLevel
+{
+    return [[[self alloc] initMapWithLastUnlocked:lastUnlockedLevel] autorelease];
+}
+
+- (id) initMapWithLastUnlocked:(NSUInteger)lastUnlockedLevel
 {
 	if ((self = [super init])) {
         
@@ -19,7 +24,7 @@
         mapImage.anchorPoint = CGPointZero;        
         [self addChild:mapImage];
         
-        MapLayer *mapLayer = [MapLayer mapWithFile:@"WorldMap"];
+        MapLayer *mapLayer = [MapLayer mapWithFile:@"WorldMap" lastUnlocked:lastUnlockedLevel];
 		[self addChild:mapLayer];        
         
     }

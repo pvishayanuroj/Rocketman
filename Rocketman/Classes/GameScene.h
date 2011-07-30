@@ -17,6 +17,10 @@
 // Creating the 
 @property (nonatomic, readonly) BOOL catBombEnabled_;
 
++ (id) stage:(NSUInteger)levelNum;
+
+- (id) initStage:(NSUInteger)levelNum;
+
 - (void) animationLoader:(NSString *)unitListName spriteSheetName:(NSString *)spriteSheetName;
 
 @end

@@ -9,6 +9,7 @@
 #import "GameLayer.h"
 #import "GameManager.h"
 #import "AudioManager.h"
+#import "GameStateManager.h"
 #import "Rocket.h"
 #import "Obstacle.h"
 #import "Doodad.h"
@@ -31,6 +32,7 @@
 #import "BlastCloud.h"
 #import "UtilFuncs.h"
 #import "Boundary.h"
+#import "TargetedAction.h"
 
 #import "HighscoreManager.h"
 
@@ -57,7 +59,7 @@
         // Array initialization
         obstacles_ = [[NSMutableArray arrayWithCapacity:20] retain];
         firedCats_ = [[NSMutableArray arrayWithCapacity:5] retain];
-        doodads_ = [[NSMutableArray arrayWithCapacity:20] retain];    
+        doodads_ = [[NSMutableArray arrayWithCapacity:20] retain]; 
         
         // Add background
         CCSprite *bg = [CCSprite spriteWithFile:@"background.png"];
@@ -71,7 +73,7 @@
         
         // Add the rocket
         CGPoint startPos = CGPointMake(screenWidth_ * 0.5, screenHeight_ * 0.15);
-        rocket_ = [Rocket rocketWithPos:startPos];
+        rocket_ = [[Rocket rocketWithPos:startPos] retain];
         [self addChild:rocket_ z:kRocketDepth];
         
         // Game variables
@@ -86,7 +88,7 @@
         
         // Obstacle and powerup generation
         nextObstacleHeight_ = 800;
-        obstableFrequency_ = 8000;
+        obstableFrequency_ = 800;
         nextRingHeight_ = 1600;
         ringFrequency_ = 2000;
         nextCatHeight_ = 700;
@@ -182,7 +184,7 @@
 
         dv_ -= ddv_;      
         if (v_ < 7) {
-            ddv_ += 0.000001;
+            ddv_ += 0.000001; // Used to be 1
         }
         else {
             ddv_ = 0.00001;
@@ -257,17 +259,32 @@
     rocketBox.size = rocket_.rect.size;
     rocketBox.origin = rocket_.position;
     
+    // For removal of obstacles
+    NSMutableIndexSet *remove = [NSMutableIndexSet indexSet];    
+    NSInteger index = 0;
+    
     // For checking if the rocket collides with obstacles
     for (Obstacle *obstacle in obstacles_) {
         // Each object may have multiple boundaries to collide with
         for (Boundary *boundary in obstacle.boundaries) {
             [boundary collisionCheckAndHandle:obstacle.position rocketBox:rocketBox];
+            // Important: The check and handle call may result in obstacle destruction and 
+            // this layer's removeObstacle method may be called. Because removal at that point would
+            // corrupt the remainder of the loop, we set a flag instead to indicate future removal
+            if (obstacle.markToRemove) {
+                [remove addIndex:index];
+                break; // Break out of inner loop
+            }
         }
+        index++;
     }
     
+    // For removal of obstacles
+    [obstacles_ removeObjectsAtIndexes:remove];
+    
     // For removal of bullets
-    NSMutableIndexSet *remove = [NSMutableIndexSet indexSet];
-    NSUInteger index = 0;    
+    [remove removeAllIndexes];
+    index = 0;    
     
     // For checking cat bullet collisions with obstacles
     for (CatBullet *cat in firedCats_) {
@@ -427,8 +444,8 @@
 
         NSUInteger type = arc4random() % 6; 
         //type = 2;
-        //[self addObstacle:type pos:pos];
-        [self addTurtlingSwarm:8];        
+        [self addObstacle:type pos:pos];
+        //[self addTurtlingSwarm:8];        
     }    
 #endif
     
@@ -531,14 +548,20 @@
 {
     onGround_ = YES;
     rocketSpeed_ = 0;
+
+    // Very important to do this, since the accelerometer singleton is holding a ref to us
+    [[UIAccelerometer sharedAccelerometer] setDelegate:nil];
     
     CCFiniteTimeAction *fall = [CCMoveBy actionWithDuration:0.2 position:CGPointMake(0, -300)];
-    [rocket_ runAction:fall];
+    TargetedAction *rocketFall = [TargetedAction actionWithTarget:rocket_ actionIn:fall];
+    CCActionInstant *method = [CCCallFunc actionWithTarget:self selector:@selector(endLevel)];
+    [self runAction:[CCSequence actions:rocketFall, method, nil]];
 }
 
-- (void) clearStage
+- (void) endLevel
 {
-    
+    [self removeFromParentAndCleanup:YES];    
+    [[GameStateManager gameStateManager] endGame:height_];   
 }
 
 - (void) addTurtlingSwarm:(NSInteger)size
@@ -844,10 +867,13 @@
 
 - (void) removeObstacle:(Obstacle *)obstacle
 {
-    [obstacles_ removeObject:obstacle];
+    // Important: The check and handle call may result in obstacle destruction and 
+    // this method may be called. Because removal at that point would the collision check
+    // loop, we set a flag instead to indicate future removal    
+    obstacle.markToRemove = YES;
 }
 
-- (void)accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration
+- (void) accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration
 {
     //ramp-speed - play with this value until satisfied
     const float kFilteringFactor = 0.2f;

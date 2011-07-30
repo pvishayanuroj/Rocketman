@@ -8,20 +8,38 @@
 
 #import "cocos2d.h"
 
+/**
+ * The GSM is in charge of deciding which scene is shown and in what order.
+ * All scenes start and end with calls from and to the GSM
+ */
 @interface GameStateManager : NSObject {
 
+    CCScene *currentGame_;
+
+    NSUInteger currentLevel_;
+    
     NSUInteger lastUnlockedLevel_;    
     
 }
-
-@property (nonatomic, readonly) NSUInteger lastUnlockedLevel;
 
 + (GameStateManager *) gameStateManager;
 
 + (void) purgeGameStateManager;
 
+- (void) startGameWithLevel:(NSUInteger)levelNum;
+
+- (void) showWorldMap;
+
+- (void) showGameOver:(NSUInteger)levelNum score:(NSUInteger)score;
+
+- (void) endGame:(NSUInteger)score;
+
 - (void) endStory;
 
-- (void) startGame;
+- (void) stageSelectedFromMap:(NSUInteger)levelNum;
+
+- (void) restartFromGameOver;
+
+- (void) stageSelectFromGameOver;
 
 @end

@@ -8,6 +8,9 @@
 
 #import "cocos2d.h"
 
+/*
+ * Layer that is active when the game is paused
+ */
 @interface PauseLayer : CCLayer {
     
     BOOL isPaused_;

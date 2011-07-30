@@ -8,6 +8,9 @@
 
 #import "cocos2d.h"
 
+/**
+ * Layer shown when the player loses. Allows player to start over or go to map.
+ */
 @interface EndLayer : CCLayer {
  
     CCSprite *restartIcon_;

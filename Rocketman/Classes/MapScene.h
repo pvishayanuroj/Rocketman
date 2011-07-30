@@ -12,4 +12,8 @@
     
 }
 
++ (id) mapWithLastUnlocked:(NSUInteger)lastUnlockedLevel;
+
+- (id) initMapWithLastUnlocked:(NSUInteger)lastUnlockedLevel;
+
 @end

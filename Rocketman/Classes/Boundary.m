@@ -23,7 +23,7 @@
 {
     if ((self = [super init])) {
         
-        // Weak reference, otherwise we get into a circular reference
+        // Warning: This causes a circular reference if boundaries array not deallocated correctly
         target_ = [obstacle retain];
         collideSel_ = cSel;
         hitSel_ = hSel;

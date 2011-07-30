@@ -53,9 +53,14 @@ static GameManager *_gameManager = nil;
 
 - (void) dealloc
 {	
+    NSLog(@"Game Manager dealloc'd");
+    
 	[gameLayer_ release];
     [hudLayer_ release];
     [pauseLayer_ release];
+    gameLayer_ = nil;
+    hudLayer_ = nil;
+    pauseLayer_ = nil;
 	
 	[super dealloc];
 }
