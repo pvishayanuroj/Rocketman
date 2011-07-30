@@ -15,8 +15,8 @@
 @synthesize levelNum = levelNum_;
 @synthesize delegate = delegate_;
 
-const CGFloat BUTTON_SCALE = 0.8f;
-const CGFloat BUTTON_SCALE_BIG = 1.0f;
+const CGFloat CB_BUTTON_SCALE = 0.8f;
+const CGFloat CB_BUTTON_SCALE_BIG = 1.0f;
 
 #pragma mark - Object Lifecycle
 
@@ -37,7 +37,7 @@ const CGFloat BUTTON_SCALE_BIG = 1.0f;
         buttonType_ = kInactiveButton;
         
         sprite_ = [CCSprite spriteWithFile:@"map_cat_inactive.png"];
-        sprite_.scale = BUTTON_SCALE;
+        sprite_.scale = CB_BUTTON_SCALE;
         [self addChild:sprite_];
     }
     return self;    
@@ -50,7 +50,7 @@ const CGFloat BUTTON_SCALE_BIG = 1.0f;
         buttonType_ = kActiveButton;
         
         sprite_ = [CCSprite spriteWithFile:@"map_cat_active.png"];
-        sprite_.scale = BUTTON_SCALE;        
+        sprite_.scale = CB_BUTTON_SCALE;        
         [self addChild:sprite_];   
     }
     return self;
@@ -131,8 +131,8 @@ const CGFloat BUTTON_SCALE_BIG = 1.0f;
 - (void) pop
 {
     CGFloat duration = 0.07;
-    CCActionInterval *grow = [CCScaleTo actionWithDuration:duration scale:BUTTON_SCALE_BIG];
-    CCActionInterval *shrink = [CCScaleTo actionWithDuration:duration scale:BUTTON_SCALE];
+    CCActionInterval *grow = [CCScaleTo actionWithDuration:duration scale:CB_BUTTON_SCALE_BIG];
+    CCActionInterval *shrink = [CCScaleTo actionWithDuration:duration scale:CB_BUTTON_SCALE];
     [sprite_ stopAllActions];
     [sprite_ runAction:[CCSequence actions:grow, shrink, nil]];
 }
@@ -140,7 +140,7 @@ const CGFloat BUTTON_SCALE_BIG = 1.0f;
 - (void) selectSpin
 {
     if (isPulsing_) {
-        sprite_.scale = BUTTON_SCALE;
+        sprite_.scale = CB_BUTTON_SCALE;
     }
     
     CCActionInterval *animate = [CCRotateBy actionWithDuration:2.0 angle:360];
@@ -161,9 +161,9 @@ const CGFloat BUTTON_SCALE_BIG = 1.0f;
 {
     CGFloat duration = 0.05;
     CGFloat delay = 0.3;
-    CCActionInterval *grow = [CCScaleTo actionWithDuration:duration scale:BUTTON_SCALE];
+    CCActionInterval *grow = [CCScaleTo actionWithDuration:duration scale:CB_BUTTON_SCALE];
     CCActionInterval *growEase = [CCEaseIn actionWithAction:grow rate:2.0];
-    CCActionInterval *shrink = [CCScaleTo actionWithDuration:duration scale:BUTTON_SCALE_BIG];    
+    CCActionInterval *shrink = [CCScaleTo actionWithDuration:duration scale:CB_BUTTON_SCALE_BIG];    
     CCActionInterval *shrinkEase = [CCEaseIn actionWithAction:shrink rate:2.0];    
     CCActionInterval *delay1 = [CCDelayTime actionWithDuration:delay];
     CCActionInterval *delay2 = [CCDelayTime actionWithDuration:delay];    

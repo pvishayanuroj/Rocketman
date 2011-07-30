@@ -14,8 +14,8 @@ typedef enum {
     kInactiveButton
 } CatButtonType;
 
-const CGFloat BUTTON_SCALE;
-const CGFloat BUTTON_SCALE_BIG;
+//const CGFloat BUTTON_SCALE;
+//const CGFloat BUTTON_SCALE_BIG;
 
 @interface CatMapButton : CCNode <CCTargetedTouchDelegate> {
     

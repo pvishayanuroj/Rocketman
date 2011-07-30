@@ -64,8 +64,11 @@ static GameStateManager *_gameStateManager = nil;
 
 - (void) endStory
 {
+    [self endLevel];
+    /*
     CCScene *mapScene = [MapScene node];
     [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:mapScene]];                    
+     */
 }
 
 - (void) startGame

@@ -9,7 +9,17 @@
 #import "cocos2d.h"
 
 @interface EndLayer : CCLayer {
+ 
+    CCSprite *restartIcon_;
+    
+    CCSprite *stageIcon_;
     
 }
+
+- (void) initActions;
+
+- (void) restart;
+
+- (void) stageSelect;
 
 @end
