@@ -147,7 +147,8 @@
 		DA3B39E913DFB5270079D34C /* stage_text.png in Resources */ = {isa = PBXBuildFile; fileRef = DA3B39E413DFB5270079D34C /* stage_text.png */; };
 		DA3B39EC13DFB6A50079D34C /* EndLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DA3B39EB13DFB6A00079D34C /* EndLayer.m */; };
 		DA3B39EE13DFB7C10079D34C /* gameover_text.png in Resources */ = {isa = PBXBuildFile; fileRef = DA3B39ED13DFB7C10079D34C /* gameover_text.png */; };
-		DA3B795413E3ABE80001AE94 /* AnimatedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DA3B795313E3ABE70001AE94 /* AnimatedButton.m */; };
+		DA3B795713E4F9320001AE94 /* Parallax.m in Sources */ = {isa = PBXBuildFile; fileRef = DA3B795613E4F92F0001AE94 /* Parallax.m */; };
+		DA3B795A13E5055C0001AE94 /* AnimatedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DA3B795913E505590001AE94 /* AnimatedButton.m */; };
 		DA4934D5139605FA008FA14F /* explosion01.wav in Resources */ = {isa = PBXBuildFile; fileRef = DA4934D2139605FA008FA14F /* explosion01.wav */; };
 		DA4934D6139605FA008FA14F /* kerrum.wav in Resources */ = {isa = PBXBuildFile; fileRef = DA4934D3139605FA008FA14F /* kerrum.wav */; };
 		DA4934D7139605FA008FA14F /* werr.wav in Resources */ = {isa = PBXBuildFile; fileRef = DA4934D4139605FA008FA14F /* werr.wav */; };
@@ -507,8 +508,10 @@
 		DA3B39EA13DFB6990079D34C /* EndLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EndLayer.h; path = Classes/EndLayer.h; sourceTree = "<group>"; };
 		DA3B39EB13DFB6A00079D34C /* EndLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EndLayer.m; path = Classes/EndLayer.m; sourceTree = "<group>"; };
 		DA3B39ED13DFB7C10079D34C /* gameover_text.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gameover_text.png; sourceTree = "<group>"; };
-		DA3B795213E3ABE70001AE94 /* AnimatedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatedButton.h; sourceTree = "<group>"; };
-		DA3B795313E3ABE70001AE94 /* AnimatedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimatedButton.m; sourceTree = "<group>"; };
+		DA3B795513E4F92E0001AE94 /* Parallax.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Parallax.h; path = Classes/Parallax.h; sourceTree = "<group>"; };
+		DA3B795613E4F92F0001AE94 /* Parallax.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Parallax.m; path = Classes/Parallax.m; sourceTree = "<group>"; };
+		DA3B795813E505580001AE94 /* AnimatedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnimatedButton.h; path = Classes/AnimatedButton.h; sourceTree = "<group>"; };
+		DA3B795913E505590001AE94 /* AnimatedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AnimatedButton.m; path = Classes/AnimatedButton.m; sourceTree = "<group>"; };
 		DA4934D2139605FA008FA14F /* explosion01.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = explosion01.wav; sourceTree = "<group>"; };
 		DA4934D3139605FA008FA14F /* kerrum.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = kerrum.wav; sourceTree = "<group>"; };
 		DA4934D4139605FA008FA14F /* werr.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = werr.wav; sourceTree = "<group>"; };
@@ -1174,6 +1177,8 @@
 				DA8966B613B73DAC000AC29F /* Structs.h */,
 				DA7DCC8913A7D6650065A566 /* EngineParticleSystem.h */,
 				DA7DCC8A13A7D6650065A566 /* EngineParticleSystem.m */,
+				DA3B795813E505580001AE94 /* AnimatedButton.h */,
+				DA3B795913E505590001AE94 /* AnimatedButton.m */,
 				DA7DCC8C13A7D6650065A566 /* PButton.h */,
 				DA7DCC8D13A7D6650065A566 /* PButton.m */,
 				DA7DCC8E13A7D6650065A566 /* PButtonDelegate.h */,
@@ -1189,8 +1194,6 @@
 				DAA8514E13BB40ED009ED314 /* Boundary.m */,
 				DACF5CBD13C9DC4A0034C281 /* CCNode+PauseResume.h */,
 				DACF5CBE13C9DC4B0034C281 /* CCNode+PauseResume.m */,
-				DA3B795213E3ABE70001AE94 /* AnimatedButton.h */,
-				DA3B795313E3ABE70001AE94 /* AnimatedButton.m */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -1302,6 +1305,8 @@
 				DA0C242A13ADE76C00544DF1 /* BlastCloud.m */,
 				DACF5B4A13C7F6A60034C281 /* BigExplosion.h */,
 				DACF5B4B13C7F6A60034C281 /* BigExplosion.m */,
+				DA3B795513E4F92E0001AE94 /* Parallax.h */,
+				DA3B795613E4F92F0001AE94 /* Parallax.m */,
 			);
 			name = Doodads;
 			sourceTree = "<group>";
@@ -1623,7 +1628,8 @@
 				DA3B39D913DCCC190079D34C /* MapText.m in Sources */,
 				DA3B39DF13DFB3D00079D34C /* EndScene.m in Sources */,
 				DA3B39EC13DFB6A50079D34C /* EndLayer.m in Sources */,
-				DA3B795413E3ABE80001AE94 /* AnimatedButton.m in Sources */,
+				DA3B795713E4F9320001AE94 /* Parallax.m in Sources */,
+				DA3B795A13E5055C0001AE94 /* AnimatedButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -13,6 +13,7 @@
 #import "Rocket.h"
 #import "Obstacle.h"
 #import "Doodad.h"
+#import "Parallax.h"
 #import "Ground.h"
 #import "Cloud.h"
 #import "SlowCloud.h"
@@ -65,6 +66,11 @@
         CCSprite *bg = [CCSprite spriteWithFile:@"background.png"];
         [self addChild:bg z:kBackgroundDepth];
         bg.anchorPoint = CGPointZero;
+        
+        // Parallax background
+        Doodad *pbg = [Parallax parallaxWithFile:@"parallax_level1.png"];
+        [self addChild:pbg z:kBackgroundDepth];
+        [doodads_ addObject:pbg];
         
         // Add ground 
         Doodad *ground = [Ground groundWithPos:CGPointMake(0, 0)];
