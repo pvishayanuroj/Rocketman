@@ -11,9 +11,11 @@
 
 @interface MapText : CCNode {
     
-    CCLabelTTF *title_;
+    CCLabelTTF *text_;
     
-    CCLabelTTF *desc_;
+    NSString *title_;
+    
+    NSString *desc_;
     
     /** Delegate object */
     id <MapTextDelegate> delegate_;            

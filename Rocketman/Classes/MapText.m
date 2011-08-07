@@ -28,17 +28,13 @@
         [self addChild:background];
         
         // Text
-        NSString *fontName = @"Helvetica";
+        NSString *fontName = @"Verdana-Bold";
         CGFloat fontSize = 14;
         
-        title_ = [[CCLabelTTF labelWithString:@"" fontName:fontName fontSize:fontSize] retain];
-        desc_ = [[CCLabelTTF labelWithString:@"" fontName:fontName fontSize:fontSize] retain];
+        text_ = [[CCLabelTTF labelWithString:@"" fontName:fontName fontSize:fontSize] retain];
         
-        [self addChild:title_];
-        [self addChild:desc_];
-        title_.position = ccp(0, 0);
-        desc_.position = ccp(0, -20);
-        
+        [self addChild:text_];
+        text_.position = ccp(0, -5);
     }
     return self;
 }
@@ -53,17 +49,21 @@
 
 - (void) setTitle:(NSString *)title
 {
-    [title_ setString:title];
+    title_ = [[NSString stringWithString:title] retain];
+    NSString *fullText = [NSString stringWithFormat:@"%@: %@", title_, desc_];
+    [text_ setString:fullText];
 }
 
 - (void) setDesc:(NSString *)desc
 {
-    [desc_ setString:desc];
+    desc_ = [[NSString stringWithString:desc] retain];
+    NSString *fullText = [NSString stringWithFormat:@"%@: %@", title_, desc_];
+    [text_ setString:fullText];    
 }
 
 - (void) moveDown
 {
-    CGPoint move = ccp(0, -100);
+    CGPoint move = ccp(0, -105);
     CCActionInterval *down = [CCMoveBy actionWithDuration:0.5 position:move];
     CCActionInstant *done = [CCCallFunc actionWithTarget:self selector:@selector(doneMovingDown)];
     [self stopAllActions];
@@ -72,7 +72,7 @@
 
 - (void) moveUp
 {
-    CGPoint move = ccp(0, 100);
+    CGPoint move = ccp(0, 105);
     CCActionInterval *up = [CCMoveBy actionWithDuration:0.5 position:move];
     CCActionInstant *done = [CCCallFunc actionWithTarget:self selector:@selector(doneMovingUp)];
     [self stopAllActions];

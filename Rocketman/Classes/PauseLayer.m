@@ -24,7 +24,7 @@
         button_ = [CCMenuItemSprite itemFromNormalSprite:[CCSprite spriteWithFile:@"pause_button.png"] selectedSprite:[CCSprite spriteWithFile:@"pause_button.png"] target:self selector:@selector(select)];
         
         CCMenu *m = [CCMenu menuWithItems:button_, nil];
-        m.position = CGPointMake(280, 420);
+        m.position = CGPointMake(290, 450);
         [self addChild:m];
     }
     return self;
