@@ -56,6 +56,8 @@
 
 - (void) showHeart;
 
+- (void) showAura;
+
 - (void) doneHeartAnimation;
 
 - (void) doneHeartSequence;

@@ -41,7 +41,12 @@
 
 #pragma mark - Object Lifecycle
 
-- (id) init
++ (id) startWithLevel:(NSUInteger)levelNum
+{
+    return [[[self alloc] initWithLevel:levelNum] autorelease];
+}
+
+- (id) initWithLevel:(NSUInteger)levelNum
 {
 	if ((self = [super init])) {
 
@@ -62,18 +67,23 @@
         firedCats_ = [[NSMutableArray arrayWithCapacity:5] retain];
         doodads_ = [[NSMutableArray arrayWithCapacity:20] retain]; 
         
+        // Determine filenames
+        NSString *bgFile = [NSString stringWithFormat:@"background_level%d.png", levelNum];
+        NSString *pbgFile = [NSString stringWithFormat:@"parallax_level%d.png", levelNum];
+        NSString *gndFile = [NSString stringWithFormat:@"ground_level%d.png", levelNum];
+        
         // Add background
-        CCSprite *bg = [CCSprite spriteWithFile:@"background.png"];
+        CCSprite *bg = [CCSprite spriteWithFile:bgFile];
         [self addChild:bg z:kBackgroundDepth];
         bg.anchorPoint = CGPointZero;
         
         // Parallax background
-        Doodad *pbg = [Parallax parallaxWithFile:@"parallax_level1.png"];
+        Doodad *pbg = [Parallax parallaxWithFile:pbgFile];
         [self addChild:pbg z:kBackgroundDepth];
         [doodads_ addObject:pbg];
         
         // Add ground 
-        Doodad *ground = [Ground groundWithPos:CGPointMake(0, 0)];
+        Doodad *ground = [Ground groundWithPos:CGPointZero filename:gndFile];
         [self addChild:ground z:kGroundDepth];
         [doodads_ addObject:ground];                
         

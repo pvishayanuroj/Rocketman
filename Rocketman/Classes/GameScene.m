@@ -26,7 +26,7 @@
 
         [self animationLoader:@"sheet01_animations" spriteSheetName:@"sheet01"];		
         
-        GameLayer *gameLayer = [GameLayer node];
+        GameLayer *gameLayer = [GameLayer startWithLevel:levelNum];
 		[self addChild:gameLayer z:0];
         
         HUDLayer *hudLayer = [HUDLayer node];

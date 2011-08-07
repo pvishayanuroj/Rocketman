@@ -39,6 +39,15 @@ const CGFloat ES_SCORE_TIME = 2.0f;
         smoke.position = CGPointMake(200, 15);
         [self addChild:smoke z:2];        
         
+        CCAnimation *animation = [[CCAnimationCache sharedAnimationCache] animationByName:@"Rocket2 Stuck"];
+        CCActionInterval *animate = [CCAnimate actionWithAnimation:animation];
+        CCAction *wreckedAnimation = [CCRepeatForever actionWithAction:animate];	
+        
+        CCSprite *wreck = [CCSprite spriteWithSpriteFrameName:@"Rocket2 Stuck 01.png"];
+        [self addChild:wreck z:3];
+        wreck.position = CGPointMake(200, 15);
+        [wreck runAction:wreckedAnimation];
+        
         // Game over text
 		CGSize size = [[CCDirector sharedDirector] winSize];        
         CCSprite *text = [CCSprite spriteWithFile:@"gameover_text.png"];

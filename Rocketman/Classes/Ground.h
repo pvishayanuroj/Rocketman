@@ -12,8 +12,8 @@
     
 }
 
-+ (id) groundWithPos:(CGPoint)pos;
++ (id) groundWithPos:(CGPoint)pos filename:(NSString *)filename;
 
-- (id) initWithPos:(CGPoint)pos;
+- (id) initWithPos:(CGPoint)pos filename:(NSString *)filename;
 
 @end

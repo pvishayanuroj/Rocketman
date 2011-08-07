@@ -125,6 +125,10 @@
     NSInteger ammoType_;
 }
 
++ (id) startWithLevel:(NSUInteger)levelNum;
+
+- (id) initWithLevel:(NSUInteger)levelNum;
+
 - (void) cloudGenerator;
 
 - (void) bossGenerator;

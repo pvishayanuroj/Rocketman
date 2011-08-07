@@ -87,7 +87,7 @@ static GameStateManager *_gameStateManager = nil;
 
 - (void) endGame:(NSUInteger)score
 {    
-    // Cleanup
+    // Cleanup GM singleton
     [GameManager purgeGameManager];
     
     [self showGameOver:currentLevel_ score:score];
@@ -112,6 +112,7 @@ static GameStateManager *_gameStateManager = nil;
 
 - (void) stageSelectFromGameOver
 {
+    [[AudioManager audioManager] stopMusic];    
     [self showWorldMap];
 }
 

@@ -14,32 +14,43 @@
  */
 @interface GameStateManager : NSObject {
 
-    CCScene *currentGame_;
-
     NSUInteger currentLevel_;
     
     NSUInteger lastUnlockedLevel_;    
     
 }
 
+/** 
+ * Static method to get a reference to the current GSM singleton 
+ * and to create one if it doesn't exist 
+ */
 + (GameStateManager *) gameStateManager;
 
+/** Static method to clear GSM singleton */
 + (void) purgeGameStateManager;
 
+/** Method to start the game play */
 - (void) startGameWithLevel:(NSUInteger)levelNum;
 
+/** Method to show the world map */
 - (void) showWorldMap;
 
+/** Method to display a game over screen */
 - (void) showGameOver:(NSUInteger)levelNum score:(NSUInteger)score;
 
+/** Called when a level ends */
 - (void) endGame:(NSUInteger)score;
 
+/** Called when a cutscene ends */
 - (void) endStory;
 
+/** Called when user selects a stage from the world map */
 - (void) stageSelectedFromMap:(NSUInteger)levelNum;
 
+/** Called when user selects restart from the game over screen */
 - (void) restartFromGameOver;
 
+/** Called when user selects the world map from the game over screen */
 - (void) stageSelectFromGameOver;
 
 @end

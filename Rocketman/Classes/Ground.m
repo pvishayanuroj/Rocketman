@@ -11,16 +11,16 @@
 
 @implementation Ground
 
-+ (id) groundWithPos:(CGPoint)pos
++ (id) groundWithPos:(CGPoint)pos filename:(NSString *)filename
 {
-    return [[[self alloc] initWithPos:pos] autorelease];
+    return [[[self alloc] initWithPos:pos filename:filename] autorelease];
 }
 
-- (id) initWithPos:(CGPoint)pos
+- (id) initWithPos:(CGPoint)pos filename:(NSString *)filename
 {
 	if ((self = [super init])) {
         
-        sprite_ = [[CCSprite spriteWithFile:@"ground.png"] retain];
+        sprite_ = [[CCSprite spriteWithFile:filename] retain];
         [self addChild:sprite_];
         
         sprite_.anchorPoint = CGPointZero;
