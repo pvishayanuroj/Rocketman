@@ -10,6 +10,7 @@
 #import "GameLayer.h"
 #import "HUDLayer.h"
 #import "PauseLayer.h"
+#import "DialogueLayer.h"
 
 @implementation GameScene
 
@@ -42,8 +43,11 @@
         [hudLayer displayDirectional:gameLayer];
 #endif
         
+        DialogueLayer *dialogueLayer = [DialogueLayer node];
+        [self addChild:dialogueLayer z:2];
+        
         PauseLayer *pauseLayer = [PauseLayer node];
-        [self addChild:pauseLayer z:2];
+        [self addChild:pauseLayer z:3];
         
     }
 	return self;

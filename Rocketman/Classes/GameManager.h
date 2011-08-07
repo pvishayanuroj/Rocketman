@@ -11,6 +11,7 @@
 @class GameLayer;
 @class HUDLayer;
 @class PauseLayer;
+@class DialogueLayer;
 
 @interface GameManager : CCNode {
  
@@ -19,6 +20,8 @@
     HUDLayer *hudLayer_;
     
     PauseLayer *pauseLayer_;
+    
+    DialogueLayer *dialogueLayer_;
 }
 
 + (GameManager *) gameManager;
@@ -30,6 +33,8 @@
 - (void) registerHUDLayer:(HUDLayer *)hudLayer;
 
 - (void) registerPauseLayer:(PauseLayer *)pauseLayer;
+
+- (void) registerDialogueLayer:(DialogueLayer *)dialogueLayer;
 
 - (void) addShell:(CGPoint)pos;
 
@@ -45,9 +50,15 @@
 
 - (void) setTilt:(CGFloat)tilt;
 
+- (void) showCombo:(NSUInteger)comboNum;
+
 - (void) pause;
 
 - (void) resume;
+
+- (void) dialoguePause;
+
+- (void) dialogueResume;
 
 @end
 

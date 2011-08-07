@@ -10,6 +10,7 @@
 #import "GameLayer.h"
 #import "HUDLayer.h"
 #import "PauseLayer.h"
+#import "DialogueLayer.h"
 #import "CCNode+PauseResume.h"
 
 // For singleton
@@ -46,6 +47,7 @@ static GameManager *_gameManager = nil;
 		gameLayer_ = nil;
         hudLayer_ = nil;
         pauseLayer_ = nil;
+        dialogueLayer_ = nil;
         
 	}
 	return self;
@@ -58,9 +60,11 @@ static GameManager *_gameManager = nil;
 	[gameLayer_ release];
     [hudLayer_ release];
     [pauseLayer_ release];
+    [dialogueLayer_ release];
     gameLayer_ = nil;
     hudLayer_ = nil;
     pauseLayer_ = nil;
+    dialogueLayer_ = nil;    
 	
 	[super dealloc];
 }
@@ -86,6 +90,13 @@ static GameManager *_gameManager = nil;
 	NSAssert(pauseLayer_ == nil, @"Trying to register a Pause Layer when one already exists");
 	pauseLayer_ = pauseLayer;
 	[pauseLayer_ retain];
+}
+
+- (void) registerDialogueLayer:(DialogueLayer *)dialogueLayer
+{
+	NSAssert(dialogueLayer_ == nil, @"Trying to register a Dialogue Layer when one already exists");
+	dialogueLayer_ = dialogueLayer;
+	[dialogueLayer_ retain];    
 }
 
 #pragma mark - Game Layer Methods
@@ -132,11 +143,19 @@ static GameManager *_gameManager = nil;
     [hudLayer_ setTilt:tilt];
 }
 
+#pragma mark - Dialogue Layer Methods
+
+- (void) showCombo:(NSUInteger)comboNum
+{
+    [dialogueLayer_ showCombo:comboNum];
+}
+
 #pragma mark - Pause / Resume
 
 - (void) pause
 {
     [gameLayer_ pauseHierarchy];
+    [dialogueLayer_ pauseHierarchy];    
     [hudLayer_ pauseHierarchy];
     // Because pauseHiearchy doesn't seem to stop button presses
     [hudLayer_ pause];
@@ -146,7 +165,23 @@ static GameManager *_gameManager = nil;
 {
     [hudLayer_ resume];
     [hudLayer_ resumeHierarchy];
+    [dialogueLayer_ resumeHierarchy];
     [gameLayer_ resumeHierarchy];
+}
+
+- (void) dialoguePause
+{
+    [gameLayer_ pauseHierarchy];
+    [hudLayer_ pauseHierarchy];
+    // Because pauseHiearchy doesn't seem to stop button presses
+    [hudLayer_ pause];    
+}
+
+- (void) dialogueResume
+{
+    [hudLayer_ resume];
+    [hudLayer_ resumeHierarchy];
+    [gameLayer_ resumeHierarchy];    
 }
 
 @end

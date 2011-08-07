@@ -30,7 +30,7 @@
         
         sprite_ = [[CCSprite spriteWithSpriteFrameName:@"Rocket2 Fly 01.png"] retain];
         [self addChild:sprite_ z:-2];
-        
+
         self.position = pos;
         
         isBurning_ = NO;
@@ -236,6 +236,11 @@
     [self addChild:sprite_ z:-2];        
     
     heartParticles_.emissionRate = 0;    
+}
+
+- (void) showAura
+{
+    
 }
 
 #pragma mark - Particle System

@@ -782,6 +782,14 @@
             if (numBoosts_ > 0) {
 #endif
                 numBoosts_--;
+                
+                // TEMPORARY FOR NOW
+                if (boostEngaged_) {
+                    NSInteger random = arc4random() % 2;
+                    [[GameManager gameManager] showCombo:random+1];
+                }
+                /////////////////
+                
                 [[GameManager gameManager] setNumBoosts:numBoosts_];
                 // Engage fast boost, make sure it lasts longer
                 [self engageBoost:vBoost_ amt:5 rate:0 time:1.5];
