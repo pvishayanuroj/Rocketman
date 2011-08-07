@@ -12,6 +12,8 @@
     
     CCSprite *sprite_;
  
+    CCSprite *aura_;
+    
     CCAction *flyingAnimation_;
     
     CCAction *burningAnimation_;
@@ -21,6 +23,8 @@
     CCAction *wobblingAnimation_;
     
     CCAction *heartAnimation_;
+    
+    CCAction *auraAnimation_;    
     
     BOOL isBurning_;
     
@@ -56,7 +60,7 @@
 
 - (void) showHeart;
 
-- (void) showAura;
+- (void) showAuraForDuration:(CGFloat)duration;
 
 - (void) doneHeartAnimation;
 

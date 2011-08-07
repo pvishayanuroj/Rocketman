@@ -95,8 +95,8 @@ static GameStateManager *_gameStateManager = nil;
 
 - (void) endStory
 {
-    [self startGameWithLevel:1];
-    //[self showWorldMap];
+    //[self startGameWithLevel:1];
+    [self showWorldMap];
 }
 
 - (void) stageSelectedFromMap:(NSUInteger)levelNum

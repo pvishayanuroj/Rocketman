@@ -30,6 +30,10 @@
         
         sprite_ = [[CCSprite spriteWithSpriteFrameName:@"Rocket2 Fly 01.png"] retain];
         [self addChild:sprite_ z:-2];
+        
+        aura_ = [[CCSprite spriteWithSpriteFrameName:@"Aura Flicker 01.png"] retain];
+        [aura_ setOpacity:0];
+        [self addChild:aura_ z:-3];
 
         self.position = pos;
         
@@ -53,11 +57,13 @@
     NSLog(@"Rocket dealloc'd");    
     
     [sprite_ release];
+    [aura_ release];
     [flyingAnimation_ release];
     [shakingAnimation_ release];
     [burningAnimation_ release];
     [wobblingAnimation_ release];
     [heartAnimation_ release];
+    [auraAnimation_ release];
     [engineFlame_ release];
     [boostFlame_ release];
     [heartParticles_ release];
@@ -130,6 +136,10 @@
     
     animation = [[CCAnimationCache sharedAnimationCache] animationByName:@"Rocket2 Heart"];
 	heartAnimation_ = [[CCAnimate actionWithAnimation:animation] retain];    
+    
+    animation = [[CCAnimationCache sharedAnimationCache] animationByName:@"Aura Flicker"];
+    animate = [CCAnimate actionWithAnimation:animation];
+    auraAnimation_ = [[CCRepeatForever actionWithAction:animate] retain];	    
 }        
 
 #pragma mark - Animated Sequences
@@ -238,9 +248,31 @@
     heartParticles_.emissionRate = 0;    
 }
 
-- (void) showAura
+- (void) showAuraForDuration:(CGFloat)duration
 {
+    [aura_ runAction:auraAnimation_];
     
+    CCActionInterval *fadeIn = [CCFadeIn actionWithDuration:0.5f];
+    TargetedAction *animation = [TargetedAction actionWithTarget:aura_ actionIn:fadeIn];    
+    
+    CCActionInterval *delay = [CCDelayTime actionWithDuration:duration];
+    CCActionInstant *done = [CCCallFunc actionWithTarget:self selector:@selector(doneAura)];
+    CCAction *action = [CCSequence actions:animation, delay, done, nil];
+    [self runAction:action];
+}
+
+- (void) doneAura
+{
+    CCActionInterval *fadeOut = [CCFadeOut actionWithDuration:0.5f];
+    TargetedAction *animation = [TargetedAction actionWithTarget:aura_ actionIn:fadeOut];
+    CCActionInstant *done = [CCCallFunc actionWithTarget:self selector:@selector(doneAuraFade)];
+    CCAction *action = [CCSequence actions:animation, done, nil];
+    [self runAction:action];
+}
+
+- (void) doneAuraFade
+{
+    [aura_ stopAllActions];
 }
 
 #pragma mark - Particle System

@@ -786,6 +786,7 @@
                 // TEMPORARY FOR NOW
                 if (boostEngaged_) {
                     NSInteger random = arc4random() % 2;
+                    [rocket_ showAuraForDuration:3.0f];                    
                     [[GameManager gameManager] showCombo:random+1];
                 }
                 /////////////////
