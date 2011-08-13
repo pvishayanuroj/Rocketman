@@ -47,6 +47,12 @@
 /** Called when user selects a stage from the world map */
 - (void) stageSelectedFromMap:(NSUInteger)levelNum;
 
+/** Called when user selects restart from the pause screen */
+- (void) restartFromPause;
+
+/** Called when user selects the world map from the pause screen */
+- (void) stageSelectFromPause;
+
 /** Called when user selects restart from the game over screen */
 - (void) restartFromGameOver;
 

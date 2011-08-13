@@ -565,17 +565,17 @@
 {
     if (!test) {
         test = YES;
-    onGround_ = YES;
-    rocketSpeed_ = 0;
+        onGround_ = YES;
+        rocketSpeed_ = 0;
 
-    // Very important to do this, since the accelerometer singleton is holding a ref to us
-    [[UIAccelerometer sharedAccelerometer] setDelegate:nil];
-    
-    CCFiniteTimeAction *fall = [CCMoveBy actionWithDuration:0.2f position:CGPointMake(0, -300)];
-    TargetedAction *rocketFall = [TargetedAction actionWithTarget:rocket_ actionIn:fall];
-    CCFiniteTimeAction *delay = [CCDelayTime actionWithDuration:2.0f];
-    CCActionInstant *method = [CCCallFunc actionWithTarget:self selector:@selector(endLevel)];
-    [self runAction:[CCSequence actions:rocketFall, delay, method, nil]];
+        // Very important to do this, since the accelerometer singleton is holding a ref to us
+        [[UIAccelerometer sharedAccelerometer] setDelegate:nil];
+        
+        CCFiniteTimeAction *fall = [CCMoveBy actionWithDuration:0.2f position:CGPointMake(0, -300)];
+        TargetedAction *rocketFall = [TargetedAction actionWithTarget:rocket_ actionIn:fall];
+        CCFiniteTimeAction *delay = [CCDelayTime actionWithDuration:2.0f];
+        CCActionInstant *method = [CCCallFunc actionWithTarget:self selector:@selector(endLevel)];
+        [self runAction:[CCSequence actions:rocketFall, delay, method, nil]];
     }
 }
 
@@ -929,7 +929,7 @@
     targetX_ = tx;
 #endif
     
-    sideMoveSpeed_ = resultx*70;    
+    sideMoveSpeed_ = resultx*60;    
 
     CGFloat maxSpeed = 10;
     

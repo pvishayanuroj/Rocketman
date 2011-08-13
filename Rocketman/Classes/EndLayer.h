@@ -19,6 +19,8 @@
     
 }
 
+- (void) addButtons;
+
 - (void) initActions;
 
 - (void) restart;

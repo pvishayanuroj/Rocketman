@@ -101,8 +101,26 @@ static GameStateManager *_gameStateManager = nil;
 
 - (void) stageSelectedFromMap:(NSUInteger)levelNum
 {
-    [[AudioManager audioManager] stopMusic];
+    [[AudioManager audioManager] stopMusic];    
     [self startGameWithLevel:levelNum];
+}
+
+- (void) restartFromPause
+{
+    [[AudioManager audioManager] stopMusic];    
+    // Very important to do this, since the accelerometer singleton is holding a ref to us
+    [[UIAccelerometer sharedAccelerometer] setDelegate:nil];    
+    [GameManager purgeGameManager];
+    [self startGameWithLevel:currentLevel_];
+}
+
+- (void) stageSelectFromPause
+{
+    [[AudioManager audioManager] stopMusic]; 
+    // Very important to do this, since the accelerometer singleton is holding a ref to us
+    [[UIAccelerometer sharedAccelerometer] setDelegate:nil];    
+    [GameManager purgeGameManager];    
+    [self showWorldMap];
 }
 
 - (void) restartFromGameOver

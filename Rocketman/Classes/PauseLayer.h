@@ -8,6 +8,8 @@
 
 #import "cocos2d.h"
 
+@class AnimatedButton;
+
 /*
  * Layer that is active when the game is paused
  */
@@ -17,6 +19,23 @@
     
     CCMenuItemSprite *button_;
     
+    CCSprite *restartIcon_;
+    
+    CCSprite *stageIcon_;    
+    
+    AnimatedButton *restartButton_;
+    
+    AnimatedButton *stageButton_;    
 }
+
+- (void) addButtons;
+
+- (void) initActions;
+
+- (void) removeButtons;
+
+- (void) restart;
+
+- (void) stageSelect;
 
 @end

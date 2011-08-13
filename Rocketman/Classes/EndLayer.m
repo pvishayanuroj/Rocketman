@@ -22,23 +22,7 @@ const CGFloat EL_RESTART_ROTATE_TIME = 2.0f;
 {
     if ((self = [super init])) {
     
-        restartIcon_ = [[CCSprite spriteWithFile:@"restart_icon.png"] retain];
-        stageIcon_ = [[CCSprite spriteWithFile:@"stage_icon.png"] retain];
-        
-        CGSize size = [[CCDirector sharedDirector] winSize];
-        restartIcon_.position = ccp(220, EL_RESTART_REL_Y * size.height);
-        stageIcon_.position = ccp(265, EL_STAGE_REL_Y * size.height);
-        
-        AnimatedButton *restartButton = [AnimatedButton buttonWithImage:@"restart_text.png" target:self selector:@selector(restart)];
-        AnimatedButton *stageButton = [AnimatedButton buttonWithImage:@"stage_text.png" target:self selector:@selector(stageSelect)];
-        restartButton.position = ccp(0.5 * size.width, EL_RESTART_REL_Y * size.height);
-        stageButton.position = ccp(0.5 * size.width, EL_STAGE_REL_Y * size.height);
-        
-        [self addChild:restartIcon_];
-        [self addChild:stageIcon_];
-        [self addChild:restartButton];
-        [self addChild:stageButton];
-        
+        [self addButtons];
         [self initActions];
     }
     return self;
@@ -50,6 +34,26 @@ const CGFloat EL_RESTART_ROTATE_TIME = 2.0f;
     [stageIcon_ release];
     
     [super dealloc];
+}
+
+- (void) addButtons
+{
+    restartIcon_ = [[CCSprite spriteWithFile:@"restart_icon.png"] retain];
+    stageIcon_ = [[CCSprite spriteWithFile:@"stage_icon.png"] retain];
+    
+    CGSize size = [[CCDirector sharedDirector] winSize];
+    restartIcon_.position = ccp(220, EL_RESTART_REL_Y * size.height);
+    stageIcon_.position = ccp(265, EL_STAGE_REL_Y * size.height);
+    
+    AnimatedButton *restartButton = [AnimatedButton buttonWithImage:@"restart_text.png" target:self selector:@selector(restart)];
+    AnimatedButton *stageButton = [AnimatedButton buttonWithImage:@"stage_text.png" target:self selector:@selector(stageSelect)];
+    restartButton.position = ccp(0.5 * size.width, EL_RESTART_REL_Y * size.height);
+    stageButton.position = ccp(0.5 * size.width, EL_STAGE_REL_Y * size.height);
+    
+    [self addChild:restartIcon_];
+    [self addChild:stageIcon_];
+    [self addChild:restartButton];
+    [self addChild:stageButton];    
 }
 
 - (void) initActions
