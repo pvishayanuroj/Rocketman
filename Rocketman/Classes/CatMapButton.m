@@ -159,8 +159,8 @@ const CGFloat CB_BUTTON_SCALE_BIG = 1.0f;
 
 - (void) setToPulse
 {
-    CGFloat duration = 0.05;
-    CGFloat delay = 0.3;
+    CGFloat duration = 0.2;
+    CGFloat delay = 0.1;
     CCActionInterval *grow = [CCScaleTo actionWithDuration:duration scale:CB_BUTTON_SCALE];
     CCActionInterval *growEase = [CCEaseIn actionWithAction:grow rate:2.0];
     CCActionInterval *shrink = [CCScaleTo actionWithDuration:duration scale:CB_BUTTON_SCALE_BIG];    
