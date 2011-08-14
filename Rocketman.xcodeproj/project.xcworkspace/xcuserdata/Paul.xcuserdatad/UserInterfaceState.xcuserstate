@@ -12509,7 +12509,7 @@
 				</dict>
 				<dict>
 					<key>CF$UID</key>
-					<integer>195</integer>
+					<integer>48</integer>
 				</dict>
 			</array>
 		</dict>
@@ -12634,7 +12634,7 @@
 				<integer>750</integer>
 			</dict>
 		</dict>
-		<string>Obstacle.m</string>
+		<string>EndScene.m</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -12647,7 +12647,7 @@
 				<integer>752</integer>
 			</dict>
 		</dict>
-		<string>Obstacles</string>
+		<string>Layers &amp; Scenes</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -12698,7 +12698,7 @@
 				<integer>119</integer>
 			</dict>
 			<key>NS.string</key>
-			<string>file://localhost/Users/Paul/Dropbox/Projects/Rocketman/Rocketman/Classes/Obstacle.m</string>
+			<string>file://localhost/Users/Paul/Dropbox/Projects/Rocketman/Rocketman/Classes/EndScene.m</string>
 		</dict>
 		<dict>
 			<key>$class</key>
@@ -13066,10 +13066,10 @@
 		<string>PrimaryDocumentVisibleCharacterRange</string>
 		<string>HideAllIssues</string>
 		<string>PrimaryDocumentSelectedCharacterRange</string>
-		<real>335021492.94598699</real>
-		<string>{1696, 486}</string>
-		<string>{1601, 0}</string>
-		<string>-fall:</string>
+		<real>335023673.06838101</real>
+		<string>{0, 1976}</string>
+		<string>{737, 0}</string>
+		<string>-initEndSceneWithLevel:score:</string>
 		<string>Xcode.IDEKit.EditorDocument.SourceCode</string>
 		<dict>
 			<key>$class</key>
@@ -13088,7 +13088,7 @@
 				<integer>797</integer>
 			</dict>
 		</dict>
-		<string>file://localhost/Users/Paul/Dropbox/Projects/Rocketman/Rocketman/Classes/Obstacle.m</string>
+		<string>file://localhost/Users/Paul/Dropbox/Projects/Rocketman/Rocketman/Classes/EndScene.m</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -13103,7 +13103,7 @@
 				</dict>
 			</array>
 		</dict>
-		<string>{{0, 0}, {1180, 361}}</string>
+		<string>{{0, 0}, {1180, 769}}</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -13687,7 +13687,7 @@
 				</dict>
 				<dict>
 					<key>CF$UID</key>
-					<integer>851</integer>
+					<integer>845</integer>
 				</dict>
 				<dict>
 					<key>CF$UID</key>
@@ -14260,7 +14260,7 @@
 		<string>IDESCMStatusFilteringEnabled</string>
 		<string>IDESelectedObjects</string>
 		<string>IDEExpandedItemsSet</string>
-		<string>{{0, 938}, {244, 725}}</string>
+		<string>{{0, 368}, {244, 725}}</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -14332,7 +14332,7 @@
 				</dict>
 				<dict>
 					<key>CF$UID</key>
-					<integer>924</integer>
+					<integer>925</integer>
 				</dict>
 			</array>
 		</dict>
@@ -14432,10 +14432,11 @@
 				</dict>
 				<dict>
 					<key>CF$UID</key>
-					<integer>752</integer>
+					<integer>924</integer>
 				</dict>
 			</array>
 		</dict>
+		<string>Obstacles</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -14454,11 +14455,10 @@
 				</dict>
 				<dict>
 					<key>CF$UID</key>
-					<integer>925</integer>
+					<integer>752</integer>
 				</dict>
 			</array>
 		</dict>
-		<string>Layers &amp; Scenes</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -14681,7 +14681,7 @@
 		</dict>
 		<string>IDEUtilitiesArea</string>
 		<real>260</real>
-		<string>Obstacle.m</string>
+		<string>EndScene.m</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -28704,67 +28704,67 @@
 				</dict>
 				<dict>
 					<key>CF$UID</key>
-					<integer>2217</integer>
+					<integer>2216</integer>
 				</dict>
 				<dict>
 					<key>CF$UID</key>
-					<integer>2219</integer>
+					<integer>2218</integer>
 				</dict>
 				<dict>
 					<key>CF$UID</key>
-					<integer>2221</integer>
+					<integer>2220</integer>
 				</dict>
 				<dict>
 					<key>CF$UID</key>
-					<integer>2223</integer>
+					<integer>2222</integer>
 				</dict>
 				<dict>
 					<key>CF$UID</key>
-					<integer>2225</integer>
+					<integer>2224</integer>
 				</dict>
 				<dict>
 					<key>CF$UID</key>
-					<integer>2227</integer>
+					<integer>2226</integer>
 				</dict>
 				<dict>
 					<key>CF$UID</key>
-					<integer>2229</integer>
+					<integer>2228</integer>
 				</dict>
 				<dict>
 					<key>CF$UID</key>
-					<integer>2231</integer>
+					<integer>2230</integer>
 				</dict>
 				<dict>
 					<key>CF$UID</key>
-					<integer>2233</integer>
+					<integer>2232</integer>
 				</dict>
 				<dict>
 					<key>CF$UID</key>
-					<integer>2235</integer>
+					<integer>2234</integer>
 				</dict>
 				<dict>
 					<key>CF$UID</key>
-					<integer>2237</integer>
+					<integer>2236</integer>
 				</dict>
 				<dict>
 					<key>CF$UID</key>
-					<integer>2239</integer>
+					<integer>2238</integer>
 				</dict>
 				<dict>
 					<key>CF$UID</key>
-					<integer>2241</integer>
+					<integer>2240</integer>
 				</dict>
 				<dict>
 					<key>CF$UID</key>
-					<integer>2243</integer>
+					<integer>2242</integer>
 				</dict>
 				<dict>
 					<key>CF$UID</key>
-					<integer>2245</integer>
+					<integer>2244</integer>
 				</dict>
 				<dict>
 					<key>CF$UID</key>
-					<integer>2247</integer>
+					<integer>2246</integer>
 				</dict>
 				<dict>
 					<key>CF$UID</key>
@@ -35933,17 +35933,8 @@
 			<key>NS.relative</key>
 			<dict>
 				<key>CF$UID</key>
-				<integer>2216</integer>
+				<integer>758</integer>
 			</dict>
-		</dict>
-		<dict>
-			<key>$class</key>
-			<dict>
-				<key>CF$UID</key>
-				<integer>119</integer>
-			</dict>
-			<key>NS.string</key>
-			<string>file://localhost/Users/Paul/Dropbox/Projects/Rocketman/Rocketman/Classes/EndScene.m</string>
 		</dict>
 		<dict>
 			<key>$class</key>
@@ -35959,7 +35950,7 @@
 			<key>NS.relative</key>
 			<dict>
 				<key>CF$UID</key>
-				<integer>2218</integer>
+				<integer>2217</integer>
 			</dict>
 		</dict>
 		<dict>
@@ -35985,7 +35976,7 @@
 			<key>NS.relative</key>
 			<dict>
 				<key>CF$UID</key>
-				<integer>2220</integer>
+				<integer>2219</integer>
 			</dict>
 		</dict>
 		<dict>
@@ -36011,7 +36002,7 @@
 			<key>NS.relative</key>
 			<dict>
 				<key>CF$UID</key>
-				<integer>2222</integer>
+				<integer>2221</integer>
 			</dict>
 		</dict>
 		<dict>
@@ -36037,7 +36028,7 @@
 			<key>NS.relative</key>
 			<dict>
 				<key>CF$UID</key>
-				<integer>2224</integer>
+				<integer>2223</integer>
 			</dict>
 		</dict>
 		<dict>
@@ -36063,7 +36054,7 @@
 			<key>NS.relative</key>
 			<dict>
 				<key>CF$UID</key>
-				<integer>2226</integer>
+				<integer>2225</integer>
 			</dict>
 		</dict>
 		<dict>
@@ -36089,7 +36080,7 @@
 			<key>NS.relative</key>
 			<dict>
 				<key>CF$UID</key>
-				<integer>2228</integer>
+				<integer>2227</integer>
 			</dict>
 		</dict>
 		<dict>
@@ -36115,7 +36106,7 @@
 			<key>NS.relative</key>
 			<dict>
 				<key>CF$UID</key>
-				<integer>2230</integer>
+				<integer>2229</integer>
 			</dict>
 		</dict>
 		<dict>
@@ -36141,7 +36132,7 @@
 			<key>NS.relative</key>
 			<dict>
 				<key>CF$UID</key>
-				<integer>2232</integer>
+				<integer>2231</integer>
 			</dict>
 		</dict>
 		<dict>
@@ -36167,7 +36158,7 @@
 			<key>NS.relative</key>
 			<dict>
 				<key>CF$UID</key>
-				<integer>2234</integer>
+				<integer>2233</integer>
 			</dict>
 		</dict>
 		<dict>
@@ -36193,7 +36184,7 @@
 			<key>NS.relative</key>
 			<dict>
 				<key>CF$UID</key>
-				<integer>2236</integer>
+				<integer>2235</integer>
 			</dict>
 		</dict>
 		<dict>
@@ -36219,7 +36210,7 @@
 			<key>NS.relative</key>
 			<dict>
 				<key>CF$UID</key>
-				<integer>2238</integer>
+				<integer>2237</integer>
 			</dict>
 		</dict>
 		<dict>
@@ -36245,7 +36236,7 @@
 			<key>NS.relative</key>
 			<dict>
 				<key>CF$UID</key>
-				<integer>2240</integer>
+				<integer>2239</integer>
 			</dict>
 		</dict>
 		<dict>
@@ -36271,7 +36262,7 @@
 			<key>NS.relative</key>
 			<dict>
 				<key>CF$UID</key>
-				<integer>2242</integer>
+				<integer>2241</integer>
 			</dict>
 		</dict>
 		<dict>
@@ -36297,7 +36288,7 @@
 			<key>NS.relative</key>
 			<dict>
 				<key>CF$UID</key>
-				<integer>2244</integer>
+				<integer>2243</integer>
 			</dict>
 		</dict>
 		<dict>
@@ -36323,7 +36314,7 @@
 			<key>NS.relative</key>
 			<dict>
 				<key>CF$UID</key>
-				<integer>2246</integer>
+				<integer>2245</integer>
 			</dict>
 		</dict>
 		<dict>
@@ -36349,8 +36340,17 @@
 			<key>NS.relative</key>
 			<dict>
 				<key>CF$UID</key>
-				<integer>758</integer>
+				<integer>2247</integer>
 			</dict>
+		</dict>
+		<dict>
+			<key>$class</key>
+			<dict>
+				<key>CF$UID</key>
+				<integer>119</integer>
+			</dict>
+			<key>NS.string</key>
+			<string>file://localhost/Users/Paul/Dropbox/Projects/Rocketman/Rocketman/Classes/Obstacle.m</string>
 		</dict>
 		<dict>
 			<key>$class</key>
@@ -44529,9 +44529,9 @@
 				</dict>
 			</array>
 		</dict>
-		<real>334969760.37030703</real>
-		<string>{0, 1552}</string>
-		<string>{247, 202}</string>
+		<real>335023403.26289701</real>
+		<string>{3, 1584}</string>
+		<string>{563, 0}</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -48340,9 +48340,9 @@
 				</dict>
 			</array>
 		</dict>
-		<real>334382772.26075202</real>
-		<string>{515, 2085}</string>
-		<string>{1036, 0}</string>
+		<real>335023673.06769401</real>
+		<string>{0, 1976}</string>
+		<string>{737, 0}</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -49104,9 +49104,9 @@
 				</dict>
 			</array>
 		</dict>
-		<real>335021492.94463098</real>
+		<real>335023397.98360801</real>
 		<string>{1696, 486}</string>
-		<string>{1601, 0}</string>
+		<string>{2129, 0}</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -58841,7 +58841,7 @@
 				<integer>3951</integer>
 			</dict>
 			<key>NS.time</key>
-			<real>335021396.29689801</real>
+			<real>335023590.948116</real>
 		</dict>
 		<dict>
 			<key>$classes</key>
@@ -58852,7 +58852,7 @@
 			<key>$classname</key>
 			<string>NSDate</string>
 		</dict>
-		<string>Today at 9:29 AM</string>
+		<string>Today at 10:06 AM</string>
 		<integer>106</integer>
 		<dict>
 			<key>$class</key>
@@ -60091,7 +60091,7 @@
 				<integer>4053</integer>
 			</dict>
 		</dict>
-		<string>file://localhost/Users/Paul/Dropbox/Projects/Rocketman/Rocketman/Classes/Obstacle.m</string>
+		<string>file://localhost/Users/Paul/Dropbox/Projects/Rocketman/Rocketman/Classes/EndScene.m</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -60109,7 +60109,7 @@
 				<integer>4055</integer>
 			</dict>
 		</dict>
-		<string>file://localhost/Users/Paul/Dropbox/Projects/Rocketman/Rocketman/Classes/ShockTurtling.m</string>
+		<string>file://localhost/Users/Paul/Dropbox/Projects/Rocketman/Rocketman/Classes/EndLayer.m</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -60127,7 +60127,7 @@
 				<integer>4057</integer>
 			</dict>
 		</dict>
-		<string>file://localhost/Users/Paul/Dropbox/Projects/Rocketman/Rocketman/Classes/TargetedAction.m</string>
+		<string>file://localhost/Users/Paul/Dropbox/Projects/Rocketman/Rocketman/Classes/Obstacle.m</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -60145,7 +60145,7 @@
 				<integer>4059</integer>
 			</dict>
 		</dict>
-		<string>file://localhost/Users/Paul/Dropbox/Projects/Rocketman/Rocketman/Classes/ShockTurtling.h</string>
+		<string>file://localhost/Users/Paul/Dropbox/Projects/Rocketman/Rocketman/Classes/ShockTurtling.m</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -60163,7 +60163,7 @@
 				<integer>4061</integer>
 			</dict>
 		</dict>
-		<string>file://localhost/Users/Paul/Dropbox/Projects/Rocketman/Rocketman/Classes/GameLayer.m</string>
+		<string>file://localhost/Users/Paul/Dropbox/Projects/Rocketman/Rocketman/Classes/TargetedAction.m</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -60181,7 +60181,7 @@
 				<integer>4063</integer>
 			</dict>
 		</dict>
-		<string>file://localhost/Users/Paul/Dropbox/Projects/Rocketman/Rocketman/Classes/BossTurtle.m</string>
+		<string>file://localhost/Users/Paul/Dropbox/Projects/Rocketman/Rocketman/Classes/ShockTurtling.h</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -60199,7 +60199,7 @@
 				<integer>4065</integer>
 			</dict>
 		</dict>
-		<string>file://localhost/Users/Paul/Dropbox/Projects/Rocketman/Rocketman/Classes/TurtlingSwarm.m</string>
+		<string>file://localhost/Users/Paul/Dropbox/Projects/Rocketman/Rocketman/Classes/GameLayer.m</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -60217,7 +60217,7 @@
 				<integer>4067</integer>
 			</dict>
 		</dict>
-		<string>file://localhost/Users/Paul/Dropbox/Projects/Rocketman/Rocketman/Classes/TurtlingSwarm.h</string>
+		<string>file://localhost/Users/Paul/Dropbox/Projects/Rocketman/Rocketman/Classes/BossTurtle.m</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -60235,7 +60235,7 @@
 				<integer>4069</integer>
 			</dict>
 		</dict>
-		<string>file://localhost/Users/Paul/Dropbox/Projects/Rocketman/Rocketman/Classes/Enums.h</string>
+		<string>file://localhost/Users/Paul/Dropbox/Projects/Rocketman/Rocketman/Classes/TurtlingSwarm.m</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -60253,7 +60253,7 @@
 				<integer>4071</integer>
 			</dict>
 		</dict>
-		<string>file://localhost/Users/Paul/Dropbox/Projects/Rocketman/Rocketman/Classes/Debugging.h</string>
+		<string>file://localhost/Users/Paul/Dropbox/Projects/Rocketman/Rocketman/Classes/TurtlingSwarm.h</string>
 		<dict>
 			<key>$class</key>
 			<dict>

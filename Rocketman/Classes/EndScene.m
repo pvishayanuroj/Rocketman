@@ -24,7 +24,8 @@ const CGFloat ES_SCORE_TIME = 2.0f;
     if ((self = [super init])) {
     
         // Add background sky
-        CCSprite *bg = [CCSprite spriteWithFile:@"background.png"];
+        NSString *backgroundName = [NSString stringWithFormat:@"background_level%d.png", levelNum];
+        CCSprite *bg = [CCSprite spriteWithFile:backgroundName];
         [self addChild:bg z:0];
         bg.anchorPoint = CGPointZero;        
         
