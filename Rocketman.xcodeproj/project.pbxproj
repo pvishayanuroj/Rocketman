@@ -230,6 +230,7 @@
 		DAEA997413EE3E91007AA451 /* ground_level2.png in Resources */ = {isa = PBXBuildFile; fileRef = DAEA996D13EE3E91007AA451 /* ground_level2.png */; };
 		DAEA997513EE3E91007AA451 /* parallax_level2.png in Resources */ = {isa = PBXBuildFile; fileRef = DAEA996E13EE3E91007AA451 /* parallax_level2.png */; };
 		DAEA997813EEB27A007AA451 /* DialogueLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA997713EEB270007AA451 /* DialogueLayer.m */; };
+		DAEA99F513F7FBA7007AA451 /* ShockTurtling.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA99F413F7FB9C007AA451 /* ShockTurtling.m */; };
 		DAF8AB3813A7D6F100A838CE /* Alien.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF8AB2513A7D6F100A838CE /* Alien.m */; };
 		DAF8AB3913A7D6F100A838CE /* Angel.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF8AB2713A7D6F100A838CE /* Angel.m */; };
 		DAF8AB3A13A7D6F100A838CE /* Boost.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF8AB2913A7D6F100A838CE /* Boost.m */; };
@@ -638,6 +639,8 @@
 		DAEA996E13EE3E91007AA451 /* parallax_level2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = parallax_level2.png; sourceTree = "<group>"; };
 		DAEA997613EEB268007AA451 /* DialogueLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DialogueLayer.h; path = Classes/DialogueLayer.h; sourceTree = "<group>"; };
 		DAEA997713EEB270007AA451 /* DialogueLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DialogueLayer.m; path = Classes/DialogueLayer.m; sourceTree = "<group>"; };
+		DAEA99F313F7FB8B007AA451 /* ShockTurtling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShockTurtling.h; path = Classes/ShockTurtling.h; sourceTree = "<group>"; };
+		DAEA99F413F7FB9C007AA451 /* ShockTurtling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShockTurtling.m; path = Classes/ShockTurtling.m; sourceTree = "<group>"; };
 		DAF8AB2413A7D6F100A838CE /* Alien.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Alien.h; path = Classes/Alien.h; sourceTree = "<group>"; };
 		DAF8AB2513A7D6F100A838CE /* Alien.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Alien.m; path = Classes/Alien.m; sourceTree = "<group>"; };
 		DAF8AB2613A7D6F100A838CE /* Angel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Angel.h; path = Classes/Angel.h; sourceTree = "<group>"; };
@@ -1304,6 +1307,8 @@
 				DAD925E013D33B7C0057FFD7 /* Turtling.m */,
 				DAD925E313D3451F0057FFD7 /* TurtlingSwarm.h */,
 				DAD925E413D345200057FFD7 /* TurtlingSwarm.m */,
+				DAEA99F313F7FB8B007AA451 /* ShockTurtling.h */,
+				DAEA99F413F7FB9C007AA451 /* ShockTurtling.m */,
 			);
 			name = Obstacles;
 			sourceTree = "<group>";
@@ -1656,6 +1661,7 @@
 				DA3B795713E4F9320001AE94 /* Parallax.m in Sources */,
 				DA3B795A13E5055C0001AE94 /* AnimatedButton.m in Sources */,
 				DAEA997813EEB27A007AA451 /* DialogueLayer.m in Sources */,
+				DAEA99F513F7FBA7007AA451 /* ShockTurtling.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -232,9 +232,17 @@
 				<key>Animate Delay</key>
 				<real>0.15</real>
 				<key>Name</key>
+				<string>Preshock</string>
+				<key>Num Frames</key>
+				<integer>2</integer>
+			</dict>
+			<dict>
+				<key>Animate Delay</key>
+				<real>0.15</real>
+				<key>Name</key>
 				<string>Shock</string>
 				<key>Num Frames</key>
-				<integer>4</integer>
+				<integer>2</integer>
 			</dict>
 		</array>
 		<key>Name</key>

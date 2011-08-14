@@ -24,6 +24,7 @@
 #import "Angel.h"
 #import "Shell.h"
 #import "Turtling.h"
+#import "ShockTurtling.h"
 #import "TurtlingSwarm.h"
 #import "BossTurtle.h"
 #import "Cat.h"
@@ -459,8 +460,8 @@
         y = screenHeight_ + 100;
         pos = ccp(x, y);                
 
-        NSUInteger type = arc4random() % 6; 
-        //type = 2;
+        NSUInteger type = arc4random() % 7; 
+        type = 6;
         [self addObstacle:type pos:pos];
         //[self addTurtlingSwarm:8];        
     }    
@@ -581,7 +582,6 @@
 
 - (void) endLevel
 {
-    //[self removeFromParentAndCleanup:YES];    
     [[GameStateManager gameStateManager] endGame:height_];   
 }
 
@@ -627,6 +627,9 @@
             break;
         case kTurtling:
             obstacle = [Turtling turtlingWithPos:pos];
+            break;
+        case kShockTurtling:
+            obstacle = [ShockTurtling shockTurtlingWithPos:pos];
             break;
         default:
             NSAssert(NO, @"Invalid obstacle number selected");
