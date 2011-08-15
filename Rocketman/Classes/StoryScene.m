@@ -33,12 +33,6 @@
         AnimatedButton *skipButton = [AnimatedButton buttonWithImage:@"skip_button.png" target:self selector:@selector(skip)];
         skipButton.position = CGPointMake(280, 30);
         [self addChild:skipButton];
-        /*
-        CCMenuItemSprite *skipButton = [CCMenuItemSprite itemFromNormalSprite:[CCSprite spriteWithFile:@"skip_button.png"] selectedSprite:[CCSprite spriteWithFile:@"skip_button.png"] target:self selector:@selector(skip)];        
-        CCMenu *menu = [CCMenu menuWithItems:skipButton, nil];
-        menu.position = ccp(280, 30);
-        [self addChild:menu z:2];        
-         */\
     }
     return self;
 }

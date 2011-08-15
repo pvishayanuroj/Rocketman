@@ -8,11 +8,15 @@
 
 #import "cocos2d.h"
 
+@class Movement;
+
 @interface Obstacle : CCNode {
  
     CCSprite *sprite_;
 
     NSMutableArray *boundaries_;
+    
+    Movement *movement_;
     
     PVCollide defaultPVCollide_;
     
@@ -39,6 +43,11 @@
 
 - (void) collide;
 
+/** 
+ * Destroys the obstacle. Note: This method MUST be called
+ * for proper deallocation of this obstacle, because it resolves
+ * circular references and removes this cocos node from the parent
+ */
 - (void) destroy;
 
 @end

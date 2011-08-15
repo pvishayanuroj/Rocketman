@@ -149,6 +149,10 @@
 {
     NSLog(@"Game Layer dealloc'd");
     
+    for (Obstacle *obstacle in obstacles_) {
+        [obstacle destroy];
+    }
+    
     [rocket_ release];
     [obstacles_ release];
     [firedCats_ release];
@@ -461,7 +465,7 @@
         pos = ccp(x, y);                
 
         NSUInteger type = arc4random() % 7; 
-        type = 6;
+        //type = 6;
         [self addObstacle:type pos:pos];
         //[self addTurtlingSwarm:8];        
     }    

@@ -41,6 +41,7 @@
 
 - (void) dealloc
 {
+    [text_ release];
     [title_ release];
     [desc_ release];
     

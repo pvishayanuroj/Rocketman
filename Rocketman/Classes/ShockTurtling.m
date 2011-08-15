@@ -11,6 +11,7 @@
 #import "TargetedAction.h"
 #import "GameLayer.h"
 #import "AudioManager.h"
+#import "StaticMovement.h"
 
 @implementation ShockTurtling
 
@@ -39,6 +40,9 @@ static NSUInteger countID = 0;
         
         // Bounding box setup
         [boundaries_ addObject:[Boundary boundaryWithTarget:self collide:@selector(primaryCollision) hit:@selector(primaryHit) colStruct:collide]];
+        
+        // This gets released in the death function
+        movement_ = [[StaticMovement staticMovement:self] retain];        
         
         [self initActions];
         [self showIdle];        

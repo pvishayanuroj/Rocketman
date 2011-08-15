@@ -10,6 +10,7 @@
 #import "BlastCloud.h"
 #import "GameLayer.h"
 #import "Boundary.h"
+#import "Movement.h"
 
 @implementation Obstacle
 
@@ -32,6 +33,8 @@
         
         markToRemove_ = NO;
         boundaries_ = [[NSMutableArray arrayWithCapacity:1] retain];
+        
+        movement_ = nil;
     }
     return self;
 }
@@ -63,8 +66,7 @@
 
 - (void) fall:(CGFloat)speed
 {
-    CGPoint p = CGPointMake(0, speed);
-    self.position = ccpSub(self.position, p);    
+    [movement_ move:speed];
 }
 
 - (void) bulletHit
@@ -85,6 +87,10 @@
     // Do this here, otherwise the boundaries' ref to obstacles will never be release, thus causing a circular reference
     [boundaries_ release];
     boundaries_ = nil;
+    
+    // Likewise, remove the movement here, because the movement has a reference to this obstacle
+    [movement_ release];
+    movement_ = nil;
 }
 
 #pragma mark - Debug Methods

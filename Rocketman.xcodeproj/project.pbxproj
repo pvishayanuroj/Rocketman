@@ -231,6 +231,8 @@
 		DAEA997513EE3E91007AA451 /* parallax_level2.png in Resources */ = {isa = PBXBuildFile; fileRef = DAEA996E13EE3E91007AA451 /* parallax_level2.png */; };
 		DAEA997813EEB27A007AA451 /* DialogueLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA997713EEB270007AA451 /* DialogueLayer.m */; };
 		DAEA99F513F7FBA7007AA451 /* ShockTurtling.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA99F413F7FB9C007AA451 /* ShockTurtling.m */; };
+		DAEA99F913F855F3007AA451 /* Movement.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA99F813F855F3007AA451 /* Movement.m */; };
+		DAEA99FC13F86777007AA451 /* StaticMovement.m in Sources */ = {isa = PBXBuildFile; fileRef = DAEA99FB13F86776007AA451 /* StaticMovement.m */; };
 		DAF8AB3813A7D6F100A838CE /* Alien.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF8AB2513A7D6F100A838CE /* Alien.m */; };
 		DAF8AB3913A7D6F100A838CE /* Angel.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF8AB2713A7D6F100A838CE /* Angel.m */; };
 		DAF8AB3A13A7D6F100A838CE /* Boost.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF8AB2913A7D6F100A838CE /* Boost.m */; };
@@ -641,6 +643,10 @@
 		DAEA997713EEB270007AA451 /* DialogueLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DialogueLayer.m; path = Classes/DialogueLayer.m; sourceTree = "<group>"; };
 		DAEA99F313F7FB8B007AA451 /* ShockTurtling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShockTurtling.h; path = Classes/ShockTurtling.h; sourceTree = "<group>"; };
 		DAEA99F413F7FB9C007AA451 /* ShockTurtling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShockTurtling.m; path = Classes/ShockTurtling.m; sourceTree = "<group>"; };
+		DAEA99F713F855F3007AA451 /* Movement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Movement.h; path = Classes/Movement.h; sourceTree = "<group>"; };
+		DAEA99F813F855F3007AA451 /* Movement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Movement.m; path = Classes/Movement.m; sourceTree = "<group>"; };
+		DAEA99FA13F86775007AA451 /* StaticMovement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StaticMovement.h; path = Classes/StaticMovement.h; sourceTree = "<group>"; };
+		DAEA99FB13F86776007AA451 /* StaticMovement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StaticMovement.m; path = Classes/StaticMovement.m; sourceTree = "<group>"; };
 		DAF8AB2413A7D6F100A838CE /* Alien.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Alien.h; path = Classes/Alien.h; sourceTree = "<group>"; };
 		DAF8AB2513A7D6F100A838CE /* Alien.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Alien.m; path = Classes/Alien.m; sourceTree = "<group>"; };
 		DAF8AB2613A7D6F100A838CE /* Angel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Angel.h; path = Classes/Angel.h; sourceTree = "<group>"; };
@@ -763,6 +769,7 @@
 				DA8215121390CECF00F3892E /* Utility */,
 				DA8215111390CE5000F3892E /* Cocos2D Base */,
 				DAFA3CF6139399F30048D211 /* Doodads */,
+				DAEA99F613F8536F007AA451 /* Movements */,
 				DAFA3CF5139399EA0048D211 /* Obstacles */,
 				DAFA3CF813939B530048D211 /* Player Objects */,
 				DA346D76138E593D000881D6 /* Resources */,
@@ -1278,6 +1285,17 @@
 			path = Resources/Fonts;
 			sourceTree = "<group>";
 		};
+		DAEA99F613F8536F007AA451 /* Movements */ = {
+			isa = PBXGroup;
+			children = (
+				DAEA99F713F855F3007AA451 /* Movement.h */,
+				DAEA99F813F855F3007AA451 /* Movement.m */,
+				DAEA99FA13F86775007AA451 /* StaticMovement.h */,
+				DAEA99FB13F86776007AA451 /* StaticMovement.m */,
+			);
+			name = Movements;
+			sourceTree = "<group>";
+		};
 		DAFA3CF5139399EA0048D211 /* Obstacles */ = {
 			isa = PBXGroup;
 			children = (
@@ -1662,6 +1680,8 @@
 				DA3B795A13E5055C0001AE94 /* AnimatedButton.m in Sources */,
 				DAEA997813EEB27A007AA451 /* DialogueLayer.m in Sources */,
 				DAEA99F513F7FBA7007AA451 /* ShockTurtling.m in Sources */,
+				DAEA99F913F855F3007AA451 /* Movement.m in Sources */,
+				DAEA99FC13F86777007AA451 /* StaticMovement.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

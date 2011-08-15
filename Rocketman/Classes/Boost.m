@@ -9,6 +9,7 @@
 #import "Boost.h"
 #import "GameLayer.h"
 #import "Boundary.h"
+#import "StaticMovement.h"
 
 @implementation Boost
 
@@ -40,9 +41,11 @@ static NSUInteger countID = 0;
         // Bounding box setup
         [boundaries_ addObject:[Boundary boundaryWithTarget:self collide:@selector(primaryCollision) hit:nil colStruct:collide]];        
         
+        // This gets released in the death function
+        movement_ = [[StaticMovement staticMovement:self] retain];        
+        
         [self initActions];
         [self showIdle];
-        
     }
     return self;
 }

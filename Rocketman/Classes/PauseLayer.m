@@ -40,6 +40,11 @@ const CGFloat PL_RESTART_ROTATE_TIME = 2.0f;
 
 - (void) dealloc
 {
+    [restartIcon_ release];
+    [stageIcon_ release];
+    [restartButton_ release];
+    [stageButton_ release];
+    
     [super dealloc];
 }
 
@@ -52,8 +57,8 @@ const CGFloat PL_RESTART_ROTATE_TIME = 2.0f;
     restartIcon_.position = ccp(220, PL_RESTART_REL_Y * size.height);
     stageIcon_.position = ccp(265, PL_STAGE_REL_Y * size.height);
     
-    restartButton_ = [AnimatedButton buttonWithImage:@"restart_text.png" target:self selector:@selector(restart)];
-    stageButton_ = [AnimatedButton buttonWithImage:@"stage_text.png" target:self selector:@selector(stageSelect)];
+    restartButton_ = [[AnimatedButton buttonWithImage:@"restart_text.png" target:self selector:@selector(restart)] retain];
+    stageButton_ = [[AnimatedButton buttonWithImage:@"stage_text.png" target:self selector:@selector(stageSelect)] retain];
     restartButton_.position = ccp(0.5 * size.width, PL_RESTART_REL_Y * size.height);
     stageButton_.position = ccp(0.5 * size.width, PL_STAGE_REL_Y * size.height);
     
