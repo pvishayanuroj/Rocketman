@@ -15,6 +15,8 @@
 #import "BlastCloud.h"
 #import "BigExplosion.h"
 #import "Boundary.h"
+#import "SideMovement.h"
+#import "StaticMovement.h"
 
 @implementation BossTurtle
 
@@ -61,8 +63,8 @@ static NSUInteger countID = 0;
         [boundaries_ addObject:headBoundary_];        
         
         CGSize size = [[CCDirector sharedDirector] winSize];        
-        leftCutoff_ = - 0.5 * size.width;
-        rightCutoff_ = size.width + 0.5 * size.width;
+        CGFloat leftCutoff = - 0.5 * size.width;
+        CGFloat rightCutoff  = size.width + 0.5 * size.width;
         yTarget_ = 0.80 * size.height;
         
         movingLeft_ = YES;
@@ -71,6 +73,11 @@ static NSUInteger countID = 0;
         sprite_.flipX = YES;
         numShells_ = 0;
         maxShells_ = 6;
+        
+        // This gets released in the death function
+        SideMovement *movement = [SideMovement sideMovement:self leftCutoff:leftCutoff rightCutoff:rightCutoff speed:3];
+        movement.delegate = self;
+        movement_ = [movement retain];
         
         [self initActions];
         [self showIdle];        
@@ -181,6 +188,61 @@ static NSUInteger countID = 0;
     [self addChild:explosion];
 }
 
+- (void) sideMovementLeftTurnaround:(SideMovement *)movement
+{
+    sprite_.flipX = NO;           
+    deployedShells_ = NO;            
+    [self engineFlameGoingRight:NO];
+    PVCollide c = headBoundary_.collide;
+    c.offset = headOffset_;
+    headBoundary_.collide = c;    
+    
+    // temporary
+    movingLeft_ = NO;
+}
+
+- (void) sideMovementRightTurnaround:(SideMovement *)movement
+{
+    sprite_.flipX = YES; 
+    deployedShells_ = NO;
+    [self engineFlameGoingRight:YES];       
+    PVCollide c = headBoundary_.collide;
+    c.offset = ccp(-headOffset_.x, headOffset_.y);
+    headBoundary_.collide = c;    
+    
+    // temporary
+    movingLeft_ = YES;    
+}
+
+- (void) fall:(CGFloat)speed
+{
+    [movement_ move:speed];
+    
+    CGFloat dy = 0;
+    // Only launch shells if not in death sequence
+    if (HP_ > 0) {
+        if (self.position.y > yTarget_) {
+            dy = -1;
+        }
+        // Deploy shells each turn
+        else {
+            if (!deployedShells_) {
+                CGFloat xTrigger = 160;
+                if ((movingLeft_ && self.position.x < xTrigger) || (!movingLeft_ && self.position.x > xTrigger)) {
+                    deployedShells_ = YES;
+                    [self startShellSequence];                
+                }
+            }
+        }
+    }
+    
+    CGPoint p = CGPointMake(0, dy);
+    self.position = ccpAdd(self.position, p);    
+    
+    //NSLog(@"pos: %3.0f, %3.0f", self.position.x, self.position.y);
+}
+
+/*
 - (void) fall:(CGFloat)speed
 {
     CGFloat dx;
@@ -250,8 +312,14 @@ static NSUInteger countID = 0;
     CGPoint p = CGPointMake(dx, dy);
     self.position = ccpAdd(self.position, p);    
 }
+ */
 
-- (void) bulletHit
+- (void) primaryHit
+{
+    // Turtle takes no damage on shell hit
+}
+
+- (void) secondaryHit
 {
     // Creature death
     if (--HP_ == 0) {
@@ -263,21 +331,15 @@ static NSUInteger countID = 0;
         headBoundary_.collide = c1;
         bodyBoundary_.collide = c2;
         engineFlame_.emissionRate = 0;
+        
+        // Change the speed of side movement whilst dying
+        [((SideMovement *)movement_) changeSideSpeed:0.6f];
+        
         [self startDeathSequence];
     }
     else {
         [self showDamage];        
     }
-}
-
-- (void) primaryHit
-{
-    // Turtle takes no damage on shell hit
-}
-
-- (void) secondaryHit
-{
-    [self bulletHit];        
 }
 
 - (void) death

@@ -7,10 +7,12 @@
 //
 
 #import "Obstacle.h"
+#import "SideMovementDelegate.h"
 
 @class Boundary;
+@class SideMovement;
 
-@interface BossTurtle : Obstacle {
+@interface BossTurtle : Obstacle <SideMovementDelegate> {
     
     CCAction *damageAnimation_;
     
@@ -63,5 +65,9 @@
 - (void) addBlast;
 
 - (void) engineFlameGoingRight:(BOOL)right;
+
+- (void) sideMovementLeftTurnaround:(SideMovement *)movement;
+
+- (void) sideMovementRightTurnaround:(SideMovement *)movement;
 
 @end
