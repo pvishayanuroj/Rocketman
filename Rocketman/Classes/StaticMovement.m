@@ -13,12 +13,19 @@
 
 + (id) staticMovement:(Obstacle *)obstacle
 {
-    return [[[self alloc] initStaticMovement:obstacle] autorelease];
+    return [[[self alloc] initStaticMovement:obstacle rate:1.0f] autorelease];
 }
 
-- (id) initStaticMovement:(Obstacle *)obstacle
++ (id) staticMovement:(Obstacle *)obstacle rate:(CGFloat)rate
+{
+    return [[[self alloc] initStaticMovement:obstacle rate:rate] autorelease];    
+}
+
+- (id) initStaticMovement:(Obstacle *)obstacle rate:(CGFloat)rate
 {
     if ((self = [super initWithObstacle:obstacle])) {
+        
+        rate_ = rate;
         
     }
     return self;
@@ -31,8 +38,8 @@
 
 - (void) move:(CGFloat)speed
 {
-    CGPoint p = CGPointMake(0, speed);
-    obstacle_.position = ccpSub(obstacle_.position, p);    
+    CGPoint p = CGPointMake(0, -speed * rate_);
+    obstacle_.position = ccpAdd(obstacle_.position, p);    
 }
 
 @end

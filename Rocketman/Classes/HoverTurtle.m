@@ -9,6 +9,7 @@
 #import "HoverTurtle.h"
 #import "Boundary.h"
 #import "AudioManager.h"
+#import "GameManager.h"
 #import "GameLayer.h"
 #import "SideMovement.h"
 
@@ -45,6 +46,7 @@ static NSUInteger countID = 0;
         // Setup side to side movement
         SideMovement *movement = [SideMovement sideMovement:self distance:200 speed:3];
         movement.delegate = self;
+        [movement setProximityTrigger:25.0f];        
         // This gets released in the death function
         movement_ = [movement retain];       
         
@@ -126,6 +128,12 @@ static NSUInteger countID = 0;
     [gameLayer removeObstacle:self];      
     
     [super destroy];
+}
+
+- (void) sideMovementProximityTrigger:(SideMovement *)movement
+{
+    CGPoint pos = CGPointMake(self.position.x, self.position.y - 10);
+    [[GameManager gameManager] addPlasmaBall:pos];
 }
 
 - (void) sideMovementRandomTrigger:(SideMovement *)movement

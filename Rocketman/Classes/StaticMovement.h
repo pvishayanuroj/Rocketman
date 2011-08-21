@@ -13,11 +13,16 @@
  */
 @interface StaticMovement : Movement {
     
+    /** Rate at which object falls relative to rocket speed */
+    CGFloat rate_;
+    
 }
 
 + (id) staticMovement:(Obstacle *)obstacle;
 
-- (id) initStaticMovement:(Obstacle *)obstacle;
++ (id) staticMovement:(Obstacle *)obstacle rate:(CGFloat)rate;
+
+- (id) initStaticMovement:(Obstacle *)obstacle rate:(CGFloat)rate;
 
 /** Override the parent's move method */
 - (void) move:(CGFloat)speed;

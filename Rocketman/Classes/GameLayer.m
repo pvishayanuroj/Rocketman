@@ -28,6 +28,7 @@
 #import "TurtlingSwarm.h"
 #import "HoverTurtle.h"
 #import "BossTurtle.h"
+#import "PlasmaBall.h"
 #import "Cat.h"
 #import "CatBullet.h"
 #import "Fuel.h"
@@ -107,7 +108,7 @@
         
         // Obstacle and powerup generation
         nextObstacleHeight_ = 800;
-        obstableFrequency_ = 8000;
+        obstableFrequency_ = 2000;
         nextRingHeight_ = 1600;
         ringFrequency_ = 2000;
         nextCatHeight_ = 700;
@@ -445,7 +446,7 @@
             NSInteger x = [self getRandomX];
             NSInteger y = screenHeight_ + 100;
             CGPoint pos = ccp(x, y);          
-            [self addObstacle:kBossTurtle pos:pos];
+            //[self addObstacle:kBossTurtle pos:pos];
         }
     }
 }
@@ -639,6 +640,9 @@
             break;
         case kShockTurtling:
             obstacle = [ShockTurtling shockTurtlingWithPos:pos];
+            break;
+        case kPlasmaBall:
+            obstacle = [PlasmaBall plasmaBallWithPos:pos];
             break;
         default:
             NSAssert(NO, @"Invalid obstacle number selected");

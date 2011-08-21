@@ -25,6 +25,8 @@
 
 - (void) initEngine;
 
+- (void) sideMovementProximityTrigger:(SideMovement *)movement;
+
 - (void) sideMovementRandomTrigger:(SideMovement *)movement;
 
 @end

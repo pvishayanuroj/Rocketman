@@ -46,11 +46,15 @@
 - (BOOL) collisionCheckAndHandle:(CGPoint)objectPos rocketBox:(CGRect)rocketBox
 {
     if (collide_.collideActive && [self collides:objectPos rocketBox:rocketBox]) {
+        // If boundary is turned off after first collision
         if (collide_.autoInactive) {
             collide_.collideActive = NO;
             collide_.hitActive = NO;
         }
-        [target_ performSelector:collideSel_];
+        // Allowed to be null when setting up boundary
+        if (collideSel_) {
+            [target_ performSelector:collideSel_];
+        }
         return YES;
     }
     return NO;
@@ -59,11 +63,15 @@
 - (BOOL) hitCheckAndHandle:(CGPoint)objectPos catPos:(CGPoint)catPos catRadius:(CGFloat)catRadius
 {
     if (collide_.hitActive && [self collides:objectPos catPos:catPos catRadius:catRadius]) {
+        // If boundary is turned off after first hit        
         if (collide_.autoInactive) {
             collide_.hitActive = NO;
             collide_.collideActive = NO;
         }
-        [target_ performSelector:hitSel_];
+        // Allowed to be null when setting up boundary
+        if (hitSel_) {        
+            [target_ performSelector:hitSel_];
+        }
         return YES;
     }
     return NO;

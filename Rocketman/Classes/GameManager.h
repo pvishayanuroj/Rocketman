@@ -43,6 +43,10 @@
 
 - (void) addShell:(CGPoint)pos;
 
+- (void) addTurtling:(CGPoint)pos;
+
+- (void) addPlasmaBall:(CGPoint)pos;
+
 - (void) setNumCats01:(NSUInteger)numCats;
 
 - (void) setNumCats02:(NSUInteger)numCats;

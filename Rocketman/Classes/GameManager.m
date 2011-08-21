@@ -116,6 +116,11 @@ static GameManager *_gameManager = nil;
     [gameLayer_ addObstacle:kTurtling pos:pos];
 }
 
+- (void) addPlasmaBall:(CGPoint)pos
+{
+    [gameLayer_ addObstacle:kPlasmaBall pos:pos];
+}
+
 #pragma mark - HUD Methods
 
 - (void) setNumCats01:(NSUInteger)numCats

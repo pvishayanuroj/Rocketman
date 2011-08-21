@@ -59,7 +59,8 @@ typedef enum {
     kCat = 9,
     kFuel = 10,
     kBossTurtle = 11,
-    kTurtling = 12
+    kTurtling = 12,
+    kPlasmaBall = 13
 } ObstacleType;
 
 typedef enum {
