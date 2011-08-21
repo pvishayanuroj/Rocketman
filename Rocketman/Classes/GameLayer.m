@@ -26,6 +26,7 @@
 #import "Turtling.h"
 #import "ShockTurtling.h"
 #import "TurtlingSwarm.h"
+#import "HoverTurtle.h"
 #import "BossTurtle.h"
 #import "Cat.h"
 #import "CatBullet.h"
@@ -106,7 +107,7 @@
         
         // Obstacle and powerup generation
         nextObstacleHeight_ = 800;
-        obstableFrequency_ = 800;
+        obstableFrequency_ = 8000;
         nextRingHeight_ = 1600;
         ringFrequency_ = 2000;
         nextCatHeight_ = 700;
@@ -466,7 +467,7 @@
         pos = ccp(x, y);                
 
         NSUInteger type = arc4random() % 7; 
-        //type = 6;
+        type = 7;
         [self addObstacle:type pos:pos];
         //[self addTurtlingSwarm:8];        
     }    
@@ -617,6 +618,9 @@
             break;
         case kFlybot:
             obstacle = [Flybot flyBotWithPos:pos];
+            break;
+        case kHoverTurtle:
+            obstacle = [HoverTurtle hoverTurtleWithPos:pos];
             break;
         case kBoost:
             obstacle = [Boost boostWithPos:pos];    

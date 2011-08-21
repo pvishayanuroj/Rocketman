@@ -50,6 +50,8 @@
 
 @property (nonatomic, assign) id <SideMovementDelegate> delegate;
 
++ (id) sideMovement:(Obstacle *)obstacle distance:(CGFloat)distance speed:(CGFloat)speed;
+
 + (id) sideMovement:(Obstacle *)obstacle leftCutoff:(CGFloat)leftCutoff rightCutoff:(CGFloat)rightCutoff speed:(CGFloat)speed;
 
 - (id) initSideMovement:(Obstacle *)obstacle leftCutoff:(CGFloat)leftCutoff rightCutoff:(CGFloat)rightCutoff speed:(CGFloat)speed;

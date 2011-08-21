@@ -15,6 +15,13 @@
 
 @synthesize delegate = delegate_;
 
++ (id) sideMovement:(Obstacle *)obstacle distance:(CGFloat)distance speed:(CGFloat)speed
+{
+    CGFloat leftCutoff = obstacle.position.x;
+    CGFloat rightCutoff = leftCutoff + distance;
+    return [[[self alloc] initSideMovement:obstacle leftCutoff:leftCutoff rightCutoff:rightCutoff speed:speed] autorelease];
+}
+
 + (id) sideMovement:(Obstacle *)obstacle leftCutoff:(CGFloat)leftCutoff rightCutoff:(CGFloat)rightCutoff speed:(CGFloat)speed
 {
     return [[[self alloc] initSideMovement:obstacle leftCutoff:leftCutoff rightCutoff:rightCutoff speed:speed] autorelease];
@@ -40,9 +47,7 @@
 }
 
 - (void) dealloc
-{
-    NSLog(@"Side movement dealloc'd");
-    
+{    
     [rocket_ release];
     delegate_ = nil;
     

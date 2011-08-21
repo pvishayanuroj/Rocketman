@@ -39,7 +39,6 @@
 	CCParticleSystem *boostFlame_;         
     
 	CCParticleSystem *heartParticles_;
-    
 }
 
 @property (nonatomic, readonly) CGRect rect;

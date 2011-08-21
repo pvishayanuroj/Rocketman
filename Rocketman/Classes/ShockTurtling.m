@@ -107,12 +107,6 @@ static NSUInteger countID = 0;
     [gameLayer setRocketCondition:kRocketBurning];    
 }
 
-- (void) fall:(CGFloat)speed
-{
-    CGPoint p = CGPointMake(0, speed);
-    self.position = ccpSub(self.position, p);    
-}
-
 - (void) primaryCollision
 {
     GameLayer *gameLayer = (GameLayer *)[self parent];

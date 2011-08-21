@@ -31,7 +31,6 @@
     CGFloat yTarget_;
     
     NSInteger HP_;
-    
 }
 
 + (id) bossTurtleWithPos:(CGPoint)pos;
