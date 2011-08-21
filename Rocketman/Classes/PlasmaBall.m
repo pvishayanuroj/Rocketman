@@ -42,6 +42,7 @@ static NSUInteger countID = 0;
         // Attributes
         PVCollide collide = defaultPVCollide_;
         collide.radius = 16;
+        collide.hitActive = NO;        
         
         // Bounding box setup
         [boundaries_ addObject:[Boundary boundaryWithTarget:self collide:@selector(primaryCollision) hit:nil colStruct:collide]];
