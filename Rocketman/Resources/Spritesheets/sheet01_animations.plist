@@ -53,6 +53,14 @@
 				<key>Num Frames</key>
 				<integer>2</integer>
 			</dict>
+			<dict>
+				<key>Animate Delay</key>
+				<real>0.15</real>
+				<key>Name</key>
+				<string>Slow</string>
+				<key>Num Frames</key>
+				<integer>2</integer>
+			</dict>
 		</array>
 		<key>Name</key>
 		<string>Rocket2</string>
@@ -247,6 +255,83 @@
 		</array>
 		<key>Name</key>
 		<string>Turtling</string>
+	</dict>
+	<dict>
+		<key>Animations</key>
+		<array>
+			<dict>
+				<key>Animate Delay</key>
+				<real>0.15</real>
+				<key>Name</key>
+				<string>Idle</string>
+				<key>Num Frames</key>
+				<integer>2</integer>
+			</dict>
+			<dict>
+				<key>Animate Delay</key>
+				<real>0.15</real>
+				<key>Name</key>
+				<string>Damage</string>
+				<key>Num Frames</key>
+				<integer>1</integer>
+			</dict>
+			<dict>
+				<key>Animate Delay</key>
+				<real>0.15</real>
+				<key>Name</key>
+				<string>Attack</string>
+				<key>Num Frames</key>
+				<integer>1</integer>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>Alien Hover Turtle</string>
+	</dict>
+	<dict>
+		<key>Animations</key>
+		<array>
+			<dict>
+				<key>Animate Delay</key>
+				<real>0.15</real>
+				<key>Name</key>
+				<string>Idle</string>
+				<key>Num Frames</key>
+				<integer>2</integer>
+			</dict>
+			<dict>
+				<key>Animate Delay</key>
+				<real>0.15</real>
+				<key>Name</key>
+				<string>Damage</string>
+				<key>Num Frames</key>
+				<integer>1</integer>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>Yellow Bird</string>
+	</dict>
+	<dict>
+		<key>Animations</key>
+		<array>
+			<dict>
+				<key>Animate Delay</key>
+				<real>0.15</real>
+				<key>Name</key>
+				<string>Idle</string>
+				<key>Num Frames</key>
+				<integer>1</integer>
+			</dict>
+			<dict>
+				<key>Animate Delay</key>
+				<real>0.15</real>
+				<key>Name</key>
+				<string>Damage</string>
+				<key>Num Frames</key>
+				<integer>1</integer>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>Alien Boss Turtle</string>
 	</dict>
 	<dict>
 		<key>Animations</key>
