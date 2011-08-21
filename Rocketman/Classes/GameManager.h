@@ -12,6 +12,7 @@
 @class HUDLayer;
 @class PauseLayer;
 @class DialogueLayer;
+@class Rocket;
 
 @interface GameManager : CCNode {
  
@@ -22,6 +23,8 @@
     PauseLayer *pauseLayer_;
     
     DialogueLayer *dialogueLayer_;
+    
+    Rocket *rocket_;
 }
 
 + (GameManager *) gameManager;
@@ -35,6 +38,8 @@
 - (void) registerPauseLayer:(PauseLayer *)pauseLayer;
 
 - (void) registerDialogueLayer:(DialogueLayer *)dialogueLayer;
+
+- (void) registerRocket:(Rocket *)rocket;
 
 - (void) addShell:(CGPoint)pos;
 
@@ -51,6 +56,8 @@
 - (void) setTilt:(CGFloat)tilt;
 
 - (void) showCombo:(NSUInteger)comboNum;
+
+- (Rocket *) getRocket;
 
 - (void) pause;
 

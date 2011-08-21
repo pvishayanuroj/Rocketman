@@ -24,19 +24,9 @@
     
     CCParticleSystem *engineFlame_;            
     
-    BOOL movingLeft_;
-    
-    BOOL deployedShells_;
-    
-    BOOL freeFall_;
-    
     NSUInteger numShells_;
     
     NSUInteger maxShells_;
-    
-    CGFloat leftCutoff_;
-    
-    CGFloat rightCutoff_;
     
     CGFloat yTarget_;
     
@@ -69,5 +59,7 @@
 - (void) sideMovementLeftTurnaround:(SideMovement *)movement;
 
 - (void) sideMovementRightTurnaround:(SideMovement *)movement;
+
+- (void) sideMovementProximityTrigger:(SideMovement *)movement;
 
 @end

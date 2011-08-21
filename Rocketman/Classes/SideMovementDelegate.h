@@ -16,4 +16,8 @@
 
 - (void) sideMovementRightTurnaround:(SideMovement *)movement;
 
+- (void) sideMovementProximityTrigger:(SideMovement *)movement;
+
+- (void) sideMovementRandomTrigger:(SideMovement *)movement;
+
 @end

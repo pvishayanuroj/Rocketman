@@ -8,6 +8,8 @@
 
 #import "SideMovement.h"
 #import "Obstacle.h"
+#import "GameManager.h"
+#import "Rocket.h"
 
 @implementation SideMovement
 
@@ -28,12 +30,20 @@
         delegate_ = nil;
         movingLeft_ = YES;
         
+        proximityTriggerOn_ = NO;
+        proximityTriggered_ = NO;
+        randomTriggerOn_ = NO;
+        
+        rocket_ = nil;
     }
     return self;
 }
 
 - (void) dealloc
 {
+    NSLog(@"Side movement dealloc'd");
+    
+    [rocket_ release];
     delegate_ = nil;
     
     [super dealloc];
@@ -46,13 +56,16 @@
     if (movingLeft_) {
         // Check if we got to the turnaround point to move right again
         if (obstacle_.position.x < leftCutoff_) {
+            // Reset flags
             movingLeft_ = NO;
-            dx = sideSpeed_;
+            proximityTriggered_ = NO;
             
             // Alert the delegate (if any)
             if (delegate_ && [delegate_ respondsToSelector:@selector(sideMovementLeftTurnaround:)]) {
                 [delegate_ sideMovementLeftTurnaround:self];
             }
+            
+            dx = sideSpeed_;
         }
         else {
             dx = -sideSpeed_;
@@ -62,12 +75,14 @@
         // Check if we got to the turnaround point to move left
         if (obstacle_.position.x > rightCutoff_) {
             movingLeft_ = YES;
-            dx = -sideSpeed_;
+            proximityTriggered_ = NO;            
             
             // Alert the delegate (if any)
             if (delegate_ && [delegate_ respondsToSelector:@selector(sideMovementRightTurnaround:)]) {
                 [delegate_ sideMovementRightTurnaround:self];
             }            
+            
+            dx = -sideSpeed_;            
         }
         else {
             dx = sideSpeed_;
@@ -76,6 +91,35 @@
     
     CGPoint p = CGPointMake(dx, 0);     
     obstacle_.position = ccpAdd(obstacle_.position, p);    
+    
+    // Check for proximity triggering
+    if (proximityTriggerOn_) {
+        if (!proximityTriggered_) {
+            CGFloat distance = rocket_.position.x - obstacle_.position.x;
+            if (fabs(distance) < proximityDistance_) {
+                proximityTriggered_ = YES;
+                // Alert the delegate (if any) of the proximity trigger firing
+                if (delegate_ && [delegate_ respondsToSelector:@selector(sideMovementProximityTrigger:)]) {
+                    [delegate_ sideMovementProximityTrigger:self];
+                }
+            }
+        }
+    }
+}
+
+- (void) setProximityTrigger:(CGFloat)distance
+{
+    proximityTriggerOn_ = YES;
+    proximityDistance_ = distance;
+    
+    // Hold a reference to the rocket
+    [rocket_ release];
+    rocket_ = [[[GameManager gameManager] getRocket] retain];    
+}
+
+- (void) setRandomTrigger:(NSUInteger)numPerTurn
+{
+    
 }
 
 - (void) changeSideSpeed:(CGFloat)sideSpeed

@@ -92,6 +92,7 @@
         CGPoint startPos = CGPointMake(screenWidth_ * 0.5, screenHeight_ * 0.15);
         rocket_ = [[Rocket rocketWithPos:startPos] retain];
         [self addChild:rocket_ z:kRocketDepth];
+        [[GameManager gameManager] registerRocket:rocket_];
         
         // Game variables
         rocketSpeed_ = 0;

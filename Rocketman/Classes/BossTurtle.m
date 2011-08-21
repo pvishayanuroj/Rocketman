@@ -41,7 +41,7 @@ static NSUInteger countID = 0;
         self.position = pos;
         
         // Attributes
-        HP_ = 1;
+        HP_ = 3;
         headOffset_ = ccp(70, 0);
         
         // Attributes
@@ -66,17 +66,16 @@ static NSUInteger countID = 0;
         CGFloat leftCutoff = - 0.5 * size.width;
         CGFloat rightCutoff  = size.width + 0.5 * size.width;
         yTarget_ = 0.80 * size.height;
-        
-        movingLeft_ = YES;
-        deployedShells_ = NO;
-        freeFall_ = NO;
+    
         sprite_.flipX = YES;
         numShells_ = 0;
         maxShells_ = 6;
         
-        // This gets released in the death function
+        // Setup the side-to-side movement of the boss
         SideMovement *movement = [SideMovement sideMovement:self leftCutoff:leftCutoff rightCutoff:rightCutoff speed:3];
         movement.delegate = self;
+        [movement setProximityTrigger:25.0f];
+        // This gets released in the death function
         movement_ = [movement retain];
         
         [self initActions];
@@ -157,7 +156,9 @@ static NSUInteger countID = 0;
 
 - (void) startFreeFall
 {
-    freeFall_ = YES;
+    // Remove the side movement and have a typical falling movement instead
+    [movement_ release];
+    movement_ = [[StaticMovement staticMovement:self] retain];
 }
 
 - (void) addBlast
@@ -190,28 +191,27 @@ static NSUInteger countID = 0;
 
 - (void) sideMovementLeftTurnaround:(SideMovement *)movement
 {
-    sprite_.flipX = NO;           
-    deployedShells_ = NO;            
+    sprite_.flipX = NO;                   
     [self engineFlameGoingRight:NO];
     PVCollide c = headBoundary_.collide;
     c.offset = headOffset_;
     headBoundary_.collide = c;    
-    
-    // temporary
-    movingLeft_ = NO;
 }
 
 - (void) sideMovementRightTurnaround:(SideMovement *)movement
 {
     sprite_.flipX = YES; 
-    deployedShells_ = NO;
     [self engineFlameGoingRight:YES];       
     PVCollide c = headBoundary_.collide;
     c.offset = ccp(-headOffset_.x, headOffset_.y);
     headBoundary_.collide = c;    
-    
-    // temporary
-    movingLeft_ = YES;    
+}
+
+- (void) sideMovementProximityTrigger:(SideMovement *)movement
+{
+    if (HP_ > 0 && self.position.y <= yTarget_) {
+        [self startShellSequence];
+    }
 }
 
 - (void) fall:(CGFloat)speed
@@ -224,95 +224,11 @@ static NSUInteger countID = 0;
         if (self.position.y > yTarget_) {
             dy = -1;
         }
-        // Deploy shells each turn
-        else {
-            if (!deployedShells_) {
-                CGFloat xTrigger = 160;
-                if ((movingLeft_ && self.position.x < xTrigger) || (!movingLeft_ && self.position.x > xTrigger)) {
-                    deployedShells_ = YES;
-                    [self startShellSequence];                
-                }
-            }
-        }
     }
     
     CGPoint p = CGPointMake(0, dy);
     self.position = ccpAdd(self.position, p);    
-    
-    //NSLog(@"pos: %3.0f, %3.0f", self.position.x, self.position.y);
 }
-
-/*
-- (void) fall:(CGFloat)speed
-{
-    CGFloat dx;
-    CGFloat dy = 0;
-
-    // If turtle is in free fall, fall normally
-    if (freeFall_) {
-        CGPoint p = CGPointMake(0, speed*0.5);
-        self.position = ccpSub(self.position, p);            
-        return;
-    }
-
-    
-    if (movingLeft_) {
-        // Check if we got to the turnaround point to move right again
-        if (self.position.x < leftCutoff_) {
-            movingLeft_ = NO;
-            sprite_.flipX = NO;           
-            deployedShells_ = NO;            
-            [self engineFlameGoingRight:NO];
-            PVCollide c = headBoundary_.collide;
-            c.offset = headOffset_;
-            headBoundary_.collide = c;
-        }
-        else {
-            dx = -3;
-        }
-    }
-    else {
-        // Check if we got to the turnaround point to move left
-        if (self.position.x > rightCutoff_) {
-            movingLeft_ = YES;
-            sprite_.flipX = YES; 
-            deployedShells_ = NO;
-            [self engineFlameGoingRight:YES];       
-            PVCollide c = headBoundary_.collide;
-            c.offset = ccp(-headOffset_.x, headOffset_.y);
-            headBoundary_.collide = c;
-        }
-        else {
-            dx = 3;
-        }
-    }
-        
-    // Only launch shells if not in death sequence
-    if (HP_ > 0) {
-        if (self.position.y > yTarget_) {
-            dy = -1;
-        }
-        // Deploy shells each turn
-        else {
-            if (!deployedShells_) {
-                CGFloat xTrigger = 160;
-                if ((movingLeft_ && self.position.x < xTrigger) || (!movingLeft_ && self.position.x > xTrigger)) {
-                    deployedShells_ = YES;
-                    [self startShellSequence];                
-                }
-            }
-        }
-    }
-    
-    // When dying, move slowly
-    if (HP_ <= 0) {
-        dx *= 0.2;
-    }
-        
-    CGPoint p = CGPointMake(dx, dy);
-    self.position = ccpAdd(self.position, p);    
-}
- */
 
 - (void) primaryHit
 {

@@ -11,6 +11,7 @@
 #import "HUDLayer.h"
 #import "PauseLayer.h"
 #import "DialogueLayer.h"
+#import "Rocket.h"
 #import "CCNode+PauseResume.h"
 
 // For singleton
@@ -48,7 +49,7 @@ static GameManager *_gameManager = nil;
         hudLayer_ = nil;
         pauseLayer_ = nil;
         dialogueLayer_ = nil;
-        
+        rocket_ = nil;
 	}
 	return self;
 }
@@ -61,10 +62,12 @@ static GameManager *_gameManager = nil;
     [hudLayer_ release];
     [pauseLayer_ release];
     [dialogueLayer_ release];
+    [rocket_ release];
     gameLayer_ = nil;
     hudLayer_ = nil;
     pauseLayer_ = nil;
     dialogueLayer_ = nil;    
+    rocket_ = nil;
 	
 	[super dealloc];
 }
@@ -74,29 +77,31 @@ static GameManager *_gameManager = nil;
 - (void) registerGameLayer:(GameLayer *)gameLayer
 {
 	NSAssert(gameLayer_ == nil, @"Trying to register a Game Layer when one already exists");
-	gameLayer_ = gameLayer;
-	[gameLayer_ retain];
+	gameLayer_ = [gameLayer retain];
 }
 
 - (void) registerHUDLayer:(HUDLayer *)hudLayer
 {
 	NSAssert(hudLayer_ == nil, @"Trying to register a HUD Layer when one already exists");
-	hudLayer_ = hudLayer;
-	[hudLayer_ retain];
+	hudLayer_ = [hudLayer retain];
 }
 
 - (void) registerPauseLayer:(PauseLayer *)pauseLayer
 {
 	NSAssert(pauseLayer_ == nil, @"Trying to register a Pause Layer when one already exists");
-	pauseLayer_ = pauseLayer;
-	[pauseLayer_ retain];
+	pauseLayer_ = [pauseLayer retain];
 }
 
 - (void) registerDialogueLayer:(DialogueLayer *)dialogueLayer
 {
 	NSAssert(dialogueLayer_ == nil, @"Trying to register a Dialogue Layer when one already exists");
-	dialogueLayer_ = dialogueLayer;
-	[dialogueLayer_ retain];    
+	dialogueLayer_ = [dialogueLayer retain];
+}
+
+- (void) registerRocket:(Rocket *)rocket
+{
+    NSAssert(rocket_ == nil, @"Trying to register a Rocket when one already exists");
+    rocket_ = [rocket retain];
 }
 
 #pragma mark - Game Layer Methods
@@ -148,6 +153,13 @@ static GameManager *_gameManager = nil;
 - (void) showCombo:(NSUInteger)comboNum
 {
     [dialogueLayer_ showCombo:comboNum];
+}
+
+#pragma mark - Rocket methods
+
+- (Rocket *) getRocket
+{
+    return rocket_;
 }
 
 #pragma mark - Pause / Resume
