@@ -26,9 +26,11 @@ static NSUInteger countID = 0;
 {
 	if ((self = [super init])) {
         
-		unitID_ = countID++;                        
+		unitID_ = countID++;        
+        name_ = [[NSString stringWithString:@"Angel2"] retain];
+        NSString *spriteName = [NSString stringWithFormat:@"%@ Idle 01.png", name_];           
         
-        sprite_ = [[CCSprite spriteWithSpriteFrameName:@"Angel2 Idle 01.png"] retain];
+        sprite_ = [[CCSprite spriteWithSpriteFrameName:spriteName] retain];
         [self addChild:sprite_ z:-1];
         
         self.position = pos;
@@ -57,6 +59,7 @@ static NSUInteger countID = 0;
     NSLog(@"%@ dealloc'd", self);    
 #endif
     
+    [name_ release];
     [sprite_ release];
     [idleAnimation_ release];
     [slapAnimation_ release];
@@ -64,18 +67,15 @@ static NSUInteger countID = 0;
     [super dealloc];
 }
 
-- (NSString *) description
-{
-    return [NSString stringWithFormat:@"Angel %d", unitID_];
-}    
-
 - (void) initActions
 {
-	CCAnimation *animation = [[CCAnimationCache sharedAnimationCache] animationByName:@"Angel2 Idle"];
+    NSString *animationName = [NSString stringWithFormat:@"%@ Idle", name_];    
+	CCAnimation *animation = [[CCAnimationCache sharedAnimationCache] animationByName:animationName];
 	CCActionInterval *animate = [CCAnimate actionWithAnimation:animation];
 	idleAnimation_ = [[CCRepeatForever actionWithAction:animate] retain];		
     
-	animation = [[CCAnimationCache sharedAnimationCache] animationByName:@"Angel2 Kiss"];
+    animationName = [NSString stringWithFormat:@"%@ Kiss", name_];
+	animation = [[CCAnimationCache sharedAnimationCache] animationByName:animationName];
 	slapAnimation_ = [[CCAnimate actionWithAnimation:animation] retain];
 }   
 

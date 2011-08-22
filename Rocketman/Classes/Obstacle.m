@@ -47,6 +47,11 @@
     [super dealloc];
 }
 
+- (NSString *) description
+{
+    return [NSString stringWithFormat:@"%@ %d", name_, unitID_];
+}  
+
 - (void) showIdle
 {
 	[sprite_ stopAllActions];

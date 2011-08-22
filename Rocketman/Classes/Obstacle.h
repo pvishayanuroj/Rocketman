@@ -28,6 +28,8 @@
 	NSUInteger unitID_;
     
     BOOL markToRemove_;
+    
+    NSString *name_;
 }
 
 @property (nonatomic, assign) BOOL markToRemove;

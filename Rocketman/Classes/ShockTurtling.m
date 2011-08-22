@@ -26,9 +26,11 @@ static NSUInteger countID = 0;
 {
 	if ((self = [super init])) {
         
-		unitID_ = countID++;                
+		unitID_ = countID++;              
+        name_ = [[NSString stringWithString:@"Turtling"] retain];
+        NSString *spriteName = [NSString stringWithFormat:@"%@ Idle 01.png", name_];         
         
-        sprite_ = [[CCSprite spriteWithSpriteFrameName:@"Turtling Idle 01.png"] retain];
+        sprite_ = [[CCSprite spriteWithSpriteFrameName:spriteName] retain];
         [self addChild:sprite_ z:-1];
         
         self.position = pos;
@@ -56,29 +58,28 @@ static NSUInteger countID = 0;
     NSLog(@"%@ dealloc'd", self);    
 #endif
     
+    [name_ release];
     [sprite_ release];
     [idleAnimation_ release];
     [preshockAnimation_ release];
     [shockAnimation_ release];
     
     [super dealloc];
-}
-
-- (NSString *) description
-{
-    return [NSString stringWithFormat:@"Turtling %d", unitID_];
-}    
+}  
 
 - (void) initActions
 {
-	CCAnimation *animation = [[CCAnimationCache sharedAnimationCache] animationByName:@"Turtling Idle"];
+    NSString *animationName = [NSString stringWithFormat:@"%@ Idle", name_];
+	CCAnimation *animation = [[CCAnimationCache sharedAnimationCache] animationByName:animationName];
 	CCActionInterval *animate = [CCAnimate actionWithAnimation:animation];
 	idleAnimation_ = [[CCRepeatForever actionWithAction:animate] retain];
 	
-    animation = [[CCAnimationCache sharedAnimationCache] animationByName:@"Turtling Preshock"];
+    animationName = [NSString stringWithFormat:@"%@ Preshock", name_];    
+    animation = [[CCAnimationCache sharedAnimationCache] animationByName:animationName];
     preshockAnimation_ = [[CCAnimate actionWithAnimation:animation] retain];
     
-    animation = [[CCAnimationCache sharedAnimationCache] animationByName:@"Turtling Shock"];                 
+    animationName = [NSString stringWithFormat:@"%@ Shock", name_];    
+    animation = [[CCAnimationCache sharedAnimationCache] animationByName:animationName];                 
     animate = [CCAnimate actionWithAnimation:animation];
     shockAnimation_ = [[CCRepeat actionWithAction:animate times:5] retain];
     

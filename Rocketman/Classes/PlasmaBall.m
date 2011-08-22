@@ -32,9 +32,11 @@ static NSUInteger countID = 0;
 {
 	if ((self = [super init])) {
         
-		unitID_ = countID++;                
+		unitID_ = countID++;              
+        name_ = [[NSString stringWithString:@"Plasma Bullet"] retain];
+        NSString *spriteName = [NSString stringWithFormat:@"%@.png", name_];                 
         
-        sprite_ = [[CCSprite spriteWithSpriteFrameName:@"Plasma Bullet.png"] retain];
+        sprite_ = [[CCSprite spriteWithSpriteFrameName:spriteName] retain];
         [self addChild:sprite_ z:-1];
         
         self.position = pos;
@@ -62,16 +64,12 @@ static NSUInteger countID = 0;
     NSLog(@"%@ dealloc'd", self);    
 #endif
     
+    [name_ release];
     [sprite_ release];
     [idleAnimation_ release];
     
     [super dealloc];
 }
-
-- (NSString *) description
-{
-    return [NSString stringWithFormat:@"Plasma Bullet %d", unitID_];
-}    
 
 - (void) initActions
 {

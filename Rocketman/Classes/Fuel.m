@@ -26,8 +26,10 @@ static NSUInteger countID = 0;
 	if ((self = [super init])) {
         
         unitID_ = countID++;
+        name_ = [[NSString stringWithString:@"Fuel"] retain];
+        NSString *spriteName = [NSString stringWithFormat:@"%@.png", name_];         
         
-        sprite_ = [[CCSprite spriteWithSpriteFrameName:@"Fuel.png"] retain];
+        sprite_ = [[CCSprite spriteWithSpriteFrameName:spriteName] retain];
         [self addChild:sprite_ z:-1];
         sprite_.scale = 1.0;
         
@@ -57,17 +59,13 @@ static NSUInteger countID = 0;
     NSLog(@"%@ dealloc'd", self);    
 #endif
     
+    [name_ release];
     [sprite_ release];
     [idleAnimation_ release];
     [collectAnimation_ release];
     
     [super dealloc];
 }
-
-- (NSString *) description
-{
-    return [NSString stringWithFormat:@"Fuel %d", unitID_];
-}    
 
 - (void) initActions
 {

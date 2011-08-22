@@ -34,9 +34,11 @@ static NSUInteger countID = 0;
 {
 	if ((self = [super init])) {
         
-		unitID_ = countID++;                
+		unitID_ = countID++;        
+        name_ = [[NSString stringWithString:@"BossTurtle"] retain];
+        NSString *spriteName = [NSString stringWithFormat:@"%@ Fly 01.png", name_];           
         
-        sprite_ = [[CCSprite spriteWithSpriteFrameName:@"BossTurtle Fly 01.png"] retain];
+        sprite_ = [[CCSprite spriteWithSpriteFrameName:spriteName] retain];
         [self addChild:sprite_ z:-1];
         
         self.position = pos;
@@ -94,6 +96,7 @@ static NSUInteger countID = 0;
     NSLog(@"%@ dealloc'd", self);    
 #endif
     
+    [name_ release];
     [sprite_ release];
     [idleAnimation_ release];
     [damageAnimation_ release];
@@ -104,18 +107,15 @@ static NSUInteger countID = 0;
     [super dealloc];
 }
 
-- (NSString *) description
-{
-    return [NSString stringWithFormat:@"Boss Turtle %d", unitID_];
-}    
-
 - (void) initActions
 {
-	CCAnimation *animation = [[CCAnimationCache sharedAnimationCache] animationByName:@"BossTurtle Fly"];
+    NSString *animationName = [NSString stringWithFormat:@"%@ Fly", name_];
+	CCAnimation *animation = [[CCAnimationCache sharedAnimationCache] animationByName:animationName];
 	CCActionInterval *animate = [CCAnimate actionWithAnimation:animation];
 	idleAnimation_ = [[CCRepeatForever actionWithAction:animate] retain];
 	
-	animation = [[CCAnimationCache sharedAnimationCache] animationByName:@"BossTurtle Damage"];
+    animationName = [NSString stringWithFormat:@"%@ Damage", name_];    
+	animation = [[CCAnimationCache sharedAnimationCache] animationByName:animationName];
 	damageAnimation_ = [[CCAnimate actionWithAnimation:animation] retain];    
 }                 
 

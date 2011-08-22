@@ -25,8 +25,10 @@ static NSUInteger countID = 0;
 	if ((self = [super init])) {
         
         unitID_ = countID++;
+        name_ = [[NSString stringWithString:@"Boost Ring"] retain];
+        NSString *spriteName = [NSString stringWithFormat:@"%@.png", name_]; 
         
-        sprite_ = [[CCSprite spriteWithSpriteFrameName:@"Boost Ring.png"] retain];
+        sprite_ = [[CCSprite spriteWithSpriteFrameName:spriteName] retain];
         [self addChild:sprite_ z:-1];
         
         self.position = pos;
@@ -56,16 +58,12 @@ static NSUInteger countID = 0;
     NSLog(@"%@ dealloc'd", self);    
 #endif
     
+    [name_ release];
     [sprite_ release];
     [idleAnimation_ release];
     
     [super dealloc];
 }
-
-- (NSString *) description
-{
-    return [NSString stringWithFormat:@"Boost %d", unitID_];
-}    
 
 - (void) initActions
 {
