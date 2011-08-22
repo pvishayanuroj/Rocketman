@@ -17,6 +17,7 @@
 #import "Boundary.h"
 #import "SideMovement.h"
 #import "StaticMovement.h"
+#import "PointWrapper.h"
 
 @implementation BossTurtle
 
@@ -57,7 +58,7 @@ static NSUInteger countID = 0;
         headCollide.autoInactive = NO;
         
         // Bounding box setup
-        bodyBoundary_ = [[Boundary boundaryWithTarget:self collide:nil hit:@selector(primaryHit) colStruct:bodyCollide] retain];
+        bodyBoundary_ = [[Boundary boundaryWithTarget:self collide:nil hit:@selector(primaryHit:) colStruct:bodyCollide] retain];
         headBoundary_ = [[Boundary boundaryWithTarget:self collide:nil hit:@selector(secondaryHit) colStruct:headCollide] retain];
         [boundaries_ addObject:bodyBoundary_];
         [boundaries_ addObject:headBoundary_];        
@@ -230,9 +231,13 @@ static NSUInteger countID = 0;
     self.position = ccpAdd(self.position, p);    
 }
 
-- (void) primaryHit
+- (void) primaryHit:(PointWrapper *)pos
 {
+    // Account for offset, since pos is in terms of screen grid
+    CGPoint p = ccpSub(pos.point, self.position);
     // Turtle takes no damage on shell hit
+    BlastCloud *blast = [BlastCloud blastCloudAt:p size:1.0 text:kBamText];
+    [self addChild:blast];  
 }
 
 - (void) secondaryHit

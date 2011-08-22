@@ -446,7 +446,7 @@
             NSInteger x = [self getRandomX];
             NSInteger y = screenHeight_ + 100;
             CGPoint pos = ccp(x, y);          
-            //[self addObstacle:kBossTurtle pos:pos];
+            [self addObstacle:kBossTurtle pos:pos];
         }
     }
 }

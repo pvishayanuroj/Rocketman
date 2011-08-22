@@ -23,6 +23,7 @@
 		DA2F101813B05CD700738D08 /* Intro 07 Hand.png in Resources */ = {isa = PBXBuildFile; fileRef = DA2F101713B05CD700738D08 /* Intro 07 Hand.png */; };
 		DA336CA31401622F009EE661 /* PlasmaBall.m in Sources */ = {isa = PBXBuildFile; fileRef = DA336CA21401622E009EE661 /* PlasmaBall.m */; };
 		DA336CAA14018D4F009EE661 /* ConstantMovement.m in Sources */ = {isa = PBXBuildFile; fileRef = DA336CA914018D4E009EE661 /* ConstantMovement.m */; };
+		DA336CAD1401C3BC009EE661 /* PointWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = DA336CAC1401C3BB009EE661 /* PointWrapper.m */; };
 		DA346D66138E593D000881D6 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA346D65138E593D000881D6 /* QuartzCore.framework */; };
 		DA346D68138E593D000881D6 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA346D67138E593D000881D6 /* OpenGLES.framework */; };
 		DA346D6A138E593D000881D6 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA346D69138E593D000881D6 /* OpenAL.framework */; };
@@ -278,6 +279,8 @@
 		DA336CA21401622E009EE661 /* PlasmaBall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlasmaBall.m; path = Classes/PlasmaBall.m; sourceTree = "<group>"; };
 		DA336CA814018D4E009EE661 /* ConstantMovement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConstantMovement.h; path = Classes/ConstantMovement.h; sourceTree = "<group>"; };
 		DA336CA914018D4E009EE661 /* ConstantMovement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConstantMovement.m; path = Classes/ConstantMovement.m; sourceTree = "<group>"; };
+		DA336CAB1401C3BA009EE661 /* PointWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PointWrapper.h; path = Classes/PointWrapper.h; sourceTree = "<group>"; };
+		DA336CAC1401C3BB009EE661 /* PointWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PointWrapper.m; path = Classes/PointWrapper.m; sourceTree = "<group>"; };
 		DA346D61138E593D000881D6 /* Rocketman.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rocketman.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA346D65138E593D000881D6 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		DA346D67138E593D000881D6 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -1235,6 +1238,8 @@
 				DAA8514E13BB40ED009ED314 /* Boundary.m */,
 				DACF5CBD13C9DC4A0034C281 /* CCNode+PauseResume.h */,
 				DACF5CBE13C9DC4B0034C281 /* CCNode+PauseResume.m */,
+				DA336CAB1401C3BA009EE661 /* PointWrapper.h */,
+				DA336CAC1401C3BB009EE661 /* PointWrapper.m */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -1708,6 +1713,7 @@
 				DAA0512D1400B48B00D4B213 /* HoverTurtle.m in Sources */,
 				DA336CA31401622F009EE661 /* PlasmaBall.m in Sources */,
 				DA336CAA14018D4F009EE661 /* ConstantMovement.m in Sources */,
+				DA336CAD1401C3BC009EE661 /* PointWrapper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

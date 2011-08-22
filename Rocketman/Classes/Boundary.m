@@ -9,6 +9,7 @@
 #import "Boundary.h"
 #import "Obstacle.h"
 #import "UtilFuncs.h"
+#import "PointWrapper.h"
 
 @implementation Boundary
 
@@ -70,7 +71,8 @@
         }
         // Allowed to be null when setting up boundary
         if (hitSel_) {        
-            [target_ performSelector:hitSel_];
+            id arg = [PointWrapper cgPoint:catPos];
+            [target_ performSelector:hitSel_ withObject:arg];
         }
         return YES;
     }
