@@ -91,15 +91,7 @@ static NSUInteger countID = 0;
     [gameLayer slowDown:0.66];    
     
     [super collide];    
-    [self death];
-}
-
-- (void) death
-{    
-    GameLayer *gameLayer = (GameLayer *)[self parent];    
-    [gameLayer removeObstacle:self];      
-    
-    [super destroy];
+    [super flagToDestroy];
 }
 
 @end

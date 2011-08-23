@@ -14,7 +14,7 @@
 
 @implementation Obstacle
 
-@synthesize markToRemove = markToRemove_;
+@synthesize destroyed = destroyed_;
 @synthesize boundaries = boundaries_;
 
 - (id) init
@@ -22,16 +22,16 @@
     if ((self = [super init])) {
         
         // Default collision parameters (override some of these)
-        defaultPVCollide_.circular = YES;
-        defaultPVCollide_.collideActive = YES;        
-        defaultPVCollide_.hitActive = YES;
-        defaultPVCollide_.autoInactive = YES;
+        defaultPVCollide_.circular = YES; // Circular radius
+        defaultPVCollide_.collideActive = YES; // Can be collided with by the rocket
+        defaultPVCollide_.hitActive = YES; // Can be shot at
+        defaultPVCollide_.autoInactive = YES; // Defaults hit and collide to inactive after first hit or collide
         defaultPVCollide_.radius = 10;
         defaultPVCollide_.size.width = 10;
         defaultPVCollide_.size.height = 10;
         defaultPVCollide_.offset = CGPointZero;
         
-        markToRemove_ = NO;
+        destroyed_ = NO;
         boundaries_ = [[NSMutableArray arrayWithCapacity:1] retain];
         
         movement_ = nil;
@@ -85,8 +85,13 @@
     [gameLayer setRocketCondition:kRocketWobbling];
 }
 
-- (void) destroy
+- (void) flagToDestroy
 {       
+    destroyed_ = YES;
+}
+
+- (void) destroy
+{
     [self removeFromParentAndCleanup:YES];
     
     // Do this here, otherwise the boundaries' ref to obstacles will never be release, thus causing a circular reference
@@ -95,7 +100,7 @@
     
     // Likewise, remove the movement here, because the movement has a reference to this obstacle
     [movement_ release];
-    movement_ = nil;
+    movement_ = nil;   
 }
 
 #pragma mark - Debug Methods

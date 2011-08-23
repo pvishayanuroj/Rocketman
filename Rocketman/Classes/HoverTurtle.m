@@ -122,11 +122,8 @@ static NSUInteger countID = 0;
 }
 
 - (void) death
-{    
-    GameLayer *gameLayer = (GameLayer *)[self parent];    
-    [gameLayer removeObstacle:self];      
-    
-    [super destroy];
+{        
+    [super flagToDestroy];
 }
 
 - (void) sideMovementProximityTrigger:(SideMovement *)movement

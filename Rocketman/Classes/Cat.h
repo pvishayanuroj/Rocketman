@@ -22,6 +22,4 @@
 
 - (void) showCollect;
 
-- (void) destroy;
-
 @end

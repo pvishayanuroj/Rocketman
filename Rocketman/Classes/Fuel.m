@@ -76,10 +76,10 @@ static NSUInteger countID = 0;
     CCActionInterval *animate = [CCSequence actions:eDown, eUp, nil];
 	idleAnimation_ = [[CCRepeatForever actionWithAction:animate] retain];		    
     
-    CCActionInterval *scaleUp = [CCScaleBy actionWithDuration:0.15 scale:1.5];
-    CCActionInterval *scaleDown = [CCScaleBy actionWithDuration:0.1 scale:0.01];    
-	CCFiniteTimeAction *method = [CallFuncWeak actionWithTarget:self selector:@selector(destroy)];	    
-    collectAnimation_ = [[CCSequence actions:scaleUp, scaleDown, method, nil] retain];
+    CCActionInterval *scaleUp = [CCScaleBy actionWithDuration:0.1f scale:1.5];
+    CCActionInterval *scaleDown = [CCScaleBy actionWithDuration:0.05f scale:0.01];    
+	CCFiniteTimeAction *method = [CallFuncWeak actionWithTarget:self selector:@selector(death)];	    
+    collectAnimation_ = [[CCSequence actions:scaleUp, scaleDown, method, nil] retain];    
 }
 
 - (void) showCollect
@@ -92,15 +92,12 @@ static NSUInteger countID = 0;
 {
     GameLayer *gameLayer = (GameLayer *)[self parent];
     [gameLayer collectFuel:self];
-    [gameLayer removeObstacle:self];
     [self showCollect];    
-    
-    [super collide];
 }
 
-- (void) destroy
+- (void) death
 {   
-    [super destroy];
+    [super flagToDestroy];
 }
 
 @end

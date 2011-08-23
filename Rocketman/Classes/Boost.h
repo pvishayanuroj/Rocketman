@@ -18,6 +18,4 @@
 
 - (void) initActions;
 
-- (void) destroy;
-
 @end

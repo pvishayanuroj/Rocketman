@@ -183,6 +183,4 @@
 
 - (void) removeText:(id)node data:(CCSprite *)text;
 
-- (void) removeObstacle:(Obstacle *)obstacle;
-
 @end

@@ -247,11 +247,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Rocketman/Classes/GameLayer.m"
-         timestampString = "335638786.321561"
+         timestampString = "335832747.067772"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "592"
-         endingLineNumber = "592"
+         startingLineNumber = "593"
+         endingLineNumber = "593"
          landmarkName = "-endLevel"
          landmarkType = "5">
       </FileBreakpoint>
@@ -303,11 +303,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Rocketman/Classes/GameLayer.m"
-         timestampString = "335638786.321561"
+         timestampString = "335832747.067772"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "806"
-         endingLineNumber = "806"
+         startingLineNumber = "807"
+         endingLineNumber = "807"
          landmarkName = "-useBoost"
          landmarkType = "5">
       </FileBreakpoint>
@@ -317,11 +317,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Rocketman/Classes/GameLayer.m"
-         timestampString = "335638786.321561"
+         timestampString = "335832747.067772"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "805"
-         endingLineNumber = "805"
+         startingLineNumber = "806"
+         endingLineNumber = "806"
          landmarkName = "-useBoost"
          landmarkType = "5">
       </FileBreakpoint>
@@ -365,6 +365,48 @@
          startingLineNumber = "213"
          endingLineNumber = "213"
          landmarkName = "-sideMovementProximityTrigger:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Rocketman/Classes/GameLayer.m"
+         timestampString = "335832747.067772"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "288"
+         endingLineNumber = "288"
+         landmarkName = "-collisionDetect"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Rocketman/Classes/Boost.m"
+         timestampString = "335679751.390328"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "78"
+         endingLineNumber = "78"
+         landmarkName = "-primaryCollision"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Rocketman/Classes/GameLayer.m"
+         timestampString = "335832955.59067"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "340"
+         endingLineNumber = "340"
+         landmarkName = "-collisionDetect"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

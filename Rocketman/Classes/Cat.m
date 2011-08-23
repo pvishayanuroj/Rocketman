@@ -73,7 +73,7 @@ static NSUInteger countID = 0;
     
     CCActionInterval *scaleUp = [CCScaleBy actionWithDuration:0.15 scale:2.0];
     CCActionInterval *scaleDown = [CCScaleBy actionWithDuration:0.1 scale:0.01];    
-	CCFiniteTimeAction *method = [CallFuncWeak actionWithTarget:self selector:@selector(destroy)];	    
+	CCFiniteTimeAction *method = [CallFuncWeak actionWithTarget:self selector:@selector(death)];	    
     collectAnimation_ = [[CCSequence actions:scaleUp, scaleDown, method, nil] retain];
 }
 
@@ -87,17 +87,14 @@ static NSUInteger countID = 0;
 {
     GameLayer *gameLayer = (GameLayer *)[self parent];
     [gameLayer collectCat:self];    
-    [gameLayer removeObstacle:self];
     [self showCollect];
     
     [super collide];
-    
-    // Note that destroy is called from the collect animation    
 }
 
-- (void) destroy
-{    
-    [super destroy];
+- (void) death
+{   
+    [super flagToDestroy];
 }
 
 @end

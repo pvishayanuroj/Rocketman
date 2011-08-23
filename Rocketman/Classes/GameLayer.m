@@ -284,32 +284,17 @@
     rocketBox.size = rocket_.rect.size;
     rocketBox.origin = rocket_.position;
     
-    // For removal of obstacles
-    NSMutableIndexSet *remove = [NSMutableIndexSet indexSet];    
-    NSInteger index = 0;
-    
     // For checking if the rocket collides with obstacles
     for (Obstacle *obstacle in obstacles_) {
         // Each object may have multiple boundaries to collide with
         for (Boundary *boundary in obstacle.boundaries) {
             [boundary collisionCheckAndHandle:obstacle.position rocketBox:rocketBox];
-            // Important: The check and handle call may result in obstacle destruction and 
-            // this layer's removeObstacle method may be called. Because removal at that point would
-            // corrupt the remainder of the loop, we set a flag instead to indicate future removal
-            if (obstacle.markToRemove) {
-                [remove addIndex:index];
-                break; // Break out of inner loop
-            }
         }
-        index++;
     }
     
-    // For removal of obstacles
-    [obstacles_ removeObjectsAtIndexes:remove];
-    
-    // For removal of bullets
-    [remove removeAllIndexes];
-    index = 0;    
+    // For removal of objects
+    NSMutableIndexSet *remove = [NSMutableIndexSet indexSet];    
+    NSInteger index = 0;            
     
     // For checking cat bullet collisions with obstacles
     for (CatBullet *cat in firedCats_) {
@@ -341,8 +326,25 @@
         index++;
     } // end cat bullet collision loop
 
-    // Remove outside the loop
+    // For the removal of cat bullets
     [firedCats_ removeObjectsAtIndexes:remove];
+
+    // Reset
+    [remove removeAllIndexes];
+    index = 0;        
+    
+    // Obstacle removal loop - removes all obstacles that may have been flagged in any of
+    // the collision checks above
+    for (Obstacle *obstacle in obstacles_) {
+        if (obstacle.destroyed) {
+            [obstacle destroy];
+            [remove addIndex:index];
+        }
+        index++;
+    }    
+    
+    // For removal of obstacles
+    [obstacles_ removeObjectsAtIndexes:remove];    
 }
 
 - (void) applyGravity
@@ -446,7 +448,7 @@
             NSInteger x = [self getRandomX];
             NSInteger y = screenHeight_ + 100;
             CGPoint pos = ccp(x, y);          
-            [self addObstacle:kBossTurtle pos:pos];
+            //[self addObstacle:kBossTurtle pos:pos];
         }
     }
 }
@@ -468,7 +470,7 @@
         pos = ccp(x, y);                
 
         NSUInteger type = arc4random() % 7; 
-        type = 7;
+        type = kFlybot;
         [self addObstacle:type pos:pos];
         //[self addTurtlingSwarm:8];        
     }    
@@ -909,14 +911,6 @@
 - (void) removeText:(id)node data:(CCSprite *)text
 {
     [text removeFromParentAndCleanup:YES];
-}
-
-- (void) removeObstacle:(Obstacle *)obstacle
-{
-    // Important: The check and handle call may result in obstacle destruction and 
-    // this method may be called. Because removal at that point would the collision check
-    // loop, we set a flag instead to indicate future removal    
-    obstacle.markToRemove = YES;
 }
 
 - (void) accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration

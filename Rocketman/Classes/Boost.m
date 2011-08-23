@@ -77,17 +77,10 @@ static NSUInteger countID = 0;
 {
     GameLayer *gameLayer = (GameLayer *)[self parent];
     [gameLayer collectBoost:self];
-    [gameLayer removeObstacle:self];
     
     [super collide];
     
-    [self destroy];
+    [super flagToDestroy];
 }
-
-- (void) destroy
-{   
-    [super destroy];
-}
-
 
 @end
