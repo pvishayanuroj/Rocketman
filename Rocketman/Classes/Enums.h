@@ -55,12 +55,13 @@ typedef enum {
     kFlybot = 5,
     kShockTurtling = 6,
     kHoverTurtle = 7,
-    kBoost = 8,
-    kCat = 9,
-    kFuel = 10,
-    kBossTurtle = 11,
-    kTurtling = 12,
-    kPlasmaBall = 13
+    kAlienHoverTurtle = 8,
+    kBoost = 9,
+    kCat = 10,
+    kFuel = 11,
+    kBossTurtle = 12,
+    kTurtling = 13,
+    kPlasmaBall = 14
 } ObstacleType;
 
 typedef enum {

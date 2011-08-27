@@ -17,7 +17,7 @@
 
 + (id) sideMovement:(Obstacle *)obstacle distance:(CGFloat)distance speed:(CGFloat)speed
 {
-    CGFloat leftCutoff = obstacle.position.x;
+    CGFloat leftCutoff = obstacle.position.x - distance * 0.5f;
     CGFloat rightCutoff = leftCutoff + distance;
     return [[[self alloc] initSideMovement:obstacle leftCutoff:leftCutoff rightCutoff:rightCutoff speed:speed] autorelease];
 }

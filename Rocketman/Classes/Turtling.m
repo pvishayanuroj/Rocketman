@@ -8,6 +8,7 @@
 
 #import "Turtling.h"
 #import "Boundary.h"
+#import "ConstantMovement.h"
 #import "GameLayer.h"
 #import "AudioManager.h"
 
@@ -37,8 +38,12 @@ static NSUInteger countID = 0;
         PVCollide collide = defaultPVCollide_;
         collide.radius = 16;
         
+        CGPoint fallRate = CGPointMake(2, -3);
+        
         // Bounding box setup
         [boundaries_ addObject:[Boundary boundaryWithTarget:self collide:@selector(primaryCollision) hit:@selector(primaryHit) colStruct:collide]];
+        
+        [movements_ addObject:[ConstantMovement constantMovement:self rate:fallRate]];
         
         [self initActions];
         [self showIdle];        
@@ -66,15 +71,6 @@ static NSUInteger countID = 0;
 	CCActionInterval *animate = [CCAnimate actionWithAnimation:animation];
 	idleAnimation_ = [[CCRepeatForever actionWithAction:animate] retain];	
 }                 
-
-- (void) fall:(CGFloat)speed
-{
-    CGFloat dx = 2;
-    CGFloat dy = 3;
-    // Fall diagonally
-    CGPoint p = ccp(dx, -dy);
-    self.position = ccpAdd(self.position, p);    
-}
 
 - (void) primaryCollision
 {

@@ -52,9 +52,6 @@ static NSUInteger countID = 0;
         // Setup the way this obstacle moves
         [movements_ addObject:[ConstantMovement constantMovementDown:self rate:PB_SPEED]];                
         
-        // This gets released in the death function
-        //movement_ = [[ConstantMovement constantMovement:self rate:PB_SPEED] retain];
-        
         [self initActions];
         [self showIdle];        
     }

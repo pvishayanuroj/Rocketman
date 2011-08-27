@@ -156,6 +156,7 @@
 		DA4934D5139605FA008FA14F /* explosion01.wav in Resources */ = {isa = PBXBuildFile; fileRef = DA4934D2139605FA008FA14F /* explosion01.wav */; };
 		DA4934D6139605FA008FA14F /* kerrum.wav in Resources */ = {isa = PBXBuildFile; fileRef = DA4934D3139605FA008FA14F /* kerrum.wav */; };
 		DA4934D7139605FA008FA14F /* werr.wav in Resources */ = {isa = PBXBuildFile; fileRef = DA4934D4139605FA008FA14F /* werr.wav */; };
+		DA526FB1140987CE005BE716 /* AlienHoverTurtle.m in Sources */ = {isa = PBXBuildFile; fileRef = DA526FB0140987CD005BE716 /* AlienHoverTurtle.m */; };
 		DA7DCC7C13A7D63C0065A566 /* GameLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DA7DCC6D13A7D63C0065A566 /* GameLayer.m */; };
 		DA7DCC7D13A7D63C0065A566 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = DA7DCC6F13A7D63C0065A566 /* GameScene.m */; };
 		DA7DCC7E13A7D63C0065A566 /* HUDLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DA7DCC7113A7D63C0065A566 /* HUDLayer.m */; };
@@ -540,6 +541,8 @@
 		DA4934D2139605FA008FA14F /* explosion01.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = explosion01.wav; sourceTree = "<group>"; };
 		DA4934D3139605FA008FA14F /* kerrum.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = kerrum.wav; sourceTree = "<group>"; };
 		DA4934D4139605FA008FA14F /* werr.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = werr.wav; sourceTree = "<group>"; };
+		DA526FAF140987CD005BE716 /* AlienHoverTurtle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlienHoverTurtle.h; path = Classes/AlienHoverTurtle.h; sourceTree = "<group>"; };
+		DA526FB0140987CD005BE716 /* AlienHoverTurtle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlienHoverTurtle.m; path = Classes/AlienHoverTurtle.m; sourceTree = "<group>"; };
 		DA7DCC6C13A7D63C0065A566 /* GameLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameLayer.h; path = Classes/GameLayer.h; sourceTree = "<group>"; };
 		DA7DCC6D13A7D63C0065A566 /* GameLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameLayer.m; path = Classes/GameLayer.m; sourceTree = "<group>"; };
 		DA7DCC6E13A7D63C0065A566 /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameScene.h; path = Classes/GameScene.h; sourceTree = "<group>"; };
@@ -1357,6 +1360,8 @@
 				DAEA99F413F7FB9C007AA451 /* ShockTurtling.m */,
 				DAA0512B1400B48800D4B213 /* HoverTurtle.h */,
 				DAA0512C1400B48A00D4B213 /* HoverTurtle.m */,
+				DA526FAF140987CD005BE716 /* AlienHoverTurtle.h */,
+				DA526FB0140987CD005BE716 /* AlienHoverTurtle.m */,
 				DA336CA11401622E009EE661 /* PlasmaBall.h */,
 				DA336CA21401622E009EE661 /* PlasmaBall.m */,
 			);
@@ -1720,6 +1725,7 @@
 				DA336CAA14018D4F009EE661 /* ConstantMovement.m in Sources */,
 				DA336CAD1401C3BC009EE661 /* PointWrapper.m in Sources */,
 				DA2536C914096C1F0002EFE0 /* ConstantMovementWithStop.m in Sources */,
+				DA526FB1140987CE005BE716 /* AlienHoverTurtle.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

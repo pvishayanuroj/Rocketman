@@ -1,24 +1,24 @@
 //
-//  HoverTurtle.m
+//  AlienHoverTurtle.m
 //  Rocketman
 //
-//  Created by Paul Vishayanuroj on 8/20/11.
+//  Created by Paul Vishayanuroj on 8/27/11.
 //  Copyright 2011 Paul Vishayanuroj. All rights reserved.
 //
 
-#import "HoverTurtle.h"
+#import "AlienHoverTurtle.h"
 #import "Boundary.h"
-#import "AudioManager.h"
-#import "GameManager.h"
-#import "GameLayer.h"
-#import "SideMovement.h"
 #import "ConstantMovementWithStop.h"
+#import "SideMovement.h"
+#import "AudioManager.h"
+#import "TargetedAction.h"
+#import "GameManager.h"
 
-@implementation HoverTurtle
+@implementation AlienHoverTurtle
 
 static NSUInteger countID = 0;
 
-+ (id) hoverTurtleWithPos:(CGPoint)pos
++ (id) alienHoverTurtleWithPos:(CGPoint)pos
 {
     return [[[self alloc] initWithPos:pos] autorelease];
 }
@@ -28,7 +28,7 @@ static NSUInteger countID = 0;
 	if ((self = [super init])) {
         
 		unitID_ = countID++;                
-        name_ = [[NSString stringWithString:@"Hover Turtle"] retain];
+        name_ = [[NSString stringWithString:@"Alien Hover Turtle"] retain];
         NSString *spriteName = [NSString stringWithFormat:@"%@ Idle 01.png", name_];                 
         
         sprite_ = [[CCSprite spriteWithSpriteFrameName:spriteName] retain];
@@ -39,9 +39,12 @@ static NSUInteger countID = 0;
         // Attributes
         PVCollide collide = defaultPVCollide_;
         collide.radius = 30;
+        collide.autoInactive = NO; 
+        HP_ = 3;
         
         // Bounding box setup
-        [boundaries_ addObject:[Boundary boundaryWithTarget:self collide:nil hit:@selector(primaryHit) colStruct:collide]];        
+        boundary_ = [[Boundary boundaryWithTarget:self collide:nil hit:@selector(primaryHit) colStruct:collide] retain];
+        [boundaries_ addObject:boundary_];        
         
         CGSize size = [[CCDirector sharedDirector] winSize];        
         CGFloat yTarget = 0.80 * size.height;        
@@ -56,7 +59,6 @@ static NSUInteger countID = 0;
         [movement setProximityTrigger:25.0f];        
         [movements_ addObject:movement];
         
-        [self initEngine];
         [self initActions];
         [self showIdle];        
     }
@@ -82,34 +84,53 @@ static NSUInteger countID = 0;
 	CCAnimation *animation = [[CCAnimationCache sharedAnimationCache] animationByName:animationName];
 	CCActionInterval *animate = [CCAnimate actionWithAnimation:animation];
 	idleAnimation_ = [[CCRepeatForever actionWithAction:animate] retain];	
+    
+    animationName = [NSString stringWithFormat:@"%@ Damage", name_];    
+	animation = [[CCAnimationCache sharedAnimationCache] animationByName:animationName];
+	damageAnimation_ = [[CCAnimate actionWithAnimation:animation] retain];    
+    
+    animationName = [NSString stringWithFormat:@"%@ Attack", name_];    
+	animation = [[CCAnimationCache sharedAnimationCache] animationByName:animationName];
+	attackAnimation_ = [[CCAnimate actionWithAnimation:animation] retain];        
 }                 
 
-- (void) initEngine
+- (void) showAttack
 {
-    CCSprite *engine1 = [CCSprite spriteWithSpriteFrameName:@"Engine Flash Idle 01.png"];
-    CCSprite *engine2 = [CCSprite spriteWithSpriteFrameName:@"Engine Flash Idle 01.png"];    
-    CGFloat xoffset = 15;
-    CGFloat yoffset = -25;    
-    engine1.position = CGPointMake(-xoffset, yoffset);
-    engine2.position = CGPointMake(xoffset, yoffset);    
-    [self addChild:engine1];
-    [self addChild:engine2];    
+	[sprite_ stopAllActions];	
     
-    // Make the engine flame animate
-    CCAnimation *animation = [[CCAnimationCache sharedAnimationCache] animationByName:@"Engine Flash Idle"];
-	CCActionInterval *animate = [CCAnimate actionWithAnimation:animation];
-	CCAction *e1Animation = [CCRepeatForever actionWithAction:animate];	    
-	CCAction *e2Animation = [CCRepeatForever actionWithAction:animate];	        
-    [engine1 runAction:e1Animation];
-    [engine2 runAction:e2Animation];    
+    CCActionInterval *delay = [CCDelayTime actionWithDuration:0.5];
+	TargetedAction *animation = [TargetedAction actionWithTarget:sprite_ actionIn:(CCFiniteTimeAction *)attackAnimation_];
+	CCFiniteTimeAction *method = [CCCallFunc actionWithTarget:self selector:@selector(showIdle)];	
+	[self runAction:[CCSequence actions:animation, delay, method, nil]];	
 }
+
+- (void) showDamage
+{
+	[sprite_ stopAllActions];	
+    
+    CCActionInterval *delay = [CCDelayTime actionWithDuration:0.5];
+	TargetedAction *animation = [TargetedAction actionWithTarget:sprite_ actionIn:(CCFiniteTimeAction *)damageAnimation_];
+	CCFiniteTimeAction *method = [CCCallFunc actionWithTarget:self selector:@selector(showIdle)];	
+	[self runAction:[CCSequence actions:animation, delay, method, nil]];	
+}
+
 
 - (void) primaryHit
 {
     [[AudioManager audioManager] playSound:kPlop];        
-    [super showDeath:kBamText];
     
-    [super bulletHit];
+    // Creature death
+    if (--HP_ == 0) {
+        [super showDeath:kBamText];
+        [super bulletHit];
+        PVCollide c = boundary_.collide;
+        c.hitActive = NO;
+        boundary_.collide = c;   
+        [boundary_ release];
+    }    
+    else {
+        [self showDamage];
+    }
 }
 
 - (void) death
@@ -119,13 +140,14 @@ static NSUInteger countID = 0;
 
 - (void) sideMovementProximityTrigger:(SideMovement *)movement
 {
-    CGPoint pos = CGPointMake(self.position.x, self.position.y - 10);
-    [[GameManager gameManager] addPlasmaBall:pos];
+    CGPoint pos = CGPointMake(self.position.x, self.position.y - 5);
+    //[[GameManager gameManager] addPlasmaBall:pos];
+    //[self showAttack];
 }
 
 - (void) sideMovementRandomTrigger:(SideMovement *)movement
 {
-
+    
 }
 
 @end

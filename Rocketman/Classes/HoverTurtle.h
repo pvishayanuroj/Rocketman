@@ -13,8 +13,6 @@
 
 @interface HoverTurtle : Obstacle <SideMovementDelegate> {
     
-    CGFloat yTarget_;    
-    
 }
 
 + (id) hoverTurtleWithPos:(CGPoint)pos;

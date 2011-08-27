@@ -18,7 +18,7 @@
 
 + (id) constantMovementDown:(Obstacle *)obstacle rate:(CGFloat)rate
 {
-    return [[[self alloc] initConstantMovement:obstacle rate:CGPointMake(0, rate)] autorelease];    
+    return [[[self alloc] initConstantMovement:obstacle rate:CGPointMake(0, -rate)] autorelease];    
 }
 
 - (id) initConstantMovement:(Obstacle *)obstacle rate:(CGPoint)rate
@@ -38,7 +38,7 @@
 
 - (void) move:(CGFloat)speed
 {
-    obstacle_.position = ccpSub(obstacle_.position, rate_);    
+    obstacle_.position = ccpAdd(obstacle_.position, rate_);    
 }
 
 

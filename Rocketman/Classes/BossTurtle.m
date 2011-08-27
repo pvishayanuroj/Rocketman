@@ -85,7 +85,6 @@ static NSUInteger countID = 0;
         [sideMovement_ setProximityTrigger:25.0f];
         [movements_ addObject:sideMovement_];        
         
-        
         [self initActions];
         [self showIdle];        
         

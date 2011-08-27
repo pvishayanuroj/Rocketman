@@ -24,7 +24,6 @@
         moving_ = YES;
         targetHeight_ = height;
         fallingDown_ = rate < 0;
-        NSLog(@"Constant movement: %d, rate: %4.2f\n", fallingDown_, rate);
     }
     return self;
 }

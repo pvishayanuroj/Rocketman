@@ -28,9 +28,9 @@
     
     NSUInteger maxShells_;
     
-    CGFloat yTarget_;
-    
     NSInteger HP_;
+    
+    CGFloat yTarget_;
     
     SideMovement *sideMovement_;
 }

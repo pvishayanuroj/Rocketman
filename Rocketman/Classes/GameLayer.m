@@ -27,6 +27,7 @@
 #import "ShockTurtling.h"
 #import "TurtlingSwarm.h"
 #import "HoverTurtle.h"
+#import "AlienHoverTurtle.h"
 #import "BossTurtle.h"
 #import "PlasmaBall.h"
 #import "Cat.h"
@@ -448,7 +449,7 @@
             NSInteger x = [self getRandomX];
             NSInteger y = screenHeight_ + 100;
             CGPoint pos = ccp(x, y);          
-            [self addObstacle:kBossTurtle pos:pos];
+            //[self addObstacle:kBossTurtle pos:pos];
         }
     }
 }
@@ -469,8 +470,8 @@
         y = screenHeight_ + 100;
         pos = ccp(x, y);                
 
-        NSUInteger type = arc4random() % 7; 
-        type = kFlybot;
+        NSUInteger type = arc4random() % 8; 
+        type = kAlienHoverTurtle;
         [self addObstacle:type pos:pos];
         //[self addTurtlingSwarm:8];        
     }    
@@ -624,6 +625,9 @@
             break;
         case kHoverTurtle:
             obstacle = [HoverTurtle hoverTurtleWithPos:pos];
+            break;
+        case kAlienHoverTurtle:
+            obstacle = [AlienHoverTurtle alienHoverTurtleWithPos:pos];
             break;
         case kBoost:
             obstacle = [Boost boostWithPos:pos];    
