@@ -44,8 +44,6 @@ static NSUInteger countID = 0;
         
         // Setup the way this obstacle moves
         [movements_ addObject:[StaticMovement staticMovement:self]];
-        // This gets released in the death function
-        //movement_ = [[StaticMovement staticMovement:self] retain];
         
         [self initActions];
         [self showIdle];        

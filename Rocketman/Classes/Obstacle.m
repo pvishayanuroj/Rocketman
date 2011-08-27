@@ -42,6 +42,7 @@
 {
     // Do this in the destroy function to avoid circular referencing
     //[boundaries_ release];
+    //[movements_ release];
     
     [super dealloc];
 }
@@ -70,7 +71,6 @@
 
 - (void) fall:(CGFloat)speed
 {
-    //[movement_ move:speed];
     for (Movement *movement in movements_) {
         [movement move:speed];
     }

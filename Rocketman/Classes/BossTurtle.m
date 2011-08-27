@@ -144,15 +144,16 @@ static NSUInteger countID = 0;
 
 - (void) startDeathSequence
 {
-    CCFiniteTimeAction *delay = [CCDelayTime actionWithDuration:0.05];
+    CCFiniteTimeAction *delay = [CCDelayTime actionWithDuration:0.05f];
     CCFiniteTimeAction *blast = [CCCallFunc actionWithTarget:self selector:@selector(addBlast)];
     CCFiniteTimeAction *seq = [CCSequence actions:blast, delay, nil];
     CCFiniteTimeAction *repeat = [CCRepeat actionWithAction:seq times:80];
+    CCFiniteTimeAction *delay2 = [CCDelayTime actionWithDuration:0.2f];    
     CCFiniteTimeAction *startFall = [CCCallFunc actionWithTarget:self selector:@selector(startFreeFall)];
     CCFiniteTimeAction *explosion = [CCCallFunc actionWithTarget:self selector:@selector(addBigExplosion)];
-    CCFiniteTimeAction *delay2 = [CCDelayTime actionWithDuration:3.5];
+    CCFiniteTimeAction *delay3 = [CCDelayTime actionWithDuration:4.0f];
     CCFiniteTimeAction *end = [CCCallFunc actionWithTarget:self selector:@selector(death)];
-    [self runAction:[CCSequence actions:repeat, startFall, explosion, delay2, end, nil]];
+    [self runAction:[CCSequence actions:repeat, delay2, startFall, explosion, delay3, end, nil]];
 }
 
 - (void) deployShell

@@ -10,12 +10,14 @@
 
 @interface ConstantMovement : Movement {
     
-    CGFloat rate_;
+    CGPoint rate_;
     
 }
 
-+ (id) constantMovement:(Obstacle *)obstacle rate:(CGFloat)rate;
++ (id) constantMovement:(Obstacle *)obstacle rate:(CGPoint)rate;
 
-- (id) initConstantMovement:(Obstacle *)obstacle rate:(CGFloat)rate;
++ (id) constantMovementDown:(Obstacle *)obstacle rate:(CGFloat)rate;
+
+- (id) initConstantMovement:(Obstacle *)obstacle rate:(CGPoint)rate;
 
 @end
