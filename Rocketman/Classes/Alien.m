@@ -42,8 +42,9 @@ static NSUInteger countID = 0;
         // Bounding box setup
         [boundaries_ addObject:[Boundary boundaryWithTarget:self collide:@selector(primaryCollision) hit:@selector(primaryHit) colStruct:collide]];        
         
-        // This gets released in the death function
-        movement_ = [[StaticMovement staticMovement:self] retain];        
+        // Setup the way this obstacle moves
+        [movements_ addObject:[StaticMovement staticMovement:self]];
+        //movement_ = [[StaticMovement staticMovement:self] retain];        
         
         [self initActions];
         [self showIdle];        

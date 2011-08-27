@@ -7,8 +7,7 @@
 //
 
 #import "cocos2d.h"
-
-@class Movement;
+#import "Structs.h"
 
 @interface Obstacle : CCNode {
  
@@ -16,8 +15,9 @@
 
     /** The array of boundaries that an obstacle can have */
     NSMutableArray *boundaries_;
-    
-    Movement *movement_;
+
+    /** The array of movements that an obstacle can have */    
+    NSMutableArray *movements_;
     
     /** 
      * A default collision structure to use as a template 

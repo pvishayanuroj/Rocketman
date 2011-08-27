@@ -15,7 +15,7 @@
     
     /** Rate at which object falls relative to rocket speed */
     CGFloat rate_;
-    
+
 }
 
 + (id) staticMovement:(Obstacle *)obstacle;

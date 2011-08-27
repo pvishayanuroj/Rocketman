@@ -46,11 +46,13 @@ static NSUInteger countID = 0;
         yTarget_ = 0.80 * size.height;        
         
         // Setup side to side movement
+        /*
         SideMovement *movement = [SideMovement sideMovement:self distance:200 speed:3];
         movement.delegate = self;
         [movement setProximityTrigger:25.0f];        
         // This gets released in the death function
-        movement_ = [movement retain];       
+        //movement_ = [movement retain];       
+         */
         
         [self initEngine];
         [self initActions];
@@ -98,19 +100,6 @@ static NSUInteger countID = 0;
 	CCAction *e2Animation = [CCRepeatForever actionWithAction:animate];	        
     [engine1 runAction:e1Animation];
     [engine2 runAction:e2Animation];    
-}
-
-- (void) fall:(CGFloat)speed
-{
-    [movement_ move:speed];
-    
-    CGFloat dy = 0;
-    if (self.position.y > yTarget_) {
-        dy = -1;
-    }
-    
-    CGPoint p = CGPointMake(0, dy);
-    self.position = ccpAdd(self.position, p);    
 }
 
 - (void) primaryHit

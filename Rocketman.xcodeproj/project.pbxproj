@@ -19,6 +19,7 @@
 		DA0C243213ADE8A700544DF1 /* HighScoreManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DA0C243113ADE8A700544DF1 /* HighScoreManager.m */; };
 		DA0C26FC13AE0F8900544DF1 /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = DA0C26FB13AE0F8900544DF1 /* heart.png */; };
 		DA0FF8BD13FFDD19001B44F2 /* SideMovement.m in Sources */ = {isa = PBXBuildFile; fileRef = DA0FF8BC13FFDD19001B44F2 /* SideMovement.m */; };
+		DA2536C914096C1F0002EFE0 /* ConstantMovementWithStop.m in Sources */ = {isa = PBXBuildFile; fileRef = DA2536C814096C1E0002EFE0 /* ConstantMovementWithStop.m */; };
 		DA2F101513B05B3A00738D08 /* MovingElement.m in Sources */ = {isa = PBXBuildFile; fileRef = DA2F101413B05B3A00738D08 /* MovingElement.m */; };
 		DA2F101813B05CD700738D08 /* Intro 07 Hand.png in Resources */ = {isa = PBXBuildFile; fileRef = DA2F101713B05CD700738D08 /* Intro 07 Hand.png */; };
 		DA336CA31401622F009EE661 /* PlasmaBall.m in Sources */ = {isa = PBXBuildFile; fileRef = DA336CA21401622E009EE661 /* PlasmaBall.m */; };
@@ -272,6 +273,8 @@
 		DA0FF8BB13FFDD19001B44F2 /* SideMovement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SideMovement.h; path = Classes/SideMovement.h; sourceTree = "<group>"; };
 		DA0FF8BC13FFDD19001B44F2 /* SideMovement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SideMovement.m; path = Classes/SideMovement.m; sourceTree = "<group>"; };
 		DA0FF8BF13FFDD4C001B44F2 /* SideMovementDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SideMovementDelegate.h; path = Classes/SideMovementDelegate.h; sourceTree = "<group>"; };
+		DA2536C714096C1D0002EFE0 /* ConstantMovementWithStop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConstantMovementWithStop.h; path = Classes/ConstantMovementWithStop.h; sourceTree = "<group>"; };
+		DA2536C814096C1E0002EFE0 /* ConstantMovementWithStop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConstantMovementWithStop.m; path = Classes/ConstantMovementWithStop.m; sourceTree = "<group>"; };
 		DA2F101313B05B3A00738D08 /* MovingElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MovingElement.h; path = Classes/MovingElement.h; sourceTree = "<group>"; };
 		DA2F101413B05B3A00738D08 /* MovingElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MovingElement.m; path = Classes/MovingElement.m; sourceTree = "<group>"; };
 		DA2F101713B05CD700738D08 /* Intro 07 Hand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Intro 07 Hand.png"; sourceTree = "<group>"; };
@@ -1315,6 +1318,8 @@
 				DA0FF8BF13FFDD4C001B44F2 /* SideMovementDelegate.h */,
 				DA336CA814018D4E009EE661 /* ConstantMovement.h */,
 				DA336CA914018D4E009EE661 /* ConstantMovement.m */,
+				DA2536C714096C1D0002EFE0 /* ConstantMovementWithStop.h */,
+				DA2536C814096C1E0002EFE0 /* ConstantMovementWithStop.m */,
 			);
 			name = Movements;
 			sourceTree = "<group>";
@@ -1714,6 +1719,7 @@
 				DA336CA31401622F009EE661 /* PlasmaBall.m in Sources */,
 				DA336CAA14018D4F009EE661 /* ConstantMovement.m in Sources */,
 				DA336CAD1401C3BC009EE661 /* PointWrapper.m in Sources */,
+				DA2536C914096C1F0002EFE0 /* ConstantMovementWithStop.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1737,7 +1743,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
-				PROVISIONING_PROFILE = "7DE6867D-F020-41FC-84D1-2C3EB54C0941";
+				PROVISIONING_PROFILE = "E1A4C963-D10B-4265-A6DC-650576097F33";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1746,6 +1752,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Paul Vishayanuroj (8GPS98FCV8)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PREPROCESSOR_DEFINITIONS = NDEBUG;
@@ -1754,6 +1761,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "E1A4C963-D10B-4265-A6DC-650576097F33";
 				SDKROOT = iphoneos;
 			};
 			name = Release;
@@ -1807,7 +1815,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
-				PROVISIONING_PROFILE = "7DE6867D-F020-41FC-84D1-2C3EB54C0941";
+				PROVISIONING_PROFILE = "E1A4C963-D10B-4265-A6DC-650576097F33";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "A181E475-A8C4-4636-BBD1-1C06E1103D04";
 				SDKROOT = iphoneos;
 			};

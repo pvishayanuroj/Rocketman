@@ -16,6 +16,7 @@
 #import "BigExplosion.h"
 #import "Boundary.h"
 #import "SideMovement.h"
+#import "ConstantMovementWithStop.h"
 #import "StaticMovement.h"
 #import "PointWrapper.h"
 
@@ -74,12 +75,16 @@ static NSUInteger countID = 0;
         numShells_ = 0;
         maxShells_ = 6;
         
+        // Setup the initial fall
+        ConstantMovementWithStop *initial = [ConstantMovementWithStop constantMovementWithStop:self rate:-1.0f withStop:yTarget_];
+        [movements_ addObject:initial];
+        
         // Setup the side-to-side movement of the boss
-        SideMovement *movement = [SideMovement sideMovement:self leftCutoff:leftCutoff rightCutoff:rightCutoff speed:3];
-        movement.delegate = self;
-        [movement setProximityTrigger:25.0f];
-        // This gets released in the death function
-        movement_ = [movement retain];
+        sideMovement_ = [[SideMovement sideMovement:self leftCutoff:leftCutoff rightCutoff:rightCutoff speed:3] retain];
+        sideMovement_.delegate = self;
+        [sideMovement_ setProximityTrigger:25.0f];
+        [movements_ addObject:sideMovement_];        
+        
         
         [self initActions];
         [self showIdle];        
@@ -157,9 +162,9 @@ static NSUInteger countID = 0;
 
 - (void) startFreeFall
 {
-    // Remove the side movement and have a typical falling movement instead
-    [movement_ release];
-    movement_ = [[StaticMovement staticMovement:self] retain];
+    // Remove the side movement and have a typical falling movement instead    
+    [movements_ removeAllObjects];
+    [movements_ addObject:[StaticMovement staticMovement:self]];
 }
 
 - (void) addBlast
@@ -215,22 +220,6 @@ static NSUInteger countID = 0;
     }
 }
 
-- (void) fall:(CGFloat)speed
-{
-    [movement_ move:speed];
-    
-    CGFloat dy = 0;
-    // Only launch shells if not in death sequence
-    if (HP_ > 0) {
-        if (self.position.y > yTarget_) {
-            dy = -1;
-        }
-    }
-    
-    CGPoint p = CGPointMake(0, dy);
-    self.position = ccpAdd(self.position, p);    
-}
-
 - (void) primaryHit:(PointWrapper *)pos
 {
     // Account for offset, since pos is in terms of screen grid
@@ -254,7 +243,9 @@ static NSUInteger countID = 0;
         engineFlame_.emissionRate = 0;
         
         // Change the speed of side movement whilst dying
-        [((SideMovement *)movement_) changeSideSpeed:0.6f];
+        // Notice - we release it here to remove the extra circular reference
+        // because at this point, we no longer need to keep a reference to it
+        [sideMovement_ changeSideSpeed:0.6f];
         
         [self startDeathSequence];
     }

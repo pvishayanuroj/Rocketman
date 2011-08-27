@@ -33,8 +33,7 @@
         
         destroyed_ = NO;
         boundaries_ = [[NSMutableArray arrayWithCapacity:1] retain];
-        
-        movement_ = nil;
+        movements_ = [[NSMutableArray arrayWithCapacity:1] retain];
     }
     return self;
 }
@@ -71,7 +70,10 @@
 
 - (void) fall:(CGFloat)speed
 {
-    [movement_ move:speed];
+    //[movement_ move:speed];
+    for (Movement *movement in movements_) {
+        [movement move:speed];
+    }
 }
 
 - (void) bulletHit
@@ -97,10 +99,10 @@
     // Do this here, otherwise the boundaries' ref to obstacles will never be release, thus causing a circular reference
     [boundaries_ release];
     boundaries_ = nil;
-    
-    // Likewise, remove the movement here, because the movement has a reference to this obstacle
-    [movement_ release];
-    movement_ = nil;   
+
+    // Likewise, remove movements here, because each movement has a reference to this obstacle    
+    [movements_ release];
+    movements_ = nil;
 }
 
 #pragma mark - Debug Methods

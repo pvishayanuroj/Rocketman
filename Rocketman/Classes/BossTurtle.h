@@ -31,6 +31,8 @@
     CGFloat yTarget_;
     
     NSInteger HP_;
+    
+    SideMovement *sideMovement_;
 }
 
 + (id) bossTurtleWithPos:(CGPoint)pos;
