@@ -41,16 +41,17 @@ static NSUInteger countID = 0;
         collide.radius = 30;
         collide.autoInactive = NO; 
         HP_ = 3;
+        sprite_.flipX = YES;        
         
         // Bounding box setup
         boundary_ = [[Boundary boundaryWithTarget:self collide:nil hit:@selector(primaryHit) colStruct:collide] retain];
         [boundaries_ addObject:boundary_];        
         
         CGSize size = [[CCDirector sharedDirector] winSize];        
-        CGFloat yTarget = 0.80 * size.height;        
+        yTarget_ = 0.80 * size.height;        
         
         // Setup the initial fall
-        ConstantMovementWithStop *initial = [ConstantMovementWithStop constantMovementWithStop:self rate:-1.0f withStop:yTarget];
+        ConstantMovementWithStop *initial = [ConstantMovementWithStop constantMovementWithStop:self rate:-1.0f withStop:yTarget_];
         [movements_ addObject:initial];        
         
         // Setup side to side movement
@@ -138,11 +139,23 @@ static NSUInteger countID = 0;
     [super flagToDestroy];
 }
 
+- (void) sideMovementLeftTurnaround:(SideMovement *)movement
+{
+    sprite_.flipX = NO;                   
+}
+
+- (void) sideMovementRightTurnaround:(SideMovement *)movement
+{
+    sprite_.flipX = YES; 
+}
+
 - (void) sideMovementProximityTrigger:(SideMovement *)movement
 {
-    CGPoint pos = CGPointMake(self.position.x, self.position.y - 5);
-    //[[GameManager gameManager] addPlasmaBall:pos];
-    //[self showAttack];
+    if (self.position.y <= yTarget_) {
+        CGPoint pos = CGPointMake(self.position.x, self.position.y - 5);
+        [[GameManager gameManager] addPlasmaBall:pos];
+        [self showAttack];
+    }
 }
 
 - (void) sideMovementRandomTrigger:(SideMovement *)movement

@@ -21,6 +21,8 @@
     NSInteger HP_;
     
     Boundary *boundary_;
+    
+    CGFloat yTarget_;
 }
 
 + (id) alienHoverTurtleWithPos:(CGPoint)pos;
