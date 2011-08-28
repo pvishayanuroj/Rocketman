@@ -153,6 +153,8 @@
 
 - (void) loss;
 
+- (void) addBirdSwarm:(NSInteger)size;
+
 - (void) addTurtlingSwarm:(NSInteger)size;
 
 - (void) addObstacle:(ObstacleType)type pos:(CGPoint)pos;

@@ -157,6 +157,8 @@
 		DA4934D6139605FA008FA14F /* kerrum.wav in Resources */ = {isa = PBXBuildFile; fileRef = DA4934D3139605FA008FA14F /* kerrum.wav */; };
 		DA4934D7139605FA008FA14F /* werr.wav in Resources */ = {isa = PBXBuildFile; fileRef = DA4934D4139605FA008FA14F /* werr.wav */; };
 		DA526FB1140987CE005BE716 /* AlienHoverTurtle.m in Sources */ = {isa = PBXBuildFile; fileRef = DA526FB0140987CD005BE716 /* AlienHoverTurtle.m */; };
+		DA526FB41409AD96005BE716 /* SwarmGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = DA526FB31409AD82005BE716 /* SwarmGenerator.m */; };
+		DA526FB71409FE9A005BE716 /* YellowBird.m in Sources */ = {isa = PBXBuildFile; fileRef = DA526FB61409FE97005BE716 /* YellowBird.m */; };
 		DA7DCC7C13A7D63C0065A566 /* GameLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DA7DCC6D13A7D63C0065A566 /* GameLayer.m */; };
 		DA7DCC7D13A7D63C0065A566 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = DA7DCC6F13A7D63C0065A566 /* GameScene.m */; };
 		DA7DCC7E13A7D63C0065A566 /* HUDLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DA7DCC7113A7D63C0065A566 /* HUDLayer.m */; };
@@ -228,7 +230,6 @@
 		DACF5CC513CA02FD0034C281 /* pause_button.png in Resources */ = {isa = PBXBuildFile; fileRef = DACF5CC313CA02FD0034C281 /* pause_button.png */; };
 		DACF5CC613CA02FD0034C281 /* resume_button.png in Resources */ = {isa = PBXBuildFile; fileRef = DACF5CC413CA02FD0034C281 /* resume_button.png */; };
 		DAD925E113D33B7C0057FFD7 /* Turtling.m in Sources */ = {isa = PBXBuildFile; fileRef = DAD925E013D33B7C0057FFD7 /* Turtling.m */; };
-		DAD925E513D345270057FFD7 /* TurtlingSwarm.m in Sources */ = {isa = PBXBuildFile; fileRef = DAD925E413D345200057FFD7 /* TurtlingSwarm.m */; };
 		DAEA996F13EE3E91007AA451 /* background_level1.png in Resources */ = {isa = PBXBuildFile; fileRef = DAEA996813EE3E90007AA451 /* background_level1.png */; };
 		DAEA997013EE3E91007AA451 /* background_level2.png in Resources */ = {isa = PBXBuildFile; fileRef = DAEA996913EE3E90007AA451 /* background_level2.png */; };
 		DAEA997113EE3E91007AA451 /* dialogue_combo1.png in Resources */ = {isa = PBXBuildFile; fileRef = DAEA996A13EE3E90007AA451 /* dialogue_combo1.png */; };
@@ -543,6 +544,10 @@
 		DA4934D4139605FA008FA14F /* werr.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = werr.wav; sourceTree = "<group>"; };
 		DA526FAF140987CD005BE716 /* AlienHoverTurtle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlienHoverTurtle.h; path = Classes/AlienHoverTurtle.h; sourceTree = "<group>"; };
 		DA526FB0140987CD005BE716 /* AlienHoverTurtle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlienHoverTurtle.m; path = Classes/AlienHoverTurtle.m; sourceTree = "<group>"; };
+		DA526FB21409AD7A005BE716 /* SwarmGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SwarmGenerator.h; path = Classes/SwarmGenerator.h; sourceTree = "<group>"; };
+		DA526FB31409AD82005BE716 /* SwarmGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SwarmGenerator.m; path = Classes/SwarmGenerator.m; sourceTree = "<group>"; };
+		DA526FB51409FE95005BE716 /* YellowBird.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YellowBird.h; path = Classes/YellowBird.h; sourceTree = "<group>"; };
+		DA526FB61409FE97005BE716 /* YellowBird.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YellowBird.m; path = Classes/YellowBird.m; sourceTree = "<group>"; };
 		DA7DCC6C13A7D63C0065A566 /* GameLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameLayer.h; path = Classes/GameLayer.h; sourceTree = "<group>"; };
 		DA7DCC6D13A7D63C0065A566 /* GameLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameLayer.m; path = Classes/GameLayer.m; sourceTree = "<group>"; };
 		DA7DCC6E13A7D63C0065A566 /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameScene.h; path = Classes/GameScene.h; sourceTree = "<group>"; };
@@ -652,8 +657,6 @@
 		DACF5CC413CA02FD0034C281 /* resume_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = resume_button.png; sourceTree = "<group>"; };
 		DAD925DF13D33B7C0057FFD7 /* Turtling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Turtling.h; path = Classes/Turtling.h; sourceTree = "<group>"; };
 		DAD925E013D33B7C0057FFD7 /* Turtling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Turtling.m; path = Classes/Turtling.m; sourceTree = "<group>"; };
-		DAD925E313D3451F0057FFD7 /* TurtlingSwarm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TurtlingSwarm.h; path = Classes/TurtlingSwarm.h; sourceTree = "<group>"; };
-		DAD925E413D345200057FFD7 /* TurtlingSwarm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TurtlingSwarm.m; path = Classes/TurtlingSwarm.m; sourceTree = "<group>"; };
 		DAEA996813EE3E90007AA451 /* background_level1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background_level1.png; sourceTree = "<group>"; };
 		DAEA996913EE3E90007AA451 /* background_level2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background_level2.png; sourceTree = "<group>"; };
 		DAEA996A13EE3E90007AA451 /* dialogue_combo1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dialogue_combo1.png; sourceTree = "<group>"; };
@@ -1354,8 +1357,6 @@
 				DAF8AB3113A7D6F100A838CE /* Fuel.m */,
 				DAD925DF13D33B7C0057FFD7 /* Turtling.h */,
 				DAD925E013D33B7C0057FFD7 /* Turtling.m */,
-				DAD925E313D3451F0057FFD7 /* TurtlingSwarm.h */,
-				DAD925E413D345200057FFD7 /* TurtlingSwarm.m */,
 				DAEA99F313F7FB8B007AA451 /* ShockTurtling.h */,
 				DAEA99F413F7FB9C007AA451 /* ShockTurtling.m */,
 				DAA0512B1400B48800D4B213 /* HoverTurtle.h */,
@@ -1364,6 +1365,10 @@
 				DA526FB0140987CD005BE716 /* AlienHoverTurtle.m */,
 				DA336CA11401622E009EE661 /* PlasmaBall.h */,
 				DA336CA21401622E009EE661 /* PlasmaBall.m */,
+				DA526FB21409AD7A005BE716 /* SwarmGenerator.h */,
+				DA526FB31409AD82005BE716 /* SwarmGenerator.m */,
+				DA526FB51409FE95005BE716 /* YellowBird.h */,
+				DA526FB61409FE97005BE716 /* YellowBird.m */,
 			);
 			name = Obstacles;
 			sourceTree = "<group>";
@@ -1705,7 +1710,6 @@
 				DACF5CBF13C9DC4F0034C281 /* CCNode+PauseResume.m in Sources */,
 				DACF5CC213CA005D0034C281 /* PauseLayer.m in Sources */,
 				DAD925E113D33B7C0057FFD7 /* Turtling.m in Sources */,
-				DAD925E513D345270057FFD7 /* TurtlingSwarm.m in Sources */,
 				DA99B5BB13DA78AC00DB361F /* GameStateManager.m in Sources */,
 				DA99B5BF13DA79CD00DB361F /* MapScene.m in Sources */,
 				DA99B5C813DA7B7D00DB361F /* MapLayer.m in Sources */,
@@ -1726,6 +1730,8 @@
 				DA336CAD1401C3BC009EE661 /* PointWrapper.m in Sources */,
 				DA2536C914096C1F0002EFE0 /* ConstantMovementWithStop.m in Sources */,
 				DA526FB1140987CE005BE716 /* AlienHoverTurtle.m in Sources */,
+				DA526FB41409AD96005BE716 /* SwarmGenerator.m in Sources */,
+				DA526FB71409FE9A005BE716 /* YellowBird.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

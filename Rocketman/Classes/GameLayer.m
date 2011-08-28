@@ -25,7 +25,8 @@
 #import "Shell.h"
 #import "Turtling.h"
 #import "ShockTurtling.h"
-#import "TurtlingSwarm.h"
+#import "YellowBird.h"
+#import "SwarmGenerator.h"
 #import "HoverTurtle.h"
 #import "AlienHoverTurtle.h"
 #import "BossTurtle.h"
@@ -472,7 +473,8 @@
 
         NSUInteger type = arc4random() % 8; 
         type = kAlienHoverTurtle;
-        [self addObstacle:type pos:pos];
+        //[self addObstacle:type pos:pos];
+        [self addBirdSwarm:8];
         //[self addTurtlingSwarm:8];        
     }    
 #endif
@@ -595,9 +597,14 @@
     [[GameStateManager gameStateManager] endGame:height_];   
 }
 
+- (void) addBirdSwarm:(NSInteger)size
+{
+    [SwarmGenerator addHorizontalSwarm:size gameLayer:self type:kYellowBird];
+}
+
 - (void) addTurtlingSwarm:(NSInteger)size
 {
-    [TurtlingSwarm addSwarm:size gameLayer:self];
+    [SwarmGenerator addVerticalSwarm:size gameLayer:self type:kTurtling];
 }
 
 - (void) addObstacle:(ObstacleType)type pos:(CGPoint)pos
@@ -643,6 +650,9 @@
             break;
         case kTurtling:
             obstacle = [Turtling turtlingWithPos:pos];
+            break;
+        case kYellowBird:
+            obstacle = [YellowBird yellowBirdWithPos:pos];
             break;
         case kShockTurtling:
             obstacle = [ShockTurtling shockTurtlingWithPos:pos];

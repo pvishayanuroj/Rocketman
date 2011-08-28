@@ -1,17 +1,67 @@
 //
-//  TurtlingSwarm.m
+//  SwarmGenerator.m
 //  Rocketman
 //
-//  Created by Paul Vishayanuroj on 7/17/11.
+//  Created by Paul Vishayanuroj on 8/27/11.
 //  Copyright 2011 Paul Vishayanuroj. All rights reserved.
 //
 
-#import "TurtlingSwarm.h"
+#import "SwarmGenerator.h"
 #import "GameLayer.h"
 
-@implementation TurtlingSwarm
+@implementation SwarmGenerator
 
-+ (void) addSwarm:(NSUInteger)size gameLayer:(GameLayer *)gameLayer
++ (void) addHorizontalSwarm:(NSUInteger)size gameLayer:(GameLayer *)gameLayer type:(ObstacleType)type
+{
+    NSInteger x = -500;
+    NSInteger y = 400;
+    NSInteger dx = 30;
+    NSInteger dy = 30;
+    CGPoint pos;
+    pos.x = x;
+    NSInteger numAdded = 0;
+    
+    NSInteger currentCol = 0;
+    
+    while (numAdded < size) {
+        NSInteger toAdd;
+        // If an even column, only allow one        
+        if (currentCol % 2 == 0) {
+            toAdd = 1;
+            pos.y = y;
+        }
+        else {
+            // Either of three permutations - 01, 10, or 11
+            toAdd = arc4random() % 2 + 1;
+            if (toAdd == 1) {
+                NSInteger perm = arc4random() % 2;
+                if (perm == 1) {
+                    pos.y = y + dy;
+                }
+                else {
+                    pos.y = y - dy;
+                }
+            }
+            else {
+                pos.y = y + dy;
+            }
+        }
+        
+        for (int i = 0; i < toAdd; i++) {
+            if (numAdded < size) {
+                [gameLayer addObstacle:type pos:pos];            
+                numAdded++;
+                pos.y -= (2*dy);                
+            }
+        }
+        
+        // Next column
+        pos.x += dx;
+        currentCol++;
+    }
+}
+
++ (void) addVerticalSwarm:(NSUInteger)size gameLayer:(GameLayer *)gameLayer type:(ObstacleType)type
 {
     NSInteger x = -100;
     NSInteger y = 600;
@@ -50,7 +100,7 @@
         
         for (int i = 0; i < r; i++) {
             if (numAdded < size) {
-                [gameLayer addObstacle:kTurtling pos:pos];            
+                [gameLayer addObstacle:type pos:pos];            
                 numAdded++;
                 // If this was the first turtle added, calculate a new leading and lagging position for the next row
                 if (i == 0) {
@@ -64,7 +114,6 @@
             }
         }
     }
-
 }
 
 @end
