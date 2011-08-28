@@ -27,6 +27,19 @@
     return CGPointMake(x, y);
 }
 
++ (NSInteger) randomIncl:(NSInteger)a b:(NSInteger)b
+{
+    NSInteger range = abs(a-b) + 1;
+    NSInteger res = arc4random() % range;
+    
+    if (a < b) {
+        return a + res;
+    }
+    else {
+        return b + res;
+    }
+}
+
 + (CGFloat) distanceNoRoot:(CGPoint)a b:(CGPoint)b
 {
 	CGFloat t1 = a.x - b.x;

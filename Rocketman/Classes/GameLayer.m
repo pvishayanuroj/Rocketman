@@ -472,10 +472,11 @@
         y = screenHeight_ + 100;
         pos = ccp(x, y);                
 
-        NSUInteger type = arc4random() % 8; 
-        type = kAlienHoverTurtle;
-        //[self addObstacle:type pos:pos];
-        [self addBirdSwarm:8];
+        //NSUInteger type = arc4random() % 8; 
+        NSUInteger type = [UtilFuncs randomIncl:7 b:10];
+        //type = kAlienHoverTurtle;
+        [self addObstacle:type pos:pos];
+        //[self addBirdSwarm:8];
         //[self addTurtlingSwarm:8];        
     }    
 #endif
@@ -611,6 +612,7 @@
 - (void) addObstacle:(ObstacleType)type pos:(CGPoint)pos
 {
     Obstacle *obstacle;
+    BOOL add = YES;
     
     switch (type) {
         case kDino:
@@ -636,6 +638,14 @@
             break;
         case kAlienHoverTurtle:
             obstacle = [AlienHoverTurtle alienHoverTurtleWithPos:pos];
+            break;
+        case kTurtlingSwarm:
+            [self addTurtlingSwarm:8];
+            add = NO;
+            break;
+        case kBirdSwarm:
+            [self addBirdSwarm:8];
+            add = NO;
             break;
         case kBoost:
             obstacle = [Boost boostWithPos:pos];    
@@ -666,8 +676,10 @@
             break;
     }
     
-    [self addChild:obstacle z:kObstacleDepth];
-    [obstacles_ addObject:obstacle]; 
+    if (add) {
+        [self addChild:obstacle z:kObstacleDepth];
+        [obstacles_ addObject:obstacle]; 
+    }
 }
 
 - (void) fireCat01

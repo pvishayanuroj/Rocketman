@@ -18,6 +18,12 @@
 /** Returns the 2D Euclidean distance squared (without the final square root) */
 + (CGFloat) distanceNoRoot:(CGPoint)a b:(CGPoint)b;
 
+/** 
+ * Returns a random number inclusive of the given integers. Should not be used in bulk, as this is
+ * a slow method - it does not make any assumptions about the order of given integers
+ */
++ (NSInteger) randomIncl:(NSInteger)a b:(NSInteger)b;
+
 /** Returns whether or not the given circle intersects with the rectangle */
 + (BOOL) intersects:(CGPoint)circle radius:(CGFloat)r rect:(CGRect)rect;
 
