@@ -55,13 +55,14 @@ static NSUInteger countID = 0;
 
 - (void) dealloc
 {
-#if !DEBUG_DEALLOCS
+#if DEBUG_DEALLOCS
     NSLog(@"%@ dealloc'd", self);    
 #endif
     
     [name_ release];
     [sprite_ release];
     [idleAnimation_ release];
+    [damageAnimation_ release];
     
     [super dealloc];
 }

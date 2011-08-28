@@ -75,6 +75,8 @@ static NSUInteger countID = 0;
     [name_ release];
     [sprite_ release];
     [idleAnimation_ release];
+    [damageAnimation_ release];
+    [attackAnimation_ release];
     
     [super dealloc];
 }
