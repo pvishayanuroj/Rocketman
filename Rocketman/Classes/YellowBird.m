@@ -12,6 +12,7 @@
 #import "GameLayer.h"
 #import "ConstantMovement.h"
 #import "AudioManager.h"
+#import "TargetedAction.h"
 
 @implementation YellowBird
 
@@ -54,7 +55,7 @@ static NSUInteger countID = 0;
 
 - (void) dealloc
 {
-#if DEBUG_DEALLOCS
+#if !DEBUG_DEALLOCS
     NSLog(@"%@ dealloc'd", self);    
 #endif
     
@@ -77,6 +78,21 @@ static NSUInteger countID = 0;
 	damageAnimation_ = [[CCAnimate actionWithAnimation:animation] retain];        
 }                 
 
+- (void) showDamage
+{
+    [sprite_ stopAllActions];
+	TargetedAction *animation = [TargetedAction actionWithTarget:sprite_ actionIn:(CCFiniteTimeAction *)damageAnimation_];
+	CCFiniteTimeAction *method = [CCCallFunc actionWithTarget:self selector:@selector(finishHit)];	
+	[self runAction:[CCSequence actions:animation, method, nil]];	    
+}
+
+- (void) finishHit
+{
+    [[AudioManager audioManager] playSound:kPlop];            
+    [super showDeath:kBamText];
+    [super bulletHit];    
+}
+
 - (void) primaryCollision
 {
     sprite_.visible = NO;    
@@ -92,10 +108,7 @@ static NSUInteger countID = 0;
 
 - (void) primaryHit
 {
-    [[AudioManager audioManager] playSound:kPlop];        
-    [super showDeath:kBamText];
-    
-    [super bulletHit];
+    [self showDamage];
 }
 
 - (void) death

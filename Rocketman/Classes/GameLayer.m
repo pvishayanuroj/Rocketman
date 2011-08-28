@@ -63,7 +63,8 @@
         screenWidth_ = size.width;
         screenHeight_ = size.height;        
         
-        yCutoff_ = -screenHeight_*3;
+        yCutoff_ = -screenHeight_ * 3;
+        xCutoff_ = screenWidth_ * 2;
         leftCutoff_ = SIDE_MARGIN;
         rightCutoff_ = screenWidth_ - SIDE_MARGIN;
         
@@ -124,7 +125,7 @@
         boostTimer_ = 0;        
         onGround_ = YES;
         inputLocked_ = NO;
-        test = NO;
+        lossTriggered_ = NO;
         
         // DEBUG
         bossAdded_ = NO;
@@ -366,7 +367,7 @@
         [doodad fall:rocketSpeed_];
 
         // If past the cutoff boundary, delete
-        if (doodad.position.y < yCutoff_) {
+        if (doodad.position.y < yCutoff_ || doodad.position.x > xCutoff_) {
             [remove addIndex:index];            
             [doodad removeFromParentAndCleanup:YES];
         }
@@ -383,7 +384,7 @@
         [obstacle fall:rocketSpeed_];
         
         // If past the cutoff boundary, delete        
-        if (obstacle.position.y < yCutoff_) {
+        if (obstacle.position.y < yCutoff_ || obstacle.position.x > xCutoff_) {
             [remove addIndex:index];
             [obstacle destroy];
         }
@@ -576,8 +577,8 @@
 
 - (void) loss
 {
-    if (!test) {
-        test = YES;
+    if (!lossTriggered_) {
+        lossTriggered_ = YES;
         onGround_ = YES;
         rocketSpeed_ = 0;
 

@@ -20,4 +20,8 @@
 
 - (void) initActions;
 
+- (void) showDamage;
+
+- (void) finishHit;
+
 @end

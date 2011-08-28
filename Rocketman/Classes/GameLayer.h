@@ -20,8 +20,6 @@
 @interface GameLayer : CCLayer <UIAccelerometerDelegate> {
  
     Rocket *rocket_;
-    
-    BOOL test;
  
     NSMutableArray *obstacles_;
     
@@ -47,6 +45,8 @@
     
     NSUInteger numCats02_;
     
+    CGFloat xCutoff_;
+    
     CGFloat yCutoff_;
     
     NSInteger leftCutoff_;
@@ -68,6 +68,8 @@
     BOOL onGround_;
     
     BOOL inputLocked_;
+    
+    BOOL lossTriggered_;
     
     CGFloat height_;
     
