@@ -73,23 +73,25 @@
         firedCats_ = [[NSMutableArray arrayWithCapacity:5] retain];
         doodads_ = [[NSMutableArray arrayWithCapacity:20] retain]; 
         
-        // Determine filenames
-        NSString *bgFile = [NSString stringWithFormat:@"background_level%d.png", levelNum];
-        NSString *pbgFile = [NSString stringWithFormat:@"parallax_level%d.png", levelNum];
-        NSString *gndFile = [NSString stringWithFormat:@"ground_level%d.png", levelNum];
+        // Determine paths for background, ground, and parallax (optional)
+        NSString *pathBG = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"Level %d Background", levelNum] ofType:@"png"];
+        NSString *pathGND = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"Level %d Ground", levelNum] ofType:@"png"];
+        NSString *pathPBG = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"Level %d Parallax", levelNum] ofType:@"png"];        
         
         // Add background
-        CCSprite *bg = [CCSprite spriteWithFile:bgFile];
+        CCSprite *bg = [CCSprite spriteWithFile:pathBG];
         [self addChild:bg z:kBackgroundDepth];
         bg.anchorPoint = CGPointZero;
         
         // Parallax background
-        Doodad *pbg = [Parallax parallaxWithFile:pbgFile];
-        [self addChild:pbg z:kBackgroundDepth];
-        [doodads_ addObject:pbg];
+        if (pathPBG) {
+            Doodad *pbg = [Parallax parallaxWithFile:pathPBG];
+            [self addChild:pbg z:kBackgroundDepth];
+            [doodads_ addObject:pbg];
+        }
         
         // Add ground 
-        Doodad *ground = [Ground groundWithPos:CGPointZero filename:gndFile];
+        Doodad *ground = [Ground groundWithPos:CGPointZero filename:pathGND];
         [self addChild:ground z:kGroundDepth];
         [doodads_ addObject:ground];                
         
