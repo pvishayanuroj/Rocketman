@@ -34,6 +34,9 @@
 		DA2C3FBC140AF49E008FCF0D /* Level 6 Background.png in Resources */ = {isa = PBXBuildFile; fileRef = DA2C3FAE140AF49E008FCF0D /* Level 6 Background.png */; };
 		DA2C3FBD140AF49E008FCF0D /* Level 6 Ground.png in Resources */ = {isa = PBXBuildFile; fileRef = DA2C3FAF140AF49E008FCF0D /* Level 6 Ground.png */; };
 		DA2C3FBE140AF49E008FCF0D /* Level 6 Parallax.png in Resources */ = {isa = PBXBuildFile; fileRef = DA2C3FB0140AF49E008FCF0D /* Level 6 Parallax.png */; };
+		DA2C3FC4140B3934008FCF0D /* ArcMovement.m in Sources */ = {isa = PBXBuildFile; fileRef = DA2C3FC3140B3934008FCF0D /* ArcMovement.m */; };
+		DA2C3FC7140B3988008FCF0D /* CircularMovement.m in Sources */ = {isa = PBXBuildFile; fileRef = DA2C3FC6140B3988008FCF0D /* CircularMovement.m */; };
+		DA2C3FCA140B3F65008FCF0D /* Egg.m in Sources */ = {isa = PBXBuildFile; fileRef = DA2C3FC9140B3F65008FCF0D /* Egg.m */; };
 		DA2F101513B05B3A00738D08 /* MovingElement.m in Sources */ = {isa = PBXBuildFile; fileRef = DA2F101413B05B3A00738D08 /* MovingElement.m */; };
 		DA2F101813B05CD700738D08 /* Intro 07 Hand.png in Resources */ = {isa = PBXBuildFile; fileRef = DA2F101713B05CD700738D08 /* Intro 07 Hand.png */; };
 		DA336CA31401622F009EE661 /* PlasmaBall.m in Sources */ = {isa = PBXBuildFile; fileRef = DA336CA21401622E009EE661 /* PlasmaBall.m */; };
@@ -299,6 +302,12 @@
 		DA2C3FAE140AF49E008FCF0D /* Level 6 Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Level 6 Background.png"; sourceTree = "<group>"; };
 		DA2C3FAF140AF49E008FCF0D /* Level 6 Ground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Level 6 Ground.png"; sourceTree = "<group>"; };
 		DA2C3FB0140AF49E008FCF0D /* Level 6 Parallax.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Level 6 Parallax.png"; sourceTree = "<group>"; };
+		DA2C3FC2140B3934008FCF0D /* ArcMovement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ArcMovement.h; path = Classes/ArcMovement.h; sourceTree = "<group>"; };
+		DA2C3FC3140B3934008FCF0D /* ArcMovement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ArcMovement.m; path = Classes/ArcMovement.m; sourceTree = "<group>"; };
+		DA2C3FC5140B3988008FCF0D /* CircularMovement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CircularMovement.h; path = Classes/CircularMovement.h; sourceTree = "<group>"; };
+		DA2C3FC6140B3988008FCF0D /* CircularMovement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CircularMovement.m; path = Classes/CircularMovement.m; sourceTree = "<group>"; };
+		DA2C3FC8140B3F65008FCF0D /* Egg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Egg.h; path = Classes/Egg.h; sourceTree = "<group>"; };
+		DA2C3FC9140B3F65008FCF0D /* Egg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Egg.m; path = Classes/Egg.m; sourceTree = "<group>"; };
 		DA2F101313B05B3A00738D08 /* MovingElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MovingElement.h; path = Classes/MovingElement.h; sourceTree = "<group>"; };
 		DA2F101413B05B3A00738D08 /* MovingElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MovingElement.m; path = Classes/MovingElement.m; sourceTree = "<group>"; };
 		DA2F101713B05CD700738D08 /* Intro 07 Hand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Intro 07 Hand.png"; sourceTree = "<group>"; };
@@ -1359,6 +1368,10 @@
 				DA336CA914018D4E009EE661 /* ConstantMovement.m */,
 				DA2536C714096C1D0002EFE0 /* ConstantMovementWithStop.h */,
 				DA2536C814096C1E0002EFE0 /* ConstantMovementWithStop.m */,
+				DA2C3FC2140B3934008FCF0D /* ArcMovement.h */,
+				DA2C3FC3140B3934008FCF0D /* ArcMovement.m */,
+				DA2C3FC5140B3988008FCF0D /* CircularMovement.h */,
+				DA2C3FC6140B3988008FCF0D /* CircularMovement.m */,
 			);
 			name = Movements;
 			sourceTree = "<group>";
@@ -1402,6 +1415,8 @@
 				DA526FB31409AD82005BE716 /* SwarmGenerator.m */,
 				DA526FB51409FE95005BE716 /* YellowBird.h */,
 				DA526FB61409FE97005BE716 /* YellowBird.m */,
+				DA2C3FC8140B3F65008FCF0D /* Egg.h */,
+				DA2C3FC9140B3F65008FCF0D /* Egg.m */,
 			);
 			name = Obstacles;
 			sourceTree = "<group>";
@@ -1773,6 +1788,9 @@
 				DA526FB1140987CE005BE716 /* AlienHoverTurtle.m in Sources */,
 				DA526FB41409AD96005BE716 /* SwarmGenerator.m in Sources */,
 				DA526FB71409FE9A005BE716 /* YellowBird.m in Sources */,
+				DA2C3FC4140B3934008FCF0D /* ArcMovement.m in Sources */,
+				DA2C3FC7140B3988008FCF0D /* CircularMovement.m in Sources */,
+				DA2C3FCA140B3F65008FCF0D /* Egg.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -106,19 +106,14 @@ static GameManager *_gameManager = nil;
 
 #pragma mark - Game Layer Methods
 
-- (void) addShell:(CGPoint)pos
+- (void) addObstacle:(CGPoint)pos type:(ObstacleType)type
 {
-    [gameLayer_ addObstacle:kShell pos:pos];
+    [gameLayer_ addObstacle:type pos:pos];
 }
 
-- (void) addTurtling:(CGPoint)pos
+- (void) addObstacle:(Obstacle *)obstacle
 {
-    [gameLayer_ addObstacle:kTurtling pos:pos];
-}
-
-- (void) addPlasmaBall:(CGPoint)pos
-{
-    [gameLayer_ addObstacle:kPlasmaBall pos:pos];
+    [gameLayer_ addObstacle:obstacle];
 }
 
 #pragma mark - HUD Methods

@@ -34,6 +34,7 @@
         destroyed_ = NO;
         boundaries_ = [[NSMutableArray arrayWithCapacity:1] retain];
         movements_ = [[NSMutableArray arrayWithCapacity:1] retain];
+        childObstacles_ = [[NSMutableArray array] retain];
     }
     return self;
 }
@@ -71,8 +72,14 @@
 
 - (void) fall:(CGFloat)speed
 {
+    CGPoint moveAmt = self.position;
     for (Movement *movement in movements_) {
         [movement move:speed];
+    }
+    moveAmt = ccpSub(self.position, moveAmt);
+    
+    for (Obstacle *obstacle in childObstacles_) {
+        obstacle.position = ccpAdd(obstacle.position, moveAmt);
     }
 }
 
@@ -103,6 +110,14 @@
     // Likewise, remove movements here, because each movement has a reference to this obstacle    
     [movements_ release];
     movements_ = nil;
+    
+    // Take care of cleanup of child obstacles
+    for (Obstacle *obstacle in childObstacles_) {
+        [obstacle flagToDestroy];
+    }
+    
+    [childObstacles_ release];
+    childObstacles_ = nil;
 }
 
 #pragma mark - Debug Methods

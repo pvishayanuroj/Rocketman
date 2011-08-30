@@ -13,6 +13,7 @@
 #import "AudioManager.h"
 #import "TargetedAction.h"
 #import "GameManager.h"
+#import "Egg.h"
 
 @implementation AlienHoverTurtle
 
@@ -59,6 +60,14 @@ static NSUInteger countID = 0;
         movement.delegate = self;
         [movement setProximityTrigger:25.0f];        
         [movements_ addObject:movement];
+        
+        int numEggs = 3;
+        for (int i = 0; i < numEggs; i++) {
+            Egg *egg = [Egg redEggWithPos:self.position rate:0.1f radius:40.0f angle:(M_PI * i * (2.0f/numEggs))];
+            [[GameManager gameManager] addObstacle:egg];
+            [childObstacles_ addObject:egg];            
+        }
+
         
         [self initActions];
         [self showIdle];        
@@ -130,6 +139,11 @@ static NSUInteger countID = 0;
         c.hitActive = NO;
         boundary_.collide = c;   
         [boundary_ release];
+        
+        // Make eggs invisible
+        for (Obstacle *obstacle in childObstacles_) {
+            obstacle.visible = NO;
+        }
     }    
     else {
         [self showDamage];
@@ -155,7 +169,7 @@ static NSUInteger countID = 0;
 {
     if (self.position.y <= yTarget_) {
         CGPoint pos = CGPointMake(self.position.x, self.position.y - 5);
-        [[GameManager gameManager] addPlasmaBall:pos];
+        [[GameManager gameManager] addObstacle:pos type:kPlasmaBall];
         [self showAttack];
     }
 }

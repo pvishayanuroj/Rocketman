@@ -13,6 +13,7 @@
 @class PauseLayer;
 @class DialogueLayer;
 @class Rocket;
+@class Obstacle;
 
 @interface GameManager : CCNode {
  
@@ -41,11 +42,11 @@
 
 - (void) registerRocket:(Rocket *)rocket;
 
-- (void) addShell:(CGPoint)pos;
+/** Method to tell the game layer to add an obstacle */
+- (void) addObstacle:(CGPoint)pos type:(ObstacleType)type;
 
-- (void) addTurtling:(CGPoint)pos;
-
-- (void) addPlasmaBall:(CGPoint)pos;
+/** Method to pass an obstacle to add in the game layer */
+- (void) addObstacle:(Obstacle *)obstacle;
 
 - (void) setNumCats01:(NSUInteger)numCats;
 

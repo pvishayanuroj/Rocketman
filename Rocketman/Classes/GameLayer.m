@@ -31,6 +31,7 @@
 #import "AlienHoverTurtle.h"
 #import "BossTurtle.h"
 #import "PlasmaBall.h"
+#import "Egg.h"
 #import "Cat.h"
 #import "CatBullet.h"
 #import "Fuel.h"
@@ -475,8 +476,8 @@
         pos = ccp(x, y);                
 
         //NSUInteger type = arc4random() % 8; 
-        NSUInteger type = [UtilFuncs randomIncl:7 b:10];
-        //type = kAlienHoverTurtle;
+        //NSUInteger type = [UtilFuncs randomIncl:7 b:10];
+        NSUInteger type = kAlienHoverTurtle;
         [self addObstacle:type pos:pos];
         //[self addBirdSwarm:8];
         //[self addTurtlingSwarm:8];        
@@ -673,15 +674,26 @@
         case kPlasmaBall:
             obstacle = [PlasmaBall plasmaBallWithPos:pos];
             break;
+        case kRedEgg:
+            obstacle = [Egg redEggWithPos:pos];
+            break;
+        case kBlueEgg:
+            obstacle = [Egg blueEggWithPos:pos];
+            break;
         default:
             NSAssert(NO, @"Invalid obstacle number selected");
             break;
     }
     
     if (add) {
-        [self addChild:obstacle z:kObstacleDepth];
-        [obstacles_ addObject:obstacle]; 
+        [self addObstacle:obstacle]; 
     }
+}
+
+- (void) addObstacle:(Obstacle *)obstacle
+{
+    [self addChild:obstacle z:kObstacleDepth];
+    [obstacles_ addObject:obstacle];     
 }
 
 - (void) fireCat01

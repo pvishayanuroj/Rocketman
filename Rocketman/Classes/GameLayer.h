@@ -161,6 +161,8 @@
 
 - (void) addObstacle:(ObstacleType)type pos:(CGPoint)pos;
 
+- (void) addObstacle:(Obstacle *)obstacle;
+
 - (void) fireCat01;
 
 - (void) fireCat02;

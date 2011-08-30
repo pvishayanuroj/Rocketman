@@ -120,7 +120,7 @@ static NSUInteger countID = 0;
 - (void) sideMovementProximityTrigger:(SideMovement *)movement
 {
     CGPoint pos = CGPointMake(self.position.x, self.position.y - 10);
-    [[GameManager gameManager] addPlasmaBall:pos];
+    [[GameManager gameManager] addObstacle:pos type:kPlasmaBall];
 }
 
 - (void) sideMovementRandomTrigger:(SideMovement *)movement

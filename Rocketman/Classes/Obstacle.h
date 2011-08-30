@@ -20,6 +20,12 @@
     NSMutableArray *movements_;
     
     /** 
+     * Array of child obstacles that will move with this obstacle. 
+     * Also, if this obstacle is destroyed, all the child obstacles are removed 
+     */
+    NSMutableArray *childObstacles_;
+    
+    /** 
      * A default collision structure to use as a template 
      * (See implementation for details about default settings)
      */
@@ -28,8 +34,7 @@
 	/** Stored idle animation for all obstacles */
 	CCAction *idleAnimation_;                 
     
-    CCAction *destroyAnimation_;   
-    
+    /** The ID number of this obstacle, unique across obstacle types */
 	NSUInteger unitID_;
     
     /** Flag used in the Game Layer, indicating whether or not the object is destroyed */

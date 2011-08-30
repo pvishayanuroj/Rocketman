@@ -157,7 +157,7 @@ static NSUInteger countID = 0;
 
 - (void) deployShell
 {
-    [[GameManager gameManager] addShell:self.position];
+    [[GameManager gameManager] addObstacle:self.position type:kShell];
 }
 
 - (void) startFreeFall
