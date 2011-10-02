@@ -10,6 +10,7 @@
 #import "GameManager.h"
 #import "AudioManager.h"
 #import "GameStateManager.h"
+#import "DataManager.h"
 #import "Rocket.h"
 #import "Obstacle.h"
 #import "Doodad.h"
@@ -25,6 +26,7 @@
 #import "Shell.h"
 #import "Turtling.h"
 #import "ShockTurtling.h"
+#import "FlyingRock.h"
 #import "YellowBird.h"
 #import "SwarmGenerator.h"
 #import "HoverTurtle.h"
@@ -47,12 +49,12 @@
 
 #pragma mark - Object Lifecycle
 
-+ (id) startWithLevel:(NSUInteger)levelNum
++ (id) startWithLevelData:(NSDictionary *)data
 {
-    return [[[self alloc] initWithLevel:levelNum] autorelease];
+    return [[[self alloc] initWithLevelData:data] autorelease];
 }
 
-- (id) initWithLevel:(NSUInteger)levelNum
+- (id) initWithLevelData:(NSDictionary *)data
 {
 	if ((self = [super init])) {
 
@@ -74,27 +76,39 @@
         firedCats_ = [[NSMutableArray arrayWithCapacity:5] retain];
         doodads_ = [[NSMutableArray arrayWithCapacity:20] retain]; 
         
-        // Determine paths for background, ground, and parallax (optional)
-        NSString *pathBG = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"Level %d Background", levelNum] ofType:@"png"];
-        NSString *pathGND = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"Level %d Ground", levelNum] ofType:@"png"];
-        NSString *pathPBG = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"Level %d Parallax", levelNum] ofType:@"png"];        
+        NSString *backgroundName = [data objectForKey:@"Background File"];
+        NSString *groundName = [data objectForKey:@"Ground File"];
+        NSString *parallaxName = [data objectForKey:@"Parallax File"];        
         
         // Add background
-        CCSprite *bg = [CCSprite spriteWithFile:pathBG];
+        CCSprite *bg = [CCSprite spriteWithFile:backgroundName];
         [self addChild:bg z:kBackgroundDepth];
         bg.anchorPoint = CGPointZero;
         
-        // Parallax background
-        if (pathPBG) {
-            Doodad *pbg = [Parallax parallaxWithFile:pathPBG];
+        // Add parallax background
+        if (parallaxName) {
+            Doodad *pbg = [Parallax parallaxWithFile:parallaxName];
             [self addChild:pbg z:kBackgroundDepth];
             [doodads_ addObject:pbg];
         }
+
+        // Add the ground
+        if (groundName) {
+            // Add ground 
+            Doodad *ground = [Ground groundWithPos:CGPointZero filename:groundName];
+            [self addChild:ground z:kGroundDepth];
+            [doodads_ addObject:ground];                
+        }
         
-        // Add ground 
-        Doodad *ground = [Ground groundWithPos:CGPointZero filename:pathGND];
-        [self addChild:ground z:kGroundDepth];
-        [doodads_ addObject:ground];                
+        // Load object data
+        nameMap_ = [[self mapNames] retain];
+        
+        objectData_ = [[data objectForKey:@"Data"] retain];
+        objectDataKeys_ = [[data objectForKey:@"Datakeys"] retain];
+                
+        dataKeyIndex_ = 0;
+        nextDataKey_ = [[objectDataKeys_ objectAtIndex:dataKeyIndex_++] retain];
+        nextHeightTrigger_ = [nextDataKey_ integerValue];
         
         // Add the rocket
         CGPoint startPos = CGPointMake(screenWidth_ * 0.5, screenHeight_ * 0.15);
@@ -111,16 +125,6 @@
         maxHeight_ = 0;
         nextCloudHeight_ = 0;
         nextSlowCloudHeight_ = 0;
-        
-        // Obstacle and powerup generation
-        nextObstacleHeight_ = 800;
-        obstableFrequency_ = 2000;
-        nextRingHeight_ = 1600;
-        ringFrequency_ = 2000;
-        nextCatHeight_ = 700;
-        catFrequency_ = 1200;
-        nextFuelHeight_ = 2000;
-        fuelFrequency_ = 2400;
 
         sideMoveSpeed_ = 0;
         maxSideMoveSpeed_ = 8;
@@ -131,7 +135,6 @@
         lossTriggered_ = NO;
         
         // DEBUG
-        bossAdded_ = NO;
         ammoType_ = 0;
         
         v_ = 0;
@@ -146,8 +149,8 @@
         ddv_ = 0.00002;
         vMax_ = 13;
         
-        dt_ = 0;    
-
+        dt_ = 0;  
+        
         [self schedule:@selector(update:) interval:1.0/60.0];
         [self schedule:@selector(slowUpdate:) interval:10.0/60.0];
 	}
@@ -166,6 +169,9 @@
     [obstacles_ release];
     [firedCats_ release];
     [doodads_ release];
+    [objectData_ release];
+    [objectDataKeys_ release];
+    [nameMap_ release];
     
     [super dealloc];
 }
@@ -186,7 +192,6 @@
 {
     [self cloudGenerator];    
     [self obstacleGenerator];        
-    [self bossGenerator]; 
 }
 
 - (void) physicsStep:(ccTime)dt
@@ -428,7 +433,6 @@
         
         [self addChild:doodad z:kCloudDepth];   
         [doodads_ addObject:doodad];        
-        
     }
     
     if (height_ > nextSlowCloudHeight_) {
@@ -442,88 +446,57 @@
         
         [self addChild:doodad z:kCloudDepth];   
         [doodads_ addObject:doodad];        
-        
     }    
 }
 
-- (void) bossGenerator
+- (NSDictionary *) mapNames
 {
-    if (height_ > 1000) {
-        if (!bossAdded_) {
-            bossAdded_ = YES;
-            NSInteger x = [self getRandomX];
-            NSInteger y = screenHeight_ + 100;
-            CGPoint pos = ccp(x, y);          
-            //[self addObstacle:kBossTurtle pos:pos];
-        }
-    }
+    NSMutableDictionary *map = [NSMutableDictionary dictionaryWithCapacity:30];
+    
+    [map setObject:@"Turtle" forKey:[NSNumber numberWithInt:kShell]];
+    [map setObject:@"Alien" forKey:[NSNumber numberWithInt:kAlien]];
+    [map setObject:@"Alien Hover Turtle" forKey:[NSNumber numberWithInt:kAlienHoverTurtle]];
+    [map setObject:@"Angel" forKey:[NSNumber numberWithInt:kAngel]];
+    [map setObject:@"Boss Turtle" forKey:[NSNumber numberWithInt:kBossTurtle]];
+    [map setObject:@"Fuel" forKey:[NSNumber numberWithInt:kFuel]];
+    [map setObject:@"Dino" forKey:[NSNumber numberWithInt:kDino]];    
+    [map setObject:@"Hover Turtle" forKey:[NSNumber numberWithInt:kHoverTurtle]];
+    [map setObject:@"Dino" forKey:[NSNumber numberWithInt:kDino]];    
+    [map setObject:@"Turtling Shock" forKey:[NSNumber numberWithInt:kShockTurtling]];    
+    [map setObject:@"UFO" forKey:[NSNumber numberWithInt:kUFO]];
+    [map setObject:@"Yellow Bird" forKey:[NSNumber numberWithInt:kYellowBird]];    
+    [map setObject:@"Flybot" forKey:[NSNumber numberWithInt:kFlybot]];        
+
+    return map;
 }
 
 - (void) obstacleGenerator
 {
-    NSInteger x;
-    NSInteger y;
-    CGPoint pos;
-    Obstacle *obstacle;    
-    
-#if !DEBUG_NOOBSTACLES
-    // "Bad" obstacles
-    if (height_ > nextObstacleHeight_) {
-        nextObstacleHeight_ += [self getRandomY:obstableFrequency_];
+    if (height_ > nextHeightTrigger_) {
+        NSInteger y = nextHeightTrigger_;
+        NSDictionary *rowData = [objectData_ objectForKey:nextDataKey_];
         
-        x = [self getRandomX];
-        y = screenHeight_ + 100;
-        pos = ccp(x, y);                
-
-        //NSUInteger type = arc4random() % 8; 
-        //NSUInteger type = [UtilFuncs randomIncl:7 b:10];
-        NSUInteger type = kAlienHoverTurtle;
-        [self addObstacle:type pos:pos];
-        //[self addBirdSwarm:8];
-        //[self addTurtlingSwarm:8];        
-    }    
-#endif
-    
-#if !DEBUG_NORINGS
-    // Boost rings
-    if (height_ > nextRingHeight_) {
-        nextRingHeight_ += [self getRandomY:ringFrequency_];
+        for (NSString *col in rowData) {
+            NSInteger x = [col integerValue];
+            NSString *objectName = [rowData objectForKey:col];
+            CGPoint pos = CGPointMake(x, y + 1000);
+            
+            ObstacleType type = [[nameMap_ objectForKey:objectName] intValue];
+            [self addObstacle:type pos:pos];
+            
+        }
         
-        x = [self getRandomX];
-        y = screenHeight_ + 100;
-        pos = ccp(x, y);
+        // Determine the next height to trigger on
+        [nextDataKey_ release];
         
-        obstacle = [Boost boostWithPos:pos];        
-        [self addChild:obstacle z:kObstacleDepth];
-        [obstacles_ addObject:obstacle];
+        if (dataKeyIndex_ < [objectDataKeys_ count]) {
+            nextDataKey_ = [[objectDataKeys_ objectAtIndex:dataKeyIndex_++] retain];
+            nextHeightTrigger_ = [nextDataKey_ integerValue];
+        }
+        else {
+            nextHeightTrigger_ = 9999999; // CHANGE THIS
+        }
     }
-#endif
-    
-    // Cats
-    if (height_ > nextCatHeight_) {
-        nextCatHeight_ += [self getRandomY:catFrequency_];
-        
-        x = [self getRandomX];
-        y = screenHeight_ + 100;
-        pos = ccp(x, y);
-        
-        obstacle = [Cat catWithPos:pos];
-        [self addChild:obstacle z:kObstacleDepth];
-        [obstacles_ addObject:obstacle];
-    }
-    
-    // Fuel
-    if (height_ > nextFuelHeight_) {
-        nextFuelHeight_ += [self getRandomY:fuelFrequency_];
-        
-        x = [self getRandomX];
-        y = screenHeight_ + 100;
-        pos = ccp(x, y);
-        
-        obstacle = [Fuel fuelWithPos:pos];
-        [self addChild:obstacle z:kObstacleDepth];
-        [obstacles_ addObject:obstacle];
-    }    
 }
 
 - (void) moveRocketHorizontally
@@ -545,7 +518,7 @@
         dx = maxSpeed;
     }
     else if (deltax < -maxSpeed) {
-        dx = -maxSpeed ;
+        dx = -maxSpeed;
     }
     else {
         dx = deltax;
@@ -674,11 +647,11 @@
         case kPlasmaBall:
             obstacle = [PlasmaBall plasmaBallWithPos:pos];
             break;
-        case kRedEgg:
-            obstacle = [Egg redEggWithPos:pos];
+        case kFlyingRockA:
+            obstacle = [FlyingRock rockAWithPos:pos];
             break;
-        case kBlueEgg:
-            obstacle = [Egg blueEggWithPos:pos];
+        case kFlyingRockB:
+            obstacle = [FlyingRock rockBWithPos:pos];
             break;
         default:
             NSAssert(NO, @"Invalid obstacle number selected");

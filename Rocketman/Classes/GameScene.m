@@ -25,9 +25,10 @@
 {
 	if ((self = [super init])) {
 
+        NSDictionary *data = [self loadLevelData:levelNum];
         [self animationLoader:@"sheet01_animations" spriteSheetName:@"sheet01"];		
         
-        GameLayer *gameLayer = [GameLayer startWithLevel:levelNum];
+        GameLayer *gameLayer = [GameLayer startWithLevelData:data];
 		[self addChild:gameLayer z:0];
         
         HUDLayer *hudLayer = [HUDLayer node];
@@ -51,6 +52,14 @@
         
     }
 	return self;
+}
+
+- (NSDictionary *) loadLevelData:(NSUInteger)levelNum
+{
+    NSString *dataFilename = [NSString stringWithFormat:@"Level%d_data", levelNum];
+	NSString *dataPath = [[NSBundle mainBundle] pathForResource:dataFilename ofType:@"plist"];
+	NSDictionary *data = [NSDictionary dictionaryWithContentsOfFile:dataPath]; 
+    return data;
 }
 
 - (void) animationLoader:(NSString *)unitListName spriteSheetName:(NSString *)spriteSheetName

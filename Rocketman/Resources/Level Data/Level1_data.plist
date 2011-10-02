@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Level Num</key>
+	<string>1</string>
+	<key>Level Name</key>
+	<string>Test 1</string>
+	<key>Level Desc</key>
+	<string>Test 1 Level</string>
+	<key>Background File</key>
+	<string>Sky Background.png</string>
+	<key>Data</key>
+	<dict>
+		<key>104</key>
+		<dict>
+			<key>144</key>
+			<string>Turtle</string>
+			<key>240</key>
+			<string>Turtle</string>
+		</dict>
+		<key>130</key>
+		<dict>
+			<key>240</key>
+			<string>Turtle</string>
+		</dict>
+		<key>182</key>
+		<dict>
+			<key>112</key>
+			<string>Alien</string>
+			<key>208</key>
+			<string>Turtle</string>
+		</dict>
+		<key>26</key>
+		<dict>
+			<key>144</key>
+			<string>Turtle</string>
+		</dict>
+		<key>260</key>
+		<dict>
+			<key>112</key>
+			<string>Turtle</string>
+			<key>240</key>
+			<string>Turtle</string>
+			<key>272</key>
+			<string>Turtle</string>
+			<key>80</key>
+			<string>Turtle</string>
+		</dict>
+		<key>286</key>
+		<dict>
+			<key>112</key>
+			<string>Turtle</string>
+			<key>240</key>
+			<string>Turtle</string>
+			<key>272</key>
+			<string>Turtle</string>
+			<key>80</key>
+			<string>Turtle</string>
+		</dict>
+		<key>390</key>
+		<dict>
+			<key>112</key>
+			<string>Alien</string>
+			<key>144</key>
+			<string>Alien</string>
+			<key>16</key>
+			<string>Alien</string>
+			<key>176</key>
+			<string>Alien</string>
+			<key>208</key>
+			<string>Alien</string>
+			<key>272</key>
+			<string>Alien</string>
+			<key>304</key>
+			<string>Alien</string>
+			<key>336</key>
+			<string>Alien</string>
+			<key>368</key>
+			<string>Alien</string>
+			<key>48</key>
+			<string>Alien</string>
+			<key>80</key>
+			<string>Alien</string>
+		</dict>
+		<key>78</key>
+		<dict>
+			<key>112</key>
+			<string>Alien</string>
+			<key>272</key>
+			<string>Alien</string>
+		</dict>
+	</dict>
+	<key>Datakeys</key>
+	<array>
+		<string>26</string>
+		<string>78</string>
+		<string>104</string>
+		<string>130</string>
+		<string>182</string>
+		<string>260</string>
+		<string>286</string>
+		<string>390</string>
+	</array>
+	<key>Vertical Tiles</key>
+	<integer>64</integer>
+	<key>Ground File</key>
+	<string>Mountains Ground.png</string>
+	<key>Parallax File</key>
+	<string>Mountains Parallax.png</string>
+</dict>
+</plist>

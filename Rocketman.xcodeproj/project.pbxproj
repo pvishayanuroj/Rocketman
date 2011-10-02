@@ -20,23 +20,10 @@
 		DA0C26FC13AE0F8900544DF1 /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = DA0C26FB13AE0F8900544DF1 /* heart.png */; };
 		DA0FF8BD13FFDD19001B44F2 /* SideMovement.m in Sources */ = {isa = PBXBuildFile; fileRef = DA0FF8BC13FFDD19001B44F2 /* SideMovement.m */; };
 		DA2536C914096C1F0002EFE0 /* ConstantMovementWithStop.m in Sources */ = {isa = PBXBuildFile; fileRef = DA2536C814096C1E0002EFE0 /* ConstantMovementWithStop.m */; };
-		DA2C3FB1140AF49E008FCF0D /* Level 1 Background.png in Resources */ = {isa = PBXBuildFile; fileRef = DA2C3FA3140AF49E008FCF0D /* Level 1 Background.png */; };
-		DA2C3FB2140AF49E008FCF0D /* Level 1 Ground.png in Resources */ = {isa = PBXBuildFile; fileRef = DA2C3FA4140AF49E008FCF0D /* Level 1 Ground.png */; };
-		DA2C3FB3140AF49E008FCF0D /* Level 1 Parallax.png in Resources */ = {isa = PBXBuildFile; fileRef = DA2C3FA5140AF49E008FCF0D /* Level 1 Parallax.png */; };
-		DA2C3FB4140AF49E008FCF0D /* Level 2 Background.png in Resources */ = {isa = PBXBuildFile; fileRef = DA2C3FA6140AF49E008FCF0D /* Level 2 Background.png */; };
-		DA2C3FB5140AF49E008FCF0D /* Level 2 Ground.png in Resources */ = {isa = PBXBuildFile; fileRef = DA2C3FA7140AF49E008FCF0D /* Level 2 Ground.png */; };
-		DA2C3FB6140AF49E008FCF0D /* Level 2 Parallax.png in Resources */ = {isa = PBXBuildFile; fileRef = DA2C3FA8140AF49E008FCF0D /* Level 2 Parallax.png */; };
-		DA2C3FB7140AF49E008FCF0D /* Level 4 Background.png in Resources */ = {isa = PBXBuildFile; fileRef = DA2C3FA9140AF49E008FCF0D /* Level 4 Background.png */; };
-		DA2C3FB8140AF49E008FCF0D /* Level 4 Ground.png in Resources */ = {isa = PBXBuildFile; fileRef = DA2C3FAA140AF49E008FCF0D /* Level 4 Ground.png */; };
-		DA2C3FB9140AF49E008FCF0D /* Level 5 Background.png in Resources */ = {isa = PBXBuildFile; fileRef = DA2C3FAB140AF49E008FCF0D /* Level 5 Background.png */; };
-		DA2C3FBA140AF49E008FCF0D /* Level 5 Ground.png in Resources */ = {isa = PBXBuildFile; fileRef = DA2C3FAC140AF49E008FCF0D /* Level 5 Ground.png */; };
-		DA2C3FBB140AF49E008FCF0D /* Level 5 Wall.png in Resources */ = {isa = PBXBuildFile; fileRef = DA2C3FAD140AF49E008FCF0D /* Level 5 Wall.png */; };
-		DA2C3FBC140AF49E008FCF0D /* Level 6 Background.png in Resources */ = {isa = PBXBuildFile; fileRef = DA2C3FAE140AF49E008FCF0D /* Level 6 Background.png */; };
-		DA2C3FBD140AF49E008FCF0D /* Level 6 Ground.png in Resources */ = {isa = PBXBuildFile; fileRef = DA2C3FAF140AF49E008FCF0D /* Level 6 Ground.png */; };
-		DA2C3FBE140AF49E008FCF0D /* Level 6 Parallax.png in Resources */ = {isa = PBXBuildFile; fileRef = DA2C3FB0140AF49E008FCF0D /* Level 6 Parallax.png */; };
 		DA2C3FC4140B3934008FCF0D /* ArcMovement.m in Sources */ = {isa = PBXBuildFile; fileRef = DA2C3FC3140B3934008FCF0D /* ArcMovement.m */; };
 		DA2C3FC7140B3988008FCF0D /* CircularMovement.m in Sources */ = {isa = PBXBuildFile; fileRef = DA2C3FC6140B3988008FCF0D /* CircularMovement.m */; };
 		DA2C3FCA140B3F65008FCF0D /* Egg.m in Sources */ = {isa = PBXBuildFile; fileRef = DA2C3FC9140B3F65008FCF0D /* Egg.m */; };
+		DA2C3FCD140DD26F008FCF0D /* FlyingRock.m in Sources */ = {isa = PBXBuildFile; fileRef = DA2C3FCC140DD24A008FCF0D /* FlyingRock.m */; };
 		DA2F101513B05B3A00738D08 /* MovingElement.m in Sources */ = {isa = PBXBuildFile; fileRef = DA2F101413B05B3A00738D08 /* MovingElement.m */; };
 		DA2F101813B05CD700738D08 /* Intro 07 Hand.png in Resources */ = {isa = PBXBuildFile; fileRef = DA2F101713B05CD700738D08 /* Intro 07 Hand.png */; };
 		DA336CA31401622F009EE661 /* PlasmaBall.m in Sources */ = {isa = PBXBuildFile; fileRef = DA336CA21401622E009EE661 /* PlasmaBall.m */; };
@@ -175,6 +162,18 @@
 		DA526FB1140987CE005BE716 /* AlienHoverTurtle.m in Sources */ = {isa = PBXBuildFile; fileRef = DA526FB0140987CD005BE716 /* AlienHoverTurtle.m */; };
 		DA526FB41409AD96005BE716 /* SwarmGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = DA526FB31409AD82005BE716 /* SwarmGenerator.m */; };
 		DA526FB71409FE9A005BE716 /* YellowBird.m in Sources */ = {isa = PBXBuildFile; fileRef = DA526FB61409FE97005BE716 /* YellowBird.m */; };
+		DA6ED0BF1437F234000024D8 /* Cave Background.png in Resources */ = {isa = PBXBuildFile; fileRef = DA6ED0B31437F234000024D8 /* Cave Background.png */; };
+		DA6ED0C01437F234000024D8 /* Cave Ground.png in Resources */ = {isa = PBXBuildFile; fileRef = DA6ED0B41437F234000024D8 /* Cave Ground.png */; };
+		DA6ED0C11437F234000024D8 /* City Ground.png in Resources */ = {isa = PBXBuildFile; fileRef = DA6ED0B51437F234000024D8 /* City Ground.png */; };
+		DA6ED0C21437F234000024D8 /* City Parallax.png in Resources */ = {isa = PBXBuildFile; fileRef = DA6ED0B61437F234000024D8 /* City Parallax.png */; };
+		DA6ED0C31437F234000024D8 /* Desert Ground.png in Resources */ = {isa = PBXBuildFile; fileRef = DA6ED0B71437F234000024D8 /* Desert Ground.png */; };
+		DA6ED0C41437F234000024D8 /* Desert Parallax.png in Resources */ = {isa = PBXBuildFile; fileRef = DA6ED0B81437F234000024D8 /* Desert Parallax.png */; };
+		DA6ED0C51437F234000024D8 /* Mountains Ground.png in Resources */ = {isa = PBXBuildFile; fileRef = DA6ED0B91437F234000024D8 /* Mountains Ground.png */; };
+		DA6ED0C61437F234000024D8 /* Mountains Parallax.png in Resources */ = {isa = PBXBuildFile; fileRef = DA6ED0BA1437F234000024D8 /* Mountains Parallax.png */; };
+		DA6ED0C71437F234000024D8 /* Sky Background.png in Resources */ = {isa = PBXBuildFile; fileRef = DA6ED0BB1437F234000024D8 /* Sky Background.png */; };
+		DA6ED0C81437F234000024D8 /* Stars Background.png in Resources */ = {isa = PBXBuildFile; fileRef = DA6ED0BC1437F234000024D8 /* Stars Background.png */; };
+		DA6ED0C91437F234000024D8 /* Sunset Background.png in Resources */ = {isa = PBXBuildFile; fileRef = DA6ED0BD1437F234000024D8 /* Sunset Background.png */; };
+		DA6ED0CA1437F234000024D8 /* Waterfall Background.png in Resources */ = {isa = PBXBuildFile; fileRef = DA6ED0BE1437F234000024D8 /* Waterfall Background.png */; };
 		DA7DCC7C13A7D63C0065A566 /* GameLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DA7DCC6D13A7D63C0065A566 /* GameLayer.m */; };
 		DA7DCC7D13A7D63C0065A566 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = DA7DCC6F13A7D63C0065A566 /* GameScene.m */; };
 		DA7DCC7E13A7D63C0065A566 /* HUDLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DA7DCC7113A7D63C0065A566 /* HUDLayer.m */; };
@@ -190,6 +189,9 @@
 		DA7DCCA113A7D68A0065A566 /* Doodad.m in Sources */ = {isa = PBXBuildFile; fileRef = DA7DCC9B13A7D68A0065A566 /* Doodad.m */; };
 		DA7DCCA213A7D68A0065A566 /* Ground.m in Sources */ = {isa = PBXBuildFile; fileRef = DA7DCC9D13A7D68A0065A566 /* Ground.m */; };
 		DA7DCCA313A7D68A0065A566 /* SlowCloud.m in Sources */ = {isa = PBXBuildFile; fileRef = DA7DCC9F13A7D68A0065A566 /* SlowCloud.m */; };
+		DA82A3DE142F5706006A9B70 /* Level1_data.plist in Resources */ = {isa = PBXBuildFile; fileRef = DA82A3DC142F5706006A9B70 /* Level1_data.plist */; };
+		DA86E7631437F84B0020815A /* Level2_data.plist in Resources */ = {isa = PBXBuildFile; fileRef = DA86E7621437F84B0020815A /* Level2_data.plist */; };
+		DA86E767143896EF0020815A /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DA86E766143896EE0020815A /* DataManager.m */; };
 		DA907C3C1394DBDB009ADD27 /* SRSMTheme01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DA907C3B1394DBDB009ADD27 /* SRSMTheme01.mp3 */; };
 		DA907C401394DCAD009ADD27 /* meow01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DA907C3E1394DCAD009ADD27 /* meow01.mp3 */; };
 		DA907C411394DCAD009ADD27 /* meow02.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DA907C3F1394DCAD009ADD27 /* meow02.mp3 */; };
@@ -288,26 +290,14 @@
 		DA0FF8BF13FFDD4C001B44F2 /* SideMovementDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SideMovementDelegate.h; path = Classes/SideMovementDelegate.h; sourceTree = "<group>"; };
 		DA2536C714096C1D0002EFE0 /* ConstantMovementWithStop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConstantMovementWithStop.h; path = Classes/ConstantMovementWithStop.h; sourceTree = "<group>"; };
 		DA2536C814096C1E0002EFE0 /* ConstantMovementWithStop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConstantMovementWithStop.m; path = Classes/ConstantMovementWithStop.m; sourceTree = "<group>"; };
-		DA2C3FA3140AF49E008FCF0D /* Level 1 Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Level 1 Background.png"; sourceTree = "<group>"; };
-		DA2C3FA4140AF49E008FCF0D /* Level 1 Ground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Level 1 Ground.png"; sourceTree = "<group>"; };
-		DA2C3FA5140AF49E008FCF0D /* Level 1 Parallax.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Level 1 Parallax.png"; sourceTree = "<group>"; };
-		DA2C3FA6140AF49E008FCF0D /* Level 2 Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Level 2 Background.png"; sourceTree = "<group>"; };
-		DA2C3FA7140AF49E008FCF0D /* Level 2 Ground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Level 2 Ground.png"; sourceTree = "<group>"; };
-		DA2C3FA8140AF49E008FCF0D /* Level 2 Parallax.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Level 2 Parallax.png"; sourceTree = "<group>"; };
-		DA2C3FA9140AF49E008FCF0D /* Level 4 Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Level 4 Background.png"; sourceTree = "<group>"; };
-		DA2C3FAA140AF49E008FCF0D /* Level 4 Ground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Level 4 Ground.png"; sourceTree = "<group>"; };
-		DA2C3FAB140AF49E008FCF0D /* Level 5 Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Level 5 Background.png"; sourceTree = "<group>"; };
-		DA2C3FAC140AF49E008FCF0D /* Level 5 Ground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Level 5 Ground.png"; sourceTree = "<group>"; };
-		DA2C3FAD140AF49E008FCF0D /* Level 5 Wall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Level 5 Wall.png"; sourceTree = "<group>"; };
-		DA2C3FAE140AF49E008FCF0D /* Level 6 Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Level 6 Background.png"; sourceTree = "<group>"; };
-		DA2C3FAF140AF49E008FCF0D /* Level 6 Ground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Level 6 Ground.png"; sourceTree = "<group>"; };
-		DA2C3FB0140AF49E008FCF0D /* Level 6 Parallax.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Level 6 Parallax.png"; sourceTree = "<group>"; };
 		DA2C3FC2140B3934008FCF0D /* ArcMovement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ArcMovement.h; path = Classes/ArcMovement.h; sourceTree = "<group>"; };
 		DA2C3FC3140B3934008FCF0D /* ArcMovement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ArcMovement.m; path = Classes/ArcMovement.m; sourceTree = "<group>"; };
 		DA2C3FC5140B3988008FCF0D /* CircularMovement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CircularMovement.h; path = Classes/CircularMovement.h; sourceTree = "<group>"; };
 		DA2C3FC6140B3988008FCF0D /* CircularMovement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CircularMovement.m; path = Classes/CircularMovement.m; sourceTree = "<group>"; };
 		DA2C3FC8140B3F65008FCF0D /* Egg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Egg.h; path = Classes/Egg.h; sourceTree = "<group>"; };
 		DA2C3FC9140B3F65008FCF0D /* Egg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Egg.m; path = Classes/Egg.m; sourceTree = "<group>"; };
+		DA2C3FCB140DD247008FCF0D /* FlyingRock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlyingRock.h; path = Classes/FlyingRock.h; sourceTree = "<group>"; };
+		DA2C3FCC140DD24A008FCF0D /* FlyingRock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FlyingRock.m; path = Classes/FlyingRock.m; sourceTree = "<group>"; };
 		DA2F101313B05B3A00738D08 /* MovingElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MovingElement.h; path = Classes/MovingElement.h; sourceTree = "<group>"; };
 		DA2F101413B05B3A00738D08 /* MovingElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MovingElement.m; path = Classes/MovingElement.m; sourceTree = "<group>"; };
 		DA2F101713B05CD700738D08 /* Intro 07 Hand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Intro 07 Hand.png"; sourceTree = "<group>"; };
@@ -578,6 +568,18 @@
 		DA526FB31409AD82005BE716 /* SwarmGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SwarmGenerator.m; path = Classes/SwarmGenerator.m; sourceTree = "<group>"; };
 		DA526FB51409FE95005BE716 /* YellowBird.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YellowBird.h; path = Classes/YellowBird.h; sourceTree = "<group>"; };
 		DA526FB61409FE97005BE716 /* YellowBird.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YellowBird.m; path = Classes/YellowBird.m; sourceTree = "<group>"; };
+		DA6ED0B31437F234000024D8 /* Cave Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Cave Background.png"; path = "../../../../../Projects/RocketmanLE/RocketmanLE/Resources/Stage Art/Cave Background.png"; sourceTree = "<group>"; };
+		DA6ED0B41437F234000024D8 /* Cave Ground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Cave Ground.png"; path = "../../../../../Projects/RocketmanLE/RocketmanLE/Resources/Stage Art/Cave Ground.png"; sourceTree = "<group>"; };
+		DA6ED0B51437F234000024D8 /* City Ground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "City Ground.png"; path = "../../../../../Projects/RocketmanLE/RocketmanLE/Resources/Stage Art/City Ground.png"; sourceTree = "<group>"; };
+		DA6ED0B61437F234000024D8 /* City Parallax.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "City Parallax.png"; path = "../../../../../Projects/RocketmanLE/RocketmanLE/Resources/Stage Art/City Parallax.png"; sourceTree = "<group>"; };
+		DA6ED0B71437F234000024D8 /* Desert Ground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Desert Ground.png"; path = "../../../../../Projects/RocketmanLE/RocketmanLE/Resources/Stage Art/Desert Ground.png"; sourceTree = "<group>"; };
+		DA6ED0B81437F234000024D8 /* Desert Parallax.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Desert Parallax.png"; path = "../../../../../Projects/RocketmanLE/RocketmanLE/Resources/Stage Art/Desert Parallax.png"; sourceTree = "<group>"; };
+		DA6ED0B91437F234000024D8 /* Mountains Ground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Mountains Ground.png"; path = "../../../../../Projects/RocketmanLE/RocketmanLE/Resources/Stage Art/Mountains Ground.png"; sourceTree = "<group>"; };
+		DA6ED0BA1437F234000024D8 /* Mountains Parallax.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Mountains Parallax.png"; path = "../../../../../Projects/RocketmanLE/RocketmanLE/Resources/Stage Art/Mountains Parallax.png"; sourceTree = "<group>"; };
+		DA6ED0BB1437F234000024D8 /* Sky Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Sky Background.png"; path = "../../../../../Projects/RocketmanLE/RocketmanLE/Resources/Stage Art/Sky Background.png"; sourceTree = "<group>"; };
+		DA6ED0BC1437F234000024D8 /* Stars Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Stars Background.png"; path = "../../../../../Projects/RocketmanLE/RocketmanLE/Resources/Stage Art/Stars Background.png"; sourceTree = "<group>"; };
+		DA6ED0BD1437F234000024D8 /* Sunset Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Sunset Background.png"; path = "../../../../../Projects/RocketmanLE/RocketmanLE/Resources/Stage Art/Sunset Background.png"; sourceTree = "<group>"; };
+		DA6ED0BE1437F234000024D8 /* Waterfall Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Waterfall Background.png"; path = "../../../../../Projects/RocketmanLE/RocketmanLE/Resources/Stage Art/Waterfall Background.png"; sourceTree = "<group>"; };
 		DA7DCC6C13A7D63C0065A566 /* GameLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameLayer.h; path = Classes/GameLayer.h; sourceTree = "<group>"; };
 		DA7DCC6D13A7D63C0065A566 /* GameLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameLayer.m; path = Classes/GameLayer.m; sourceTree = "<group>"; };
 		DA7DCC6E13A7D63C0065A566 /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameScene.h; path = Classes/GameScene.h; sourceTree = "<group>"; };
@@ -612,6 +614,10 @@
 		DA7DCC9D13A7D68A0065A566 /* Ground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Ground.m; path = Classes/Ground.m; sourceTree = "<group>"; };
 		DA7DCC9E13A7D68A0065A566 /* SlowCloud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SlowCloud.h; path = Classes/SlowCloud.h; sourceTree = "<group>"; };
 		DA7DCC9F13A7D68A0065A566 /* SlowCloud.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SlowCloud.m; path = Classes/SlowCloud.m; sourceTree = "<group>"; };
+		DA82A3DC142F5706006A9B70 /* Level1_data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Level1_data.plist; sourceTree = "<group>"; };
+		DA86E7621437F84B0020815A /* Level2_data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Level2_data.plist; path = "../../../../../Projects/Rocketman/Rocketman/Resources/Level Data/Level2_data.plist"; sourceTree = "<group>"; };
+		DA86E765143896EE0020815A /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataManager.h; path = ../../../Projects/Rocketman/Rocketman/Classes/DataManager.h; sourceTree = "<group>"; };
+		DA86E766143896EE0020815A /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataManager.m; path = ../../../Projects/Rocketman/Rocketman/Classes/DataManager.m; sourceTree = "<group>"; };
 		DA8966B613B73DAC000AC29F /* Structs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Structs.h; path = Classes/Structs.h; sourceTree = "<group>"; };
 		DA907C3B1394DBDB009ADD27 /* SRSMTheme01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = SRSMTheme01.mp3; sourceTree = "<group>"; };
 		DA907C3E1394DCAD009ADD27 /* meow01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = meow01.mp3; sourceTree = "<group>"; };
@@ -755,6 +761,8 @@
 				DA99E94C13ADE62E0075896F /* StoryManager.m */,
 				DA99B5B913DA78AB00DB361F /* GameStateManager.h */,
 				DA99B5BA13DA78AB00DB361F /* GameStateManager.m */,
+				DA86E765143896EE0020815A /* DataManager.h */,
+				DA86E766143896EE0020815A /* DataManager.m */,
 			);
 			name = Singletons;
 			sourceTree = "<group>";
@@ -779,20 +787,18 @@
 		DA2C3FA2140AF49E008FCF0D /* Stage Art */ = {
 			isa = PBXGroup;
 			children = (
-				DA2C3FA3140AF49E008FCF0D /* Level 1 Background.png */,
-				DA2C3FA4140AF49E008FCF0D /* Level 1 Ground.png */,
-				DA2C3FA5140AF49E008FCF0D /* Level 1 Parallax.png */,
-				DA2C3FA6140AF49E008FCF0D /* Level 2 Background.png */,
-				DA2C3FA7140AF49E008FCF0D /* Level 2 Ground.png */,
-				DA2C3FA8140AF49E008FCF0D /* Level 2 Parallax.png */,
-				DA2C3FA9140AF49E008FCF0D /* Level 4 Background.png */,
-				DA2C3FAA140AF49E008FCF0D /* Level 4 Ground.png */,
-				DA2C3FAB140AF49E008FCF0D /* Level 5 Background.png */,
-				DA2C3FAC140AF49E008FCF0D /* Level 5 Ground.png */,
-				DA2C3FAD140AF49E008FCF0D /* Level 5 Wall.png */,
-				DA2C3FAE140AF49E008FCF0D /* Level 6 Background.png */,
-				DA2C3FAF140AF49E008FCF0D /* Level 6 Ground.png */,
-				DA2C3FB0140AF49E008FCF0D /* Level 6 Parallax.png */,
+				DA6ED0B31437F234000024D8 /* Cave Background.png */,
+				DA6ED0B41437F234000024D8 /* Cave Ground.png */,
+				DA6ED0B51437F234000024D8 /* City Ground.png */,
+				DA6ED0B61437F234000024D8 /* City Parallax.png */,
+				DA6ED0B71437F234000024D8 /* Desert Ground.png */,
+				DA6ED0B81437F234000024D8 /* Desert Parallax.png */,
+				DA6ED0B91437F234000024D8 /* Mountains Ground.png */,
+				DA6ED0BA1437F234000024D8 /* Mountains Parallax.png */,
+				DA6ED0BB1437F234000024D8 /* Sky Background.png */,
+				DA6ED0BC1437F234000024D8 /* Stars Background.png */,
+				DA6ED0BD1437F234000024D8 /* Sunset Background.png */,
+				DA6ED0BE1437F234000024D8 /* Waterfall Background.png */,
 			);
 			name = "Stage Art";
 			path = "Resources/Stage Art";
@@ -854,6 +860,7 @@
 		DA346D76138E593D000881D6 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				DA82A3DB142F5706006A9B70 /* Level Data */,
 				DA2C3FA2140AF49E008FCF0D /* Stage Art */,
 				DA99B5CD13DA85F400DB361F /* Data Files */,
 				DA99E81813ADC30E0075896F /* Story Scenes */,
@@ -1295,6 +1302,16 @@
 			name = Utility;
 			sourceTree = "<group>";
 		};
+		DA82A3DB142F5706006A9B70 /* Level Data */ = {
+			isa = PBXGroup;
+			children = (
+				DA86E7621437F84B0020815A /* Level2_data.plist */,
+				DA82A3DC142F5706006A9B70 /* Level1_data.plist */,
+			);
+			name = "Level Data";
+			path = "../../Rocketman/Rocketman/Resources/Level Data";
+			sourceTree = "<group>";
+		};
 		DA99B5CD13DA85F400DB361F /* Data Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -1417,6 +1434,8 @@
 				DA526FB61409FE97005BE716 /* YellowBird.m */,
 				DA2C3FC8140B3F65008FCF0D /* Egg.h */,
 				DA2C3FC9140B3F65008FCF0D /* Egg.m */,
+				DA2C3FCB140DD247008FCF0D /* FlyingRock.h */,
+				DA2C3FCC140DD24A008FCF0D /* FlyingRock.m */,
 			);
 			name = Obstacles;
 			sourceTree = "<group>";
@@ -1601,20 +1620,20 @@
 				DA3B39EE13DFB7C10079D34C /* gameover_text.png in Resources */,
 				DAEA997113EE3E91007AA451 /* dialogue_combo1.png in Resources */,
 				DAEA997213EE3E91007AA451 /* dialogue_combo2.png in Resources */,
-				DA2C3FB1140AF49E008FCF0D /* Level 1 Background.png in Resources */,
-				DA2C3FB2140AF49E008FCF0D /* Level 1 Ground.png in Resources */,
-				DA2C3FB3140AF49E008FCF0D /* Level 1 Parallax.png in Resources */,
-				DA2C3FB4140AF49E008FCF0D /* Level 2 Background.png in Resources */,
-				DA2C3FB5140AF49E008FCF0D /* Level 2 Ground.png in Resources */,
-				DA2C3FB6140AF49E008FCF0D /* Level 2 Parallax.png in Resources */,
-				DA2C3FB7140AF49E008FCF0D /* Level 4 Background.png in Resources */,
-				DA2C3FB8140AF49E008FCF0D /* Level 4 Ground.png in Resources */,
-				DA2C3FB9140AF49E008FCF0D /* Level 5 Background.png in Resources */,
-				DA2C3FBA140AF49E008FCF0D /* Level 5 Ground.png in Resources */,
-				DA2C3FBB140AF49E008FCF0D /* Level 5 Wall.png in Resources */,
-				DA2C3FBC140AF49E008FCF0D /* Level 6 Background.png in Resources */,
-				DA2C3FBD140AF49E008FCF0D /* Level 6 Ground.png in Resources */,
-				DA2C3FBE140AF49E008FCF0D /* Level 6 Parallax.png in Resources */,
+				DA82A3DE142F5706006A9B70 /* Level1_data.plist in Resources */,
+				DA6ED0BF1437F234000024D8 /* Cave Background.png in Resources */,
+				DA6ED0C01437F234000024D8 /* Cave Ground.png in Resources */,
+				DA6ED0C11437F234000024D8 /* City Ground.png in Resources */,
+				DA6ED0C21437F234000024D8 /* City Parallax.png in Resources */,
+				DA6ED0C31437F234000024D8 /* Desert Ground.png in Resources */,
+				DA6ED0C41437F234000024D8 /* Desert Parallax.png in Resources */,
+				DA6ED0C51437F234000024D8 /* Mountains Ground.png in Resources */,
+				DA6ED0C61437F234000024D8 /* Mountains Parallax.png in Resources */,
+				DA6ED0C71437F234000024D8 /* Sky Background.png in Resources */,
+				DA6ED0C81437F234000024D8 /* Stars Background.png in Resources */,
+				DA6ED0C91437F234000024D8 /* Sunset Background.png in Resources */,
+				DA6ED0CA1437F234000024D8 /* Waterfall Background.png in Resources */,
+				DA86E7631437F84B0020815A /* Level2_data.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1791,6 +1810,8 @@
 				DA2C3FC4140B3934008FCF0D /* ArcMovement.m in Sources */,
 				DA2C3FC7140B3988008FCF0D /* CircularMovement.m in Sources */,
 				DA2C3FCA140B3F65008FCF0D /* Egg.m in Sources */,
+				DA2C3FCD140DD26F008FCF0D /* FlyingRock.m in Sources */,
+				DA86E767143896EF0020815A /* DataManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

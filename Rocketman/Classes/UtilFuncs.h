@@ -36,4 +36,7 @@
 /** Collision method used for circular or retangular collisions with the cat bullets (modeled as a circle) */
 + (BOOL) collides:(PVCollide)collide objectPos:(CGPoint)objectPos catPos:(CGPoint)catPos catRadius:(CGFloat)catRadius;
 
+/** Removes the ".<extension>" part of the filename */
++ (NSString *) removeFileExtension:(NSString *)filename;
+
 @end

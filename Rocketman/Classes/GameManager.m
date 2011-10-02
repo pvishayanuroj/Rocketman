@@ -50,6 +50,7 @@ static GameManager *_gameManager = nil;
         pauseLayer_ = nil;
         dialogueLayer_ = nil;
         rocket_ = nil;
+        data_ = nil;
 	}
 	return self;
 }
@@ -63,12 +64,14 @@ static GameManager *_gameManager = nil;
     [pauseLayer_ release];
     [dialogueLayer_ release];
     [rocket_ release];
+    [data_ release];
     gameLayer_ = nil;
     hudLayer_ = nil;
     pauseLayer_ = nil;
     dialogueLayer_ = nil;    
     rocket_ = nil;
-	
+	data_ = nil;
+    
 	[super dealloc];
 }
 

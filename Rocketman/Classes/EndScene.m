@@ -24,13 +24,13 @@ const CGFloat ES_SCORE_TIME = 2.0f;
     if ((self = [super init])) {
     
         // Add background sky
-        NSString *backgroundName = [NSString stringWithFormat:@"background_level%d.png", levelNum];
+        NSString *backgroundName = [NSString stringWithFormat:@"Sky Background.png", levelNum];
         CCSprite *bg = [CCSprite spriteWithFile:backgroundName];
         [self addChild:bg z:0];
         bg.anchorPoint = CGPointZero;        
         
         // Add foreground element
-        NSString *foregroundName = [NSString stringWithFormat:@"parallax_level%d.png", levelNum];
+        NSString *foregroundName = [NSString stringWithFormat:@"Mountains Parallax.png", levelNum];
         CCSprite *fg = [CCSprite spriteWithFile:foregroundName];
         fg.anchorPoint = CGPointZero;
         [self addChild:fg z:1];

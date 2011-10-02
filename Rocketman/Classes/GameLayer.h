@@ -19,6 +19,18 @@
 
 @interface GameLayer : CCLayer <UIAccelerometerDelegate> {
  
+    NSDictionary *nameMap_;
+    
+    NSDictionary *objectData_;
+    
+    NSArray *objectDataKeys_;
+    
+    NSUInteger dataKeyIndex_;
+    
+    NSString *nextDataKey_;
+    
+    NSInteger nextHeightTrigger_;
+    
     Rocket *rocket_;
  
     NSMutableArray *obstacles_;
@@ -71,31 +83,15 @@
     
     BOOL lossTriggered_;
     
+    CGFloat nextCloudHeight_;
+    
+    CGFloat nextSlowCloudHeight_;
+    
     CGFloat height_;
     
     CGFloat maxHeight_;
     
     CGFloat lossHeight_;
-    
-    CGFloat nextCloudHeight_;
-    
-    CGFloat nextSlowCloudHeight_;
-    
-    CGFloat nextObstacleHeight_;
-    
-    CGFloat obstableFrequency_;
-    
-    CGFloat nextRingHeight_;
-
-    CGFloat ringFrequency_;    
-    
-    CGFloat nextCatHeight_;
-
-    CGFloat catFrequency_;    
-    
-    CGFloat nextFuelHeight_;
-    
-    CGFloat fuelFrequency_;     
     
     CGFloat v0_;    
     
@@ -121,19 +117,14 @@
     
     CGFloat dt_;
     
-    // Temp variables for debugging
-    BOOL bossAdded_;
-    
     NSInteger ammoType_;
 }
 
-+ (id) startWithLevel:(NSUInteger)levelNum;
++ (id) startWithLevelData:(NSDictionary *)data;
 
-- (id) initWithLevel:(NSUInteger)levelNum;
+- (id) initWithLevelData:(NSDictionary *)data;
 
 - (void) cloudGenerator;
-
-- (void) bossGenerator;
 
 - (void) obstacleGenerator;
 
@@ -148,6 +139,8 @@
 - (void) collisionDetect;
 
 - (void) moveRocketHorizontally;
+
+- (NSDictionary *) mapNames;
 
 - (NSInteger) getRandomX;
 

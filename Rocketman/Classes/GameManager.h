@@ -26,6 +26,8 @@
     DialogueLayer *dialogueLayer_;
     
     Rocket *rocket_;
+    
+    NSDictionary *data_;
 }
 
 + (GameManager *) gameManager;

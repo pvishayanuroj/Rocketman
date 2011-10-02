@@ -58,15 +58,17 @@ typedef enum {
     kAlienHoverTurtle = 8,
     kTurtlingSwarm = 9,
     kBirdSwarm = 10,
-    kBoost = 11,
-    kCat = 12,
-    kFuel = 13,
-    kBossTurtle = 14,
-    kTurtling = 15,
-    kYellowBird = 16,    
-    kPlasmaBall = 17,
-    kRedEgg = 18,
-    kBlueEgg = 19
+    kFlyingRockA = 11,
+    kFlyingRockB = 12,
+    kBoost = 13,
+    kCat = 14,
+    kFuel = 15,
+    kBossTurtle = 16,
+    kTurtling = 17,
+    kYellowBird = 18,    
+    kPlasmaBall = 19,
+    kRedEgg = 20,
+    kBlueEgg = 21
 } ObstacleType;
 
 typedef enum {
