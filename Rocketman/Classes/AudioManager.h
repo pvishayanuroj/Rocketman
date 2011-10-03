@@ -6,6 +6,8 @@
 //  Copyright 2011 Paul Vishayanuroj. All rights reserved.
 //
 
+#import "CommonHeaders.h"
+
 @class CDSoundSource;
 
 @interface AudioManager : NSObject {

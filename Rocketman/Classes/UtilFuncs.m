@@ -122,5 +122,42 @@
     return filename;
 }
 
++ (NSDictionary *) mapObjectTypes
+{
+    NSMutableDictionary *map = [NSMutableDictionary dictionaryWithCapacity:30];
+    
+    // Enemies
+    [map setObject:[NSNumber numberWithInt:kShell] forKey:@"Shell"];
+    [map setObject:[NSNumber numberWithInt:kAlien] forKey:@"Alien"];
+    [map setObject:[NSNumber numberWithInt:kDino] forKey:@"Dino"];
+    [map setObject:[NSNumber numberWithInt:kUFO] forKey:@"UFO"];
+    [map setObject:[NSNumber numberWithInt:kFlybot] forKey:@"Flybot"];
+    [map setObject:[NSNumber numberWithInt:kTurtling] forKey:@"Turtling"];
+    [map setObject:[NSNumber numberWithInt:kTurtlingSwarm] forKey:@"Turtling Swarm"];
+    [map setObject:[NSNumber numberWithInt:kShockTurtling] forKey:@"Shock Turtling"];
+    [map setObject:[NSNumber numberWithInt:kHoverTurtle] forKey:@"Hover Turtle"];
+    [map setObject:[NSNumber numberWithInt:kAlienHoverTurtle] forKey:@"Alien Hover Turtle"];
+    [map setObject:[NSNumber numberWithInt:kYellowBird] forKey:@"Yellow Bird"];
+    [map setObject:[NSNumber numberWithInt:kYellowBirdSwarm] forKey:@"Yellow Bird Swarm"];
+    [map setObject:[NSNumber numberWithInt:kBlueBird] forKey:@"Blue Bird"];
+    [map setObject:[NSNumber numberWithInt:kBlueBirdSwarm] forKey:@"Blue Bird Swarm"];
+    [map setObject:[NSNumber numberWithInt:kBat] forKey:@"Bat"];
+    [map setObject:[NSNumber numberWithInt:kBatSwarm] forKey:@"Bat Swarm"];
+    [map setObject:[NSNumber numberWithInt:kSquid] forKey:@"Squid"];
+    [map setObject:[NSNumber numberWithInt:kBlueFish] forKey:@"Blue Fish"];
+    [map setObject:[NSNumber numberWithInt:kBlueFishSwarm] forKey:@"Blue Fish Swarm"];
+    [map setObject:[NSNumber numberWithInt:kSalamander] forKey:@"Salamander"];
+    // Bosses
+    [map setObject:[NSNumber numberWithInt:kBossTurtle] forKey:@"Boss Turtle"];
+    [map setObject:[NSNumber numberWithInt:kAlienBossTurtle] forKey:@"Alien Boss Turtle"];
+    // Collectables/Helpers
+    [map setObject:[NSNumber numberWithInt:kAngel] forKey:@"Angel"];
+    [map setObject:[NSNumber numberWithInt:kBoost] forKey:@"Boost"];
+    [map setObject:[NSNumber numberWithInt:kFuel] forKey:@"Fuel"];
+    [map setObject:[NSNumber numberWithInt:kCat] forKey:@"Cat"];
+    [map setObject:[NSNumber numberWithInt:kCatBundle] forKey:@"Cat Bundle"];         
+    
+    return map;
+}
 
 @end

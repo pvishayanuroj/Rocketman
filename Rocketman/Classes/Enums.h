@@ -47,28 +47,42 @@ typedef enum {
 } CatType;
 
 typedef enum {
-    kDino = 0,
-    kAlien = 1,
-    kShell = 2,
-    kAngel = 3,
-    kUFO = 4,
-    kFlybot = 5,
-    kShockTurtling = 6,
-    kHoverTurtle = 7,
-    kAlienHoverTurtle = 8,
-    kTurtlingSwarm = 9,
-    kBirdSwarm = 10,
-    kFlyingRockA = 11,
-    kFlyingRockB = 12,
-    kBoost = 13,
-    kCat = 14,
-    kFuel = 15,
-    kBossTurtle = 16,
-    kTurtling = 17,
-    kYellowBird = 18,    
-    kPlasmaBall = 19,
-    kRedEgg = 20,
-    kBlueEgg = 21
+    // Enemies
+    kShell,
+    kAlien,
+    kDino,
+    kUFO,
+    kFlybot,
+    kTurtling,
+    kTurtlingSwarm,
+    kShockTurtling,
+    kHoverTurtle,    
+    kAlienHoverTurtle,
+    kShieldedAlienHoverTurtle,
+    kYellowBird,
+    kYellowBirdSwarm,
+    kBlueBird,
+    kBlueBirdSwarm,
+    kBat,
+    kBatSwarm,
+    kSquid,
+    kBlueFish,
+    kBlueFishSwarm,
+    kSalamander,
+    kFlyingRock,
+    // Bosses
+    kBossTurtle,
+    kAlienBossTurtle,
+    // Collectables/Helpers
+    kAngel,
+    kBoost,
+    kFuel,
+    kCat,
+    kCatBundle,
+    // Auxiliary Objects
+    kRedEgg,
+    kBlueEgg,
+    kPlasmaBall
 } ObstacleType;
 
 typedef enum {

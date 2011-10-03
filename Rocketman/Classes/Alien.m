@@ -27,7 +27,7 @@ static NSUInteger countID = 0;
 	if ((self = [super init])) {
 
 		unitID_ = countID++;       
-        name_ = [[NSString stringWithString:@"Turtle"] retain];
+        name_ = [[NSString stringWithString:@"Alien"] retain];
         NSString *spriteName = [NSString stringWithFormat:@"%@ Idle 01.png", name_];        
         
         sprite_ = [[CCSprite spriteWithSpriteFrameName:spriteName] retain];

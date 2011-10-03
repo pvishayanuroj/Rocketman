@@ -288,6 +288,8 @@
 		DA0FF8BB13FFDD19001B44F2 /* SideMovement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SideMovement.h; path = Classes/SideMovement.h; sourceTree = "<group>"; };
 		DA0FF8BC13FFDD19001B44F2 /* SideMovement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SideMovement.m; path = Classes/SideMovement.m; sourceTree = "<group>"; };
 		DA0FF8BF13FFDD4C001B44F2 /* SideMovementDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SideMovementDelegate.h; path = Classes/SideMovementDelegate.h; sourceTree = "<group>"; };
+		DA1E9FEA143923DD00381F54 /* CommonHeaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommonHeaders.h; path = ../../../Projects/Rocketman/Rocketman/Classes/CommonHeaders.h; sourceTree = "<group>"; };
+		DA1E9FEC1439247400381F54 /* ObjectHeaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ObjectHeaders.h; path = ../../../Projects/Rocketman/Rocketman/Classes/ObjectHeaders.h; sourceTree = "<group>"; };
 		DA2536C714096C1D0002EFE0 /* ConstantMovementWithStop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConstantMovementWithStop.h; path = Classes/ConstantMovementWithStop.h; sourceTree = "<group>"; };
 		DA2536C814096C1E0002EFE0 /* ConstantMovementWithStop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConstantMovementWithStop.m; path = Classes/ConstantMovementWithStop.m; sourceTree = "<group>"; };
 		DA2C3FC2140B3934008FCF0D /* ArcMovement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ArcMovement.h; path = Classes/ArcMovement.h; sourceTree = "<group>"; };
@@ -1298,6 +1300,8 @@
 				DACF5CBE13C9DC4B0034C281 /* CCNode+PauseResume.m */,
 				DA336CAB1401C3BA009EE661 /* PointWrapper.h */,
 				DA336CAC1401C3BB009EE661 /* PointWrapper.m */,
+				DA1E9FEA143923DD00381F54 /* CommonHeaders.h */,
+				DA1E9FEC1439247400381F54 /* ObjectHeaders.h */,
 			);
 			name = Utility;
 			sourceTree = "<group>";

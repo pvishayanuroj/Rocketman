@@ -6,6 +6,7 @@
 //  Copyright 2011 Paul Vishayanuroj. All rights reserved.
 //
 
+#import "CommonHeaders.h"
 #import "cocos2d.h"
 
 @class GameLayer;
@@ -26,8 +27,6 @@
     DialogueLayer *dialogueLayer_;
     
     Rocket *rocket_;
-    
-    NSDictionary *data_;
 }
 
 + (GameManager *) gameManager;

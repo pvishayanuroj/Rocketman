@@ -13,31 +13,14 @@
 #import "DataManager.h"
 #import "Rocket.h"
 #import "Obstacle.h"
+#import "ObjectHeaders.h"
 #import "Doodad.h"
 #import "Parallax.h"
 #import "Ground.h"
 #import "Cloud.h"
 #import "SlowCloud.h"
-#import "Alien.h"
-#import "UFO.h"
-#import "Flybot.h"
-#import "Dino.h"
-#import "Angel.h"
-#import "Shell.h"
-#import "Turtling.h"
-#import "ShockTurtling.h"
-#import "FlyingRock.h"
-#import "YellowBird.h"
 #import "SwarmGenerator.h"
-#import "HoverTurtle.h"
-#import "AlienHoverTurtle.h"
-#import "BossTurtle.h"
-#import "PlasmaBall.h"
-#import "Egg.h"
-#import "Cat.h"
 #import "CatBullet.h"
-#import "Fuel.h"
-#import "Boost.h"
 #import "BlastCloud.h"
 #import "UtilFuncs.h"
 #import "Boundary.h"
@@ -101,14 +84,13 @@
         }
         
         // Load object data
-        nameMap_ = [[self mapNames] retain];
+        objectNameMap_ = [[UtilFuncs mapObjectTypes] retain];
         
         objectData_ = [[data objectForKey:@"Data"] retain];
         objectDataKeys_ = [[data objectForKey:@"Datakeys"] retain];
                 
         dataKeyIndex_ = 0;
-        nextDataKey_ = [[objectDataKeys_ objectAtIndex:dataKeyIndex_++] retain];
-        nextHeightTrigger_ = [nextDataKey_ integerValue];
+        nextHeightTrigger_ = [[objectDataKeys_ objectAtIndex:dataKeyIndex_] integerValue];
         
         // Add the rocket
         CGPoint startPos = CGPointMake(screenWidth_ * 0.5, screenHeight_ * 0.15);
@@ -171,7 +153,7 @@
     [doodads_ release];
     [objectData_ release];
     [objectDataKeys_ release];
-    [nameMap_ release];
+    [objectNameMap_ release];
     
     [super dealloc];
 }
@@ -449,52 +431,34 @@
     }    
 }
 
-- (NSDictionary *) mapNames
-{
-    NSMutableDictionary *map = [NSMutableDictionary dictionaryWithCapacity:30];
-    
-    [map setObject:@"Turtle" forKey:[NSNumber numberWithInt:kShell]];
-    [map setObject:@"Alien" forKey:[NSNumber numberWithInt:kAlien]];
-    [map setObject:@"Alien Hover Turtle" forKey:[NSNumber numberWithInt:kAlienHoverTurtle]];
-    [map setObject:@"Angel" forKey:[NSNumber numberWithInt:kAngel]];
-    [map setObject:@"Boss Turtle" forKey:[NSNumber numberWithInt:kBossTurtle]];
-    [map setObject:@"Fuel" forKey:[NSNumber numberWithInt:kFuel]];
-    [map setObject:@"Dino" forKey:[NSNumber numberWithInt:kDino]];    
-    [map setObject:@"Hover Turtle" forKey:[NSNumber numberWithInt:kHoverTurtle]];
-    [map setObject:@"Dino" forKey:[NSNumber numberWithInt:kDino]];    
-    [map setObject:@"Turtling Shock" forKey:[NSNumber numberWithInt:kShockTurtling]];    
-    [map setObject:@"UFO" forKey:[NSNumber numberWithInt:kUFO]];
-    [map setObject:@"Yellow Bird" forKey:[NSNumber numberWithInt:kYellowBird]];    
-    [map setObject:@"Flybot" forKey:[NSNumber numberWithInt:kFlybot]];        
-
-    return map;
-}
-
 - (void) obstacleGenerator
 {
-    if (height_ > nextHeightTrigger_) {
-        NSInteger y = nextHeightTrigger_;
-        NSDictionary *rowData = [objectData_ objectForKey:nextDataKey_];
+    // See if the specified height for the next object addition has been reached
+    if ((height_ - screenHeight_) > nextHeightTrigger_ && nextHeightTrigger_ > 0) {
+        // Get the key to determine which row to add
+        NSString *datakey = [objectDataKeys_ objectAtIndex:dataKeyIndex_];
+        NSDictionary *rowData = [objectData_ objectForKey:datakey];
+        dataKeyIndex_++;
         
+        NSInteger y = nextHeightTrigger_;        
+        
+        // For all objects that are to be added in this row
         for (NSString *col in rowData) {
             NSInteger x = [col integerValue];
             NSString *objectName = [rowData objectForKey:col];
-            CGPoint pos = CGPointMake(x, y + 1000);
+            CGPoint pos = CGPointMake(x, y);
             
-            ObstacleType type = [[nameMap_ objectForKey:objectName] intValue];
+            ObstacleType type = [[objectNameMap_ objectForKey:objectName] intValue];
             [self addObstacle:type pos:pos];
-            
         }
         
         // Determine the next height to trigger on
-        [nextDataKey_ release];
-        
         if (dataKeyIndex_ < [objectDataKeys_ count]) {
-            nextDataKey_ = [[objectDataKeys_ objectAtIndex:dataKeyIndex_++] retain];
-            nextHeightTrigger_ = [nextDataKey_ integerValue];
+            nextHeightTrigger_ = [[objectDataKeys_ objectAtIndex:dataKeyIndex_] integerValue];
         }
+        // No more objects to add
         else {
-            nextHeightTrigger_ = 9999999; // CHANGE THIS
+            nextHeightTrigger_ = 0;
         }
     }
 }
@@ -541,15 +505,6 @@
     xCoord += SIDE_MARGIN;
     
     return xCoord;
-}
-
-- (NSInteger) getRandomY:(CGFloat)freq
-{
-    NSInteger range = freq * 0.2;
-    NSInteger var = arc4random() % (range * 2);       
-    var -= range;
-    
-    return (freq + var);
 }
 
 - (void) loss
@@ -619,10 +574,12 @@
             [self addTurtlingSwarm:8];
             add = NO;
             break;
+            /*
         case kBirdSwarm:
             [self addBirdSwarm:8];
             add = NO;
             break;
+             */
         case kBoost:
             obstacle = [Boost boostWithPos:pos];    
             break;
@@ -647,12 +604,14 @@
         case kPlasmaBall:
             obstacle = [PlasmaBall plasmaBallWithPos:pos];
             break;
+            /*
         case kFlyingRockA:
             obstacle = [FlyingRock rockAWithPos:pos];
             break;
         case kFlyingRockB:
             obstacle = [FlyingRock rockBWithPos:pos];
             break;
+             */
         default:
             NSAssert(NO, @"Invalid obstacle number selected");
             break;

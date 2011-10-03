@@ -6,6 +6,7 @@
 //  Copyright 2011 Paul Vishayanuroj. All rights reserved.
 //
 
+#import "CommonHeaders.h"
 #import "Doodad.h"
 
 @interface Ground : Doodad {

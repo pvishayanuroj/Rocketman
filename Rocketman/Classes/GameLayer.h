@@ -6,6 +6,7 @@
 //  Copyright 2011 Paul Vishayanuroj. All rights reserved.
 //
 
+#import "CommonHeaders.h"
 #import "cocos2d.h"
 #import "CDAudioManager.h"
 
@@ -19,33 +20,36 @@
 
 @interface GameLayer : CCLayer <UIAccelerometerDelegate> {
  
-    NSDictionary *nameMap_;
+    /** Maps object strings to object types */
+    NSDictionary *objectNameMap_;
     
+    /** Holds the map of where all objects are to be placed */
     NSDictionary *objectData_;
     
+    /** Holds all row height triggers in sorted order */
     NSArray *objectDataKeys_;
     
+    /** The current index of the next row height trigger */
     NSUInteger dataKeyIndex_;
     
-    NSString *nextDataKey_;
-    
+    /** Next height at which there objects to add */
     NSInteger nextHeightTrigger_;
     
+    /** Reference to the player rocket */
     Rocket *rocket_;
  
+    /** Holds all current active obstacles */
     NSMutableArray *obstacles_;
     
+    /** Holds all current active cats */
     NSMutableArray *firedCats_;
-    
-    NSUInteger maxObstacles_;
-    
-    NSUInteger maxClouds_;
+
+    /** Holds all current active doodads */
+    NSMutableArray *doodads_;    
     
     CGFloat rocketInitSpeed_;
     
     CGFloat rocketSpeed_;
-    
-    NSMutableArray *doodads_;
     
     NSInteger screenWidth_;
     
@@ -126,25 +130,24 @@
 
 - (void) cloudGenerator;
 
+/** Method called in a loop to read from object data dictionary and add obstacles */
 - (void) obstacleGenerator;
 
 - (void) physicsStep:(ccTime)dt;
 
 - (void) applyBoost:(ccTime)dt;
 
+/** Method called in a loop to move non-player objects */
 - (void) applyGravity;
 
 - (void) updateCounters;
 
+/** Method called in a loop to handle collisions */
 - (void) collisionDetect;
 
 - (void) moveRocketHorizontally;
 
-- (NSDictionary *) mapNames;
-
 - (NSInteger) getRandomX;
-
-- (NSInteger) getRandomY:(CGFloat)freq;
 
 - (void) loss;
 

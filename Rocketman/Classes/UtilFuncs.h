@@ -6,6 +6,7 @@
 //  Copyright 2011 Paul Vishayanuroj. All rights reserved.
 //
 
+#import "CommonHeaders.h"
 #import "cocos2d.h"
 
 @interface UtilFuncs : NSObject {
@@ -38,5 +39,8 @@
 
 /** Removes the ".<extension>" part of the filename */
 + (NSString *) removeFileExtension:(NSString *)filename;
+
+/** Maps object strings to enums */
++ (NSDictionary *) mapObjectTypes;
 
 @end

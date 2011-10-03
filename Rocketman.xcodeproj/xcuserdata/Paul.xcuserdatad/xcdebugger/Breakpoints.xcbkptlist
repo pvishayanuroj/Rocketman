@@ -247,12 +247,12 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Rocketman/Classes/GameLayer.m"
-         timestampString = "339254414.133778"
+         timestampString = "339333536.075216"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "652"
-         endingLineNumber = "652"
-         landmarkName = "-addObstacle:pos:"
+         startingLineNumber = "654"
+         endingLineNumber = "654"
+         landmarkName = "-fireCat01"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -261,11 +261,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Rocketman/Classes/GameManager.m"
-         timestampString = "335581389.908796"
+         timestampString = "339332210.280551"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "61"
-         endingLineNumber = "61"
+         startingLineNumber = "60"
+         endingLineNumber = "60"
          landmarkName = "-dealloc"
          landmarkType = "5">
       </FileBreakpoint>
@@ -303,12 +303,12 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Rocketman/Classes/GameLayer.m"
-         timestampString = "339254414.133778"
+         timestampString = "339333536.075216"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "899"
-         endingLineNumber = "899"
-         landmarkName = "-showText:"
+         startingLineNumber = "901"
+         endingLineNumber = "901"
+         landmarkName = "-accelerometer:didAccelerate:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -317,13 +317,13 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Rocketman/Classes/GameLayer.m"
-         timestampString = "339254414.133778"
+         timestampString = "339333536.075216"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "898"
-         endingLineNumber = "898"
-         landmarkName = "-showText:"
-         landmarkType = "5">
+         startingLineNumber = "900"
+         endingLineNumber = "900"
+         landmarkName = "@implementation GameLayer"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -373,11 +373,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Rocketman/Classes/GameLayer.m"
-         timestampString = "339254414.133778"
+         timestampString = "339258557.534985"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "306"
-         endingLineNumber = "306"
+         startingLineNumber = "308"
+         endingLineNumber = "308"
          landmarkName = "-collisionDetect"
          landmarkType = "5">
       </FileBreakpoint>
@@ -401,12 +401,12 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Rocketman/Classes/GameLayer.m"
-         timestampString = "339254414.133778"
+         timestampString = "339258557.534985"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "358"
-         endingLineNumber = "358"
-         landmarkName = "-collisionDetect"
+         startingLineNumber = "360"
+         endingLineNumber = "360"
+         landmarkName = "-applyGravity"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -415,12 +415,12 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Rocketman/Classes/GameLayer.m"
-         timestampString = "339254414.133778"
+         timestampString = "339333536.075216"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "529"
-         endingLineNumber = "529"
-         landmarkName = "-moveRocketHorizontally"
+         startingLineNumber = "531"
+         endingLineNumber = "531"
+         landmarkName = "-loss"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -462,7 +462,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "55"
          endingLineNumber = "55"
-         landmarkName = "+startWithLevelData:"
+         landmarkName = "-initWithLevelData:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -471,13 +471,27 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Rocketman/Classes/GameLayer.m"
-         timestampString = "339254414.133778"
+         timestampString = "339258557.534985"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "85"
-         endingLineNumber = "85"
+         startingLineNumber = "87"
+         endingLineNumber = "87"
          landmarkName = "-initWithLevelData:"
          landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "0"
+         filePath = "/Users/Paul/Dropbox/Projects/Rocketman/Rocketman/Classes/DataManager.h"
+         timestampString = "339257107.333778"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "18"
+         endingLineNumber = "18"
+         landmarkName = "@interface DataManager"
+         landmarkType = "2">
       </FileBreakpoint>
    </FileBreakpoints>
 </Bucket>
