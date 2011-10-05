@@ -2,61 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <array>
-	<dict>
-		<key>Desc</key>
-		<string>Take to the skies!</string>
-		<key>MapCoord</key>
-		<string>(220, 122)</string>
-		<key>Title</key>
-		<string>Level 1</string>
-	</dict>
-	<dict>
-		<key>Desc</key>
-		<string>Beach Bum Blast</string>
-		<key>MapCoord</key>
-		<string>(220, 185)</string>
-		<key>Title</key>
-		<string>Stage 2</string>
-	</dict>
-	<dict>
-		<key>Desc</key>
-		<string>Seaside Mayhem</string>
-		<key>MapCoord</key>
-		<string>(131, 118)</string>
-		<key>Title</key>
-		<string>Stage 3</string>
-	</dict>
-	<dict>
-		<key>Desc</key>
-		<string>The Waterfront</string>
-		<key>MapCoord</key>
-		<string>(38, 116)</string>
-		<key>Title</key>
-		<string>Stage 4</string>
-	</dict>
-	<dict>
-		<key>Desc</key>
-		<string>Mines of Mori</string>
-		<key>MapCoord</key>
-		<string>(36, 214)</string>
-		<key>Title</key>
-		<string>Stage 5</string>
-	</dict>
-	<dict>
-		<key>Desc</key>
-		<string>Big City Waltz</string>
-		<key>MapCoord</key>
-		<string>(176, 270)</string>
-		<key>Title</key>
-		<string>Stage 6</string>
-	</dict>
-	<dict>
-		<key>Desc</key>
-		<string>Final Encounter</string>
-		<key>MapCoord</key>
-		<string>(232, 326)</string>
-		<key>Title</key>
-		<string>Stage 7</string>
-	</dict>
+	<string>(131, 120)</string>
+	<string>(230, 130)</string>
+	<string>(225, 181)</string>
+	<string>(38, 107)</string>
+	<string>(35, 203)</string>
+	<string>(171, 280)</string>
+	<string>(230, 335)</string>
 </array>
 </plist>

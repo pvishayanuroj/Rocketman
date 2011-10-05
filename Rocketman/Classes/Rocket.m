@@ -110,6 +110,7 @@
     #error(unknown architecture)
 #endif    
     
+    // For shaking
     CCActionInterval *l1 = [CCMoveTo actionWithDuration:speed position:CGPointMake(-1.25, 0)];
     CCActionInterval *r1 = [CCMoveTo actionWithDuration:speed position:CGPointMake(1.25, 0)];    
     CCActionInterval *l2 = [CCMoveTo actionWithDuration:speed position:CGPointMake(-1, 0)];
@@ -128,15 +129,19 @@
 
     shakingAnimation_ = [[CCSequence actions:a1, a2, a3, a4, nil] retain];
     
+    // Burning
 	animation = [[CCAnimationCache sharedAnimationCache] animationByName:@"Rocket2 Burn"];
 	burningAnimation_ = [[CCAnimate actionWithAnimation:animation] retain];
     
+    // Wobbling
     animation = [[CCAnimationCache sharedAnimationCache] animationByName:@"Rocket2 Wobble"];
 	wobblingAnimation_ = [[CCAnimate actionWithAnimation:animation] retain];
     
+    // Hearts
     animation = [[CCAnimationCache sharedAnimationCache] animationByName:@"Rocket2 Heart"];
 	heartAnimation_ = [[CCAnimate actionWithAnimation:animation] retain];    
     
+    // Aura
     animation = [[CCAnimationCache sharedAnimationCache] animationByName:@"Aura Flicker"];
     animate = [CCAnimate actionWithAnimation:animation];
     auraAnimation_ = [[CCRepeatForever actionWithAction:animate] retain];	    

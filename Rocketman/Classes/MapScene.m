@@ -20,7 +20,7 @@
 {
 	if ((self = [super init])) {
         
-        CCSprite *mapImage = [CCSprite spriteWithFile:@"world_map.png"];
+        CCSprite *mapImage = [CCSprite spriteWithFile:@"World Map.png"];
         mapImage.anchorPoint = CGPointZero;        
         [self addChild:mapImage];
         

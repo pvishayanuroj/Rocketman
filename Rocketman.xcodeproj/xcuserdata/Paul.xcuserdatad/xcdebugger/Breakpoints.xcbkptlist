@@ -93,11 +93,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Rocketman/Classes/MapLayer.m"
-         timestampString = "333726472.55835"
+         timestampString = "339466948.042457"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "50"
-         endingLineNumber = "50"
+         startingLineNumber = "33"
+         endingLineNumber = "33"
          landmarkName = "-initWithFile:lastUnlocked:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -121,40 +121,12 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Rocketman/Classes/MapLayer.m"
-         timestampString = "333726472.55835"
+         timestampString = "339466948.042457"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "41"
-         endingLineNumber = "41"
+         startingLineNumber = "29"
+         endingLineNumber = "29"
          landmarkName = "-initWithFile:lastUnlocked:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "Rocketman/Classes/MapLayer.m"
-         timestampString = "333726472.55835"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "63"
-         endingLineNumber = "63"
-         landmarkName = "-initWithFile:lastUnlocked:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "Rocketman/Classes/MapLayer.m"
-         timestampString = "333726472.55835"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "120"
-         endingLineNumber = "120"
-         landmarkName = "-catButtonPressed:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -176,34 +148,6 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
-         filePath = "Rocketman/Classes/MapLayer.m"
-         timestampString = "333726881.914799"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "166"
-         endingLineNumber = "166"
-         landmarkName = "-showLevelInfo:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "Rocketman/Classes/MapLayer.m"
-         timestampString = "333726881.914799"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "187"
-         endingLineNumber = "187"
-         landmarkName = "-mapTextMovedUp:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
          filePath = "Rocketman/Classes/MapText.m"
          timestampString = "335070322.319449"
          startingColumnNumber = "9223372036854775807"
@@ -211,34 +155,6 @@
          startingLineNumber = "90"
          endingLineNumber = "90"
          landmarkName = "-doneMovingUp"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "Rocketman/Classes/MapLayer.m"
-         timestampString = "333726881.914799"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "188"
-         endingLineNumber = "188"
-         landmarkName = "-mapTextMovedUp:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "Rocketman/Classes/MapLayer.m"
-         timestampString = "333726881.914799"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "211"
-         endingLineNumber = "211"
-         landmarkName = "-unlockInput"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -322,8 +238,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "900"
          endingLineNumber = "900"
-         landmarkName = "@implementation GameLayer"
-         landmarkType = "3">
+         landmarkName = "-accelerometer:didAccelerate:"
+         landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -420,7 +336,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "531"
          endingLineNumber = "531"
-         landmarkName = "-loss"
+         landmarkName = "-endLevel"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -492,6 +408,20 @@
          endingLineNumber = "18"
          landmarkName = "@interface DataManager"
          landmarkType = "2">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Rocketman/Classes/MapText.h"
+         timestampString = "339466421.569739"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "25"
+         endingLineNumber = "25"
+         landmarkName = "delegate"
+         landmarkType = "19">
       </FileBreakpoint>
    </FileBreakpoints>
 </Bucket>

@@ -145,7 +145,6 @@
 		DA346F12138ECB56000881D6 /* sheet01_animations.plist in Resources */ = {isa = PBXBuildFile; fileRef = DA346F0F138ECB56000881D6 /* sheet01_animations.plist */; };
 		DA346F13138ECB56000881D6 /* sheet01.plist in Resources */ = {isa = PBXBuildFile; fileRef = DA346F10138ECB56000881D6 /* sheet01.plist */; };
 		DA346F14138ECB56000881D6 /* sheet01.png in Resources */ = {isa = PBXBuildFile; fileRef = DA346F11138ECB56000881D6 /* sheet01.png */; };
-		DA3B39D913DCCC190079D34C /* MapText.m in Sources */ = {isa = PBXBuildFile; fileRef = DA3B39D813DCCC180079D34C /* MapText.m */; };
 		DA3B39DC13DD22EF0079D34C /* text_background.png in Resources */ = {isa = PBXBuildFile; fileRef = DA3B39DB13DD22EF0079D34C /* text_background.png */; };
 		DA3B39DF13DFB3D00079D34C /* EndScene.m in Sources */ = {isa = PBXBuildFile; fileRef = DA3B39DE13DFB3CD0079D34C /* EndScene.m */; };
 		DA3B39E613DFB5270079D34C /* restart_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = DA3B39E113DFB5270079D34C /* restart_icon.png */; };
@@ -201,9 +200,7 @@
 		DA99B5BF13DA79CD00DB361F /* MapScene.m in Sources */ = {isa = PBXBuildFile; fileRef = DA99B5BE13DA79CA00DB361F /* MapScene.m */; };
 		DA99B5C313DA7AB500DB361F /* map_cat_active.png in Resources */ = {isa = PBXBuildFile; fileRef = DA99B5C013DA7AB400DB361F /* map_cat_active.png */; };
 		DA99B5C413DA7AB500DB361F /* map_cat_inactive.png in Resources */ = {isa = PBXBuildFile; fileRef = DA99B5C113DA7AB400DB361F /* map_cat_inactive.png */; };
-		DA99B5C513DA7AB500DB361F /* world_map.png in Resources */ = {isa = PBXBuildFile; fileRef = DA99B5C213DA7AB400DB361F /* world_map.png */; };
 		DA99B5C813DA7B7D00DB361F /* MapLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DA99B5C713DA7B7800DB361F /* MapLayer.m */; };
-		DA99B5CB13DA7E1600DB361F /* CatMapButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DA99B5CA13DA7E0F00DB361F /* CatMapButton.m */; };
 		DA99B5D113DA85F400DB361F /* Cinematics.plist in Resources */ = {isa = PBXBuildFile; fileRef = DA99B5CE13DA85F400DB361F /* Cinematics.plist */; };
 		DA99B5D213DA85F400DB361F /* HighScores.plist in Resources */ = {isa = PBXBuildFile; fileRef = DA99B5CF13DA85F400DB361F /* HighScores.plist */; };
 		DA99B5D313DA85F400DB361F /* WorldMap.plist in Resources */ = {isa = PBXBuildFile; fileRef = DA99B5D013DA85F400DB361F /* WorldMap.plist */; };
@@ -226,6 +223,25 @@
 		DA99E94D13ADE62F0075896F /* StoryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DA99E94C13ADE62E0075896F /* StoryManager.m */; };
 		DA99E95213ADE6650075896F /* HighscoreLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DA99E94F13ADE64B0075896F /* HighscoreLayer.m */; };
 		DA99E95313ADE6650075896F /* HighscoreScene.m in Sources */ = {isa = PBXBuildFile; fileRef = DA99E95113ADE6590075896F /* HighscoreScene.m */; };
+		DAA04342143BC948002499D7 /* MapButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA04341143BC948002499D7 /* MapButton.m */; };
+		DAA04345143BD697002499D7 /* LockedText.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA04344143BD696002499D7 /* LockedText.m */; };
+		DAA04358143BD6F6002499D7 /* Black Line.png in Resources */ = {isa = PBXBuildFile; fileRef = DAA04347143BD6F6002499D7 /* Black Line.png */; };
+		DAA04359143BD6F6002499D7 /* Locked Text.png in Resources */ = {isa = PBXBuildFile; fileRef = DAA04348143BD6F6002499D7 /* Locked Text.png */; };
+		DAA0435A143BD6F6002499D7 /* Stage 00.png in Resources */ = {isa = PBXBuildFile; fileRef = DAA04349143BD6F6002499D7 /* Stage 00.png */; };
+		DAA0435B143BD6F6002499D7 /* Stage 01 Locked.png in Resources */ = {isa = PBXBuildFile; fileRef = DAA0434A143BD6F6002499D7 /* Stage 01 Locked.png */; };
+		DAA0435C143BD6F6002499D7 /* Stage 01.png in Resources */ = {isa = PBXBuildFile; fileRef = DAA0434B143BD6F6002499D7 /* Stage 01.png */; };
+		DAA0435D143BD6F6002499D7 /* Stage 02 Locked.png in Resources */ = {isa = PBXBuildFile; fileRef = DAA0434C143BD6F6002499D7 /* Stage 02 Locked.png */; };
+		DAA0435E143BD6F6002499D7 /* Stage 02.png in Resources */ = {isa = PBXBuildFile; fileRef = DAA0434D143BD6F6002499D7 /* Stage 02.png */; };
+		DAA0435F143BD6F6002499D7 /* Stage 03 Locked.png in Resources */ = {isa = PBXBuildFile; fileRef = DAA0434E143BD6F6002499D7 /* Stage 03 Locked.png */; };
+		DAA04360143BD6F6002499D7 /* Stage 03.png in Resources */ = {isa = PBXBuildFile; fileRef = DAA0434F143BD6F6002499D7 /* Stage 03.png */; };
+		DAA04361143BD6F6002499D7 /* Stage 04 Locked.png in Resources */ = {isa = PBXBuildFile; fileRef = DAA04350143BD6F6002499D7 /* Stage 04 Locked.png */; };
+		DAA04362143BD6F6002499D7 /* Stage 04.png in Resources */ = {isa = PBXBuildFile; fileRef = DAA04351143BD6F6002499D7 /* Stage 04.png */; };
+		DAA04363143BD6F6002499D7 /* Stage 05 Locked.png in Resources */ = {isa = PBXBuildFile; fileRef = DAA04352143BD6F6002499D7 /* Stage 05 Locked.png */; };
+		DAA04364143BD6F6002499D7 /* Stage 05.png in Resources */ = {isa = PBXBuildFile; fileRef = DAA04353143BD6F6002499D7 /* Stage 05.png */; };
+		DAA04365143BD6F6002499D7 /* Stage 06 Locked.png in Resources */ = {isa = PBXBuildFile; fileRef = DAA04354143BD6F6002499D7 /* Stage 06 Locked.png */; };
+		DAA04366143BD6F6002499D7 /* Stage 06.png in Resources */ = {isa = PBXBuildFile; fileRef = DAA04355143BD6F6002499D7 /* Stage 06.png */; };
+		DAA04367143BD6F6002499D7 /* Start Button.png in Resources */ = {isa = PBXBuildFile; fileRef = DAA04356143BD6F6002499D7 /* Start Button.png */; };
+		DAA04368143BD6F6002499D7 /* World Map.png in Resources */ = {isa = PBXBuildFile; fileRef = DAA04357143BD6F6002499D7 /* World Map.png */; };
 		DAA0512D1400B48B00D4B213 /* HoverTurtle.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA0512C1400B48A00D4B213 /* HoverTurtle.m */; };
 		DAA1157E13AF996E00ACD4BD /* Flybot.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA1157D13AF996E00ACD4BD /* Flybot.m */; };
 		DAA7A5FB13973B2200D6DA68 /* powerup.wav in Resources */ = {isa = PBXBuildFile; fileRef = DAA7A5FA13973B2200D6DA68 /* powerup.wav */; };
@@ -544,9 +560,6 @@
 		DA346F0F138ECB56000881D6 /* sheet01_animations.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = sheet01_animations.plist; path = Resources/Spritesheets/sheet01_animations.plist; sourceTree = "<group>"; };
 		DA346F10138ECB56000881D6 /* sheet01.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = sheet01.plist; path = Resources/Spritesheets/sheet01.plist; sourceTree = "<group>"; };
 		DA346F11138ECB56000881D6 /* sheet01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sheet01.png; path = Resources/Spritesheets/sheet01.png; sourceTree = "<group>"; };
-		DA3B39D713DCCC170079D34C /* MapText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapText.h; path = Classes/MapText.h; sourceTree = "<group>"; };
-		DA3B39D813DCCC180079D34C /* MapText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapText.m; path = Classes/MapText.m; sourceTree = "<group>"; };
-		DA3B39DA13DCE9E60079D34C /* MapTextDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapTextDelegate.h; path = Classes/MapTextDelegate.h; sourceTree = "<group>"; };
 		DA3B39DB13DD22EF0079D34C /* text_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = text_background.png; sourceTree = "<group>"; };
 		DA3B39DD13DFB3CA0079D34C /* EndScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EndScene.h; path = Classes/EndScene.h; sourceTree = "<group>"; };
 		DA3B39DE13DFB3CD0079D34C /* EndScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EndScene.m; path = Classes/EndScene.m; sourceTree = "<group>"; };
@@ -632,12 +645,8 @@
 		DA99B5BE13DA79CA00DB361F /* MapScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapScene.m; path = Classes/MapScene.m; sourceTree = "<group>"; };
 		DA99B5C013DA7AB400DB361F /* map_cat_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_cat_active.png; sourceTree = "<group>"; };
 		DA99B5C113DA7AB400DB361F /* map_cat_inactive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_cat_inactive.png; sourceTree = "<group>"; };
-		DA99B5C213DA7AB400DB361F /* world_map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = world_map.png; sourceTree = "<group>"; };
 		DA99B5C613DA7B7000DB361F /* MapLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapLayer.h; path = Classes/MapLayer.h; sourceTree = "<group>"; };
 		DA99B5C713DA7B7800DB361F /* MapLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapLayer.m; path = Classes/MapLayer.m; sourceTree = "<group>"; };
-		DA99B5C913DA7E0600DB361F /* CatMapButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CatMapButton.h; path = Classes/CatMapButton.h; sourceTree = "<group>"; };
-		DA99B5CA13DA7E0F00DB361F /* CatMapButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CatMapButton.m; path = Classes/CatMapButton.m; sourceTree = "<group>"; };
-		DA99B5CC13DA822900DB361F /* CatButtonDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CatButtonDelegate.h; path = Classes/CatButtonDelegate.h; sourceTree = "<group>"; };
 		DA99B5CE13DA85F400DB361F /* Cinematics.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Cinematics.plist; sourceTree = "<group>"; };
 		DA99B5CF13DA85F400DB361F /* HighScores.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = HighScores.plist; sourceTree = "<group>"; };
 		DA99B5D013DA85F400DB361F /* WorldMap.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = WorldMap.plist; sourceTree = "<group>"; };
@@ -666,6 +675,28 @@
 		DA99E94F13ADE64B0075896F /* HighscoreLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HighscoreLayer.m; path = Classes/HighscoreLayer.m; sourceTree = "<group>"; };
 		DA99E95013ADE6500075896F /* HighscoreScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HighscoreScene.h; path = Classes/HighscoreScene.h; sourceTree = "<group>"; };
 		DA99E95113ADE6590075896F /* HighscoreScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HighscoreScene.m; path = Classes/HighscoreScene.m; sourceTree = "<group>"; };
+		DAA04340143BC948002499D7 /* MapButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapButton.h; path = ../../../Projects/Rocketman/Rocketman/Classes/MapButton.h; sourceTree = "<group>"; };
+		DAA04341143BC948002499D7 /* MapButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapButton.m; path = ../../../Projects/Rocketman/Rocketman/Classes/MapButton.m; sourceTree = "<group>"; };
+		DAA04343143BD696002499D7 /* LockedText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LockedText.h; path = ../../../Projects/Rocketman/Rocketman/Classes/LockedText.h; sourceTree = "<group>"; };
+		DAA04344143BD696002499D7 /* LockedText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LockedText.m; path = ../../../Projects/Rocketman/Rocketman/Classes/LockedText.m; sourceTree = "<group>"; };
+		DAA04347143BD6F6002499D7 /* Black Line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Black Line.png"; sourceTree = "<group>"; };
+		DAA04348143BD6F6002499D7 /* Locked Text.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Locked Text.png"; sourceTree = "<group>"; };
+		DAA04349143BD6F6002499D7 /* Stage 00.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Stage 00.png"; sourceTree = "<group>"; };
+		DAA0434A143BD6F6002499D7 /* Stage 01 Locked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Stage 01 Locked.png"; sourceTree = "<group>"; };
+		DAA0434B143BD6F6002499D7 /* Stage 01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Stage 01.png"; sourceTree = "<group>"; };
+		DAA0434C143BD6F6002499D7 /* Stage 02 Locked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Stage 02 Locked.png"; sourceTree = "<group>"; };
+		DAA0434D143BD6F6002499D7 /* Stage 02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Stage 02.png"; sourceTree = "<group>"; };
+		DAA0434E143BD6F6002499D7 /* Stage 03 Locked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Stage 03 Locked.png"; sourceTree = "<group>"; };
+		DAA0434F143BD6F6002499D7 /* Stage 03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Stage 03.png"; sourceTree = "<group>"; };
+		DAA04350143BD6F6002499D7 /* Stage 04 Locked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Stage 04 Locked.png"; sourceTree = "<group>"; };
+		DAA04351143BD6F6002499D7 /* Stage 04.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Stage 04.png"; sourceTree = "<group>"; };
+		DAA04352143BD6F6002499D7 /* Stage 05 Locked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Stage 05 Locked.png"; sourceTree = "<group>"; };
+		DAA04353143BD6F6002499D7 /* Stage 05.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Stage 05.png"; sourceTree = "<group>"; };
+		DAA04354143BD6F6002499D7 /* Stage 06 Locked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Stage 06 Locked.png"; sourceTree = "<group>"; };
+		DAA04355143BD6F6002499D7 /* Stage 06.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Stage 06.png"; sourceTree = "<group>"; };
+		DAA04356143BD6F6002499D7 /* Start Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Start Button.png"; sourceTree = "<group>"; };
+		DAA04357143BD6F6002499D7 /* World Map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "World Map.png"; sourceTree = "<group>"; };
+		DAA0436D143BD855002499D7 /* MapButtonDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapButtonDelegate.h; path = ../../../Projects/Rocketman/Rocketman/Classes/MapButtonDelegate.h; sourceTree = "<group>"; };
 		DAA0512B1400B48800D4B213 /* HoverTurtle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HoverTurtle.h; path = Classes/HoverTurtle.h; sourceTree = "<group>"; };
 		DAA0512C1400B48A00D4B213 /* HoverTurtle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HoverTurtle.m; path = Classes/HoverTurtle.m; sourceTree = "<group>"; };
 		DAA1157C13AF996E00ACD4BD /* Flybot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Flybot.h; path = Classes/Flybot.h; sourceTree = "<group>"; };
@@ -862,6 +893,7 @@
 		DA346D76138E593D000881D6 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				DAA04346143BD6F6002499D7 /* Map Art */,
 				DA82A3DB142F5706006A9B70 /* Level Data */,
 				DA2C3FA2140AF49E008FCF0D /* Stage Art */,
 				DA99B5CD13DA85F400DB361F /* Data Files */,
@@ -1207,7 +1239,6 @@
 				DA3B39DB13DD22EF0079D34C /* text_background.png */,
 				DA99B5C013DA7AB400DB361F /* map_cat_active.png */,
 				DA99B5C113DA7AB400DB361F /* map_cat_inactive.png */,
-				DA99B5C213DA7AB400DB361F /* world_map.png */,
 				DACF5CC313CA02FD0034C281 /* pause_button.png */,
 				DACF5CC413CA02FD0034C281 /* resume_button.png */,
 				DA0C26FB13AE0F8900544DF1 /* heart.png */,
@@ -1334,12 +1365,11 @@
 				DA99B5BE13DA79CA00DB361F /* MapScene.m */,
 				DA99B5C613DA7B7000DB361F /* MapLayer.h */,
 				DA99B5C713DA7B7800DB361F /* MapLayer.m */,
-				DA3B39D713DCCC170079D34C /* MapText.h */,
-				DA3B39D813DCCC180079D34C /* MapText.m */,
-				DA99B5C913DA7E0600DB361F /* CatMapButton.h */,
-				DA99B5CA13DA7E0F00DB361F /* CatMapButton.m */,
-				DA99B5CC13DA822900DB361F /* CatButtonDelegate.h */,
-				DA3B39DA13DCE9E60079D34C /* MapTextDelegate.h */,
+				DAA04340143BC948002499D7 /* MapButton.h */,
+				DAA04341143BC948002499D7 /* MapButton.m */,
+				DAA0436D143BD855002499D7 /* MapButtonDelegate.h */,
+				DAA04343143BD696002499D7 /* LockedText.h */,
+				DAA04344143BD696002499D7 /* LockedText.m */,
 			);
 			name = "World Map";
 			sourceTree = "<group>";
@@ -1363,6 +1393,31 @@
 			);
 			name = "Story Scenes";
 			path = "Resources/Story Scenes";
+			sourceTree = "<group>";
+		};
+		DAA04346143BD6F6002499D7 /* Map Art */ = {
+			isa = PBXGroup;
+			children = (
+				DAA04347143BD6F6002499D7 /* Black Line.png */,
+				DAA04348143BD6F6002499D7 /* Locked Text.png */,
+				DAA04349143BD6F6002499D7 /* Stage 00.png */,
+				DAA0434A143BD6F6002499D7 /* Stage 01 Locked.png */,
+				DAA0434B143BD6F6002499D7 /* Stage 01.png */,
+				DAA0434C143BD6F6002499D7 /* Stage 02 Locked.png */,
+				DAA0434D143BD6F6002499D7 /* Stage 02.png */,
+				DAA0434E143BD6F6002499D7 /* Stage 03 Locked.png */,
+				DAA0434F143BD6F6002499D7 /* Stage 03.png */,
+				DAA04350143BD6F6002499D7 /* Stage 04 Locked.png */,
+				DAA04351143BD6F6002499D7 /* Stage 04.png */,
+				DAA04352143BD6F6002499D7 /* Stage 05 Locked.png */,
+				DAA04353143BD6F6002499D7 /* Stage 05.png */,
+				DAA04354143BD6F6002499D7 /* Stage 06 Locked.png */,
+				DAA04355143BD6F6002499D7 /* Stage 06.png */,
+				DAA04356143BD6F6002499D7 /* Start Button.png */,
+				DAA04357143BD6F6002499D7 /* World Map.png */,
+			);
+			name = "Map Art";
+			path = "../../../Projects/Rocketman/Rocketman/Resources/Map Art";
 			sourceTree = "<group>";
 		};
 		DAC2A8B013A62EFA00AAB32A /* Fonts */ = {
@@ -1612,7 +1667,6 @@
 				DACF5CC613CA02FD0034C281 /* resume_button.png in Resources */,
 				DA99B5C313DA7AB500DB361F /* map_cat_active.png in Resources */,
 				DA99B5C413DA7AB500DB361F /* map_cat_inactive.png in Resources */,
-				DA99B5C513DA7AB500DB361F /* world_map.png in Resources */,
 				DA99B5D113DA85F400DB361F /* Cinematics.plist in Resources */,
 				DA99B5D213DA85F400DB361F /* HighScores.plist in Resources */,
 				DA99B5D313DA85F400DB361F /* WorldMap.plist in Resources */,
@@ -1638,6 +1692,23 @@
 				DA6ED0C91437F234000024D8 /* Sunset Background.png in Resources */,
 				DA6ED0CA1437F234000024D8 /* Waterfall Background.png in Resources */,
 				DA86E7631437F84B0020815A /* Level2_data.plist in Resources */,
+				DAA04358143BD6F6002499D7 /* Black Line.png in Resources */,
+				DAA04359143BD6F6002499D7 /* Locked Text.png in Resources */,
+				DAA0435A143BD6F6002499D7 /* Stage 00.png in Resources */,
+				DAA0435B143BD6F6002499D7 /* Stage 01 Locked.png in Resources */,
+				DAA0435C143BD6F6002499D7 /* Stage 01.png in Resources */,
+				DAA0435D143BD6F6002499D7 /* Stage 02 Locked.png in Resources */,
+				DAA0435E143BD6F6002499D7 /* Stage 02.png in Resources */,
+				DAA0435F143BD6F6002499D7 /* Stage 03 Locked.png in Resources */,
+				DAA04360143BD6F6002499D7 /* Stage 03.png in Resources */,
+				DAA04361143BD6F6002499D7 /* Stage 04 Locked.png in Resources */,
+				DAA04362143BD6F6002499D7 /* Stage 04.png in Resources */,
+				DAA04363143BD6F6002499D7 /* Stage 05 Locked.png in Resources */,
+				DAA04364143BD6F6002499D7 /* Stage 05.png in Resources */,
+				DAA04365143BD6F6002499D7 /* Stage 06 Locked.png in Resources */,
+				DAA04366143BD6F6002499D7 /* Stage 06.png in Resources */,
+				DAA04367143BD6F6002499D7 /* Start Button.png in Resources */,
+				DAA04368143BD6F6002499D7 /* World Map.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1792,8 +1863,6 @@
 				DA99B5BB13DA78AC00DB361F /* GameStateManager.m in Sources */,
 				DA99B5BF13DA79CD00DB361F /* MapScene.m in Sources */,
 				DA99B5C813DA7B7D00DB361F /* MapLayer.m in Sources */,
-				DA99B5CB13DA7E1600DB361F /* CatMapButton.m in Sources */,
-				DA3B39D913DCCC190079D34C /* MapText.m in Sources */,
 				DA3B39DF13DFB3D00079D34C /* EndScene.m in Sources */,
 				DA3B39EC13DFB6A50079D34C /* EndLayer.m in Sources */,
 				DA3B795713E4F9320001AE94 /* Parallax.m in Sources */,
@@ -1816,6 +1885,8 @@
 				DA2C3FCA140B3F65008FCF0D /* Egg.m in Sources */,
 				DA2C3FCD140DD26F008FCF0D /* FlyingRock.m in Sources */,
 				DA86E767143896EF0020815A /* DataManager.m in Sources */,
+				DAA04342143BC948002499D7 /* MapButton.m in Sources */,
+				DAA04345143BD697002499D7 /* LockedText.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
