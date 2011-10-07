@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Background File</key>
+	<string>Tutorial Background.png</string>
+	<key>Data</key>
+	<dict>
+		<key>1792</key>
+		<dict>
+			<key>147</key>
+			<string>Shell</string>
+			<key>173</key>
+			<string>Shell</string>
+			<key>200</key>
+			<string>Shell</string>
+			<key>253</key>
+			<string>Shell</string>
+			<key>280</key>
+			<string>Shell</string>
+			<key>307</key>
+			<string>Shell</string>
+			<key>40</key>
+			<string>Shell</string>
+			<key>67</key>
+			<string>Shell</string>
+			<key>93</key>
+			<string>Shell</string>
+		</dict>
+		<key>800</key>
+		<dict>
+			<key>147</key>
+			<string>Cat</string>
+			<key>200</key>
+			<string>Cat</string>
+			<key>253</key>
+			<string>Cat</string>
+			<key>40</key>
+			<string>Cat</string>
+			<key>93</key>
+			<string>Cat</string>
+		</dict>
+		<key>864</key>
+		<dict>
+			<key>147</key>
+			<string>Cat</string>
+			<key>253</key>
+			<string>Cat</string>
+			<key>40</key>
+			<string>Cat</string>
+		</dict>
+		<key>928</key>
+		<dict>
+			<key>147</key>
+			<string>Cat</string>
+			<key>200</key>
+			<string>Cat</string>
+			<key>253</key>
+			<string>Cat</string>
+			<key>40</key>
+			<string>Cat</string>
+			<key>93</key>
+			<string>Cat</string>
+		</dict>
+	</dict>
+	<key>Datakeys</key>
+	<array>
+		<string>800</string>
+		<string>864</string>
+		<string>928</string>
+		<string>1792</string>
+	</array>
+	<key>Ground File</key>
+	<string>Lab Ground.png</string>
+	<key>Level Desc</key>
+	<string></string>
+	<key>Level Name</key>
+	<string>Training Ground</string>
+	<key>Level Num</key>
+	<string>0</string>
+	<key>Parallax File</key>
+	<string></string>
+	<key>Vertical Tiles</key>
+	<integer>64</integer>
+</dict>
+</plist>
