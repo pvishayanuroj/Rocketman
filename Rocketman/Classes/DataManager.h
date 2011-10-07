@@ -10,11 +10,15 @@
 #import "cocos2d.h"
 
 @interface DataManager : NSObject {
+ 
+    CCSpriteBatchNode *spriteSheet_;
     
     NSMutableArray *levelData_;
  
     NSUInteger numLevels_;
 }
+
+@property (nonatomic, readonly) CCSpriteBatchNode *spriteSheet;
 
 /** 
  * Static method to get a reference to the current Data Manager singleton 
@@ -25,16 +29,14 @@
 /** Static method to clear Data Manager singleton */
 + (void) purgeDataManager;
 
+- (void) animationLoader:(NSString *)unitListName spriteSheetName:(NSString *)spriteSheetName;
+
 - (void) loadLevelData;
 
 - (NSArray *) getLevelNames;
 
 - (NSArray *) getLevelDescs;
 
-- (NSString *) getLevelBackground:(NSUInteger)levelNum;
-
-- (NSString *) getLevelGround:(NSUInteger)levelNum;
-
-- (NSString *) getLevelParallax:(NSUInteger)levelNum;
+- (NSDictionary *) getLevelData:(NSUInteger)levelNum;
 
 @end

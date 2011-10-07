@@ -21,8 +21,4 @@
 
 - (id) initStage:(NSUInteger)levelNum;
 
-- (NSDictionary *) loadLevelData:(NSUInteger)levelNum;
-
-- (void) animationLoader:(NSString *)unitListName spriteSheetName:(NSString *)spriteSheetName;
-
 @end

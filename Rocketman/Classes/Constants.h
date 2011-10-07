@@ -9,5 +9,3 @@
 #define SIDE_MARGIN 20
 
 #define SCENE_TRANSITION_DURATION 0.1
-
-#define NUM_LEVELS 7

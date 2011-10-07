@@ -2,12 +2,75 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <array>
-	<string>(131, 120)</string>
-	<string>(230, 130)</string>
-	<string>(225, 181)</string>
-	<string>(38, 107)</string>
-	<string>(35, 203)</string>
-	<string>(171, 280)</string>
-	<string>(230, 335)</string>
+	<dict>
+		<key>Point</key>
+		<string>(131, 120)</string>
+		<key>C1</key>
+		<string>(166, 95)</string>
+		<key>C2</key>
+		<string>(200, 100)</string>
+		<key>Time</key>
+		<real>0.6</real>
+	</dict>
+	<dict>
+		<key>Point</key>
+		<string>(230, 130)</string>
+		<key>C1</key>
+		<string>(250, 147)</string>
+		<key>C2</key>
+		<string>(275, 180)</string>
+		<key>Time</key>
+		<real>0.5</real>
+	</dict>
+	<dict>
+		<key>Point</key>
+		<string>(225, 181)</string>
+		<key>C1</key>
+		<string>(110, 190)</string>
+		<key>C2</key>
+		<string>(100, 90)</string>
+		<key>Time</key>
+		<real>1.15</real>
+	</dict>
+	<dict>
+		<key>Point</key>
+		<string>(38, 107)</string>
+		<key>C1</key>
+		<string>(10, 133)</string>
+		<key>C2</key>
+		<string>(15, 166)</string>
+		<key>Time</key>
+		<real>0.6</real>
+	</dict>
+	<dict>
+		<key>Point</key>
+		<string>(35, 203)</string>
+		<key>C1</key>
+		<string>(50, 230)</string>
+		<key>C2</key>
+		<string>(100, 285)</string>
+		<key>Time</key>
+		<real>0.85</real>
+	</dict>
+	<dict>
+		<key>Point</key>
+		<string>(171, 280)</string>
+		<key>C1</key>
+		<string>(200, 280)</string>
+		<key>C2</key>
+		<string>(250, 310)</string>
+		<key>Time</key>
+		<real>0.5</real>
+	</dict>
+	<dict>
+		<key>Point</key>
+		<string>(230, 335)</string>
+		<key>C1</key>
+		<string>(0, 0)</string>
+		<key>C2</key>
+		<string>(0, 0)</string>
+		<key>Time</key>
+		<integer>0</integer>
+	</dict>
 </array>
 </plist>

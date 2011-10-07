@@ -10,20 +10,41 @@
 #import "cocos2d.h"
 #import "MapButtonDelegate.h"
 
+@class AnimatedButton;
+
 @interface MapLayer : CCLayer <MapButtonDelegate> {
+    
+    CCSprite *rocket_;
+    
+    NSUInteger currentLevel_;
     
     NSMutableArray *levelDescs_;
     
+    NSMutableArray *buttons_;
+    
+    NSArray *levelPositions_;
+    
+    AnimatedButton *startButton_;
+    
+    CCLabelBMFont *levelTitle_;   
 }
 
-+ (id) mapWithFile:(NSString *)filename lastUnlocked:(NSUInteger)lastUnlockedLevel;
++ (id) mapWithFile:(NSString *)filename lastUnlocked:(NSUInteger)lastUnlockedLevel currentLevel:(NSUInteger)currentLevel;
 
-- (id) initWithFile:(NSString *)filename lastUnlocked:(NSUInteger)lastUnlockedLevel;
+- (id) initWithFile:(NSString *)filename lastUnlocked:(NSUInteger)lastUnlockedLevel currentLevel:(NSUInteger)currentLevel;
+
+- (void) moveRocketTo:(NSUInteger)levelNum;
+
+- (CCActionInterval *) constructMoveFrom:(NSUInteger)from to:(NSUInteger)to;
 
 /** Does not allow user input for the map screen */
 - (void) lockInput;
 
 /** Allows user input for the map screen */
 - (void) unlockInput;
+
+- (void) hideStart;
+
+- (void) showStart;
 
 @end

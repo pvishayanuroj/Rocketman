@@ -15,9 +15,13 @@
     
     CCSprite *sprite_;
     
+    BOOL isLocked_;
+    
     BOOL isExpanded_;
     
 }
+
+@property (nonatomic, assign) BOOL isLocked;
 
 + (id) buttonWithImage:(NSString *)imageFile target:(id)target selector:(SEL)selector;
 

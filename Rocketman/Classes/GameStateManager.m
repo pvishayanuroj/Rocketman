@@ -8,6 +8,7 @@
 
 #import "GameStateManager.h"
 #import "GameManager.h"
+#import "DataManager.h"
 #import "AudioManager.h"
 #import "MainMenuScene.h"
 #import "MapScene.h"
@@ -48,7 +49,13 @@ static GameStateManager *_gameStateManager = nil;
         lastUnlockedLevel_ = 3;
         
         // Load sounds
-        [AudioManager audioManager];                
+        [AudioManager audioManager];      
+        
+        // Load animations
+        [[DataManager dataManager] animationLoader:@"sheet01_animations" spriteSheetName:@"sheet01"];
+        
+        // Load level data
+        [[DataManager dataManager] loadLevelData];
         
 	}
 	return self;
@@ -73,7 +80,7 @@ static GameStateManager *_gameStateManager = nil;
 
 - (void) showWorldMap
 {
-    CCScene *scene = [MapScene mapWithLastUnlocked:lastUnlockedLevel_];
+    CCScene *scene = [MapScene mapWithLastUnlocked:lastUnlockedLevel_ currentLevel:0];
     [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:scene]];        
 }
 

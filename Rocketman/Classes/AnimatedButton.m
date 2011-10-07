@@ -10,6 +10,8 @@
 
 @implementation AnimatedButton
 
+@synthesize isLocked = isLocked_;
+
 + (id) buttonWithImage:(NSString *)imageFile target:(id)target selector:(SEL)selector
 {
     return [[[self alloc] initButtonWithImage:imageFile target:target selector:selector] autorelease];
@@ -34,6 +36,7 @@
         sprite_ = [[CCSprite spriteWithFile:imageFile] retain];
         [self addChild:sprite_];
         isExpanded_ = NO;
+        isLocked_ = NO;
         
     }
     return self;
@@ -69,7 +72,7 @@
 
 - (BOOL) ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
-	if (![self containsTouchLocation:touch])
+	if (![self containsTouchLocation:touch] || isLocked_)
 		return NO;
     
     [self expand];

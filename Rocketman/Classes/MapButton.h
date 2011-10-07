@@ -16,6 +16,8 @@
     
     BOOL isLocked_;
     
+    BOOL isClickable_;
+    
     BOOL isShrunk_;
     
     NSUInteger levelNum_;
@@ -25,6 +27,7 @@
 
 @property (nonatomic, readonly) NSUInteger levelNum;
 @property (nonatomic, readonly) BOOL isLocked;
+@property (nonatomic, assign) BOOL isClickable;
 @property (nonatomic, assign) id <MapButtonDelegate> delegate;
 
 + (id) mapButton:(NSUInteger)levelNum locked:(BOOL)locked;

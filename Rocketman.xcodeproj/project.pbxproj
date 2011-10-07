@@ -242,6 +242,10 @@
 		DAA04366143BD6F6002499D7 /* Stage 06.png in Resources */ = {isa = PBXBuildFile; fileRef = DAA04355143BD6F6002499D7 /* Stage 06.png */; };
 		DAA04367143BD6F6002499D7 /* Start Button.png in Resources */ = {isa = PBXBuildFile; fileRef = DAA04356143BD6F6002499D7 /* Start Button.png */; };
 		DAA04368143BD6F6002499D7 /* World Map.png in Resources */ = {isa = PBXBuildFile; fileRef = DAA04357143BD6F6002499D7 /* World Map.png */; };
+		DAA04371143BE2E4002499D7 /* Pair.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA04370143BE2E4002499D7 /* Pair.m */; };
+		DAA04379143E9CE1002499D7 /* Menu Button.png in Resources */ = {isa = PBXBuildFile; fileRef = DAA04378143E9CE1002499D7 /* Menu Button.png */; };
+		DAA0437C143E9F7C002499D7 /* SRSMWhiteFont.fnt in Resources */ = {isa = PBXBuildFile; fileRef = DAA0437A143E9F7C002499D7 /* SRSMWhiteFont.fnt */; };
+		DAA0437D143E9F7C002499D7 /* SRSMWhiteFont.png in Resources */ = {isa = PBXBuildFile; fileRef = DAA0437B143E9F7C002499D7 /* SRSMWhiteFont.png */; };
 		DAA0512D1400B48B00D4B213 /* HoverTurtle.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA0512C1400B48A00D4B213 /* HoverTurtle.m */; };
 		DAA1157E13AF996E00ACD4BD /* Flybot.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA1157D13AF996E00ACD4BD /* Flybot.m */; };
 		DAA7A5FB13973B2200D6DA68 /* powerup.wav in Resources */ = {isa = PBXBuildFile; fileRef = DAA7A5FA13973B2200D6DA68 /* powerup.wav */; };
@@ -697,6 +701,11 @@
 		DAA04356143BD6F6002499D7 /* Start Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Start Button.png"; sourceTree = "<group>"; };
 		DAA04357143BD6F6002499D7 /* World Map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "World Map.png"; sourceTree = "<group>"; };
 		DAA0436D143BD855002499D7 /* MapButtonDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapButtonDelegate.h; path = ../../../Projects/Rocketman/Rocketman/Classes/MapButtonDelegate.h; sourceTree = "<group>"; };
+		DAA0436F143BE2E4002499D7 /* Pair.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Pair.h; path = ../../../Projects/Rocketman/Rocketman/Classes/Pair.h; sourceTree = "<group>"; };
+		DAA04370143BE2E4002499D7 /* Pair.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Pair.m; path = ../../../Projects/Rocketman/Rocketman/Classes/Pair.m; sourceTree = "<group>"; };
+		DAA04378143E9CE1002499D7 /* Menu Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Menu Button.png"; sourceTree = "<group>"; };
+		DAA0437A143E9F7C002499D7 /* SRSMWhiteFont.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = SRSMWhiteFont.fnt; path = ../../../../../Projects/Rocketman/Rocketman/Resources/Fonts/SRSMWhiteFont.fnt; sourceTree = "<group>"; };
+		DAA0437B143E9F7C002499D7 /* SRSMWhiteFont.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SRSMWhiteFont.png; path = ../../../../../Projects/Rocketman/Rocketman/Resources/Fonts/SRSMWhiteFont.png; sourceTree = "<group>"; };
 		DAA0512B1400B48800D4B213 /* HoverTurtle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HoverTurtle.h; path = Classes/HoverTurtle.h; sourceTree = "<group>"; };
 		DAA0512C1400B48A00D4B213 /* HoverTurtle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HoverTurtle.m; path = Classes/HoverTurtle.m; sourceTree = "<group>"; };
 		DAA1157C13AF996E00ACD4BD /* Flybot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Flybot.h; path = Classes/Flybot.h; sourceTree = "<group>"; };
@@ -1319,6 +1328,8 @@
 				DA7DCC8E13A7D6650065A566 /* PButtonDelegate.h */,
 				DA0C243013ADE8A700544DF1 /* HighScoreManager.h */,
 				DA0C243113ADE8A700544DF1 /* HighScoreManager.m */,
+				DAA0436F143BE2E4002499D7 /* Pair.h */,
+				DAA04370143BE2E4002499D7 /* Pair.m */,
 				DA7DCC8F13A7D6650065A566 /* TargetedAction.h */,
 				DA7DCC9013A7D6650065A566 /* TargetedAction.m */,
 				DA7DCC8513A7D6650065A566 /* CallFuncWeak.h */,
@@ -1398,6 +1409,7 @@
 		DAA04346143BD6F6002499D7 /* Map Art */ = {
 			isa = PBXGroup;
 			children = (
+				DAA04378143E9CE1002499D7 /* Menu Button.png */,
 				DAA04347143BD6F6002499D7 /* Black Line.png */,
 				DAA04348143BD6F6002499D7 /* Locked Text.png */,
 				DAA04349143BD6F6002499D7 /* Stage 00.png */,
@@ -1423,6 +1435,8 @@
 		DAC2A8B013A62EFA00AAB32A /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				DAA0437A143E9F7C002499D7 /* SRSMWhiteFont.fnt */,
+				DAA0437B143E9F7C002499D7 /* SRSMWhiteFont.png */,
 				DAC2A8B513A6315F00AAB32A /* SRSM_font.fnt */,
 				DAC2A8B613A6315F00AAB32A /* SRSM_font.png */,
 			);
@@ -1709,6 +1723,9 @@
 				DAA04366143BD6F6002499D7 /* Stage 06.png in Resources */,
 				DAA04367143BD6F6002499D7 /* Start Button.png in Resources */,
 				DAA04368143BD6F6002499D7 /* World Map.png in Resources */,
+				DAA04379143E9CE1002499D7 /* Menu Button.png in Resources */,
+				DAA0437C143E9F7C002499D7 /* SRSMWhiteFont.fnt in Resources */,
+				DAA0437D143E9F7C002499D7 /* SRSMWhiteFont.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1887,6 +1904,7 @@
 				DA86E767143896EF0020815A /* DataManager.m in Sources */,
 				DAA04342143BC948002499D7 /* MapButton.m in Sources */,
 				DAA04345143BD697002499D7 /* LockedText.m in Sources */,
+				DAA04371143BE2E4002499D7 /* Pair.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -13,8 +13,8 @@
     
 }
 
-+ (id) mapWithLastUnlocked:(NSUInteger)lastUnlockedLevel;
++ (id) mapWithLastUnlocked:(NSUInteger)lastUnlockedLevel currentLevel:(NSUInteger)currentLevel;
 
-- (id) initMapWithLastUnlocked:(NSUInteger)lastUnlockedLevel;
+- (id) initMapWithLastUnlocked:(NSUInteger)lastUnlockedLevel currentLevel:(NSUInteger)currentLevel;
 
 @end

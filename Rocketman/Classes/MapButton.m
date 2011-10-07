@@ -11,6 +11,7 @@
 @implementation MapButton
 
 @synthesize isLocked = isLocked_;
+@synthesize isClickable = isClickable_;
 @synthesize levelNum = levelNum_;
 @synthesize delegate = delegate_;
 
@@ -46,6 +47,7 @@ CGFloat MB_NORMAL_SCALE = 1.0f;
         levelNum_ = levelNum;
         isLocked_ = locked;
         isShrunk_ = NO;
+        isClickable_ = NO;
         
     }
     return self;
@@ -82,7 +84,7 @@ CGFloat MB_NORMAL_SCALE = 1.0f;
 
 - (BOOL) ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
-	if (![self containsTouchLocation:touch])
+	if (![self containsTouchLocation:touch] || isClickable_)
 		return NO;
     
     [self shrink];
