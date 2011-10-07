@@ -161,18 +161,6 @@
 		DA526FB1140987CE005BE716 /* AlienHoverTurtle.m in Sources */ = {isa = PBXBuildFile; fileRef = DA526FB0140987CD005BE716 /* AlienHoverTurtle.m */; };
 		DA526FB41409AD96005BE716 /* SwarmGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = DA526FB31409AD82005BE716 /* SwarmGenerator.m */; };
 		DA526FB71409FE9A005BE716 /* YellowBird.m in Sources */ = {isa = PBXBuildFile; fileRef = DA526FB61409FE97005BE716 /* YellowBird.m */; };
-		DA6ED0BF1437F234000024D8 /* Cave Background.png in Resources */ = {isa = PBXBuildFile; fileRef = DA6ED0B31437F234000024D8 /* Cave Background.png */; };
-		DA6ED0C01437F234000024D8 /* Cave Ground.png in Resources */ = {isa = PBXBuildFile; fileRef = DA6ED0B41437F234000024D8 /* Cave Ground.png */; };
-		DA6ED0C11437F234000024D8 /* City Ground.png in Resources */ = {isa = PBXBuildFile; fileRef = DA6ED0B51437F234000024D8 /* City Ground.png */; };
-		DA6ED0C21437F234000024D8 /* City Parallax.png in Resources */ = {isa = PBXBuildFile; fileRef = DA6ED0B61437F234000024D8 /* City Parallax.png */; };
-		DA6ED0C31437F234000024D8 /* Desert Ground.png in Resources */ = {isa = PBXBuildFile; fileRef = DA6ED0B71437F234000024D8 /* Desert Ground.png */; };
-		DA6ED0C41437F234000024D8 /* Desert Parallax.png in Resources */ = {isa = PBXBuildFile; fileRef = DA6ED0B81437F234000024D8 /* Desert Parallax.png */; };
-		DA6ED0C51437F234000024D8 /* Mountains Ground.png in Resources */ = {isa = PBXBuildFile; fileRef = DA6ED0B91437F234000024D8 /* Mountains Ground.png */; };
-		DA6ED0C61437F234000024D8 /* Mountains Parallax.png in Resources */ = {isa = PBXBuildFile; fileRef = DA6ED0BA1437F234000024D8 /* Mountains Parallax.png */; };
-		DA6ED0C71437F234000024D8 /* Sky Background.png in Resources */ = {isa = PBXBuildFile; fileRef = DA6ED0BB1437F234000024D8 /* Sky Background.png */; };
-		DA6ED0C81437F234000024D8 /* Stars Background.png in Resources */ = {isa = PBXBuildFile; fileRef = DA6ED0BC1437F234000024D8 /* Stars Background.png */; };
-		DA6ED0C91437F234000024D8 /* Sunset Background.png in Resources */ = {isa = PBXBuildFile; fileRef = DA6ED0BD1437F234000024D8 /* Sunset Background.png */; };
-		DA6ED0CA1437F234000024D8 /* Waterfall Background.png in Resources */ = {isa = PBXBuildFile; fileRef = DA6ED0BE1437F234000024D8 /* Waterfall Background.png */; };
 		DA7DCC7C13A7D63C0065A566 /* GameLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DA7DCC6D13A7D63C0065A566 /* GameLayer.m */; };
 		DA7DCC7D13A7D63C0065A566 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = DA7DCC6F13A7D63C0065A566 /* GameScene.m */; };
 		DA7DCC7E13A7D63C0065A566 /* HUDLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DA7DCC7113A7D63C0065A566 /* HUDLayer.m */; };
@@ -189,7 +177,6 @@
 		DA7DCCA213A7D68A0065A566 /* Ground.m in Sources */ = {isa = PBXBuildFile; fileRef = DA7DCC9D13A7D68A0065A566 /* Ground.m */; };
 		DA7DCCA313A7D68A0065A566 /* SlowCloud.m in Sources */ = {isa = PBXBuildFile; fileRef = DA7DCC9F13A7D68A0065A566 /* SlowCloud.m */; };
 		DA82A3DE142F5706006A9B70 /* Level1_data.plist in Resources */ = {isa = PBXBuildFile; fileRef = DA82A3DC142F5706006A9B70 /* Level1_data.plist */; };
-		DA86E7631437F84B0020815A /* Level2_data.plist in Resources */ = {isa = PBXBuildFile; fileRef = DA86E7621437F84B0020815A /* Level2_data.plist */; };
 		DA86E767143896EF0020815A /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DA86E766143896EE0020815A /* DataManager.m */; };
 		DA907C3C1394DBDB009ADD27 /* SRSMTheme01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DA907C3B1394DBDB009ADD27 /* SRSMTheme01.mp3 */; };
 		DA907C401394DCAD009ADD27 /* meow01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DA907C3E1394DCAD009ADD27 /* meow01.mp3 */; };
@@ -246,6 +233,21 @@
 		DAA04379143E9CE1002499D7 /* Menu Button.png in Resources */ = {isa = PBXBuildFile; fileRef = DAA04378143E9CE1002499D7 /* Menu Button.png */; };
 		DAA0437C143E9F7C002499D7 /* SRSMWhiteFont.fnt in Resources */ = {isa = PBXBuildFile; fileRef = DAA0437A143E9F7C002499D7 /* SRSMWhiteFont.fnt */; };
 		DAA0437D143E9F7C002499D7 /* SRSMWhiteFont.png in Resources */ = {isa = PBXBuildFile; fileRef = DAA0437B143E9F7C002499D7 /* SRSMWhiteFont.png */; };
+		DAA043A8143F2C6F002499D7 /* Cave Background.png in Resources */ = {isa = PBXBuildFile; fileRef = DAA0439A143F2C6F002499D7 /* Cave Background.png */; };
+		DAA043A9143F2C6F002499D7 /* Cave Ground.png in Resources */ = {isa = PBXBuildFile; fileRef = DAA0439B143F2C6F002499D7 /* Cave Ground.png */; };
+		DAA043AA143F2C6F002499D7 /* City Ground.png in Resources */ = {isa = PBXBuildFile; fileRef = DAA0439C143F2C6F002499D7 /* City Ground.png */; };
+		DAA043AB143F2C6F002499D7 /* City Parallax.png in Resources */ = {isa = PBXBuildFile; fileRef = DAA0439D143F2C6F002499D7 /* City Parallax.png */; };
+		DAA043AC143F2C6F002499D7 /* Desert Ground.png in Resources */ = {isa = PBXBuildFile; fileRef = DAA0439E143F2C6F002499D7 /* Desert Ground.png */; };
+		DAA043AD143F2C6F002499D7 /* Desert Parallax.png in Resources */ = {isa = PBXBuildFile; fileRef = DAA0439F143F2C6F002499D7 /* Desert Parallax.png */; };
+		DAA043AE143F2C6F002499D7 /* Lab Ground.png in Resources */ = {isa = PBXBuildFile; fileRef = DAA043A0143F2C6F002499D7 /* Lab Ground.png */; };
+		DAA043AF143F2C6F002499D7 /* Mountains Ground.png in Resources */ = {isa = PBXBuildFile; fileRef = DAA043A1143F2C6F002499D7 /* Mountains Ground.png */; };
+		DAA043B0143F2C6F002499D7 /* Mountains Parallax.png in Resources */ = {isa = PBXBuildFile; fileRef = DAA043A2143F2C6F002499D7 /* Mountains Parallax.png */; };
+		DAA043B1143F2C6F002499D7 /* Sky Background.png in Resources */ = {isa = PBXBuildFile; fileRef = DAA043A3143F2C6F002499D7 /* Sky Background.png */; };
+		DAA043B2143F2C6F002499D7 /* Stars Background.png in Resources */ = {isa = PBXBuildFile; fileRef = DAA043A4143F2C6F002499D7 /* Stars Background.png */; };
+		DAA043B3143F2C6F002499D7 /* Sunset Background.png in Resources */ = {isa = PBXBuildFile; fileRef = DAA043A5143F2C6F002499D7 /* Sunset Background.png */; };
+		DAA043B4143F2C6F002499D7 /* Tutorial Background.png in Resources */ = {isa = PBXBuildFile; fileRef = DAA043A6143F2C6F002499D7 /* Tutorial Background.png */; };
+		DAA043B5143F2C6F002499D7 /* Waterfall Background.png in Resources */ = {isa = PBXBuildFile; fileRef = DAA043A7143F2C6F002499D7 /* Waterfall Background.png */; };
+		DAA043C0143F2DE7002499D7 /* Level0_data.plist in Resources */ = {isa = PBXBuildFile; fileRef = DAA043BF143F2DE7002499D7 /* Level0_data.plist */; };
 		DAA0512D1400B48B00D4B213 /* HoverTurtle.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA0512C1400B48A00D4B213 /* HoverTurtle.m */; };
 		DAA1157E13AF996E00ACD4BD /* Flybot.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA1157D13AF996E00ACD4BD /* Flybot.m */; };
 		DAA7A5FB13973B2200D6DA68 /* powerup.wav in Resources */ = {isa = PBXBuildFile; fileRef = DAA7A5FA13973B2200D6DA68 /* powerup.wav */; };
@@ -587,18 +589,6 @@
 		DA526FB31409AD82005BE716 /* SwarmGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SwarmGenerator.m; path = Classes/SwarmGenerator.m; sourceTree = "<group>"; };
 		DA526FB51409FE95005BE716 /* YellowBird.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = YellowBird.h; path = Classes/YellowBird.h; sourceTree = "<group>"; };
 		DA526FB61409FE97005BE716 /* YellowBird.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = YellowBird.m; path = Classes/YellowBird.m; sourceTree = "<group>"; };
-		DA6ED0B31437F234000024D8 /* Cave Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Cave Background.png"; path = "../../../../../Projects/RocketmanLE/RocketmanLE/Resources/Stage Art/Cave Background.png"; sourceTree = "<group>"; };
-		DA6ED0B41437F234000024D8 /* Cave Ground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Cave Ground.png"; path = "../../../../../Projects/RocketmanLE/RocketmanLE/Resources/Stage Art/Cave Ground.png"; sourceTree = "<group>"; };
-		DA6ED0B51437F234000024D8 /* City Ground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "City Ground.png"; path = "../../../../../Projects/RocketmanLE/RocketmanLE/Resources/Stage Art/City Ground.png"; sourceTree = "<group>"; };
-		DA6ED0B61437F234000024D8 /* City Parallax.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "City Parallax.png"; path = "../../../../../Projects/RocketmanLE/RocketmanLE/Resources/Stage Art/City Parallax.png"; sourceTree = "<group>"; };
-		DA6ED0B71437F234000024D8 /* Desert Ground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Desert Ground.png"; path = "../../../../../Projects/RocketmanLE/RocketmanLE/Resources/Stage Art/Desert Ground.png"; sourceTree = "<group>"; };
-		DA6ED0B81437F234000024D8 /* Desert Parallax.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Desert Parallax.png"; path = "../../../../../Projects/RocketmanLE/RocketmanLE/Resources/Stage Art/Desert Parallax.png"; sourceTree = "<group>"; };
-		DA6ED0B91437F234000024D8 /* Mountains Ground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Mountains Ground.png"; path = "../../../../../Projects/RocketmanLE/RocketmanLE/Resources/Stage Art/Mountains Ground.png"; sourceTree = "<group>"; };
-		DA6ED0BA1437F234000024D8 /* Mountains Parallax.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Mountains Parallax.png"; path = "../../../../../Projects/RocketmanLE/RocketmanLE/Resources/Stage Art/Mountains Parallax.png"; sourceTree = "<group>"; };
-		DA6ED0BB1437F234000024D8 /* Sky Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Sky Background.png"; path = "../../../../../Projects/RocketmanLE/RocketmanLE/Resources/Stage Art/Sky Background.png"; sourceTree = "<group>"; };
-		DA6ED0BC1437F234000024D8 /* Stars Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Stars Background.png"; path = "../../../../../Projects/RocketmanLE/RocketmanLE/Resources/Stage Art/Stars Background.png"; sourceTree = "<group>"; };
-		DA6ED0BD1437F234000024D8 /* Sunset Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Sunset Background.png"; path = "../../../../../Projects/RocketmanLE/RocketmanLE/Resources/Stage Art/Sunset Background.png"; sourceTree = "<group>"; };
-		DA6ED0BE1437F234000024D8 /* Waterfall Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Waterfall Background.png"; path = "../../../../../Projects/RocketmanLE/RocketmanLE/Resources/Stage Art/Waterfall Background.png"; sourceTree = "<group>"; };
 		DA7DCC6C13A7D63C0065A566 /* GameLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameLayer.h; path = Classes/GameLayer.h; sourceTree = "<group>"; };
 		DA7DCC6D13A7D63C0065A566 /* GameLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameLayer.m; path = Classes/GameLayer.m; sourceTree = "<group>"; };
 		DA7DCC6E13A7D63C0065A566 /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameScene.h; path = Classes/GameScene.h; sourceTree = "<group>"; };
@@ -634,7 +624,6 @@
 		DA7DCC9E13A7D68A0065A566 /* SlowCloud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SlowCloud.h; path = Classes/SlowCloud.h; sourceTree = "<group>"; };
 		DA7DCC9F13A7D68A0065A566 /* SlowCloud.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SlowCloud.m; path = Classes/SlowCloud.m; sourceTree = "<group>"; };
 		DA82A3DC142F5706006A9B70 /* Level1_data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Level1_data.plist; sourceTree = "<group>"; };
-		DA86E7621437F84B0020815A /* Level2_data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Level2_data.plist; path = "../../../../../Projects/Rocketman/Rocketman/Resources/Level Data/Level2_data.plist"; sourceTree = "<group>"; };
 		DA86E765143896EE0020815A /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataManager.h; path = ../../../Projects/Rocketman/Rocketman/Classes/DataManager.h; sourceTree = "<group>"; };
 		DA86E766143896EE0020815A /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataManager.m; path = ../../../Projects/Rocketman/Rocketman/Classes/DataManager.m; sourceTree = "<group>"; };
 		DA8966B613B73DAC000AC29F /* Structs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Structs.h; path = Classes/Structs.h; sourceTree = "<group>"; };
@@ -706,6 +695,21 @@
 		DAA04378143E9CE1002499D7 /* Menu Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Menu Button.png"; sourceTree = "<group>"; };
 		DAA0437A143E9F7C002499D7 /* SRSMWhiteFont.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = SRSMWhiteFont.fnt; path = ../../../../../Projects/Rocketman/Rocketman/Resources/Fonts/SRSMWhiteFont.fnt; sourceTree = "<group>"; };
 		DAA0437B143E9F7C002499D7 /* SRSMWhiteFont.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SRSMWhiteFont.png; path = ../../../../../Projects/Rocketman/Rocketman/Resources/Fonts/SRSMWhiteFont.png; sourceTree = "<group>"; };
+		DAA0439A143F2C6F002499D7 /* Cave Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Cave Background.png"; path = "../../../../../Projects/Rocketman/Rocketman/Resources/Stage Art/Cave Background.png"; sourceTree = "<group>"; };
+		DAA0439B143F2C6F002499D7 /* Cave Ground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Cave Ground.png"; path = "../../../../../Projects/Rocketman/Rocketman/Resources/Stage Art/Cave Ground.png"; sourceTree = "<group>"; };
+		DAA0439C143F2C6F002499D7 /* City Ground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "City Ground.png"; path = "../../../../../Projects/Rocketman/Rocketman/Resources/Stage Art/City Ground.png"; sourceTree = "<group>"; };
+		DAA0439D143F2C6F002499D7 /* City Parallax.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "City Parallax.png"; path = "../../../../../Projects/Rocketman/Rocketman/Resources/Stage Art/City Parallax.png"; sourceTree = "<group>"; };
+		DAA0439E143F2C6F002499D7 /* Desert Ground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Desert Ground.png"; path = "../../../../../Projects/Rocketman/Rocketman/Resources/Stage Art/Desert Ground.png"; sourceTree = "<group>"; };
+		DAA0439F143F2C6F002499D7 /* Desert Parallax.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Desert Parallax.png"; path = "../../../../../Projects/Rocketman/Rocketman/Resources/Stage Art/Desert Parallax.png"; sourceTree = "<group>"; };
+		DAA043A0143F2C6F002499D7 /* Lab Ground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Lab Ground.png"; path = "../../../../../Projects/Rocketman/Rocketman/Resources/Stage Art/Lab Ground.png"; sourceTree = "<group>"; };
+		DAA043A1143F2C6F002499D7 /* Mountains Ground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Mountains Ground.png"; path = "../../../../../Projects/Rocketman/Rocketman/Resources/Stage Art/Mountains Ground.png"; sourceTree = "<group>"; };
+		DAA043A2143F2C6F002499D7 /* Mountains Parallax.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Mountains Parallax.png"; path = "../../../../../Projects/Rocketman/Rocketman/Resources/Stage Art/Mountains Parallax.png"; sourceTree = "<group>"; };
+		DAA043A3143F2C6F002499D7 /* Sky Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Sky Background.png"; path = "../../../../../Projects/Rocketman/Rocketman/Resources/Stage Art/Sky Background.png"; sourceTree = "<group>"; };
+		DAA043A4143F2C6F002499D7 /* Stars Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Stars Background.png"; path = "../../../../../Projects/Rocketman/Rocketman/Resources/Stage Art/Stars Background.png"; sourceTree = "<group>"; };
+		DAA043A5143F2C6F002499D7 /* Sunset Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Sunset Background.png"; path = "../../../../../Projects/Rocketman/Rocketman/Resources/Stage Art/Sunset Background.png"; sourceTree = "<group>"; };
+		DAA043A6143F2C6F002499D7 /* Tutorial Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Tutorial Background.png"; path = "../../../../../Projects/Rocketman/Rocketman/Resources/Stage Art/Tutorial Background.png"; sourceTree = "<group>"; };
+		DAA043A7143F2C6F002499D7 /* Waterfall Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Waterfall Background.png"; path = "../../../../../Projects/Rocketman/Rocketman/Resources/Stage Art/Waterfall Background.png"; sourceTree = "<group>"; };
+		DAA043BF143F2DE7002499D7 /* Level0_data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Level0_data.plist; path = "../../../../../Projects/Rocketman/Rocketman/Resources/Level Data/Level0_data.plist"; sourceTree = "<group>"; };
 		DAA0512B1400B48800D4B213 /* HoverTurtle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HoverTurtle.h; path = Classes/HoverTurtle.h; sourceTree = "<group>"; };
 		DAA0512C1400B48A00D4B213 /* HoverTurtle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HoverTurtle.m; path = Classes/HoverTurtle.m; sourceTree = "<group>"; };
 		DAA1157C13AF996E00ACD4BD /* Flybot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Flybot.h; path = Classes/Flybot.h; sourceTree = "<group>"; };
@@ -829,18 +833,20 @@
 		DA2C3FA2140AF49E008FCF0D /* Stage Art */ = {
 			isa = PBXGroup;
 			children = (
-				DA6ED0B31437F234000024D8 /* Cave Background.png */,
-				DA6ED0B41437F234000024D8 /* Cave Ground.png */,
-				DA6ED0B51437F234000024D8 /* City Ground.png */,
-				DA6ED0B61437F234000024D8 /* City Parallax.png */,
-				DA6ED0B71437F234000024D8 /* Desert Ground.png */,
-				DA6ED0B81437F234000024D8 /* Desert Parallax.png */,
-				DA6ED0B91437F234000024D8 /* Mountains Ground.png */,
-				DA6ED0BA1437F234000024D8 /* Mountains Parallax.png */,
-				DA6ED0BB1437F234000024D8 /* Sky Background.png */,
-				DA6ED0BC1437F234000024D8 /* Stars Background.png */,
-				DA6ED0BD1437F234000024D8 /* Sunset Background.png */,
-				DA6ED0BE1437F234000024D8 /* Waterfall Background.png */,
+				DAA0439A143F2C6F002499D7 /* Cave Background.png */,
+				DAA0439B143F2C6F002499D7 /* Cave Ground.png */,
+				DAA0439C143F2C6F002499D7 /* City Ground.png */,
+				DAA0439D143F2C6F002499D7 /* City Parallax.png */,
+				DAA0439E143F2C6F002499D7 /* Desert Ground.png */,
+				DAA0439F143F2C6F002499D7 /* Desert Parallax.png */,
+				DAA043A0143F2C6F002499D7 /* Lab Ground.png */,
+				DAA043A1143F2C6F002499D7 /* Mountains Ground.png */,
+				DAA043A2143F2C6F002499D7 /* Mountains Parallax.png */,
+				DAA043A3143F2C6F002499D7 /* Sky Background.png */,
+				DAA043A4143F2C6F002499D7 /* Stars Background.png */,
+				DAA043A5143F2C6F002499D7 /* Sunset Background.png */,
+				DAA043A6143F2C6F002499D7 /* Tutorial Background.png */,
+				DAA043A7143F2C6F002499D7 /* Waterfall Background.png */,
 			);
 			name = "Stage Art";
 			path = "Resources/Stage Art";
@@ -1351,7 +1357,7 @@
 		DA82A3DB142F5706006A9B70 /* Level Data */ = {
 			isa = PBXGroup;
 			children = (
-				DA86E7621437F84B0020815A /* Level2_data.plist */,
+				DAA043BF143F2DE7002499D7 /* Level0_data.plist */,
 				DA82A3DC142F5706006A9B70 /* Level1_data.plist */,
 			);
 			name = "Level Data";
@@ -1693,19 +1699,6 @@
 				DAEA997113EE3E91007AA451 /* dialogue_combo1.png in Resources */,
 				DAEA997213EE3E91007AA451 /* dialogue_combo2.png in Resources */,
 				DA82A3DE142F5706006A9B70 /* Level1_data.plist in Resources */,
-				DA6ED0BF1437F234000024D8 /* Cave Background.png in Resources */,
-				DA6ED0C01437F234000024D8 /* Cave Ground.png in Resources */,
-				DA6ED0C11437F234000024D8 /* City Ground.png in Resources */,
-				DA6ED0C21437F234000024D8 /* City Parallax.png in Resources */,
-				DA6ED0C31437F234000024D8 /* Desert Ground.png in Resources */,
-				DA6ED0C41437F234000024D8 /* Desert Parallax.png in Resources */,
-				DA6ED0C51437F234000024D8 /* Mountains Ground.png in Resources */,
-				DA6ED0C61437F234000024D8 /* Mountains Parallax.png in Resources */,
-				DA6ED0C71437F234000024D8 /* Sky Background.png in Resources */,
-				DA6ED0C81437F234000024D8 /* Stars Background.png in Resources */,
-				DA6ED0C91437F234000024D8 /* Sunset Background.png in Resources */,
-				DA6ED0CA1437F234000024D8 /* Waterfall Background.png in Resources */,
-				DA86E7631437F84B0020815A /* Level2_data.plist in Resources */,
 				DAA04358143BD6F6002499D7 /* Black Line.png in Resources */,
 				DAA04359143BD6F6002499D7 /* Locked Text.png in Resources */,
 				DAA0435A143BD6F6002499D7 /* Stage 00.png in Resources */,
@@ -1726,6 +1719,21 @@
 				DAA04379143E9CE1002499D7 /* Menu Button.png in Resources */,
 				DAA0437C143E9F7C002499D7 /* SRSMWhiteFont.fnt in Resources */,
 				DAA0437D143E9F7C002499D7 /* SRSMWhiteFont.png in Resources */,
+				DAA043A8143F2C6F002499D7 /* Cave Background.png in Resources */,
+				DAA043A9143F2C6F002499D7 /* Cave Ground.png in Resources */,
+				DAA043AA143F2C6F002499D7 /* City Ground.png in Resources */,
+				DAA043AB143F2C6F002499D7 /* City Parallax.png in Resources */,
+				DAA043AC143F2C6F002499D7 /* Desert Ground.png in Resources */,
+				DAA043AD143F2C6F002499D7 /* Desert Parallax.png in Resources */,
+				DAA043AE143F2C6F002499D7 /* Lab Ground.png in Resources */,
+				DAA043AF143F2C6F002499D7 /* Mountains Ground.png in Resources */,
+				DAA043B0143F2C6F002499D7 /* Mountains Parallax.png in Resources */,
+				DAA043B1143F2C6F002499D7 /* Sky Background.png in Resources */,
+				DAA043B2143F2C6F002499D7 /* Stars Background.png in Resources */,
+				DAA043B3143F2C6F002499D7 /* Sunset Background.png in Resources */,
+				DAA043B4143F2C6F002499D7 /* Tutorial Background.png in Resources */,
+				DAA043B5143F2C6F002499D7 /* Waterfall Background.png in Resources */,
+				DAA043C0143F2DE7002499D7 /* Level0_data.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

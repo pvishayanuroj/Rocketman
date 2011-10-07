@@ -41,7 +41,7 @@ static DataManager *_dataManager = nil;
 {
 	if ((self = [super init])) {
         
-        levelData_ = nil;
+        levelData_ = [[NSMutableArray arrayWithCapacity:10] retain];
         numLevels_ = 0;
         
 	}

@@ -30,6 +30,9 @@
 /** Static method to clear GSM singleton */
 + (void) purgeGameStateManager;
 
+/** Goes to the main menu */
+- (void) showMainMenu;
+
 /** Method to start the game play */
 - (void) startGameWithLevel:(NSUInteger)levelNum;
 
@@ -44,6 +47,12 @@
 
 /** Called when a cutscene ends */
 - (void) endStory;
+
+/** Called when start is pressed from the main menu */
+- (void) startGameFromMainMenu;
+
+/** Called when a user presses menu from the world map */
+- (void) menuFromMap;
 
 /** Called when user selects a stage from the world map */
 - (void) stageSelectedFromMap:(NSUInteger)levelNum;

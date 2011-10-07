@@ -9,11 +9,13 @@
 #import "GameStateManager.h"
 #import "GameManager.h"
 #import "DataManager.h"
+#import "StoryManager.h"
 #import "AudioManager.h"
 #import "MainMenuScene.h"
 #import "MapScene.h"
 #import "GameScene.h"
 #import "EndScene.h"
+#import "MainMenuScene.h"
 
 // For singleton
 static GameStateManager *_gameStateManager = nil;
@@ -68,6 +70,12 @@ static GameStateManager *_gameStateManager = nil;
 
 # pragma mark - Start Methods
 
+- (void) showMainMenu
+{
+    CCScene *scene = [MainMenuScene node];
+    [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:scene]];    
+}
+
 - (void) startGameWithLevel:(NSUInteger)levelNum
 {
     // Initalize a game manager singleton. This should only exist for this stage
@@ -92,6 +100,11 @@ static GameStateManager *_gameStateManager = nil;
 
 # pragma mark - Receiver Methods
 
+- (void) startGameFromMainMenu
+{
+    [[StoryManager storyManager] beginCutscene:@"Intro"];
+}
+
 - (void) endGame:(NSUInteger)score
 {    
     // Cleanup GM singleton
@@ -104,6 +117,11 @@ static GameStateManager *_gameStateManager = nil;
 {
     //[self startGameWithLevel:1];
     [self showWorldMap];
+}
+
+- (void) menuFromMap
+{
+    [self showMainMenu];
 }
 
 - (void) stageSelectedFromMap:(NSUInteger)levelNum

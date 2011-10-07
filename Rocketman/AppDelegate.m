@@ -120,8 +120,8 @@
 #if DEBUG_GOTOGAME
     [[CCDirector sharedDirector] runWithScene: [GameScene node]];    
 #else
-    [[CCDirector sharedDirector] runWithScene: [MapScene mapWithLastUnlocked:3 currentLevel:0]];
-    //[[CCDirector sharedDirector] runWithScene: [MainMenuScene node]];
+    //[[CCDirector sharedDirector] runWithScene: [MapScene mapWithLastUnlocked:3 currentLevel:0]];
+    [[CCDirector sharedDirector] runWithScene: [MainMenuScene node]];
 #endif
 
 }

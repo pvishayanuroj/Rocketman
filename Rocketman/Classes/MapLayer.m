@@ -205,12 +205,12 @@ CGFloat ML_TITLE_YPOS = 72.0f;
 
 - (void) startPressed
 {
-    
+    [[GameStateManager gameStateManager] startGameWithLevel:currentLevel_];
 }
 
 - (void) menuPressed
 {
-    
+    [[GameStateManager gameStateManager] menuFromMap];
 }
 
 #pragma mark - Draw Method

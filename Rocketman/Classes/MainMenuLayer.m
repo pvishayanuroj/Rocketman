@@ -12,6 +12,7 @@
 #import "Constants.h"
 #import "StoryManager.h"
 #import "AnimatedButton.h"
+#import "GameStateManager.h"
 
 @implementation MainMenuLayer
 
@@ -22,6 +23,9 @@
 - (id) init
 {
 	if ((self = [super init])) {
+        
+        // Initialize
+        [GameStateManager gameStateManager];
         
         CCSprite *backgroundImage = [CCSprite spriteWithFile:@"menu_splash.png"];
         backgroundImage.anchorPoint = CGPointZero;
@@ -44,7 +48,7 @@
 
 - (void) startGame 
 {
-    [[StoryManager storyManager] beginCutscene:@"Intro"];
+    [[GameStateManager gameStateManager] startGameFromMainMenu];
 }
 
 - (void) viewHighscore {
