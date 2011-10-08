@@ -13,11 +13,10 @@
  
     CCSpriteBatchNode *spriteSheet_;
     
-    NSMutableArray *levelData_;
- 
-    NSUInteger numLevels_;
+    NSArray *mapData_;
 }
 
+@property (nonatomic, readonly) NSArray *mapData;
 @property (nonatomic, readonly) CCSpriteBatchNode *spriteSheet;
 
 /** 
@@ -31,11 +30,7 @@
 
 - (void) animationLoader:(NSString *)unitListName spriteSheetName:(NSString *)spriteSheetName;
 
-- (void) loadLevelData;
-
-- (NSArray *) getLevelNames;
-
-- (NSArray *) getLevelDescs;
+- (void) loadMapData;
 
 - (NSDictionary *) getLevelData:(NSUInteger)levelNum;
 

@@ -13,6 +13,7 @@ static DataManager *_dataManager = nil;
 
 @implementation DataManager
 
+@synthesize mapData = mapData_;
 @synthesize spriteSheet = spriteSheet_;
 
 #pragma mark - Object Lifecycle
@@ -41,17 +42,14 @@ static DataManager *_dataManager = nil;
 {
 	if ((self = [super init])) {
         
-        levelData_ = [[NSMutableArray arrayWithCapacity:10] retain];
-        numLevels_ = 0;
-        
 	}
 	return self;
 }
 
 - (void) dealloc
-{		
-    [levelData_ release];
-    levelData_ = nil;
+{		    
+    [mapData_ release];
+    mapData_ = nil;
     
 	[super dealloc];
 }
@@ -123,48 +121,23 @@ static DataManager *_dataManager = nil;
 	} // end for-loop of units
 }
 
-
-
-- (void) loadLevelData
+- (void) loadMapData
 {
-    NSUInteger levelNum = 0;
-    while (true) {
-        NSString *dataFilename = [NSString stringWithFormat:@"Level%d_data", levelNum];
-        NSString *dataPath = [[NSBundle mainBundle] pathForResource:dataFilename ofType:@"plist"];
-        
-        // If path doesn't exist, stop searching
-        if (!dataPath) {
-            break;
-        }
-        
-        NSDictionary *data = [NSDictionary dictionaryWithContentsOfFile:dataPath];        
-        [levelData_ addObject:data];
-        levelNum++;
-    }
-}
-
-- (NSArray *) getLevelNames
-{
-    NSMutableArray *levelNames = [NSMutableArray arrayWithCapacity:[levelData_ count]];
-    for (NSDictionary *level in levelData_) {
-        [levelNames addObject:[level objectForKey:@"Level Name"]]; 
-    }
-    return levelNames;    
-}
-
-- (NSArray *) getLevelDescs
-{
-    NSMutableArray *levelDescs = [NSMutableArray arrayWithCapacity:[levelData_ count]];
-    for (NSDictionary *level in levelData_) {
-        [levelDescs addObject:[level objectForKey:@"Level Desc"]]; 
-    }
-    return levelDescs;
+    // Load coordinates from file
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"WorldMap" ofType:@"plist"];     
+    mapData_ = [[NSArray arrayWithContentsOfFile:path] retain];    
 }
 
 - (NSDictionary *) getLevelData:(NSUInteger)levelNum
 {
-    NSDictionary *data = [levelData_ objectAtIndex:levelNum];
-    return data;
+        NSString *dataFilename = [NSString stringWithFormat:@"Level%d_data", levelNum];
+        NSString *dataPath = [[NSBundle mainBundle] pathForResource:dataFilename ofType:@"plist"];
+        
+        if (!dataPath) {
+            return nil;
+        }
+        
+        return [NSDictionary dictionaryWithContentsOfFile:dataPath];        
 }
 
 @end

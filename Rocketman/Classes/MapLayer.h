@@ -22,16 +22,16 @@
     
     NSMutableArray *buttons_;
     
-    NSArray *levelPositions_;
+    NSArray *mapData_;
     
     AnimatedButton *startButton_;
     
     CCLabelBMFont *levelTitle_;   
 }
 
-+ (id) mapWithFile:(NSString *)filename lastUnlocked:(NSUInteger)lastUnlockedLevel currentLevel:(NSUInteger)currentLevel;
++ (id) map:(NSUInteger)lastUnlockedLevel currentLevel:(NSUInteger)currentLevel;
 
-- (id) initWithFile:(NSString *)filename lastUnlocked:(NSUInteger)lastUnlockedLevel currentLevel:(NSUInteger)currentLevel;
+- (id) initMap:(NSUInteger)lastUnlockedLevel currentLevel:(NSUInteger)currentLevel;
 
 - (void) moveRocketTo:(NSUInteger)levelNum;
 
@@ -43,8 +43,8 @@
 /** Allows user input for the map screen */
 - (void) unlockInput;
 
-- (void) hideStart;
+- (void) hideStartAndTitle;
 
-- (void) showStart;
+- (void) showStartAndTitle;
 
 @end

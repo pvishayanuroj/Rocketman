@@ -39,7 +39,7 @@ CGFloat MS_LINE2_XSCALE = 0.7f;
         line2.scaleX = MS_LINE2_XSCALE;
         [self addChild:line2];        
         
-        MapLayer *mapLayer = [MapLayer mapWithFile:@"WorldMap" lastUnlocked:lastUnlockedLevel currentLevel:currentLevel];
+        MapLayer *mapLayer = [MapLayer map:lastUnlockedLevel currentLevel:currentLevel];
 		[self addChild:mapLayer];        
     }
     return self;    

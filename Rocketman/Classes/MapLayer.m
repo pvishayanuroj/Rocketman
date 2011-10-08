@@ -29,39 +29,50 @@ CGFloat ML_TITLE_YPOS = 72.0f;
 
 #pragma mark - Object Lifecycle
 
-+ (id) mapWithFile:(NSString *)filename lastUnlocked:(NSUInteger)lastUnlockedLevel currentLevel:(NSUInteger)currentLevel;
++ (id) map:(NSUInteger)lastUnlockedLevel currentLevel:(NSUInteger)currentLevel;
 {
-    return [[[self alloc] initWithFile:filename lastUnlocked:lastUnlockedLevel currentLevel:currentLevel] autorelease];
+    return [[[self alloc] initMap:lastUnlockedLevel currentLevel:currentLevel] autorelease];
 }
 
-- (id) initWithFile:(NSString *)filename lastUnlocked:(NSUInteger)lastUnlockedLevel currentLevel:(NSUInteger)currentLevel;
+- (id) initMap:(NSUInteger)lastUnlockedLevel currentLevel:(NSUInteger)currentLevel;
 {
 	if ((self = [super init])) {
- 
-        // TEMPORARY
-        [[DataManager dataManager] animationLoader:@"sheet01_animations" spriteSheetName:@"sheet01"];
+        
+        // Get the map data
+        mapData_ = [[[DataManager dataManager] mapData] retain];
         
         currentLevel_ = currentLevel;
-        buttons_ = [[NSMutableArray arrayWithCapacity:10] retain];
-        
-        // Load coordinates from file
-        NSString *path = [[NSBundle mainBundle] pathForResource:filename ofType:@"plist"];     
-        levelPositions_ = [[NSArray arrayWithContentsOfFile:path] retain];
+        buttons_ = [[NSMutableArray arrayWithCapacity:[mapData_ count]] retain];
+        levelDescs_ = [[NSMutableArray arrayWithCapacity:[mapData_ count]] retain];
         
         // Parse the world map file
         NSUInteger levelNum = 0;
         CGPoint rocketPos;
-        for (NSDictionary *level in levelPositions_) {
+        for (NSDictionary *level in mapData_) {
+            
+            // Get coordinates of where to place cutouts
             CGPoint pos = [UtilFuncs parseCoords:[level objectForKey:@"Point"]];
             if (levelNum == currentLevel) {
                 rocketPos = pos;
             }
+            
+            // Create the cutout
+#if DEBUG_ALLSTAGES
+            BOOL locked = NO;
+#else
             BOOL locked = levelNum > lastUnlockedLevel;
-            MapButton *mapButton = [MapButton mapButton:levelNum++ locked:locked];
+#endif
+            MapButton *mapButton = [MapButton mapButton:levelNum locked:locked];
             mapButton.delegate = self;
             mapButton.position = pos;       
             [buttons_ addObject:mapButton];
             [self addChild:mapButton z:-1];
+            
+            // Store the level names
+            NSString *levelName = [NSString stringWithFormat:@"Level %d: %@", levelNum, [level objectForKey:@"Name"]];
+            [levelDescs_ addObject:levelName];
+            
+            levelNum++;
         }   
         
         // Add the rocket
@@ -80,7 +91,7 @@ CGFloat ML_TITLE_YPOS = 72.0f;
         [self addChild:menuButton];
         
         // Add level title
-        levelTitle_ = [[CCLabelBMFont labelWithString:@"Level 0: Training Ground" fntFile:@"SRSMWhiteFont.fnt"] retain];
+        levelTitle_ = [[CCLabelBMFont labelWithString:[levelDescs_ objectAtIndex:currentLevel] fntFile:@"SRSMWhiteFont.fnt"] retain];
         levelTitle_.position = CGPointMake(ML_TITLE_XPOS, ML_TITLE_YPOS);
         levelTitle_.scale = 0.65f;
         [self addChild:levelTitle_];
@@ -90,7 +101,7 @@ CGFloat ML_TITLE_YPOS = 72.0f;
 
 - (void) dealloc
 {
-    [levelPositions_ release];
+    [mapData_ release];
     [levelDescs_ release];
     [buttons_ release];
     [rocket_ release];
@@ -120,7 +131,7 @@ CGFloat ML_TITLE_YPOS = 72.0f;
 {
     if (levelNum != currentLevel_) {
         [self lockInput];           
-        [self hideStart];
+        [self hideStartAndTitle];
         CCActionInterval *move = [self constructMoveFrom:currentLevel_ to:levelNum];     
         [rocket_ runAction:move];
         currentLevel_ = levelNum;          
@@ -132,14 +143,14 @@ CGFloat ML_TITLE_YPOS = 72.0f;
     NSMutableArray *actionArray = [NSMutableArray arrayWithCapacity:5];
     
     NSUInteger nodes = abs(from - to);
-    NSUInteger numLevels = [levelPositions_ count];
+    NSUInteger numLevels = [mapData_ count];
     CGFloat speedModifier = 1.0f - (nodes/(CGFloat)numLevels) * 0.5f;
     
     // Lower to higher level
     if (from < to) {
         for (int i = from; i < to; i++) {
-            NSDictionary *level = [levelPositions_ objectAtIndex:i];
-            NSDictionary *nextLevel = [levelPositions_ objectAtIndex:(i + 1)];
+            NSDictionary *level = [mapData_ objectAtIndex:i];
+            NSDictionary *nextLevel = [mapData_ objectAtIndex:(i + 1)];
             ccBezierConfig bezier;
             bezier.controlPoint_1 = [UtilFuncs parseCoords:[level objectForKey:@"C1"]];
             bezier.controlPoint_2 = [UtilFuncs parseCoords:[level objectForKey:@"C2"]];
@@ -153,7 +164,7 @@ CGFloat ML_TITLE_YPOS = 72.0f;
     // Higher to lower level
     else {
         for (int i = from; i > to; i--) {
-            NSDictionary *level = [levelPositions_ objectAtIndex:(i - 1)];
+            NSDictionary *level = [mapData_ objectAtIndex:(i - 1)];
             ccBezierConfig bezier;
             bezier.controlPoint_1 = [UtilFuncs parseCoords:[level objectForKey:@"C2"]];
             bezier.controlPoint_2 = [UtilFuncs parseCoords:[level objectForKey:@"C1"]];
@@ -172,17 +183,21 @@ CGFloat ML_TITLE_YPOS = 72.0f;
 - (void) doneMoving
 {
     [self unlockInput];
-    [self showStart];
+    [self showStartAndTitle];
+    
+    [levelTitle_ setString:[levelDescs_ objectAtIndex:currentLevel_]];
 }
 
-- (void) hideStart
+- (void) hideStartAndTitle
 {
+    levelTitle_.visible = NO;
     startButton_.visible = NO;
     startButton_.isLocked = YES;
 }
 
-- (void) showStart
+- (void) showStartAndTitle
 {
+    levelTitle_.visible = YES;
     startButton_.visible = YES;
     startButton_.isLocked = NO;
 }
@@ -221,12 +236,12 @@ CGFloat ML_TITLE_YPOS = 72.0f;
     glColor4f(1.0, 0, 0, 1.0);      
     glLineWidth(3.0f);
     
-    for (int i = 0; i < [levelPositions_ count] - 1; i++) {
-        NSDictionary *level = [levelPositions_ objectAtIndex:i];
+    for (int i = 0; i < [mapData_ count] - 1; i++) {
+        NSDictionary *level = [mapData_ objectAtIndex:i];
         CGPoint start = [UtilFuncs parseCoords:[level objectForKey:@"Point"]];
         CGPoint c1 = [UtilFuncs parseCoords:[level objectForKey:@"C1"]];
         CGPoint c2 = [UtilFuncs parseCoords:[level objectForKey:@"C2"]];        
-        NSDictionary *nextLevel = [levelPositions_ objectAtIndex:(i + 1)];
+        NSDictionary *nextLevel = [mapData_ objectAtIndex:(i + 1)];
         CGPoint end = [UtilFuncs parseCoords:[nextLevel objectForKey:@"Point"]];
         ccDrawCircle(start, 3, 360, 64, NO);
         ccDrawCircle(c1, 3, 360, 64, NO);        
