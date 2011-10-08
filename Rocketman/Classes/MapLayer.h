@@ -43,8 +43,8 @@
 /** Allows user input for the map screen */
 - (void) unlockInput;
 
-- (void) hideStartAndTitle;
+- (void) hideStart;
 
-- (void) showStartAndTitle;
+- (void) showStart;
 
 @end

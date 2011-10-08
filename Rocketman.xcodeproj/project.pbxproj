@@ -248,6 +248,10 @@
 		DAA043B4143F2C6F002499D7 /* Tutorial Background.png in Resources */ = {isa = PBXBuildFile; fileRef = DAA043A6143F2C6F002499D7 /* Tutorial Background.png */; };
 		DAA043B5143F2C6F002499D7 /* Waterfall Background.png in Resources */ = {isa = PBXBuildFile; fileRef = DAA043A7143F2C6F002499D7 /* Waterfall Background.png */; };
 		DAA043C0143F2DE7002499D7 /* Level0_data.plist in Resources */ = {isa = PBXBuildFile; fileRef = DAA043BF143F2DE7002499D7 /* Level0_data.plist */; };
+		DAA043C5144110A1002499D7 /* SRSM Outline Font 28.fnt in Resources */ = {isa = PBXBuildFile; fileRef = DAA043C1144110A0002499D7 /* SRSM Outline Font 28.fnt */; };
+		DAA043C6144110A1002499D7 /* SRSM Outline Font 28.png in Resources */ = {isa = PBXBuildFile; fileRef = DAA043C2144110A0002499D7 /* SRSM Outline Font 28.png */; };
+		DAA043C7144110A1002499D7 /* SRSM White Font 28.fnt in Resources */ = {isa = PBXBuildFile; fileRef = DAA043C3144110A0002499D7 /* SRSM White Font 28.fnt */; };
+		DAA043C8144110A1002499D7 /* SRSM White Font 28.png in Resources */ = {isa = PBXBuildFile; fileRef = DAA043C4144110A0002499D7 /* SRSM White Font 28.png */; };
 		DAA0512D1400B48B00D4B213 /* HoverTurtle.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA0512C1400B48A00D4B213 /* HoverTurtle.m */; };
 		DAA1157E13AF996E00ACD4BD /* Flybot.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA1157D13AF996E00ACD4BD /* Flybot.m */; };
 		DAA7A5FB13973B2200D6DA68 /* powerup.wav in Resources */ = {isa = PBXBuildFile; fileRef = DAA7A5FA13973B2200D6DA68 /* powerup.wav */; };
@@ -710,6 +714,10 @@
 		DAA043A6143F2C6F002499D7 /* Tutorial Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Tutorial Background.png"; path = "../../../../../Projects/Rocketman/Rocketman/Resources/Stage Art/Tutorial Background.png"; sourceTree = "<group>"; };
 		DAA043A7143F2C6F002499D7 /* Waterfall Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Waterfall Background.png"; path = "../../../../../Projects/Rocketman/Rocketman/Resources/Stage Art/Waterfall Background.png"; sourceTree = "<group>"; };
 		DAA043BF143F2DE7002499D7 /* Level0_data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Level0_data.plist; path = "../../../../../Projects/Rocketman/Rocketman/Resources/Level Data/Level0_data.plist"; sourceTree = "<group>"; };
+		DAA043C1144110A0002499D7 /* SRSM Outline Font 28.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "SRSM Outline Font 28.fnt"; path = "../../../../../Projects/Rocketman/Rocketman/Resources/Fonts/SRSM Outline Font 28.fnt"; sourceTree = "<group>"; };
+		DAA043C2144110A0002499D7 /* SRSM Outline Font 28.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "SRSM Outline Font 28.png"; path = "../../../../../Projects/Rocketman/Rocketman/Resources/Fonts/SRSM Outline Font 28.png"; sourceTree = "<group>"; };
+		DAA043C3144110A0002499D7 /* SRSM White Font 28.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "SRSM White Font 28.fnt"; path = "../../../../../Projects/Rocketman/Rocketman/Resources/Fonts/SRSM White Font 28.fnt"; sourceTree = "<group>"; };
+		DAA043C4144110A0002499D7 /* SRSM White Font 28.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "SRSM White Font 28.png"; path = "../../../../../Projects/Rocketman/Rocketman/Resources/Fonts/SRSM White Font 28.png"; sourceTree = "<group>"; };
 		DAA0512B1400B48800D4B213 /* HoverTurtle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HoverTurtle.h; path = Classes/HoverTurtle.h; sourceTree = "<group>"; };
 		DAA0512C1400B48A00D4B213 /* HoverTurtle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HoverTurtle.m; path = Classes/HoverTurtle.m; sourceTree = "<group>"; };
 		DAA1157C13AF996E00ACD4BD /* Flybot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Flybot.h; path = Classes/Flybot.h; sourceTree = "<group>"; };
@@ -1441,6 +1449,10 @@
 		DAC2A8B013A62EFA00AAB32A /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				DAA043C1144110A0002499D7 /* SRSM Outline Font 28.fnt */,
+				DAA043C2144110A0002499D7 /* SRSM Outline Font 28.png */,
+				DAA043C3144110A0002499D7 /* SRSM White Font 28.fnt */,
+				DAA043C4144110A0002499D7 /* SRSM White Font 28.png */,
 				DAA0437A143E9F7C002499D7 /* SRSMWhiteFont.fnt */,
 				DAA0437B143E9F7C002499D7 /* SRSMWhiteFont.png */,
 				DAC2A8B513A6315F00AAB32A /* SRSM_font.fnt */,
@@ -1734,6 +1746,10 @@
 				DAA043B4143F2C6F002499D7 /* Tutorial Background.png in Resources */,
 				DAA043B5143F2C6F002499D7 /* Waterfall Background.png in Resources */,
 				DAA043C0143F2DE7002499D7 /* Level0_data.plist in Resources */,
+				DAA043C5144110A1002499D7 /* SRSM Outline Font 28.fnt in Resources */,
+				DAA043C6144110A1002499D7 /* SRSM Outline Font 28.png in Resources */,
+				DAA043C7144110A1002499D7 /* SRSM White Font 28.fnt in Resources */,
+				DAA043C8144110A1002499D7 /* SRSM White Font 28.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

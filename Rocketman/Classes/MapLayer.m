@@ -91,7 +91,7 @@ CGFloat ML_TITLE_YPOS = 72.0f;
         [self addChild:menuButton];
         
         // Add level title
-        levelTitle_ = [[CCLabelBMFont labelWithString:[levelDescs_ objectAtIndex:currentLevel] fntFile:@"SRSMWhiteFont.fnt"] retain];
+        levelTitle_ = [[CCLabelBMFont labelWithString:[levelDescs_ objectAtIndex:currentLevel] fntFile:@"SRSM White Font 28.fnt"] retain];
         levelTitle_.position = CGPointMake(ML_TITLE_XPOS, ML_TITLE_YPOS);
         levelTitle_.scale = 0.65f;
         [self addChild:levelTitle_];
@@ -131,7 +131,7 @@ CGFloat ML_TITLE_YPOS = 72.0f;
 {
     if (levelNum != currentLevel_) {
         [self lockInput];           
-        [self hideStartAndTitle];
+        [self hideStart];
         CCActionInterval *move = [self constructMoveFrom:currentLevel_ to:levelNum];     
         [rocket_ runAction:move];
         currentLevel_ = levelNum;          
@@ -183,21 +183,19 @@ CGFloat ML_TITLE_YPOS = 72.0f;
 - (void) doneMoving
 {
     [self unlockInput];
-    [self showStartAndTitle];
+    [self showStart];
     
     [levelTitle_ setString:[levelDescs_ objectAtIndex:currentLevel_]];
 }
 
-- (void) hideStartAndTitle
+- (void) hideStart
 {
-    levelTitle_.visible = NO;
     startButton_.visible = NO;
     startButton_.isLocked = YES;
 }
 
-- (void) showStartAndTitle
+- (void) showStart
 {
-    levelTitle_.visible = YES;
     startButton_.visible = YES;
     startButton_.isLocked = NO;
 }
