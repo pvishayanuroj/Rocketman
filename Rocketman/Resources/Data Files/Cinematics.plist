@@ -10,25 +10,25 @@
 				<key>Transition</key>
 				<string>Fade</string>
 				<key>Timing</key>
-				<string>3</string>
+				<string>1.5</string>
+			</dict>
+			<dict>
+				<key>Transition</key>
+				<string>Fade</string>
+				<key>Timing</key>
+				<string>1.5</string>
+			</dict>
+			<dict>
+				<key>Transition</key>
+				<string>Instant</string>
+				<key>Timing</key>
+				<string>1</string>
 			</dict>
 			<dict>
 				<key>Transition</key>
 				<string>Fade</string>
 				<key>Timing</key>
 				<string>2</string>
-			</dict>
-			<dict>
-				<key>Transition</key>
-				<string>Instant</string>
-				<key>Timing</key>
-				<string>3</string>
-			</dict>
-			<dict>
-				<key>Transition</key>
-				<string>Fade</string>
-				<key>Timing</key>
-				<string>3</string>
 			</dict>
 			<dict>
 				<key>Transition</key>
@@ -58,7 +58,7 @@
 				<key>Transition</key>
 				<string>Fade</string>
 				<key>Timing</key>
-				<string>3</string>
+				<string>2.5</string>
 			</dict>
 		</array>
 	</dict>
