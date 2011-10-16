@@ -310,10 +310,10 @@
 		353E11C9138EDB650064BC71 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		355D23AC13AF7521003845CF /* cat_button_bomb_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cat_button_bomb_pressed.png; sourceTree = "<group>"; };
 		355D23AD13AF7521003845CF /* cat_button_bomb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cat_button_bomb.png; sourceTree = "<group>"; };
-		DA0593AD13A7D50600565D76 /* AudioManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioManager.h; path = ../../../Projects/Rocketman/Rocketman/Classes/AudioManager.h; sourceTree = "<group>"; };
-		DA0593AE13A7D50600565D76 /* AudioManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AudioManager.m; path = ../../../Projects/Rocketman/Rocketman/Classes/AudioManager.m; sourceTree = "<group>"; };
-		DA0593AF13A7D50600565D76 /* GameManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameManager.h; path = ../../../Projects/Rocketman/Rocketman/Classes/GameManager.h; sourceTree = "<group>"; };
-		DA0593B013A7D50600565D76 /* GameManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameManager.m; path = ../../../Projects/Rocketman/Rocketman/Classes/GameManager.m; sourceTree = "<group>"; };
+		DA0593AD13A7D50600565D76 /* AudioManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioManager.h; path = ../../../../Projects/Rocketman/Rocketman/Classes/AudioManager.h; sourceTree = "<group>"; };
+		DA0593AE13A7D50600565D76 /* AudioManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AudioManager.m; path = ../../../../Projects/Rocketman/Rocketman/Classes/AudioManager.m; sourceTree = "<group>"; };
+		DA0593AF13A7D50600565D76 /* GameManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameManager.h; path = ../../../../Projects/Rocketman/Rocketman/Classes/GameManager.h; sourceTree = "<group>"; };
+		DA0593B013A7D50600565D76 /* GameManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameManager.m; path = ../../../../Projects/Rocketman/Rocketman/Classes/GameManager.m; sourceTree = "<group>"; };
 		DA08ACED1397620D00F97492 /* menu_splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_splash.png; sourceTree = "<group>"; };
 		DA08ACFE1397B4D500F97492 /* slap.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = slap.wav; sourceTree = "<group>"; };
 		DA0C242913ADE76C00544DF1 /* BlastCloud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BlastCloud.h; path = ../../../Projects/Rocketman/Rocketman/Classes/BlastCloud.h; sourceTree = "<group>"; };
@@ -638,8 +638,8 @@
 		DA7DCC9E13A7D68A0065A566 /* SlowCloud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SlowCloud.h; path = ../../../Projects/Rocketman/Rocketman/Classes/SlowCloud.h; sourceTree = "<group>"; };
 		DA7DCC9F13A7D68A0065A566 /* SlowCloud.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SlowCloud.m; path = ../../../Projects/Rocketman/Rocketman/Classes/SlowCloud.m; sourceTree = "<group>"; };
 		DA82A3DC142F5706006A9B70 /* Level1_data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Level1_data.plist; sourceTree = "<group>"; };
-		DA86E765143896EE0020815A /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataManager.h; path = ../../../Projects/Rocketman/Rocketman/Classes/DataManager.h; sourceTree = "<group>"; };
-		DA86E766143896EE0020815A /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataManager.m; path = ../../../Projects/Rocketman/Rocketman/Classes/DataManager.m; sourceTree = "<group>"; };
+		DA86E765143896EE0020815A /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataManager.h; path = ../../../../Projects/Rocketman/Rocketman/Classes/DataManager.h; sourceTree = "<group>"; };
+		DA86E766143896EE0020815A /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataManager.m; path = ../../../../Projects/Rocketman/Rocketman/Classes/DataManager.m; sourceTree = "<group>"; };
 		DA8966B613B73DAC000AC29F /* Structs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Structs.h; path = ../../../Projects/Rocketman/Rocketman/Classes/Structs.h; sourceTree = "<group>"; };
 		DA907C3B1394DBDB009ADD27 /* SRSMTheme01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = SRSMTheme01.mp3; sourceTree = "<group>"; };
 		DA907C3E1394DCAD009ADD27 /* meow01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = meow01.mp3; sourceTree = "<group>"; };
@@ -647,14 +647,14 @@
 		DA907CB41394EFB4009ADD27 /* engine.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = engine.wav; sourceTree = "<group>"; };
 		DA907CB61394FB76009ADD27 /* plop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = plop.wav; sourceTree = "<group>"; };
 		DA94B66A14427BD3004C1FC2 /* Level0_notifications.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Level0_notifications.plist; sourceTree = "<group>"; };
-		DA99B5B913DA78AB00DB361F /* GameStateManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameStateManager.h; path = ../../../Projects/Rocketman/Rocketman/Classes/GameStateManager.h; sourceTree = "<group>"; };
-		DA99B5BA13DA78AB00DB361F /* GameStateManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameStateManager.m; path = ../../../Projects/Rocketman/Rocketman/Classes/GameStateManager.m; sourceTree = "<group>"; };
-		DA99B5BD13DA79C700DB361F /* MapScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapScene.h; path = ../../../Projects/Rocketman/Rocketman/Classes/MapScene.h; sourceTree = "<group>"; };
-		DA99B5BE13DA79CA00DB361F /* MapScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapScene.m; path = ../../../Projects/Rocketman/Rocketman/Classes/MapScene.m; sourceTree = "<group>"; };
+		DA99B5B913DA78AB00DB361F /* GameStateManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameStateManager.h; path = ../../../../Projects/Rocketman/Rocketman/Classes/GameStateManager.h; sourceTree = "<group>"; };
+		DA99B5BA13DA78AB00DB361F /* GameStateManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameStateManager.m; path = ../../../../Projects/Rocketman/Rocketman/Classes/GameStateManager.m; sourceTree = "<group>"; };
+		DA99B5BD13DA79C700DB361F /* MapScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapScene.h; path = ../../../../Rocketman/Rocketman/Classes/MapScene.h; sourceTree = "<group>"; };
+		DA99B5BE13DA79CA00DB361F /* MapScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapScene.m; path = ../../../../Rocketman/Rocketman/Classes/MapScene.m; sourceTree = "<group>"; };
 		DA99B5C013DA7AB400DB361F /* map_cat_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_cat_active.png; sourceTree = "<group>"; };
 		DA99B5C113DA7AB400DB361F /* map_cat_inactive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map_cat_inactive.png; sourceTree = "<group>"; };
-		DA99B5C613DA7B7000DB361F /* MapLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapLayer.h; path = ../../../Projects/Rocketman/Rocketman/Classes/MapLayer.h; sourceTree = "<group>"; };
-		DA99B5C713DA7B7800DB361F /* MapLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapLayer.m; path = ../../../Projects/Rocketman/Rocketman/Classes/MapLayer.m; sourceTree = "<group>"; };
+		DA99B5C613DA7B7000DB361F /* MapLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapLayer.h; path = ../../../../Rocketman/Rocketman/Classes/MapLayer.h; sourceTree = "<group>"; };
+		DA99B5C713DA7B7800DB361F /* MapLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapLayer.m; path = ../../../../Rocketman/Rocketman/Classes/MapLayer.m; sourceTree = "<group>"; };
 		DA99B5CE13DA85F400DB361F /* Cinematics.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Cinematics.plist; sourceTree = "<group>"; };
 		DA99B5CF13DA85F400DB361F /* HighScores.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = HighScores.plist; sourceTree = "<group>"; };
 		DA99B5D013DA85F400DB361F /* WorldMap.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = WorldMap.plist; sourceTree = "<group>"; };
@@ -677,16 +677,16 @@
 		DA99E83013ADCA840075896F /* SpinningElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SpinningElement.m; path = ../../../Projects/Rocketman/Rocketman/Classes/SpinningElement.m; sourceTree = "<group>"; };
 		DA99E94713ADD4980075896F /* Intro Cat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Intro Cat.png"; sourceTree = "<group>"; };
 		DA99E94913ADE5020075896F /* skip_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = skip_button.png; sourceTree = "<group>"; };
-		DA99E94B13ADE62E0075896F /* StoryManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StoryManager.h; path = ../../../Projects/Rocketman/Rocketman/Classes/StoryManager.h; sourceTree = "<group>"; };
-		DA99E94C13ADE62E0075896F /* StoryManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StoryManager.m; path = ../../../Projects/Rocketman/Rocketman/Classes/StoryManager.m; sourceTree = "<group>"; };
+		DA99E94B13ADE62E0075896F /* StoryManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StoryManager.h; path = ../../../../Projects/Rocketman/Rocketman/Classes/StoryManager.h; sourceTree = "<group>"; };
+		DA99E94C13ADE62E0075896F /* StoryManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StoryManager.m; path = ../../../../Projects/Rocketman/Rocketman/Classes/StoryManager.m; sourceTree = "<group>"; };
 		DA99E94E13ADE64A0075896F /* HighscoreLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HighscoreLayer.h; path = ../../../Projects/Rocketman/Rocketman/Classes/HighscoreLayer.h; sourceTree = "<group>"; };
 		DA99E94F13ADE64B0075896F /* HighscoreLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HighscoreLayer.m; path = ../../../Projects/Rocketman/Rocketman/Classes/HighscoreLayer.m; sourceTree = "<group>"; };
 		DA99E95013ADE6500075896F /* HighscoreScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HighscoreScene.h; path = ../../../Projects/Rocketman/Rocketman/Classes/HighscoreScene.h; sourceTree = "<group>"; };
 		DA99E95113ADE6590075896F /* HighscoreScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HighscoreScene.m; path = ../../../Projects/Rocketman/Rocketman/Classes/HighscoreScene.m; sourceTree = "<group>"; };
-		DAA04340143BC948002499D7 /* MapButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapButton.h; path = ../../../Projects/Rocketman/Rocketman/Classes/MapButton.h; sourceTree = "<group>"; };
-		DAA04341143BC948002499D7 /* MapButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapButton.m; path = ../../../Projects/Rocketman/Rocketman/Classes/MapButton.m; sourceTree = "<group>"; };
-		DAA04343143BD696002499D7 /* LockedText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LockedText.h; path = ../../../Projects/Rocketman/Rocketman/Classes/LockedText.h; sourceTree = "<group>"; };
-		DAA04344143BD696002499D7 /* LockedText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LockedText.m; path = ../../../Projects/Rocketman/Rocketman/Classes/LockedText.m; sourceTree = "<group>"; };
+		DAA04340143BC948002499D7 /* MapButton.h */ = {isa = PBXFileReference; fileEncoding = 4; name = MapButton.h; path = ../../../../Rocketman/Rocketman/Classes/MapButton.h; sourceTree = "<group>"; };
+		DAA04341143BC948002499D7 /* MapButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapButton.m; path = ../../../../Rocketman/Rocketman/Classes/MapButton.m; sourceTree = "<group>"; };
+		DAA04343143BD696002499D7 /* LockedText.h */ = {isa = PBXFileReference; fileEncoding = 4; name = LockedText.h; path = ../../../../Rocketman/Rocketman/Classes/LockedText.h; sourceTree = "<group>"; };
+		DAA04344143BD696002499D7 /* LockedText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LockedText.m; path = ../../../../Rocketman/Rocketman/Classes/LockedText.m; sourceTree = "<group>"; };
 		DAA04347143BD6F6002499D7 /* Black Line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Black Line.png"; sourceTree = "<group>"; };
 		DAA04348143BD6F6002499D7 /* Locked Text.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Locked Text.png"; sourceTree = "<group>"; };
 		DAA04349143BD6F6002499D7 /* Stage 00.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Stage 00.png"; sourceTree = "<group>"; };
@@ -704,7 +704,7 @@
 		DAA04355143BD6F6002499D7 /* Stage 06.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Stage 06.png"; sourceTree = "<group>"; };
 		DAA04356143BD6F6002499D7 /* Start Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Start Button.png"; sourceTree = "<group>"; };
 		DAA04357143BD6F6002499D7 /* World Map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "World Map.png"; sourceTree = "<group>"; };
-		DAA0436D143BD855002499D7 /* MapButtonDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapButtonDelegate.h; path = ../../../Projects/Rocketman/Rocketman/Classes/MapButtonDelegate.h; sourceTree = "<group>"; };
+		DAA0436D143BD855002499D7 /* MapButtonDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; name = MapButtonDelegate.h; path = ../../../../Rocketman/Rocketman/Classes/MapButtonDelegate.h; sourceTree = "<group>"; };
 		DAA0436F143BE2E4002499D7 /* Pair.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Pair.h; path = ../../../Projects/Rocketman/Rocketman/Classes/Pair.h; sourceTree = "<group>"; };
 		DAA04370143BE2E4002499D7 /* Pair.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Pair.m; path = ../../../Projects/Rocketman/Rocketman/Classes/Pair.m; sourceTree = "<group>"; };
 		DAA04378143E9CE1002499D7 /* Menu Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Menu Button.png"; sourceTree = "<group>"; };
@@ -760,8 +760,7 @@
 		DAD925E013D33B7C0057FFD7 /* Turtling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Turtling.m; path = ../../../Projects/Rocketman/Rocketman/Classes/Turtling.m; sourceTree = "<group>"; };
 		DAEA996A13EE3E90007AA451 /* dialogue_combo1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dialogue_combo1.png; sourceTree = "<group>"; };
 		DAEA996B13EE3E90007AA451 /* dialogue_combo2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dialogue_combo2.png; sourceTree = "<group>"; };
-		DAEA997613EEB268007AA451 /* DialogueLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DialogueLayer.h; path = ../../../Projects/Rocketman/Rocketman/Classes/DialogueLayer.h; sourceTree = "<group>"; };
-		DAEA997713EEB270007AA451 /* DialogueLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DialogueLayer.m; path = ../../../Projects/Rocketman/Rocketman/Classes/DialogueLayer.m; sourceTree = "<group>"; };
+		DAEA997713EEB270007AA451 /* DialogueLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DialogueLayer.m; path = ../../Projects/Rocketman/Rocketman/Classes/DialogueLayer.m; sourceTree = SOURCE_ROOT; };
 		DAEA99F313F7FB8B007AA451 /* ShockTurtling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShockTurtling.h; path = ../../../Projects/Rocketman/Rocketman/Classes/ShockTurtling.h; sourceTree = "<group>"; };
 		DAEA99F413F7FB9C007AA451 /* ShockTurtling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShockTurtling.m; path = ../../../Projects/Rocketman/Rocketman/Classes/ShockTurtling.m; sourceTree = "<group>"; };
 		DAEA99F713F855F3007AA451 /* Movement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Movement.h; path = ../../../Projects/Rocketman/Rocketman/Classes/Movement.h; sourceTree = "<group>"; };
@@ -1426,6 +1425,7 @@
 				DAA04344143BD696002499D7 /* LockedText.m */,
 			);
 			name = "World Map";
+			path = ../../../../Projects/temp/Rocketman/Rocketman/Classes;
 			sourceTree = "<group>";
 		};
 		DA99E81813ADC30E0075896F /* Story Scenes */ = {
@@ -1606,7 +1606,6 @@
 				DA3B39DE13DFB3CD0079D34C /* EndScene.m */,
 				DA3B39EA13DFB6990079D34C /* EndLayer.h */,
 				DA3B39EB13DFB6A00079D34C /* EndLayer.m */,
-				DAEA997613EEB268007AA451 /* DialogueLayer.h */,
 				DAEA997713EEB270007AA451 /* DialogueLayer.m */,
 			);
 			name = "Layers & Scenes";
