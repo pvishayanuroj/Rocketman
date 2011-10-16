@@ -7,6 +7,7 @@
 //
 
 #import "DataManager.h"
+#import "UtilFuncs.h"
 
 // For singleton
 static DataManager *_dataManager = nil;
@@ -42,6 +43,9 @@ static DataManager *_dataManager = nil;
 {
 	if ((self = [super init])) {
         
+        [self loadMapData];
+        [self loadObjectNameMappings];
+        
 	}
 	return self;
 }
@@ -50,6 +54,12 @@ static DataManager *_dataManager = nil;
 {		    
     [mapData_ release];
     mapData_ = nil;
+    
+    [objectNameMap_ release];
+    objectNameMap_ = nil;
+    
+    [reverseObjectNameMap_ release];
+    reverseObjectNameMap_ = nil;
     
 	[super dealloc];
 }
@@ -128,6 +138,22 @@ static DataManager *_dataManager = nil;
     mapData_ = [[NSArray arrayWithContentsOfFile:path] retain];    
 }
 
+- (void) loadObjectNameMappings
+{
+    objectNameMap_ = [[UtilFuncs mapObjectTypes] retain];
+    reverseObjectNameMap_ = [[UtilFuncs reverseMapObjectTypes:objectNameMap_] retain];
+}
+
+- (NSString *) nameForType:(ObstacleType)type
+{
+    return [reverseObjectNameMap_ objectForKey:[NSNumber numberWithInt:type]];
+}
+
+- (ObstacleType) typeForName:(NSString *)name
+{
+    return [[objectNameMap_ objectForKey:name] integerValue];
+}
+
 - (NSDictionary *) getLevelData:(NSUInteger)levelNum
 {
         NSString *dataFilename = [NSString stringWithFormat:@"Level%d_data", levelNum];
@@ -138,6 +164,18 @@ static DataManager *_dataManager = nil;
         }
         
         return [NSDictionary dictionaryWithContentsOfFile:dataPath];        
+}
+
+- (NSArray *) getLevelNotifications:(NSUInteger)levelNum
+{
+    NSString *dataFilename = [NSString stringWithFormat:@"Level%d_notifications", levelNum];
+    NSString *dataPath = [[NSBundle mainBundle] pathForResource:dataFilename ofType:@"plist"];
+    
+    if (!dataPath) {
+        return nil;
+    }
+    
+    return [NSArray arrayWithContentsOfFile:dataPath];
 }
 
 @end

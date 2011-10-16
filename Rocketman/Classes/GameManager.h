@@ -8,6 +8,7 @@
 
 #import "CommonHeaders.h"
 #import "cocos2d.h"
+#import "GameLayerDelegate.h"
 
 @class GameLayer;
 @class HUDLayer;
@@ -15,8 +16,14 @@
 @class DialogueLayer;
 @class Rocket;
 @class Obstacle;
+@class Notification;
 
-@interface GameManager : CCNode {
+/** 
+ * Singleton that only persists for one stage at a time.
+ * Holds references to all layers being shown during gameplay
+ * and acts as an interface between them.
+ */
+@interface GameManager : CCNode <GameLayerDelegate> {
  
     GameLayer *gameLayer_;
     
@@ -27,6 +34,8 @@
     DialogueLayer *dialogueLayer_;
     
     Rocket *rocket_;
+    
+    Notification *notification_;
 }
 
 + (GameManager *) gameManager;
@@ -55,22 +64,29 @@
 
 - (void) setNumBoosts:(NSUInteger)numBoosts;
 
-- (void) setHeight:(CGFloat)height;
-
-- (void) setSpeed:(CGFloat)speed;
-
 - (void) setTilt:(CGFloat)tilt;
 
 - (void) showCombo:(NSUInteger)comboNum;
 
+- (void) addToDialogueLayer:(CCNode *)dialogue;
+
 - (Rocket *) getRocket;
 
+- (void) initNotifications:(NSUInteger)levelNum;
+
+/** Full game pause */
 - (void) pause;
 
+/** Full game resume */
 - (void) resume;
 
+/** 
+ * Pauses gameplay with the exception of the dialogue layer
+ * Used to show dialogue messages
+ */
 - (void) dialoguePause;
 
+/** Resume gameplay counterpart of dialogue pause */
 - (void) dialogueResume;
 
 @end

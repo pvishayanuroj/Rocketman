@@ -30,6 +30,8 @@
 
 @implementation GameLayer
 
+@synthesize delegate = delegate_;
+
 #pragma mark - Object Lifecycle
 
 + (id) startWithLevelData:(NSDictionary *)data
@@ -262,8 +264,8 @@
         [self loss];
     }
     
-    [[GameManager gameManager] setHeight:height_];
-    [[GameManager gameManager] setSpeed:rocketSpeed_];
+    [delegate_ heightUpdate:height_];
+    [delegate_ speedUpdate:rocketSpeed_];
 }
 
 - (void) collisionDetect
@@ -434,7 +436,7 @@
 - (void) obstacleGenerator
 {
     // See if the specified height for the next object addition has been reached
-    if ((height_ - screenHeight_) > nextHeightTrigger_ && nextHeightTrigger_ > 0) {
+    if ((height_ - screenHeight_) > nextHeightTrigger_) {
         // Get the key to determine which row to add
         NSString *datakey = [objectDataKeys_ objectAtIndex:dataKeyIndex_];
         NSDictionary *rowData = [objectData_ objectForKey:datakey];
@@ -458,7 +460,7 @@
         }
         // No more objects to add
         else {
-            nextHeightTrigger_ = 0;
+            nextHeightTrigger_ = INT_MAX;
         }
     }
 }
@@ -514,6 +516,8 @@
         onGround_ = YES;
         rocketSpeed_ = 0;
 
+        [self unschedule:@selector(update:)];
+        
         // Very important to do this, since the accelerometer singleton is holding a ref to us
         [[UIAccelerometer sharedAccelerometer] setDelegate:nil];
         
@@ -619,6 +623,7 @@
     
     if (add) {
         [self addObstacle:obstacle]; 
+        [delegate_ obstacleAdded:obstacle];
     }
 }
 

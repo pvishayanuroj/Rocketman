@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>Trigger</key>
+		<string>Height 0</string>
+		<key>Events</key>
+		<array>
+			<dict>
+				<key>Delay</key>
+				<real>1.5</real>
+				<key>Banner</key>
+				<string>Collect Ammo Banner</string>
+			</dict>
+			<dict>
+				<key>Focus</key>
+				<string>Boost Button</string>
+				<key>Banner</key>
+				<string>Tap Booster Banner</string>
+			</dict>
+		</array>
+	</dict>
+	<dict>
+		<key>Trigger</key>
+		<string>1st Shell</string>
+		<key>Events</key>
+		<array>
+			<dict>
+				<key>Focus</key>
+				<string>Trigger</string>
+				<key>Banner</key>
+				<string>Collect Fuel Banner</string>
+			</dict>
+		</array>
+	</dict>
+</array>
+</plist>

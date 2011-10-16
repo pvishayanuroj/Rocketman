@@ -56,8 +56,8 @@ static GameStateManager *_gameStateManager = nil;
         // Load animations
         [[DataManager dataManager] animationLoader:@"sheet01_animations" spriteSheetName:@"sheet01"];
         
-        // Load map data
-        [[DataManager dataManager] loadMapData];
+        // Load all game data
+        [DataManager dataManager];
         
 	}
 	return self;

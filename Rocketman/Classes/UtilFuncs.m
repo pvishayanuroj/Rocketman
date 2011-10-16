@@ -137,6 +137,7 @@
     [map setObject:[NSNumber numberWithInt:kShockTurtling] forKey:@"Shock Turtling"];
     [map setObject:[NSNumber numberWithInt:kHoverTurtle] forKey:@"Hover Turtle"];
     [map setObject:[NSNumber numberWithInt:kAlienHoverTurtle] forKey:@"Alien Hover Turtle"];
+    [map setObject:[NSNumber numberWithInt:kShieldedAlienHoverTurtle] forKey:@"Alien Hover Turtle Shield"];
     [map setObject:[NSNumber numberWithInt:kYellowBird] forKey:@"Yellow Bird"];
     [map setObject:[NSNumber numberWithInt:kYellowBirdSwarm] forKey:@"Yellow Bird Swarm"];
     [map setObject:[NSNumber numberWithInt:kBlueBird] forKey:@"Blue Bird"];
@@ -147,6 +148,7 @@
     [map setObject:[NSNumber numberWithInt:kBlueFish] forKey:@"Blue Fish"];
     [map setObject:[NSNumber numberWithInt:kBlueFishSwarm] forKey:@"Blue Fish Swarm"];
     [map setObject:[NSNumber numberWithInt:kSalamander] forKey:@"Salamander"];
+    [map setObject:[NSNumber numberWithInt:kFlyingRock] forKey:@"Flying Rock"];
     // Bosses
     [map setObject:[NSNumber numberWithInt:kBossTurtle] forKey:@"Boss Turtle"];
     [map setObject:[NSNumber numberWithInt:kAlienBossTurtle] forKey:@"Alien Boss Turtle"];
@@ -157,6 +159,22 @@
     [map setObject:[NSNumber numberWithInt:kCat] forKey:@"Cat"];
     [map setObject:[NSNumber numberWithInt:kCatBundle] forKey:@"Cat Bundle"];         
     
+    // Extras (not from level editor)
+    [map setObject:[NSNumber numberWithInt:kPlasmaBall] forKey:@"Plasma Bullet"];        
+    [map setObject:[NSNumber numberWithInt:kRedEgg] forKey:@"Egg A"];
+    [map setObject:[NSNumber numberWithInt:kBlueEgg] forKey:@"Egg B"];
+    
+    return map;
+}
+
++ (NSDictionary *) reverseMapObjectTypes:(NSDictionary *)nameMap
+{
+    NSMutableDictionary *map = [NSMutableDictionary dictionaryWithCapacity:[nameMap count]];
+    
+    for (NSString *name in nameMap) {
+        NSNumber *number = [nameMap objectForKey:name];
+        [map setObject:name forKey:number];
+    }
     return map;
 }
 

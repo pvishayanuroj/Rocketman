@@ -9,6 +9,7 @@
 #import "FlyingRock.h"
 #import "Boundary.h"
 #import "AudioManager.h"
+#import "DataManager.h"
 #import "GameLayer.h"
 #import "PointWrapper.h"
 #import "BlastCloud.h"
@@ -32,10 +33,11 @@ static NSUInteger countID = 0;
 {
 	if ((self = [super init])) {
         
-		unitID_ = countID++;                
-        name_ = [[NSString stringWithFormat:@"Flying Rock %@", type] retain];
-        NSString *spriteName = [NSString stringWithFormat:@"%@.png", name_];
-        
+		unitID_ = countID++;        
+        obstacleType_ = kFlyingRock;
+        name_ = [[[DataManager dataManager] nameForType:obstacleType_] retain];        
+          
+        NSString *spriteName = [NSString stringWithFormat:@"%@ %@.png", name_, type];
         sprite_ = [[CCSprite spriteWithSpriteFrameName:spriteName] retain];
         [self addChild:sprite_ z:-1];
         

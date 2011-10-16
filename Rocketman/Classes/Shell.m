@@ -9,6 +9,7 @@
 #import "Shell.h"
 #import "GameLayer.h"
 #import "AudioManager.h"
+#import "DataManager.h"
 #import "UtilFuncs.h"
 #import "Boundary.h"
 #import "StaticMovement.h"
@@ -27,9 +28,10 @@ static NSUInteger countID = 0;
 	if ((self = [super init])) {
         
 		unitID_ = countID++;                
-        name_ = [[NSString stringWithString:@"Turtle"] retain];
-        NSString *spriteName = [NSString stringWithFormat:@"%@ Idle 01.png", name_];
+        obstacleType_ = kShell;
+        name_ = [[[DataManager dataManager] nameForType:obstacleType_] retain];
         
+        NSString *spriteName = [NSString stringWithFormat:@"%@ Idle 01.png", name_];
         sprite_ = [[CCSprite spriteWithSpriteFrameName:spriteName] retain];
         [self addChild:sprite_ z:-1];
         

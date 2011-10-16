@@ -12,6 +12,7 @@
 #import "GameManager.h"
 #import "EngineParticleSystem.h"
 #import "AudioManager.h"
+#import "DataManager.h"
 #import "BlastCloud.h"
 #import "BigExplosion.h"
 #import "Boundary.h"
@@ -36,9 +37,10 @@ static NSUInteger countID = 0;
 	if ((self = [super init])) {
         
 		unitID_ = countID++;        
-        name_ = [[NSString stringWithString:@"BossTurtle"] retain];
-        NSString *spriteName = [NSString stringWithFormat:@"%@ Fly 01.png", name_];           
+        obstacleType_ = kBossTurtle;
+        name_ = [[[DataManager dataManager] nameForType:obstacleType_] retain];
         
+        NSString *spriteName = [NSString stringWithFormat:@"%@ Fly 01.png", name_];           
         sprite_ = [[CCSprite spriteWithSpriteFrameName:spriteName] retain];
         [self addChild:sprite_ z:-1];
         

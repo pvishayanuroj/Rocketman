@@ -9,6 +9,7 @@
 #import "CommonHeaders.h"
 #import "cocos2d.h"
 #import "CDAudioManager.h"
+#import "GameLayerDelegate.h"
 
 @class Rocket;
 @class Cat;
@@ -45,7 +46,9 @@
     NSMutableArray *firedCats_;
 
     /** Holds all current active doodads */
-    NSMutableArray *doodads_;    
+    NSMutableArray *doodads_;   
+    
+    id <GameLayerDelegate> delegate_;
     
     CGFloat rocketInitSpeed_;
     
@@ -123,6 +126,8 @@
     
     NSInteger ammoType_;
 }
+
+@property (nonatomic, assign) id delegate;
 
 + (id) startWithLevelData:(NSDictionary *)data;
 

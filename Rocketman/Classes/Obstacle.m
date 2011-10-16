@@ -14,12 +14,19 @@
 
 @implementation Obstacle
 
+@synthesize obstacleType = obstacleType_;
+@synthesize unitID = unitID_;
 @synthesize destroyed = destroyed_;
 @synthesize boundaries = boundaries_;
+
+#pragma mark - Object Lifecycle
 
 - (id) init
 {
     if ((self = [super init])) {
+        
+        delegate_ = nil;
+        heightTriggerActive_ = NO;
         
         // Default collision parameters (override some of these)
         defaultPVCollide_.circular = YES; // Circular radius
@@ -48,6 +55,8 @@
     [super dealloc];
 }
 
+#pragma mark - Object Manipulators
+
 - (NSString *) description
 {
     return [NSString stringWithFormat:@"%@ %d", name_, unitID_];
@@ -72,14 +81,22 @@
 
 - (void) fall:(CGFloat)speed
 {
+    // Go through all chained movements and keep track of the total movement
     CGPoint moveAmt = self.position;
     for (Movement *movement in movements_) {
         [movement move:speed];
     }
     moveAmt = ccpSub(self.position, moveAmt);
     
+    // Move all children belonging to this obstacle by the same amount
     for (Obstacle *obstacle in childObstacles_) {
         obstacle.position = ccpAdd(obstacle.position, moveAmt);
+    }
+    
+    // Check if the height trigger will be activated
+    if (heightTriggerActive_ && self.position.y < triggerHeight_) {
+        [delegate_ obstacleHeightTriggered:self];
+        heightTriggerActive_ = NO;
     }
 }
 
@@ -118,6 +135,13 @@
     
     [childObstacles_ release];
     childObstacles_ = nil;
+}
+
+- (void) setHeightTrigger:(CGFloat)height delegate:(id <ObstacleDelegate>)delegate
+{
+    delegate_ = delegate;
+    heightTriggerActive_ = YES;
+    triggerHeight_ = height;
 }
 
 #pragma mark - Debug Methods

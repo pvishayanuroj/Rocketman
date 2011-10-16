@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>Background File</key>
-	<string>Tutorial Background.png</string>
+	<string>Sky Background.png</string>
 	<key>Data</key>
 	<dict>
 		<key>1792</key>
@@ -72,14 +72,10 @@
 	</array>
 	<key>Ground File</key>
 	<string>Lab Ground.png</string>
-	<key>Level Desc</key>
-	<string></string>
-	<key>Level Name</key>
-	<string>Training Ground</string>
 	<key>Level Num</key>
 	<string>0</string>
 	<key>Parallax File</key>
-	<string></string>
+	<string>Tutorial Background.png</string>
 	<key>Vertical Tiles</key>
 	<integer>64</integer>
 </dict>

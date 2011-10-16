@@ -8,6 +8,7 @@
 
 #import "Cat.h"
 #import "GameLayer.h"
+#import "DataManager.h"
 #import "CallFuncWeak.h"
 #import "Boundary.h"
 #import "StaticMovement.h"
@@ -26,9 +27,10 @@ static NSUInteger countID = 0;
 	if ((self = [super init])) {
         
 		unitID_ = countID++;                     
-        name_ = [[NSString stringWithString:@"Cat"] retain];
-        NSString *spriteName = [NSString stringWithFormat:@"%@ Idle 01.png", name_];         
+        obstacleType_ = kCat;
+        name_ = [[[DataManager dataManager] nameForType:obstacleType_] retain];
         
+        NSString *spriteName = [NSString stringWithFormat:@"%@ Idle 01.png", name_];         
         sprite_ = [[CCSprite spriteWithSpriteFrameName:spriteName] retain];
         [self addChild:sprite_ z:-1];
         

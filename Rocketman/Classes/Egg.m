@@ -11,6 +11,7 @@
 #import "CircularMovement.h"
 #import "GameLayer.h"
 #import "AudioManager.h"
+#import "DataManager.h"
 
 @implementation Egg
 
@@ -18,22 +19,23 @@ static NSUInteger countID = 0;
 
 + (id) redEggWithPos:(CGPoint)pos rate:(CGFloat)rate radius:(CGFloat)radius angle:(CGFloat)angle
 {
-    return [[[self alloc] initWithPos:pos color:@"A" rate:rate radius:radius angle:angle] autorelease];
+    return [[[self alloc] initWithPos:pos type:kRedEgg rate:rate radius:radius angle:angle] autorelease];
 }
 
 + (id) blueEggWithPos:(CGPoint)pos rate:(CGFloat)rate radius:(CGFloat)radius angle:(CGFloat)angle
 {
-    return [[[self alloc] initWithPos:pos color:@"B" rate:rate radius:radius angle:angle] autorelease];
+    return [[[self alloc] initWithPos:pos type:kBlueEgg rate:rate radius:radius angle:angle] autorelease];
 }
 
-- (id) initWithPos:(CGPoint)pos color:(NSString *)color rate:(CGFloat)rate radius:(CGFloat)radius angle:(CGFloat)angle
+- (id) initWithPos:(CGPoint)pos type:(ObstacleType)type rate:(CGFloat)rate radius:(CGFloat)radius angle:(CGFloat)angle
 {
 	if ((self = [super init])) {
         
 		unitID_ = countID++;    
-        name_ = [[NSString stringWithFormat:@"Egg %@", color] retain];
-        NSString *spriteName = [NSString stringWithFormat:@"%@.png", name_];         
+        obstacleType_ = type;
+        name_ = [[[DataManager dataManager] nameForType:obstacleType_] retain];        
         
+        NSString *spriteName = [NSString stringWithFormat:@"%@.png", name_];         
         sprite_ = [[CCSprite spriteWithSpriteFrameName:spriteName] retain];
         [self addChild:sprite_ z:-1];
         

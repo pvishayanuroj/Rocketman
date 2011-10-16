@@ -116,7 +116,7 @@
 			</dict>
 		</array>
 		<key>Name</key>
-		<string>Turtle</string>
+		<string>Shell</string>
 	</dict>
 	<dict>
 		<key>Animations</key>
@@ -169,7 +169,7 @@
 			</dict>
 		</array>
 		<key>Name</key>
-		<string>Angel2</string>
+		<string>Angel</string>
 	</dict>
 	<dict>
 		<key>Animations</key>
@@ -223,7 +223,7 @@
 			</dict>
 		</array>
 		<key>Name</key>
-		<string>BossTurtle</string>
+		<string>Boss Turtle</string>
 	</dict>
 	<dict>
 		<key>Animations</key>

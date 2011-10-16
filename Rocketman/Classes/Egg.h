@@ -17,6 +17,6 @@
 
 + (id) blueEggWithPos:(CGPoint)pos rate:(CGFloat)rate radius:(CGFloat)radius angle:(CGFloat)angle;
 
-- (id) initWithPos:(CGPoint)pos color:(NSString *)color rate:(CGFloat)rate radius:(CGFloat)radius angle:(CGFloat)angle;
+- (id) initWithPos:(CGPoint)pos type:(ObstacleType)type rate:(CGFloat)rate radius:(CGFloat)radius angle:(CGFloat)angle;
 
 @end

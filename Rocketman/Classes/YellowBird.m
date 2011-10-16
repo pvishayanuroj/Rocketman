@@ -12,6 +12,7 @@
 #import "GameLayer.h"
 #import "ConstantMovement.h"
 #import "AudioManager.h"
+#import "DataManager.h"
 #import "TargetedAction.h"
 
 @implementation YellowBird
@@ -28,9 +29,10 @@ static NSUInteger countID = 0;
 	if ((self = [super init])) {
         
 		unitID_ = countID++;                
-        name_ = [[NSString stringWithString:@"Yellow Bird"] retain];
-        NSString *spriteName = [NSString stringWithFormat:@"%@ Idle 01.png", name_];         
+        obstacleType_ = kYellowBird;
+        name_ = [[[DataManager dataManager] nameForType:obstacleType_] retain];
         
+        NSString *spriteName = [NSString stringWithFormat:@"%@ Idle 01.png", name_];         
         sprite_ = [[CCSprite spriteWithSpriteFrameName:spriteName] retain];
         [self addChild:sprite_ z:-1];
         

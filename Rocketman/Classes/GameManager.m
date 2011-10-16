@@ -13,6 +13,8 @@
 #import "DialogueLayer.h"
 #import "Rocket.h"
 #import "CCNode+PauseResume.h"
+#import "Obstacle.h"
+#import "Notification.h"
 
 // For singleton
 static GameManager *_gameManager = nil;
@@ -50,6 +52,7 @@ static GameManager *_gameManager = nil;
         pauseLayer_ = nil;
         dialogueLayer_ = nil;
         rocket_ = nil;
+        notification_ = nil;
 	}
 	return self;
 }
@@ -63,11 +66,13 @@ static GameManager *_gameManager = nil;
     [pauseLayer_ release];
     [dialogueLayer_ release];
     [rocket_ release];
+    [notification_ release];
     gameLayer_ = nil;
     hudLayer_ = nil;
     pauseLayer_ = nil;
     dialogueLayer_ = nil;    
     rocket_ = nil;
+    notification_ = nil;
     
 	[super dealloc];
 }
@@ -78,6 +83,7 @@ static GameManager *_gameManager = nil;
 {
 	NSAssert(gameLayer_ == nil, @"Trying to register a Game Layer when one already exists");
 	gameLayer_ = [gameLayer retain];
+    gameLayer_.delegate = self;
 }
 
 - (void) registerHUDLayer:(HUDLayer *)hudLayer
@@ -102,6 +108,24 @@ static GameManager *_gameManager = nil;
 {
     NSAssert(rocket_ == nil, @"Trying to register a Rocket when one already exists");
     rocket_ = [rocket retain];
+}
+
+#pragma mark - Delegate Methods
+
+- (void) heightUpdate:(NSInteger)height
+{
+    [hudLayer_ setHeight:height];    
+    [notification_ heightUpdate:height];
+}
+
+- (void) speedUpdate:(CGFloat)speed
+{
+    [hudLayer_ setSpeed:speed];    
+}
+
+- (void) obstacleAdded:(Obstacle *)obstacle
+{
+    [notification_ obstacleAdded:obstacle];
 }
 
 #pragma mark - Game Layer Methods
@@ -133,16 +157,6 @@ static GameManager *_gameManager = nil;
     [hudLayer_ setNumBoosts:numBoosts];
 }
 
-- (void) setHeight:(CGFloat)height
-{
-    [hudLayer_ setHeight:height];
-}
-
-- (void) setSpeed:(CGFloat)speed
-{
-    [hudLayer_ setSpeed:speed];
-}
-
 - (void) setTilt:(CGFloat)tilt
 {
     [hudLayer_ setTilt:tilt];
@@ -155,11 +169,23 @@ static GameManager *_gameManager = nil;
     [dialogueLayer_ showCombo:comboNum];
 }
 
+- (void) addToDialogueLayer:(CCNode *)dialogue
+{
+    [dialogueLayer_ addChild:dialogue];
+}
+
 #pragma mark - Rocket methods
 
 - (Rocket *) getRocket
 {
     return rocket_;
+}
+
+#pragma mark - Notification methods
+
+- (void) initNotifications:(NSUInteger)levelNum
+{
+    notification_ = [[Notification notification:levelNum] retain];
 }
 
 #pragma mark - Pause / Resume

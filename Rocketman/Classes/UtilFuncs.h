@@ -43,4 +43,7 @@
 /** Maps object strings to enums */
 + (NSDictionary *) mapObjectTypes;
 
+/** Maps object enums to object strings */
++ (NSDictionary *) reverseMapObjectTypes:(NSDictionary *)nameMap;
+
 @end

@@ -11,6 +11,7 @@
 #import "ConstantMovementWithStop.h"
 #import "SideMovement.h"
 #import "AudioManager.h"
+#import "DataManager.h"
 #import "TargetedAction.h"
 #import "GameManager.h"
 #import "Egg.h"
@@ -29,9 +30,10 @@ static NSUInteger countID = 0;
 	if ((self = [super init])) {
         
 		unitID_ = countID++;                
-        name_ = [[NSString stringWithString:@"Alien Hover Turtle"] retain];
-        NSString *spriteName = [NSString stringWithFormat:@"%@ Idle 01.png", name_];                 
+        obstacleType_ = kAlienHoverTurtle;
+        name_ = [[[DataManager dataManager] nameForType:obstacleType_] retain];
         
+        NSString *spriteName = [NSString stringWithFormat:@"%@ Idle 01.png", name_];                 
         sprite_ = [[CCSprite spriteWithSpriteFrameName:spriteName] retain];
         [self addChild:sprite_ z:-1];
         

@@ -11,6 +11,7 @@
 #import "HUDLayer.h"
 #import "PauseLayer.h"
 #import "DialogueLayer.h"
+#import "GameManager.h"
 #import "DataManager.h"
 
 @implementation GameScene
@@ -27,6 +28,7 @@
 	if ((self = [super init])) {
 
         NSDictionary *data = [[DataManager dataManager] getLevelData:levelNum];
+        [[GameManager gameManager] initNotifications:levelNum];
         GameLayer *gameLayer = [GameLayer startWithLevelData:data];
 		[self addChild:gameLayer z:0];
         

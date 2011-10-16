@@ -11,6 +11,7 @@
 #import "ConstantMovement.h"
 #import "GameLayer.h"
 #import "AudioManager.h"
+#import "DataManager.h"
 
 @implementation PlasmaBall
 
@@ -33,9 +34,10 @@ static NSUInteger countID = 0;
 	if ((self = [super init])) {
         
 		unitID_ = countID++;              
-        name_ = [[NSString stringWithString:@"Plasma Bullet"] retain];
-        NSString *spriteName = [NSString stringWithFormat:@"%@.png", name_];                 
+        obstacleType_ = kPlasmaBall;
+        name_ = [[[DataManager dataManager] nameForType:obstacleType_] retain];
         
+        NSString *spriteName = [NSString stringWithFormat:@"%@.png", name_];                 
         sprite_ = [[CCSprite spriteWithSpriteFrameName:spriteName] retain];
         [self addChild:sprite_ z:-1];
         

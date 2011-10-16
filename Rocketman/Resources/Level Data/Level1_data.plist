@@ -122,10 +122,6 @@
 	</array>
 	<key>Ground File</key>
 	<string>Mountains Ground.png</string>
-	<key>Level Desc</key>
-	<string>The Blah</string>
-	<key>Level Name</key>
-	<string>Blah Level</string>
 	<key>Level Num</key>
 	<string>1</string>
 	<key>Parallax File</key>
