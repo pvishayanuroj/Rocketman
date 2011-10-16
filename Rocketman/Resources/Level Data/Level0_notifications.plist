@@ -9,7 +9,7 @@
 		<array>
 			<dict>
 				<key>Delay</key>
-				<real>1.5</real>
+				<integer>1</integer>
 				<key>Banner</key>
 				<string>Collect Ammo Banner</string>
 			</dict>

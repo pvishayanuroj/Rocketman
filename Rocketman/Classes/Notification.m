@@ -18,7 +18,7 @@
 
 const CGFloat NF_HEIGHT_TRIGGER = 400.0f;
 const CGFloat NF_BANNER_X = 160.0f;
-const CGFloat NF_BANNER_Y = 200.0f;
+const CGFloat NF_BANNER_Y = 250.0f;
 
 #pragma mark - Object Lifecycle
 

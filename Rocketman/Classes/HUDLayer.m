@@ -91,7 +91,7 @@
     CCMenuItemSprite *catButton01 = [CCMenuItemSprite itemFromNormalSprite:[CCSprite spriteWithFile:@"cat_button.png"] selectedSprite:[CCSprite spriteWithFile:@"cat_button_pressed.png"] target:gameLayer selector:@selector(fireCat01)];
     
     m1_ = [[CCMenu menuWithItems:catButton01, nil] retain];
-    m1_.position = CGPointMake(45, 57);
+    m1_.position = CGPointMake(CAT_BUTTON1_X, CAT_BUTTON1_Y);
     [self addChild:m1_];
     
     // Cat Button 02
@@ -106,7 +106,7 @@
         CCMenuItemSprite *catButton02 = [CCMenuItemSprite itemFromNormalSprite:[CCSprite spriteWithFile:@"cat_button_bomb.png"] selectedSprite:[CCSprite spriteWithFile:@"cat_button_bomb_pressed.png"] target:gameLayer selector:@selector(fireCat02)];
         
         m2_= [[CCMenu menuWithItems:catButton02, nil] retain];
-        m2_.position = CGPointMake(125, 30);
+        m2_.position = CGPointMake(CAT_BUTTON2_X, CAT_BUTTON2_Y);
         [self addChild:m2_];
     }
     
@@ -119,7 +119,7 @@
     CCMenuItemSprite *boostButton = [CCMenuItemSprite itemFromNormalSprite:[CCSprite spriteWithFile:@"boost_button.png"] selectedSprite:[CCSprite spriteWithFile:@"boost_button_pressed.png"] target:gameLayer selector:@selector(useBoost)];        
 
     m3_ = [[CCMenu menuWithItems:boostButton, nil] retain];        
-    m3_.position = CGPointMake(268, 32);
+    m3_.position = CGPointMake(BOOST_BUTTON_X, BOOST_BUTTON_Y);
     [self addChild:m3_];    
 }
 
