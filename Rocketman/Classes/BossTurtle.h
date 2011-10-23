@@ -9,11 +9,17 @@
 #import "CommonHeaders.h"
 #import "Obstacle.h"
 #import "SideMovementDelegate.h"
+#import "BoundaryDelegate.h"
+
+enum {
+    kHeadBoundary,
+    kBodyBoundary
+};
 
 @class Boundary;
 @class SideMovement;
 
-@interface BossTurtle : Obstacle <SideMovementDelegate> {
+@interface BossTurtle : Obstacle <SideMovementDelegate, BoundaryDelegate> {
     
     CCAction *damageAnimation_;
     

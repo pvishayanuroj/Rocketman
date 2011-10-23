@@ -48,7 +48,7 @@ static NSUInteger countID = 0;
         collide.offset.y = -10;
         
         // Bounding box setup
-        [boundaries_ addObject:[Boundary boundaryWithTarget:self collide:@selector(primaryCollision) hit:@selector(primaryHit) colStruct:collide]];
+        [boundaries_ addObject:[Boundary boundary:self colStruct:collide]];
         
         // This gets released in the death function
         //movement_ = [[StaticMovement staticMovement:self] retain];        
@@ -115,7 +115,7 @@ static NSUInteger countID = 0;
     [gameLayer setRocketCondition:kRocketBurning];    
 }
 
-- (void) primaryCollision
+- (void) boundaryCollide:(NSInteger)boundaryID
 {
     GameLayer *gameLayer = (GameLayer *)[self parent];
     [[AudioManager audioManager] playSound:kWerr];                
@@ -124,7 +124,7 @@ static NSUInteger countID = 0;
     [self showAttacking];
 }
 
-- (void) primaryHit
+- (void) boundaryHit:(CGPoint)point boundaryID:(NSInteger)boundaryID
 {
     [[AudioManager audioManager] playSound:kPlop];        
     [super showDeath:kBamText];

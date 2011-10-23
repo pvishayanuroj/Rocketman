@@ -8,8 +8,9 @@
 
 #import "CommonHeaders.h"
 #import "Obstacle.h"
+#import "BoundaryDelegate.h"
 
-@interface YellowBird : Obstacle {
+@interface YellowBird : Obstacle <BoundaryDelegate> {
     
     CCAction *damageAnimation_;
     

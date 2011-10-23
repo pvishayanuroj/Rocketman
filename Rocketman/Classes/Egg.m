@@ -51,12 +51,9 @@ static NSUInteger countID = 0;
         collide.radius = 10;
         
         // Bounding box setup
-        [boundaries_ addObject:[Boundary boundaryWithTarget:self collide:@selector(primaryCollision) hit:@selector(primaryHit) colStruct:collide]];
+        [boundaries_ addObject:[Boundary boundary:self colStruct:collide]];
         
-        [movements_ addObject:[CircularMovement circularMovement:self rate:rate radius:radius angle:angle]];
-        
-        //[self initActions];
-        //[self showIdle];        
+        [movements_ addObject:[CircularMovement circularMovement:rate radius:radius angle:angle]];
     }
     return self;
 }
@@ -72,19 +69,9 @@ static NSUInteger countID = 0;
     //[idleAnimation_ release];
     
     [super dealloc];
-}
+}  
 
-- (void) initActions
-{
-    /*
-    NSString *animationName = [NSString stringWithFormat:@"%@ Idle", name_];
-	CCAnimation *animation = [[CCAnimationCache sharedAnimationCache] animationByName:animationName];
-	CCActionInterval *animate = [CCAnimate actionWithAnimation:animation];
-	idleAnimation_ = [[CCRepeatForever actionWithAction:animate] retain];	
-     */
-}                 
-
-- (void) primaryCollision
+- (void) boundaryCollide:(NSInteger)boundaryID
 {
     sprite_.visible = NO;    
     
@@ -97,7 +84,7 @@ static NSUInteger countID = 0;
     [super collide];   
 }
 
-- (void) primaryHit
+- (void) boundaryHit:(CGPoint)point boundaryID:(NSInteger)boundaryID
 {
     [[AudioManager audioManager] playSound:kPlop];        
     [super showDeath:kBamText];

@@ -9,10 +9,11 @@
 #import "cocos2d.h"
 #import "Obstacle.h"
 #import "SideMovementDelegate.h"
+#import "BoundaryDelegate.h"
 
 @class Boundary;
 
-@interface DummyBoss : Obstacle <SideMovementDelegate> {
+@interface DummyBoss : Obstacle <BoundaryDelegate, SideMovementDelegate> {
     
     NSInteger HP_;    
 

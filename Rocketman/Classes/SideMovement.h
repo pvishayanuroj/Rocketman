@@ -11,6 +11,7 @@
 #import "SideMovementDelegate.h"
 
 @class Rocket;
+@class Obstacle;
 
 @interface SideMovement : Movement {
 
@@ -53,9 +54,9 @@
 
 + (id) sideMovement:(Obstacle *)obstacle distance:(CGFloat)distance speed:(CGFloat)speed;
 
-+ (id) sideMovement:(Obstacle *)obstacle leftCutoff:(CGFloat)leftCutoff rightCutoff:(CGFloat)rightCutoff speed:(CGFloat)speed;
++ (id) sideMovement:(CGFloat)leftCutoff rightCutoff:(CGFloat)rightCutoff speed:(CGFloat)speed;
 
-- (id) initSideMovement:(Obstacle *)obstacle leftCutoff:(CGFloat)leftCutoff rightCutoff:(CGFloat)rightCutoff speed:(CGFloat)speed;
+- (id) initSideMovement:(CGFloat)leftCutoff rightCutoff:(CGFloat)rightCutoff speed:(CGFloat)speed;
 
 - (void) changeSideSpeed:(CGFloat)sideSpeed;
 

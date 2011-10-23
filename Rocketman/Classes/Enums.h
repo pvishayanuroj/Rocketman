@@ -50,7 +50,6 @@ typedef enum {
     // Enemies
     kShell,
     kAlien,
-    kDino,
     kUFO,
     kFlybot,
     kTurtling,

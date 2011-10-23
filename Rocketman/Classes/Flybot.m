@@ -46,10 +46,10 @@ static NSUInteger countID = 0;
         collide.radius = 30;
         
         // Bounding box setup
-        [boundaries_ addObject:[Boundary boundaryWithTarget:self collide:@selector(primaryCollision) hit:@selector(primaryHit) colStruct:collide]];        
+        [boundaries_ addObject:[Boundary boundary:self colStruct:collide]];        
         
         // Setup the way this obstacle moves
-        [movements_ addObject:[StaticMovement staticMovement:self]];             
+        [movements_ addObject:[StaticMovement staticMovement]];             
         
         [self initActions];
         [self showIdle];        
@@ -78,7 +78,7 @@ static NSUInteger countID = 0;
 	idleAnimation_ = [[CCRepeatForever actionWithAction:animate] retain];	
 }                 
 
-- (void) primaryCollision
+- (void) boundaryCollide:(NSInteger)boundaryID
 {
     sprite_.visible = NO;    
     
@@ -91,7 +91,7 @@ static NSUInteger countID = 0;
     [super collide];    
 }
 
-- (void) primaryHit
+- (void) boundaryHit:(CGPoint)point boundaryID:(NSInteger)boundaryID
 {
     [[AudioManager audioManager] playSound:kPlop];        
     [super showDeath:kBamText];

@@ -8,8 +8,9 @@
 
 #import "CommonHeaders.h"
 #import "Obstacle.h"
+#import "BoundaryDelegate.h"
 
-@interface Angel : Obstacle {
+@interface Angel : Obstacle <BoundaryDelegate> {
  
     CCAction *slapAnimation_;
     

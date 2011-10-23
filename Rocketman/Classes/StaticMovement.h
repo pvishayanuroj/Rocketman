@@ -19,13 +19,13 @@
 
 }
 
-+ (id) staticMovement:(Obstacle *)obstacle;
+/** Object falls however much the rocket moves */
++ (id) staticMovement;
 
-+ (id) staticMovement:(Obstacle *)obstacle rate:(CGFloat)rate;
+/** Object falls however much the rocket moves multiplied by the given factor */
++ (id) staticMovement:(CGFloat)rate;
 
-- (id) initStaticMovement:(Obstacle *)obstacle rate:(CGFloat)rate;
-
-/** Override the parent's move method */
-- (void) move:(CGFloat)speed;
+/** Method to initialize a static movement */
+- (id) initStaticMovement:(CGFloat)rate;
 
 @end

@@ -11,19 +11,19 @@
 
 @implementation ConstantMovement
 
-+ (id) constantMovement:(Obstacle *)obstacle rate:(CGPoint)rate
++ (id) constantMovement:(CGPoint)rate
 {
-    return [[[self alloc] initConstantMovement:obstacle rate:rate] autorelease];    
+    return [[[self alloc] initConstantMovement:rate] autorelease];    
 }
 
-+ (id) constantMovementDown:(Obstacle *)obstacle rate:(CGFloat)rate
++ (id) constantMovementDown:(CGFloat)rate
 {
-    return [[[self alloc] initConstantMovement:obstacle rate:CGPointMake(0, -rate)] autorelease];    
+    return [[[self alloc] initConstantMovement:CGPointMake(0, -rate)] autorelease];    
 }
 
-- (id) initConstantMovement:(Obstacle *)obstacle rate:(CGPoint)rate
+- (id) initConstantMovement:(CGPoint)rate
 {
-    if ((self = [super initWithObstacle:obstacle])) {
+    if ((self = [super initMovement])) {
         
         rate_ = rate;
         
@@ -36,9 +36,9 @@
     [super dealloc];
 }
 
-- (void) move:(CGFloat)speed
+- (void) move:(CGFloat)speed obstacle:(Obstacle *)obstacle
 {
-    obstacle_.position = ccpAdd(obstacle_.position, rate_);    
+    obstacle.position = ccpAdd(obstacle.position, rate_);    
 }
 
 

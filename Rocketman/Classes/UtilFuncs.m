@@ -129,7 +129,6 @@
     // Enemies
     [map setObject:[NSNumber numberWithInt:kShell] forKey:@"Shell"];
     [map setObject:[NSNumber numberWithInt:kAlien] forKey:@"Alien"];
-    [map setObject:[NSNumber numberWithInt:kDino] forKey:@"Dino"];
     [map setObject:[NSNumber numberWithInt:kUFO] forKey:@"UFO"];
     [map setObject:[NSNumber numberWithInt:kFlybot] forKey:@"Flybot"];
     [map setObject:[NSNumber numberWithInt:kTurtling] forKey:@"Turtling"];

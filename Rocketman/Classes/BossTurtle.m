@@ -68,8 +68,8 @@ static NSUInteger countID = 0;
         headCollide.autoInactive = NO;
         
         // Bounding box setup
-        bodyBoundary_ = [[Boundary boundaryWithTarget:self collide:nil hit:@selector(primaryHit:) colStruct:bodyCollide] retain];
-        headBoundary_ = [[Boundary boundaryWithTarget:self collide:nil hit:@selector(secondaryHit) colStruct:headCollide] retain];
+        bodyBoundary_ = [[Boundary boundary:self colStruct:bodyCollide boundaryID:kBodyBoundary] retain];
+        headBoundary_ = [[Boundary boundary:self colStruct:headCollide boundaryID:kHeadBoundary] retain];
         [boundaries_ addObject:bodyBoundary_];
         [boundaries_ addObject:headBoundary_];        
         
@@ -83,11 +83,11 @@ static NSUInteger countID = 0;
         maxShells_ = 6;
         
         // Setup the initial fall
-        ConstantMovementWithStop *initial = [ConstantMovementWithStop constantMovementWithStop:self rate:-1.0f withStop:yTarget_];
+        ConstantMovementWithStop *initial = [ConstantMovementWithStop constantMovementWithStop:-1.0f withStop:yTarget_];
         [movements_ addObject:initial];
         
         // Setup the side-to-side movement of the boss
-        sideMovement_ = [[SideMovement sideMovement:self leftCutoff:leftCutoff rightCutoff:rightCutoff speed:3] retain];
+        sideMovement_ = [[SideMovement sideMovement:leftCutoff rightCutoff:rightCutoff speed:3] retain];
         sideMovement_.delegate = self;
         [sideMovement_ setProximityTrigger:25.0f];
         [movements_ addObject:sideMovement_];        
@@ -171,7 +171,7 @@ static NSUInteger countID = 0;
 {
     // Remove the side movement and have a typical falling movement instead    
     [movements_ removeAllObjects];
-    [movements_ addObject:[StaticMovement staticMovement:self]];
+    [movements_ addObject:[StaticMovement staticMovement]];
 }
 
 - (void) addBlast
@@ -202,6 +202,8 @@ static NSUInteger countID = 0;
     [self addChild:explosion];
 }
 
+#pragma mark - Delegate Methods
+
 - (void) sideMovementLeftTurnaround:(SideMovement *)movement
 {
     sprite_.flipX = NO;                   
@@ -227,37 +229,37 @@ static NSUInteger countID = 0;
     }
 }
 
-- (void) primaryHit:(PointWrapper *)pos
+- (void) boundaryHit:(CGPoint)point boundaryID:(NSInteger)boundaryID
 {
-    // Account for offset, since pos is in terms of screen grid
-    CGPoint p = ccpSub(pos.point, self.position);
-    // Turtle takes no damage on shell hit
-    BlastCloud *blast = [BlastCloud blastCloudAt:p size:1.0 text:kBamText];
-    [self addChild:blast];  
-}
-
-- (void) secondaryHit
-{
-    // Creature death
-    if (--HP_ == 0) {
-        // Deactivate hit boundaries
-        PVCollide c1 = headBoundary_.collide;
-        PVCollide c2 = bodyBoundary_.collide;
-        c1.hitActive = NO;
-        c2.hitActive = NO;
-        headBoundary_.collide = c1;
-        bodyBoundary_.collide = c2;
-        engineFlame_.emissionRate = 0;
-        
-        // Change the speed of side movement whilst dying
-        // Notice - we release it here to remove the extra circular reference
-        // because at this point, we no longer need to keep a reference to it
-        [sideMovement_ changeSideSpeed:0.6f];
-        
-        [self startDeathSequence];
+    if (boundaryID == kHeadBoundary) {
+        // Creature death
+        if (--HP_ == 0) {
+            // Deactivate hit boundaries
+            PVCollide c1 = headBoundary_.collide;
+            PVCollide c2 = bodyBoundary_.collide;
+            c1.hitActive = NO;
+            c2.hitActive = NO;
+            headBoundary_.collide = c1;
+            bodyBoundary_.collide = c2;
+            engineFlame_.emissionRate = 0;
+            
+            // Change the speed of side movement whilst dying
+            // Notice - we release it here to remove the extra circular reference
+            // because at this point, we no longer need to keep a reference to it
+            [sideMovement_ changeSideSpeed:0.6f];
+            
+            [self startDeathSequence];
+        }
+        else {
+            [self showDamage];        
+        }        
     }
-    else {
-        [self showDamage];        
+    else if (boundaryID == kBodyBoundary) {
+        // Account for offset, since pos is in terms of screen grid
+        CGPoint p = ccpSub(point, self.position);
+        // Turtle takes no damage on shell hit
+        BlastCloud *blast = [BlastCloud blastCloudAt:p size:1.0 text:kBamText];
+        [self addChild:blast];          
     }
 }
 

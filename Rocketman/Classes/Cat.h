@@ -8,8 +8,9 @@
 
 #import "CommonHeaders.h"
 #import "Obstacle.h"
+#import "BoundaryDelegate.h"
 
-@interface Cat : Obstacle {
+@interface Cat : Obstacle <BoundaryDelegate> {
 
     CCAction *collectAnimation_;
     

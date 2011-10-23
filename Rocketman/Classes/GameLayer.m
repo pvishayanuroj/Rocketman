@@ -549,9 +549,6 @@
     BOOL add = YES;
     
     switch (type) {
-        case kDino:
-            obstacle = [Dino dinoWithPos:pos];
-            break;
         case kAlien:
             obstacle = [Alien alienWithPos:pos];
             break;

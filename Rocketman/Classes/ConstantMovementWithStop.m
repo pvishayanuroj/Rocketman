@@ -11,14 +11,14 @@
 
 @implementation ConstantMovementWithStop
 
-+ (id) constantMovementWithStop:(Obstacle *)obstacle rate:(CGFloat)rate withStop:(CGFloat)height 
++ (id) constantMovementWithStop:(CGFloat)rate withStop:(CGFloat)height 
 {
-    return [[[self alloc] initConstantMovementWithStop:obstacle rate:rate height:height] autorelease];    
+    return [[[self alloc] initConstantMovementWithStop:rate height:height] autorelease];    
 }
 
-- (id) initConstantMovementWithStop:(Obstacle *)obstacle rate:(CGFloat)rate height:(CGFloat)height
+- (id) initConstantMovementWithStop:(CGFloat)rate height:(CGFloat)height
 {
-    if ((self = [super initWithObstacle:obstacle])) {
+    if ((self = [super initMovement])) {
         
         rate_ = rate;
         moving_ = YES;
@@ -33,14 +33,14 @@
     [super dealloc];
 }
 
-- (void) move:(CGFloat)speed
+- (void) move:(CGFloat)speed obstacle:(Obstacle *)obstacle
 {
     if (moving_) {
         CGPoint p = CGPointMake(0, rate_);      
         // Going downwards
         if (fallingDown_) {
             // Check if target has been reached
-            if (obstacle_.position.y < targetHeight_) {
+            if (obstacle.position.y < targetHeight_) {
                 moving_ = NO;
                 p.y = 0;
             }
@@ -48,13 +48,13 @@
         // Going upwards
         else {
             // Check if target has been reached
-            if (obstacle_.position.y > targetHeight_) {
+            if (obstacle.position.y > targetHeight_) {
                 moving_ = NO;
                 p.y = 0;
             }         
         }
         // Actual movement
-        obstacle_.position = ccpAdd(obstacle_.position, p);                            
+        obstacle.position = ccpAdd(obstacle.position, p);                            
     }
 }
 

@@ -23,9 +23,9 @@
     
 }
 
-+ (id) circularMovement:(Obstacle *)obstacle rate:(CGFloat)rate radius:(CGFloat)radius angle:(CGFloat)angle;
++ (id) circularMovement:(CGFloat)rate radius:(CGFloat)radius angle:(CGFloat)angle;
 
-- (id) initCircularMovement:(Obstacle *)obstacle rate:(CGFloat)rate radius:(CGFloat)radius angle:(CGFloat)angle;
+- (id) initCircularMovement:(CGFloat)rate radius:(CGFloat)radius angle:(CGFloat)angle;
 
 - (CGPoint) getPoint;
 

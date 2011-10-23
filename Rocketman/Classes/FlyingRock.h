@@ -8,8 +8,9 @@
 
 #import "CommonHeaders.h"
 #import "Obstacle.h"
+#import "BoundaryDelegate.h"
 
-@interface FlyingRock : Obstacle {
+@interface FlyingRock : Obstacle <BoundaryDelegate> {
     
 }
 

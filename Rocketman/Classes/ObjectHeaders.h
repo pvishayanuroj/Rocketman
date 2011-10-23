@@ -10,7 +10,7 @@
 #import "Shell.h"
 #import "Alien.h"
 #import "HoverTurtle.h"
-#import "Dino.h"
+//#import "Dino.h"
 #import "UFO.h"
 #import "Flybot.h"
 #import "Turtling.h"

@@ -13,12 +13,10 @@
 
 @interface Movement : NSObject {
     
-    Obstacle *obstacle_;
-    
 }
 
-- (id) initWithObstacle:(Obstacle *)obstacle;
+- (id) initMovement;
 
-- (void) move:(CGFloat)speed;
+- (void) move:(CGFloat)speed obstacle:(Obstacle *)obstacle;
 
 @end

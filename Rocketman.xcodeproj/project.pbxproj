@@ -263,7 +263,6 @@
 		DAF4446B144B08DE00943C0D /* ConstantMovementWithStop.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF443E1144B08C700943C0D /* ConstantMovementWithStop.m */; };
 		DAF4446C144B08DE00943C0D /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF443E4144B08C700943C0D /* DataManager.m */; };
 		DAF4446D144B08DE00943C0D /* DialogueLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF443E7144B08C800943C0D /* DialogueLayer.m */; };
-		DAF4446E144B08DE00943C0D /* Dino.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF443E9144B08C800943C0D /* Dino.m */; };
 		DAF4446F144B08DE00943C0D /* Doodad.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF443EB144B08C800943C0D /* Doodad.m */; };
 		DAF44470144B08DE00943C0D /* Egg.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF443ED144B08C900943C0D /* Egg.m */; };
 		DAF44471144B08DE00943C0D /* EndLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF443EF144B08C900943C0D /* EndLayer.m */; };
@@ -331,6 +330,7 @@
 		DA5037B31453ACC900600DD4 /* DummyBoss.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DummyBoss.h; path = Classes/DummyBoss.h; sourceTree = "<group>"; };
 		DA5037B41453ACC900600DD4 /* DummyBoss.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DummyBoss.m; path = Classes/DummyBoss.m; sourceTree = "<group>"; };
 		DA5037B61454437D00600DD4 /* Level2_data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Level2_data.plist; sourceTree = "<group>"; };
+		DA5037B81454A59B00600DD4 /* BoundaryDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BoundaryDelegate.h; path = Classes/BoundaryDelegate.h; sourceTree = "<group>"; };
 		DAF43E4E144B085400943C0D /* Rocketman.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rocketman.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAF43E52144B085400943C0D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		DAF43E54144B085400943C0D /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -721,8 +721,6 @@
 		DAF443E5144B08C800943C0D /* Debugging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Debugging.h; path = Classes/Debugging.h; sourceTree = "<group>"; };
 		DAF443E6144B08C800943C0D /* DialogueLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DialogueLayer.h; path = Classes/DialogueLayer.h; sourceTree = "<group>"; };
 		DAF443E7144B08C800943C0D /* DialogueLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DialogueLayer.m; path = Classes/DialogueLayer.m; sourceTree = "<group>"; };
-		DAF443E8144B08C800943C0D /* Dino.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Dino.h; path = Classes/Dino.h; sourceTree = "<group>"; };
-		DAF443E9144B08C800943C0D /* Dino.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Dino.m; path = Classes/Dino.m; sourceTree = "<group>"; };
 		DAF443EA144B08C800943C0D /* Doodad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Doodad.h; path = Classes/Doodad.h; sourceTree = "<group>"; };
 		DAF443EB144B08C800943C0D /* Doodad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Doodad.m; path = Classes/Doodad.m; sourceTree = "<group>"; };
 		DAF443EC144B08C900943C0D /* Egg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Egg.h; path = Classes/Egg.h; sourceTree = "<group>"; };
@@ -1545,33 +1543,34 @@
 		DAF444AB144B095F00943C0D /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				DAF44423144B08D200943C0D /* ObjectHeaders.h */,
+				DAF443E5144B08C800943C0D /* Debugging.h */,
+				DAF443F4144B08CA00943C0D /* Enums.h */,
+				DAF44449144B08DA00943C0D /* Structs.h */,
+				DAF443E2144B08C700943C0D /* Constants.h */,
 				DAF4442D144B08D400943C0D /* PButton.h */,
 				DAF4442E144B08D400943C0D /* PButton.m */,
 				DAF4442F144B08D400943C0D /* PButtonDelegate.h */,
 				DAF44432144B08D500943C0D /* PointWrapper.h */,
 				DAF44433144B08D500943C0D /* PointWrapper.m */,
-				DAF44449144B08DA00943C0D /* Structs.h */,
 				DAF4444C144B08DB00943C0D /* TargetedAction.h */,
 				DAF4444D144B08DB00943C0D /* TargetedAction.m */,
 				DAF44454144B08DD00943C0D /* UtilFuncs.h */,
 				DAF44455144B08DD00943C0D /* UtilFuncs.m */,
-				DAF44423144B08D200943C0D /* ObjectHeaders.h */,
 				DAF44427144B08D300943C0D /* Pair.h */,
 				DAF44428144B08D300943C0D /* Pair.m */,
 				DAF443F2144B08CA00943C0D /* EngineParticleSystem.h */,
 				DAF443F3144B08CA00943C0D /* EngineParticleSystem.m */,
-				DAF443E5144B08C800943C0D /* Debugging.h */,
-				DAF443F4144B08CA00943C0D /* Enums.h */,
 				DAF443D7144B08C500943C0D /* CCNode+PauseResume.h */,
 				DAF443D8144B08C500943C0D /* CCNode+PauseResume.m */,
 				DAF443BE144B08C100943C0D /* AnimatedButton.h */,
 				DAF443BF144B08C100943C0D /* AnimatedButton.m */,
 				DAF443CF144B08C400943C0D /* Boundary.h */,
 				DAF443D0144B08C400943C0D /* Boundary.m */,
+				DA5037B81454A59B00600DD4 /* BoundaryDelegate.h */,
 				DAF443D1144B08C400943C0D /* CallFuncWeak.h */,
 				DAF443D2144B08C400943C0D /* CallFuncWeak.m */,
 				DAF443DD144B08C600943C0D /* CommonHeaders.h */,
-				DAF443E2144B08C700943C0D /* Constants.h */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -1659,8 +1658,6 @@
 				DAF443CC144B08C400943C0D /* Boost.m */,
 				DAF443CD144B08C400943C0D /* BossTurtle.h */,
 				DAF443CE144B08C400943C0D /* BossTurtle.m */,
-				DAF443E8144B08C800943C0D /* Dino.h */,
-				DAF443E9144B08C800943C0D /* Dino.m */,
 				DAF443EC144B08C900943C0D /* Egg.h */,
 				DAF443ED144B08C900943C0D /* Egg.m */,
 				DAF443F5144B08CA00943C0D /* Flybot.h */,
@@ -2000,7 +1997,6 @@
 				DAF4446B144B08DE00943C0D /* ConstantMovementWithStop.m in Sources */,
 				DAF4446C144B08DE00943C0D /* DataManager.m in Sources */,
 				DAF4446D144B08DE00943C0D /* DialogueLayer.m in Sources */,
-				DAF4446E144B08DE00943C0D /* Dino.m in Sources */,
 				DAF4446F144B08DE00943C0D /* Doodad.m in Sources */,
 				DAF44470144B08DE00943C0D /* Egg.m in Sources */,
 				DAF44471144B08DE00943C0D /* EndLayer.m in Sources */,

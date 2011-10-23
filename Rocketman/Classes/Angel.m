@@ -47,11 +47,11 @@ static NSUInteger countID = 0;
         collide.hitActive = NO;
         collide.radius = 30;
         
-        // Bounding box setup (Angels can't get hit)
-        [boundaries_ addObject:[Boundary boundaryWithTarget:self collide:@selector(primaryCollision) hit:nil colStruct:collide]];        
+        // Bounding box setup
+        [boundaries_ addObject:[Boundary boundary:self colStruct:collide]];        
         
         // Setup the way this obstacle moves
-        [movements_ addObject:[StaticMovement staticMovement:self]];        
+        [movements_ addObject:[StaticMovement staticMovement]];        
         
         [self initActions];
         [self showIdle];
@@ -103,7 +103,7 @@ static NSUInteger countID = 0;
     [self runAction:[CCSequence actions:delay, method, nil]];
 }
 
-- (void) primaryCollision
+- (void) boundaryCollide:(NSInteger)boundaryID
 {
     GameLayer *gameLayer = (GameLayer *)[self parent];
     [gameLayer setRocketCondition:kRocketHearts];

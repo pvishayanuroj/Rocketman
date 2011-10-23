@@ -7,26 +7,26 @@
 //
 
 #import "CommonHeaders.h"
+#import "BoundaryDelegate.h"
 
-@class Obstacle;
 
 @interface Boundary : NSObject {
   
 	PVCollide collide_;
  
-    id target_;
+    id <BoundaryDelegate> delegate_;
     
-    SEL hitSel_;
-    
-    SEL collideSel_;
+    NSInteger boundaryID_;
     
 }
 
 @property (nonatomic, assign) PVCollide collide;
 
-+ (id) boundaryWithTarget:(Obstacle *)obstacle collide:(SEL)cSel hit:(SEL)hSel colStruct:(PVCollide)col;
++ (id) boundary:(id<BoundaryDelegate>)delegate colStruct:(PVCollide)col;
 
-- (id) initWithTarget:(Obstacle *)obstacle collide:(SEL)cSel hit:(SEL)hSel colStruct:(PVCollide)col;
++ (id) boundary:(id<BoundaryDelegate>)delegate colStruct:(PVCollide)col boundaryID:(NSInteger)boundaryID;
+
+- (id) initBoundary:(id<BoundaryDelegate>)delegate colStruct:(PVCollide)col boundaryID:(NSInteger)boundaryID;
 
 - (BOOL) collisionCheckAndHandle:(CGPoint)objectPos rocketBox:(CGRect)rocketBox;
 

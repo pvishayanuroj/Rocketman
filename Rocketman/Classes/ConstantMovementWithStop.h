@@ -25,11 +25,10 @@
     
 }
 
-+ (id) constantMovementWithStop:(Obstacle *)obstacle rate:(CGFloat)rate withStop:(CGFloat)height;
+/** Moves the object down at the given rate every tick until the specified height is reached */
++ (id) constantMovementWithStop:(CGFloat)rate withStop:(CGFloat)height;
 
-- (id) initConstantMovementWithStop:(Obstacle *)obstacle rate:(CGFloat)rate height:(CGFloat)height;
-
-/** Override the parent's move method */
-- (void) move:(CGFloat)speed;
+/** Method to initialize a constant movement with stop */
+- (id) initConstantMovementWithStop:(CGFloat)rate height:(CGFloat)height;
 
 @end

@@ -11,19 +11,19 @@
 
 @implementation StaticMovement
 
-+ (id) staticMovement:(Obstacle *)obstacle
++ (id) staticMovement
 {
-    return [[[self alloc] initStaticMovement:obstacle rate:1.0f] autorelease];
+    return [[[self alloc] initStaticMovement:1.0f] autorelease];
 }
 
-+ (id) staticMovement:(Obstacle *)obstacle rate:(CGFloat)rate
++ (id) staticMovement:(CGFloat)rate
 {
-    return [[[self alloc] initStaticMovement:obstacle rate:rate] autorelease];    
+    return [[[self alloc] initStaticMovement:rate] autorelease];    
 }
 
-- (id) initStaticMovement:(Obstacle *)obstacle rate:(CGFloat)rate
+- (id) initStaticMovement:(CGFloat)rate
 {
-    if ((self = [super initWithObstacle:obstacle])) {
+    if ((self = [super initMovement])) {
         
         rate_ = rate;
         
@@ -36,10 +36,10 @@
     [super dealloc];
 }
 
-- (void) move:(CGFloat)speed
+- (void) move:(CGFloat)speed obstacle:(Obstacle *)obstacle
 {
     CGPoint p = CGPointMake(0, -speed * rate_);
-    obstacle_.position = ccpAdd(obstacle_.position, p);    
+    obstacle.position = ccpAdd(obstacle.position, p);    
 }
 
 @end

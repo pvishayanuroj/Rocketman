@@ -13,26 +13,25 @@
 
 static const CGFloat TWO_PI = 2 * M_PI;
 
-+ (id) circularMovement:(Obstacle *)obstacle rate:(CGFloat)rate radius:(CGFloat)radius angle:(CGFloat)angle;
++ (id) circularMovement:(CGFloat)rate radius:(CGFloat)radius angle:(CGFloat)angle;
 {
-    return [[[self alloc] initCircularMovement:obstacle rate:rate radius:radius angle:angle] autorelease];    
+    return [[[self alloc] initCircularMovement:rate radius:radius angle:angle] autorelease];    
 }
 
-- (id) initCircularMovement:(Obstacle *)obstacle rate:(CGFloat)rate radius:(CGFloat)radius angle:(CGFloat)angle;
+- (id) initCircularMovement:(CGFloat)rate radius:(CGFloat)radius angle:(CGFloat)angle;
 {
-    if ((self = [super initWithObstacle:obstacle])) {
+    if ((self = [super initMovement])) {
         
         time_ = angle;
         rate_ = rate;
         radius_ = radius;
-        origin_ = obstacle_.position;
         previous_ = origin_;
         
     }
     return self;
 }
 
-- (void) move:(CGFloat)speed
+- (void) move:(CGFloat)speed obstacle:(Obstacle *)obstacle
 {
     time_ += rate_;
     
@@ -40,15 +39,15 @@ static const CGFloat TWO_PI = 2 * M_PI;
         time_ -= TWO_PI;
     }
     
-    CGPoint moved = ccpSub(obstacle_.position, previous_);
+    CGPoint moved = ccpSub(obstacle.position, previous_);
     
     origin_ = ccpAdd(origin_, moved);
     
     CGPoint point = [self getPoint];
     
     // Determine the position of the obstacle
-    obstacle_.position = ccpAdd(origin_, point);
-    previous_ = obstacle_.position;
+    obstacle.position = ccpAdd(origin_, point);
+    previous_ = obstacle.position;
     
 }
 

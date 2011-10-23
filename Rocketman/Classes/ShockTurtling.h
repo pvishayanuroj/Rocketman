@@ -8,8 +8,9 @@
 
 #import "CommonHeaders.h"
 #import "Obstacle.h"
+#import "BoundaryDelegate.h"
 
-@interface ShockTurtling : Obstacle {
+@interface ShockTurtling : Obstacle <BoundaryDelegate> {
     
     CCAction *preshockAnimation_;
     

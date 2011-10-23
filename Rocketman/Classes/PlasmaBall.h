@@ -8,8 +8,9 @@
 
 #import "CommonHeaders.h"
 #import "Obstacle.h"
+#import "BoundaryDelegate.h"
 
-@interface PlasmaBall : Obstacle {
+@interface PlasmaBall : Obstacle <BoundaryDelegate> {
     
 }
 

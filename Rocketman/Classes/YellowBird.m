@@ -50,9 +50,9 @@ static NSUInteger countID = 0;
         CGPoint fallRate = CGPointMake(3, 0);
         
         // Bounding box setup
-        [boundaries_ addObject:[Boundary boundaryWithTarget:self collide:@selector(primaryCollision) hit:@selector(primaryHit) colStruct:collide]];
+        [boundaries_ addObject:[Boundary boundary:self colStruct:collide]];
         
-        [movements_ addObject:[ConstantMovement constantMovement:self rate:fallRate]];
+        [movements_ addObject:[ConstantMovement constantMovement:fallRate]];
         
         [self initActions];
         [self showIdle];        
@@ -101,7 +101,7 @@ static NSUInteger countID = 0;
     [super bulletHit];    
 }
 
-- (void) primaryCollision
+- (void) boundaryCollide:(NSInteger)boundaryID
 {
     sprite_.visible = NO;    
     
@@ -114,7 +114,7 @@ static NSUInteger countID = 0;
     [super collide];   
 }
 
-- (void) primaryHit
+- (void) boundaryHit:(CGPoint)point boundaryID:(NSInteger)boundaryID
 {
     [self showDamage];
 }

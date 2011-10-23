@@ -48,9 +48,8 @@
 
 - (void) dealloc
 {
-    // Do this in the destroy function to avoid circular referencing
-    //[boundaries_ release];
-    //[movements_ release];
+    [boundaries_ release];    
+    [movements_ release];
     
     [super dealloc];
 }
@@ -84,7 +83,7 @@
     // Go through all chained movements and keep track of the total movement
     CGPoint moveAmt = self.position;
     for (Movement *movement in movements_) {
-        [movement move:speed];
+        [movement move:speed obstacle:self];
     }
     moveAmt = ccpSub(self.position, moveAmt);
     
@@ -119,14 +118,6 @@
 - (void) destroy
 {
     [self removeFromParentAndCleanup:YES];
-    
-    // Do this here, otherwise the boundaries' ref to obstacles will never be release, thus causing a circular reference
-    [boundaries_ release];
-    boundaries_ = nil;
-
-    // Likewise, remove movements here, because each movement has a reference to this obstacle    
-    [movements_ release];
-    movements_ = nil;
     
     // Take care of cleanup of child obstacles
     for (Obstacle *obstacle in childObstacles_) {

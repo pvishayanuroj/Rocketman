@@ -15,20 +15,22 @@
 
 @synthesize collide = collide_;
 
-+ (id) boundaryWithTarget:(Obstacle *)obstacle collide:(SEL)cSel hit:(SEL)hSel colStruct:(PVCollide)col
++ (id) boundary:(id<BoundaryDelegate>)delegate colStruct:(PVCollide)col
 {
-    return [[[self alloc] initWithTarget:obstacle collide:cSel hit:hSel colStruct:col] autorelease];
+    return [[[self alloc] initBoundary:delegate colStruct:col boundaryID:0] autorelease];
 }
 
-- (id) initWithTarget:(Obstacle *)obstacle collide:(SEL)cSel hit:(SEL)hSel colStruct:(PVCollide)col
++ (id) boundary:(id<BoundaryDelegate>)delegate colStruct:(PVCollide)col boundaryID:(NSInteger)boundaryID
+{
+    return [[[self alloc] initBoundary:delegate colStruct:col boundaryID:boundaryID] autorelease];
+}
+
+- (id) initBoundary:(id<BoundaryDelegate>)delegate colStruct:(PVCollide)col boundaryID:(NSInteger)boundaryID
 {
     if ((self = [super init])) {
         
-        // Warning: This causes a circular reference if boundaries array not deallocated correctly
-        target_ = [obstacle retain];
-        collideSel_ = cSel;
-        hitSel_ = hSel;
-        
+        boundaryID_ = boundaryID;
+        delegate_ = delegate;
         collide_ = col;
     }
     return self;
@@ -39,7 +41,6 @@
 #if DEBUG_DEALLOCS
     NSLog(@"Boundary dealloc'd");    
 #endif    
-    [target_ release];
     
     [super dealloc];
 }
@@ -52,9 +53,9 @@
             collide_.collideActive = NO;
             collide_.hitActive = NO;
         }
-        // Allowed to be null when setting up boundary
-        if (collideSel_) {
-            [target_ performSelector:collideSel_];
+        // Let delegate know that collision has occurred
+        if ([delegate_ respondsToSelector:@selector(boundaryCollide:)]) {
+            [delegate_ boundaryCollide:boundaryID_];
         }
         return YES;
     }
@@ -69,10 +70,9 @@
             collide_.hitActive = NO;
             collide_.collideActive = NO;
         }
-        // Allowed to be null when setting up boundary
-        if (hitSel_) {        
-            id arg = [PointWrapper cgPoint:catPos];
-            [target_ performSelector:hitSel_ withObject:arg];
+        // Let delegate know that hit has occurred
+        if ([delegate_ respondsToSelector:@selector(boundaryHit:boundaryID:)]) {
+            [delegate_ boundaryHit:catPos boundaryID:boundaryID_];
         }
         return YES;
     }

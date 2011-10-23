@@ -19,17 +19,17 @@
 {
     CGFloat leftCutoff = obstacle.position.x - distance * 0.5f;
     CGFloat rightCutoff = leftCutoff + distance;
-    return [[[self alloc] initSideMovement:obstacle leftCutoff:leftCutoff rightCutoff:rightCutoff speed:speed] autorelease];
+    return [[[self alloc] initSideMovement:leftCutoff rightCutoff:rightCutoff speed:speed] autorelease];
 }
 
-+ (id) sideMovement:(Obstacle *)obstacle leftCutoff:(CGFloat)leftCutoff rightCutoff:(CGFloat)rightCutoff speed:(CGFloat)speed
++ (id) sideMovement:(CGFloat)leftCutoff rightCutoff:(CGFloat)rightCutoff speed:(CGFloat)speed
 {
-    return [[[self alloc] initSideMovement:obstacle leftCutoff:leftCutoff rightCutoff:rightCutoff speed:speed] autorelease];
+    return [[[self alloc] initSideMovement:leftCutoff rightCutoff:rightCutoff speed:speed] autorelease];
 }
 
-- (id) initSideMovement:(Obstacle *)obstacle leftCutoff:(CGFloat)leftCutoff rightCutoff:(CGFloat)rightCutoff speed:(CGFloat)speed
+- (id) initSideMovement:(CGFloat)leftCutoff rightCutoff:(CGFloat)rightCutoff speed:(CGFloat)speed
 {
-    if ((self = [super initWithObstacle:obstacle])) {
+    if ((self = [super initMovement])) {
         
         sideSpeed_ = speed;
         leftCutoff_ = leftCutoff;
@@ -54,13 +54,13 @@
     [super dealloc];
 }
 
-- (void) move:(CGFloat)speed
+- (void) move:(CGFloat)speed obstacle:(Obstacle *)obstacle
 {
     CGFloat dx;
     
     if (movingLeft_) {
         // Check if we got to the turnaround point to move right again
-        if (obstacle_.position.x < leftCutoff_) {
+        if (obstacle.position.x < leftCutoff_) {
             // Reset flags
             movingLeft_ = NO;
             proximityTriggered_ = NO;
@@ -78,7 +78,7 @@
     }
     else {
         // Check if we got to the turnaround point to move left
-        if (obstacle_.position.x > rightCutoff_) {
+        if (obstacle.position.x > rightCutoff_) {
             movingLeft_ = YES;
             proximityTriggered_ = NO;            
             
@@ -95,12 +95,12 @@
     }    
     
     CGPoint p = CGPointMake(dx, 0);     
-    obstacle_.position = ccpAdd(obstacle_.position, p);    
+    obstacle.position = ccpAdd(obstacle.position, p);    
     
     // Check for proximity triggering
     if (proximityTriggerOn_) {
         if (!proximityTriggered_) {
-            CGFloat distance = rocket_.position.x - obstacle_.position.x;
+            CGFloat distance = rocket_.position.x - obstacle.position.x;
             if (fabs(distance) < proximityDistance_) {
                 proximityTriggered_ = YES;
                 // Alert the delegate (if any) of the proximity trigger firing

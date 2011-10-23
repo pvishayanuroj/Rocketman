@@ -9,10 +9,11 @@
 #import "CommonHeaders.h"
 #import "Obstacle.h"
 #import "SideMovementDelegate.h"
+#import "BoundaryDelegate.h"
 
 @class SideMovement;
 
-@interface HoverTurtle : Obstacle <SideMovementDelegate> {
+@interface HoverTurtle : Obstacle <BoundaryDelegate, SideMovementDelegate> {
     
 }
 

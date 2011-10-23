@@ -54,10 +54,10 @@ static NSUInteger countID = 0;
         collide.hitActive = NO;        
         
         // Bounding box setup
-        [boundaries_ addObject:[Boundary boundaryWithTarget:self collide:@selector(primaryCollision) hit:nil colStruct:collide]];
+        [boundaries_ addObject:[Boundary boundary:self colStruct:collide]];
 
         // Setup the way this obstacle moves
-        [movements_ addObject:[ConstantMovement constantMovementDown:self rate:PB_SPEED]];                
+        [movements_ addObject:[ConstantMovement constantMovementDown:PB_SPEED]];                
         
         [self initActions];
         [self showIdle];        
@@ -89,7 +89,7 @@ static NSUInteger countID = 0;
     idleAnimation_ = [[CCRepeatForever actionWithAction:[CCSequence actions:growEase, delay1, shrinkEase, delay2, nil]] retain];
 }                 
 
-- (void) primaryCollision
+- (void) boundaryCollide:(NSInteger)boundaryID
 {
     sprite_.visible = NO;    
     

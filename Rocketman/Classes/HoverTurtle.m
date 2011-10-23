@@ -48,13 +48,13 @@ static NSUInteger countID = 0;
         collide.radius = 30;
         
         // Bounding box setup
-        [boundaries_ addObject:[Boundary boundaryWithTarget:self collide:nil hit:@selector(primaryHit) colStruct:collide]];        
+        [boundaries_ addObject:[Boundary boundary:self colStruct:collide]];        
         
         CGSize size = [[CCDirector sharedDirector] winSize];        
         CGFloat yTarget = 0.80 * size.height;        
         
         // Setup the initial fall
-        ConstantMovementWithStop *initial = [ConstantMovementWithStop constantMovementWithStop:self rate:-1.0f withStop:yTarget];
+        ConstantMovementWithStop *initial = [ConstantMovementWithStop constantMovementWithStop:-1.0f withStop:yTarget];
         [movements_ addObject:initial];        
         
         // Setup side to side movement
@@ -111,7 +111,7 @@ static NSUInteger countID = 0;
     [engine2 runAction:e2Animation];    
 }
 
-- (void) primaryHit
+- (void) boundaryHit:(CGPoint)point boundaryID:(NSInteger)boundaryID
 {
     [[AudioManager audioManager] playSound:kPlop];        
     [super showDeath:kBamText];

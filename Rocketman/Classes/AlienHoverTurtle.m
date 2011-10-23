@@ -52,14 +52,14 @@ static NSUInteger countID = 0;
         sprite_.flipX = YES;        
         
         // Bounding box setup
-        boundary_ = [[Boundary boundaryWithTarget:self collide:nil hit:@selector(primaryHit) colStruct:collide] retain];
+        boundary_ = [[Boundary boundary:self colStruct:collide] retain];
         [boundaries_ addObject:boundary_];        
         
         CGSize size = [[CCDirector sharedDirector] winSize];        
         yTarget_ = 0.80 * size.height;        
         
         // Setup the initial fall
-        ConstantMovementWithStop *initial = [ConstantMovementWithStop constantMovementWithStop:self rate:-1.0f withStop:yTarget_];
+        ConstantMovementWithStop *initial = [ConstantMovementWithStop constantMovementWithStop:-1.0f withStop:yTarget_];
         [movements_ addObject:initial];        
         
         // Setup side to side movement
@@ -134,7 +134,7 @@ static NSUInteger countID = 0;
 }
 
 
-- (void) primaryHit
+- (void) boundaryHit:(CGPoint)point boundaryID:(NSInteger)boundaryID
 {
     [[AudioManager audioManager] playSound:kPlop];        
     

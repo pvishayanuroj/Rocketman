@@ -241,7 +241,6 @@ static GameManager *_gameManager = nil;
     [Angel resetID];
     [Boost resetID];
     [BossTurtle resetID];
-    [Dino resetID];
     [Egg resetID];
     [Flybot resetID];
     [FlyingRock resetID];

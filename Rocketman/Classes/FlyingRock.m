@@ -53,10 +53,10 @@ static NSUInteger countID = 0;
         collide.radius = 32;
         
         // Bounding box setup
-        [boundaries_ addObject:[Boundary boundaryWithTarget:self collide:@selector(primaryCollision) hit:@selector(primaryHit:) colStruct:collide]];
+        [boundaries_ addObject:[Boundary boundary:self colStruct:collide]];
      
         // Setup the way this obstacle moves
-        [movements_ addObject:[StaticMovement staticMovement:self]];        
+        [movements_ addObject:[StaticMovement staticMovement]];        
         
     }
     return self;
@@ -74,7 +74,7 @@ static NSUInteger countID = 0;
     [super dealloc];
 }               
 
-- (void) primaryCollision
+- (void) boundaryCollide:(NSInteger)boundaryID
 {
     sprite_.visible = NO;    
     
@@ -87,11 +87,11 @@ static NSUInteger countID = 0;
     [super collide];    
 }
 
-- (void) primaryHit:(PointWrapper *)pos
+- (void) boundaryHit:(CGPoint)point boundaryID:(NSInteger)boundaryID
 {
     [[AudioManager audioManager] playSound:kPlop];    
     // Account for offset, since pos is in terms of screen grid
-    CGPoint p = ccpSub(pos.point, self.position);
+    CGPoint p = ccpSub(point, self.position);
     // Turtle takes no damage on shell hit
     BlastCloud *blast = [BlastCloud blastCloudAt:p size:1.0 text:kBamText];
     [self addChild:blast];  

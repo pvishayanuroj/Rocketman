@@ -11,24 +11,20 @@
 
 @implementation Movement
 
-- (id) initWithObstacle:(Obstacle *)obstacle
+- (id) initMovement
 {
     if ((self = [super init])) {
-        
-        obstacle_ = [obstacle retain];
-        
+           
     }
     return self;
 }
 
 - (void) dealloc
 {
-    [obstacle_ release];
-
     [super dealloc];
 }
 
-- (void) move:(CGFloat)speed
+- (void) move:(CGFloat)speed obstacle:(Obstacle *)obstacle
 {
     NSAssert(NO, @"Move needs to be implemented in the child class");
 }

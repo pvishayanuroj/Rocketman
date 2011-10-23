@@ -48,10 +48,10 @@ static NSUInteger countID = 0;
         collide.hitActive = NO;
         
         // Bounding box setup
-        [boundaries_ addObject:[Boundary boundaryWithTarget:self collide:@selector(primaryCollision) hit:nil colStruct:collide]];        
+        [boundaries_ addObject:[Boundary boundary:self colStruct:collide]];        
         
         // Setup the way this obstacle moves
-        [movements_ addObject:[StaticMovement staticMovement:self]];        
+        [movements_ addObject:[StaticMovement staticMovement]];        
         
         [self initActions];
         [self showIdle];
@@ -80,7 +80,7 @@ static NSUInteger countID = 0;
 	idleAnimation_ = [[CCRepeatForever actionWithAction:seq] retain];		    
 }
 
-- (void) primaryCollision
+- (void) boundaryCollide:(NSInteger)boundaryID
 {
     GameLayer *gameLayer = (GameLayer *)[self parent];
     [gameLayer collectBoost:self];

@@ -22,6 +22,8 @@ static NSUInteger countID = 0;
     countID = 0;
 }
 
+#pragma mark - Object Lifecycle
+
 + (id) turtlingWithPos:(CGPoint)pos
 {
     return [[[self alloc] initWithPos:pos] autorelease];
@@ -48,9 +50,9 @@ static NSUInteger countID = 0;
         CGPoint fallRate = CGPointMake(2, -3);
         
         // Bounding box setup
-        [boundaries_ addObject:[Boundary boundaryWithTarget:self collide:@selector(primaryCollision) hit:@selector(primaryHit) colStruct:collide]];
+        [boundaries_ addObject:[Boundary boundary:self colStruct:collide]];
         
-        [movements_ addObject:[ConstantMovement constantMovement:self rate:fallRate]];
+        [movements_ addObject:[ConstantMovement constantMovement:fallRate]];
         
         [self initActions];
         [self showIdle];        
@@ -79,7 +81,9 @@ static NSUInteger countID = 0;
 	idleAnimation_ = [[CCRepeatForever actionWithAction:animate] retain];	
 }                 
 
-- (void) primaryCollision
+#pragma mark - Boundary Delegate Methods
+
+- (void) boundaryCollide:(NSInteger)boundaryID
 {
     sprite_.visible = NO;    
     
@@ -92,7 +96,7 @@ static NSUInteger countID = 0;
     [super collide];   
 }
 
-- (void) primaryHit
+- (void) boundaryHit:(CGPoint)point boundaryID:(NSInteger)boundaryID
 {
     [[AudioManager audioManager] playSound:kPlop];        
     [super showDeath:kBamText];

@@ -8,8 +8,9 @@
 
 #import "CommonHeaders.h"
 #import "Obstacle.h"
+#import "BoundaryDelegate.h"
 
-@interface Egg : Obstacle {
+@interface Egg : Obstacle <BoundaryDelegate> {
     
 }
 
