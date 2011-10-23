@@ -8,10 +8,23 @@
 
 #import "cocos2d.h"
 #import "Obstacle.h"
+#import "SideMovementDelegate.h"
 
-@interface DummyBoss : Obstacle {
+@class Boundary;
+
+@interface DummyBoss : Obstacle <SideMovementDelegate> {
+    
+    NSInteger HP_;    
+
+    Boundary *boundary_;    
     
 }
+
++ (id) dummyBossWithPos:(CGPoint)pos;
+
+- (id) initWithPos:(CGPoint)pos;
+
+- (void) initActions;
 
 + (void) resetID;
 

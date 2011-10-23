@@ -17,6 +17,7 @@
 		DA5037A61453681C00600DD4 /* Tilt Banner.png in Resources */ = {isa = PBXBuildFile; fileRef = DA50379E1453681C00600DD4 /* Tilt Banner.png */; };
 		DA5037B2145383DE00600DD4 /* Tutorial Parallax.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5037B1145383DE00600DD4 /* Tutorial Parallax.png */; };
 		DA5037B51453ACCA00600DD4 /* DummyBoss.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5037B41453ACC900600DD4 /* DummyBoss.m */; };
+		DA5037B71454437D00600DD4 /* Level2_data.plist in Resources */ = {isa = PBXBuildFile; fileRef = DA5037B61454437D00600DD4 /* Level2_data.plist */; };
 		DAF43E53144B085400943C0D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAF43E52144B085400943C0D /* QuartzCore.framework */; };
 		DAF43E55144B085400943C0D /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAF43E54144B085400943C0D /* OpenGLES.framework */; };
 		DAF43E57144B085400943C0D /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAF43E56144B085400943C0D /* OpenAL.framework */; };
@@ -329,6 +330,7 @@
 		DA5037B1145383DE00600DD4 /* Tutorial Parallax.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial Parallax.png"; sourceTree = "<group>"; };
 		DA5037B31453ACC900600DD4 /* DummyBoss.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DummyBoss.h; path = Classes/DummyBoss.h; sourceTree = "<group>"; };
 		DA5037B41453ACC900600DD4 /* DummyBoss.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DummyBoss.m; path = Classes/DummyBoss.m; sourceTree = "<group>"; };
+		DA5037B61454437D00600DD4 /* Level2_data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Level2_data.plist; sourceTree = "<group>"; };
 		DAF43E4E144B085400943C0D /* Rocketman.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rocketman.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAF43E52144B085400943C0D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		DAF43E54144B085400943C0D /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -1331,6 +1333,7 @@
 		DAF441FF144B08B300943C0D /* Level Data */ = {
 			isa = PBXGroup;
 			children = (
+				DA5037B61454437D00600DD4 /* Level2_data.plist */,
 				DAF44200144B08B300943C0D /* Level0_data.plist */,
 				DAF44201144B08B300943C0D /* Level0_notifications.plist */,
 				DAF44202144B08B300943C0D /* Level1_data.plist */,
@@ -1867,6 +1870,7 @@
 				DA5037A51453681C00600DD4 /* Tap Bomb Banner.png in Resources */,
 				DA5037A61453681C00600DD4 /* Tilt Banner.png in Resources */,
 				DA5037B2145383DE00600DD4 /* Tutorial Parallax.png in Resources */,
+				DA5037B71454437D00600DD4 /* Level2_data.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

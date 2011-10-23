@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Background File</key>
+	<string>Sky Background.png</string>
+	<key>Data</key>
+	<dict>
+		<key>896</key>
+		<dict>
+			<key>120</key>
+			<string>Dummy Boss</string>
+		</dict>
+	</dict>
+	<key>Datakeys</key>
+	<array>
+		<string>896</string>
+	</array>
+	<key>Ground File</key>
+	<string>Lab Ground.png</string>
+	<key>Level Num</key>
+	<string>0</string>
+	<key>Parallax File</key>
+	<string>Tutorial Parallax.png</string>
+	<key>Vertical Tiles</key>
+	<integer>500</integer>
+</dict>
+</plist>

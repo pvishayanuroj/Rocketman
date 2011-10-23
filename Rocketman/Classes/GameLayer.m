@@ -443,13 +443,11 @@
         NSDictionary *rowData = [objectData_ objectForKey:datakey];
         dataKeyIndex_++;
         
-        NSInteger y = nextHeightTrigger_;  
-        
         // For all objects that are to be added in this row
         for (NSString *col in rowData) {
             NSInteger x = [col integerValue];
             NSString *objectName = [rowData objectForKey:col];
-            CGPoint pos = CGPointMake(x, y);
+            CGPoint pos = CGPointMake(x, 1000);
             
             ObstacleType type = [[objectNameMap_ objectForKey:objectName] intValue];
             [self addObstacle:type pos:pos];
@@ -617,6 +615,9 @@
             obstacle = [FlyingRock rockBWithPos:pos];
             break;
              */
+        case kDummyBoss:
+            obstacle = [DummyBoss dummyBossWithPos:pos];
+            break;
         default:
             add = NO;
             //NSAssert(NO, @"Invalid obstacle number selected");
