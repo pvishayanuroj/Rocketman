@@ -25,4 +25,6 @@
 
 - (void) finishHit;
 
++ (void) resetID;
+
 @end

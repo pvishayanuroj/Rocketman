@@ -40,4 +40,6 @@
 
 - (void) sideMovementRandomTrigger:(SideMovement *)movement;
 
++ (void) resetID;
+
 @end

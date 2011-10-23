@@ -17,6 +17,11 @@
 
 static NSUInteger countID = 0;
 
++ (void) resetID
+{
+    countID = 0;
+}
+
 + (id) ufoWithPos:(CGPoint)pos
 {
     return [[[self alloc] initWithPos:pos] autorelease];

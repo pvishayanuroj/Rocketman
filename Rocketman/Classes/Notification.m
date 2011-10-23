@@ -117,7 +117,7 @@ const CGFloat NF_BANNER_Y = 250.0f;
 }
 
 - (void) obstacleAdded:(Obstacle *)obstacle
-{
+{ 
     // Form the key pair, this is the (type, count)
     // Be careful, converting unsigned to signed!
     Pair *key = [Pair pair:obstacle.obstacleType second:obstacle.unitID];

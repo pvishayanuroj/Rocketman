@@ -27,4 +27,6 @@
 
 - (void) doneAttacking;
 
++ (void) resetID;
+
 @end

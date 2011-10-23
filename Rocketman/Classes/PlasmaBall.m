@@ -24,6 +24,11 @@ const CGFloat PB_SPEED = 6.0f;
 
 static NSUInteger countID = 0;
 
++ (void) resetID
+{
+    countID = 0;
+}
+
 + (id) plasmaBallWithPos:(CGPoint)pos
 {
     return [[[self alloc] initWithPos:pos] autorelease];

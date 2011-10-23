@@ -25,6 +25,11 @@
 
 static NSUInteger countID = 0;
 
++ (void) resetID
+{
+    countID = 0;
+}
+
 #pragma mark - Object Lifecycle
 
 + (id) bossTurtleWithPos:(CGPoint)pos

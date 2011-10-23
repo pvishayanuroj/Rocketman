@@ -11,4 +11,11 @@
 
 @implementation DummyBoss
 
+static NSUInteger countID = 0;
+
++ (void) resetID
+{
+    countID = 0;
+}
+
 @end

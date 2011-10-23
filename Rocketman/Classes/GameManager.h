@@ -89,5 +89,8 @@
 /** Resume gameplay counterpart of dialogue pause */
 - (void) dialogueResume;
 
+/** Method to reset all the static counters of all obstacles */
+- (void) resetCounters;
+
 @end
 

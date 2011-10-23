@@ -19,6 +19,11 @@
 
 static NSUInteger countID = 0;
 
++ (void) resetID
+{
+    countID = 0;
+}
+
 + (id) rockAWithPos:(CGPoint)pos
 {
     return [[[self alloc] initWithPos:pos type:@"A"] autorelease];

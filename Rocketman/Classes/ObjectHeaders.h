@@ -26,6 +26,7 @@
 
 // Bosses
 #import "BossTurtle.h"
+#import "DummyBoss.h"
 
 // Auxiliary Objects
 #import "PlasmaBall.h"

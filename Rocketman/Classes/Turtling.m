@@ -17,6 +17,11 @@
 
 static NSUInteger countID = 0;
 
++ (void) resetID
+{
+    countID = 0;
+}
+
 + (id) turtlingWithPos:(CGPoint)pos
 {
     return [[[self alloc] initWithPos:pos] autorelease];

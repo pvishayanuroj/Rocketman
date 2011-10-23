@@ -23,4 +23,6 @@
 
 - (void) showCollect;
 
++ (void) resetID;
+
 @end

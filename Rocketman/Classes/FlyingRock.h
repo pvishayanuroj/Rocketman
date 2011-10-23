@@ -19,4 +19,6 @@
 
 - (id) initWithPos:(CGPoint)pos type:(NSString *)type;
 
++ (void) resetID;
+
 @end

@@ -17,6 +17,11 @@
 
 static NSUInteger countID = 0;
 
++ (void) resetID
+{
+    countID = 0;
+}
+
 + (id) redEggWithPos:(CGPoint)pos rate:(CGFloat)rate radius:(CGFloat)radius angle:(CGFloat)angle
 {
     return [[[self alloc] initWithPos:pos type:kRedEgg rate:rate radius:radius angle:angle] autorelease];

@@ -1631,6 +1631,9 @@
 		DAF444AF144B09A100943C0D /* Obstacles */ = {
 			isa = PBXGroup;
 			children = (
+				DAF44424144B08D200943C0D /* Obstacle.h */,
+				DAF44425144B08D200943C0D /* Obstacle.m */,
+				DAF44426144B08D200943C0D /* ObstacleDelegate.h */,
 				DAF4444A144B08DA00943C0D /* SwarmGenerator.h */,
 				DAF4444B144B08DB00943C0D /* SwarmGenerator.m */,
 				DAF44450144B08DC00943C0D /* Turtling.h */,
@@ -1663,9 +1666,6 @@
 				DAF443F8144B08CB00943C0D /* FlyingRock.m */,
 				DAF4440C144B08CE00943C0D /* HoverTurtle.h */,
 				DAF4440D144B08CE00943C0D /* HoverTurtle.m */,
-				DAF44424144B08D200943C0D /* Obstacle.h */,
-				DAF44425144B08D200943C0D /* Obstacle.m */,
-				DAF44426144B08D200943C0D /* ObstacleDelegate.h */,
 				DAF44430144B08D500943C0D /* PlasmaBall.h */,
 				DAF44431144B08D500943C0D /* PlasmaBall.m */,
 				DAF44438144B08D600943C0D /* ShockTurtling.h */,

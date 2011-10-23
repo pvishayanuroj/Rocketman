@@ -19,4 +19,6 @@
 
 - (id) initWithPos:(CGPoint)pos type:(ObstacleType)type rate:(CGFloat)rate radius:(CGFloat)radius angle:(CGFloat)angle;
 
++ (void) resetID;
+
 @end

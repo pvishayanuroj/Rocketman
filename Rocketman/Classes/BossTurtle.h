@@ -64,4 +64,6 @@
 
 - (void) sideMovementProximityTrigger:(SideMovement *)movement;
 
++ (void) resetID;
+
 @end

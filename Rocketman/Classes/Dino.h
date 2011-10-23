@@ -23,4 +23,6 @@
 
 - (void) showAttacking;
 
++ (void) resetID;
+
 @end

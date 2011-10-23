@@ -15,6 +15,7 @@
 #import "CCNode+PauseResume.h"
 #import "Obstacle.h"
 #import "Notification.h"
+#import "ObjectHeaders.h"
 
 // For singleton
 static GameManager *_gameManager = nil;
@@ -45,6 +46,8 @@ static GameManager *_gameManager = nil;
 
 - (id) init
 {
+    NSLog(@"Initializing Game Manager");
+    
 	if ((self = [super init])) {
         
 		gameLayer_ = nil;
@@ -53,6 +56,8 @@ static GameManager *_gameManager = nil;
         dialogueLayer_ = nil;
         rocket_ = nil;
         notification_ = nil;
+        
+        [self resetCounters];
 	}
 	return self;
 }
@@ -220,6 +225,31 @@ static GameManager *_gameManager = nil;
     [hudLayer_ resume];
     [hudLayer_ resumeHierarchy];
     [gameLayer_ resumeHierarchy];    
+}
+
+#pragma mark - Reset Methods
+
+- (void) resetCounters
+{
+    [Turtling resetID];
+    [UFO resetID];
+    [Shell resetID];
+    [Fuel resetID];
+    [Cat resetID];
+    [Alien resetID];
+    [AlienHoverTurtle resetID];
+    [Angel resetID];
+    [Boost resetID];
+    [BossTurtle resetID];
+    [Dino resetID];
+    [Egg resetID];
+    [Flybot resetID];
+    [FlyingRock resetID];
+    [HoverTurtle resetID];
+    [PlasmaBall resetID];
+    [ShockTurtling resetID];
+    [YellowBird resetID];
+    [DummyBoss resetID];
 }
 
 @end

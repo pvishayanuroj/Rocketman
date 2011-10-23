@@ -19,6 +19,11 @@
 
 static NSUInteger countID = 0;
 
++ (void) resetID
+{
+    countID = 0;
+}
+
 + (id) dinoWithPos:(CGPoint)pos
 {
     return [[[self alloc] initWithPos:pos] autorelease];

@@ -19,4 +19,6 @@
 
 - (void) initActions;
 
++ (void) resetID;
+
 @end
