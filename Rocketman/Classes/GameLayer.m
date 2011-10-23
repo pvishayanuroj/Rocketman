@@ -169,13 +169,14 @@
     [self updateCounters];
     [self applyGravity];
     [self moveRocketHorizontally];
-    [self collisionDetect];        
+    [self collisionDetect];       
+    [self obstacleGenerator];      
 }
 
 - (void) slowUpdate:(ccTime)dt
 {
     [self cloudGenerator];    
-    [self obstacleGenerator];        
+      
 }
 
 - (void) physicsStep:(ccTime)dt
@@ -442,7 +443,7 @@
         NSDictionary *rowData = [objectData_ objectForKey:datakey];
         dataKeyIndex_++;
         
-        NSInteger y = nextHeightTrigger_;        
+        NSInteger y = nextHeightTrigger_;  
         
         // For all objects that are to be added in this row
         for (NSString *col in rowData) {
@@ -617,7 +618,8 @@
             break;
              */
         default:
-            NSAssert(NO, @"Invalid obstacle number selected");
+            add = NO;
+            //NSAssert(NO, @"Invalid obstacle number selected");
             break;
     }
     

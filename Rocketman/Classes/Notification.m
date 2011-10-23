@@ -167,7 +167,16 @@ const CGFloat NF_BANNER_Y = 250.0f;
             [scanner setCharactersToBeSkipped:[NSCharacterSet letterCharacterSet]];
             [scanner scanInteger:&count];
             
-            NSString *objectName = [tokens objectAtIndex:1];
+            // Get the second token, it may be multi-word, so get stitch all components together
+            NSString *objectName = @"";
+            for (NSUInteger i = 1; i < [tokens count]; i++) {
+                objectName = [objectName stringByAppendingString:[tokens objectAtIndex:i]];
+                // As long as not
+                if (i < [tokens count] - 1) {
+                    objectName = [objectName stringByAppendingString:@" "];
+                }
+            }            
+            
             ObstacleType obstacleType = [[DataManager dataManager] typeForName:objectName];
             
             Pair *key = [Pair pair:obstacleType second:(count - 1)]; // Assuming humans start from one

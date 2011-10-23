@@ -11,7 +11,7 @@
 				<key>Delay</key>
 				<integer>1</integer>
 				<key>Banner</key>
-				<string>Collect Ammo Banner</string>
+				<string>Intro Banner</string>
 			</dict>
 			<dict>
 				<key>Focus</key>
@@ -30,7 +30,102 @@
 				<key>Focus</key>
 				<string>Trigger</string>
 				<key>Banner</key>
+				<string>Tilt Banner</string>
+			</dict>
+		</array>
+	</dict>
+	<dict>
+		<key>Trigger</key>
+		<string>1st Cat</string>
+		<key>Events</key>
+		<array>
+			<dict>
+				<key>Focus</key>
+				<string>Trigger</string>
+				<key>Banner</key>
+				<string>Collect Ammo Banner</string>
+			</dict>
+		</array>
+	</dict>
+	<dict>
+		<key>Trigger</key>
+		<string>13th Shell</string>
+		<key>Events</key>
+		<array>
+			<dict>
+				<key>Focus</key>
+				<string>Trigger</string>
+				<key>Banner</key>
+				<string>Tap Cat Banner</string>
+			</dict>
+		</array>
+	</dict>
+	<dict>
+		<key>Trigger</key>
+		<string>1st Boost</string>
+		<key>Events</key>
+		<array>
+			<dict>
+				<key>Focus</key>
+				<string>Trigger</string>
+				<key>Banner</key>
+				<string>Ring Banner</string>
+			</dict>
+		</array>
+	</dict>
+	<dict>
+		<key>Trigger</key>
+		<string>1st Fuel</string>
+		<key>Events</key>
+		<array>
+			<dict>
+				<key>Focus</key>
+				<string>Trigger</string>
+				<key>Banner</key>
 				<string>Collect Fuel Banner</string>
+			</dict>
+		</array>
+	</dict>
+	<dict>
+		<key>Trigger</key>
+		<string>5th Boost</string>
+		<key>Events</key>
+		<array>
+			<dict>
+				<key>Focus</key>
+				<string>Trigger</string>
+				<key>Banner</key>
+				<string>Combo Banner</string>
+			</dict>
+			<dict>
+				<key>Banner</key>
+				<string>Combo 2 Banner</string>
+			</dict>
+		</array>
+	</dict>
+	<dict>
+		<key>Trigger</key>
+		<string>73rd Shell</string>
+		<key>Events</key>
+		<array>
+			<dict>
+				<key>Focus</key>
+				<string>Trigger</string>
+				<key>Banner</key>
+				<string>Tap Bomb Banner</string>
+			</dict>
+		</array>
+	</dict>
+	<dict>
+		<key>Trigger</key>
+		<string>1st Dummy Boss</string>
+		<key>Events</key>
+		<array>
+			<dict>
+				<key>Focus</key>
+				<string>Trigger</string>
+				<key>Banner</key>
+				<string>Boss Banner</string>
 			</dict>
 		</array>
 	</dict>

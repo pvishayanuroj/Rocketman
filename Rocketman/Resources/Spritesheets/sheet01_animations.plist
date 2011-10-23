@@ -378,5 +378,103 @@
 		<key>Name</key>
 		<string>Aura</string>
 	</dict>
+	<dict>
+		<key>Animations</key>
+		<array>
+			<dict>
+				<key>Animate Delay</key>
+				<real>0.1</real>
+				<key>Name</key>
+				<string>Idle</string>
+				<key>Num Frames</key>
+				<integer>2</integer>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>Dummy Boss</string>
+	</dict>
+	<dict>
+		<key>Animations</key>
+		<array>
+			<dict>
+				<key>Animate Delay</key>
+				<real>0.1</real>
+				<key>Name</key>
+				<string>Idle</string>
+				<key>Num Frames</key>
+				<integer>2</integer>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>Cat Basket</string>
+	</dict>
+	<dict>
+		<key>Animations</key>
+		<array>
+			<dict>
+				<key>Animate Delay</key>
+				<real>0.1</real>
+				<key>Name</key>
+				<string>Idle</string>
+				<key>Num Frames</key>
+				<integer>4</integer>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>Flame</string>
+	</dict>
+	<dict>
+		<key>Animations</key>
+		<array>
+			<dict>
+				<key>Animate Delay</key>
+				<real>0.1</real>
+				<key>Name</key>
+				<string>Idle</string>
+				<key>Num Frames</key>
+				<integer>2</integer>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>Fish</string>
+	</dict>
+	<dict>
+		<key>Animations</key>
+		<array>
+			<dict>
+				<key>Animate Delay</key>
+				<real>0.1</real>
+				<key>Name</key>
+				<string>Idle</string>
+				<key>Num Frames</key>
+				<integer>2</integer>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>Squid</string>
+	</dict>
+	<dict>
+		<key>Animations</key>
+		<array>
+			<dict>
+				<key>Animate Delay</key>
+				<real>0.1</real>
+				<key>Name</key>
+				<string>Idle</string>
+				<key>Num Frames</key>
+				<integer>1</integer>
+			</dict>
+			<dict>
+				<key>Animate Delay</key>
+				<real>0.1</real>
+				<key>Name</key>
+				<string>Attack</string>
+				<key>Num Frames</key>
+				<integer>1</integer>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>Salamander</string>
+	</dict>
 </array>
 </plist>

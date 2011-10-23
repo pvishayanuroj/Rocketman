@@ -73,6 +73,7 @@ typedef enum {
     // Bosses
     kBossTurtle,
     kAlienBossTurtle,
+    kDummyBoss,
     // Collectables/Helpers
     kAngel,
     kBoost,

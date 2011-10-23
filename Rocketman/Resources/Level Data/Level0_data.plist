@@ -6,13 +6,264 @@
 	<string>Sky Background.png</string>
 	<key>Data</key>
 	<dict>
-		<key>1792</key>
+		<key>1472</key>
 		<dict>
+			<key>147</key>
+			<string>Cat</string>
+			<key>173</key>
+			<string>Cat</string>
+			<key>227</key>
+			<string>Cat</string>
+			<key>253</key>
+			<string>Cat</string>
+			<key>67</key>
+			<string>Cat</string>
+			<key>93</key>
+			<string>Cat</string>
+		</dict>
+		<key>1504</key>
+		<dict>
+			<key>147</key>
+			<string>Cat</string>
+			<key>173</key>
+			<string>Cat</string>
+			<key>227</key>
+			<string>Cat</string>
+			<key>253</key>
+			<string>Cat</string>
+			<key>67</key>
+			<string>Cat</string>
+			<key>93</key>
+			<string>Cat</string>
+		</dict>
+		<key>1536</key>
+		<dict>
+			<key>147</key>
+			<string>Cat</string>
+			<key>173</key>
+			<string>Cat</string>
+			<key>227</key>
+			<string>Cat</string>
+			<key>253</key>
+			<string>Cat</string>
+			<key>67</key>
+			<string>Cat</string>
+			<key>93</key>
+			<string>Cat</string>
+		</dict>
+		<key>1568</key>
+		<dict>
+			<key>147</key>
+			<string>Cat</string>
+			<key>173</key>
+			<string>Cat</string>
+			<key>227</key>
+			<string>Cat</string>
+			<key>253</key>
+			<string>Cat</string>
+			<key>67</key>
+			<string>Cat</string>
+			<key>93</key>
+			<string>Cat</string>
+		</dict>
+		<key>2304</key>
+		<dict>
+			<key>120</key>
+			<string>Shell</string>
+			<key>13</key>
+			<string>Shell</string>
+			<key>173</key>
+			<string>Shell</string>
+			<key>227</key>
+			<string>Shell</string>
+			<key>280</key>
+			<string>Shell</string>
+			<key>67</key>
+			<string>Shell</string>
+		</dict>
+		<key>2336</key>
+		<dict>
+			<key>147</key>
+			<string>Shell</string>
+			<key>200</key>
+			<string>Shell</string>
+			<key>253</key>
+			<string>Shell</string>
+			<key>307</key>
+			<string>Shell</string>
+			<key>40</key>
+			<string>Shell</string>
+			<key>93</key>
+			<string>Shell</string>
+		</dict>
+		<key>2368</key>
+		<dict>
+			<key>120</key>
+			<string>Shell</string>
+			<key>13</key>
+			<string>Shell</string>
+			<key>173</key>
+			<string>Shell</string>
+			<key>227</key>
+			<string>Shell</string>
+			<key>280</key>
+			<string>Shell</string>
+			<key>67</key>
+			<string>Shell</string>
+		</dict>
+		<key>2976</key>
+		<dict>
+			<key>120</key>
+			<string>Boost</string>
+			<key>200</key>
+			<string>Boost</string>
+			<key>280</key>
+			<string>Boost</string>
+			<key>40</key>
+			<string>Boost</string>
+		</dict>
+		<key>3936</key>
+		<dict>
+			<key>147</key>
+			<string>Fuel</string>
+			<key>200</key>
+			<string>Fuel</string>
+			<key>253</key>
+			<string>Fuel</string>
+			<key>40</key>
+			<string>Fuel</string>
+			<key>93</key>
+			<string>Fuel</string>
+		</dict>
+		<key>4800</key>
+		<dict>
+			<key>120</key>
+			<string>Boost</string>
+			<key>200</key>
+			<string>Boost</string>
+			<key>280</key>
+			<string>Boost</string>
+			<key>40</key>
+			<string>Boost</string>
+		</dict>
+		<key>4992</key>
+		<dict>
+			<key>120</key>
+			<string>Shell</string>
+			<key>13</key>
+			<string>Shell</string>
+			<key>173</key>
+			<string>Shell</string>
+			<key>227</key>
+			<string>Shell</string>
+			<key>280</key>
+			<string>Shell</string>
+			<key>67</key>
+			<string>Shell</string>
+		</dict>
+		<key>5056</key>
+		<dict>
+			<key>147</key>
+			<string>Shell</string>
+			<key>200</key>
+			<string>Shell</string>
+			<key>253</key>
+			<string>Shell</string>
+			<key>307</key>
+			<string>Shell</string>
+			<key>40</key>
+			<string>Shell</string>
+			<key>93</key>
+			<string>Shell</string>
+		</dict>
+		<key>5120</key>
+		<dict>
+			<key>120</key>
+			<string>Shell</string>
+			<key>13</key>
+			<string>Shell</string>
+			<key>173</key>
+			<string>Shell</string>
+			<key>227</key>
+			<string>Shell</string>
+			<key>280</key>
+			<string>Shell</string>
+			<key>67</key>
+			<string>Shell</string>
+		</dict>
+		<key>5184</key>
+		<dict>
+			<key>147</key>
+			<string>Shell</string>
+			<key>200</key>
+			<string>Shell</string>
+			<key>253</key>
+			<string>Shell</string>
+			<key>307</key>
+			<string>Shell</string>
+			<key>40</key>
+			<string>Shell</string>
+			<key>93</key>
+			<string>Shell</string>
+		</dict>
+		<key>5248</key>
+		<dict>
+			<key>120</key>
+			<string>Shell</string>
+			<key>13</key>
+			<string>Shell</string>
+			<key>173</key>
+			<string>Shell</string>
+			<key>227</key>
+			<string>Shell</string>
+			<key>280</key>
+			<string>Shell</string>
+			<key>67</key>
+			<string>Shell</string>
+		</dict>
+		<key>5312</key>
+		<dict>
+			<key>147</key>
+			<string>Shell</string>
+			<key>200</key>
+			<string>Shell</string>
+			<key>253</key>
+			<string>Shell</string>
+			<key>307</key>
+			<string>Shell</string>
+			<key>40</key>
+			<string>Shell</string>
+			<key>93</key>
+			<string>Shell</string>
+		</dict>
+		<key>5376</key>
+		<dict>
+			<key>120</key>
+			<string>Shell</string>
+			<key>13</key>
+			<string>Shell</string>
+			<key>173</key>
+			<string>Shell</string>
+			<key>227</key>
+			<string>Shell</string>
+			<key>280</key>
+			<string>Shell</string>
+			<key>67</key>
+			<string>Shell</string>
+		</dict>
+		<key>6432</key>
+		<dict>
+			<key>120</key>
+			<string>Shell</string>
+			<key>13</key>
+			<string>Shell</string>
 			<key>147</key>
 			<string>Shell</string>
 			<key>173</key>
 			<string>Shell</string>
 			<key>200</key>
+			<string>Shell</string>
+			<key>227</key>
 			<string>Shell</string>
 			<key>253</key>
 			<string>Shell</string>
@@ -27,56 +278,73 @@
 			<key>93</key>
 			<string>Shell</string>
 		</dict>
-		<key>800</key>
+		<key>7808</key>
 		<dict>
 			<key>147</key>
-			<string>Cat</string>
-			<key>200</key>
-			<string>Cat</string>
-			<key>253</key>
-			<string>Cat</string>
-			<key>40</key>
-			<string>Cat</string>
-			<key>93</key>
-			<string>Cat</string>
+			<string>Dummy Boss</string>
 		</dict>
-		<key>864</key>
+		<key>896</key>
 		<dict>
+			<key>120</key>
+			<string>Shell</string>
 			<key>147</key>
-			<string>Cat</string>
-			<key>253</key>
-			<string>Cat</string>
-			<key>40</key>
-			<string>Cat</string>
+			<string>Shell</string>
+			<key>173</key>
+			<string>Shell</string>
+			<key>200</key>
+			<string>Shell</string>
+			<key>227</key>
+			<string>Shell</string>
+			<key>93</key>
+			<string>Shell</string>
 		</dict>
 		<key>928</key>
 		<dict>
+			<key>120</key>
+			<string>Shell</string>
 			<key>147</key>
-			<string>Cat</string>
+			<string>Shell</string>
+			<key>173</key>
+			<string>Shell</string>
 			<key>200</key>
-			<string>Cat</string>
-			<key>253</key>
-			<string>Cat</string>
-			<key>40</key>
-			<string>Cat</string>
+			<string>Shell</string>
+			<key>227</key>
+			<string>Shell</string>
 			<key>93</key>
-			<string>Cat</string>
+			<string>Shell</string>
 		</dict>
 	</dict>
 	<key>Datakeys</key>
 	<array>
-		<string>800</string>
-		<string>864</string>
+		<string>896</string>
 		<string>928</string>
-		<string>1792</string>
+		<string>1472</string>
+		<string>1504</string>
+		<string>1536</string>
+		<string>1568</string>
+		<string>2304</string>
+		<string>2336</string>
+		<string>2368</string>
+		<string>2976</string>
+		<string>3936</string>
+		<string>4800</string>
+		<string>4992</string>
+		<string>5056</string>
+		<string>5120</string>
+		<string>5184</string>
+		<string>5248</string>
+		<string>5312</string>
+		<string>5376</string>
+		<string>6432</string>
+		<string>7808</string>
 	</array>
 	<key>Ground File</key>
 	<string>Lab Ground.png</string>
 	<key>Level Num</key>
 	<string>0</string>
 	<key>Parallax File</key>
-	<string>Tutorial Background.png</string>
+	<string>Tutorial Parallax.png</string>
 	<key>Vertical Tiles</key>
-	<integer>64</integer>
+	<integer>500</integer>
 </dict>
 </plist>

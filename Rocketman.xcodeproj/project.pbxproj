@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DA50379F1453681C00600DD4 /* Boss Banner.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5037971453681C00600DD4 /* Boss Banner.png */; };
+		DA5037A01453681C00600DD4 /* Combo 2 Banner.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5037981453681C00600DD4 /* Combo 2 Banner.png */; };
+		DA5037A11453681C00600DD4 /* Combo Banner.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5037991453681C00600DD4 /* Combo Banner.png */; };
+		DA5037A21453681C00600DD4 /* Conclusion Banner.png in Resources */ = {isa = PBXBuildFile; fileRef = DA50379A1453681C00600DD4 /* Conclusion Banner.png */; };
+		DA5037A31453681C00600DD4 /* Intro Banner.png in Resources */ = {isa = PBXBuildFile; fileRef = DA50379B1453681C00600DD4 /* Intro Banner.png */; };
+		DA5037A41453681C00600DD4 /* Ring Banner.png in Resources */ = {isa = PBXBuildFile; fileRef = DA50379C1453681C00600DD4 /* Ring Banner.png */; };
+		DA5037A51453681C00600DD4 /* Tap Bomb Banner.png in Resources */ = {isa = PBXBuildFile; fileRef = DA50379D1453681C00600DD4 /* Tap Bomb Banner.png */; };
+		DA5037A61453681C00600DD4 /* Tilt Banner.png in Resources */ = {isa = PBXBuildFile; fileRef = DA50379E1453681C00600DD4 /* Tilt Banner.png */; };
+		DA5037B2145383DE00600DD4 /* Tutorial Parallax.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5037B1145383DE00600DD4 /* Tutorial Parallax.png */; };
+		DA5037B51453ACCA00600DD4 /* DummyBoss.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5037B41453ACC900600DD4 /* DummyBoss.m */; };
 		DAF43E53144B085400943C0D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAF43E52144B085400943C0D /* QuartzCore.framework */; };
 		DAF43E55144B085400943C0D /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAF43E54144B085400943C0D /* OpenGLES.framework */; };
 		DAF43E57144B085400943C0D /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAF43E56144B085400943C0D /* OpenAL.framework */; };
@@ -216,7 +226,6 @@
 		DAF443A6144B08B300943C0D /* Sky Background.png in Resources */ = {isa = PBXBuildFile; fileRef = DAF442B3144B08B300943C0D /* Sky Background.png */; };
 		DAF443A7144B08B300943C0D /* Stars Background.png in Resources */ = {isa = PBXBuildFile; fileRef = DAF442B4144B08B300943C0D /* Stars Background.png */; };
 		DAF443A8144B08B300943C0D /* Sunset Background.png in Resources */ = {isa = PBXBuildFile; fileRef = DAF442B5144B08B300943C0D /* Sunset Background.png */; };
-		DAF443A9144B08B300943C0D /* Tutorial Background.png in Resources */ = {isa = PBXBuildFile; fileRef = DAF442B6144B08B300943C0D /* Tutorial Background.png */; };
 		DAF443AA144B08B300943C0D /* Waterfall Background.png in Resources */ = {isa = PBXBuildFile; fileRef = DAF442B7144B08B300943C0D /* Waterfall Background.png */; };
 		DAF443AB144B08B300943C0D /* Intro 01.png in Resources */ = {isa = PBXBuildFile; fileRef = DAF442B9144B08B300943C0D /* Intro 01.png */; };
 		DAF443AC144B08B300943C0D /* Intro 02.png in Resources */ = {isa = PBXBuildFile; fileRef = DAF442BA144B08B300943C0D /* Intro 02.png */; };
@@ -309,6 +318,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DA5037971453681C00600DD4 /* Boss Banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Boss Banner.png"; sourceTree = "<group>"; };
+		DA5037981453681C00600DD4 /* Combo 2 Banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Combo 2 Banner.png"; sourceTree = "<group>"; };
+		DA5037991453681C00600DD4 /* Combo Banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Combo Banner.png"; sourceTree = "<group>"; };
+		DA50379A1453681C00600DD4 /* Conclusion Banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Conclusion Banner.png"; sourceTree = "<group>"; };
+		DA50379B1453681C00600DD4 /* Intro Banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Intro Banner.png"; sourceTree = "<group>"; };
+		DA50379C1453681C00600DD4 /* Ring Banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Ring Banner.png"; sourceTree = "<group>"; };
+		DA50379D1453681C00600DD4 /* Tap Bomb Banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tap Bomb Banner.png"; sourceTree = "<group>"; };
+		DA50379E1453681C00600DD4 /* Tilt Banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tilt Banner.png"; sourceTree = "<group>"; };
+		DA5037B1145383DE00600DD4 /* Tutorial Parallax.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial Parallax.png"; sourceTree = "<group>"; };
+		DA5037B31453ACC900600DD4 /* DummyBoss.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DummyBoss.h; path = Classes/DummyBoss.h; sourceTree = "<group>"; };
+		DA5037B41453ACC900600DD4 /* DummyBoss.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DummyBoss.m; path = Classes/DummyBoss.m; sourceTree = "<group>"; };
 		DAF43E4E144B085400943C0D /* Rocketman.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rocketman.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAF43E52144B085400943C0D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		DAF43E54144B085400943C0D /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -637,7 +657,6 @@
 		DAF442B3144B08B300943C0D /* Sky Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sky Background.png"; sourceTree = "<group>"; };
 		DAF442B4144B08B300943C0D /* Stars Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Stars Background.png"; sourceTree = "<group>"; };
 		DAF442B5144B08B300943C0D /* Sunset Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Sunset Background.png"; sourceTree = "<group>"; };
-		DAF442B6144B08B300943C0D /* Tutorial Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial Background.png"; sourceTree = "<group>"; };
 		DAF442B7144B08B300943C0D /* Waterfall Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Waterfall Background.png"; sourceTree = "<group>"; };
 		DAF442B9144B08B300943C0D /* Intro 01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Intro 01.png"; sourceTree = "<group>"; };
 		DAF442BA144B08B300943C0D /* Intro 02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Intro 02.png"; sourceTree = "<group>"; };
@@ -1350,6 +1369,14 @@
 		DAF44217144B08B300943C0D /* Notifications */ = {
 			isa = PBXGroup;
 			children = (
+				DA5037971453681C00600DD4 /* Boss Banner.png */,
+				DA5037981453681C00600DD4 /* Combo 2 Banner.png */,
+				DA5037991453681C00600DD4 /* Combo Banner.png */,
+				DA50379A1453681C00600DD4 /* Conclusion Banner.png */,
+				DA50379B1453681C00600DD4 /* Intro Banner.png */,
+				DA50379C1453681C00600DD4 /* Ring Banner.png */,
+				DA50379D1453681C00600DD4 /* Tap Bomb Banner.png */,
+				DA50379E1453681C00600DD4 /* Tilt Banner.png */,
 				DAF44218144B08B300943C0D /* Collect Ammo Banner.png */,
 				DAF44219144B08B300943C0D /* Collect Fuel Banner.png */,
 				DAF4421A144B08B300943C0D /* Focus Arrow.png */,
@@ -1376,6 +1403,7 @@
 		DAF442A9144B08B300943C0D /* Stage Art */ = {
 			isa = PBXGroup;
 			children = (
+				DA5037B1145383DE00600DD4 /* Tutorial Parallax.png */,
 				DAF442AA144B08B300943C0D /* Cave Background.png */,
 				DAF442AB144B08B300943C0D /* Cave Ground.png */,
 				DAF442AC144B08B300943C0D /* City Ground.png */,
@@ -1388,7 +1416,6 @@
 				DAF442B3144B08B300943C0D /* Sky Background.png */,
 				DAF442B4144B08B300943C0D /* Stars Background.png */,
 				DAF442B5144B08B300943C0D /* Sunset Background.png */,
-				DAF442B6144B08B300943C0D /* Tutorial Background.png */,
 				DAF442B7144B08B300943C0D /* Waterfall Background.png */,
 			);
 			name = "Stage Art";
@@ -1645,6 +1672,8 @@
 				DAF44439144B08D700943C0D /* ShockTurtling.m */,
 				DAF44456144B08DE00943C0D /* YellowBird.h */,
 				DAF44457144B08DE00943C0D /* YellowBird.m */,
+				DA5037B31453ACC900600DD4 /* DummyBoss.h */,
+				DA5037B41453ACC900600DD4 /* DummyBoss.m */,
 			);
 			name = Obstacles;
 			sourceTree = "<group>";
@@ -1815,7 +1844,6 @@
 				DAF443A6144B08B300943C0D /* Sky Background.png in Resources */,
 				DAF443A7144B08B300943C0D /* Stars Background.png in Resources */,
 				DAF443A8144B08B300943C0D /* Sunset Background.png in Resources */,
-				DAF443A9144B08B300943C0D /* Tutorial Background.png in Resources */,
 				DAF443AA144B08B300943C0D /* Waterfall Background.png in Resources */,
 				DAF443AB144B08B300943C0D /* Intro 01.png in Resources */,
 				DAF443AC144B08B300943C0D /* Intro 02.png in Resources */,
@@ -1830,6 +1858,15 @@
 				DAF443B5144B08B300943C0D /* Intro 08.png in Resources */,
 				DAF443B6144B08B300943C0D /* Intro 09.png in Resources */,
 				DAF443B7144B08B300943C0D /* Intro Cat.png in Resources */,
+				DA50379F1453681C00600DD4 /* Boss Banner.png in Resources */,
+				DA5037A01453681C00600DD4 /* Combo 2 Banner.png in Resources */,
+				DA5037A11453681C00600DD4 /* Combo Banner.png in Resources */,
+				DA5037A21453681C00600DD4 /* Conclusion Banner.png in Resources */,
+				DA5037A31453681C00600DD4 /* Intro Banner.png in Resources */,
+				DA5037A41453681C00600DD4 /* Ring Banner.png in Resources */,
+				DA5037A51453681C00600DD4 /* Tap Bomb Banner.png in Resources */,
+				DA5037A61453681C00600DD4 /* Tilt Banner.png in Resources */,
+				DA5037B2145383DE00600DD4 /* Tutorial Parallax.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2012,6 +2049,7 @@
 				DAF444A0144B08DE00943C0D /* UtilFuncs.m in Sources */,
 				DAF444A1144B08DE00943C0D /* YellowBird.m in Sources */,
 				DAF444BD144B0DB400943C0D /* Focus.m in Sources */,
+				DA5037B51453ACCA00600DD4 /* DummyBoss.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

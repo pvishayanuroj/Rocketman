@@ -152,6 +152,7 @@
     // Bosses
     [map setObject:[NSNumber numberWithInt:kBossTurtle] forKey:@"Boss Turtle"];
     [map setObject:[NSNumber numberWithInt:kAlienBossTurtle] forKey:@"Alien Boss Turtle"];
+    [map setObject:[NSNumber numberWithInt:kDummyBoss] forKey:@"Dummy Boss"];    
     // Collectables/Helpers
     [map setObject:[NSNumber numberWithInt:kAngel] forKey:@"Angel"];
     [map setObject:[NSNumber numberWithInt:kBoost] forKey:@"Boost"];
