@@ -10,12 +10,8 @@
 #import "cocos2d.h"
 
 @interface GameScene : CCScene {
-    
-    BOOL catBombEnabled_;
-    
+
 }
-// Creating the 
-@property (nonatomic, readonly) BOOL catBombEnabled_;
 
 + (id) stage:(NSUInteger)levelNum;
 

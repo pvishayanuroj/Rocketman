@@ -24,8 +24,7 @@ const CGFloat PL_RESTART_ROTATE_TIME = 2.0f;
 {
 	if ((self = [super init])) {
         
-        [[GameManager gameManager] registerPauseLayer:self];
-		self.isTouchEnabled = YES;        
+        [[GameManager gameManager] registerPauseLayer:self];     
      
         isPaused_ = NO;
         

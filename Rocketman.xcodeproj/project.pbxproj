@@ -18,6 +18,7 @@
 		DA5037B2145383DE00600DD4 /* Tutorial Parallax.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5037B1145383DE00600DD4 /* Tutorial Parallax.png */; };
 		DA5037B51453ACCA00600DD4 /* DummyBoss.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5037B41453ACC900600DD4 /* DummyBoss.m */; };
 		DA5037B71454437D00600DD4 /* Level2_data.plist in Resources */ = {isa = PBXBuildFile; fileRef = DA5037B61454437D00600DD4 /* Level2_data.plist */; };
+		DA5037BD1454CF9600600DD4 /* Button.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5037BB1454CF8F00600DD4 /* Button.m */; };
 		DAF43E53144B085400943C0D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAF43E52144B085400943C0D /* QuartzCore.framework */; };
 		DAF43E55144B085400943C0D /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAF43E54144B085400943C0D /* OpenGLES.framework */; };
 		DAF43E57144B085400943C0D /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAF43E56144B085400943C0D /* OpenAL.framework */; };
@@ -331,6 +332,11 @@
 		DA5037B41453ACC900600DD4 /* DummyBoss.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DummyBoss.m; path = Classes/DummyBoss.m; sourceTree = "<group>"; };
 		DA5037B61454437D00600DD4 /* Level2_data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Level2_data.plist; sourceTree = "<group>"; };
 		DA5037B81454A59B00600DD4 /* BoundaryDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BoundaryDelegate.h; path = Classes/BoundaryDelegate.h; sourceTree = "<group>"; };
+		DA5037B91454CC4C00600DD4 /* HUDDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HUDDelegate.h; path = Classes/HUDDelegate.h; sourceTree = "<group>"; };
+		DA5037BA1454CF8B00600DD4 /* Button.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Button.h; path = Classes/Button.h; sourceTree = "<group>"; };
+		DA5037BB1454CF8F00600DD4 /* Button.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Button.m; path = Classes/Button.m; sourceTree = "<group>"; };
+		DA5037BC1454CF9100600DD4 /* ButtonDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ButtonDelegate.h; path = Classes/ButtonDelegate.h; sourceTree = "<group>"; };
+		DA5037BE1454CFFD00600DD4 /* Clickable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Clickable.h; path = Classes/Clickable.h; sourceTree = "<group>"; };
 		DAF43E4E144B085400943C0D /* Rocketman.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rocketman.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAF43E52144B085400943C0D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		DAF43E54144B085400943C0D /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -1508,6 +1514,7 @@
 				DAF4440B144B08CE00943C0D /* HighscoreScene.m */,
 				DAF4440E144B08CE00943C0D /* HUDLayer.h */,
 				DAF4440F144B08CF00943C0D /* HUDLayer.m */,
+				DA5037B91454CC4C00600DD4 /* HUDDelegate.h */,
 				DAF443FB144B08CB00943C0D /* GameLayer.h */,
 				DAF443FC144B08CC00943C0D /* GameLayer.m */,
 				DAF443FD144B08CC00943C0D /* GameLayerDelegate.h */,
@@ -1548,6 +1555,10 @@
 				DAF443F4144B08CA00943C0D /* Enums.h */,
 				DAF44449144B08DA00943C0D /* Structs.h */,
 				DAF443E2144B08C700943C0D /* Constants.h */,
+				DA5037BA1454CF8B00600DD4 /* Button.h */,
+				DA5037BB1454CF8F00600DD4 /* Button.m */,
+				DA5037BC1454CF9100600DD4 /* ButtonDelegate.h */,
+				DA5037BE1454CFFD00600DD4 /* Clickable.h */,
 				DAF4442D144B08D400943C0D /* PButton.h */,
 				DAF4442E144B08D400943C0D /* PButton.m */,
 				DAF4442F144B08D400943C0D /* PButtonDelegate.h */,
@@ -2050,6 +2061,7 @@
 				DAF444A1144B08DE00943C0D /* YellowBird.m in Sources */,
 				DAF444BD144B0DB400943C0D /* Focus.m in Sources */,
 				DA5037B51453ACCA00600DD4 /* DummyBoss.m in Sources */,
+				DA5037BD1454CF9600600DD4 /* Button.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -32,8 +32,9 @@ const CGFloat NF_BANNER_Y = 250.0f;
     if ((self = [super init])) {
         
         currentBanner_ = nil;
-        currentFocus_ = nil;
+        currentFocuses_ = nil;
         events_ = nil;
+        inNotification_ = NO;
         
         objectTriggers_ = [[NSMutableDictionary dictionaryWithCapacity:10] retain];
         heightTriggers_ = [[NSMutableArray arrayWithCapacity:10] retain];
@@ -58,7 +59,7 @@ const CGFloat NF_BANNER_Y = 250.0f;
 - (void) dealloc
 {
     [currentBanner_ release];
-    [currentFocus_ release];
+    [currentFocuses_ release];
  
     [objectTriggers_ release];
     [heightTriggers_ release];
@@ -199,15 +200,32 @@ const CGFloat NF_BANNER_Y = 250.0f;
 
 #pragma mark - Event Methods
 
+- (void) buttonClicked:(Button *)button
+{
+    if (inNotification_) {
+        [self continueEventSequence];
+    }
+}
+
+- (void) screenClicked
+{
+    if (inNotification_) {
+        [self continueEventSequence];
+    }    
+}
+
 - (void) startEventSequence:(NSArray *)events
 {
     NSAssert([events count] > 0, @"Cannot start an event sequence with no events");
     
     // Pause the game
-    [[GameManager gameManager] dialoguePause];
+    [[GameManager gameManager] notificationPause];
     
     events_ = [events retain];
     eventCounter_ = 0;
+    
+    // Mark that a notification is occurring
+    inNotification_ = YES;    
     
     [self runEvent];
 }
@@ -218,14 +236,16 @@ const CGFloat NF_BANNER_Y = 250.0f;
     if (currentBanner_) {
         [currentBanner_ removeFromParentAndCleanup:YES];
     }
-    if (currentFocus_) {
-        [currentFocus_ removeFromParentAndCleanup:YES];
+    if (currentFocuses_) {
+        for (Focus *focus in currentFocuses_) {
+            [focus removeFromParentAndCleanup:YES];
+        }
     }
     [currentBanner_ release];
-    [currentFocus_ release];
+    [currentFocuses_ release];
     [obstacle_ release];
     currentBanner_ = nil;
-    currentFocus_ = nil;
+    currentFocuses_ = nil;
     obstacle_ = nil;
     
     // Check if any more events
@@ -237,8 +257,9 @@ const CGFloat NF_BANNER_Y = 250.0f;
         // Unpause and release
         [events_ release];
         events_ = nil;
+        inNotification_ = NO;
         
-        [[GameManager gameManager] dialogueResume];
+        [[GameManager gameManager] notificationResume];
     }
 }
 
@@ -246,14 +267,16 @@ const CGFloat NF_BANNER_Y = 250.0f;
 {
     NSDictionary *event = [events_ objectAtIndex:eventCounter_];
     NSString *bannerName = [event objectForKey:@"Banner"];
-    NSString *focusName = [event objectForKey:@"Focus"]; 
+    NSArray *focuses = [event objectForKey:@"Focus"]; 
     NSNumber *delayNumber = [event objectForKey:@"Delay"];
     CGFloat delay = 0.0f;
     
+    // Set delay (if any)
     if (delayNumber) {
         delay = [delayNumber floatValue];
     }
     
+    // Show banner (if any)
     if (bannerName) {
         currentBanner_ = [[Banner banner:bannerName delay:delay] retain];
         currentBanner_.delegate = self;
@@ -261,17 +284,24 @@ const CGFloat NF_BANNER_Y = 250.0f;
         [[GameManager gameManager] addToDialogueLayer:currentBanner_];
     }
     
-    if (focusName) {
-        // If the focus is meant to be on the trigger
-        if ([focusName isEqualToString:@"Trigger"]) {
-            currentFocus_ = [[Focus focusWithObstacle:obstacle_ delay:delay] retain];
+    // Place all focuses on screen (if any)
+    if (focuses) {
+        currentFocuses_ = [[NSMutableArray arrayWithCapacity:[focuses count]] retain];
+        for (NSString *focusName in focuses) {
+            Focus *focus;
+            // If the focus is meant to be on the trigger
+            if ([focusName isEqualToString:@"Trigger"]) {
+                focus = [Focus focusWithObstacle:obstacle_ delay:delay];
+            }
+            // Else focus is to be on a preset UI element
+            else {
+                focus = [Focus focusWithFixed:focusName delay:delay];
+            }
+            // Store focus for later cleanup and tell GM to place in Dialogue Layer
+            [currentFocuses_ addObject:focus];
+            [[GameManager gameManager] addToDialogueLayer:focus];
         }
-        // Else focus is to be on a preset UI element
-        else {
-            currentFocus_ = [[Focus focusWithFixed:focusName delay:delay] retain];
-        }
-        [[GameManager gameManager] addToDialogueLayer:currentFocus_];
-    }    
+    }   
 }
 
 @end

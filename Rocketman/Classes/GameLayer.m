@@ -642,7 +642,8 @@
             CatBullet *bullet;
             
             // DEBUG!!
-            NSInteger s = ammoType_++ % 2;
+            //NSInteger s = ammoType_++ % 2;
+            NSInteger s = 0;
             
             switch (s) {
                 case 0:

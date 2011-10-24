@@ -6,8 +6,6 @@
 //  Copyright 2011 Paul Vishayanuroj. All rights reserved.
 //
 
-#define DEBUG_MOVEBUTTONS 0
-
 #define DEBUG_CONSTANTSPEED 0
 
 #define DEBUG_DEALLOCS 0

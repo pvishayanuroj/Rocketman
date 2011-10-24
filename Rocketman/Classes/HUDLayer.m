@@ -9,17 +9,22 @@
 #import "HUDLayer.h"
 #import "GameLayer.h"
 #import "GameScene.h"
-#import "PButton.h"
+#import "Button.h"
 #import "GameManager.h"
 
 @implementation HUDLayer
+
+@synthesize delegate = delegate_;
+
+#pragma mark - Object Lifecycle
 
 - (id) init
 {
 	if ((self = [super init])) {
         
-        [[GameManager gameManager] registerHUDLayer:self];
-		self.isTouchEnabled = YES;        
+        delegate_ = nil;
+        
+        [[GameManager gameManager] registerHUDLayer:self];  
         
 		CGSize size = [[CCDirector sharedDirector] winSize];        
         screenHeight_ = size.height;            
@@ -29,6 +34,8 @@
         [self addChild:bar z:0];
         
         [self addLabels];
+        
+        buttons_ = [[NSMutableArray arrayWithCapacity:4] retain];
 	}
 	return self;
 }
@@ -41,12 +48,32 @@
     [numCats01Label_ release];
     [numCats02Label_ release];
     [numBoostsLabel_ release];    
-    [m1_ release];
-    [m2_ release];
-    [m3_ release];
+    [buttons_ release];
     
     [super dealloc];
 }
+
+#pragma mark - Delegate Methods
+
+- (void) buttonClicked:(Button *)button
+{
+    switch (button.numID) {
+        case kCatButton:
+            [delegate_ catButtonPressed:button];
+            break;
+        case kBombButton:
+            [delegate_ bombButtonPressed:button];
+            break;
+        case kSlowButton:
+            [delegate_ slowButtonPressed:button];
+            break;
+        case kBoostButton:
+            [delegate_ boostButtonPressed:button];
+            break;
+    }
+}
+
+#pragma mark - Populate Methods
 
 - (void) addLabels
 {
@@ -76,80 +103,98 @@
     tiltLabel_ = [[CCLabelBMFont labelWithString:@"0.000" fntFile:@"SRSM_font.fnt"] retain];
     tiltLabel_.position =  ccp(50, screenHeight_*0.89);
     tiltLabel_.scale = 0.4f;
-    [self addChild:tiltLabel_ z:1];                   
-}
-
-- (void) displayControls:(GameLayer *)gameLayer
-{
+    [self addChild:tiltLabel_ z:1];        
     
-    // Cat Button 01
-    // Add Button counter
+    // Button 1 Counter
     numCats01Label_ = [[CCLabelBMFont labelWithString:@"0" fntFile:@"SRSM_font.fnt"] retain];
     numCats01Label_.position = ccp(45, 35);
-    [self addChild:numCats01Label_ z:1];
+    [self addChild:numCats01Label_ z:1];    
     
-    CCMenuItemSprite *catButton01 = [CCMenuItemSprite itemFromNormalSprite:[CCSprite spriteWithFile:@"cat_button.png"] selectedSprite:[CCSprite spriteWithFile:@"cat_button_pressed.png"] target:gameLayer selector:@selector(fireCat01)];
+    // Button 2 counter
+    numCats02Label_ = [[CCLabelBMFont labelWithString:@"0" fntFile:@"SRSM_font.fnt"] retain];
+    numCats02Label_.position = ccp(130, 10);
+    [self addChild:numCats02Label_ z:1];    
     
-    m1_ = [[CCMenu menuWithItems:catButton01, nil] retain];
-    m1_.position = CGPointMake(CAT_BUTTON1_X, CAT_BUTTON1_Y);
-    [self addChild:m1_];
-    
-    // Cat Button 02
-    // Disable catButton02 if catBomb isn't enabled.
-    if (((GameScene *)self.parent).catBombEnabled_) {
-        
-        // Add Button counter
-        numCats02Label_ = [[CCLabelBMFont labelWithString:@"0" fntFile:@"SRSM_font.fnt"] retain];
-        numCats02Label_.position = ccp(130, 10);
-        [self addChild:numCats02Label_ z:1];
-        
-        CCMenuItemSprite *catButton02 = [CCMenuItemSprite itemFromNormalSprite:[CCSprite spriteWithFile:@"cat_button_bomb.png"] selectedSprite:[CCSprite spriteWithFile:@"cat_button_bomb_pressed.png"] target:gameLayer selector:@selector(fireCat02)];
-        
-        m2_= [[CCMenu menuWithItems:catButton02, nil] retain];
-        m2_.position = CGPointMake(CAT_BUTTON2_X, CAT_BUTTON2_Y);
-        [self addChild:m2_];
-    }
-    
-    // Boost Button
-    // Add Button counter
+    // Button 4 counter
     numBoostsLabel_ = [[CCLabelBMFont labelWithString:@"0" fntFile:@"SRSM_font.fnt"] retain];
     numBoostsLabel_.position = ccp(295, 35);           
-    [self addChild:numBoostsLabel_ z:1];
-    
-    CCMenuItemSprite *boostButton = [CCMenuItemSprite itemFromNormalSprite:[CCSprite spriteWithFile:@"boost_button.png"] selectedSprite:[CCSprite spriteWithFile:@"boost_button_pressed.png"] target:gameLayer selector:@selector(useBoost)];        
-
-    m3_ = [[CCMenu menuWithItems:boostButton, nil] retain];        
-    m3_.position = CGPointMake(BOOST_BUTTON_X, BOOST_BUTTON_Y);
-    [self addChild:m3_];    
+    [self addChild:numBoostsLabel_ z:1];    
 }
+
+- (void) addCatButton
+{
+    Button *button = [ImageButton imageButton:kCatButton unselectedImage:@"cat_button.png" selectedImage:@"cat_button_pressed.png"];
+    button.position = CGPointMake(HUD_CAT_BUTTON_X, HUD_CAT_BUTTON_Y);    
+    button.delegate = self;
+    [buttons_ addObject:button];
+    [self addChild:button];
+}
+
+- (void) addBombButton
+{
+    Button *button = [ImageButton imageButton:kBombButton unselectedImage:@"cat_button_bomb.png" selectedImage:@"cat_button_bomb_pressed.png"];
+    button.position = CGPointMake(HUD_BOMB_BUTTON_X, HUD_BOMB_BUTTON_Y);
+    button.delegate = self;    
+    [buttons_ addObject:button];
+    [self addChild:button];    
+}
+
+- (void) addSlowButton
+{
+    Button *button = [ImageButton imageButton:kSlowButton unselectedImage:@"slow_button.png" selectedImage:@"slow_button_pressed.png"];
+    button.position = CGPointMake(HUD_SLOW_BUTTON_X, HUD_SLOW_BUTTON_Y);
+    button.delegate = self;    
+    [buttons_ addObject:button];
+    [self addChild:button];    
+}
+
+- (void) addBoostButton
+{
+    Button *button = [ImageButton imageButton:kBoostButton unselectedImage:@"boost_button.png" selectedImage:@"boost_button_pressed.png"];
+    button.position = CGPointMake(HUD_BOOST_BUTTON_X, HUD_BOOST_BUTTON_Y);
+    button.delegate = self;    
+    [buttons_ addObject:button];
+    [self addChild:button];    
+}
+
+#pragma mark - Pause / Resume
 
 - (void) pause
 {
-    m1_.isTouchEnabled = NO;
-    m2_.isTouchEnabled = NO;
-    m3_.isTouchEnabled = NO;    
+    for (Button *button in buttons_) {
+        [button clickable:NO];
+    }    
 }
 
 - (void) resume
 {
-    m1_.isTouchEnabled = YES;
-    m2_.isTouchEnabled = YES;
-    m3_.isTouchEnabled = YES;    
+    for (Button *button in buttons_) {
+        [button clickable:YES];        
+    }    
 }
 
-- (void) displayDirectional:(GameLayer *)gameLayer
+- (void) onEnter
 {
-    /*
-    PButton *leftButton = [PButton pButton:@"Icon-Small.png" toggledImage:@"Icon.png" buttonType:kLeftButton withDelegate:gameLayer];
-    PButton *rightButton = [PButton pButton:@"Icon-Small.png" toggledImage:@"Icon.png" buttonType:kRightButton withDelegate:gameLayer];   
-    
-    leftButton.position = CGPointMake(50, 100);
-    rightButton.position = CGPointMake(270, 100);
-    
-    [self addChild:leftButton];
-    [self addChild:rightButton];
-     */
+	[[CCTouchDispatcher sharedDispatcher] addTargetedDelegate:self priority:5 swallowsTouches:YES];
+	[super onEnter];
 }
+
+- (void) onExit
+{
+	[[CCTouchDispatcher sharedDispatcher] removeDelegate:self];
+	[super onExit];
+}
+
+- (BOOL) ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
+    return YES;
+}
+
+- (void) ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event
+{
+    [delegate_ screenClicked];
+}
+
+#pragma mark - Label Setters
 
 - (void) setNumCats01:(NSUInteger)val
 {

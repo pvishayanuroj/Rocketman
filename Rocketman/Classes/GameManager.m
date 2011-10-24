@@ -16,6 +16,7 @@
 #import "Obstacle.h"
 #import "Notification.h"
 #import "ObjectHeaders.h"
+#import "Button.h"
 
 // For singleton
 static GameManager *_gameManager = nil;
@@ -95,6 +96,7 @@ static GameManager *_gameManager = nil;
 {
 	NSAssert(hudLayer_ == nil, @"Trying to register a HUD Layer when one already exists");
 	hudLayer_ = [hudLayer retain];
+    hudLayer_.delegate = self;
 }
 
 - (void) registerPauseLayer:(PauseLayer *)pauseLayer
@@ -131,6 +133,34 @@ static GameManager *_gameManager = nil;
 - (void) obstacleAdded:(Obstacle *)obstacle
 {
     [notification_ obstacleAdded:obstacle];
+}
+
+- (void) catButtonPressed:(Button *)button
+{
+    [notification_ buttonClicked:button];
+    [gameLayer_ fireCat01];
+}
+
+- (void) bombButtonPressed:(Button *)button
+{
+    [notification_ buttonClicked:button];    
+    [gameLayer_ fireCat02];    
+}
+
+- (void) slowButtonPressed:(Button *)button
+{
+    [notification_ buttonClicked:button];    
+}
+
+- (void) boostButtonPressed:(Button *)button
+{
+    [notification_ buttonClicked:button];    
+    [gameLayer_ useBoost];
+}
+
+- (void) screenClicked
+{  
+    [notification_ screenClicked];
 }
 
 #pragma mark - Game Layer Methods
@@ -225,6 +255,16 @@ static GameManager *_gameManager = nil;
     [hudLayer_ resume];
     [hudLayer_ resumeHierarchy];
     [gameLayer_ resumeHierarchy];    
+}
+
+- (void) notificationPause
+{
+    [gameLayer_ pauseHierarchy];
+}
+
+- (void) notificationResume
+{
+    [gameLayer_ resumeHierarchy];
 }
 
 #pragma mark - Reset Methods

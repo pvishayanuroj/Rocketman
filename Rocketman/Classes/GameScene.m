@@ -16,8 +16,6 @@
 
 @implementation GameScene
 
-@synthesize catBombEnabled_;
-
 + (id) stage:(NSUInteger)levelNum
 {
     return [[[self alloc] initStage:levelNum] autorelease];
@@ -35,15 +33,10 @@
         HUDLayer *hudLayer = [HUDLayer node];
         [self addChild:hudLayer z:1];
         
-        // DEBUG.
-        // When the stage plist is implemented, it should be set
-        // using the plist variable.
-        catBombEnabled_ = YES;
-        
-        [hudLayer displayControls:gameLayer];
-#if DEBUG_MOVEBUTTONS
-        [hudLayer displayDirectional:gameLayer];
-#endif
+        [hudLayer addCatButton];
+        [hudLayer addBombButton];        
+        [hudLayer addSlowButton];
+        [hudLayer addBoostButton];
         
         DialogueLayer *dialogueLayer = [DialogueLayer node];
         [self addChild:dialogueLayer z:2];

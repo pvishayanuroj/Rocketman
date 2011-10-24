@@ -22,6 +22,16 @@ const CGFloat FS_ARROW_MOVE_AMT = 40.0f;
 const CGFloat FS_ARROW_MOVEDOWN_SPEED = 0.3f;
 const CGFloat FS_ARROW_MOVEUP_SPEED = 0.3f;
 const CGFloat FS_ARROW_MOVE_DELAY = 0.05f;
+/*
+const CGFloat HUD_CAT_BUTTON_X = 45.0f;
+const CGFloat HUD_CAT_BUTTON_Y = 57.0f;
+const CGFloat HUD_BOMB_BUTTON_X = 125.0f;
+const CGFloat HUD_BOMB_BUTTON_Y = 30.0f;
+const CGFloat HUD_SLOW_BUTTON_X = 200.0f;
+const CGFloat HUD_SLOW_BUTTON_Y = 32.0f;
+const CGFloat HUD_BOOST_BUTTON_X = 268.0f;
+const CGFloat HUD_BOOST_BUTTON_Y = 32.0f;
+ */
 
 #pragma mark - Object Lifecycle
 
@@ -97,13 +107,16 @@ const CGFloat FS_ARROW_MOVE_DELAY = 0.05f;
     CGPoint point;
     
     if ([element isEqualToString:@"Boost Button"]) {
-        point = CGPointMake(BOOST_BUTTON_X, BOOST_BUTTON_Y);        
+        point = CGPointMake(HUD_BOOST_BUTTON_X, HUD_BOOST_BUTTON_Y);        
     }
-    else if ([element isEqualToString:@"Cat 1 Button"]) {
-        point = CGPointMake(CAT_BUTTON1_X, CAT_BUTTON1_Y);        
+    else if ([element isEqualToString:@"Cat Button"]) {
+        point = CGPointMake(HUD_CAT_BUTTON_X, HUD_CAT_BUTTON_Y);        
     }
-    else if ([element isEqualToString:@"Cat 2 Button"]) {
-        point = CGPointMake(CAT_BUTTON2_X, CAT_BUTTON2_Y);
+    else if ([element isEqualToString:@"Bomb Button"]) {
+        point = CGPointMake(HUD_BOMB_BUTTON_X, HUD_BOMB_BUTTON_Y);
+    }    
+    else if ([element isEqualToString:@"Slow Button"]) {
+        point = CGPointMake(HUD_SLOW_BUTTON_X, HUD_SLOW_BUTTON_Y);
     }    
     
     point.y += FS_ARROW_YOFFSET;

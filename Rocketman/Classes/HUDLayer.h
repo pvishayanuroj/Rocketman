@@ -8,10 +8,19 @@
 
 #import "CommonHeaders.h"
 #import "cocos2d.h"
+#import "ButtonDelegate.h"
+#import "HUDDelegate.h"
+
+enum {
+    kCatButton,
+    kBombButton,
+    kSlowButton,
+    kBoostButton
+};
 
 @class GameLayer;
 
-@interface HUDLayer : CCLayer {
+@interface HUDLayer : CCLayer <ButtonDelegate> {
  
     NSInteger screenHeight_;
 
@@ -27,22 +36,26 @@
     
     CCLabelBMFont *numBoostsLabel_;        
     
-    CCMenu *m1_;
+    NSMutableArray *buttons_;
     
-    CCMenu *m2_;
-    
-    CCMenu *m3_;
+    id <HUDDelegate> delegate_;
 }
 
+@property (nonatomic, assign) id <HUDDelegate> delegate;
+
 - (void) addLabels;
-
-- (void) displayControls:(GameLayer *)gameLayer;
-
-- (void) displayDirectional:(GameLayer *)gameLayer;
 
 - (void) pause;
 
 - (void) resume;
+
+- (void) addCatButton;
+
+- (void) addBombButton;
+
+- (void) addSlowButton;
+
+- (void) addBoostButton;
 
 - (void) setNumCats01:(NSUInteger)val;
 

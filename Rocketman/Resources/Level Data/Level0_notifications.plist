@@ -15,7 +15,9 @@
 			</dict>
 			<dict>
 				<key>Focus</key>
-				<string>Boost Button</string>
+				<array>
+					<string>Boost Button</string>
+				</array>
 				<key>Banner</key>
 				<string>Tap Booster Banner</string>
 			</dict>
@@ -28,7 +30,9 @@
 		<array>
 			<dict>
 				<key>Focus</key>
-				<string>Trigger</string>
+				<array>
+					<string>Trigger</string>
+				</array>
 				<key>Banner</key>
 				<string>Tilt Banner</string>
 			</dict>
@@ -41,7 +45,9 @@
 		<array>
 			<dict>
 				<key>Focus</key>
-				<string>Trigger</string>
+				<array>
+					<string>Trigger</string>
+				</array>
 				<key>Banner</key>
 				<string>Collect Ammo Banner</string>
 			</dict>
@@ -54,7 +60,10 @@
 		<array>
 			<dict>
 				<key>Focus</key>
-				<string>Trigger</string>
+				<array>
+					<string>Cat Button</string>
+					<string>Trigger</string>
+				</array>
 				<key>Banner</key>
 				<string>Tap Cat Banner</string>
 			</dict>
@@ -67,7 +76,9 @@
 		<array>
 			<dict>
 				<key>Focus</key>
-				<string>Trigger</string>
+				<array>
+					<string>Trigger</string>
+				</array>
 				<key>Banner</key>
 				<string>Ring Banner</string>
 			</dict>
@@ -80,7 +91,9 @@
 		<array>
 			<dict>
 				<key>Focus</key>
-				<string>Trigger</string>
+				<array>
+					<string>Trigger</string>
+				</array>
 				<key>Banner</key>
 				<string>Collect Fuel Banner</string>
 			</dict>
@@ -93,7 +106,9 @@
 		<array>
 			<dict>
 				<key>Focus</key>
-				<string>Trigger</string>
+				<array>
+					<string>Trigger</string>
+				</array>
 				<key>Banner</key>
 				<string>Combo Banner</string>
 			</dict>
@@ -110,7 +125,10 @@
 		<array>
 			<dict>
 				<key>Focus</key>
-				<string>Trigger</string>
+				<array>
+					<string>Trigger</string>
+					<string>Bomb Button</string>
+				</array>
 				<key>Banner</key>
 				<string>Tap Bomb Banner</string>
 			</dict>
@@ -123,7 +141,9 @@
 		<array>
 			<dict>
 				<key>Focus</key>
-				<string>Trigger</string>
+				<array>
+					<string>Trigger</string>
+				</array>
 				<key>Banner</key>
 				<string>Boss Banner</string>
 			</dict>

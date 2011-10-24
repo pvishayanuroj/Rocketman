@@ -9,6 +9,7 @@
 #import "CommonHeaders.h"
 #import "cocos2d.h"
 #import "GameLayerDelegate.h"
+#import "HUDDelegate.h"
 
 @class GameLayer;
 @class HUDLayer;
@@ -23,7 +24,7 @@
  * Holds references to all layers being shown during gameplay
  * and acts as an interface between them.
  */
-@interface GameManager : CCNode <GameLayerDelegate> {
+@interface GameManager : CCNode <GameLayerDelegate, HUDDelegate> {
  
     GameLayer *gameLayer_;
     
@@ -38,6 +39,7 @@
     Notification *notification_;
 }
 
+/** Returns the reference to the game manager singleton */
 + (GameManager *) gameManager;
 
 + (void) purgeGameManager;
@@ -72,12 +74,13 @@
 
 - (Rocket *) getRocket;
 
+/** Sets up the notifications object for this level */
 - (void) initNotifications:(NSUInteger)levelNum;
 
-/** Full game pause */
+/** Full game pause except pause layer */
 - (void) pause;
 
-/** Full game resume */
+/** Full game resume counterpart of pause */
 - (void) resume;
 
 /** 
@@ -88,6 +91,12 @@
 
 /** Resume gameplay counterpart of dialogue pause */
 - (void) dialogueResume;
+
+/** Pauses gameplay but leaves buttons and screen touches active */
+- (void) notificationPause;
+
+/** Resume gameplay counterpart of notification pause */
+- (void) notificationResume;
 
 /** Method to reset all the static counters of all obstacles */
 - (void) resetCounters;

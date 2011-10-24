@@ -110,7 +110,7 @@ const CGFloat BN_MOVE_DUR = 0.5f;
 	if ([self containsTouchLocation:touch])
 		return YES;
     
-	return YES;
+	return NO;
 }
 
 - (void) ccTouchMoved:(UITouch *)touch withEvent:(UIEvent *)event
