@@ -150,6 +150,7 @@ static GameManager *_gameManager = nil;
 - (void) slowButtonPressed:(Button *)button
 {
     [notification_ buttonClicked:button];    
+    [rocket_ showSlow];
 }
 
 - (void) boostButtonPressed:(Button *)button

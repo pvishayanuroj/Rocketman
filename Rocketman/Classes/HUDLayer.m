@@ -173,6 +173,8 @@
     }    
 }
 
+#pragma mark - Touch Handlers
+
 - (void) onEnter
 {
 	[[CCTouchDispatcher sharedDispatcher] addTargetedDelegate:self priority:5 swallowsTouches:YES];

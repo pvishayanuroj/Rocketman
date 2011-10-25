@@ -23,6 +23,8 @@
     
     CCAction *wobblingAnimation_;
     
+    CCAction *slowAnimation_;    
+    
     CCAction *heartAnimation_;
     
     CCAction *auraAnimation_;    
@@ -57,6 +59,8 @@
 - (void) showShaking;
 
 - (void) showBurning;
+
+- (void) showSlow;
 
 - (void) showHeart;
 

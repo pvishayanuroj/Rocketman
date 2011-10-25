@@ -141,6 +141,10 @@
     animation = [[CCAnimationCache sharedAnimationCache] animationByName:@"Rocket2 Heart"];
 	heartAnimation_ = [[CCAnimate actionWithAnimation:animation] retain];    
     
+    // Slow
+    animation = [[CCAnimationCache sharedAnimationCache] animationByName:@"Rocket2 Slow"];
+    slowAnimation_ = [[CCAnimate actionWithAnimation:animation] retain];
+    
     // Aura
     animation = [[CCAnimationCache sharedAnimationCache] animationByName:@"Aura Flicker"];
     animate = [CCAnimate actionWithAnimation:animation];
@@ -208,6 +212,21 @@
 - (void) doneWobbling
 {
     isWobbling_ = NO;
+    [self showFlying];
+}
+
+- (void) showSlow
+{
+    [sprite_ stopAllActions];
+    
+    TargetedAction *animation = [TargetedAction actionWithTarget:sprite_ actionIn:(CCFiniteTimeAction *)slowAnimation_];
+    CCFiniteTimeAction *method = [CCCallFunc actionWithTarget:self selector:@selector(doneSlow)];
+    CCFiniteTimeAction *waving = [CCRepeat actionWithAction:animation times:3];
+    [self runAction:[CCSequence actions:waving, method, nil]];
+}
+
+- (void) doneSlow
+{
     [self showFlying];
 }
 
