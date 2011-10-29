@@ -9,18 +9,13 @@
 #import "CommonHeaders.h"
 #import "cocos2d.h"
 #import "Structs.h"
+#import "GameObject.h"
 #import "ObstacleDelegate.h"
 
-@interface Obstacle : CCNode {
- 
-    /** The sprite representing this obstacle */
-    CCSprite *sprite_;
+@interface Obstacle : GameObject {
 
     /** The array of boundaries that an obstacle can have */
     NSMutableArray *boundaries_;
-
-    /** The array of movements that an obstacle can have */    
-    NSMutableArray *movements_;
     
     /** 
      * Array of child obstacles that will move with this obstacle. 

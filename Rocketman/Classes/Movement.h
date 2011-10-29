@@ -9,7 +9,7 @@
 #import "CommonHeaders.h"
 #import "cocos2d.h"
 
-@class Obstacle;
+@class GameObject;
 
 @interface Movement : NSObject {
     
@@ -17,6 +17,6 @@
 
 - (id) initMovement;
 
-- (void) move:(CGFloat)speed obstacle:(Obstacle *)obstacle;
+- (void) move:(CGFloat)speed object:(GameObject *)object;
 
 @end

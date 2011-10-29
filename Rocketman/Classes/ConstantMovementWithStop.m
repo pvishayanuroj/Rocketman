@@ -8,6 +8,7 @@
 
 #import "ConstantMovementWithStop.h"
 #import "Obstacle.h"
+#import "GameObject.h"
 
 @implementation ConstantMovementWithStop
 
@@ -33,14 +34,14 @@
     [super dealloc];
 }
 
-- (void) move:(CGFloat)speed obstacle:(Obstacle *)obstacle
+- (void) move:(CGFloat)speed object:(GameObject *)object;
 {
     if (moving_) {
         CGPoint p = CGPointMake(0, rate_);      
         // Going downwards
         if (fallingDown_) {
             // Check if target has been reached
-            if (obstacle.position.y < targetHeight_) {
+            if (object.position.y < targetHeight_) {
                 moving_ = NO;
                 p.y = 0;
             }
@@ -48,13 +49,13 @@
         // Going upwards
         else {
             // Check if target has been reached
-            if (obstacle.position.y > targetHeight_) {
+            if (object.position.y > targetHeight_) {
                 moving_ = NO;
                 p.y = 0;
             }         
         }
         // Actual movement
-        obstacle.position = ccpAdd(obstacle.position, p);                            
+        object.position = ccpAdd(object.position, p);                            
     }
 }
 

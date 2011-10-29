@@ -37,11 +37,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Rocketman/Classes/HUDLayer.m"
-         timestampString = "341116852.265895"
+         timestampString = "341454069.877409"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "60"
-         endingLineNumber = "60"
+         startingLineNumber = "61"
+         endingLineNumber = "61"
          landmarkName = "-buttonClicked:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -51,11 +51,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Rocketman/Classes/HUDLayer.m"
-         timestampString = "341116852.265895"
+         timestampString = "341454069.877409"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "164"
-         endingLineNumber = "164"
+         startingLineNumber = "165"
+         endingLineNumber = "165"
          landmarkName = "-pause"
          landmarkType = "5">
       </FileBreakpoint>
@@ -135,12 +135,40 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Rocketman/Classes/GameLayer.m"
-         timestampString = "341117394.218914"
+         timestampString = "341551191.271603"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "167"
-         endingLineNumber = "167"
+         startingLineNumber = "169"
+         endingLineNumber = "169"
          landmarkName = "-update:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Rocketman/Classes/FlyingRock.m"
+         timestampString = "341286891.708384"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "60"
+         endingLineNumber = "60"
+         landmarkName = "-initWithPos:type:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Rocketman/Classes/GameLayer.m"
+         timestampString = "341552406.697461"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "445"
+         endingLineNumber = "445"
+         landmarkName = "-obstacleGenerator"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

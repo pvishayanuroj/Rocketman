@@ -7,7 +7,7 @@
 //
 
 #import "StaticMovement.h"
-#import "Obstacle.h"
+#import "GameObject.h"
 
 @implementation StaticMovement
 
@@ -36,10 +36,10 @@
     [super dealloc];
 }
 
-- (void) move:(CGFloat)speed obstacle:(Obstacle *)obstacle
+- (void) move:(CGFloat)speed object:(GameObject *)object;
 {
     CGPoint p = CGPointMake(0, -speed * rate_);
-    obstacle.position = ccpAdd(obstacle.position, p);    
+    object.position = ccpAdd(object.position, p);    
 }
 
 @end

@@ -14,6 +14,7 @@
 #import "PointWrapper.h"
 #import "BlastCloud.h"
 #import "StaticMovement.h"
+#import "ArcMovement.h"
 
 @implementation FlyingRock
 
@@ -24,14 +25,14 @@ static NSUInteger countID = 0;
     countID = 0;
 }
 
-+ (id) rockAWithPos:(CGPoint)pos
++ (id) rockWithPos:(CGPoint)pos
 {
-    return [[[self alloc] initWithPos:pos type:@"A"] autorelease];
-}
-
-+ (id) rockBWithPos:(CGPoint)pos
-{
-    return [[[self alloc] initWithPos:pos type:@"B"] autorelease];
+    if (arc4random() % 2) {
+        return [[[self alloc] initWithPos:pos type:@"A"] autorelease];        
+    }
+    else {
+        return [[[self alloc] initWithPos:pos type:@"B"] autorelease];        
+    }
 }
 
 - (id) initWithPos:(CGPoint)pos type:(NSString *)type
@@ -57,7 +58,6 @@ static NSUInteger countID = 0;
      
         // Setup the way this obstacle moves
         [movements_ addObject:[StaticMovement staticMovement]];        
-        
     }
     return self;
 }
@@ -85,6 +85,8 @@ static NSUInteger countID = 0;
     [super showDeath:kPlopText];
     
     [super collide];    
+    
+    [gameLayer addDoodad:kDebrisGen pos:self.position];    
 }
 
 - (void) boundaryHit:(CGPoint)point boundaryID:(NSInteger)boundaryID
@@ -92,9 +94,9 @@ static NSUInteger countID = 0;
     [[AudioManager audioManager] playSound:kPlop];    
     // Account for offset, since pos is in terms of screen grid
     CGPoint p = ccpSub(point, self.position);
-    // Turtle takes no damage on shell hit
+    // Rock takes no damage on shell hit
     BlastCloud *blast = [BlastCloud blastCloudAt:p size:1.0 text:kBamText];
-    [self addChild:blast];  
+    [self addChild:blast];
 }
 
 - (void) death

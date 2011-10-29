@@ -23,7 +23,7 @@
 
 - (id) init
 {
-    if ((self = [super init])) {
+    if ((self = [super initGameObject])) {
         
         delegate_ = nil;
         heightTriggerActive_ = NO;
@@ -40,7 +40,6 @@
         
         destroyed_ = NO;
         boundaries_ = [[NSMutableArray arrayWithCapacity:1] retain];
-        movements_ = [[NSMutableArray arrayWithCapacity:1] retain];
         childObstacles_ = [[NSMutableArray array] retain];
     }
     return self;
@@ -49,7 +48,6 @@
 - (void) dealloc
 {
     [boundaries_ release];    
-    [movements_ release];
     
     [super dealloc];
 }
@@ -83,7 +81,7 @@
     // Go through all chained movements and keep track of the total movement
     CGPoint moveAmt = self.position;
     for (Movement *movement in movements_) {
-        [movement move:speed obstacle:self];
+        [movement move:speed object:self];
     }
     moveAmt = ccpSub(self.position, moveAmt);
     

@@ -16,6 +16,7 @@
 @class Boost;
 @class Fuel;
 @class Obstacle;
+@class Doodad;
 @class CDAudioManager;
 @class CDSoundEngine;
 
@@ -159,6 +160,10 @@
 - (void) addBirdSwarm:(NSInteger)size;
 
 - (void) addTurtlingSwarm:(NSInteger)size;
+
+- (void) addDoodad:(DoodadType)type pos:(CGPoint)pos;
+
+- (void) addDoodad:(Doodad *)doodad;
 
 - (void) addObstacle:(ObstacleType)type pos:(CGPoint)pos;
 

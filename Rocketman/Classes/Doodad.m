@@ -7,26 +7,28 @@
 //
 
 #import "Doodad.h"
+#import "Movement.h"
 
 @implementation Doodad
 
 - (id) init
 {
-    if ((self = [super init])) {
+    if ((self = [super initGameObject])) {
         
     }
     return self;
 }
 
 - (void) dealloc
-{
+{   
     [super dealloc];
 }
 
 - (void) fall:(CGFloat)speed
 {
-    CGPoint p = CGPointMake(0, speed);
-    self.position = ccpSub(self.position, p);    
+    for (Movement *movement in movements_) {
+        [movement move:speed object:self];
+    }        
 }
 
 @end

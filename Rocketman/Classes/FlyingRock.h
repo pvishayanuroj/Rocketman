@@ -14,9 +14,7 @@
     
 }
 
-+ (id) rockAWithPos:(CGPoint)pos;
-
-+ (id) rockBWithPos:(CGPoint)pos;
++ (id) rockWithPos:(CGPoint)pos;
 
 - (id) initWithPos:(CGPoint)pos type:(NSString *)type;
 

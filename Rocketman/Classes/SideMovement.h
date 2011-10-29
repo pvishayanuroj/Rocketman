@@ -11,7 +11,7 @@
 #import "SideMovementDelegate.h"
 
 @class Rocket;
-@class Obstacle;
+@class GameObject;
 
 @interface SideMovement : Movement {
 
@@ -52,7 +52,7 @@
 
 @property (nonatomic, assign) id <SideMovementDelegate> delegate;
 
-+ (id) sideMovement:(Obstacle *)obstacle distance:(CGFloat)distance speed:(CGFloat)speed;
++ (id) sideMovement:(GameObject *)object distance:(CGFloat)distance speed:(CGFloat)speed;
 
 + (id) sideMovement:(CGFloat)leftCutoff rightCutoff:(CGFloat)rightCutoff speed:(CGFloat)speed;
 

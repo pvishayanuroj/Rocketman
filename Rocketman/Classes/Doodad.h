@@ -8,10 +8,11 @@
 
 #import "CommonHeaders.h"
 #import "cocos2d.h"
+#import "GameObject.h"
 
-@interface Doodad : CCNode {
+@interface Doodad : GameObject {
  
-    CCSprite *sprite_;    
+
     
 }
 

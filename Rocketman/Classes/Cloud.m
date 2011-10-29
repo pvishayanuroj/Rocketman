@@ -7,7 +7,7 @@
 //
 
 #import "Cloud.h"
-
+#import "StaticMovement.h"
 
 @implementation Cloud
 
@@ -23,14 +23,15 @@
         NSInteger rand = 1 + arc4random() % 2;
         sprite_ = [[CCSprite spriteWithSpriteFrameName:[NSString stringWithFormat:@"Cloud %02d.png", rand]] retain];
         [self addChild:sprite_];
-        
-        CGFloat rand2 = arc4random() % 10;
-        rand2 *= 0.02;
-        rand2 -= 0.1;
-        sprite_.scale = 1 + rand2;
-        
         self.position = pos;
         
+        CGFloat rand2 = arc4random() % 10;
+        rand2 *= 0.02f;
+        rand2 -= 0.1f;
+        sprite_.scale = 1 + rand2;
+        
+        // Setup the way this obstacle moves
+        [movements_ addObject:[StaticMovement staticMovement]];              
     }
     return self;
 }

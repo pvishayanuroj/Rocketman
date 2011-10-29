@@ -7,7 +7,7 @@
 //
 
 #import "SideMovement.h"
-#import "Obstacle.h"
+#import "GameObject.h"
 #import "GameManager.h"
 #import "Rocket.h"
 
@@ -15,9 +15,9 @@
 
 @synthesize delegate = delegate_;
 
-+ (id) sideMovement:(Obstacle *)obstacle distance:(CGFloat)distance speed:(CGFloat)speed
++ (id) sideMovement:(GameObject *)object distance:(CGFloat)distance speed:(CGFloat)speed
 {
-    CGFloat leftCutoff = obstacle.position.x - distance * 0.5f;
+    CGFloat leftCutoff = object.position.x - distance * 0.5f;
     CGFloat rightCutoff = leftCutoff + distance;
     return [[[self alloc] initSideMovement:leftCutoff rightCutoff:rightCutoff speed:speed] autorelease];
 }
@@ -54,13 +54,13 @@
     [super dealloc];
 }
 
-- (void) move:(CGFloat)speed obstacle:(Obstacle *)obstacle
+- (void) move:(CGFloat)speed object:(GameObject *)object;
 {
     CGFloat dx;
     
     if (movingLeft_) {
         // Check if we got to the turnaround point to move right again
-        if (obstacle.position.x < leftCutoff_) {
+        if (object.position.x < leftCutoff_) {
             // Reset flags
             movingLeft_ = NO;
             proximityTriggered_ = NO;
@@ -78,7 +78,7 @@
     }
     else {
         // Check if we got to the turnaround point to move left
-        if (obstacle.position.x > rightCutoff_) {
+        if (object.position.x > rightCutoff_) {
             movingLeft_ = YES;
             proximityTriggered_ = NO;            
             
@@ -95,12 +95,12 @@
     }    
     
     CGPoint p = CGPointMake(dx, 0);     
-    obstacle.position = ccpAdd(obstacle.position, p);    
+    object.position = ccpAdd(object.position, p);    
     
     // Check for proximity triggering
     if (proximityTriggerOn_) {
         if (!proximityTriggered_) {
-            CGFloat distance = rocket_.position.x - obstacle.position.x;
+            CGFloat distance = rocket_.position.x - object.position.x;
             if (fabs(distance) < proximityDistance_) {
                 proximityTriggered_ = YES;
                 // Alert the delegate (if any) of the proximity trigger firing

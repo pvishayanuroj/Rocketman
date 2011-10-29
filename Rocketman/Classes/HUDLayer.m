@@ -11,6 +11,7 @@
 #import "GameScene.h"
 #import "Button.h"
 #import "GameManager.h"
+#import "Pair.h"
 
 @implementation HUDLayer
 
@@ -227,5 +228,62 @@
 {
     [tiltLabel_ setString:[NSString stringWithFormat:@"%1.3f", val]];    
 }
+
+#if DEBUG_SHOWTESTCURVES
+
+- (void) draw
+{
+    glLineWidth(3.0f);    
+    ccColor3B colors[5];
+    colors[0] = ccRED;
+    colors[1] = ccBLUE;
+    colors[2] = ccYELLOW;
+    colors[3] = ccGREEN;
+    colors[4] = ccMAGENTA;    
+    CGPoint origin = CGPointMake(160, 300);
+    NSMutableArray *c1 = [NSMutableArray arrayWithCapacity:10];
+    NSMutableArray *c2 = [NSMutableArray arrayWithCapacity:10];
+    NSMutableArray *end = [NSMutableArray arrayWithCapacity:10];    
+    // Arc 1
+    [c1 addObject:[Pair pair:15 second:-20]];
+    [c2 addObject:[Pair pair:10 second:-40]];
+    [end addObject:[Pair pair:10 second:-300]];    
+    // Arc 2
+    [c1 addObject:[Pair pair:30 second:0]];
+    [c2 addObject:[Pair pair:45 second:-20]];
+    [end addObject:[Pair pair:50 second:-300]];    
+    // Arc 3
+    [c1 addObject:[Pair pair:40 second:20]];
+    [c2 addObject:[Pair pair:70 second:4]];
+    [end addObject:[Pair pair:100 second:-300]];    
+    // Arc 4
+    [c1 addObject:[Pair pair:40 second:40]];
+    [c2 addObject:[Pair pair:90 second:20]];
+    [end addObject:[Pair pair:150 second:-250]];    
+    // Arc 5
+    [c1 addObject:[Pair pair:60 second:100]];
+    [c2 addObject:[Pair pair:150 second:50]];
+    [end addObject:[Pair pair:200 second:-150]];        
+    
+    for (int i = 0; i < [c1 count]; i++) {
+   
+        glColor4f(colors[i].r, colors[i].g, colors[i].b, 1.0);              
+        Pair *c1p = [c1 objectAtIndex:i];
+        Pair *c2p = [c2 objectAtIndex:i];
+        Pair *endp = [end objectAtIndex:i];       
+        CGPoint control1 = CGPointMake(c1p.x, c1p.y);
+        CGPoint control2 = CGPointMake(c2p.x, c2p.y);
+        CGPoint endpoint = CGPointMake(endp.x, endp.y);   
+        control1 = ccpAdd(origin, control1);
+        control2 = ccpAdd(origin, control2);
+        endpoint = ccpAdd(origin, endpoint);        
+        ccDrawCubicBezier(origin, control1, control2, endpoint, 128);  
+        ccDrawCircle(control1, 3, 360, 64, NO);        
+        ccDrawCircle(control2, 3, 360, 64, NO);        
+    }
+
+}
+
+#endif
 
 @end

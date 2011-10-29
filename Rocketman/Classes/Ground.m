@@ -7,7 +7,7 @@
 //
 
 #import "Ground.h"
-
+#import "StaticMovement.h"
 
 @implementation Ground
 
@@ -26,6 +26,7 @@
         sprite_.anchorPoint = CGPointZero;
         self.position = pos;
         
+        [movements_ addObject:[StaticMovement staticMovement]];
     }
     return self;
 }

@@ -7,9 +7,9 @@
 //
 
 #import "CommonHeaders.h"
-#import "Cloud.h"
+#import "Doodad.h"
 
-@interface SlowCloud : Cloud {
+@interface SlowCloud : Doodad {
     
     
 }

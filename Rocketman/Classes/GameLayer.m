@@ -17,8 +17,10 @@
 #import "Doodad.h"
 #import "Parallax.h"
 #import "Ground.h"
+#import "RockDebris.h"
 #import "Cloud.h"
 #import "SlowCloud.h"
+#import "DebrisGenerator.h"
 #import "SwarmGenerator.h"
 #import "CatBullet.h"
 #import "BlastCloud.h"
@@ -414,10 +416,7 @@
         NSInteger yCoord = screenHeight_ + arc4random() % screenHeight_;
         
         CGPoint pos = CGPointMake(xCoord, screenHeight_ + yCoord);        
-        Doodad *doodad = [Cloud cloudWithPos:pos];
-        
-        [self addChild:doodad z:kCloudDepth];   
-        [doodads_ addObject:doodad];        
+        [self addDoodad:kCloud pos:pos];
     }
     
     if (height_ > nextSlowCloudHeight_) {
@@ -427,10 +426,7 @@
         NSInteger yCoord = screenHeight_ + arc4random() % screenHeight_;
         
         CGPoint pos = CGPointMake(xCoord, screenHeight_ + yCoord);        
-        Doodad *doodad = [SlowCloud slowCloudWithPos:pos];
-        
-        [self addChild:doodad z:kCloudDepth];   
-        [doodads_ addObject:doodad];        
+        [self addDoodad:kSlowCloud pos:pos];
     }    
 }
 
@@ -442,6 +438,8 @@
         NSString *datakey = [objectDataKeys_ objectAtIndex:dataKeyIndex_];
         NSDictionary *rowData = [objectData_ objectForKey:datakey];
         dataKeyIndex_++;
+        
+        //NSLog(@"Height trigger: %@", datakey);
         
         // For all objects that are to be added in this row
         for (NSString *col in rowData) {
@@ -543,6 +541,39 @@
     [SwarmGenerator addVerticalSwarm:size gameLayer:self type:kTurtling];
 }
 
+- (void) addDoodad:(DoodadType)type pos:(CGPoint)pos
+{
+    NSInteger z = kCloudDepth;
+    Doodad *doodad;
+    BOOL add = YES;
+    
+    switch (type) {
+        case kSlowCloud:
+            doodad = [SlowCloud slowCloudWithPos:pos];
+            break;
+        case kCloud:
+            doodad = [Cloud cloudWithPos:pos];            
+            break;
+        case kDebrisGen:
+            add = NO;
+            [DebrisGenerator addDebris:self type:kRockDebris pos:pos];
+            break;
+        default:
+            NSLog(@"Invalid obstacle number");            
+            break;
+    }
+    
+    if (add) {
+        [self addDoodad:doodad];         
+    }
+}
+
+- (void) addDoodad:(Doodad *)doodad
+{
+    [self addChild:doodad z:kCloudDepth];   
+    [doodads_ addObject:doodad];   
+}
+
 - (void) addObstacle:(ObstacleType)type pos:(CGPoint)pos
 {
     Obstacle *obstacle;
@@ -604,19 +635,15 @@
         case kPlasmaBall:
             obstacle = [PlasmaBall plasmaBallWithPos:pos];
             break;
-            /*
-        case kFlyingRockA:
-            obstacle = [FlyingRock rockAWithPos:pos];
+        case kFlyingRock:
+            obstacle = [FlyingRock rockWithPos:pos];
             break;
-        case kFlyingRockB:
-            obstacle = [FlyingRock rockBWithPos:pos];
-            break;
-             */
         case kDummyBoss:
             obstacle = [DummyBoss dummyBossWithPos:pos];
             break;
         default:
             add = NO;
+            NSLog(@"Invalid obstacle number");
             //NSAssert(NO, @"Invalid obstacle number selected");
             break;
     }

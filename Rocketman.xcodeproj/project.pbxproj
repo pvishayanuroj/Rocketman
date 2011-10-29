@@ -19,6 +19,10 @@
 		DA5037B51453ACCA00600DD4 /* DummyBoss.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5037B41453ACC900600DD4 /* DummyBoss.m */; };
 		DA5037B71454437D00600DD4 /* Level2_data.plist in Resources */ = {isa = PBXBuildFile; fileRef = DA5037B61454437D00600DD4 /* Level2_data.plist */; };
 		DA5037BD1454CF9600600DD4 /* Button.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5037BB1454CF8F00600DD4 /* Button.m */; };
+		DA69016814579CA0000D278F /* ArcMovement.m in Sources */ = {isa = PBXBuildFile; fileRef = DA69016714579CA0000D278F /* ArcMovement.m */; };
+		DA69016C145A49AF000D278F /* RockDebris.m in Sources */ = {isa = PBXBuildFile; fileRef = DA69016B145A49AF000D278F /* RockDebris.m */; };
+		DA69016F145B9EB6000D278F /* DebrisGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = DA69016E145B9EB6000D278F /* DebrisGenerator.m */; };
+		DA690172145BA087000D278F /* GameObject.m in Sources */ = {isa = PBXBuildFile; fileRef = DA690171145BA086000D278F /* GameObject.m */; };
 		DAF43E53144B085400943C0D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAF43E52144B085400943C0D /* QuartzCore.framework */; };
 		DAF43E55144B085400943C0D /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAF43E54144B085400943C0D /* OpenGLES.framework */; };
 		DAF43E57144B085400943C0D /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAF43E56144B085400943C0D /* OpenAL.framework */; };
@@ -246,7 +250,6 @@
 		DAF44459144B08DE00943C0D /* AlienHoverTurtle.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF443BB144B08C100943C0D /* AlienHoverTurtle.m */; };
 		DAF4445A144B08DE00943C0D /* Angel.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF443BD144B08C100943C0D /* Angel.m */; };
 		DAF4445B144B08DE00943C0D /* AnimatedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF443BF144B08C100943C0D /* AnimatedButton.m */; };
-		DAF4445C144B08DE00943C0D /* ArcMovement.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF443C1144B08C200943C0D /* ArcMovement.m */; };
 		DAF4445D144B08DE00943C0D /* AudioManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF443C3144B08C200943C0D /* AudioManager.m */; };
 		DAF4445E144B08DE00943C0D /* Banner.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF443C5144B08C200943C0D /* Banner.m */; };
 		DAF4445F144B08DE00943C0D /* BigExplosion.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF443C8144B08C300943C0D /* BigExplosion.m */; };
@@ -337,6 +340,14 @@
 		DA5037BB1454CF8F00600DD4 /* Button.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Button.m; path = Classes/Button.m; sourceTree = "<group>"; };
 		DA5037BC1454CF9100600DD4 /* ButtonDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ButtonDelegate.h; path = Classes/ButtonDelegate.h; sourceTree = "<group>"; };
 		DA5037BE1454CFFD00600DD4 /* Clickable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Clickable.h; path = Classes/Clickable.h; sourceTree = "<group>"; };
+		DA69016614579CA0000D278F /* ArcMovement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ArcMovement.h; path = Classes/ArcMovement.h; sourceTree = "<group>"; };
+		DA69016714579CA0000D278F /* ArcMovement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ArcMovement.m; path = Classes/ArcMovement.m; sourceTree = "<group>"; };
+		DA69016A145A49AF000D278F /* RockDebris.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RockDebris.h; path = Classes/RockDebris.h; sourceTree = "<group>"; };
+		DA69016B145A49AF000D278F /* RockDebris.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RockDebris.m; path = Classes/RockDebris.m; sourceTree = "<group>"; };
+		DA69016D145B9EB5000D278F /* DebrisGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DebrisGenerator.h; path = Classes/DebrisGenerator.h; sourceTree = "<group>"; };
+		DA69016E145B9EB6000D278F /* DebrisGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DebrisGenerator.m; path = Classes/DebrisGenerator.m; sourceTree = "<group>"; };
+		DA690170145BA086000D278F /* GameObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameObject.h; path = Classes/GameObject.h; sourceTree = "<group>"; };
+		DA690171145BA086000D278F /* GameObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameObject.m; path = Classes/GameObject.m; sourceTree = "<group>"; };
 		DAF43E4E144B085400943C0D /* Rocketman.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rocketman.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAF43E52144B085400943C0D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		DAF43E54144B085400943C0D /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -687,8 +698,6 @@
 		DAF443BD144B08C100943C0D /* Angel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Angel.m; path = Classes/Angel.m; sourceTree = "<group>"; };
 		DAF443BE144B08C100943C0D /* AnimatedButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AnimatedButton.h; path = Classes/AnimatedButton.h; sourceTree = "<group>"; };
 		DAF443BF144B08C100943C0D /* AnimatedButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AnimatedButton.m; path = Classes/AnimatedButton.m; sourceTree = "<group>"; };
-		DAF443C0144B08C200943C0D /* ArcMovement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ArcMovement.h; path = Classes/ArcMovement.h; sourceTree = "<group>"; };
-		DAF443C1144B08C200943C0D /* ArcMovement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ArcMovement.m; path = Classes/ArcMovement.m; sourceTree = "<group>"; };
 		DAF443C2144B08C200943C0D /* AudioManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioManager.h; path = Classes/AudioManager.h; sourceTree = "<group>"; };
 		DAF443C3144B08C200943C0D /* AudioManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AudioManager.m; path = Classes/AudioManager.m; sourceTree = "<group>"; };
 		DAF443C4144B08C200943C0D /* Banner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Banner.h; path = Classes/Banner.h; sourceTree = "<group>"; };
@@ -1582,6 +1591,8 @@
 				DAF443D1144B08C400943C0D /* CallFuncWeak.h */,
 				DAF443D2144B08C400943C0D /* CallFuncWeak.m */,
 				DAF443DD144B08C600943C0D /* CommonHeaders.h */,
+				DA690170145BA086000D278F /* GameObject.h */,
+				DA690171145BA086000D278F /* GameObject.m */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -1601,20 +1612,24 @@
 		DAF444AD144B097A00943C0D /* Doodads */ = {
 			isa = PBXGroup;
 			children = (
+				DAF443EA144B08C800943C0D /* Doodad.h */,
+				DAF443EB144B08C800943C0D /* Doodad.m */,
 				DAF4443D144B08D700943C0D /* SlowCloud.h */,
 				DAF4443E144B08D800943C0D /* SlowCloud.m */,
 				DAF44429144B08D300943C0D /* Parallax.h */,
 				DAF4442A144B08D300943C0D /* Parallax.m */,
 				DAF44404144B08CD00943C0D /* Ground.h */,
 				DAF44405144B08CD00943C0D /* Ground.m */,
-				DAF443EA144B08C800943C0D /* Doodad.h */,
-				DAF443EB144B08C800943C0D /* Doodad.m */,
 				DAF443C7144B08C300943C0D /* BigExplosion.h */,
 				DAF443C8144B08C300943C0D /* BigExplosion.m */,
 				DAF443C9144B08C300943C0D /* BlastCloud.h */,
 				DAF443CA144B08C300943C0D /* BlastCloud.m */,
 				DAF443DB144B08C600943C0D /* Cloud.h */,
 				DAF443DC144B08C600943C0D /* Cloud.m */,
+				DA69016A145A49AF000D278F /* RockDebris.h */,
+				DA69016B145A49AF000D278F /* RockDebris.m */,
+				DA69016D145B9EB5000D278F /* DebrisGenerator.h */,
+				DA69016E145B9EB6000D278F /* DebrisGenerator.m */,
 			);
 			name = Doodads;
 			sourceTree = "<group>";
@@ -1622,6 +1637,8 @@
 		DAF444AE144B099400943C0D /* Movements */ = {
 			isa = PBXGroup;
 			children = (
+				DA69016614579CA0000D278F /* ArcMovement.h */,
+				DA69016714579CA0000D278F /* ArcMovement.m */,
 				DAF4443A144B08D700943C0D /* SideMovement.h */,
 				DAF4443B144B08D700943C0D /* SideMovement.m */,
 				DAF4443C144B08D700943C0D /* SideMovementDelegate.h */,
@@ -1629,8 +1646,6 @@
 				DAF44442144B08D900943C0D /* StaticMovement.m */,
 				DAF4441D144B08D100943C0D /* Movement.h */,
 				DAF4441E144B08D100943C0D /* Movement.m */,
-				DAF443C0144B08C200943C0D /* ArcMovement.h */,
-				DAF443C1144B08C200943C0D /* ArcMovement.m */,
 				DAF443D9144B08C600943C0D /* CircularMovement.h */,
 				DAF443DA144B08C600943C0D /* CircularMovement.m */,
 				DAF443DE144B08C600943C0D /* ConstantMovement.h */,
@@ -1990,7 +2005,6 @@
 				DAF44459144B08DE00943C0D /* AlienHoverTurtle.m in Sources */,
 				DAF4445A144B08DE00943C0D /* Angel.m in Sources */,
 				DAF4445B144B08DE00943C0D /* AnimatedButton.m in Sources */,
-				DAF4445C144B08DE00943C0D /* ArcMovement.m in Sources */,
 				DAF4445D144B08DE00943C0D /* AudioManager.m in Sources */,
 				DAF4445E144B08DE00943C0D /* Banner.m in Sources */,
 				DAF4445F144B08DE00943C0D /* BigExplosion.m in Sources */,
@@ -2062,6 +2076,10 @@
 				DAF444BD144B0DB400943C0D /* Focus.m in Sources */,
 				DA5037B51453ACCA00600DD4 /* DummyBoss.m in Sources */,
 				DA5037BD1454CF9600600DD4 /* Button.m in Sources */,
+				DA69016814579CA0000D278F /* ArcMovement.m in Sources */,
+				DA69016C145A49AF000D278F /* RockDebris.m in Sources */,
+				DA69016F145B9EB6000D278F /* DebrisGenerator.m in Sources */,
+				DA690172145BA087000D278F /* GameObject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

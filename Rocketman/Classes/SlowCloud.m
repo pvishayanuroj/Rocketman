@@ -7,9 +7,11 @@
 //
 
 #import "SlowCloud.h"
-
+#import "StaticMovement.h"
 
 @implementation SlowCloud
+
+const CGFloat SC_MOVEMENT_SPEED = 0.2f;
 
 + (id) slowCloudWithPos:(CGPoint)pos
 {
@@ -18,13 +20,20 @@
 
 - (id) initWithPos:(CGPoint)pos
 {
-	if ((self = [super initWithPos:pos])) {
+	if ((self = [super init])) {
         
-        CGFloat rand = arc4random() % 10;
-        rand *= 0.02;
-        rand -= 0.1;
-        sprite_.scale = 0.3 + rand;
+        NSInteger rand = 1 + arc4random() % 2;
+        sprite_ = [[CCSprite spriteWithSpriteFrameName:[NSString stringWithFormat:@"Cloud %02d.png", rand]] retain];
+        [self addChild:sprite_];        
+        self.position = pos;
         
+        CGFloat rand2 = arc4random() % 10;
+        rand2 *= 0.02;
+        rand2 -= 0.1;
+        sprite_.scale = 0.3 + rand2;
+        
+        // Setup the way this obstacle moves
+        [movements_ addObject:[StaticMovement staticMovement:SC_MOVEMENT_SPEED]];           
     }
     return self;
 }
@@ -32,12 +41,6 @@
 - (void) dealloc
 {
     [super dealloc];
-}
-
-- (void) fall:(CGFloat)speed
-{
-    CGPoint p = CGPointMake(0, speed*0.2);
-    self.position = ccpSub(self.position, p);        
 }
 
 @end

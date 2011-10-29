@@ -7,7 +7,7 @@
 //
 
 #import "ConstantMovement.h"
-#import "Obstacle.h"
+#import "GameObject.h"
 
 @implementation ConstantMovement
 
@@ -36,9 +36,9 @@
     [super dealloc];
 }
 
-- (void) move:(CGFloat)speed obstacle:(Obstacle *)obstacle
+- (void) move:(CGFloat)speed object:(GameObject *)object;
 {
-    obstacle.position = ccpAdd(obstacle.position, rate_);    
+    object.position = ccpAdd(object.position, rate_);    
 }
 
 

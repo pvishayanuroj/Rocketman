@@ -24,7 +24,7 @@
     [super dealloc];
 }
 
-- (void) move:(CGFloat)speed obstacle:(Obstacle *)obstacle
+- (void) move:(CGFloat)speed object:(GameObject *)object;
 {
     NSAssert(NO, @"Move needs to be implemented in the child class");
 }

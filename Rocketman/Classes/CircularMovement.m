@@ -7,7 +7,7 @@
 //
 
 #import "CircularMovement.h"
-#import "Obstacle.h"
+#import "GameObject.h"
 
 @implementation CircularMovement
 
@@ -31,7 +31,7 @@ static const CGFloat TWO_PI = 2 * M_PI;
     return self;
 }
 
-- (void) move:(CGFloat)speed obstacle:(Obstacle *)obstacle
+- (void) move:(CGFloat)speed object:(GameObject *)object;
 {
     time_ += rate_;
     
@@ -39,15 +39,15 @@ static const CGFloat TWO_PI = 2 * M_PI;
         time_ -= TWO_PI;
     }
     
-    CGPoint moved = ccpSub(obstacle.position, previous_);
+    CGPoint moved = ccpSub(object.position, previous_);
     
     origin_ = ccpAdd(origin_, moved);
     
     CGPoint point = [self getPoint];
     
     // Determine the position of the obstacle
-    obstacle.position = ccpAdd(origin_, point);
-    previous_ = obstacle.position;
+    object.position = ccpAdd(origin_, point);
+    previous_ = object.position;
     
 }
 

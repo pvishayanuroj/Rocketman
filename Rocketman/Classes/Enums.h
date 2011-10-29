@@ -86,6 +86,14 @@ typedef enum {
 } ObstacleType;
 
 typedef enum {
+    kCloud,
+    kSlowCloud,
+    kRockDebris,
+    kDebrisGen,
+    kAirplane
+} DoodadType;
+
+typedef enum {
     kRocketBurning,
     kRocketWobbling,
     kRocketHearts

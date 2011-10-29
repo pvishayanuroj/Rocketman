@@ -7,9 +7,11 @@
 //
 
 #import "Parallax.h"
-
+#import "StaticMovement.h"
 
 @implementation Parallax
+
+const CGFloat PARALLAX_MOVE_SPEED = 0.04f;
 
 + (id) parallaxWithFile:(NSString *)filename
 {
@@ -24,6 +26,8 @@
         sprite_.anchorPoint = CGPointZero;
         [self addChild:sprite_];
         
+        // Setup the way this obstacle moves
+        [movements_ addObject:[StaticMovement staticMovement:PARALLAX_MOVE_SPEED]];           
     }
     return self;
 }
@@ -33,12 +37,6 @@
     [sprite_ release];
     
     [super dealloc];
-}
-
-- (void) fall:(CGFloat)speed
-{
-    CGPoint p = CGPointMake(0, speed * 0.04f);
-    self.position = ccpSub(self.position, p);    
 }
 
 @end
