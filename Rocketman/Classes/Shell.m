@@ -8,11 +8,14 @@
 
 #import "Shell.h"
 #import "GameLayer.h"
+#import "GameManager.h"
+#import "Rocket.h"
 #import "AudioManager.h"
 #import "DataManager.h"
 #import "UtilFuncs.h"
 #import "Boundary.h"
 #import "StaticMovement.h"
+#import "ArcMovement.h"
 
 @implementation Shell
 
@@ -81,15 +84,20 @@ static NSUInteger countID = 0;
 
 - (void) boundaryCollide:(NSInteger)boundaryID
 {
-    sprite_.visible = NO;    
+    if ([[[GameManager gameManager] rocket] isInvincible]) {
     
-    GameLayer *gameLayer = (GameLayer *)[self parent];
-    [[AudioManager audioManager] playSound:kWerr];                
-    [gameLayer slowDown:0.66];    
-    
-    [super showDeath:kPlopText];
-    
-    [super collide];    
+        [movements_ removeAllObjects];
+        [movements_ addObject:[ArcMovement arcFastRandomMovement:self.position]];
+    }
+    else {
+        sprite_.visible = NO;    
+        
+        GameLayer *gameLayer = (GameLayer *)[self parent];
+        [[AudioManager audioManager] playSound:kWerr];                
+        [gameLayer slowDown:0.66];    
+        
+        [super showDeath:kPlopText];
+    }
 }
 
 - (void) boundaryHit:(CGPoint)point boundaryID:(NSInteger)boundaryID

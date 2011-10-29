@@ -9,7 +9,21 @@
 #import "CommonHeaders.h"
 #import "cocos2d.h"
 
+/** Rocket states */
+typedef enum {
+    kIdle,
+    kShaking,
+    kBoosting,
+    kBurning,
+    kWobbling,
+    kHeart,
+    kSlow
+    
+} RocketState;
+
 @interface Rocket : CCNode {
+    
+    RocketState rocketState_;
     
     CCSprite *sprite_;
  
@@ -29,11 +43,7 @@
     
     CCAction *auraAnimation_;    
     
-    BOOL isBurning_;
-    
-    BOOL isWobbling_;
-    
-    BOOL isHeart_;
+    BOOL isInvincible_;
     
     CGRect rect_;
     
@@ -45,6 +55,8 @@
 }
 
 @property (nonatomic, readonly) CGRect rect;
+@property (nonatomic, readonly) BOOL isInvincible;
+@property (nonatomic, readonly) RocketState rocketState;
 
 + (id) rocketWithPos:(CGPoint)pos;
 
@@ -70,11 +82,7 @@
 
 - (void) doneHeartSequence;
 
-- (void) doneBurning;
-
 - (void) showWobbling;
-
-- (void) doneWobbling;
 
 - (void) toggleBoostOn:(BOOL)on;
 

@@ -50,6 +50,34 @@ const CGFloat ARC5_EY = -150.0f;
 const CGFloat ARC_FAST_SPEED = 1/15.0f;
 const CGFloat ARC_SLOW_SPEED = 1/30.0f;
 
++ (id) arcFastRandomMovement:(CGPoint)start
+{
+    // Randomly pick side
+    ArcSide arcSide = (arc4random() % 2) ? kRightArc : kLeftArc;
+    ArcType arcType;
+    switch (arc4random() % 5) {
+        case 0:
+            arcType = kArc1;
+            break;
+        case 1:
+            arcType = kArc2;
+            break;
+        case 2:
+            arcType = kArc3;
+            break;
+        case 3:
+            arcType = kArc4;
+            break;
+        case 4:
+            arcType = kArc5;
+            break;
+        default:
+            break;
+    }
+    
+    return [[[self alloc] initArcMovement:start arcType:arcType arcSide:arcSide rate:ARC_FAST_SPEED] autorelease];
+}
+
 + (id) arcSlowMovement:(CGPoint)start arcType:(ArcType)arcType arcSide:(ArcSide)arcSide
 {
     return [[[self alloc] initArcMovement:start arcType:arcType arcSide:arcSide rate:ARC_SLOW_SPEED] autorelease];    

@@ -16,6 +16,8 @@
 @implementation Rocket
 
 @synthesize rect = rect_;
+@synthesize isInvincible = isInvincible_;
+@synthesize rocketState = rocketState_;
 
 #pragma mark - Object Lifecycle
 
@@ -37,9 +39,7 @@
 
         self.position = pos;
         
-        isBurning_ = NO;
-        isWobbling_ = NO;
-        isHeart_ = NO;
+        isInvincible_ = NO;
         
         rect_.origin = CGPointZero;
         rect_.size.height = 60;
@@ -155,7 +155,8 @@
 
 - (void) showFlying
 {
-	//[sprite_ stopAllActions];
+    rocketState_ = kIdle;
+	[sprite_ stopAllActions];
 	//[sprite_ runAction:flyingAnimation_];	
 }
 
@@ -177,66 +178,50 @@
                              
 - (void) showBurning
 {
-    if (isBurning_ || isWobbling_) {
+    if (rocketState_ == kBurning || rocketState_ == kWobbling) {
         return;
     }
     
-    isBurning_ = YES;
+    rocketState_ = kBurning;
 	[sprite_ stopAllActions];	
 	
 	TargetedAction *animation = [TargetedAction actionWithTarget:sprite_ actionIn:(CCFiniteTimeAction *)burningAnimation_];
-	CCFiniteTimeAction *method = [CCCallFunc actionWithTarget:self selector:@selector(doneBurning)];	
+	CCFiniteTimeAction *method = [CCCallFunc actionWithTarget:self selector:@selector(showFlying)];	
 	[self runAction:[CCSequence actions:animation, method, nil]];	
-}
-
-- (void) doneBurning
-{
-    isBurning_ = NO;
-    [self showFlying];
 }
 
 - (void) showWobbling
 {
-    if (isWobbling_ || isBurning_) {
+    if (rocketState_ == kWobbling || rocketState_ == kBurning) {
         return;
     }
     
-    isWobbling_ = YES;
+    rocketState_ = kWobbling;
 	[sprite_ stopAllActions];	
 	
 	TargetedAction *animation = [TargetedAction actionWithTarget:sprite_ actionIn:(CCFiniteTimeAction *)wobblingAnimation_];
-	CCFiniteTimeAction *method = [CCCallFunc actionWithTarget:self selector:@selector(doneWobbling)];	
+	CCFiniteTimeAction *method = [CCCallFunc actionWithTarget:self selector:@selector(showFlying)];	
 	[self runAction:[CCSequence actions:animation, method, nil]];	
-}
-
-- (void) doneWobbling
-{
-    isWobbling_ = NO;
-    [self showFlying];
 }
 
 - (void) showSlow
 {
+    rocketState_ = kSlow;
     [sprite_ stopAllActions];
     
     TargetedAction *animation = [TargetedAction actionWithTarget:sprite_ actionIn:(CCFiniteTimeAction *)slowAnimation_];
-    CCFiniteTimeAction *method = [CCCallFunc actionWithTarget:self selector:@selector(doneSlow)];
+    CCFiniteTimeAction *method = [CCCallFunc actionWithTarget:self selector:@selector(showFlying)];
     CCFiniteTimeAction *waving = [CCRepeat actionWithAction:animation times:3];
     [self runAction:[CCSequence actions:waving, method, nil]];
 }
 
-- (void) doneSlow
-{
-    [self showFlying];
-}
-
 - (void) showHeart
 {
-    if (isHeart_) {
+    if (rocketState_ == kHeart) {
         return;
     }
     
-    isHeart_ = YES;
+    rocketState_ = kHeart;
     [sprite_ stopAllActions];
     
 	TargetedAction *animation = [TargetedAction actionWithTarget:sprite_ actionIn:(CCFiniteTimeAction *)heartAnimation_];
@@ -262,7 +247,7 @@
 
 - (void) doneHeartSequence
 {
-    isHeart_ = NO;    
+    rocketState_ = kIdle;   
     
     [sprite_ removeFromParentAndCleanup:YES];
     [sprite_ release];
@@ -274,6 +259,7 @@
 
 - (void) showAuraForDuration:(CGFloat)duration
 {
+    isInvincible_ = YES;
     [aura_ runAction:auraAnimation_];
     
     CCActionInterval *fadeIn = [CCFadeIn actionWithDuration:0.5f];
@@ -296,6 +282,7 @@
 
 - (void) doneAuraFade
 {
+    isInvincible_ = NO;
     [aura_ stopAllActions];
 }
 

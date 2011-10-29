@@ -39,6 +39,8 @@
     Notification *notification_;
 }
 
+@property (nonatomic, readonly) Rocket *rocket;
+
 /** Returns the reference to the game manager singleton */
 + (GameManager *) gameManager;
 

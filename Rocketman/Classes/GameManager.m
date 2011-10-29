@@ -23,6 +23,8 @@ static GameManager *_gameManager = nil;
 
 @implementation GameManager
 
+@synthesize rocket = rocket_;
+
 #pragma mark - Object Lifecycle
 
 + (GameManager *) gameManager

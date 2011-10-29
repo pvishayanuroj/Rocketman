@@ -43,6 +43,8 @@ typedef enum {
     
 }
 
++ (id) arcFastRandomMovement:(CGPoint)start;
+
 + (id) arcSlowMovement:(CGPoint)start arcType:(ArcType)arcType arcSide:(ArcSide)arcSide;
 
 + (id) arcFastMovement:(CGPoint)start arcType:(ArcType)arcType arcSide:(ArcSide)arcSide;
