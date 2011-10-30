@@ -9,7 +9,6 @@
 #import "Shell.h"
 #import "GameLayer.h"
 #import "GameManager.h"
-#import "Rocket.h"
 #import "AudioManager.h"
 #import "DataManager.h"
 #import "UtilFuncs.h"
@@ -84,7 +83,7 @@ static NSUInteger countID = 0;
 
 - (void) boundaryCollide:(NSInteger)boundaryID
 {
-    if ([[[GameManager gameManager] rocket] isInvincible]) {
+    if ([[GameManager gameManager] isRocketInvincible]) {
     
         [movements_ removeAllObjects];
         [movements_ addObject:[ArcMovement arcFastRandomMovement:self.position]];

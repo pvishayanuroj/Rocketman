@@ -11,8 +11,10 @@
 #import "GameLayer.h"
 #import "AudioManager.h"
 #import "DataManager.h"
+#import "GameManager.h"
 #import "Boundary.h"
 #import "StaticMovement.h"
+#import "ArcMovement.h"
 
 @implementation Alien
 
@@ -81,15 +83,19 @@ static NSUInteger countID = 0;
 
 - (void) boundaryCollide:(NSInteger)boundaryID
 {
-    sprite_.visible = NO;    
+    if ([[GameManager gameManager] isRocketInvincible]) {
+        
+        [movements_ removeAllObjects];
+        [movements_ addObject:[ArcMovement arcFastRandomMovement:self.position]];
+    }
+    else {  
+        sprite_.visible = NO;    
     
-    GameLayer *gameLayer = (GameLayer *)[self parent];
-    [[AudioManager audioManager] playSound:kWerr];                
-    [gameLayer slowDown:0.66];       
+        [[GameManager gameManager] rocketCollision];
+        [[AudioManager audioManager] playSound:kWerr];                     
     
-    [super showDeath:kPlopText];
-    
-    [super collide];  
+        [super showDeath:kPlopText];
+    }
 }
 
 - (void) boundaryHit:(CGPoint)point boundaryID:(NSInteger)boundaryID

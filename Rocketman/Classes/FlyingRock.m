@@ -10,6 +10,7 @@
 #import "Boundary.h"
 #import "AudioManager.h"
 #import "DataManager.h"
+#import "GameManager.h"
 #import "GameLayer.h"
 #import "PointWrapper.h"
 #import "BlastCloud.h"
@@ -76,17 +77,17 @@ static NSUInteger countID = 0;
 
 - (void) boundaryCollide:(NSInteger)boundaryID
 {
+    if (![[GameManager gameManager] isRocketInvincible]) {
+        [[GameManager gameManager] rocketCollision];
+        [[AudioManager audioManager] playSound:kWerr];        
+    }
+    
     sprite_.visible = NO;    
     
-    GameLayer *gameLayer = (GameLayer *)[self parent];
     [[AudioManager audioManager] playSound:kWerr];                
-    [gameLayer slowDown:0.66];    
-    
     [super showDeath:kPlopText];
     
-    [super collide];    
-    
-    [gameLayer addDoodad:kDebrisGen pos:self.position];    
+    [[GameManager gameManager] addDoodad:kDebrisGen pos:self.position];    
 }
 
 - (void) boundaryHit:(CGPoint)point boundaryID:(NSInteger)boundaryID

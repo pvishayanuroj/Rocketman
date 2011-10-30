@@ -25,7 +25,7 @@
 	</dict>
 	<dict>
 		<key>Trigger</key>
-		<string>1st Shell</string>
+		<string>1st Turtling</string>
 		<key>Events</key>
 		<array>
 			<dict>
@@ -55,7 +55,7 @@
 	</dict>
 	<dict>
 		<key>Trigger</key>
-		<string>13th Shell</string>
+		<string>13th Turtling</string>
 		<key>Events</key>
 		<array>
 			<dict>
@@ -120,7 +120,7 @@
 	</dict>
 	<dict>
 		<key>Trigger</key>
-		<string>73rd Shell</string>
+		<string>73rd Turtling</string>
 		<key>Events</key>
 		<array>
 			<dict>

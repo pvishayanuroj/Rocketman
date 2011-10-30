@@ -9,8 +9,12 @@
 #import "Turtling.h"
 #import "Boundary.h"
 #import "ConstantMovement.h"
+#import "StaticMovement.h"
+#import "ArcMovement.h"
 #import "GameLayer.h"
 #import "AudioManager.h"
+#import "GameManager.h"
+#import "Rocket.h"
 #import "DataManager.h"
 
 @implementation Turtling
@@ -26,10 +30,15 @@ static NSUInteger countID = 0;
 
 + (id) turtlingWithPos:(CGPoint)pos
 {
-    return [[[self alloc] initWithPos:pos] autorelease];
+    return [[[self alloc] initWithPos:pos type:kNormalTurtling] autorelease];
 }
 
-- (id) initWithPos:(CGPoint)pos
++ (id) swarmTurtlingWithPos:(CGPoint)pos
+{
+    return [[[self alloc] initWithPos:pos type:kSwarmTurtling] autorelease];    
+}
+
+- (id) initWithPos:(CGPoint)pos type:(TurtlingType)type
 {
 	if ((self = [super init])) {
         
@@ -47,12 +56,18 @@ static NSUInteger countID = 0;
         PVCollide collide = defaultPVCollide_;
         collide.radius = 16;
         
-        CGPoint fallRate = CGPointMake(2, -3);
+
         
         // Bounding box setup
         [boundaries_ addObject:[Boundary boundary:self colStruct:collide]];
         
-        [movements_ addObject:[ConstantMovement constantMovement:fallRate]];
+        if (type == kNormalTurtling) {
+            [movements_ addObject:[StaticMovement staticMovement]];
+        }
+        else if (type == kSwarmTurtling) {
+            CGPoint fallRate = CGPointMake(2, -3);            
+            [movements_ addObject:[ConstantMovement constantMovement:fallRate]];            
+        }
         
         [self initActions];
         [self showIdle];        
@@ -85,15 +100,19 @@ static NSUInteger countID = 0;
 
 - (void) boundaryCollide:(NSInteger)boundaryID
 {
-    sprite_.visible = NO;    
-    
-    GameLayer *gameLayer = (GameLayer *)[self parent];
-    [[AudioManager audioManager] playSound:kWerr];                
-    [gameLayer slowDown:0.66];    
-    
-    [super showDeath:kPlopText];
-    
-    [super collide];   
+    if ([[GameManager gameManager] isRocketInvincible]) {
+        
+        [movements_ removeAllObjects];
+        [movements_ addObject:[ArcMovement arcFastRandomMovement:self.position]];
+    }
+    else {    
+        sprite_.visible = NO;    
+        
+        [[GameManager gameManager] rocketCollision];
+        [[AudioManager audioManager] playSound:kWerr];                
+        
+        [super showDeath:kPlopText]; 
+    }
 }
 
 - (void) boundaryHit:(CGPoint)point boundaryID:(NSInteger)boundaryID

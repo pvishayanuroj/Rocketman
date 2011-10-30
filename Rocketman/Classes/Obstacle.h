@@ -68,8 +68,6 @@
 
 - (void) bulletHit;
 
-- (void) collide;
-
 /** Just flags the object to eventually be destroyed */
 - (void) flagToDestroy;
 

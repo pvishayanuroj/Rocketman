@@ -543,7 +543,6 @@
 
 - (void) addDoodad:(DoodadType)type pos:(CGPoint)pos
 {
-    NSInteger z = kCloudDepth;
     Doodad *doodad;
     BOOL add = YES;
     
@@ -601,16 +600,9 @@
         case kAlienHoverTurtle:
             obstacle = [AlienHoverTurtle alienHoverTurtleWithPos:pos];
             break;
-        case kTurtlingSwarm:
-            [self addTurtlingSwarm:8];
-            add = NO;
+        case kShieldedAlienHoverTurtle:
+            obstacle = [AlienHoverTurtle shieldedAlienHoverTurtleWithPos:pos];
             break;
-            /*
-        case kBirdSwarm:
-            [self addBirdSwarm:8];
-            add = NO;
-            break;
-             */
         case kBoost:
             obstacle = [Boost boostWithPos:pos];    
             break;
@@ -626,9 +618,17 @@
         case kTurtling:
             obstacle = [Turtling turtlingWithPos:pos];
             break;
+        case kTurtlingSwarm:
+            [self addTurtlingSwarm:8];
+            add = NO;
+            break;            
         case kYellowBird:
             obstacle = [YellowBird yellowBirdWithPos:pos];
             break;
+        case kYellowBirdSwarm:
+            [self addBirdSwarm:8];
+            add = NO;
+            break;            
         case kShockTurtling:
             obstacle = [ShockTurtling shockTurtlingWithPos:pos];
             break;
@@ -723,23 +723,6 @@
 {
     onGround_ = NO;    
     inputLocked_ = NO;
-}
-
-- (void) setRocketCondition:(RocketCondition)condition
-{
-    switch (condition) {
-        case kRocketBurning:
-            [rocket_ showBurning];
-            break;
-        case kRocketWobbling:
-            [rocket_ showWobbling];
-            break;
-        case kRocketHearts:
-            [rocket_ showHeart];
-            break;
-        default:
-            NSAssert(NO, @"Invalid Rocket Condition");
-    }
 }
 
 - (void) engageBoost:(CGFloat)speedup amt:(CGFloat)amt rate:(CGFloat)rate time:(CGFloat)time

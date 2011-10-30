@@ -111,8 +111,8 @@ static NSUInteger countID = 0;
 
 - (void) startShock
 {
-    GameLayer *gameLayer = (GameLayer *)[self parent];    
-    [gameLayer setRocketCondition:kRocketBurning];    
+    //GameLayer *gameLayer = (GameLayer *)[self parent];    
+    //[gameLayer setRocketCondition:kRocketBurning];    
 }
 
 - (void) boundaryCollide:(NSInteger)boundaryID

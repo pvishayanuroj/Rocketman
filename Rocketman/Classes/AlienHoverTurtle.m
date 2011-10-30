@@ -25,12 +25,19 @@ static NSUInteger countID = 0;
     countID = 0;
 }
 
-+ (id) alienHoverTurtleWithPos:(CGPoint)pos
+#pragma mark - Object Lifecycle
+
++ (id) shieldedAlienHoverTurtleWithPos:(CGPoint)pos
 {
-    return [[[self alloc] initWithPos:pos] autorelease];
+    return [[[self alloc] initWithPos:pos type:kShieldedAlienHoverTurtle] autorelease];
 }
 
-- (id) initWithPos:(CGPoint)pos
++ (id) alienHoverTurtleWithPos:(CGPoint)pos
+{
+    return [[[self alloc] initWithPos:pos type:kAlienHoverTurtle] autorelease];
+}
+
+- (id) initWithPos:(CGPoint)pos type:(ObstacleType)type
 {
 	if ((self = [super init])) {
         
@@ -68,13 +75,14 @@ static NSUInteger countID = 0;
         [movement setProximityTrigger:25.0f];        
         [movements_ addObject:movement];
         
-        int numEggs = 3;
-        for (int i = 0; i < numEggs; i++) {
-            Egg *egg = [Egg redEggWithPos:self.position rate:0.1f radius:40.0f angle:(M_PI * i * (2.0f/numEggs))];
-            [[GameManager gameManager] addObstacle:egg];
-            [childObstacles_ addObject:egg];            
+        if (type == kShieldedAlienHoverTurtle) {
+            int numEggs = 3;
+            for (int i = 0; i < numEggs; i++) {
+                Egg *egg = [Egg redEggWithPos:self.position rate:0.1f radius:40.0f angle:(M_PI * i * (2.0f/numEggs))];
+                [[GameManager gameManager] addObstacle:egg];
+                [childObstacles_ addObject:egg];            
+            }
         }
-
         
         [self initActions];
         [self showIdle];        

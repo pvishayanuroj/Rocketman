@@ -12,6 +12,7 @@
 #import "GameLayer.h"
 #import "AudioManager.h"
 #import "DataManager.h"
+#import "GameManager.h"
 
 @implementation PlasmaBall
 
@@ -91,13 +92,13 @@ static NSUInteger countID = 0;
 
 - (void) boundaryCollide:(NSInteger)boundaryID
 {
+    if (![[GameManager gameManager] isRocketInvincible]) {
+        [[GameManager gameManager] rocketCollision];
+    }
+    
     sprite_.visible = NO;    
-    
-    GameLayer *gameLayer = (GameLayer *)[self parent];
     [[AudioManager audioManager] playSound:kWerr];                
-    [gameLayer slowDown:0.66];    
-    
-    [super collide];    
+      
     [super flagToDestroy];
 }
 

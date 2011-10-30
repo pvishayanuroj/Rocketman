@@ -175,8 +175,6 @@
 
 - (void) takeOffComplete;
 
-- (void) setRocketCondition:(RocketCondition)condition;
-
 - (void) useBoost;
 
 - (void) engageBoost:(CGFloat)speedup amt:(CGFloat)amt rate:(CGFloat)rate time:(CGFloat)time;

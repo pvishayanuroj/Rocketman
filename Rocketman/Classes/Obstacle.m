@@ -102,12 +102,6 @@
     sprite_.visible = NO;
 }
 
-- (void) collide
-{    
-    GameLayer *gameLayer = (GameLayer *)[self parent];
-    [gameLayer setRocketCondition:kRocketWobbling];
-}
-
 - (void) flagToDestroy
 {       
     destroyed_ = YES;

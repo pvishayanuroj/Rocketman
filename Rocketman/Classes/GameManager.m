@@ -178,6 +178,11 @@ static GameManager *_gameManager = nil;
     [gameLayer_ addObstacle:obstacle];
 }
 
+- (void) addDoodad:(DoodadType)type pos:(CGPoint)pos
+{
+    [gameLayer_ addDoodad:type pos:pos];
+}
+
 #pragma mark - HUD Methods
 
 - (void) setNumCats01:(NSUInteger)numCats
@@ -217,6 +222,23 @@ static GameManager *_gameManager = nil;
 - (Rocket *) getRocket
 {
     return rocket_;
+}
+
+- (BOOL) isRocketInvincible
+{
+    return rocket_.isInvincible;
+}
+
+- (void) rocketCollision
+{
+    [gameLayer_ slowDown:0.66f];
+    [rocket_ showWobbling];
+}
+
+- (void) rocketAngelCollide
+{
+    [rocket_ showHeart];
+    [gameLayer_ engageFixedBoost:12 amt:12 rate:0 time:3.0];    
 }
 
 #pragma mark - Notification methods

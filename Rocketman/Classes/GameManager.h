@@ -62,6 +62,9 @@
 /** Method to pass an obstacle to add in the game layer */
 - (void) addObstacle:(Obstacle *)obstacle;
 
+/** Method to tell the game layer to add an doodad */
+- (void) addDoodad:(DoodadType)type pos:(CGPoint)pos;
+
 - (void) setNumCats01:(NSUInteger)numCats;
 
 - (void) setNumCats02:(NSUInteger)numCats;
@@ -75,6 +78,10 @@
 - (void) addToDialogueLayer:(CCNode *)dialogue;
 
 - (Rocket *) getRocket;
+
+- (BOOL) isRocketInvincible;
+
+- (void) rocketCollision;
 
 /** Sets up the notifications object for this level */
 - (void) initNotifications:(NSUInteger)levelNum;

@@ -105,10 +105,6 @@ static NSUInteger countID = 0;
 
 - (void) boundaryCollide:(NSInteger)boundaryID
 {
-    GameLayer *gameLayer = (GameLayer *)[self parent];
-    [gameLayer setRocketCondition:kRocketHearts];
-    [gameLayer engageFixedBoost:12 amt:12 rate:0 time:3.0];
-    
     [self showAttacking];
 }
 

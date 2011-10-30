@@ -85,8 +85,6 @@ static NSUInteger countID = 0;
     GameLayer *gameLayer = (GameLayer *)[self parent];
     [gameLayer collectBoost:self];
     
-    [super collide];
-    
     [super flagToDestroy];
 }
 

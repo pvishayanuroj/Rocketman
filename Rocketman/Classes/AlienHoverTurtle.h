@@ -27,9 +27,11 @@
     CGFloat yTarget_;
 }
 
++ (id) shieldedAlienHoverTurtleWithPos:(CGPoint)pos;
+
 + (id) alienHoverTurtleWithPos:(CGPoint)pos;
 
-- (id) initWithPos:(CGPoint)pos;
+- (id) initWithPos:(CGPoint)pos type:(ObstacleType)type;
 
 - (void) initActions;
 

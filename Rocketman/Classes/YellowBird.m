@@ -14,6 +14,8 @@
 #import "AudioManager.h"
 #import "DataManager.h"
 #import "TargetedAction.h"
+#import "GameManager.h"
+#import "ArcMovement.h"
 
 @implementation YellowBird
 
@@ -22,6 +24,11 @@ static NSUInteger countID = 0;
 + (void) resetID
 {
     countID = 0;
+}
+
++ (id) swarmYellowBirdWithPos:(CGPoint)pos
+{
+    return [[[self alloc] initWithPos:pos] autorelease];
 }
 
 + (id) yellowBirdWithPos:(CGPoint)pos
@@ -103,15 +110,19 @@ static NSUInteger countID = 0;
 
 - (void) boundaryCollide:(NSInteger)boundaryID
 {
-    sprite_.visible = NO;    
-    
-    GameLayer *gameLayer = (GameLayer *)[self parent];
-    [[AudioManager audioManager] playSound:kWerr];                
-    [gameLayer slowDown:0.66];    
-    
-    [super showDeath:kPlopText];
-    
-    [super collide];   
+    if ([[GameManager gameManager] isRocketInvincible]) {
+        
+        [movements_ removeAllObjects];
+        [movements_ addObject:[ArcMovement arcFastRandomMovement:self.position]];
+    }
+    else {  
+        sprite_.visible = NO;    
+        
+        [[GameManager gameManager] rocketCollision];
+        [[AudioManager audioManager] playSound:kWerr];                     
+        
+        [super showDeath:kPlopText];
+    }         
 }
 
 - (void) boundaryHit:(CGPoint)point boundaryID:(NSInteger)boundaryID

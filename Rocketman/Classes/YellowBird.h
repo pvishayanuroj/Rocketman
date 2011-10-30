@@ -16,6 +16,8 @@
     
 }
 
++ (id) swarmYellowBirdWithPos:(CGPoint)pos;
+
 + (id) yellowBirdWithPos:(CGPoint)pos;
 
 - (id) initWithPos:(CGPoint)pos;

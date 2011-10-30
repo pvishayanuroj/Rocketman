@@ -95,8 +95,6 @@ static NSUInteger countID = 0;
     GameLayer *gameLayer = (GameLayer *)[self parent];
     [gameLayer collectCat:self];    
     [self showCollect];
-    
-    [super collide];
 }
 
 - (void) death
