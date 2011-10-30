@@ -770,12 +770,7 @@ static inline float bezierat( float a, float b, float c, float d, ccTime t )
 	[super startWithTarget:aTarget];
 	config.controlPoint_1 = ccpSub(config.controlPoint_1, startPosition);
 	config.controlPoint_2 = ccpSub(config.controlPoint_2, startPosition);
-	config.endPosition = ccpSub(config.endPosition, startPosition);
-    
-    NSLog(@"start: %3.0f, %3.0f", startPosition.x, startPosition.y);
-    NSLog(@"c1: %3.0f, %3.0f", config.controlPoint_1.x, config.controlPoint_1.y);
-    NSLog(@"c2: %3.0f, %3.0f", config.controlPoint_2.x, config.controlPoint_2.y);
-    NSLog(@"end: %3.0f, %3.0f", config.endPosition.x, config.endPosition.y);    
+	config.endPosition = ccpSub(config.endPosition, startPosition);    
 }
 @end
 

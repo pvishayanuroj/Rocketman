@@ -23,6 +23,7 @@ CGFloat ML_ROCKET_ROTATION2 = 170.0f;
 CGFloat ML_ROCKET_ROTATION_SPEED = 0.15f;
 CGFloat ML_ROCKET_ROTATION_DELAY = 0.35f;
 CGFloat ML_ROCKET_SCALE = 0.9f;
+CGFloat ML_ROCKET_SCALE_BIG = 1.0f;
 CGFloat ML_START_XPOS = 160.0f;
 CGFloat ML_START_YPOS = 40.0f;
 CGFloat ML_MENU_XPOS = 280.0f;
@@ -99,6 +100,7 @@ CGFloat ML_TITLE_YPOS = 72.0f;
         levelTitle_.scale = 0.65f;
         [self addChild:levelTitle_];
         
+        [self initActions];
         [self animateRocket];
     }
     return self;    
@@ -110,6 +112,7 @@ CGFloat ML_TITLE_YPOS = 72.0f;
     [levelDescs_ release];
     [buttons_ release];
     [rocket_ release];
+    [rocketAnimation_ release];
     [startButton_ release];
     [levelTitle_ release];
     
@@ -132,8 +135,9 @@ CGFloat ML_TITLE_YPOS = 72.0f;
 
 #pragma mark - Object Manipulation Methods
 
-- (void) animateRocket
+- (void) initActions
 {
+    /*
     CCActionInterval *rot1 = [CCRotateTo actionWithDuration:ML_ROCKET_ROTATION_SPEED angle:ML_ROCKET_ROTATION2];
     CCActionInterval *delay1 = [CCDelayTime actionWithDuration:ML_ROCKET_ROTATION_DELAY];
     CCActionInterval *rot2 = [CCRotateTo actionWithDuration:ML_ROCKET_ROTATION_SPEED angle:ML_ROCKET_ROTATION];    
@@ -141,6 +145,24 @@ CGFloat ML_TITLE_YPOS = 72.0f;
     
     CCAction *rock = [CCRepeatForever actionWithAction:[CCSequence actions:rot1, delay1, rot2, delay2, nil]];
     [rocket_ runAction:rock];
+    */
+    
+    CGFloat duration = 0.05;
+    CGFloat delay = 0.3;
+    CCActionInterval *grow = [CCScaleTo actionWithDuration:duration scale:ML_ROCKET_SCALE];
+    CCActionInterval *growEase = [CCEaseIn actionWithAction:grow rate:2.0];
+    CCActionInterval *shrink = [CCScaleTo actionWithDuration:duration scale:ML_ROCKET_SCALE_BIG];    
+    CCActionInterval *shrinkEase = [CCEaseIn actionWithAction:shrink rate:2.0];    
+    CCActionInterval *delay1 = [CCDelayTime actionWithDuration:delay];
+    CCActionInterval *delay2 = [CCDelayTime actionWithDuration:delay];    
+    CCAction *pulse = [CCRepeatForever actionWithAction:[CCSequence actions:growEase, delay1, shrinkEase, delay2, nil]];
+    rocketAnimation_ = [pulse retain];
+}
+
+- (void) animateRocket
+{
+    [rocket_ stopAllActions];
+    [rocket_ runAction:rocketAnimation_];
 }
 
 - (void) moveRocketTo:(NSUInteger)levelNum

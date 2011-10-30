@@ -16,6 +16,8 @@
     
     CCSprite *rocket_;
     
+	CCAction *rocketAnimation_;        
+    
     NSUInteger currentLevel_;
     
     NSMutableArray *levelDescs_;
@@ -32,6 +34,8 @@
 + (id) map:(NSUInteger)lastUnlockedLevel currentLevel:(NSUInteger)currentLevel;
 
 - (id) initMap:(NSUInteger)lastUnlockedLevel currentLevel:(NSUInteger)currentLevel;
+
+- (void) initActions;
 
 - (void) animateRocket;
 
