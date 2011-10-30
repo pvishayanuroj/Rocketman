@@ -32,7 +32,7 @@
         // Skip button
         AnimatedButton *skipButton = [AnimatedButton buttonWithImage:@"skip_button.png" target:self selector:@selector(skip)];
         skipButton.position = CGPointMake(280, 30);
-        [self addChild:skipButton];
+        [self addChild:skipButton z:2];
     }
     return self;
 }

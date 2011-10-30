@@ -169,6 +169,9 @@ static StoryManager *_storyManager = nil;
     else if ([type isEqualToString:@"Fade"]) {
         [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:scene]];        
     }
+    else if ([type isEqualToString:@"Slide Right"]) {
+        [[CCDirector sharedDirector] replaceScene:[CCTransitionSlideInR transitionWithDuration:0.4f scene:scene]];
+    }
     else {
         NSAssert(NO, ([NSString stringWithFormat:@"Invalid transition type: %@", type]));
     }
@@ -183,33 +186,26 @@ static StoryManager *_storyManager = nil;
     NSMutableArray *array;
     
     // Scene 5 Cat Animation
-    element = [SpinningElement spinningElementAWithFile:@"Intro Cat.png" from:ccp(250, 350) to:ccp(400, 350) duration:2.0];
+    element = [SpinningElement spinningElementAWithFile:@"Intro Cat.png" from:ccp(180, 250) to:ccp(200, 600) duration:2.0f];
     array = [NSMutableArray arrayWithCapacity:1];
     [array addObject:element];
     [storyElements_ setObject:array forKey:[NSNumber numberWithUnsignedInt:5]];
     
     // Scene 6 Cat Animation    
-    element = [SpinningElement spinningElementBWithFile:@"Intro Cat.png" from:ccp(-30, 10) to:ccp(180, 250) duration:5.0];
+    element = [SpinningElement spinningElementBWithFile:@"Intro Cat.png" from:ccp(-30, 100) to:ccp(130, 280) duration:3.0f];
     array = [NSMutableArray arrayWithCapacity:1];
     [array addObject:element];
     [storyElements_ setObject:array forKey:[NSNumber numberWithUnsignedInt:6]];
     
-    CGSize size = [[CCDirector sharedDirector] winSize];    
-    CGPoint halfPos = ccp(size.width * 0.5, size.height * 0.5);
-    
-    // Scene 7 Text & Phone animation
-    array = [NSMutableArray arrayWithCapacity:2];    
-    element = [TextElement textElementWithFile:@"Intro 07 Text.png" at:ccp(halfPos.x, size.height*0.7)];
+    // Scene 7 President, Lab, and Phone animation
+    array = [NSMutableArray arrayWithCapacity:3];    
+    element = [MovingElement movingElementWithFile:@"Intro 07 President.png" from:ccp(-350, 350) to:ccp(150, 350) delay:2.0f duration:1.0f];
     [array addObject:element];
-    element = [MovingElement movingElementWithFile:@"Intro 07 Hand.png" from:ccp(450, 100) to:ccp(200, 100) delay:2.0 duration:1.0];
+    element = [MovingElement movingElementWithFile:@"Intro 07 Lab.png" from:ccp(650, 150) to:ccp(150, 150) delay:6.0f duration:1.0];
     [array addObject:element];    
+    element = [MovingElement movingElementWithFile:@"Intro 07 Hand.png" from:ccp(450, 130) to:ccp(150, 130) delay:10.0f duration:1.0];
+    [array addObject:element];        
     [storyElements_ setObject:array forKey:[NSNumber numberWithUnsignedInt:7]];
-    
-    // Scene 8 Text
-    element = [TextElement textElementWithFile:@"Intro 08 Text.png" at:halfPos];
-    array = [NSMutableArray arrayWithCapacity:1];
-    [array addObject:element];
-    [storyElements_ setObject:array forKey:[NSNumber numberWithUnsignedInt:8]];    
 }
 
 @end

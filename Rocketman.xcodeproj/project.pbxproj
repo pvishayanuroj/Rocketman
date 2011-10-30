@@ -23,6 +23,9 @@
 		DA69016C145A49AF000D278F /* RockDebris.m in Sources */ = {isa = PBXBuildFile; fileRef = DA69016B145A49AF000D278F /* RockDebris.m */; };
 		DA69016F145B9EB6000D278F /* DebrisGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = DA69016E145B9EB6000D278F /* DebrisGenerator.m */; };
 		DA690172145BA087000D278F /* GameObject.m in Sources */ = {isa = PBXBuildFile; fileRef = DA690171145BA086000D278F /* GameObject.m */; };
+		DA690175145DF377000D278F /* Intro 07 Lab.png in Resources */ = {isa = PBXBuildFile; fileRef = DA690173145DF374000D278F /* Intro 07 Lab.png */; };
+		DA690176145DF377000D278F /* Intro 07 President.png in Resources */ = {isa = PBXBuildFile; fileRef = DA690174145DF375000D278F /* Intro 07 President.png */; };
+		DA690178145DFE47000D278F /* Intro 10.png in Resources */ = {isa = PBXBuildFile; fileRef = DA690177145DFE45000D278F /* Intro 10.png */; };
 		DAF43E53144B085400943C0D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAF43E52144B085400943C0D /* QuartzCore.framework */; };
 		DAF43E55144B085400943C0D /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAF43E54144B085400943C0D /* OpenGLES.framework */; };
 		DAF43E57144B085400943C0D /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAF43E56144B085400943C0D /* OpenAL.framework */; };
@@ -240,9 +243,7 @@
 		DAF443AF144B08B300943C0D /* Intro 05.png in Resources */ = {isa = PBXBuildFile; fileRef = DAF442BD144B08B300943C0D /* Intro 05.png */; };
 		DAF443B0144B08B300943C0D /* Intro 06.png in Resources */ = {isa = PBXBuildFile; fileRef = DAF442BE144B08B300943C0D /* Intro 06.png */; };
 		DAF443B1144B08B300943C0D /* Intro 07 Hand.png in Resources */ = {isa = PBXBuildFile; fileRef = DAF442BF144B08B300943C0D /* Intro 07 Hand.png */; };
-		DAF443B2144B08B300943C0D /* Intro 07 Text.png in Resources */ = {isa = PBXBuildFile; fileRef = DAF442C0144B08B300943C0D /* Intro 07 Text.png */; };
 		DAF443B3144B08B300943C0D /* Intro 07.png in Resources */ = {isa = PBXBuildFile; fileRef = DAF442C1144B08B300943C0D /* Intro 07.png */; };
-		DAF443B4144B08B300943C0D /* Intro 08 Text.png in Resources */ = {isa = PBXBuildFile; fileRef = DAF442C2144B08B300943C0D /* Intro 08 Text.png */; };
 		DAF443B5144B08B300943C0D /* Intro 08.png in Resources */ = {isa = PBXBuildFile; fileRef = DAF442C3144B08B300943C0D /* Intro 08.png */; };
 		DAF443B6144B08B300943C0D /* Intro 09.png in Resources */ = {isa = PBXBuildFile; fileRef = DAF442C4144B08B300943C0D /* Intro 09.png */; };
 		DAF443B7144B08B300943C0D /* Intro Cat.png in Resources */ = {isa = PBXBuildFile; fileRef = DAF442C5144B08B300943C0D /* Intro Cat.png */; };
@@ -347,6 +348,9 @@
 		DA69016E145B9EB6000D278F /* DebrisGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DebrisGenerator.m; path = Classes/DebrisGenerator.m; sourceTree = "<group>"; };
 		DA690170145BA086000D278F /* GameObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameObject.h; path = Classes/GameObject.h; sourceTree = "<group>"; };
 		DA690171145BA086000D278F /* GameObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameObject.m; path = Classes/GameObject.m; sourceTree = "<group>"; };
+		DA690173145DF374000D278F /* Intro 07 Lab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Intro 07 Lab.png"; sourceTree = "<group>"; };
+		DA690174145DF375000D278F /* Intro 07 President.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Intro 07 President.png"; sourceTree = "<group>"; };
+		DA690177145DFE45000D278F /* Intro 10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Intro 10.png"; sourceTree = "<group>"; };
 		DAF43E4E144B085400943C0D /* Rocketman.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rocketman.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAF43E52144B085400943C0D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		DAF43E54144B085400943C0D /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -683,9 +687,7 @@
 		DAF442BD144B08B300943C0D /* Intro 05.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Intro 05.png"; sourceTree = "<group>"; };
 		DAF442BE144B08B300943C0D /* Intro 06.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Intro 06.png"; sourceTree = "<group>"; };
 		DAF442BF144B08B300943C0D /* Intro 07 Hand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Intro 07 Hand.png"; sourceTree = "<group>"; };
-		DAF442C0144B08B300943C0D /* Intro 07 Text.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Intro 07 Text.png"; sourceTree = "<group>"; };
 		DAF442C1144B08B300943C0D /* Intro 07.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Intro 07.png"; sourceTree = "<group>"; };
-		DAF442C2144B08B300943C0D /* Intro 08 Text.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Intro 08 Text.png"; sourceTree = "<group>"; };
 		DAF442C3144B08B300943C0D /* Intro 08.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Intro 08.png"; sourceTree = "<group>"; };
 		DAF442C4144B08B300943C0D /* Intro 09.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Intro 09.png"; sourceTree = "<group>"; };
 		DAF442C5144B08B300943C0D /* Intro Cat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Intro Cat.png"; sourceTree = "<group>"; };
@@ -1443,12 +1445,13 @@
 				DAF442BC144B08B300943C0D /* Intro 04.png */,
 				DAF442BD144B08B300943C0D /* Intro 05.png */,
 				DAF442BE144B08B300943C0D /* Intro 06.png */,
+				DA690173145DF374000D278F /* Intro 07 Lab.png */,
+				DA690174145DF375000D278F /* Intro 07 President.png */,
 				DAF442BF144B08B300943C0D /* Intro 07 Hand.png */,
-				DAF442C0144B08B300943C0D /* Intro 07 Text.png */,
 				DAF442C1144B08B300943C0D /* Intro 07.png */,
-				DAF442C2144B08B300943C0D /* Intro 08 Text.png */,
 				DAF442C3144B08B300943C0D /* Intro 08.png */,
 				DAF442C4144B08B300943C0D /* Intro 09.png */,
+				DA690177145DFE45000D278F /* Intro 10.png */,
 				DAF442C5144B08B300943C0D /* Intro Cat.png */,
 			);
 			name = "Story Scenes";
@@ -1871,9 +1874,7 @@
 				DAF443AF144B08B300943C0D /* Intro 05.png in Resources */,
 				DAF443B0144B08B300943C0D /* Intro 06.png in Resources */,
 				DAF443B1144B08B300943C0D /* Intro 07 Hand.png in Resources */,
-				DAF443B2144B08B300943C0D /* Intro 07 Text.png in Resources */,
 				DAF443B3144B08B300943C0D /* Intro 07.png in Resources */,
-				DAF443B4144B08B300943C0D /* Intro 08 Text.png in Resources */,
 				DAF443B5144B08B300943C0D /* Intro 08.png in Resources */,
 				DAF443B6144B08B300943C0D /* Intro 09.png in Resources */,
 				DAF443B7144B08B300943C0D /* Intro Cat.png in Resources */,
@@ -1887,6 +1888,9 @@
 				DA5037A61453681C00600DD4 /* Tilt Banner.png in Resources */,
 				DA5037B2145383DE00600DD4 /* Tutorial Parallax.png in Resources */,
 				DA5037B71454437D00600DD4 /* Level2_data.plist in Resources */,
+				DA690175145DF377000D278F /* Intro 07 Lab.png in Resources */,
+				DA690176145DF377000D278F /* Intro 07 President.png in Resources */,
+				DA690178145DFE47000D278F /* Intro 10.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
