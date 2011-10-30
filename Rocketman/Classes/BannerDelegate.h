@@ -10,6 +10,8 @@
 
 @protocol BannerDelegate <NSObject>
 
-- (void) bannerClicked;
+- (BOOL) bannerClicked;
+
+- (void) bannerClosed;
 
 @end

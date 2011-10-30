@@ -16,8 +16,11 @@
 
     id <BannerDelegate> delegate_;
     
+    BOOL clickable_;
+    
 }
 
+@property (nonatomic, assign) BOOL clickable;
 @property (nonatomic, assign) id <BannerDelegate> delegate;
 
 + (id) banner:(NSString *)bannerName delay:(CGFloat)delay;

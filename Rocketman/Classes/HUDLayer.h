@@ -11,13 +11,6 @@
 #import "ButtonDelegate.h"
 #import "HUDDelegate.h"
 
-enum {
-    kCatButton,
-    kBombButton,
-    kSlowButton,
-    kBoostButton
-};
-
 @class GameLayer;
 
 @interface HUDLayer : CCLayer <ButtonDelegate> {
@@ -37,6 +30,8 @@ enum {
     CCLabelBMFont *numBoostsLabel_;        
     
     NSMutableArray *buttons_;
+    
+    BOOL clickable_;
     
     id <HUDDelegate> delegate_;
 }

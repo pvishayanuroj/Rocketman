@@ -100,6 +100,8 @@ typedef enum {
 } RocketCondition;
 
 typedef enum {
-	kLeftButton,
-    kRightButton
+    kCatButton,
+    kBombButton,
+    kSlowButton,
+    kBoostButton
 } ButtonType;

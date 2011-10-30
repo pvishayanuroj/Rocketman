@@ -44,7 +44,10 @@
     Banner *currentBanner_;
 
     /** The focus being shown in the dialogue layer */
-    NSMutableArray *currentFocuses_;    
+    NSMutableArray *currentFocuses_;  
+    
+    /** The set of buttons that can be pressed to advance the banner */
+    NSMutableSet *currentFocusButtons_;
     
     /** The obstacle that triggered the event */
     Obstacle *obstacle_;
@@ -59,6 +62,12 @@
 /** Initializes a notification object by reading from a data file */
 - (id) initNotification:(NSUInteger)levelNum;
 
+/** Turns banner clicks off */
+- (void) pause;
+
+/** Turns banner clicks on */
+- (void) resume;
+
 /** Height updates sent from the GM */
 - (void) heightUpdate:(NSInteger)height;
 
@@ -66,13 +75,16 @@
 - (void) obstacleAdded:(Obstacle *)obstacle;
 
 /** Button click updates */
-- (void) buttonClicked:(Button *)button;
+- (BOOL) buttonClicked:(Button *)button;
 
 /** If the HUD layer receives a general screen tap */
 - (void) screenClicked;
 
 /** Loads notification data from file */
 - (void) loadData:(NSUInteger)levelNum;
+
+/** Converts button string to enum */
+- (ButtonType) buttonNameToType:(NSString *)name;
 
 /** Method for starting an event */
 - (void) startEventSequence:(NSArray *)events;

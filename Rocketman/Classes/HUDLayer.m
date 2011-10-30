@@ -24,6 +24,7 @@
 	if ((self = [super init])) {
         
         delegate_ = nil;
+        clickable_ = YES;
         
         [[GameManager gameManager] registerHUDLayer:self];  
         
@@ -162,6 +163,7 @@
 
 - (void) pause
 {
+    clickable_ = NO;
     for (Button *button in buttons_) {
         [button clickable:NO];
     }    
@@ -169,6 +171,7 @@
 
 - (void) resume
 {
+    clickable_ = YES;    
     for (Button *button in buttons_) {
         [button clickable:YES];        
     }    
@@ -189,7 +192,7 @@
 }
 
 - (BOOL) ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
-    return YES;
+    return clickable_;
 }
 
 - (void) ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event

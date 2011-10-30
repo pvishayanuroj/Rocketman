@@ -139,26 +139,30 @@ static GameManager *_gameManager = nil;
 
 - (void) catButtonPressed:(Button *)button
 {
-    [notification_ buttonClicked:button];
-    [gameLayer_ fireCat01];
+    if ([notification_ buttonClicked:button]) {
+        [gameLayer_ fireCat01];
+    }
 }
 
 - (void) bombButtonPressed:(Button *)button
 {
-    [notification_ buttonClicked:button];    
-    [gameLayer_ fireCat02];    
+    if ([notification_ buttonClicked:button]) {    
+        [gameLayer_ fireCat02];    
+    }
 }
 
 - (void) slowButtonPressed:(Button *)button
 {
-    [notification_ buttonClicked:button];    
-    [rocket_ showSlow];
+    if ([notification_ buttonClicked:button]) {    
+        [rocket_ showSlow];
+    }
 }
 
 - (void) boostButtonPressed:(Button *)button
 {
-    [notification_ buttonClicked:button];    
-    [gameLayer_ useBoost];
+    if ([notification_ buttonClicked:button]) {    
+        [gameLayer_ useBoost];
+    }
 }
 
 - (void) screenClicked
@@ -257,10 +261,12 @@ static GameManager *_gameManager = nil;
     [hudLayer_ pauseHierarchy];
     // Because pauseHiearchy doesn't seem to stop button presses
     [hudLayer_ pause];
+    [notification_ pause]; // To nullify banner clicks
 }
 
 - (void) resume
 {
+    [notification_ resume];
     [hudLayer_ resume];
     [hudLayer_ resumeHierarchy];
     [dialogueLayer_ resumeHierarchy];

@@ -298,7 +298,6 @@
 		DAF4448B144B08DE00943C0D /* Pair.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF44428144B08D300943C0D /* Pair.m */; };
 		DAF4448C144B08DE00943C0D /* Parallax.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF4442A144B08D300943C0D /* Parallax.m */; };
 		DAF4448D144B08DE00943C0D /* PauseLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF4442C144B08D400943C0D /* PauseLayer.m */; };
-		DAF4448E144B08DE00943C0D /* PButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF4442E144B08D400943C0D /* PButton.m */; };
 		DAF4448F144B08DE00943C0D /* PlasmaBall.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF44431144B08D500943C0D /* PlasmaBall.m */; };
 		DAF44490144B08DE00943C0D /* PointWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF44433144B08D500943C0D /* PointWrapper.m */; };
 		DAF44491144B08DE00943C0D /* Rocket.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF44435144B08D600943C0D /* Rocket.m */; };
@@ -803,9 +802,6 @@
 		DAF4442A144B08D300943C0D /* Parallax.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Parallax.m; path = Classes/Parallax.m; sourceTree = "<group>"; };
 		DAF4442B144B08D400943C0D /* PauseLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PauseLayer.h; path = Classes/PauseLayer.h; sourceTree = "<group>"; };
 		DAF4442C144B08D400943C0D /* PauseLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PauseLayer.m; path = Classes/PauseLayer.m; sourceTree = "<group>"; };
-		DAF4442D144B08D400943C0D /* PButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PButton.h; path = Classes/PButton.h; sourceTree = "<group>"; };
-		DAF4442E144B08D400943C0D /* PButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PButton.m; path = Classes/PButton.m; sourceTree = "<group>"; };
-		DAF4442F144B08D400943C0D /* PButtonDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PButtonDelegate.h; path = Classes/PButtonDelegate.h; sourceTree = "<group>"; };
 		DAF44430144B08D500943C0D /* PlasmaBall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlasmaBall.h; path = Classes/PlasmaBall.h; sourceTree = "<group>"; };
 		DAF44431144B08D500943C0D /* PlasmaBall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlasmaBall.m; path = Classes/PlasmaBall.m; sourceTree = "<group>"; };
 		DAF44432144B08D500943C0D /* PointWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PointWrapper.h; path = Classes/PointWrapper.h; sourceTree = "<group>"; };
@@ -1568,9 +1564,6 @@
 				DA5037BB1454CF8F00600DD4 /* Button.m */,
 				DA5037BC1454CF9100600DD4 /* ButtonDelegate.h */,
 				DA5037BE1454CFFD00600DD4 /* Clickable.h */,
-				DAF4442D144B08D400943C0D /* PButton.h */,
-				DAF4442E144B08D400943C0D /* PButton.m */,
-				DAF4442F144B08D400943C0D /* PButtonDelegate.h */,
 				DAF44432144B08D500943C0D /* PointWrapper.h */,
 				DAF44433144B08D500943C0D /* PointWrapper.m */,
 				DAF4444C144B08DB00943C0D /* TargetedAction.h */,
@@ -2053,7 +2046,6 @@
 				DAF4448B144B08DE00943C0D /* Pair.m in Sources */,
 				DAF4448C144B08DE00943C0D /* Parallax.m in Sources */,
 				DAF4448D144B08DE00943C0D /* PauseLayer.m in Sources */,
-				DAF4448E144B08DE00943C0D /* PButton.m in Sources */,
 				DAF4448F144B08DE00943C0D /* PlasmaBall.m in Sources */,
 				DAF44490144B08DE00943C0D /* PointWrapper.m in Sources */,
 				DAF44491144B08DE00943C0D /* Rocket.m in Sources */,

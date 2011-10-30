@@ -13,6 +13,7 @@
 #import "Focus.h"
 #import "Obstacle.h"
 #import "Pair.h"
+#import "Button.h"
 
 @implementation Notification
 
@@ -38,6 +39,7 @@ const CGFloat NF_BANNER_Y = 250.0f;
         
         objectTriggers_ = [[NSMutableDictionary dictionaryWithCapacity:10] retain];
         heightTriggers_ = [[NSMutableArray arrayWithCapacity:10] retain];
+        currentFocusButtons_ = [[NSMutableSet setWithCapacity:10] retain];
         
         [self loadData:levelNum];
         
@@ -60,6 +62,7 @@ const CGFloat NF_BANNER_Y = 250.0f;
 {
     [currentBanner_ release];
     [currentFocuses_ release];
+    [currentFocusButtons_ release];
  
     [objectTriggers_ release];
     [heightTriggers_ release];
@@ -71,7 +74,14 @@ const CGFloat NF_BANNER_Y = 250.0f;
 
 #pragma mark - Delegate Methods
 
-- (void) bannerClicked
+- (BOOL) bannerClicked
+{
+    // If banner is clicked, only allow the banner to close if we are not expecting 
+    // any specific button presses
+    return [currentFocusButtons_ count] == 0;
+}
+
+- (void) bannerClosed
 {
     [self continueEventSequence];
 }
@@ -88,6 +98,22 @@ const CGFloat NF_BANNER_Y = 250.0f;
     // Start the event sequence
     NSArray *events = [objectTriggers_ objectForKey:key];
     [self startEventSequence:events];
+}
+
+#pragma mark - Pause / Resume
+
+- (void) pause
+{
+    if (currentBanner_) {
+        currentBanner_.clickable = NO;
+    }
+}
+
+- (void) resume
+{
+    if (currentBanner_) {
+        currentBanner_.clickable = YES;
+    }
 }
 
 #pragma mark - Notification Methods
@@ -198,19 +224,52 @@ const CGFloat NF_BANNER_Y = 250.0f;
     }];
 }
 
+- (ButtonType) buttonNameToType:(NSString *)name
+{
+    if ([name isEqualToString:@"Boost Button"]) {
+        return kBoostButton;
+    }
+    else if ([name isEqualToString:@"Cat Button"]) {
+        return kCatButton;
+    }
+    else if ([name isEqualToString:@"Bomb Button"]) {
+        return kBombButton;
+    }    
+    else if ([name isEqualToString:@"Slow Button"]) {
+        return kSlowButton;
+    } 
+    
+    NSAssert(NO, @"Invalid button type in notification");
+    return 0;
+}
+
 #pragma mark - Event Methods
 
-- (void) buttonClicked:(Button *)button
+- (BOOL) buttonClicked:(Button *)button
 {
     if (inNotification_) {
-        [self continueEventSequence];
+        // Check if the current notification expects certain buttons
+        if ([currentFocusButtons_ containsObject:[NSNumber numberWithInteger:button.numID]]) {
+            [self continueEventSequence];
+            return YES;
+        }
+        // If no button focus, do not allow buttons to advance. This sounds counterintuitive, but this
+        // avoids the scenario where boost can be pressed to clear the 1st intro banner
+        else {
+            return NO;
+        }
     }
+    // If not in a notification, always allow the button press
+    return YES;
 }
 
 - (void) screenClicked
 {
     if (inNotification_) {
-        [self continueEventSequence];
+        // Only if no button clicks are expected
+        if ([currentFocusButtons_ count] == 0) {
+            [self continueEventSequence];
+        }
     }    
 }
 
@@ -240,6 +299,7 @@ const CGFloat NF_BANNER_Y = 250.0f;
         for (Focus *focus in currentFocuses_) {
             [focus removeFromParentAndCleanup:YES];
         }
+        [currentFocusButtons_ removeAllObjects];
     }
     [currentBanner_ release];
     [currentFocuses_ release];
@@ -295,7 +355,12 @@ const CGFloat NF_BANNER_Y = 250.0f;
             }
             // Else focus is to be on a preset UI element
             else {
-                focus = [Focus focusWithFixed:focusName delay:delay];
+                ButtonType buttonType = [self buttonNameToType:focusName];
+                focus = [Focus focusWithFixed:buttonType delay:delay];
+                
+                // Since this focus is on a button, add this button to the set of buttons
+                // that must be pressed in order to advance the banner
+                [currentFocusButtons_ addObject:[NSNumber numberWithInteger:buttonType]];
             }
             // Store focus for later cleanup and tell GM to place in Dialogue Layer
             [currentFocuses_ addObject:focus];

@@ -19,33 +19,22 @@ const CGFloat FS_CIRCLE_PULSE_DELAY = 0.3f;
 const CGFloat FS_ARROW_SCALE = 0.8f;
 const CGFloat FS_ARROW_YOFFSET = 70.0f;
 const CGFloat FS_ARROW_MOVE_AMT = 40.0f;
-const CGFloat FS_ARROW_MOVEDOWN_SPEED = 0.3f;
-const CGFloat FS_ARROW_MOVEUP_SPEED = 0.3f;
-const CGFloat FS_ARROW_MOVE_DELAY = 0.05f;
-/*
-const CGFloat HUD_CAT_BUTTON_X = 45.0f;
-const CGFloat HUD_CAT_BUTTON_Y = 57.0f;
-const CGFloat HUD_BOMB_BUTTON_X = 125.0f;
-const CGFloat HUD_BOMB_BUTTON_Y = 30.0f;
-const CGFloat HUD_SLOW_BUTTON_X = 200.0f;
-const CGFloat HUD_SLOW_BUTTON_Y = 32.0f;
-const CGFloat HUD_BOOST_BUTTON_X = 268.0f;
-const CGFloat HUD_BOOST_BUTTON_Y = 32.0f;
- */
+const CGFloat FS_ARROW_MOVEDOWN_SPEED = 0.25f;
+const CGFloat FS_ARROW_MOVEUP_SPEED = 0.35f;
 
 #pragma mark - Object Lifecycle
 
 + (id) focusWithObstacle:(Obstacle *)obstacle delay:(CGFloat)delay
 {
-    return [[[self alloc] initFocus:obstacle fixed:nil delay:delay] autorelease];
+    return [[[self alloc] initFocus:obstacle buttonType:0 delay:delay] autorelease];
 }
 
-+ (id) focusWithFixed:(NSString *)fixed delay:(CGFloat)delay
++ (id) focusWithFixed:(ButtonType)buttonType delay:(CGFloat)delay
 {
-    return [[[self alloc] initFocus:nil fixed:fixed delay:delay] autorelease];
+    return [[[self alloc] initFocus:nil buttonType:buttonType delay:delay] autorelease];
 }
 
-- (id) initFocus:(Obstacle *)obstacle fixed:(NSString *)fixed delay:(CGFloat)delay
+- (id) initFocus:(Obstacle *)obstacle buttonType:(ButtonType)buttonType delay:(CGFloat)delay
 {
     if ((self = [super init])) {
      
@@ -60,7 +49,7 @@ const CGFloat HUD_BOOST_BUTTON_Y = 32.0f;
         // Focusing on a UI element
         else {
             sprite_ = [[CCSprite spriteWithFile:@"Focus Arrow.png"] retain];
-            sprite_.position = [self getArrowPosition:fixed];
+            sprite_.position = [self getArrowPosition:buttonType];
             sprite_.scale = FS_ARROW_SCALE;            
             sprite_.visible = NO;
             [self arrowAnimation:delay];
@@ -102,25 +91,28 @@ const CGFloat HUD_BOOST_BUTTON_Y = 32.0f;
     sprite_.visible = YES;
 }
 
-- (CGPoint) getArrowPosition:(NSString *)element
+- (CGPoint) getArrowPosition:(ButtonType)buttonType
 {
     CGPoint point;
     
-    if ([element isEqualToString:@"Boost Button"]) {
-        point = CGPointMake(HUD_BOOST_BUTTON_X, HUD_BOOST_BUTTON_Y);        
+    switch (buttonType) {
+        case kBoostButton:
+            point = CGPointMake(HUD_BOOST_BUTTON_X, HUD_BOOST_BUTTON_Y);        
+            break;
+        case kCatButton:
+            point = CGPointMake(HUD_CAT_BUTTON_X, HUD_CAT_BUTTON_Y);        
+            break;
+        case kBombButton:
+            point = CGPointMake(HUD_BOMB_BUTTON_X, HUD_BOMB_BUTTON_Y);
+            break;
+        case kSlowButton:
+            point = CGPointMake(HUD_SLOW_BUTTON_X, HUD_SLOW_BUTTON_Y);
+            break;
+        default:
+            break;
     }
-    else if ([element isEqualToString:@"Cat Button"]) {
-        point = CGPointMake(HUD_CAT_BUTTON_X, HUD_CAT_BUTTON_Y);        
-    }
-    else if ([element isEqualToString:@"Bomb Button"]) {
-        point = CGPointMake(HUD_BOMB_BUTTON_X, HUD_BOMB_BUTTON_Y);
-    }    
-    else if ([element isEqualToString:@"Slow Button"]) {
-        point = CGPointMake(HUD_SLOW_BUTTON_X, HUD_SLOW_BUTTON_Y);
-    }    
     
     point.y += FS_ARROW_YOFFSET;
-    
     return point;
 }
 
@@ -131,13 +123,11 @@ const CGFloat HUD_BOOST_BUTTON_Y = 32.0f;
     [self runAction:[CCSequence actions:wait, show, nil]];    
     
     CCActionInterval *up = [CCMoveBy actionWithDuration:FS_ARROW_MOVEUP_SPEED position:CGPointMake(0, FS_ARROW_MOVE_AMT)];
-    CCActionInterval *upEase = [CCEaseIn actionWithAction:up rate:1.5f];
     CCActionInterval *down = [CCMoveBy actionWithDuration:FS_ARROW_MOVEDOWN_SPEED position:CGPointMake(0, -FS_ARROW_MOVE_AMT)];    
-    CCActionInterval *downEase = [CCEaseOut actionWithAction:down rate:2.0f];
     
-    CCActionInterval *delay1 = [CCDelayTime actionWithDuration:0.15f];
-    CCActionInterval *delay2 = [CCDelayTime actionWithDuration:FS_ARROW_MOVE_DELAY];    
-    CCAction *pulse = [CCRepeatForever actionWithAction:[CCSequence actions:upEase, delay1, downEase, delay2, nil]];   
+    CCActionInterval *delay1 = [CCDelayTime actionWithDuration:0.10f];
+    CCActionInterval *delay2 = [CCDelayTime actionWithDuration:0.03f];    
+    CCAction *pulse = [CCRepeatForever actionWithAction:[CCSequence actions:up, delay1, down, delay2, nil]];   
     
     [sprite_ runAction:pulse];    
 }

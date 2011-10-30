@@ -19,13 +19,13 @@
 
 + (id) focusWithObstacle:(Obstacle *)obstacle delay:(CGFloat)delay;
 
-+ (id) focusWithFixed:(NSString *)fixed delay:(CGFloat)delay;
++ (id) focusWithFixed:(ButtonType)buttonType delay:(CGFloat)delay;
 
-- (id) initFocus:(Obstacle *)obstacle fixed:(NSString *)fixed delay:(CGFloat)delay;
+- (id) initFocus:(Obstacle *)obstacle buttonType:(ButtonType)buttonType delay:(CGFloat)delay;
 
 - (void) circleAnimation:(CGFloat)delay;
 
-- (CGPoint) getArrowPosition:(NSString *)element;
+- (CGPoint) getArrowPosition:(ButtonType)buttonType;
 
 - (void) arrowAnimation:(CGFloat)delay;
 

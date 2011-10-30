@@ -15,6 +15,7 @@ const CGFloat BN_START_X = 500.0f;
 const CGFloat BN_END_X = -500.0f;
 const CGFloat BN_MOVE_DUR = 0.5f;
 
+@synthesize clickable = clickable_;
 @synthesize delegate = delegate_;
 
 #pragma mark - Object Lifecycle
@@ -29,6 +30,7 @@ const CGFloat BN_MOVE_DUR = 0.5f;
     if ((self = [super init])) {
         
         delegate_ = nil;
+        clickable_ = YES;
         
         NSString *path = [[NSBundle mainBundle] pathForResource:bannerName ofType:@"png"];
         sprite_ = [[CCSprite spriteWithFile:path] retain];
@@ -80,7 +82,7 @@ const CGFloat BN_MOVE_DUR = 0.5f;
 
 - (void) doneMoving
 {
-    [delegate_ bannerClicked];
+    [delegate_ bannerClosed];
 }
 
 #pragma mark - Touch Handlers
@@ -107,8 +109,9 @@ const CGFloat BN_MOVE_DUR = 0.5f;
 
 - (BOOL) ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
-	if ([self containsTouchLocation:touch])
+	if ([self containsTouchLocation:touch] && clickable_ && [delegate_ bannerClicked]) {
 		return YES;
+    }
     
 	return NO;
 }
