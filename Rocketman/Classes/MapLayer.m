@@ -19,6 +19,9 @@
 @implementation MapLayer
 
 CGFloat ML_ROCKET_ROTATION = 140.0f;
+CGFloat ML_ROCKET_ROTATION2 = 170.0f;
+CGFloat ML_ROCKET_ROTATION_SPEED = 0.15f;
+CGFloat ML_ROCKET_ROTATION_DELAY = 0.35f;
 CGFloat ML_ROCKET_SCALE = 0.9f;
 CGFloat ML_START_XPOS = 160.0f;
 CGFloat ML_START_YPOS = 40.0f;
@@ -95,6 +98,8 @@ CGFloat ML_TITLE_YPOS = 72.0f;
         levelTitle_.position = CGPointMake(ML_TITLE_XPOS, ML_TITLE_YPOS);
         levelTitle_.scale = 0.65f;
         [self addChild:levelTitle_];
+        
+        [self animateRocket];
     }
     return self;    
 }
@@ -127,9 +132,21 @@ CGFloat ML_TITLE_YPOS = 72.0f;
 
 #pragma mark - Object Manipulation Methods
 
+- (void) animateRocket
+{
+    CCActionInterval *rot1 = [CCRotateTo actionWithDuration:ML_ROCKET_ROTATION_SPEED angle:ML_ROCKET_ROTATION2];
+    CCActionInterval *delay1 = [CCDelayTime actionWithDuration:ML_ROCKET_ROTATION_DELAY];
+    CCActionInterval *rot2 = [CCRotateTo actionWithDuration:ML_ROCKET_ROTATION_SPEED angle:ML_ROCKET_ROTATION];    
+    CCActionInterval *delay2 = [CCDelayTime actionWithDuration:ML_ROCKET_ROTATION_DELAY];
+    
+    CCAction *rock = [CCRepeatForever actionWithAction:[CCSequence actions:rot1, delay1, rot2, delay2, nil]];
+    [rocket_ runAction:rock];
+}
+
 - (void) moveRocketTo:(NSUInteger)levelNum
 {
     if (levelNum != currentLevel_) {
+        [rocket_ stopAllActions];
         [self lockInput];           
         [self hideStart];
         CCActionInterval *move = [self constructMoveFrom:currentLevel_ to:levelNum];     
@@ -184,6 +201,7 @@ CGFloat ML_TITLE_YPOS = 72.0f;
 {
     [self unlockInput];
     [self showStart];
+    [self animateRocket];
     
     [levelTitle_ setString:[levelDescs_ objectAtIndex:currentLevel_]];
 }

@@ -33,6 +33,8 @@
 
 - (id) initMap:(NSUInteger)lastUnlockedLevel currentLevel:(NSUInteger)currentLevel;
 
+- (void) animateRocket;
+
 - (void) moveRocketTo:(NSUInteger)levelNum;
 
 - (CCActionInterval *) constructMoveFrom:(NSUInteger)from to:(NSUInteger)to;
