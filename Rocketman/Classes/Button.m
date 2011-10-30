@@ -80,6 +80,22 @@
     return NO;
 }
 
+- (void) ccTouchMoved:(UITouch *)touch withEvent:(UIEvent *)event
+{
+	if ([self containsTouchLocation:touch])	{
+        // Non-toggle buttons get unselected
+        // Toggle buttons become selected
+        if (!isToggleButton_) {
+            [self selectButton];
+        }
+    }
+    else {
+        if (!isToggleButton_) {
+            [self unselectButton];
+        }        
+    }
+}
+
 - (void) ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event
 {
 	if ([self containsTouchLocation:touch])	{
