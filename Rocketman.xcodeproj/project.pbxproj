@@ -302,7 +302,6 @@
 		DAF4448F144B08DE00943C0D /* PlasmaBall.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF44431144B08D500943C0D /* PlasmaBall.m */; };
 		DAF44490144B08DE00943C0D /* PointWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF44433144B08D500943C0D /* PointWrapper.m */; };
 		DAF44491144B08DE00943C0D /* Rocket.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF44435144B08D600943C0D /* Rocket.m */; };
-		DAF44492144B08DE00943C0D /* Shell.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF44437144B08D600943C0D /* Shell.m */; };
 		DAF44493144B08DE00943C0D /* ShockTurtling.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF44439144B08D700943C0D /* ShockTurtling.m */; };
 		DAF44494144B08DE00943C0D /* SideMovement.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF4443B144B08D700943C0D /* SideMovement.m */; };
 		DAF44495144B08DE00943C0D /* SlowCloud.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF4443E144B08D800943C0D /* SlowCloud.m */; };
@@ -810,8 +809,6 @@
 		DAF44433144B08D500943C0D /* PointWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PointWrapper.m; path = Classes/PointWrapper.m; sourceTree = "<group>"; };
 		DAF44434144B08D600943C0D /* Rocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Rocket.h; path = Classes/Rocket.h; sourceTree = "<group>"; };
 		DAF44435144B08D600943C0D /* Rocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Rocket.m; path = Classes/Rocket.m; sourceTree = "<group>"; };
-		DAF44436144B08D600943C0D /* Shell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Shell.h; path = Classes/Shell.h; sourceTree = "<group>"; };
-		DAF44437144B08D600943C0D /* Shell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Shell.m; path = Classes/Shell.m; sourceTree = "<group>"; };
 		DAF44438144B08D600943C0D /* ShockTurtling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShockTurtling.h; path = Classes/ShockTurtling.h; sourceTree = "<group>"; };
 		DAF44439144B08D700943C0D /* ShockTurtling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShockTurtling.m; path = Classes/ShockTurtling.m; sourceTree = "<group>"; };
 		DAF4443A144B08D700943C0D /* SideMovement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SideMovement.h; path = Classes/SideMovement.h; sourceTree = "<group>"; };
@@ -1664,8 +1661,6 @@
 				DAF44451144B08DC00943C0D /* Turtling.m */,
 				DAF44452144B08DD00943C0D /* UFO.h */,
 				DAF44453144B08DD00943C0D /* UFO.m */,
-				DAF44436144B08D600943C0D /* Shell.h */,
-				DAF44437144B08D600943C0D /* Shell.m */,
 				DAF443F9144B08CB00943C0D /* Fuel.h */,
 				DAF443FA144B08CB00943C0D /* Fuel.m */,
 				DAF443D3144B08C400943C0D /* Cat.h */,
@@ -2053,7 +2048,6 @@
 				DAF4448F144B08DE00943C0D /* PlasmaBall.m in Sources */,
 				DAF44490144B08DE00943C0D /* PointWrapper.m in Sources */,
 				DAF44491144B08DE00943C0D /* Rocket.m in Sources */,
-				DAF44492144B08DE00943C0D /* Shell.m in Sources */,
 				DAF44493144B08DE00943C0D /* ShockTurtling.m in Sources */,
 				DAF44494144B08DE00943C0D /* SideMovement.m in Sources */,
 				DAF44495144B08DE00943C0D /* SlowCloud.m in Sources */,

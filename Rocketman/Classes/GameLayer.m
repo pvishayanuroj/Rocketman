@@ -582,9 +582,6 @@
         case kAlien:
             obstacle = [Alien alienWithPos:pos];
             break;
-        case kShell:
-            obstacle = [Shell shellWithPos:pos];
-            break;
         case kAngel:
             obstacle = [Angel angelWithPos:pos];
             break;                

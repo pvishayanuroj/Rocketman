@@ -125,9 +125,8 @@
 + (NSDictionary *) mapObjectTypes
 {
     NSMutableDictionary *map = [NSMutableDictionary dictionaryWithCapacity:30];
-    
+  
     // Enemies
-    [map setObject:[NSNumber numberWithInt:kShell] forKey:@"Shell"];
     [map setObject:[NSNumber numberWithInt:kAlien] forKey:@"Alien"];
     [map setObject:[NSNumber numberWithInt:kUFO] forKey:@"UFO"];
     [map setObject:[NSNumber numberWithInt:kFlybot] forKey:@"Flybot"];
@@ -150,14 +149,19 @@
     [map setObject:[NSNumber numberWithInt:kFlyingRock] forKey:@"Flying Rock"];
     // Bosses
     [map setObject:[NSNumber numberWithInt:kBossTurtle] forKey:@"Boss Turtle"];
+    [map setObject:[NSNumber numberWithInt:kBirdBoss] forKey:@"Bird Boss"];    
+    [map setObject:[NSNumber numberWithInt:kBatBoss] forKey:@"Bat Boss"];
+    [map setObject:[NSNumber numberWithInt:kWhaleBoss] forKey:@"Whale Boss"];    
+    [map setObject:[NSNumber numberWithInt:kCatBoss] forKey:@"Cat Boss"];    
     [map setObject:[NSNumber numberWithInt:kAlienBossTurtle] forKey:@"Alien Boss Turtle"];
     [map setObject:[NSNumber numberWithInt:kDummyBoss] forKey:@"Dummy Boss"];    
     // Collectables/Helpers
     [map setObject:[NSNumber numberWithInt:kAngel] forKey:@"Angel"];
     [map setObject:[NSNumber numberWithInt:kBoost] forKey:@"Boost"];
     [map setObject:[NSNumber numberWithInt:kFuel] forKey:@"Fuel"];
+    [map setObject:[NSNumber numberWithInt:kBombCat] forKey:@"Bomb Cat"];    
     [map setObject:[NSNumber numberWithInt:kCat] forKey:@"Cat"];
-    [map setObject:[NSNumber numberWithInt:kCatBundle] forKey:@"Cat Bundle"];         
+    [map setObject:[NSNumber numberWithInt:kCatBundle] forKey:@"Cat Bundle"];                
     
     // Extras (not from level editor)
     [map setObject:[NSNumber numberWithInt:kPlasmaBall] forKey:@"Plasma Bullet"];        

@@ -48,7 +48,6 @@ typedef enum {
 
 typedef enum {
     // Enemies
-    kShell,
     kAlien,
     kUFO,
     kFlybot,
@@ -71,18 +70,23 @@ typedef enum {
     kFlyingRock,
     // Bosses
     kBossTurtle,
+    kBatBoss,
+    kBirdBoss,
+    kWhaleBoss,
     kAlienBossTurtle,
+    kCatBoss,
     kDummyBoss,
     // Collectables/Helpers
     kAngel,
     kBoost,
     kFuel,
+    kBombCat,
     kCat,
     kCatBundle,
     // Auxiliary Objects
     kRedEgg,
     kBlueEgg,
-    kPlasmaBall
+    kPlasmaBall,
 } ObstacleType;
 
 typedef enum {

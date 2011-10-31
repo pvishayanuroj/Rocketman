@@ -304,7 +304,6 @@ static GameManager *_gameManager = nil;
 {
     [Turtling resetID];
     [UFO resetID];
-    [Shell resetID];
     [Fuel resetID];
     [Cat resetID];
     [Alien resetID];
