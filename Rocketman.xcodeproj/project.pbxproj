@@ -19,6 +19,8 @@
 		DA5037B51453ACCA00600DD4 /* DummyBoss.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5037B41453ACC900600DD4 /* DummyBoss.m */; };
 		DA5037B71454437D00600DD4 /* Level2_data.plist in Resources */ = {isa = PBXBuildFile; fileRef = DA5037B61454437D00600DD4 /* Level2_data.plist */; };
 		DA5037BD1454CF9600600DD4 /* Button.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5037BB1454CF8F00600DD4 /* Button.m */; };
+		DA642B64145F98C300FAB4D4 /* BlueBird.m in Sources */ = {isa = PBXBuildFile; fileRef = DA642B63145F98C300FAB4D4 /* BlueBird.m */; };
+		DA642B67145F9A5600FAB4D4 /* AlienBossTurtle.m in Sources */ = {isa = PBXBuildFile; fileRef = DA642B66145F9A5500FAB4D4 /* AlienBossTurtle.m */; };
 		DA69016814579CA0000D278F /* ArcMovement.m in Sources */ = {isa = PBXBuildFile; fileRef = DA69016714579CA0000D278F /* ArcMovement.m */; };
 		DA69016C145A49AF000D278F /* RockDebris.m in Sources */ = {isa = PBXBuildFile; fileRef = DA69016B145A49AF000D278F /* RockDebris.m */; };
 		DA69016F145B9EB6000D278F /* DebrisGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = DA69016E145B9EB6000D278F /* DebrisGenerator.m */; };
@@ -26,6 +28,16 @@
 		DA690175145DF377000D278F /* Intro 07 Lab.png in Resources */ = {isa = PBXBuildFile; fileRef = DA690173145DF374000D278F /* Intro 07 Lab.png */; };
 		DA690176145DF377000D278F /* Intro 07 President.png in Resources */ = {isa = PBXBuildFile; fileRef = DA690174145DF375000D278F /* Intro 07 President.png */; };
 		DA690178145DFE47000D278F /* Intro 10.png in Resources */ = {isa = PBXBuildFile; fileRef = DA690177145DFE45000D278F /* Intro 10.png */; };
+		DA69018E145F94CA000D278F /* Squid.m in Sources */ = {isa = PBXBuildFile; fileRef = DA69018D145F94C2000D278F /* Squid.m */; };
+		DA690191145F9502000D278F /* Bat.m in Sources */ = {isa = PBXBuildFile; fileRef = DA690190145F94FE000D278F /* Bat.m */; };
+		DA690194145F952B000D278F /* BlueFish.m in Sources */ = {isa = PBXBuildFile; fileRef = DA690193145F9525000D278F /* BlueFish.m */; };
+		DA690197145F954A000D278F /* Salamander.m in Sources */ = {isa = PBXBuildFile; fileRef = DA690196145F9541000D278F /* Salamander.m */; };
+		DA69019A145F9580000D278F /* BombCat.m in Sources */ = {isa = PBXBuildFile; fileRef = DA690199145F957A000D278F /* BombCat.m */; };
+		DA69019D145F95A0000D278F /* CatBundle.m in Sources */ = {isa = PBXBuildFile; fileRef = DA69019C145F959E000D278F /* CatBundle.m */; };
+		DA6901A0145F95DF000D278F /* BirdBoss.m in Sources */ = {isa = PBXBuildFile; fileRef = DA69019F145F95D8000D278F /* BirdBoss.m */; };
+		DA6901A3145F962A000D278F /* WhaleBoss.m in Sources */ = {isa = PBXBuildFile; fileRef = DA6901A2145F9623000D278F /* WhaleBoss.m */; };
+		DA6901A6145F964A000D278F /* BatBoss.m in Sources */ = {isa = PBXBuildFile; fileRef = DA6901A5145F9642000D278F /* BatBoss.m */; };
+		DA6901A9145F9697000D278F /* CatBoss.m in Sources */ = {isa = PBXBuildFile; fileRef = DA6901A8145F9692000D278F /* CatBoss.m */; };
 		DAF43E53144B085400943C0D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAF43E52144B085400943C0D /* QuartzCore.framework */; };
 		DAF43E55144B085400943C0D /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAF43E54144B085400943C0D /* OpenGLES.framework */; };
 		DAF43E57144B085400943C0D /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAF43E56144B085400943C0D /* OpenAL.framework */; };
@@ -221,7 +233,6 @@
 		DAF44314144B08B300943C0D /* Tap Cat Banner.png in Resources */ = {isa = PBXBuildFile; fileRef = DAF4421D144B08B300943C0D /* Tap Cat Banner.png */; };
 		DAF44399144B08B300943C0D /* sheet01.plist in Resources */ = {isa = PBXBuildFile; fileRef = DAF442A5144B08B300943C0D /* sheet01.plist */; };
 		DAF4439A144B08B300943C0D /* sheet01.png in Resources */ = {isa = PBXBuildFile; fileRef = DAF442A6144B08B300943C0D /* sheet01.png */; };
-		DAF4439B144B08B300943C0D /* sheet01.zss in Resources */ = {isa = PBXBuildFile; fileRef = DAF442A7144B08B300943C0D /* sheet01.zss */; };
 		DAF4439C144B08B300943C0D /* sheet01_animations.plist in Resources */ = {isa = PBXBuildFile; fileRef = DAF442A8144B08B300943C0D /* sheet01_animations.plist */; };
 		DAF4439D144B08B300943C0D /* Cave Background.png in Resources */ = {isa = PBXBuildFile; fileRef = DAF442AA144B08B300943C0D /* Cave Background.png */; };
 		DAF4439E144B08B300943C0D /* Cave Ground.png in Resources */ = {isa = PBXBuildFile; fileRef = DAF442AB144B08B300943C0D /* Cave Ground.png */; };
@@ -339,6 +350,10 @@
 		DA5037BB1454CF8F00600DD4 /* Button.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Button.m; path = Classes/Button.m; sourceTree = "<group>"; };
 		DA5037BC1454CF9100600DD4 /* ButtonDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ButtonDelegate.h; path = Classes/ButtonDelegate.h; sourceTree = "<group>"; };
 		DA5037BE1454CFFD00600DD4 /* Clickable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Clickable.h; path = Classes/Clickable.h; sourceTree = "<group>"; };
+		DA642B62145F98C300FAB4D4 /* BlueBird.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BlueBird.h; path = Classes/BlueBird.h; sourceTree = "<group>"; };
+		DA642B63145F98C300FAB4D4 /* BlueBird.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BlueBird.m; path = Classes/BlueBird.m; sourceTree = "<group>"; };
+		DA642B65145F9A5500FAB4D4 /* AlienBossTurtle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlienBossTurtle.h; path = Classes/AlienBossTurtle.h; sourceTree = "<group>"; };
+		DA642B66145F9A5500FAB4D4 /* AlienBossTurtle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlienBossTurtle.m; path = Classes/AlienBossTurtle.m; sourceTree = "<group>"; };
 		DA69016614579CA0000D278F /* ArcMovement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ArcMovement.h; path = Classes/ArcMovement.h; sourceTree = "<group>"; };
 		DA69016714579CA0000D278F /* ArcMovement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ArcMovement.m; path = Classes/ArcMovement.m; sourceTree = "<group>"; };
 		DA69016A145A49AF000D278F /* RockDebris.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RockDebris.h; path = Classes/RockDebris.h; sourceTree = "<group>"; };
@@ -350,6 +365,26 @@
 		DA690173145DF374000D278F /* Intro 07 Lab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Intro 07 Lab.png"; sourceTree = "<group>"; };
 		DA690174145DF375000D278F /* Intro 07 President.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Intro 07 President.png"; sourceTree = "<group>"; };
 		DA690177145DFE45000D278F /* Intro 10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Intro 10.png"; sourceTree = "<group>"; };
+		DA69018C145F94BB000D278F /* Squid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Squid.h; path = Classes/Squid.h; sourceTree = "<group>"; };
+		DA69018D145F94C2000D278F /* Squid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Squid.m; path = Classes/Squid.m; sourceTree = "<group>"; };
+		DA69018F145F94F8000D278F /* Bat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Bat.h; path = Classes/Bat.h; sourceTree = "<group>"; };
+		DA690190145F94FE000D278F /* Bat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Bat.m; path = Classes/Bat.m; sourceTree = "<group>"; };
+		DA690192145F951E000D278F /* BlueFish.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BlueFish.h; path = Classes/BlueFish.h; sourceTree = "<group>"; };
+		DA690193145F9525000D278F /* BlueFish.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BlueFish.m; path = Classes/BlueFish.m; sourceTree = "<group>"; };
+		DA690195145F953D000D278F /* Salamander.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Salamander.h; path = Classes/Salamander.h; sourceTree = "<group>"; };
+		DA690196145F9541000D278F /* Salamander.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Salamander.m; path = Classes/Salamander.m; sourceTree = "<group>"; };
+		DA690198145F9575000D278F /* BombCat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BombCat.h; path = Classes/BombCat.h; sourceTree = "<group>"; };
+		DA690199145F957A000D278F /* BombCat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BombCat.m; path = Classes/BombCat.m; sourceTree = "<group>"; };
+		DA69019B145F959B000D278F /* CatBundle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CatBundle.h; path = Classes/CatBundle.h; sourceTree = "<group>"; };
+		DA69019C145F959E000D278F /* CatBundle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CatBundle.m; path = Classes/CatBundle.m; sourceTree = "<group>"; };
+		DA69019E145F95CF000D278F /* BirdBoss.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BirdBoss.h; path = Classes/BirdBoss.h; sourceTree = "<group>"; };
+		DA69019F145F95D8000D278F /* BirdBoss.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BirdBoss.m; path = Classes/BirdBoss.m; sourceTree = "<group>"; };
+		DA6901A1145F961F000D278F /* WhaleBoss.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WhaleBoss.h; path = Classes/WhaleBoss.h; sourceTree = "<group>"; };
+		DA6901A2145F9623000D278F /* WhaleBoss.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WhaleBoss.m; path = Classes/WhaleBoss.m; sourceTree = "<group>"; };
+		DA6901A4145F963D000D278F /* BatBoss.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BatBoss.h; path = Classes/BatBoss.h; sourceTree = "<group>"; };
+		DA6901A5145F9642000D278F /* BatBoss.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BatBoss.m; path = Classes/BatBoss.m; sourceTree = "<group>"; };
+		DA6901A7145F968C000D278F /* CatBoss.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CatBoss.h; path = Classes/CatBoss.h; sourceTree = "<group>"; };
+		DA6901A8145F9692000D278F /* CatBoss.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CatBoss.m; path = Classes/CatBoss.m; sourceTree = "<group>"; };
 		DAF43E4E144B085400943C0D /* Rocketman.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rocketman.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAF43E52144B085400943C0D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		DAF43E54144B085400943C0D /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -664,7 +699,6 @@
 		DAF4421D144B08B300943C0D /* Tap Cat Banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tap Cat Banner.png"; sourceTree = "<group>"; };
 		DAF442A5144B08B300943C0D /* sheet01.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = sheet01.plist; sourceTree = "<group>"; };
 		DAF442A6144B08B300943C0D /* sheet01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sheet01.png; sourceTree = "<group>"; };
-		DAF442A7144B08B300943C0D /* sheet01.zss */ = {isa = PBXFileReference; lastKnownFileType = file; path = sheet01.zss; sourceTree = "<group>"; };
 		DAF442A8144B08B300943C0D /* sheet01_animations.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = sheet01_animations.plist; sourceTree = "<group>"; };
 		DAF442AA144B08B300943C0D /* Cave Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Cave Background.png"; sourceTree = "<group>"; };
 		DAF442AB144B08B300943C0D /* Cave Ground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Cave Ground.png"; sourceTree = "<group>"; };
@@ -864,6 +898,85 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DA6901AA145F96D3000D278F /* Enemies */ = {
+			isa = PBXGroup;
+			children = (
+				DAF443B8144B08C000943C0D /* Alien.h */,
+				DAF443B9144B08C000943C0D /* Alien.m */,
+				DAF443BA144B08C000943C0D /* AlienHoverTurtle.h */,
+				DAF443BB144B08C100943C0D /* AlienHoverTurtle.m */,
+				DAF443EC144B08C900943C0D /* Egg.h */,
+				DAF443ED144B08C900943C0D /* Egg.m */,
+				DAF443F5144B08CA00943C0D /* Flybot.h */,
+				DAF443F6144B08CA00943C0D /* Flybot.m */,
+				DAF443F7144B08CA00943C0D /* FlyingRock.h */,
+				DAF443F8144B08CB00943C0D /* FlyingRock.m */,
+				DAF4440C144B08CE00943C0D /* HoverTurtle.h */,
+				DAF4440D144B08CE00943C0D /* HoverTurtle.m */,
+				DAF44430144B08D500943C0D /* PlasmaBall.h */,
+				DAF44431144B08D500943C0D /* PlasmaBall.m */,
+				DAF44438144B08D600943C0D /* ShockTurtling.h */,
+				DAF44439144B08D700943C0D /* ShockTurtling.m */,
+				DAF44456144B08DE00943C0D /* YellowBird.h */,
+				DAF44457144B08DE00943C0D /* YellowBird.m */,
+				DA642B62145F98C300FAB4D4 /* BlueBird.h */,
+				DA642B63145F98C300FAB4D4 /* BlueBird.m */,
+				DA69018C145F94BB000D278F /* Squid.h */,
+				DA69018D145F94C2000D278F /* Squid.m */,
+				DA69018F145F94F8000D278F /* Bat.h */,
+				DA690190145F94FE000D278F /* Bat.m */,
+				DA690192145F951E000D278F /* BlueFish.h */,
+				DA690193145F9525000D278F /* BlueFish.m */,
+				DA690195145F953D000D278F /* Salamander.h */,
+				DA690196145F9541000D278F /* Salamander.m */,
+				DAF44450144B08DC00943C0D /* Turtling.h */,
+				DAF44451144B08DC00943C0D /* Turtling.m */,
+				DAF44452144B08DD00943C0D /* UFO.h */,
+				DAF44453144B08DD00943C0D /* UFO.m */,
+			);
+			name = Enemies;
+			sourceTree = "<group>";
+		};
+		DA6901AB145F96DD000D278F /* Bosses */ = {
+			isa = PBXGroup;
+			children = (
+				DA5037B31453ACC900600DD4 /* DummyBoss.h */,
+				DA5037B41453ACC900600DD4 /* DummyBoss.m */,
+				DAF443CD144B08C400943C0D /* BossTurtle.h */,
+				DAF443CE144B08C400943C0D /* BossTurtle.m */,
+				DA69019E145F95CF000D278F /* BirdBoss.h */,
+				DA69019F145F95D8000D278F /* BirdBoss.m */,
+				DA6901A1145F961F000D278F /* WhaleBoss.h */,
+				DA6901A2145F9623000D278F /* WhaleBoss.m */,
+				DA6901A4145F963D000D278F /* BatBoss.h */,
+				DA6901A5145F9642000D278F /* BatBoss.m */,
+				DA642B65145F9A5500FAB4D4 /* AlienBossTurtle.h */,
+				DA642B66145F9A5500FAB4D4 /* AlienBossTurtle.m */,
+				DA6901A7145F968C000D278F /* CatBoss.h */,
+				DA6901A8145F9692000D278F /* CatBoss.m */,
+			);
+			name = Bosses;
+			sourceTree = "<group>";
+		};
+		DA6901AC145F96EC000D278F /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				DAF443BC144B08C100943C0D /* Angel.h */,
+				DAF443BD144B08C100943C0D /* Angel.m */,
+				DA690198145F9575000D278F /* BombCat.h */,
+				DA690199145F957A000D278F /* BombCat.m */,
+				DAF443CB144B08C300943C0D /* Boost.h */,
+				DAF443CC144B08C400943C0D /* Boost.m */,
+				DAF443D3144B08C400943C0D /* Cat.h */,
+				DAF443D4144B08C500943C0D /* Cat.m */,
+				DA69019B145F959B000D278F /* CatBundle.h */,
+				DA69019C145F959E000D278F /* CatBundle.m */,
+				DAF443F9144B08CB00943C0D /* Fuel.h */,
+				DAF443FA144B08CB00943C0D /* Fuel.m */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
 		DAF43E43144B085400943C0D = {
 			isa = PBXGroup;
 			children = (
@@ -1404,7 +1517,6 @@
 			children = (
 				DAF442A5144B08B300943C0D /* sheet01.plist */,
 				DAF442A6144B08B300943C0D /* sheet01.png */,
-				DAF442A7144B08B300943C0D /* sheet01.zss */,
 				DAF442A8144B08B300943C0D /* sheet01_animations.plist */,
 			);
 			name = Spritesheets;
@@ -1586,6 +1698,8 @@
 				DAF443DD144B08C600943C0D /* CommonHeaders.h */,
 				DA690170145BA086000D278F /* GameObject.h */,
 				DA690171145BA086000D278F /* GameObject.m */,
+				DAF4444A144B08DA00943C0D /* SwarmGenerator.h */,
+				DAF4444B144B08DB00943C0D /* SwarmGenerator.m */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -1652,45 +1766,12 @@
 		DAF444AF144B09A100943C0D /* Obstacles */ = {
 			isa = PBXGroup;
 			children = (
+				DA6901AC145F96EC000D278F /* Helpers */,
+				DA6901AB145F96DD000D278F /* Bosses */,
+				DA6901AA145F96D3000D278F /* Enemies */,
 				DAF44424144B08D200943C0D /* Obstacle.h */,
 				DAF44425144B08D200943C0D /* Obstacle.m */,
 				DAF44426144B08D200943C0D /* ObstacleDelegate.h */,
-				DAF4444A144B08DA00943C0D /* SwarmGenerator.h */,
-				DAF4444B144B08DB00943C0D /* SwarmGenerator.m */,
-				DAF44450144B08DC00943C0D /* Turtling.h */,
-				DAF44451144B08DC00943C0D /* Turtling.m */,
-				DAF44452144B08DD00943C0D /* UFO.h */,
-				DAF44453144B08DD00943C0D /* UFO.m */,
-				DAF443F9144B08CB00943C0D /* Fuel.h */,
-				DAF443FA144B08CB00943C0D /* Fuel.m */,
-				DAF443D3144B08C400943C0D /* Cat.h */,
-				DAF443D4144B08C500943C0D /* Cat.m */,
-				DAF443B8144B08C000943C0D /* Alien.h */,
-				DAF443B9144B08C000943C0D /* Alien.m */,
-				DAF443BA144B08C000943C0D /* AlienHoverTurtle.h */,
-				DAF443BB144B08C100943C0D /* AlienHoverTurtle.m */,
-				DAF443BC144B08C100943C0D /* Angel.h */,
-				DAF443BD144B08C100943C0D /* Angel.m */,
-				DAF443CB144B08C300943C0D /* Boost.h */,
-				DAF443CC144B08C400943C0D /* Boost.m */,
-				DAF443CD144B08C400943C0D /* BossTurtle.h */,
-				DAF443CE144B08C400943C0D /* BossTurtle.m */,
-				DAF443EC144B08C900943C0D /* Egg.h */,
-				DAF443ED144B08C900943C0D /* Egg.m */,
-				DAF443F5144B08CA00943C0D /* Flybot.h */,
-				DAF443F6144B08CA00943C0D /* Flybot.m */,
-				DAF443F7144B08CA00943C0D /* FlyingRock.h */,
-				DAF443F8144B08CB00943C0D /* FlyingRock.m */,
-				DAF4440C144B08CE00943C0D /* HoverTurtle.h */,
-				DAF4440D144B08CE00943C0D /* HoverTurtle.m */,
-				DAF44430144B08D500943C0D /* PlasmaBall.h */,
-				DAF44431144B08D500943C0D /* PlasmaBall.m */,
-				DAF44438144B08D600943C0D /* ShockTurtling.h */,
-				DAF44439144B08D700943C0D /* ShockTurtling.m */,
-				DAF44456144B08DE00943C0D /* YellowBird.h */,
-				DAF44457144B08DE00943C0D /* YellowBird.m */,
-				DA5037B31453ACC900600DD4 /* DummyBoss.h */,
-				DA5037B41453ACC900600DD4 /* DummyBoss.m */,
 			);
 			name = Obstacles;
 			sourceTree = "<group>";
@@ -1847,7 +1928,6 @@
 				DAF44314144B08B300943C0D /* Tap Cat Banner.png in Resources */,
 				DAF44399144B08B300943C0D /* sheet01.plist in Resources */,
 				DAF4439A144B08B300943C0D /* sheet01.png in Resources */,
-				DAF4439B144B08B300943C0D /* sheet01.zss in Resources */,
 				DAF4439C144B08B300943C0D /* sheet01_animations.plist in Resources */,
 				DAF4439D144B08B300943C0D /* Cave Background.png in Resources */,
 				DAF4439E144B08B300943C0D /* Cave Ground.png in Resources */,
@@ -2070,6 +2150,18 @@
 				DA69016C145A49AF000D278F /* RockDebris.m in Sources */,
 				DA69016F145B9EB6000D278F /* DebrisGenerator.m in Sources */,
 				DA690172145BA087000D278F /* GameObject.m in Sources */,
+				DA69018E145F94CA000D278F /* Squid.m in Sources */,
+				DA690191145F9502000D278F /* Bat.m in Sources */,
+				DA690194145F952B000D278F /* BlueFish.m in Sources */,
+				DA690197145F954A000D278F /* Salamander.m in Sources */,
+				DA69019A145F9580000D278F /* BombCat.m in Sources */,
+				DA69019D145F95A0000D278F /* CatBundle.m in Sources */,
+				DA6901A0145F95DF000D278F /* BirdBoss.m in Sources */,
+				DA6901A3145F962A000D278F /* WhaleBoss.m in Sources */,
+				DA6901A6145F964A000D278F /* BatBoss.m in Sources */,
+				DA6901A9145F9697000D278F /* CatBoss.m in Sources */,
+				DA642B64145F98C300FAB4D4 /* BlueBird.m in Sources */,
+				DA642B67145F9A5600FAB4D4 /* AlienBossTurtle.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

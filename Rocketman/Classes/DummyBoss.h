@@ -6,8 +6,9 @@
 //  Copyright 2011 Paul Vishayanuroj. All rights reserved.
 //
 
-#import "cocos2d.h"
+#import "CommonHeaders.h"
 #import "Obstacle.h"
+#import "cocos2d.h"
 #import "SideMovementDelegate.h"
 #import "BoundaryDelegate.h"
 

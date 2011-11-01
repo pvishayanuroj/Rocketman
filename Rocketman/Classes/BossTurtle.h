@@ -8,6 +8,7 @@
 
 #import "CommonHeaders.h"
 #import "Obstacle.h"
+#import "cocos2d.h"
 #import "SideMovementDelegate.h"
 #import "BoundaryDelegate.h"
 

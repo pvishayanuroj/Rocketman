@@ -581,16 +581,23 @@
     switch (type) {
         case kAlien:
             obstacle = [Alien alienWithPos:pos];
-            break;
-        case kAngel:
-            obstacle = [Angel angelWithPos:pos];
-            break;                
+            break;               
         case kUFO:
             obstacle = [UFO ufoWithPos:pos];
             break;
         case kFlybot:
             obstacle = [Flybot flyBotWithPos:pos];
             break;
+        case kTurtling:
+            obstacle = [Turtling turtlingWithPos:pos];
+            break;
+        case kTurtlingSwarm:
+            [self addTurtlingSwarm:8];
+            add = NO;
+            break;   
+        case kShockTurtling:
+            obstacle = [ShockTurtling shockTurtlingWithPos:pos];
+            break;            
         case kHoverTurtle:
             obstacle = [HoverTurtle hoverTurtleWithPos:pos];
             break;
@@ -599,26 +606,7 @@
             break;
         case kShieldedAlienHoverTurtle:
             obstacle = [AlienHoverTurtle shieldedAlienHoverTurtleWithPos:pos];
-            break;
-        case kBoost:
-            obstacle = [Boost boostWithPos:pos];    
-            break;
-        case kCat:
-            obstacle = [Cat catWithPos:pos];            
-            break;
-        case kFuel:
-            obstacle = [Fuel fuelWithPos:pos];            
-            break;
-        case kBossTurtle:
-            obstacle = [BossTurtle bossTurtleWithPos:pos];            
-            break;
-        case kTurtling:
-            obstacle = [Turtling turtlingWithPos:pos];
-            break;
-        case kTurtlingSwarm:
-            [self addTurtlingSwarm:8];
-            add = NO;
-            break;            
+            break;         
         case kYellowBird:
             obstacle = [YellowBird yellowBirdWithPos:pos];
             break;
@@ -626,17 +614,73 @@
             [self addBirdSwarm:8];
             add = NO;
             break;            
-        case kShockTurtling:
-            obstacle = [ShockTurtling shockTurtlingWithPos:pos];
+        case kBat:
             break;
-        case kPlasmaBall:
-            obstacle = [PlasmaBall plasmaBallWithPos:pos];
+        case kBatSwarm:
             break;
-        case kFlyingRock:
+        case kSquid:
+            break;
+        case kBlueFish:
+            break;
+        case kBlueFishSwarm:
+            break;
+        case kSalamander:
+            break;
+        case kFlyingRock:            
             obstacle = [FlyingRock rockWithPos:pos];
-            break;
+            break;            
+        // Bosses
         case kDummyBoss:
             obstacle = [DummyBoss dummyBossWithPos:pos];
+            break;
+        case kBossTurtle:
+            obstacle = [BossTurtle bossTurtleWithPos:pos];            
+            break;
+        case kBirdBoss:
+            break;
+        case kWhaleBoss:
+            break;
+        case kBatBoss:
+            break;
+        case kAlienBossTurtle:
+            break;    
+        case kCatBoss:
+            break;
+        // Collectables/Helpers         
+        case kAngel:
+            obstacle = [Angel angelWithPos:pos];
+            break;             
+        case kBoost:
+            obstacle = [Boost boostWithPos:pos];    
+            break;
+        case kFuel:
+            obstacle = [Fuel fuelWithPos:pos];            
+            break;     
+        case kBombCat:
+            break;
+        case kCat:
+            obstacle = [Cat catWithPos:pos];            
+            break;
+        case kCatBundle:
+            break;
+        // Helper objects
+        //case kRedEgg:
+        //case kBlueEgg:    
+        case kPlasmaBall:
+            obstacle = [PlasmaBall plasmaBallWithPos:pos];
+            break;            
+        // Swarm versions ob obstacles
+        case kSwarmTurtling:
+            obstacle = [Turtling swarmTurtlingWithPos:pos];
+            break;
+        case kSwarmYellowBird:
+            obstacle = [YellowBird swarmYellowBirdWithPos:pos];
+            break;
+        case kSwarmBlueBird:
+            break;
+        case kSwarmBlueFish:
+            break;
+        case kSwarmBat:
             break;
         default:
             add = NO;

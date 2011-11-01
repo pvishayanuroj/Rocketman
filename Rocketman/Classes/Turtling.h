@@ -10,11 +10,6 @@
 #import "Obstacle.h"
 #import "BoundaryDelegate.h"
 
-typedef enum {
-    kNormalTurtling,
-    kSwarmTurtling
-} TurtlingType;
-
 @interface Turtling : Obstacle <BoundaryDelegate> {
     
 }
@@ -23,7 +18,7 @@ typedef enum {
 
 + (id) swarmTurtlingWithPos:(CGPoint)pos;
 
-- (id) initWithPos:(CGPoint)pos type:(TurtlingType)type;
+- (id) initWithPos:(CGPoint)pos type:(ObstacleType)type;
 
 - (void) initActions;
 

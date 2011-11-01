@@ -30,7 +30,7 @@ static NSUInteger countID = 0;
 
 + (id) turtlingWithPos:(CGPoint)pos
 {
-    return [[[self alloc] initWithPos:pos type:kNormalTurtling] autorelease];
+    return [[[self alloc] initWithPos:pos type:kTurtling] autorelease];
 }
 
 + (id) swarmTurtlingWithPos:(CGPoint)pos
@@ -38,7 +38,7 @@ static NSUInteger countID = 0;
     return [[[self alloc] initWithPos:pos type:kSwarmTurtling] autorelease];    
 }
 
-- (id) initWithPos:(CGPoint)pos type:(TurtlingType)type
+- (id) initWithPos:(CGPoint)pos type:(ObstacleType)type
 {
 	if ((self = [super init])) {
         
@@ -56,12 +56,10 @@ static NSUInteger countID = 0;
         PVCollide collide = defaultPVCollide_;
         collide.radius = 16;
         
-
-        
         // Bounding box setup
         [boundaries_ addObject:[Boundary boundary:self colStruct:collide]];
         
-        if (type == kNormalTurtling) {
+        if (type == kTurtling) {
             [movements_ addObject:[StaticMovement staticMovement]];
         }
         else if (type == kSwarmTurtling) {

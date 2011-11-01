@@ -87,6 +87,12 @@ typedef enum {
     kRedEgg,
     kBlueEgg,
     kPlasmaBall,
+    // Object Swarm version
+    kSwarmTurtling,
+    kSwarmYellowBird,
+    kSwarmBlueBird,
+    kSwarmBlueFish,
+    kSwarmBat
 } ObstacleType;
 
 typedef enum {
