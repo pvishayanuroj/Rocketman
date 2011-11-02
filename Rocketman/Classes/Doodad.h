@@ -12,9 +12,15 @@
 
 @interface Doodad : GameObject {
  
-
+    NSInteger zDepth_;
+    
+    /** Flag used in the Game Layer, indicating whether or not the object is destroyed */
+    BOOL destroyed_;    
     
 }
+
+@property (nonatomic, readonly) NSInteger zDepth;
+@property (nonatomic, readonly) BOOL destroyed;
 
 - (void) fall:(CGFloat)speed;
 

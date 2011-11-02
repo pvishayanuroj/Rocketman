@@ -14,6 +14,8 @@
 #import "GameLayer.h"
 #import "SideMovement.h"
 #import "ConstantMovementWithStop.h"
+#import "ArcMovement.h"
+#import "LightBlastCloud.h"
 
 @implementation HoverTurtle
 
@@ -114,14 +116,15 @@ static NSUInteger countID = 0;
 - (void) boundaryHit:(CGPoint)point boundaryID:(NSInteger)boundaryID
 {
     [[AudioManager audioManager] playSound:kPlop];        
-    [super showDeath:kBamText];
-    
-    [super bulletHit];
+    [self death];
 }
 
 - (void) death
 {        
-    [super flagToDestroy];
+    destroyed_ = YES;    
+    sprite_.visible = NO;        
+    
+    [[GameManager gameManager] addDoodad:[LightBlastCloud lightBlastCloudAt:self.position]];        
 }
 
 - (void) sideMovementProximityTrigger:(SideMovement *)movement

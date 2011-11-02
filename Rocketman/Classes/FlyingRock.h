@@ -18,6 +18,8 @@
 
 - (id) initWithPos:(CGPoint)pos type:(NSString *)type;
 
+- (void) death;
+
 + (void) resetID;
 
 @end

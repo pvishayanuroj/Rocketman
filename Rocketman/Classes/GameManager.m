@@ -187,6 +187,11 @@ static GameManager *_gameManager = nil;
     [gameLayer_ addDoodad:type pos:pos];
 }
 
+- (void) addDoodad:(Doodad *)doodad
+{
+    [gameLayer_ addDoodad:doodad];
+}
+
 #pragma mark - HUD Methods
 
 - (void) setNumCats01:(NSUInteger)numCats

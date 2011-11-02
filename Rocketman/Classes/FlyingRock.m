@@ -13,7 +13,8 @@
 #import "GameManager.h"
 #import "GameLayer.h"
 #import "PointWrapper.h"
-#import "BlastCloud.h"
+#import "LightBlastCloud.h"
+#import "DarkBlastCloud.h"
 #import "StaticMovement.h"
 #import "ArcMovement.h"
 
@@ -77,17 +78,18 @@ static NSUInteger countID = 0;
 
 - (void) boundaryCollide:(NSInteger)boundaryID
 {
-    if (![[GameManager gameManager] isRocketInvincible]) {
-        [[GameManager gameManager] rocketCollision];
-        [[AudioManager audioManager] playSound:kWerr];        
+    // If invincible, rock explodes
+    if ([[GameManager gameManager] isRocketInvincible]) {
+        [self death];
     }
-    
-    sprite_.visible = NO;    
-    
-    [[AudioManager audioManager] playSound:kWerr];                
-    [super showDeath:kPlopText];
-    
-    [[GameManager gameManager] addDoodad:kDebrisGen pos:self.position];    
+    // If not invincible, rock disintegrates
+    else {
+        [[GameManager gameManager] rocketCollision];
+        [[AudioManager audioManager] playSound:kWerr];  
+        [[GameManager gameManager] addDoodad:kDebrisGen pos:self.position];
+        destroyed_ = YES;
+        sprite_.visible = NO;
+    }
 }
 
 - (void) boundaryHit:(CGPoint)point boundaryID:(NSInteger)boundaryID
@@ -96,13 +98,14 @@ static NSUInteger countID = 0;
     // Account for offset, since pos is in terms of screen grid
     CGPoint p = ccpSub(point, self.position);
     // Rock takes no damage on shell hit
-    BlastCloud *blast = [BlastCloud blastCloudAt:p size:1.0 text:kBamText];
-    [self addChild:blast];
+    [[GameManager gameManager] addDoodad:[LightBlastCloud lightBlastCloudAt:p]];
 }
 
 - (void) death
 {        
-    [super flagToDestroy];
+    destroyed_ = YES;
+    sprite_.visible = NO;
+    [[GameManager gameManager] addDoodad:[DarkBlastCloud darkBlastCloudAt:self.position]];
 }
 
 @end

@@ -11,9 +11,15 @@
 
 @implementation Doodad
 
+@synthesize zDepth = zDepth_;
+@synthesize destroyed = destroyed_;
+
 - (id) init
 {
     if ((self = [super initGameObject])) {
+        
+        zDepth_ = kDoodadDepth;
+        destroyed_ = NO;
         
     }
     return self;

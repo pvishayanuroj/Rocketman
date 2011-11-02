@@ -11,8 +11,6 @@
 #import "SideMovementDelegate.h"
 #import "BoundaryDelegate.h"
 
-@class SideMovement;
-
 @interface HoverTurtle : Obstacle <BoundaryDelegate, SideMovementDelegate> {
     
 }
@@ -25,9 +23,7 @@
 
 - (void) initEngine;
 
-- (void) sideMovementProximityTrigger:(SideMovement *)movement;
-
-- (void) sideMovementRandomTrigger:(SideMovement *)movement;
+- (void) death;
 
 + (void) resetID;
 

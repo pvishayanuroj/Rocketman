@@ -12,7 +12,10 @@
 #import "GameLayer.h"
 #import "AudioManager.h"
 #import "DataManager.h"
+#import "GameManager.h"
+#import "LightBlastCloud.h"
 #import "StaticMovement.h"
+#import "ArcMovement.h"
 
 @implementation ShockTurtling
 
@@ -105,8 +108,7 @@ static NSUInteger countID = 0;
 
 - (void) doneAttacking
 {
-    sprite_.visible = NO;
-    [super showDeath:kPlopText];    
+    [self death];
 }
 
 - (void) startShock
@@ -117,24 +119,30 @@ static NSUInteger countID = 0;
 
 - (void) boundaryCollide:(NSInteger)boundaryID
 {
-    GameLayer *gameLayer = (GameLayer *)[self parent];
-    [[AudioManager audioManager] playSound:kWerr];                
-    [gameLayer slowDown:0.66];    
-
-    [self showAttacking];
+    if ([[GameManager gameManager] isRocketInvincible]) {
+        [movements_ removeAllObjects];
+        [movements_ addObject:[ArcMovement arcFastRandomMovement:self.position]];
+        [[AudioManager audioManager] playSound:kPlop];                    
+    }
+    else {
+        [[AudioManager audioManager] playSound:kWerr];                
+        [[GameManager gameManager] rocketCollision];
+        [self showAttacking];
+    }
 }
 
 - (void) boundaryHit:(CGPoint)point boundaryID:(NSInteger)boundaryID
 {
     [[AudioManager audioManager] playSound:kPlop];        
-    [super showDeath:kBamText];
-    
-    [super bulletHit];
+    [self death];
 }
 
 - (void) death
 {    
-    [super flagToDestroy];
+    destroyed_ = YES;    
+    sprite_.visible = NO;        
+    
+    [[GameManager gameManager] addDoodad:[LightBlastCloud lightBlastCloudAt:self.position]];        
 }
 
 

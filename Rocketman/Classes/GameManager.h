@@ -17,6 +17,7 @@
 @class DialogueLayer;
 @class Rocket;
 @class Obstacle;
+@class Doodad;
 @class Notification;
 
 /** 
@@ -64,6 +65,9 @@
 
 /** Method to tell the game layer to add an doodad */
 - (void) addDoodad:(DoodadType)type pos:(CGPoint)pos;
+
+/** Method to pass a doodad to add in the game layer */
+- (void) addDoodad:(Doodad *)doodad;
 
 - (void) setNumCats01:(NSUInteger)numCats;
 

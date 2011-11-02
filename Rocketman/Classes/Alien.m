@@ -15,6 +15,7 @@
 #import "Boundary.h"
 #import "StaticMovement.h"
 #import "ArcMovement.h"
+#import "LightBlastCloud.h"
 
 @implementation Alien
 
@@ -89,26 +90,24 @@ static NSUInteger countID = 0;
         [movements_ addObject:[ArcMovement arcFastRandomMovement:self.position]];
     }
     else {  
-        sprite_.visible = NO;    
-    
         [[GameManager gameManager] rocketCollision];
         [[AudioManager audioManager] playSound:kWerr];                     
     
-        [super showDeath:kPlopText];
+        [self death];
     }
 }
 
 - (void) boundaryHit:(CGPoint)point boundaryID:(NSInteger)boundaryID
-{
+{    
     [[AudioManager audioManager] playSound:kPlop];        
-    [super showDeath:kBamText];
-    
-    [super bulletHit];
+    [self death];
 }
 
 - (void) death
-{        
-    [super flagToDestroy];
+{
+    destroyed_ = YES;    
+    sprite_.visible = NO;            
+    [[GameManager gameManager] addDoodad:[LightBlastCloud lightBlastCloudAt:self.position]];    
 }
 
 @end

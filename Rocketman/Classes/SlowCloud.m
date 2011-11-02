@@ -40,6 +40,8 @@ const CGFloat SC_MOVEMENT_SPEED = 0.2f;
 
 - (void) dealloc
 {
+    [sprite_ release];
+    
     [super dealloc];
 }
 

@@ -1,22 +1,28 @@
 //
-//  BigExplosion.m
+//  DarkBlastCloud.m
 //  Rocketman
 //
-//  Created by Paul Vishayanuroj on 7/8/11.
+//  Created by Paul Vishayanuroj on 11/1/11.
 //  Copyright 2011 Paul Vishayanuroj. All rights reserved.
 //
 
-#import "BigExplosion.h"
+#import "DarkBlastCloud.h"
+#import "StaticMovement.h"
 #import "TargetedAction.h"
 
-@implementation BigExplosion
+@implementation DarkBlastCloud
 
-+ (id) bigExplosionAt:(CGPoint)pos
++ (id) darkBlastCloudAt:(CGPoint)pos
 {
-    return [[[self alloc] initBigExplosionAt:pos size:1.0] autorelease];
+    return [[[self alloc] initDarkBlastCloudAt:pos size:1.0f movement:kStaticMovement] autorelease];
 }
 
-- (id) initBigExplosionAt:(CGPoint)pos size:(CGFloat)size
++ (id) darkBlastCloudAt:(CGPoint)pos size:(CGFloat)size movement:(MovementType)movement
+{
+    return [[[self alloc] initDarkBlastCloudAt:pos size:size movement:movement] autorelease];
+}
+
+- (id) initDarkBlastCloudAt:(CGPoint)pos size:(CGFloat)size movement:(MovementType)movement
 {
     if ((self = [super init])) {
         
@@ -45,7 +51,11 @@
         CCFiniteTimeAction *s2 = [CCSpawn actions:t4, t5, t6, t7, nil];
         
         CCCallFunc *method = [CCCallFunc actionWithTarget:self selector:@selector(destroy)];
-        [self runAction:[CCSequence actions:s1, s2, method, nil]];        
+        [self runAction:[CCSequence actions:s1, s2, method, nil]];      
+        
+        if (movement == kStaticMovement) {
+            [movements_ addObject:[StaticMovement staticMovement]];
+        }
     }
     return self;
 }
@@ -53,8 +63,11 @@
 - (void) dealloc
 {
 #if DEBUG_DEALLOCS
-    NSLog(@"Blast Cloud dealloc'd");
+    NSLog(@"Dark Blast Cloud dealloc'd");
 #endif
+    [smoke_ release];
+    [blast_ release];
+    [text_ release];
     
     [super dealloc];
 }
@@ -75,15 +88,9 @@
     [self addChild:text_];
 }
 
-- (void) fall:(CGFloat)speed
-{
-    CGPoint p = CGPointMake(0, speed);
-    self.position = ccpSub(self.position, p);    
-}
-
 - (void) destroy
 {
-    [self removeFromParentAndCleanup:YES];
+    destroyed_ = YES;
 }
 
 

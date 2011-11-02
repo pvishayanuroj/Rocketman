@@ -9,7 +9,7 @@
 enum {
     kBackgroundDepth = 0,
     kGroundDepth = 1,
-	kCloudDepth = 2,
+	kDoodadDepth = 2,
 	kObstacleDepth = 3,    
     kBulletDepth = 4,    
     kRocketFlameDepth = 5,
@@ -23,9 +23,15 @@ typedef enum {
     kSpeedDown,
     kCatPlus,
     kBoostPlus,
+    kRandomDeathText,
     kBamText,
     kPlopText
 } EventText;
+
+typedef enum {
+    kNoMovement,    
+    kStaticMovement
+} MovementType;
 
 typedef enum {
     kTheme01,

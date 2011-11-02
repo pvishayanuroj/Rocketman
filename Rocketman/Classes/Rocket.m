@@ -63,6 +63,7 @@
     [burningAnimation_ release];
     [wobblingAnimation_ release];
     [heartAnimation_ release];
+    [slowAnimation_ release];
     [auraAnimation_ release];
     [engineFlame_ release];
     [boostFlame_ release];

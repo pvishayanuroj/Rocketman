@@ -10,12 +10,14 @@
 #import "Boundary.h"
 #import "Movement.h"
 #import "GameLayer.h"
+#import "StaticMovement.h"
 #import "ConstantMovement.h"
 #import "AudioManager.h"
 #import "DataManager.h"
 #import "TargetedAction.h"
 #import "GameManager.h"
 #import "ArcMovement.h"
+#import "LightBlastCloud.h"
 
 @implementation YellowBird
 
@@ -28,15 +30,15 @@ static NSUInteger countID = 0;
 
 + (id) swarmYellowBirdWithPos:(CGPoint)pos
 {
-    return [[[self alloc] initWithPos:pos] autorelease];
+    return [[[self alloc] initWithPos:pos type:kSwarmYellowBird] autorelease];
 }
 
 + (id) yellowBirdWithPos:(CGPoint)pos
 {
-    return [[[self alloc] initWithPos:pos] autorelease];
+    return [[[self alloc] initWithPos:pos type:kYellowBird] autorelease];
 }
 
-- (id) initWithPos:(CGPoint)pos
+- (id) initWithPos:(CGPoint)pos type:(ObstacleType)type
 {
 	if ((self = [super init])) {
         
@@ -54,12 +56,16 @@ static NSUInteger countID = 0;
         PVCollide collide = defaultPVCollide_;
         collide.radius = 16;
         
-        CGPoint fallRate = CGPointMake(3, 0);
+        if (type == kYellowBird) {
+            [movements_ addObject:[StaticMovement staticMovement]];
+        }
+        else if (type == kSwarmTurtling) {                
+            CGPoint fallRate = CGPointMake(3, 0);
+            [movements_ addObject:[ConstantMovement constantMovement:fallRate]];
+        }
         
         // Bounding box setup
         [boundaries_ addObject:[Boundary boundary:self colStruct:collide]];
-        
-        [movements_ addObject:[ConstantMovement constantMovement:fallRate]];
         
         [self initActions];
         [self showIdle];        
@@ -104,35 +110,36 @@ static NSUInteger countID = 0;
 - (void) finishHit
 {
     [[AudioManager audioManager] playSound:kPlop];            
-    [super showDeath:kBamText];
-    [super bulletHit];    
+    [self death];
 }
 
 - (void) boundaryCollide:(NSInteger)boundaryID
 {
     if ([[GameManager gameManager] isRocketInvincible]) {
-        
         [movements_ removeAllObjects];
         [movements_ addObject:[ArcMovement arcFastRandomMovement:self.position]];
+        [[AudioManager audioManager] playSound:kPlop];                    
     }
     else {  
-        sprite_.visible = NO;    
-        
         [[GameManager gameManager] rocketCollision];
         [[AudioManager audioManager] playSound:kWerr];                     
         
-        [super showDeath:kPlopText];
+        [self death];
     }         
 }
 
 - (void) boundaryHit:(CGPoint)point boundaryID:(NSInteger)boundaryID
 {
+    [[AudioManager audioManager] playSound:kPlop];            
     [self showDamage];
 }
 
 - (void) death
 {    
-    [super flagToDestroy];
+    destroyed_ = YES;    
+    sprite_.visible = NO;        
+    
+    [[GameManager gameManager] addDoodad:[LightBlastCloud lightBlastCloudAt:self.position]];        
 }
 
 @end

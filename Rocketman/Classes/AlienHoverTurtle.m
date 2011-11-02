@@ -15,6 +15,7 @@
 #import "TargetedAction.h"
 #import "GameManager.h"
 #import "Egg.h"
+#import "LightBlastCloud.h"
 
 @implementation AlienHoverTurtle
 
@@ -148,12 +149,11 @@ static NSUInteger countID = 0;
     
     // Creature death
     if (--HP_ == 0) {
-        [super showDeath:kBamText];
-        [super bulletHit];
         PVCollide c = boundary_.collide;
         c.hitActive = NO;
         boundary_.collide = c;   
         [boundary_ release];
+        [self death];
         
         // Make eggs invisible
         for (Obstacle *obstacle in childObstacles_) {
@@ -167,7 +167,9 @@ static NSUInteger countID = 0;
 
 - (void) death
 {        
-    [super flagToDestroy];
+    destroyed_ = YES;
+    sprite_.visible = NO;
+    [[GameManager gameManager] addDoodad:[LightBlastCloud lightBlastCloudAt:self.position]];        
 }
 
 - (void) sideMovementLeftTurnaround:(SideMovement *)movement

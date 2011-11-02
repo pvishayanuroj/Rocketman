@@ -38,6 +38,8 @@
 		DA6901A3145F962A000D278F /* WhaleBoss.m in Sources */ = {isa = PBXBuildFile; fileRef = DA6901A2145F9623000D278F /* WhaleBoss.m */; };
 		DA6901A6145F964A000D278F /* BatBoss.m in Sources */ = {isa = PBXBuildFile; fileRef = DA6901A5145F9642000D278F /* BatBoss.m */; };
 		DA6901A9145F9697000D278F /* CatBoss.m in Sources */ = {isa = PBXBuildFile; fileRef = DA6901A8145F9692000D278F /* CatBoss.m */; };
+		DAD805721460CC0000A195C3 /* LightBlastCloud.m in Sources */ = {isa = PBXBuildFile; fileRef = DAD805711460CBFF00A195C3 /* LightBlastCloud.m */; };
+		DAD805751460CC1100A195C3 /* DarkBlastCloud.m in Sources */ = {isa = PBXBuildFile; fileRef = DAD805741460CC1100A195C3 /* DarkBlastCloud.m */; };
 		DAF43E53144B085400943C0D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAF43E52144B085400943C0D /* QuartzCore.framework */; };
 		DAF43E55144B085400943C0D /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAF43E54144B085400943C0D /* OpenGLES.framework */; };
 		DAF43E57144B085400943C0D /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAF43E56144B085400943C0D /* OpenAL.framework */; };
@@ -264,8 +266,6 @@
 		DAF4445B144B08DE00943C0D /* AnimatedButton.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF443BF144B08C100943C0D /* AnimatedButton.m */; };
 		DAF4445D144B08DE00943C0D /* AudioManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF443C3144B08C200943C0D /* AudioManager.m */; };
 		DAF4445E144B08DE00943C0D /* Banner.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF443C5144B08C200943C0D /* Banner.m */; };
-		DAF4445F144B08DE00943C0D /* BigExplosion.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF443C8144B08C300943C0D /* BigExplosion.m */; };
-		DAF44460144B08DE00943C0D /* BlastCloud.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF443CA144B08C300943C0D /* BlastCloud.m */; };
 		DAF44461144B08DE00943C0D /* Boost.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF443CC144B08C400943C0D /* Boost.m */; };
 		DAF44462144B08DE00943C0D /* BossTurtle.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF443CE144B08C400943C0D /* BossTurtle.m */; };
 		DAF44463144B08DE00943C0D /* Boundary.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF443D0144B08C400943C0D /* Boundary.m */; };
@@ -385,6 +385,10 @@
 		DA6901A5145F9642000D278F /* BatBoss.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BatBoss.m; path = Classes/BatBoss.m; sourceTree = "<group>"; };
 		DA6901A7145F968C000D278F /* CatBoss.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CatBoss.h; path = Classes/CatBoss.h; sourceTree = "<group>"; };
 		DA6901A8145F9692000D278F /* CatBoss.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CatBoss.m; path = Classes/CatBoss.m; sourceTree = "<group>"; };
+		DAD805701460CBFE00A195C3 /* LightBlastCloud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LightBlastCloud.h; path = Classes/LightBlastCloud.h; sourceTree = "<group>"; };
+		DAD805711460CBFF00A195C3 /* LightBlastCloud.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LightBlastCloud.m; path = Classes/LightBlastCloud.m; sourceTree = "<group>"; };
+		DAD805731460CC1000A195C3 /* DarkBlastCloud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DarkBlastCloud.h; path = Classes/DarkBlastCloud.h; sourceTree = "<group>"; };
+		DAD805741460CC1100A195C3 /* DarkBlastCloud.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DarkBlastCloud.m; path = Classes/DarkBlastCloud.m; sourceTree = "<group>"; };
 		DAF43E4E144B085400943C0D /* Rocketman.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rocketman.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAF43E52144B085400943C0D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		DAF43E54144B085400943C0D /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -737,10 +741,6 @@
 		DAF443C4144B08C200943C0D /* Banner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Banner.h; path = Classes/Banner.h; sourceTree = "<group>"; };
 		DAF443C5144B08C200943C0D /* Banner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Banner.m; path = Classes/Banner.m; sourceTree = "<group>"; };
 		DAF443C6144B08C200943C0D /* BannerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BannerDelegate.h; path = Classes/BannerDelegate.h; sourceTree = "<group>"; };
-		DAF443C7144B08C300943C0D /* BigExplosion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BigExplosion.h; path = Classes/BigExplosion.h; sourceTree = "<group>"; };
-		DAF443C8144B08C300943C0D /* BigExplosion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BigExplosion.m; path = Classes/BigExplosion.m; sourceTree = "<group>"; };
-		DAF443C9144B08C300943C0D /* BlastCloud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BlastCloud.h; path = Classes/BlastCloud.h; sourceTree = "<group>"; };
-		DAF443CA144B08C300943C0D /* BlastCloud.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BlastCloud.m; path = Classes/BlastCloud.m; sourceTree = "<group>"; };
 		DAF443CB144B08C300943C0D /* Boost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Boost.h; path = Classes/Boost.h; sourceTree = "<group>"; };
 		DAF443CC144B08C400943C0D /* Boost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Boost.m; path = Classes/Boost.m; sourceTree = "<group>"; };
 		DAF443CD144B08C400943C0D /* BossTurtle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BossTurtle.h; path = Classes/BossTurtle.h; sourceTree = "<group>"; };
@@ -1727,10 +1727,10 @@
 				DAF4442A144B08D300943C0D /* Parallax.m */,
 				DAF44404144B08CD00943C0D /* Ground.h */,
 				DAF44405144B08CD00943C0D /* Ground.m */,
-				DAF443C7144B08C300943C0D /* BigExplosion.h */,
-				DAF443C8144B08C300943C0D /* BigExplosion.m */,
-				DAF443C9144B08C300943C0D /* BlastCloud.h */,
-				DAF443CA144B08C300943C0D /* BlastCloud.m */,
+				DAD805701460CBFE00A195C3 /* LightBlastCloud.h */,
+				DAD805711460CBFF00A195C3 /* LightBlastCloud.m */,
+				DAD805731460CC1000A195C3 /* DarkBlastCloud.h */,
+				DAD805741460CC1100A195C3 /* DarkBlastCloud.m */,
 				DAF443DB144B08C600943C0D /* Cloud.h */,
 				DAF443DC144B08C600943C0D /* Cloud.m */,
 				DA69016A145A49AF000D278F /* RockDebris.h */,
@@ -1766,12 +1766,12 @@
 		DAF444AF144B09A100943C0D /* Obstacles */ = {
 			isa = PBXGroup;
 			children = (
-				DA6901AC145F96EC000D278F /* Helpers */,
-				DA6901AB145F96DD000D278F /* Bosses */,
-				DA6901AA145F96D3000D278F /* Enemies */,
 				DAF44424144B08D200943C0D /* Obstacle.h */,
 				DAF44425144B08D200943C0D /* Obstacle.m */,
 				DAF44426144B08D200943C0D /* ObstacleDelegate.h */,
+				DA6901AC145F96EC000D278F /* Helpers */,
+				DA6901AB145F96DD000D278F /* Bosses */,
+				DA6901AA145F96D3000D278F /* Enemies */,
 			);
 			name = Obstacles;
 			sourceTree = "<group>";
@@ -2079,8 +2079,6 @@
 				DAF4445B144B08DE00943C0D /* AnimatedButton.m in Sources */,
 				DAF4445D144B08DE00943C0D /* AudioManager.m in Sources */,
 				DAF4445E144B08DE00943C0D /* Banner.m in Sources */,
-				DAF4445F144B08DE00943C0D /* BigExplosion.m in Sources */,
-				DAF44460144B08DE00943C0D /* BlastCloud.m in Sources */,
 				DAF44461144B08DE00943C0D /* Boost.m in Sources */,
 				DAF44462144B08DE00943C0D /* BossTurtle.m in Sources */,
 				DAF44463144B08DE00943C0D /* Boundary.m in Sources */,
@@ -2162,6 +2160,8 @@
 				DA6901A9145F9697000D278F /* CatBoss.m in Sources */,
 				DA642B64145F98C300FAB4D4 /* BlueBird.m in Sources */,
 				DA642B67145F9A5600FAB4D4 /* AlienBossTurtle.m in Sources */,
+				DAD805721460CC0000A195C3 /* LightBlastCloud.m in Sources */,
+				DAD805751460CC1100A195C3 /* DarkBlastCloud.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

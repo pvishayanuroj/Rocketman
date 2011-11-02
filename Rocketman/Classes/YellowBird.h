@@ -20,13 +20,15 @@
 
 + (id) yellowBirdWithPos:(CGPoint)pos;
 
-- (id) initWithPos:(CGPoint)pos;
+- (id) initWithPos:(CGPoint)pos type:(ObstacleType)type;
 
 - (void) initActions;
 
 - (void) showDamage;
 
 - (void) finishHit;
+
+- (void) death;
 
 + (void) resetID;
 

@@ -9,9 +9,11 @@
 #import "DummyBoss.h"
 #import "DataManager.h"
 #import "AudioManager.h"
+#import "GameManager.h"
 #import "Boundary.h"
 #import "ConstantMovementWithStop.h"
 #import "SideMovement.h"
+#import "DarkBlastCloud.h"
 
 @implementation DummyBoss
 
@@ -111,17 +113,11 @@ static NSUInteger countID = 0;
     
     // Creature death
     if (--HP_ == 0) {
-        [super showDeath:kBamText];
-        [super bulletHit];
         PVCollide c = boundary_.collide;
         c.hitActive = NO;
         boundary_.collide = c;   
         [boundary_ release];
-        
-        // Make eggs invisible
-        for (Obstacle *obstacle in childObstacles_) {
-            obstacle.visible = NO;
-        }
+        [self death];
     }    
     else {
         [self showDamage];
@@ -130,7 +126,10 @@ static NSUInteger countID = 0;
 
 - (void) death
 {        
-    [super flagToDestroy];
+    destroyed_ = YES;
+    sprite_.visible = NO;
+    
+    [[GameManager gameManager] addDoodad:[DarkBlastCloud darkBlastCloudAt:self.position]];
 }
 
 - (void) sideMovementLeftTurnaround:(SideMovement *)movement

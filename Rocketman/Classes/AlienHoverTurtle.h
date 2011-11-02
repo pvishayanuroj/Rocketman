@@ -39,6 +39,8 @@
 
 - (void) showDamage;
 
+- (void) death;
+
 + (void) resetID;
 
 @end

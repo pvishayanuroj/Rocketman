@@ -28,6 +28,8 @@
 
 - (void) initActions;
 
+- (void) death;
+
 + (void) resetID;
 
 @end

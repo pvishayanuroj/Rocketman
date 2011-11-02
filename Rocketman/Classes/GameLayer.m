@@ -23,7 +23,6 @@
 #import "DebrisGenerator.h"
 #import "SwarmGenerator.h"
 #import "CatBullet.h"
-#import "BlastCloud.h"
 #import "UtilFuncs.h"
 #import "Boundary.h"
 #import "TargetedAction.h"
@@ -361,8 +360,8 @@
     for (Doodad *doodad in doodads_) {
         [doodad fall:rocketSpeed_];
 
-        // If past the cutoff boundary, delete
-        if (doodad.position.y < yCutoff_ || doodad.position.x > xCutoff_) {
+        // If past the cutoff boundary or doodad has been destroyed (for unmoving doodads), delete
+        if (doodad.position.y < yCutoff_ || doodad.position.x > xCutoff_ || doodad.destroyed) {
             [remove addIndex:index];            
             [doodad removeFromParentAndCleanup:YES];
         }
@@ -569,7 +568,7 @@
 
 - (void) addDoodad:(Doodad *)doodad
 {
-    [self addChild:doodad z:kCloudDepth];   
+    [self addChild:doodad z:doodad.zDepth];   
     [doodads_ addObject:doodad];   
 }
 

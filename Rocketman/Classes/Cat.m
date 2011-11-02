@@ -99,7 +99,7 @@ static NSUInteger countID = 0;
 
 - (void) death
 {   
-    [super flagToDestroy];
+    destroyed_ = YES;
 }
 
 @end

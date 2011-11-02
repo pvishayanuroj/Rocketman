@@ -13,8 +13,8 @@
 #import "EngineParticleSystem.h"
 #import "AudioManager.h"
 #import "DataManager.h"
-#import "BlastCloud.h"
-#import "BigExplosion.h"
+#import "LightBlastCloud.h"
+#import "DarkBlastCloud.h"
 #import "Boundary.h"
 #import "SideMovement.h"
 #import "ConstantMovementWithStop.h"
@@ -187,10 +187,11 @@ static NSUInteger countID = 0;
     pos.x -= x/2;
     pos.y -= y/2;
     
-    BlastCloud *blast = [BlastCloud blastCloudAt:pos size:1.0 text:kBamText];
-    [self addChild:blast];
+    [[GameManager gameManager] addDoodad:[LightBlastCloud lightBlastCloudAt:pos]];
+//    BlastCloud *blast = [BlastCloud blastCloudAt:pos size:1.0 text:kBamText];
+//    [self addChild:blast];
     
-    if (arc4random() % 100 < 25) {
+    if (arc4random() % 4 < 1) {
         [[AudioManager audioManager] playSound:kExplosion01];
     }
 }
@@ -198,7 +199,7 @@ static NSUInteger countID = 0;
 - (void) addBigExplosion
 {
     sprite_.visible = NO;
-    BigExplosion *explosion = [BigExplosion bigExplosionAt:CGPointZero];
+    DarkBlastCloud *explosion = [DarkBlastCloud darkBlastCloudAt:CGPointZero];
     [self addChild:explosion];
 }
 
@@ -258,14 +259,13 @@ static NSUInteger countID = 0;
         // Account for offset, since pos is in terms of screen grid
         CGPoint p = ccpSub(point, self.position);
         // Turtle takes no damage on shell hit
-        BlastCloud *blast = [BlastCloud blastCloudAt:p size:1.0 text:kBamText];
-        [self addChild:blast];          
+        [[GameManager gameManager] addDoodad:[LightBlastCloud lightBlastCloudAt:p]];
     }
 }
 
 - (void) death
-{        
-    [super flagToDestroy];
+{     
+    destroyed_ = YES;
 }
 
 #pragma mark - Particle System

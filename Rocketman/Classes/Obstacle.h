@@ -62,14 +62,14 @@
 /** Runs the idle animation of the object */
 - (void) showIdle;
 
-- (void) showDeath:(EventText)text;
+//- (void) showDeath:(EventText)text;
 
 - (void) fall:(CGFloat)speed;
 
-- (void) bulletHit;
+//- (void) bulletHit;
 
 /** Just flags the object to eventually be destroyed */
-- (void) flagToDestroy;
+//- (void) flagToDestroy;
 
 /** 
  * Correctly destroys and the obstacle. Note: This method MUST be called

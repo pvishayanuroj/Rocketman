@@ -28,6 +28,8 @@
 
 - (void) doneAttacking;
 
+- (void) death;
+
 + (void) resetID;
 
 @end

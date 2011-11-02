@@ -98,8 +98,7 @@ static NSUInteger countID = 0;
     
     sprite_.visible = NO;    
     [[AudioManager audioManager] playSound:kWerr];                
-      
-    [super flagToDestroy];
+    destroyed_ = YES;
 }
 
 @end

@@ -7,7 +7,6 @@
 //
 
 #import "Obstacle.h"
-#import "BlastCloud.h"
 #import "GameLayer.h"
 #import "Boundary.h"
 #import "Movement.h"
@@ -65,6 +64,7 @@
 	[sprite_ runAction:idleAnimation_];	
 }
 
+/*
 - (void) showDeath:(EventText)text
 {
     CCFiniteTimeAction *delay = [CCDelayTime actionWithDuration:0.3];    
@@ -74,7 +74,7 @@
     [self addChild:blast];
     
     [self runAction:[CCSequence actions:delay, method, nil]];
-}
+}*/
 
 - (void) fall:(CGFloat)speed
 {
@@ -97,23 +97,26 @@
     }
 }
 
+/*
 - (void) bulletHit
 {
     sprite_.visible = NO;
 }
-
+*/
+/*
 - (void) flagToDestroy
 {       
     destroyed_ = YES;
 }
-
+*/
 - (void) destroy
 {
     [self removeFromParentAndCleanup:YES];
     
     // Take care of cleanup of child obstacles
     for (Obstacle *obstacle in childObstacles_) {
-        [obstacle flagToDestroy];
+        obstacle.destroyed = YES;
+        //[obstacle flagToDestroy];
     }
     
     [childObstacles_ release];
