@@ -64,18 +64,6 @@
 	[sprite_ runAction:idleAnimation_];	
 }
 
-/*
-- (void) showDeath:(EventText)text
-{
-    CCFiniteTimeAction *delay = [CCDelayTime actionWithDuration:0.3];    
-	CCFiniteTimeAction *method = [CCCallFunc actionWithTarget:self selector:@selector(death)];    
-    
-    BlastCloud *blast = [BlastCloud blastCloudAt:CGPointZero size:1.0 text:text];
-    [self addChild:blast];
-    
-    [self runAction:[CCSequence actions:delay, method, nil]];
-}*/
-
 - (void) fall:(CGFloat)speed
 {
     // Go through all chained movements and keep track of the total movement
@@ -97,18 +85,6 @@
     }
 }
 
-/*
-- (void) bulletHit
-{
-    sprite_.visible = NO;
-}
-*/
-/*
-- (void) flagToDestroy
-{       
-    destroyed_ = YES;
-}
-*/
 - (void) destroy
 {
     [self removeFromParentAndCleanup:YES];
@@ -116,7 +92,6 @@
     // Take care of cleanup of child obstacles
     for (Obstacle *obstacle in childObstacles_) {
         obstacle.destroyed = YES;
-        //[obstacle flagToDestroy];
     }
     
     [childObstacles_ release];

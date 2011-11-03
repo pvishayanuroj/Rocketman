@@ -312,23 +312,44 @@ static GameManager *_gameManager = nil;
 
 - (void) resetCounters
 {
-    [Turtling resetID];
+    // Enemies
+    [Alien resetID];    
     [UFO resetID];
-    [Fuel resetID];
-    [Cat resetID];
-    [Alien resetID];
-    [AlienHoverTurtle resetID];
+    [Flybot resetID];
+    [Turtling resetID];    
+    [ShockTurtling resetID];
+    [HoverTurtle resetID];
+    [AlienHoverTurtle resetID];    
+    [YellowBird resetID];
+    [BlueBird resetID];
+    [Bat resetID];
+    [Squid resetID];
+    [BlueFish resetID];
+    [Salamander resetID];
+    [FlyingRock resetID];
+    
+    // Bosses
+    [DummyBoss resetID];
+    [BossTurtle resetID];
+    /*
+    [BirdBoss resetID];
+    [WhaleBoss resetID];
+    [BatBoss resetID];
+    [AlienBossTurtle resetID];
+    [CatBoss resetID];
+     */
+    
+    // Helpers
     [Angel resetID];
     [Boost resetID];
-    [BossTurtle resetID];
+    [BombCat resetID];
+    [Cat resetID];
+    [CatBundle resetID];
+    [Fuel resetID];
+    
+    // Auxiliary objects
     [Egg resetID];
-    [Flybot resetID];
-    [FlyingRock resetID];
-    [HoverTurtle resetID];
     [PlasmaBall resetID];
-    [ShockTurtling resetID];
-    [YellowBird resetID];
-    [DummyBoss resetID];
 }
 
 @end

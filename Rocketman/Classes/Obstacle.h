@@ -62,19 +62,13 @@
 /** Runs the idle animation of the object */
 - (void) showIdle;
 
-//- (void) showDeath:(EventText)text;
-
+/** Runs all movements associated with this object. Also moves all children as well */
 - (void) fall:(CGFloat)speed;
-
-//- (void) bulletHit;
-
-/** Just flags the object to eventually be destroyed */
-//- (void) flagToDestroy;
 
 /** 
  * Correctly destroys and the obstacle. Note: This method MUST be called
- * for proper deallocation of this obstacle, because it resolves
- * circular references and removes this cocos node from the parent
+ * for proper deallocation of this obstacle, because it removes this cocos 
+ * node from the parent and cleans up all child obstacles
  */
 - (void) destroy;
 
