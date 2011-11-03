@@ -56,10 +56,11 @@ static NSUInteger countID = 0;
         PVCollide collide = defaultPVCollide_;
         collide.radius = 16;
         
+        origType_ = type;
         if (type == kYellowBird) {
             [movements_ addObject:[StaticMovement staticMovement]];
         }
-        else if (type == kSwarmTurtling) {                
+        else if (type == kSwarmYellowBird) {                
             CGPoint fallRate = CGPointMake(3, 0);
             [movements_ addObject:[ConstantMovement constantMovement:fallRate]];
         }
@@ -139,7 +140,12 @@ static NSUInteger countID = 0;
     destroyed_ = YES;    
     sprite_.visible = NO;        
     
-    [[GameManager gameManager] addDoodad:[LightBlastCloud lightBlastCloudAt:self.position]];        
+    if (origType_ == kYellowBird) {
+        [[GameManager gameManager] addDoodad:[LightBlastCloud lightBlastCloudAt:self.position]];        
+    }
+    else if (origType_ == kSwarmYellowBird) {
+        [[GameManager gameManager] addDoodad:[LightBlastCloud lightBlastCloudAt:self.position movement:kNoMovement]];        
+    }
 }
 
 @end

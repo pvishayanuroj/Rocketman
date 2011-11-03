@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Background File</key>
+	<string>Cave Background.png</string>
+	<key>Data</key>
+	<dict>
+		<key>10432</key>
+		<dict>
+			<key>147</key>
+			<string>Bat Boss</string>
+		</dict>
+		<key>1344</key>
+		<dict>
+			<key>253</key>
+			<string>Salamander</string>
+		</dict>
+		<key>1600</key>
+		<dict>
+			<key>40</key>
+			<string>Salamander</string>
+		</dict>
+		<key>1856</key>
+		<dict>
+			<key>173</key>
+			<string>Salamander</string>
+		</dict>
+		<key>2240</key>
+		<dict>
+			<key>253</key>
+			<string>Salamander</string>
+		</dict>
+		<key>2368</key>
+		<dict>
+			<key>67</key>
+			<string>Salamander</string>
+		</dict>
+		<key>2464</key>
+		<dict>
+			<key>227</key>
+			<string>Salamander</string>
+		</dict>
+		<key>2912</key>
+		<dict>
+			<key>120</key>
+			<string>Bat</string>
+		</dict>
+		<key>2976</key>
+		<dict>
+			<key>227</key>
+			<string>Bat</string>
+		</dict>
+		<key>3008</key>
+		<dict>
+			<key>147</key>
+			<string>Bat</string>
+		</dict>
+		<key>3072</key>
+		<dict>
+			<key>227</key>
+			<string>Bat</string>
+		</dict>
+		<key>3104</key>
+		<dict>
+			<key>120</key>
+			<string>Bat</string>
+		</dict>
+		<key>3296</key>
+		<dict>
+			<key>93</key>
+			<string>Bat</string>
+		</dict>
+		<key>3328</key>
+		<dict>
+			<key>227</key>
+			<string>Bat</string>
+		</dict>
+		<key>3456</key>
+		<dict>
+			<key>173</key>
+			<string>Bat</string>
+		</dict>
+		<key>3680</key>
+		<dict>
+			<key>227</key>
+			<string>Bat</string>
+		</dict>
+		<key>3808</key>
+		<dict>
+			<key>120</key>
+			<string>Bat</string>
+		</dict>
+		<key>4704</key>
+		<dict>
+			<key>93</key>
+			<string>Bat Swarm</string>
+		</dict>
+		<key>5696</key>
+		<dict>
+			<key>93</key>
+			<string>Bat Swarm</string>
+		</dict>
+		<key>7072</key>
+		<dict>
+			<key>253</key>
+			<string>Bat Swarm</string>
+		</dict>
+		<key>992</key>
+		<dict>
+			<key>67</key>
+			<string>Salamander</string>
+		</dict>
+	</dict>
+	<key>Datakeys</key>
+	<array>
+		<string>992</string>
+		<string>1344</string>
+		<string>1600</string>
+		<string>1856</string>
+		<string>2240</string>
+		<string>2368</string>
+		<string>2464</string>
+		<string>2912</string>
+		<string>2976</string>
+		<string>3008</string>
+		<string>3072</string>
+		<string>3104</string>
+		<string>3296</string>
+		<string>3328</string>
+		<string>3456</string>
+		<string>3680</string>
+		<string>3808</string>
+		<string>4704</string>
+		<string>5696</string>
+		<string>7072</string>
+		<string>10432</string>
+	</array>
+	<key>Ground File</key>
+	<string>Cave Ground.png</string>
+	<key>Level Num</key>
+	<string>4</string>
+	<key>Parallax File</key>
+	<string></string>
+	<key>Vertical Tiles</key>
+	<integer>4000</integer>
+</dict>
+</plist>

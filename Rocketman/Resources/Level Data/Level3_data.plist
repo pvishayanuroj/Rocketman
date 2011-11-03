@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Background File</key>
+	<string>Waterfall Background.png</string>
+	<key>Data</key>
+	<dict>
+		<key>1280</key>
+		<dict>
+			<key>200</key>
+			<string>Bomb Cat</string>
+			<key>93</key>
+			<string>Squid</string>
+		</dict>
+		<key>1440</key>
+		<dict>
+			<key>253</key>
+			<string>Squid</string>
+		</dict>
+		<key>1536</key>
+		<dict>
+			<key>147</key>
+			<string>Squid</string>
+		</dict>
+		<key>1664</key>
+		<dict>
+			<key>227</key>
+			<string>Squid</string>
+		</dict>
+		<key>1728</key>
+		<dict>
+			<key>67</key>
+			<string>Bomb Cat</string>
+		</dict>
+		<key>1888</key>
+		<dict>
+			<key>253</key>
+			<string>Bomb Cat</string>
+		</dict>
+		<key>1952</key>
+		<dict>
+			<key>120</key>
+			<string>Squid</string>
+		</dict>
+		<key>2144</key>
+		<dict>
+			<key>200</key>
+			<string>Blue Fish</string>
+		</dict>
+		<key>2240</key>
+		<dict>
+			<key>93</key>
+			<string>Blue Fish</string>
+		</dict>
+		<key>2368</key>
+		<dict>
+			<key>200</key>
+			<string>Blue Fish</string>
+		</dict>
+		<key>2496</key>
+		<dict>
+			<key>93</key>
+			<string>Blue Fish</string>
+		</dict>
+		<key>2688</key>
+		<dict>
+			<key>200</key>
+			<string>Bomb Cat</string>
+		</dict>
+		<key>2880</key>
+		<dict>
+			<key>67</key>
+			<string>Blue Fish Swarm</string>
+		</dict>
+		<key>3360</key>
+		<dict>
+			<key>200</key>
+			<string>Blue Fish Swarm</string>
+		</dict>
+		<key>4928</key>
+		<dict>
+			<key>200</key>
+			<string>Blue Fish Swarm</string>
+		</dict>
+		<key>7328</key>
+		<dict>
+			<key>147</key>
+			<string>Whale Boss</string>
+		</dict>
+	</dict>
+	<key>Datakeys</key>
+	<array>
+		<string>1280</string>
+		<string>1440</string>
+		<string>1536</string>
+		<string>1664</string>
+		<string>1728</string>
+		<string>1888</string>
+		<string>1952</string>
+		<string>2144</string>
+		<string>2240</string>
+		<string>2368</string>
+		<string>2496</string>
+		<string>2688</string>
+		<string>2880</string>
+		<string>3360</string>
+		<string>4928</string>
+		<string>7328</string>
+	</array>
+	<key>Ground File</key>
+	<string></string>
+	<key>Level Num</key>
+	<string>3</string>
+	<key>Parallax File</key>
+	<string></string>
+	<key>Vertical Tiles</key>
+	<integer>5000</integer>
+</dict>
+</plist>

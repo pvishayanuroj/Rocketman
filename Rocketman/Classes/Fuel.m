@@ -7,7 +7,7 @@
 //
 
 #import "Fuel.h"
-#import "GameLayer.h"
+#import "GameManager.h"
 #import "DataManager.h"
 #import "CallFuncWeak.h"
 #import "Boundary.h"
@@ -97,8 +97,7 @@ static NSUInteger countID = 0;
 
 - (void) boundaryCollide:(NSInteger)boundaryID
 {
-    GameLayer *gameLayer = (GameLayer *)[self parent];
-    [gameLayer collectFuel:self];
+    [[GameManager gameManager] powerUpCollected:obstacleType_];
     [self showCollect];    
 }
 

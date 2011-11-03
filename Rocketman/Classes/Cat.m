@@ -7,8 +7,8 @@
 //
 
 #import "Cat.h"
-#import "GameLayer.h"
 #import "DataManager.h"
+#import "GameManager.h"
 #import "CallFuncWeak.h"
 #import "Boundary.h"
 #import "StaticMovement.h"
@@ -92,8 +92,7 @@ static NSUInteger countID = 0;
 
 - (void) boundaryCollide:(NSInteger)boundaryID
 {
-    GameLayer *gameLayer = (GameLayer *)[self parent];
-    [gameLayer collectCat:self];    
+    [[GameManager gameManager] powerUpCollected:obstacleType_];
     [self showCollect];
 }
 

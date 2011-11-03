@@ -60,6 +60,7 @@ static NSUInteger countID = 0;
         // Bounding box setup
         [boundaries_ addObject:[Boundary boundary:self colStruct:collide]];
         
+        origType_ = type;
         if (type == kTurtling) {
             [movements_ addObject:[StaticMovement staticMovement]];
         }
@@ -124,7 +125,12 @@ static NSUInteger countID = 0;
     destroyed_ = YES;    
     sprite_.visible = NO;        
     
-    [[GameManager gameManager] addDoodad:[LightBlastCloud lightBlastCloudAt:self.position]];        
+    if (origType_ == kTurtling) {
+        [[GameManager gameManager] addDoodad:[LightBlastCloud lightBlastCloudAt:self.position]];        
+    }
+    else if (origType_ == kSwarmTurtling) {
+        [[GameManager gameManager] addDoodad:[LightBlastCloud lightBlastCloudAt:self.position movement:kNoMovement]];        
+    }    
 }
 
 @end

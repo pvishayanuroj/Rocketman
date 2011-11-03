@@ -12,6 +12,8 @@
 
 @interface YellowBird : Obstacle <BoundaryDelegate> {
     
+    ObstacleType origType_;
+    
     CCAction *damageAnimation_;
     
 }

@@ -54,7 +54,7 @@ static NSUInteger countID = 0;
         [boundaries_ addObject:[Boundary boundary:self colStruct:collide]];
         
         // This gets released in the death function
-        //movement_ = [[StaticMovement staticMovement:self] retain];        
+        [movements_ addObject:[StaticMovement staticMovement]];        
         
         [self initActions];
         [self showIdle];        
@@ -83,12 +83,8 @@ static NSUInteger countID = 0;
 	CCAnimation *animation = [[CCAnimationCache sharedAnimationCache] animationByName:animationName];
 	CCActionInterval *animate = [CCAnimate actionWithAnimation:animation];
 	idleAnimation_ = [[CCRepeatForever actionWithAction:animate] retain];
-	
-    animationName = [NSString stringWithFormat:@"%@ Preshock", name_];    
-    animation = [[CCAnimationCache sharedAnimationCache] animationByName:animationName];
-    preshockAnimation_ = [[CCAnimate actionWithAnimation:animation] retain];
     
-    animationName = [NSString stringWithFormat:@"%@ Shock", name_];    
+    animationName = [NSString stringWithFormat:@"%@ Attack", name_];    
     animation = [[CCAnimationCache sharedAnimationCache] animationByName:animationName];                 
     animate = [CCAnimate actionWithAnimation:animation];
     shockAnimation_ = [[CCRepeat actionWithAction:animate times:5] retain];
@@ -99,11 +95,10 @@ static NSUInteger countID = 0;
 {
 	[sprite_ stopAllActions];	
 	
-	TargetedAction *a1 = [TargetedAction actionWithTarget:sprite_ actionIn:(CCFiniteTimeAction *)preshockAnimation_];
-	TargetedAction *a2 = [TargetedAction actionWithTarget:sprite_ actionIn:(CCFiniteTimeAction *)shockAnimation_];    
+	TargetedAction *attack = [TargetedAction actionWithTarget:sprite_ actionIn:(CCFiniteTimeAction *)shockAnimation_];    
 	CCFiniteTimeAction *shock = [CCCallFunc actionWithTarget:self selector:@selector(startShock)];	
 	CCFiniteTimeAction *done = [CCCallFunc actionWithTarget:self selector:@selector(doneAttacking)];	
-	[self runAction:[CCSequence actions:a1, shock, a2, done, nil]];	
+	[self runAction:[CCSequence actions:attack, shock, done, nil]];	
 }
 
 - (void) doneAttacking

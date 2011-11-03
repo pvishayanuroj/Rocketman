@@ -9,40 +9,40 @@
 		<key>1056</key>
 		<dict>
 			<key>120</key>
-			<string>Shell</string>
+			<string>Alien</string>
 			<key>13</key>
-			<string>Shell</string>
+			<string>Alien</string>
 			<key>173</key>
-			<string>Shell</string>
+			<string>Alien</string>
 			<key>200</key>
-			<string>Shell</string>
+			<string>Alien</string>
 			<key>253</key>
-			<string>Shell</string>
+			<string>Alien</string>
 			<key>280</key>
-			<string>Shell</string>
+			<string>Alien</string>
 			<key>40</key>
-			<string>Shell</string>
+			<string>Alien</string>
 			<key>93</key>
-			<string>Shell</string>
+			<string>Alien</string>
 		</dict>
 		<key>1120</key>
 		<dict>
 			<key>120</key>
-			<string>Shell</string>
+			<string>Alien</string>
 			<key>13</key>
-			<string>Shell</string>
+			<string>Alien</string>
 			<key>173</key>
-			<string>Shell</string>
+			<string>Alien</string>
 			<key>200</key>
-			<string>Shell</string>
+			<string>Alien</string>
 			<key>253</key>
-			<string>Shell</string>
+			<string>Alien</string>
 			<key>280</key>
-			<string>Shell</string>
+			<string>Alien</string>
 			<key>40</key>
-			<string>Shell</string>
+			<string>Alien</string>
 			<key>93</key>
-			<string>Shell</string>
+			<string>Alien</string>
 		</dict>
 		<key>1248</key>
 		<dict>
@@ -77,23 +77,124 @@
 		<key>1536</key>
 		<dict>
 			<key>13</key>
-			<string>Dino</string>
+			<string>Alien</string>
 			<key>307</key>
-			<string>Dino</string>
+			<string>Alien</string>
+		</dict>
+		<key>1664</key>
+		<dict>
+			<key>173</key>
+			<string>Turtling</string>
+		</dict>
+		<key>1760</key>
+		<dict>
+			<key>253</key>
+			<string>Turtling</string>
+			<key>93</key>
+			<string>Turtling</string>
+		</dict>
+		<key>1920</key>
+		<dict>
+			<key>147</key>
+			<string>Turtling</string>
+			<key>173</key>
+			<string>Turtling</string>
+			<key>200</key>
+			<string>Turtling</string>
+			<key>280</key>
+			<string>Turtling</string>
+			<key>67</key>
+			<string>Turtling</string>
+		</dict>
+		<key>2016</key>
+		<dict>
+			<key>147</key>
+			<string>Turtling</string>
+			<key>173</key>
+			<string>Turtling</string>
+			<key>200</key>
+			<string>Turtling</string>
+		</dict>
+		<key>2208</key>
+		<dict>
+			<key>147</key>
+			<string>Turtling</string>
+			<key>200</key>
+			<string>Turtling</string>
+		</dict>
+		<key>2240</key>
+		<dict>
+			<key>280</key>
+			<string>Turtling</string>
+			<key>67</key>
+			<string>Turtling</string>
+		</dict>
+		<key>2368</key>
+		<dict>
+			<key>120</key>
+			<string>Flying Rock</string>
+			<key>227</key>
+			<string>Flying Rock</string>
+		</dict>
+		<key>2528</key>
+		<dict>
+			<key>147</key>
+			<string>Turtling</string>
+			<key>200</key>
+			<string>Turtling</string>
+		</dict>
+		<key>2560</key>
+		<dict>
+			<key>280</key>
+			<string>Turtling</string>
+			<key>67</key>
+			<string>Turtling</string>
+		</dict>
+		<key>2720</key>
+		<dict>
+			<key>173</key>
+			<string>Flying Rock</string>
+		</dict>
+		<key>2848</key>
+		<dict>
+			<key>253</key>
+			<string>Flying Rock</string>
+			<key>67</key>
+			<string>Flying Rock</string>
+		</dict>
+		<key>3296</key>
+		<dict>
+			<key>67</key>
+			<string>Turtling Swarm</string>
+		</dict>
+		<key>4384</key>
+		<dict>
+			<key>147</key>
+			<string>Turtling Swarm</string>
+		</dict>
+		<key>5728</key>
+		<dict>
+			<key>200</key>
+			<string>Turtling Swarm</string>
 		</dict>
 		<key>608</key>
 		<dict>
 			<key>13</key>
-			<string>Shell</string>
+			<string>Alien</string>
 			<key>307</key>
-			<string>Shell</string>
+			<string>Alien</string>
 		</dict>
 		<key>800</key>
 		<dict>
 			<key>13</key>
-			<string>Shell</string>
+			<string>Alien</string>
 			<key>307</key>
-			<string>Shell</string>
+			<string>Alien</string>
+		</dict>
+		<key>8992</key>
+		<dict>
+			<key>147</key>
+			<string>Boss Turtle</string>
 		</dict>
 		<key>928</key>
 		<dict>
@@ -119,6 +220,21 @@
 		<string>1408</string>
 		<string>1440</string>
 		<string>1536</string>
+		<string>1664</string>
+		<string>1760</string>
+		<string>1920</string>
+		<string>2016</string>
+		<string>2208</string>
+		<string>2240</string>
+		<string>2368</string>
+		<string>2528</string>
+		<string>2560</string>
+		<string>2720</string>
+		<string>2848</string>
+		<string>3296</string>
+		<string>4384</string>
+		<string>5728</string>
+		<string>8992</string>
 	</array>
 	<key>Ground File</key>
 	<string>Mountains Ground.png</string>
@@ -127,6 +243,6 @@
 	<key>Parallax File</key>
 	<string>Mountains Parallax.png</string>
 	<key>Vertical Tiles</key>
-	<integer>64</integer>
+	<integer>1000</integer>
 </dict>
 </plist>

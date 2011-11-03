@@ -12,6 +12,8 @@
 
 @interface Turtling : Obstacle <BoundaryDelegate> {
     
+    ObstacleType origType_;    
+    
 }
 
 + (id) turtlingWithPos:(CGPoint)pos;

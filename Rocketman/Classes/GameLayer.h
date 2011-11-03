@@ -183,11 +183,7 @@
 
 - (void) slowDown:(CGFloat)factor;
 
-- (void) collectCat:(Cat *)cat;
-
-- (void) collectFuel:(Fuel *)fuel;
-
-- (void) collectBoost:(Boost *)boost;
+- (void) powerUpCollected:(ObstacleType)type;
 
 - (void) showText:(EventText)event;
 

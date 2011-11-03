@@ -74,7 +74,7 @@
         // Add parallax background
         if (parallaxName) {
             Doodad *pbg = [Parallax parallaxWithFile:parallaxName];
-            [self addChild:pbg z:kBackgroundDepth];
+            [self addChild:pbg z:kParallaxDepth];
             [doodads_ addObject:pbg];
         }
 
@@ -532,12 +532,12 @@
 
 - (void) addBirdSwarm:(NSInteger)size
 {
-    [SwarmGenerator addHorizontalSwarm:size gameLayer:self type:kYellowBird];
+    [SwarmGenerator addHorizontalSwarm:size gameLayer:self type:kSwarmYellowBird];
 }
 
 - (void) addTurtlingSwarm:(NSInteger)size
 {
-    [SwarmGenerator addVerticalSwarm:size gameLayer:self type:kTurtling];
+    [SwarmGenerator addVerticalSwarm:size gameLayer:self type:kSwarmTurtling];
 }
 
 - (void) addDoodad:(DoodadType)type pos:(CGPoint)pos
@@ -612,18 +612,33 @@
         case kYellowBirdSwarm:
             [self addBirdSwarm:8];
             add = NO;
-            break;            
+            break;     
+        case kBlueBird:
+            obstacle = [BlueBird blueBirdWithPos:pos];
+            break;
+        case kBlueBirdSwarm:
+            [SwarmGenerator addVerticalSwarm:8 gameLayer:self type:kSwarmBlueBird];            
+            add = NO;
+            break;
         case kBat:
+            obstacle = [Bat batWithPos:pos];
             break;
         case kBatSwarm:
+            [SwarmGenerator addVerticalSwarm:8 gameLayer:self type:kSwarmBat];
+            add = NO;
             break;
         case kSquid:
+            obstacle = [Squid squidWithPos:pos];
             break;
         case kBlueFish:
+            obstacle = [BlueFish blueFishWithPos:pos];
             break;
         case kBlueFishSwarm:
+            [SwarmGenerator addHorizontalSwarm:8 gameLayer:self type:kSwarmBlueFish];            
+            add = NO;
             break;
         case kSalamander:
+            obstacle = [Salamander salamanderWithPos:pos];
             break;
         case kFlyingRock:            
             obstacle = [FlyingRock rockWithPos:pos];
@@ -636,14 +651,19 @@
             obstacle = [BossTurtle bossTurtleWithPos:pos];            
             break;
         case kBirdBoss:
+            add = NO;
             break;
         case kWhaleBoss:
+            add = NO;            
             break;
         case kBatBoss:
+            add = NO;            
             break;
         case kAlienBossTurtle:
+            add = NO;            
             break;    
         case kCatBoss:
+            add = NO;            
             break;
         // Collectables/Helpers         
         case kAngel:
@@ -656,11 +676,13 @@
             obstacle = [Fuel fuelWithPos:pos];            
             break;     
         case kBombCat:
+            obstacle = [BombCat bombCatWithPos:pos];
             break;
         case kCat:
             obstacle = [Cat catWithPos:pos];            
             break;
         case kCatBundle:
+            obstacle = [CatBundle catBundleWithPos:pos];              
             break;
         // Helper objects
         //case kRedEgg:
@@ -676,10 +698,13 @@
             obstacle = [YellowBird swarmYellowBirdWithPos:pos];
             break;
         case kSwarmBlueBird:
+            obstacle = [BlueBird swarmBlueBirdWithPos:pos];                        
             break;
         case kSwarmBlueFish:
+            obstacle = [BlueFish swarmBlueFishWithPos:pos];                        
             break;
         case kSwarmBat:
+            obstacle = [Bat swarmBatWithPos:pos];            
             break;
         default:
             add = NO;
@@ -866,32 +891,43 @@
     [self showText:kSpeedDown];
 }
 
-- (void) collectBoost:(Boost *)boost
+- (void) powerUpCollected:(ObstacleType)type
 {
-    [self showText:kSpeedUp];    
-    [[AudioManager audioManager] playSound:kKerrum];
-    
+    switch (type) {
+        case kBoost:
+            [self showText:kSpeedUp];    
+            [[AudioManager audioManager] playSound:kKerrum];
+            
 #if DEBUG_CONSTANTSPEED
-    return;
+            break;
 #endif    
-    // Engage fast boost, make sure it lasts longer    
-    [self engageBoost:vBoostRing_ amt:0.5 rate:0 time:1.5];    
-}
-
-- (void) collectFuel:(Fuel *)fuel
-{
-    numBoosts_++;
-    [[GameManager gameManager] setNumBoosts:numBoosts_];
-    [self showText:kBoostPlus];   
-    [[AudioManager audioManager] playSound:kPowerup];
-}
-
-- (void) collectCat:(Cat *)cat
-{
-    numCats01_++;
-    [[GameManager gameManager] setNumCats01:numCats01_];
-    [self showText:kCatPlus];
-    [[AudioManager audioManager] playSound:kCollectMeow];    
+            // Engage fast boost, make sure it lasts longer    
+            [self engageBoost:vBoostRing_ amt:0.5 rate:0 time:1.5];                
+            break;
+        case kFuel:
+            numBoosts_++;
+            [[GameManager gameManager] setNumBoosts:numBoosts_];
+            [self showText:kBoostPlus];   
+            [[AudioManager audioManager] playSound:kPowerup];            
+            break;
+        case kCat:
+            numCats01_++;
+            [[GameManager gameManager] setNumCats01:numCats01_];
+            [self showText:kCatPlus];
+            [[AudioManager audioManager] playSound:kCollectMeow];              
+            break;
+        case kBombCat:
+            numCats02_++;
+            [[GameManager gameManager] setNumCats02:numCats02_];
+            [self showText:kCatPlus];
+            [[AudioManager audioManager] playSound:kCollectMeow];              
+            break;
+        case kCatBundle:
+            // TODO
+            break;
+        default:
+            break;
+    }
 }
 
 - (void) showText:(EventText)event

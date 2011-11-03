@@ -40,6 +40,9 @@
 		DA6901A9145F9697000D278F /* CatBoss.m in Sources */ = {isa = PBXBuildFile; fileRef = DA6901A8145F9692000D278F /* CatBoss.m */; };
 		DAD805721460CC0000A195C3 /* LightBlastCloud.m in Sources */ = {isa = PBXBuildFile; fileRef = DAD805711460CBFF00A195C3 /* LightBlastCloud.m */; };
 		DAD805751460CC1100A195C3 /* DarkBlastCloud.m in Sources */ = {isa = PBXBuildFile; fileRef = DAD805741460CC1100A195C3 /* DarkBlastCloud.m */; };
+		DAD8058914621B2400A195C3 /* Level3_data.plist in Resources */ = {isa = PBXBuildFile; fileRef = DAD8058614621B2400A195C3 /* Level3_data.plist */; };
+		DAD8058A14621B2400A195C3 /* Level4_data.plist in Resources */ = {isa = PBXBuildFile; fileRef = DAD8058714621B2400A195C3 /* Level4_data.plist */; };
+		DAD8058B14621B2400A195C3 /* Level5_data.plist in Resources */ = {isa = PBXBuildFile; fileRef = DAD8058814621B2400A195C3 /* Level5_data.plist */; };
 		DAF43E53144B085400943C0D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAF43E52144B085400943C0D /* QuartzCore.framework */; };
 		DAF43E55144B085400943C0D /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAF43E54144B085400943C0D /* OpenGLES.framework */; };
 		DAF43E57144B085400943C0D /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DAF43E56144B085400943C0D /* OpenAL.framework */; };
@@ -389,6 +392,9 @@
 		DAD805711460CBFF00A195C3 /* LightBlastCloud.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LightBlastCloud.m; path = Classes/LightBlastCloud.m; sourceTree = "<group>"; };
 		DAD805731460CC1000A195C3 /* DarkBlastCloud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DarkBlastCloud.h; path = Classes/DarkBlastCloud.h; sourceTree = "<group>"; };
 		DAD805741460CC1100A195C3 /* DarkBlastCloud.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DarkBlastCloud.m; path = Classes/DarkBlastCloud.m; sourceTree = "<group>"; };
+		DAD8058614621B2400A195C3 /* Level3_data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Level3_data.plist; sourceTree = "<group>"; };
+		DAD8058714621B2400A195C3 /* Level4_data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Level4_data.plist; sourceTree = "<group>"; };
+		DAD8058814621B2400A195C3 /* Level5_data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Level5_data.plist; sourceTree = "<group>"; };
 		DAF43E4E144B085400943C0D /* Rocketman.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rocketman.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAF43E52144B085400943C0D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		DAF43E54144B085400943C0D /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -901,6 +907,10 @@
 		DA6901AA145F96D3000D278F /* Enemies */ = {
 			isa = PBXGroup;
 			children = (
+				DAF44450144B08DC00943C0D /* Turtling.h */,
+				DAF44451144B08DC00943C0D /* Turtling.m */,
+				DAF44452144B08DD00943C0D /* UFO.h */,
+				DAF44453144B08DD00943C0D /* UFO.m */,
 				DAF443B8144B08C000943C0D /* Alien.h */,
 				DAF443B9144B08C000943C0D /* Alien.m */,
 				DAF443BA144B08C000943C0D /* AlienHoverTurtle.h */,
@@ -929,10 +939,6 @@
 				DA690193145F9525000D278F /* BlueFish.m */,
 				DA690195145F953D000D278F /* Salamander.h */,
 				DA690196145F9541000D278F /* Salamander.m */,
-				DAF44450144B08DC00943C0D /* Turtling.h */,
-				DAF44451144B08DC00943C0D /* Turtling.m */,
-				DAF44452144B08DD00943C0D /* UFO.h */,
-				DAF44453144B08DD00943C0D /* UFO.m */,
 			);
 			name = Enemies;
 			sourceTree = "<group>";
@@ -1454,6 +1460,9 @@
 		DAF441FF144B08B300943C0D /* Level Data */ = {
 			isa = PBXGroup;
 			children = (
+				DAD8058614621B2400A195C3 /* Level3_data.plist */,
+				DAD8058714621B2400A195C3 /* Level4_data.plist */,
+				DAD8058814621B2400A195C3 /* Level5_data.plist */,
 				DA5037B61454437D00600DD4 /* Level2_data.plist */,
 				DAF44200144B08B300943C0D /* Level0_data.plist */,
 				DAF44201144B08B300943C0D /* Level0_notifications.plist */,
@@ -1966,6 +1975,9 @@
 				DA690175145DF377000D278F /* Intro 07 Lab.png in Resources */,
 				DA690176145DF377000D278F /* Intro 07 President.png in Resources */,
 				DA690178145DFE47000D278F /* Intro 10.png in Resources */,
+				DAD8058914621B2400A195C3 /* Level3_data.plist in Resources */,
+				DAD8058A14621B2400A195C3 /* Level4_data.plist in Resources */,
+				DAD8058B14621B2400A195C3 /* Level5_data.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

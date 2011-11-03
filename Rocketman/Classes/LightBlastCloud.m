@@ -31,6 +31,7 @@
     if ((self = [super init])) {
         
         self.position = pos;
+        zDepth_ = kBlastCloudDepth;
         
         [self addSprites:text size:size];
         

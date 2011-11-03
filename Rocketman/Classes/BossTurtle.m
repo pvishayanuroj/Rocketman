@@ -111,6 +111,7 @@ static NSUInteger countID = 0;
     [sprite_ release];
     [idleAnimation_ release];
     [damageAnimation_ release];
+    [sideMovement_ release];
     [engineFlame_ release];
     [headBoundary_ release];
     [bodyBoundary_ release];
@@ -155,11 +156,8 @@ static NSUInteger countID = 0;
     CCFiniteTimeAction *seq = [CCSequence actions:blast, delay, nil];
     CCFiniteTimeAction *repeat = [CCRepeat actionWithAction:seq times:80];
     CCFiniteTimeAction *delay2 = [CCDelayTime actionWithDuration:0.2f];    
-    CCFiniteTimeAction *startFall = [CCCallFunc actionWithTarget:self selector:@selector(startFreeFall)];
-    CCFiniteTimeAction *explosion = [CCCallFunc actionWithTarget:self selector:@selector(addBigExplosion)];
-    CCFiniteTimeAction *delay3 = [CCDelayTime actionWithDuration:4.0f];
     CCFiniteTimeAction *end = [CCCallFunc actionWithTarget:self selector:@selector(death)];
-    [self runAction:[CCSequence actions:repeat, delay2, startFall, explosion, delay3, end, nil]];
+    [self runAction:[CCSequence actions:repeat, delay2, end, nil]];
 }
 
 - (void) deployShell
@@ -187,20 +185,11 @@ static NSUInteger countID = 0;
     pos.x -= x/2;
     pos.y -= y/2;
     
-    [[GameManager gameManager] addDoodad:[LightBlastCloud lightBlastCloudAt:pos]];
-//    BlastCloud *blast = [BlastCloud blastCloudAt:pos size:1.0 text:kBamText];
-//    [self addChild:blast];
+    [[GameManager gameManager] addDoodad:[LightBlastCloud lightBlastCloudAt:ccpAdd(self.position, pos) movement:kNoMovement]];
     
     if (arc4random() % 4 < 1) {
         [[AudioManager audioManager] playSound:kExplosion01];
     }
-}
-
-- (void) addBigExplosion
-{
-    sprite_.visible = NO;
-    DarkBlastCloud *explosion = [DarkBlastCloud darkBlastCloudAt:CGPointZero];
-    [self addChild:explosion];
 }
 
 #pragma mark - Delegate Methods
@@ -266,6 +255,9 @@ static NSUInteger countID = 0;
 - (void) death
 {     
     destroyed_ = YES;
+    sprite_.visible = NO;
+    
+    [[GameManager gameManager] addDoodad:[DarkBlastCloud darkBlastCloudAt:self.position]];
 }
 
 #pragma mark - Particle System

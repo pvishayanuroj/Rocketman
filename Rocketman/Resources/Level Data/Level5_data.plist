@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Background File</key>
+	<string>Stars Background.png</string>
+	<key>Data</key>
+	<dict>
+		<key>1088</key>
+		<dict>
+			<key>40</key>
+			<string>Flybot</string>
+		</dict>
+		<key>1184</key>
+		<dict>
+			<key>147</key>
+			<string>Cat Bundle</string>
+		</dict>
+		<key>1216</key>
+		<dict>
+			<key>227</key>
+			<string>Flybot</string>
+		</dict>
+		<key>1408</key>
+		<dict>
+			<key>93</key>
+			<string>Flybot</string>
+		</dict>
+		<key>1440</key>
+		<dict>
+			<key>227</key>
+			<string>Cat Bundle</string>
+		</dict>
+		<key>1568</key>
+		<dict>
+			<key>120</key>
+			<string>Cat Bundle</string>
+		</dict>
+		<key>1664</key>
+		<dict>
+			<key>227</key>
+			<string>Flybot</string>
+		</dict>
+		<key>1856</key>
+		<dict>
+			<key>67</key>
+			<string>Flybot</string>
+		</dict>
+		<key>1984</key>
+		<dict>
+			<key>227</key>
+			<string>Flybot</string>
+		</dict>
+		<key>2144</key>
+		<dict>
+			<key>120</key>
+			<string>Cat Bundle</string>
+		</dict>
+		<key>2176</key>
+		<dict>
+			<key>200</key>
+			<string>Flybot</string>
+		</dict>
+		<key>2400</key>
+		<dict>
+			<key>93</key>
+			<string>Flybot</string>
+		</dict>
+		<key>2592</key>
+		<dict>
+			<key>253</key>
+			<string>Flybot</string>
+		</dict>
+		<key>2880</key>
+		<dict>
+			<key>67</key>
+			<string>Cat Bundle</string>
+		</dict>
+		<key>3488</key>
+		<dict>
+			<key>120</key>
+			<string>Alien Hover Turtle Shield</string>
+		</dict>
+		<key>4704</key>
+		<dict>
+			<key>227</key>
+			<string>Alien Hover Turtle Shield</string>
+		</dict>
+		<key>5248</key>
+		<dict>
+			<key>93</key>
+			<string>Alien Hover Turtle Shield</string>
+		</dict>
+		<key>5536</key>
+		<dict>
+			<key>253</key>
+			<string>Alien Hover Turtle Shield</string>
+		</dict>
+		<key>5824</key>
+		<dict>
+			<key>120</key>
+			<string>Alien Hover Turtle Shield</string>
+		</dict>
+		<key>9408</key>
+		<dict>
+			<key>147</key>
+			<string>Alien Boss Turtle</string>
+		</dict>
+	</dict>
+	<key>Datakeys</key>
+	<array>
+		<string>1088</string>
+		<string>1184</string>
+		<string>1216</string>
+		<string>1408</string>
+		<string>1440</string>
+		<string>1568</string>
+		<string>1664</string>
+		<string>1856</string>
+		<string>1984</string>
+		<string>2144</string>
+		<string>2176</string>
+		<string>2400</string>
+		<string>2592</string>
+		<string>2880</string>
+		<string>3488</string>
+		<string>4704</string>
+		<string>5248</string>
+		<string>5536</string>
+		<string>5824</string>
+		<string>9408</string>
+	</array>
+	<key>Ground File</key>
+	<string>City Ground.png</string>
+	<key>Level Num</key>
+	<string>5</string>
+	<key>Parallax File</key>
+	<string></string>
+	<key>Vertical Tiles</key>
+	<integer>4000</integer>
+</dict>
+</plist>

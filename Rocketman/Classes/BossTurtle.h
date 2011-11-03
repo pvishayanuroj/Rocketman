@@ -65,12 +65,6 @@ enum {
 
 - (void) engineFlameGoingRight:(BOOL)right;
 
-- (void) sideMovementLeftTurnaround:(SideMovement *)movement;
-
-- (void) sideMovementRightTurnaround:(SideMovement *)movement;
-
-- (void) sideMovementProximityTrigger:(SideMovement *)movement;
-
 + (void) resetID;
 
 @end

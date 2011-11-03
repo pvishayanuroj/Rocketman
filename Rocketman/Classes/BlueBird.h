@@ -8,10 +8,23 @@
 
 #import "CommonHeaders.h"
 #import "Obstacle.h"
+#import "BoundaryDelegate.h"
 #import "cocos2d.h"
 
-@interface BlueBird : Obstacle {
+@interface BlueBird : Obstacle <BoundaryDelegate> {
     
 }
+
++ (id) swarmBlueBirdWithPos:(CGPoint)pos;
+
++ (id) blueBirdWithPos:(CGPoint)pos;
+
+- (id) initWithPos:(CGPoint)pos type:(ObstacleType)type;
+
+- (void) initActions;
+
+- (void) death;
+
++ (void) resetID;
 
 @end

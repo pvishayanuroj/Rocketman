@@ -69,6 +69,9 @@
 /** Method to pass a doodad to add in the game layer */
 - (void) addDoodad:(Doodad *)doodad;
 
+/** Method used to notify the game layer that a powerup has been collected */
+- (void) powerUpCollected:(ObstacleType)type;
+
 - (void) setNumCats01:(NSUInteger)numCats;
 
 - (void) setNumCats02:(NSUInteger)numCats;

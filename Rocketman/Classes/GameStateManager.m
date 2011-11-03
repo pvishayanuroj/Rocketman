@@ -48,7 +48,7 @@ static GameStateManager *_gameStateManager = nil;
 {
 	if ((self = [super init])) {
             
-        lastUnlockedLevel_ = 3;
+        lastUnlockedLevel_ = 5;
         
         // Load sounds
         [AudioManager audioManager];      

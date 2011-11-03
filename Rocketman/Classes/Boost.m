@@ -7,7 +7,7 @@
 //
 
 #import "Boost.h"
-#import "GameLayer.h"
+#import "GameManager.h"
 #import "DataManager.h"
 #import "Boundary.h"
 #import "StaticMovement.h"
@@ -82,9 +82,7 @@ static NSUInteger countID = 0;
 
 - (void) boundaryCollide:(NSInteger)boundaryID
 {
-    GameLayer *gameLayer = (GameLayer *)[self parent];
-    [gameLayer collectBoost:self];
-    
+    [[GameManager gameManager] powerUpCollected:obstacleType_];
     destroyed_ = YES;
 }
 

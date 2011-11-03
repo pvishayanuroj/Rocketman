@@ -192,6 +192,11 @@ static GameManager *_gameManager = nil;
     [gameLayer_ addDoodad:doodad];
 }
 
+- (void) powerUpCollected:(ObstacleType)type
+{
+    [gameLayer_ powerUpCollected:type];
+}
+
 #pragma mark - HUD Methods
 
 - (void) setNumCats01:(NSUInteger)numCats
