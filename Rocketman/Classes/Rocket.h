@@ -13,7 +13,7 @@
 typedef enum {
     kIdle,
     kShaking,
-    kBoosting,
+    //kBoosting,
     kBurning,
     kWobbling,
     kHeart,

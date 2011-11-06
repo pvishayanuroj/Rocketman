@@ -151,6 +151,9 @@
 /** When the boost button is pressed */
 - (void) useBoost;
 
+/** When the slow button is pressed */
+- (void) useSlow;
+
 - (void) powerUpCollected:(ObstacleType)type;
 
 - (void) showText:(EventText)event;

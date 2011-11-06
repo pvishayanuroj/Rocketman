@@ -12,5 +12,7 @@
 
 - (void) boostDisengaged:(BoostType)boostType;
 
+- (void) restoringOriginalSpeed;
+
 @end
 

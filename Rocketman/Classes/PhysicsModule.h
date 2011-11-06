@@ -15,6 +15,14 @@ typedef enum {
     kTargetBoost
 } BoostMode;
 
+typedef enum {
+    kStopped,
+    kNormal,
+    kCollided,
+    kSlowed,
+    kBoosting
+} RocketMode;
+
 @interface PhysicsModule : CCNode {
     
     /** Rocket speed */
@@ -26,11 +34,8 @@ typedef enum {
     /** Boost amount change per tick */
     CGFloat dB_;
     
-    /** Whether or not the rocket is stopped */ 
-    BOOL rocketStopped_;
-    
-    /** Whether or not boost is on */
-    BOOL boostOn_;
+    /** Rocket state */
+    RocketMode rocketMode_;
     
     /** Current boost type (stored for the GameLayer) */
     BoostType boostType_;
@@ -44,12 +49,23 @@ typedef enum {
     /** Counts down until the end of boost */
     CGFloat boostTimer_;
     
+    /** Original speed before slow/collision */
+    CGFloat origSpeed_;
+    
+    /** Rate at which speed increases back to original speed after slow/collide */
+    CGFloat dRestore_;
+    
+    /** Counts down until the end of the slow period */
+    CGFloat slowTimer_;
+    
     /** Delegate object */
     id <PhysicsModuleDelegate> delegate_;
 }
 
 @property (nonatomic, readonly) CGFloat rocketSpeed;
 @property (nonatomic, readonly) BOOL boostOn;
+@property (nonatomic, readonly) BOOL isSlowed;
+@property (nonatomic, readonly) RocketMode rocketMode;
 @property (nonatomic, readonly) BoostType boostType;
 @property (nonatomic, assign) id <PhysicsModuleDelegate> delegate;
 
@@ -62,6 +78,12 @@ typedef enum {
 - (void) calculateSpeed:(ccTime)dt;
 
 - (void) applyBoost:(ccTime)dt;
+
+- (void) applySlow:(ccTime)dt;
+
+- (void) rocketCollision;
+
+- (void) rocketSlowed;
 
 - (void) engageBoost:(BoostType)boostType;
 

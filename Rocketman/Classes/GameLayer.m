@@ -698,11 +698,17 @@
         // Take-off complete
         case kStartBoost:
             onGround_ = NO;    
-            inputLocked_ = NO;            
+            inputLocked_ = NO;     
+            [rocket_ showFlying];
             break;
         default:
             break;
     }
+}
+
+- (void) restoringOriginalSpeed
+{
+    [rocket_ showFlying];
 }
 
 - (void) useBoost
@@ -753,24 +759,23 @@
     }
 }
 
+- (void) useSlow
+{
+    // Cannot use slow while collided, slowed, or in any form of boosting
+    if (physics_.rocketMode == kNormal) {
+        [physics_ rocketSlowed];
+        [rocket_ showSlow];
+    }
+}
+
 - (void) rocketCollision
 {
 #if DEBUG_CONSTANTSPEED || DEBUG_NOSLOWDOWN
     return;
 #endif
-    /*
-    if (v_ > 0) {
-        v_ *= 0.33f;
-    }
-     
-    // Cancel boost if on
-    if (boostEngaged_) {
-        boostEngaged_ = NO;
-        [rocket_ toggleBoostOn:NO];        
-    }
-     
-    [self showText:kSpeedDown];
-     */
+    
+    [physics_ rocketCollision];
+    [self showText:kSpeedDown];    
 }
 
 - (void) powerUpCollected:(ObstacleType)type

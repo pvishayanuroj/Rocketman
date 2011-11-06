@@ -149,11 +149,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Rocketman/Classes/GameLayer.m"
-         timestampString = "342245797.69355"
+         timestampString = "342250480.299588"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "379"
-         endingLineNumber = "379"
+         startingLineNumber = "358"
+         endingLineNumber = "358"
          landmarkName = "-obstacleGenerator"
          landmarkType = "5">
       </FileBreakpoint>
@@ -169,20 +169,6 @@
          startingLineNumber = "119"
          endingLineNumber = "119"
          landmarkName = "-boundaryCollide:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "Rocketman/Classes/PhysicsModule.m"
-         timestampString = "342246517.723674"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "124"
-         endingLineNumber = "124"
-         landmarkName = "-applyBoost:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
