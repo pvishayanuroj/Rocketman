@@ -18,10 +18,12 @@ const CGFloat V_T2      = 5.0f;
 const CGFloat V_MIN     = 2.0f; // Collisions will not cause speed to go any slower
 const CGFloat V_MAX     = 13.0f;
 // Delta V based on threshold
-const CGFloat DV_CRUISE = 0.001f;
-const CGFloat DV_T1     = 0.002f;
-const CGFloat DV_T2     = 0.005f;
 const CGFloat DV_MAX    = 0.01f;
+const CGFloat DV_CRUISE = 0.001f;
+const CGFloat DV_T1     = 0.0025f;
+const CGFloat DV_T2     = 0.005f;
+const CGFloat DV_MIN    = 0.005f;
+const CGFloat DDV_MIN   = 0.0006f;
 
 // Speed when slowed by a collision
 const CGFloat V_COLLIDE = 1.5f;
@@ -70,6 +72,7 @@ const CGFloat SRSM_FPS = 60.0f;
         
         vR_ = 0.0f;
         vB_ = 0.0f;
+        dVMin_ = 0.0f;
         rocketMode_ = kStopped;
     }
     return self;
@@ -103,6 +106,9 @@ const CGFloat SRSM_FPS = 60.0f;
 #if DEBUG_CONSTANTSPEED
     return;
 #endif
+    if (vR_ > DV_MIN) {
+        dVMin_ = 0;
+    }
     
     // Decrease from full boost to cruising speed
     if (vR_ > V_CRUISE) {
@@ -114,8 +120,12 @@ const CGFloat SRSM_FPS = 60.0f;
     else if (vR_ > V_T2) {
         vR_ -= DV_T1;
     }
-    else {
+    else if (vR_ > V_MIN) {
         vR_ -= DV_T2;
+    }
+    else {
+        vR_ -= (DV_MIN + dVMin_);
+        dVMin_ += DDV_MIN;
     }
 }
 
@@ -171,6 +181,11 @@ const CGFloat SRSM_FPS = 60.0f;
 
 - (void) rocketCollision
 {
+    // Special case, if speed under minimum, collisions have no effect
+    if (vR_ < V_MIN) {
+        return;
+    }
+    
     // If rocket is boosting, do not go through the whole slowing sequence,
     // just cut speed to cruising and halt boosting
     if (rocketMode_ == kBoosting) {
@@ -178,13 +193,15 @@ const CGFloat SRSM_FPS = 60.0f;
         vR_ = V_CRUISE;
         [delegate_ boostDisengaged:boostType_];
     }
+    // Colliding while slowed
     else if (rocketMode_ == kSlowed) {
         rocketMode_ = kCollided;
-        origSpeed_ = (origSpeed_ < V_MIN) ? origSpeed_ : origSpeed_ - DV_COLLIDE;
+        origSpeed_ -= DV_COLLIDE;
         dRestore_ = DV_COLLIDE_RESTORE;
         vR_ = V_COLLIDE;
         slowTimer_ = TS_COLLIDE;        
     }
+    // Colliding during another collision
     else if (rocketMode_ == kCollided) {
         rocketMode_ = kCollided;
         origSpeed_ = origSpeed_;
@@ -192,9 +209,10 @@ const CGFloat SRSM_FPS = 60.0f;
         vR_ = V_COLLIDE;
         slowTimer_ = TS_COLLIDE;         
     }
+    // Colliding while going up normally
     else {
         rocketMode_ = kCollided;
-        origSpeed_ = (vR_ < V_MIN) ? vR_ : vR_ - DV_COLLIDE;
+        origSpeed_ = vR_ - DV_COLLIDE;
         dRestore_ = DV_COLLIDE_RESTORE;
         vR_ = V_COLLIDE;
         slowTimer_ = TS_COLLIDE;
@@ -232,7 +250,7 @@ const CGFloat SRSM_FPS = 60.0f;
             break;
         case kRingBoost:
             boostMode_ = kTimedBoost;
-            boostTarget_ = vR_ + DV_RINGBOOST;
+            boostTarget_ = (vR_ < V_MIN) ? V_CRUISE : vR_ + DV_RINGBOOST;
             boostTimer_ = TB_RING;
             vB_ = VB_NORMAL;
             dB_ = 0.0f;

@@ -28,6 +28,8 @@ typedef enum {
     /** Rocket speed */
     CGFloat vR_;
     
+    CGFloat dVMin_;
+    
     /** Boost amount per tick */
     CGFloat vB_;
     
