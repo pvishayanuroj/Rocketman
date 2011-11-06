@@ -8,7 +8,6 @@
 
 #define SIDE_MARGIN 20
 
-#define SCENE_TRANSITION_DURATION 0.1
 
 #define HUD_CAT_BUTTON_X 45.0f
 #define HUD_CAT_BUTTON_Y 57.0f

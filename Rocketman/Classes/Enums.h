@@ -31,6 +31,14 @@ typedef enum {
 } EventText;
 
 typedef enum {
+    kStartBoost,
+    kBoosterBoost,
+    kRingBoost,
+    kAngelBoost,
+    kInvincibilityBoost
+} BoostType;
+
+typedef enum {
     kNoMovement,    
     kStaticMovement
 } MovementType;

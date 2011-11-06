@@ -44,7 +44,7 @@
 
 - (void) goToMainMenu {
     MainMenuScene *scene = [MainMenuScene node];
-    [[CCDirector sharedDirector] replaceScene:[CCTransitionMoveInL transitionWithDuration:SCENE_TRANSITION_DURATION scene:scene]];
+    [[CCDirector sharedDirector] replaceScene:[CCTransitionMoveInL transitionWithDuration:0.1f scene:scene]];
 }
 
 - (void) resetHighscores {

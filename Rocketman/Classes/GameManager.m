@@ -252,7 +252,7 @@ static GameManager *_gameManager = nil;
 - (void) rocketAngelCollide
 {
     [rocket_ showHeart];
-    [gameLayer_ engageFixedBoost:12 amt:12 rate:0 time:3.0];    
+    //[gameLayer_ engageFixedBoost:12 amt:12 rate:0 time:3.0];    
 }
 
 #pragma mark - Notification methods

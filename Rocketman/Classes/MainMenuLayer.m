@@ -53,7 +53,7 @@
 
 - (void) viewHighscore {
     HighscoreScene *scene = [HighscoreScene node];
-    [[CCDirector sharedDirector] replaceScene:[CCTransitionMoveInR transitionWithDuration:SCENE_TRANSITION_DURATION scene:scene]];
+    [[CCDirector sharedDirector] replaceScene:[CCTransitionMoveInR transitionWithDuration:0.1f scene:scene]];
 }
 
 - (void) viewCredits {

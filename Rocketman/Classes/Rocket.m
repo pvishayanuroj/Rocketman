@@ -60,6 +60,7 @@
     [aura_ release];
     [flyingAnimation_ release];
     [shakingAnimation_ release];
+    [repeatableShakingAnimation_ release];
     [burningAnimation_ release];
     [wobblingAnimation_ release];
     [heartAnimation_ release];
@@ -125,10 +126,10 @@
     
     CCActionInterval *a1 = [CCRepeat actionWithAction:s1 times:times];
     CCActionInterval *a2 = [CCRepeat actionWithAction:s2 times:times];
-    CCActionInterval *a3 = [CCRepeat actionWithAction:s3 times:times];
-    CCActionInstant *a4 = [CallFuncWeak actionWithTarget:self selector:@selector(doneShaking)];
+    CCActionInstant *a3 = [CCCallFunc actionWithTarget:self selector:@selector(showRepeatableShaking)];
+    repeatableShakingAnimation_ = [[CCRepeatForever actionWithAction:s3] retain];
 
-    shakingAnimation_ = [[CCSequence actions:a1, a2, a3, a4, nil] retain];
+    shakingAnimation_ = [[CCSequence actions:a1, a2, a3, nil] retain];
     
     // Burning
 	animation = [[CCAnimationCache sharedAnimationCache] animationByName:@"Rocket2 Burn"];
@@ -156,6 +157,7 @@
 
 - (void) showFlying
 {
+    sprite_.position = CGPointZero;
     rocketState_ = kIdle;
 	[sprite_ stopAllActions];
 	//[sprite_ runAction:flyingAnimation_];	
@@ -167,14 +169,10 @@
     [sprite_ runAction:shakingAnimation_];
 }
                            
-- (void) doneShaking
+- (void) showRepeatableShaking
 {
-    sprite_.position = CGPointZero;
-    
-    GameLayer *gameLayer = (GameLayer *)[self parent];
-    [gameLayer takeOffComplete];
-    
-    [self showFlying];
+    [sprite_ stopAllActions];
+    [sprite_ runAction:repeatableShakingAnimation_];
 }
                              
 - (void) showBurning
@@ -261,6 +259,7 @@
 - (void) showAuraForDuration:(CGFloat)duration
 {
     isInvincible_ = YES;
+    [aura_ stopAllActions];
     [aura_ runAction:auraAnimation_];
     
     CCActionInterval *fadeIn = [CCFadeIn actionWithDuration:0.5f];

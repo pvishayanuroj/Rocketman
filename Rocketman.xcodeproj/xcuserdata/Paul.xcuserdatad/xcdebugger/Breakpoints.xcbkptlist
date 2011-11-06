@@ -134,20 +134,6 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
-         filePath = "Rocketman/Classes/GameLayer.m"
-         timestampString = "341890753.592743"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "168"
-         endingLineNumber = "168"
-         landmarkName = "-update:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
          filePath = "Rocketman/Classes/FlyingRock.m"
          timestampString = "341890753.592743"
          startingColumnNumber = "9223372036854775807"
@@ -163,11 +149,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Rocketman/Classes/GameLayer.m"
-         timestampString = "341890753.592743"
+         timestampString = "342245797.69355"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "444"
-         endingLineNumber = "444"
+         startingLineNumber = "379"
+         endingLineNumber = "379"
          landmarkName = "-obstacleGenerator"
          landmarkType = "5">
       </FileBreakpoint>
@@ -183,6 +169,20 @@
          startingLineNumber = "119"
          endingLineNumber = "119"
          landmarkName = "-boundaryCollide:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Rocketman/Classes/PhysicsModule.m"
+         timestampString = "342246517.723674"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "124"
+         endingLineNumber = "124"
+         landmarkName = "-applyBoost:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

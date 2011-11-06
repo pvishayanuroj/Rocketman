@@ -35,6 +35,8 @@ typedef enum {
     
     CCAction *shakingAnimation_;    
     
+    CCAction *repeatableShakingAnimation_;
+    
     CCAction *wobblingAnimation_;
     
     CCAction *slowAnimation_;    
@@ -66,10 +68,16 @@ typedef enum {
 
 - (void) initActions;
 
+/** Show the rocket's default state */
 - (void) showFlying;
 
+/** Show the rocket's shaking state for takeoff */
 - (void) showShaking;
 
+/** The finishing portion of the shaking animation, repeats forever */
+- (void) showRepeatableShaking;
+
+/** Show the rocket burning */
 - (void) showBurning;
 
 - (void) showSlow;

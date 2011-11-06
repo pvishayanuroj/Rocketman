@@ -10,8 +10,10 @@
 #import "cocos2d.h"
 #import "CDAudioManager.h"
 #import "GameLayerDelegate.h"
+#import "PhysicsModuleDelegate.h"
 
 @class Rocket;
+@class PhysicsModule;
 @class Cat;
 @class Boost;
 @class Fuel;
@@ -20,7 +22,7 @@
 @class CDAudioManager;
 @class CDSoundEngine;
 
-@interface GameLayer : CCLayer <UIAccelerometerDelegate> {
+@interface GameLayer : CCLayer <PhysicsModuleDelegate, UIAccelerometerDelegate> {
  
     /** Maps object strings to object types */
     NSDictionary *objectNameMap_;
@@ -40,6 +42,9 @@
     /** Reference to the player rocket */
     Rocket *rocket_;
  
+    /** Performs calculations regarding rocket speed */
+    PhysicsModule *physics_;
+    
     /** Holds all current active obstacles */
     NSMutableArray *obstacles_;
     
@@ -83,8 +88,6 @@
     
     float accel[3];     
     
-    BOOL boostEngaged_;
-    
     BOOL onGround_;
     
     BOOL inputLocked_;
@@ -100,32 +103,6 @@
     CGFloat maxHeight_;
     
     CGFloat lossHeight_;
-    
-    CGFloat v0_;    
-    
-    CGFloat v_;
-    
-    CGFloat dv_;
-    
-    CGFloat ddv_;
-    
-    CGFloat vMax_;
-    
-    CGFloat vBoost_;
-    
-    CGFloat vBoostRing_;
-    
-    CGFloat boost_;    
-    
-    CGFloat boostRate_;
-    
-    CGFloat boostTarget_;
-    
-    CGFloat boostTimer_;
-    
-    CGFloat dt_;
-    
-    NSInteger ammoType_;
 }
 
 @property (nonatomic, assign) id delegate;
@@ -138,10 +115,6 @@
 
 /** Method called in a loop to read from object data dictionary and add obstacles */
 - (void) obstacleGenerator;
-
-- (void) physicsStep:(ccTime)dt;
-
-- (void) applyBoost:(ccTime)dt;
 
 /** Method called in a loop to move non-player objects */
 - (void) applyGravity;
@@ -172,15 +145,11 @@
 
 - (void) addObstacle:(Obstacle *)obstacle;
 
+/** When a cat button is pressed */
 - (void) fireCat:(CatType)type;
 
-- (void) takeOffComplete;
-
+/** When the boost button is pressed */
 - (void) useBoost;
-
-- (void) engageBoost:(CGFloat)speedup amt:(CGFloat)amt rate:(CGFloat)rate time:(CGFloat)time;
-
-- (void) engageFixedBoost:(CGFloat)speed amt:(CGFloat)amt rate:(CGFloat)rate time:(CGFloat)time;
 
 - (void) powerUpCollected:(ObstacleType)type;
 
