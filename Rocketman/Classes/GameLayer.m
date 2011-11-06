@@ -288,7 +288,8 @@
     remove = [NSMutableIndexSet indexSet];
     index = 0;    
     
-    for (Obstacle *obstacle in obstacles_) {
+    //for (Obstacle *obstacle in obstacles_) {
+    for (Obstacle *obstacle in [[obstacles_ copy] autorelease]) { // QUICKFIX
         [obstacle fall:physics_.rocketSpeed];
         
         // If past the cutoff boundary, delete        
