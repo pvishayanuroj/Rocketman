@@ -151,6 +151,9 @@
 /** Method called in a loop to handle collisions */
 - (void) collisionDetect;
 
+/** Method called to affect rocket speed on collisions */
+- (void) rocketCollision;
+
 - (void) moveRocketHorizontally;
 
 - (NSInteger) getRandomX;
@@ -169,9 +172,7 @@
 
 - (void) addObstacle:(Obstacle *)obstacle;
 
-- (void) fireCat01;
-
-- (void) fireCat02;
+- (void) fireCat:(CatType)type;
 
 - (void) takeOffComplete;
 
@@ -180,8 +181,6 @@
 - (void) engageBoost:(CGFloat)speedup amt:(CGFloat)amt rate:(CGFloat)rate time:(CGFloat)time;
 
 - (void) engageFixedBoost:(CGFloat)speed amt:(CGFloat)amt rate:(CGFloat)rate time:(CGFloat)time;
-
-- (void) slowDown:(CGFloat)factor;
 
 - (void) powerUpCollected:(ObstacleType)type;
 

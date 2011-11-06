@@ -725,65 +725,57 @@
     [obstacles_ addObject:obstacle];     
 }
 
-- (void) fireCat01
+- (void) fireCat:(CatType)type
 {
     if (!onGround_ && !inputLocked_) {        
-#if !DEBUG_UNLIMITED_CATS        
-        if (numCats01_ > 0) {
+        
+        CatBullet *bullet = nil;        
+        
+        switch (type) {
+            case kCatNormal:
+#if !DEBUG_UNLIMITED_CATS                        
+                if (numCats01_ > 0) {
 #endif
-            CatBullet *bullet;
-            
-            // DEBUG!!
-            //NSInteger s = ammoType_++ % 2;
-            NSInteger s = 0;
-            
-            switch (s) {
-                case 0:
                     numCats01_--;
                     [[GameManager gameManager] setNumCats01:numCats01_]; 
-                    bullet = [CatBullet catBulletWithPos:rocket_.position withSpeed:(rocketSpeed_ + 10)];
-                    break;
-                case 1:
+                    bullet = [CatBullet catBulletWithPos:rocket_.position withSpeed:(rocketSpeed_ + 10)];      
+#if !DEBUG_UNLIMITED_CATS                        
+                }
+#endif                
+                break;
+            case kCatBomb:
+#if !DEBUG_UNLIMITED_CATS                    
+                if (numCats02_ > 0) {
+#endif
+                    numCats02_--;                    
+                    [[GameManager gameManager] setNumCats02:numCats02_]; 
+                    bullet = [CatBullet fatBulletWithPos:rocket_.position withSpeed:(rocketSpeed_ + 10)];                
+#if !DEBUG_UNLIMITED_CATS                        
+                }
+#endif
+                break;
+            case kCatPierce:
+#if !DEBUG_UNLIMITED_CATS                    
+                if (numCats01_ > 0) {
+#endif
                     numCats01_--;
                     [[GameManager gameManager] setNumCats01:numCats01_]; 
-                    bullet = [CatBullet longBulletWithPos:rocket_.position withSpeed:(rocketSpeed_ + 10)];
-                    break;
-                default:
-                    numCats01_--;
-                    [[GameManager gameManager] setNumCats01:numCats01_]; 
-                    bullet = [CatBullet catBulletWithPos:rocket_.position withSpeed:(rocketSpeed_ + 10)];
-            }
-            
-            [self addChild:bullet z:kBulletDepth];
-            [firedCats_ addObject:bullet];
-            [[AudioManager audioManager] playSound:kMeow];
-#if !DEBUG_UNLIMITED_CATS
+                    bullet = [CatBullet longBulletWithPos:rocket_.position withSpeed:(rocketSpeed_ + 10)];                
+#if !DEBUG_UNLIMITED_CATS                        
+                }
+#endif
+                break;
+            default:
+                break;
         }
-#endif
+        
+        // Add the cat
+        [self addChild:bullet z:kBulletDepth];
+        [firedCats_ addObject:bullet];
+        [[AudioManager audioManager] playSound:kMeow];        
     }
 }
-
-- (void) fireCat02
-{
-    if (!onGround_ && !inputLocked_) {   
-#if !DEBUG_UNLIMITED_CATS        
-        if (numCats02_ > 0) {
-#endif
-            CatBullet *bullet;
-            numCats02_--;
-            [[GameManager gameManager] setNumCats02:numCats02_]; 
-            bullet = [CatBullet fatBulletWithPos:rocket_.position withSpeed:(rocketSpeed_ + 10)];
-            
-            [self addChild:bullet z:kBulletDepth];
-            [firedCats_ addObject:bullet];
-            [[AudioManager audioManager] playSound:kMeow];
-            
-#if !DEBUG_UNLIMITED_CATS
-        }
-#endif
-    }
-}
-
+    
 - (void) takeOffComplete
 {
     onGround_ = NO;    
@@ -874,13 +866,13 @@
     }
 }
 
-- (void) slowDown:(CGFloat)factor
+- (void) rocketCollision
 {
 #if DEBUG_CONSTANTSPEED || DEBUG_NOSLOWDOWN
     return;
 #endif
     if (v_ > 0) {
-        v_ *= factor;
+        v_ *= 0.33f;
     }
     // Cancel boost if on
     if (boostEngaged_) {

@@ -169,7 +169,7 @@
 		<array>
 			<dict>
 				<key>Animate Delay</key>
-				<real>0.1</real>
+				<real>0.4</real>
 				<key>Name</key>
 				<string>Idle</string>
 				<key>Num Frames</key>

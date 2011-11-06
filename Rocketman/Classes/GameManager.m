@@ -140,14 +140,14 @@ static GameManager *_gameManager = nil;
 - (void) catButtonPressed:(Button *)button
 {
     if ([notification_ buttonClicked:button]) {
-        [gameLayer_ fireCat01];
+        [gameLayer_ fireCat:kCatNormal];
     }
 }
 
 - (void) bombButtonPressed:(Button *)button
 {
     if ([notification_ buttonClicked:button]) {    
-        [gameLayer_ fireCat02];    
+        [gameLayer_ fireCat:kCatBomb];
     }
 }
 
@@ -245,7 +245,7 @@ static GameManager *_gameManager = nil;
 
 - (void) rocketCollision
 {
-    [gameLayer_ slowDown:0.66f];
+    [gameLayer_ rocketCollision];
     [rocket_ showWobbling];
 }
 
