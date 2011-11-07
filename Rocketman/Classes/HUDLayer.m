@@ -66,11 +66,32 @@
         case kBombButton:
             [delegate_ bombButtonPressed:button];
             break;
+        case kBoostButton:
+            [delegate_ boostButtonPressed:button];
+            break;
+        default:
+            break;
+    }
+}
+
+- (void) buttonSelected:(Button *)button
+{
+    switch (button.numID) {
         case kSlowButton:
             [delegate_ slowButtonPressed:button];
             break;
-        case kBoostButton:
-            [delegate_ boostButtonPressed:button];
+        default:
+            break;
+    }    
+}
+
+- (void) buttonUnselected:(Button *)button
+{
+    switch (button.numID) {
+        case kSlowButton:
+            [delegate_ slowButtonReleased:button];
+            break;
+        default:
             break;
     }
 }

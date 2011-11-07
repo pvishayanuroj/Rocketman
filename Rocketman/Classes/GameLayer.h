@@ -152,7 +152,9 @@
 - (void) useBoost;
 
 /** When the slow button is pressed */
-- (void) useSlow;
+- (void) slowPressed;
+
+- (void) slowReleased;
 
 - (void) powerUpCollected:(ObstacleType)type;
 

@@ -107,7 +107,10 @@
         else {
             [self selectButton];
         }
-        [delegate_ buttonClicked:self];
+        
+        if ([delegate_ respondsToSelector:@selector(buttonClicked:)]) {
+            [delegate_ buttonClicked:self];
+        }
 	}
 }
 
@@ -122,12 +125,16 @@
 
 - (void) selectButton
 {
-    NSAssert(NO, @"SelectButton method must be implemented for child class");    
+    if ([delegate_ respondsToSelector:@selector(buttonSelected:)]) {
+        [delegate_ buttonSelected:self];
+    }
 }
 
 - (void) unselectButton
 {
-    NSAssert(NO, @"UnselectButton method must be implemented for child class");    
+    if ([delegate_ respondsToSelector:@selector(buttonUnselected:)]) {
+        [delegate_ buttonUnselected:self];        
+    }
 }
 
 @end
@@ -175,7 +182,9 @@
 {
     isSelected_ = YES;
     sprite_.visible = !isSelected_;
-    selected_.visible = isSelected_;         
+    selected_.visible = isSelected_;        
+    
+    [super selectButton];
 }
 
 - (void) unselectButton
@@ -183,6 +192,8 @@
     isSelected_ = NO;
     sprite_.visible = !isSelected_;
     selected_.visible = isSelected_;     
+    
+    [super unselectButton];    
 }
 
 - (CGRect) rect
@@ -229,12 +240,16 @@
 {
     isSelected_ = YES;
     text_.color = ccc3(255, 255, 255);
+    
+    [super selectButton];
 }
 
 - (void) unselectButton
 {
     isSelected_ = NO;    
-    text_.color = ccc3(140, 140, 140);    
+    text_.color = ccc3(140, 140, 140); 
+    
+    [super unselectButton];        
 }
 
 - (CGRect) rect

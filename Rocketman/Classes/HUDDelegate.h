@@ -18,6 +18,8 @@
 
 - (void) slowButtonPressed:(Button *)button;
 
+- (void) slowButtonReleased:(Button *)button;
+
 - (void) boostButtonPressed:(Button *)button;
 
 - (void) screenClicked;

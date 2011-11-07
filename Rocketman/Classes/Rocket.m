@@ -145,7 +145,8 @@
     
     // Slow
     animation = [[CCAnimationCache sharedAnimationCache] animationByName:@"Rocket2 Slow"];
-    slowAnimation_ = [[CCAnimate actionWithAnimation:animation] retain];
+    animate = [CCAnimate actionWithAnimation:animation];
+    slowAnimation_ = [[CCRepeatForever actionWithAction:animate] retain];
     
     // Aura
     animation = [[CCAnimationCache sharedAnimationCache] animationByName:@"Aura Flicker"];
@@ -160,7 +161,7 @@
     sprite_.position = CGPointZero;
     rocketState_ = kIdle;
 	[sprite_ stopAllActions];
-	//[sprite_ runAction:flyingAnimation_];	
+	[sprite_ runAction:flyingAnimation_];	
 }
 
 - (void) showShaking
@@ -205,13 +206,15 @@
 
 - (void) showSlow
 {
-    rocketState_ = kSlow;
-    [sprite_ stopAllActions];
+	[sprite_ stopAllActions];    
+//    rocketState_ = kSlow;
+//    [sprite_ stopAllActions];
     
-    TargetedAction *animation = [TargetedAction actionWithTarget:sprite_ actionIn:(CCFiniteTimeAction *)slowAnimation_];
-    CCFiniteTimeAction *method = [CCCallFunc actionWithTarget:self selector:@selector(showFlying)];
-    CCFiniteTimeAction *waving = [CCRepeat actionWithAction:animation times:3];
-    [self runAction:[CCSequence actions:waving, method, nil]];
+    //TargetedAction *animation = [TargetedAction actionWithTarget:sprite_ actionIn:(CCFiniteTimeAction *)slowAnimation_];
+    //CCFiniteTimeAction *method = [CCCallFunc actionWithTarget:self selector:@selector(showFlying)];
+    //CCFiniteTimeAction *waving = [CCRepeat actionWithAction:animation times:3];
+    //[self runAction:[CCSequence actions:waving, method, nil]];
+    [sprite_ runAction:slowAnimation_];
 }
 
 - (void) showHeart

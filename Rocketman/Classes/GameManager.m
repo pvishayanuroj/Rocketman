@@ -154,8 +154,13 @@ static GameManager *_gameManager = nil;
 - (void) slowButtonPressed:(Button *)button
 {
     if ([notification_ buttonClicked:button]) {    
-        [gameLayer_ useSlow];
+        [gameLayer_ slowPressed];
     }
+}
+
+- (void) slowButtonReleased:(Button *)button
+{
+    [gameLayer_ slowReleased];
 }
 
 - (void) boostButtonPressed:(Button *)button

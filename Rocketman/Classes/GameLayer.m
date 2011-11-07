@@ -288,8 +288,8 @@
     remove = [NSMutableIndexSet indexSet];
     index = 0;    
     
-    //for (Obstacle *obstacle in obstacles_) {
-    for (Obstacle *obstacle in [[obstacles_ copy] autorelease]) { // QUICKFIX
+    // Important: Make a copy of the obstacles array, because the fall method can spawn new obstacles 
+    for (Obstacle *obstacle in [[obstacles_ copy] autorelease]) {
         [obstacle fall:physics_.rocketSpeed];
         
         // If past the cutoff boundary, delete        
@@ -758,6 +758,16 @@
 #endif
         }
     }
+}
+
+- (void) slowPressed
+{
+    [physics_ rocketSlowed];
+}
+
+- (void) slowReleased
+{
+    [physics_ rocketSlowReleased];    
 }
 
 - (void) useSlow

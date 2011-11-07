@@ -10,8 +10,12 @@
 
 @protocol ButtonDelegate <NSObject>
 
-@required
+@optional
 
 - (void) buttonClicked:(Button *)button;
+
+- (void) buttonSelected:(Button *)button;
+
+- (void) buttonUnselected:(Button *)button;
 
 @end

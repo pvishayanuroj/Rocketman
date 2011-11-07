@@ -20,6 +20,7 @@ typedef enum {
     kNormal,
     kCollided,
     kSlowed,
+    kSlowedRelease,
     kBoosting
 } RocketMode;
 
@@ -29,6 +30,8 @@ typedef enum {
     CGFloat vR_;
     
     CGFloat dVMin_;
+    
+    CGFloat dS_;
     
     /** Boost amount per tick */
     CGFloat vB_;
@@ -50,6 +53,8 @@ typedef enum {
     
     /** Counts down until the end of boost */
     CGFloat boostTimer_;
+    
+    CGFloat collisionTimer_;
     
     /** Original speed before slow/collision */
     CGFloat origSpeed_;
@@ -86,6 +91,8 @@ typedef enum {
 - (void) rocketCollision;
 
 - (void) rocketSlowed;
+
+- (void) rocketSlowReleased;
 
 - (void) engageBoost:(BoostType)boostType;
 
