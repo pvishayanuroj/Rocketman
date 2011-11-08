@@ -18,7 +18,6 @@ typedef enum {
 typedef enum {
     kStopped,
     kNormal,
-    kCollided,
     kSlowed,
     kSlowedRelease,
     kBoosting
@@ -71,7 +70,6 @@ typedef enum {
 
 @property (nonatomic, readonly) CGFloat rocketSpeed;
 @property (nonatomic, readonly) BOOL boostOn;
-@property (nonatomic, readonly) BOOL isSlowed;
 @property (nonatomic, readonly) RocketMode rocketMode;
 @property (nonatomic, readonly) BoostType boostType;
 @property (nonatomic, assign) id <PhysicsModuleDelegate> delegate;

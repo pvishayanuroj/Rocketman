@@ -12,6 +12,7 @@
 #import "HUDDelegate.h"
 
 @class GameLayer;
+@class Button;
 
 @interface HUDLayer : CCLayer <ButtonDelegate> {
  
@@ -29,14 +30,22 @@
     
     CCLabelBMFont *numBoostsLabel_;        
     
+    /** Keep a reference to the slow button, since this is the only button that can be invalidated */
+    Button *slowButton_;
+    
+    /** Storage for all HUD buttons */
     NSMutableArray *buttons_;
     
+    /** Whether or not this entire layer is clickable */
     BOOL clickable_;
     
+    /** Delegate object */
     id <HUDDelegate> delegate_;
 }
 
 @property (nonatomic, assign) id <HUDDelegate> delegate;
+
+- (void) invalidateSlow;
 
 - (void) addLabels;
 

@@ -51,6 +51,7 @@
     [numCats02Label_ release];
     [numBoostsLabel_ release];    
     [buttons_ release];
+    [slowButton_ release];
     
     [super dealloc];
 }
@@ -94,6 +95,13 @@
         default:
             break;
     }
+}
+
+#pragma mark - Object Manipulators
+
+- (void) invalidateSlow
+{
+    [slowButton_ invalidateTouch];
 }
 
 #pragma mark - Populate Methods
@@ -168,7 +176,9 @@
     button.position = CGPointMake(HUD_SLOW_BUTTON_X, HUD_SLOW_BUTTON_Y);
     button.delegate = self;    
     [buttons_ addObject:button];
-    [self addChild:button];    
+    [self addChild:button];
+    slowButton_ = button;
+    [slowButton_ retain];
 }
 
 - (void) addBoostButton

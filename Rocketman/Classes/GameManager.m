@@ -49,8 +49,6 @@ static GameManager *_gameManager = nil;
 
 - (id) init
 {
-    NSLog(@"Initializing Game Manager");
-    
 	if ((self = [super init])) {
         
 		gameLayer_ = nil;
@@ -67,8 +65,9 @@ static GameManager *_gameManager = nil;
 
 - (void) dealloc
 {	
+#if DEBUG_DEALLOCS    
     NSLog(@"Game Manager dealloc'd");
-    
+#endif
 	[gameLayer_ release];
     [hudLayer_ release];
     [pauseLayer_ release];
@@ -224,6 +223,11 @@ static GameManager *_gameManager = nil;
     [hudLayer_ setTilt:tilt];
 }
 
+- (void) invalidateSlowButton
+{
+    [hudLayer_ invalidateSlow];
+}
+
 #pragma mark - Dialogue Layer Methods
 
 - (void) showCombo:(NSUInteger)comboNum
@@ -237,11 +241,6 @@ static GameManager *_gameManager = nil;
 }
 
 #pragma mark - Rocket methods
-
-- (Rocket *) getRocket
-{
-    return rocket_;
-}
 
 - (BOOL) isRocketInvincible
 {

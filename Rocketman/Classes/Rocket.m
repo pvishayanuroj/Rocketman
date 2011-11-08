@@ -54,8 +54,9 @@
 
 - (void) dealloc
 {
+#if DEBUG_DEALLOCS    
     NSLog(@"Rocket dealloc'd");    
-    
+#endif
     [sprite_ release];
     [aura_ release];
     [flyingAnimation_ release];

@@ -119,7 +119,7 @@
     
     // Hold a reference to the rocket
     [rocket_ release];
-    rocket_ = [[[GameManager gameManager] getRocket] retain];    
+    rocket_ = [[[GameManager gameManager] rocket] retain];    
 }
 
 - (void) setRandomTrigger:(NSUInteger)numPerTurn

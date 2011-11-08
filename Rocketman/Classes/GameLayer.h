@@ -151,9 +151,10 @@
 /** When the boost button is pressed */
 - (void) useBoost;
 
-/** When the slow button is pressed */
+/** Let's the physics module know that the slow button has been pressed */
 - (void) slowPressed;
 
+/** Let's the physics module know that the slow button has been released */
 - (void) slowReleased;
 
 - (void) powerUpCollected:(ObstacleType)type;

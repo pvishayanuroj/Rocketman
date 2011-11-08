@@ -707,11 +707,6 @@
     }
 }
 
-- (void) restoringOriginalSpeed
-{
-    [rocket_ showFlying];
-}
-
 - (void) useBoost
 {
     if (!inputLocked_) {

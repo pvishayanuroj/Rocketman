@@ -65,8 +65,10 @@ static NSUInteger countID = 0;
             [movements_ addObject:[StaticMovement staticMovement]];
         }
         else if (type == kSwarmTurtling) {
-            CGPoint fallRate = CGPointMake(2, -3);            
+            //CGPoint fallRate = CGPointMake(2, -3);            
+            CGPoint fallRate = CGPointMake(2, 0);            
             [movements_ addObject:[ConstantMovement constantMovement:fallRate]];            
+            [movements_ addObject:[StaticMovement staticMovement:1/2.5f]];
         }
         
         [self initActions];

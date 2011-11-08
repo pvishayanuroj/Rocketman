@@ -19,7 +19,9 @@ const CGFloat V_T2      = 5.0f;
 const CGFloat V_MIN     = 2.0f; // Collisions will not cause speed to go any slower
 const CGFloat V_MAX     = 13.0f;
 // Delta V based on threshold
-const CGFloat DV_MAX    = 0.01f;
+// Rate at which max speed decays (typically after boost)
+const CGFloat DV_MAX    = 0.015f;
+// Rate at which cruising speed decays
 const CGFloat DV_CRUISE = 0.001f;
 const CGFloat DV_T1     = 0.0025f;
 const CGFloat DV_T2     = 0.005f;
@@ -27,22 +29,18 @@ const CGFloat DV_T2     = 0.005f;
 const CGFloat DV_MIN    = 0.005f;
 const CGFloat DDV_MIN   = 0.0008f;
 
-// Speed when slowed by a collision
-const CGFloat V_COLLIDE = 1.5f;
 // Speed slowdown for collisions
 const CGFloat DV_COLLIDE = 2.0f;
-
-// Duration for which a collision doesn't slow the rocket down further
-const CGFloat TS_COLLIDE = 0.5f;
+// Duration immediately after a collision where the rocket's speed is not affected by other collisions
+// Essentially a collision cooldown timer
+const CGFloat TS_COLLIDE = 0.75f;
 
 // Speed change when slowed by slow button
-const CGFloat DV_SLOWED = 4.0f;
-// Slow duration for slow button
-const CGFloat TS_SLOWED = 2.0f;
-
-// Speed change when restoring the original speed from a slow or collision
+const CGFloat DV_SLOW_FACTOR = 0.5f;
+// Rate at which the rocket recovers its speed after slowing down
 const CGFloat DV_SLOWED_RESTORE = 0.3f;
-const CGFloat DV_COLLIDE_RESTORE = 0.25f;
+// Slow will stop slowing at this speed
+const CGFloat V_SLOW_MIN = 0.5f;
 
 // Boost amount for most cases
 const CGFloat VB_NORMAL         = 3.0f;
@@ -103,7 +101,6 @@ const CGFloat SRSM_FPS = 60.0f;
             break;
         case kSlowed:
         case kSlowedRelease:
-        case kCollided:
             [self applySlow:dt];
             break;
         default:
@@ -175,22 +172,6 @@ const CGFloat SRSM_FPS = 60.0f;
     }
 }
 
-/*
-- (void) applySlow:(ccTime)dt
-{
-    slowTimer_ -= dt;
-    // Only increase speed back to normal after time has elapsed
-    if (slowTimer_ <= 0) {
-        vR_ += dRestore_;
-        // Once original speed is reached, go back to normal mode
-        if (vR_ >= origSpeed_) {
-            vR_ = origSpeed_;
-            rocketMode_ = kNormal;
-        }
-    }
-}
-*/
-
 - (void) rocketCollision
 {
     // Special case, if rocket had just collided, don't chain penalties
@@ -203,54 +184,41 @@ const CGFloat SRSM_FPS = 60.0f;
         return;
     }
     
+    // Give a grace period before the next collision can happen
+    collisionTimer_ = TS_COLLIDE;
+    
     // If rocket is boosting, do not go through the whole slowing sequence,
     // just cut speed to cruising and halt boosting
     if (rocketMode_ == kBoosting) {
         rocketMode_ = kNormal;
         vR_ = V_CRUISE;
         [delegate_ boostDisengaged:boostType_];
-    } 
+    }
+    // Colliding while slowed, cancel the slow
+    else if (rocketMode_ == kSlowed) {
+        rocketMode_ = kSlowedRelease;      
+        origSpeed_ -= DV_COLLIDE;
+        [[[GameManager gameManager] rocket] showWobbling];
+        [[GameManager gameManager] invalidateSlowButton];          
+    }
+    // Colliding while speeding up from a slow
+    else if (rocketMode_ == kSlowedRelease) {
+        origSpeed_ -= DV_COLLIDE;
+    }
     // Colliding while going up normally    
     else {
+        rocketMode_ = kNormal;
         vR_ -= DV_COLLIDE;
-        collisionTimer_ = TS_COLLIDE;
     }
-    
-    /*
-    // Colliding while slowed
-    else if (rocketMode_ == kSlowed) {
-        rocketMode_ = kCollided;
-        origSpeed_ -= DV_COLLIDE;
-        dRestore_ = DV_COLLIDE_RESTORE;
-        vR_ = V_COLLIDE;
-        slowTimer_ = TS_COLLIDE;        
-    }
-    // Colliding during another collision
-    else if (rocketMode_ == kCollided) {
-        rocketMode_ = kCollided;
-        origSpeed_ = origSpeed_;
-        dRestore_ = DV_COLLIDE_RESTORE;
-        vR_ = V_COLLIDE;
-        slowTimer_ = TS_COLLIDE;         
-    }
-    // Colliding while going up normally
-    else {
-        rocketMode_ = kCollided;
-        origSpeed_ = vR_ - DV_COLLIDE;
-        dRestore_ = DV_COLLIDE_RESTORE;
-        vR_ = V_COLLIDE;
-        slowTimer_ = TS_COLLIDE;
-    }
-     */
 }
 
 - (void) applySlow:(ccTime)dt
 {
     if (rocketMode_ == kSlowed) {
         vR_ -= dS_;
-        dS_ += 0.0003f;
-        if (vR_ < 0) {
-            vR_ = 0;
+        dS_ += 0.0005f;
+        if (vR_ < V_SLOW_MIN) {
+            vR_ = V_SLOW_MIN;
         }
     }
     else if (rocketMode_ == kSlowedRelease) {
@@ -264,31 +232,36 @@ const CGFloat SRSM_FPS = 60.0f;
 
 - (void) rocketSlowed
 {
-    if (rocketMode_ != kSlowed) {
-        NSLog(@"rocket slowed");
+    if (vR_ < V_SLOW_MIN) {
+        return;
+    }
+    
+    // Cut boost if rocket is slowed during one
+    if (rocketMode_ == kBoosting && boostType_ != kStartBoost) {
+        [delegate_ boostDisengaged:boostType_];    
+        rocketMode_ = kSlowed;
+        origSpeed_ = V_CRUISE;
+        dRestore_ = DV_SLOWED_RESTORE;
+        vR_ *= DV_SLOW_FACTOR;
+        dS_ = 0.001f;
+        [[[GameManager gameManager] rocket] showSlow];        
+    }
+    else if (rocketMode_ == kNormal) {
         rocketMode_ = kSlowed;        
         origSpeed_ = vR_;
         dRestore_ = DV_SLOWED_RESTORE;
-        vR_ *= 0.5f;
+        vR_ *= DV_SLOW_FACTOR;
         dS_ = 0.001f;
         [[[GameManager gameManager] rocket] showSlow];
     }
-    
-    /*
-    rocketMode_ = kSlowed;
-    origSpeed_ = vR_;
-    dRestore_ = DV_SLOWED_RESTORE;    
-    vR_ -= DV_SLOWED;
-    vR_ = (vR_ < 0) ? 0 : vR_;
-    slowTimer_ = TS_SLOWED;
-     */
 }
 
 - (void) rocketSlowReleased
 {
-        NSLog(@"rocket released");    
-    rocketMode_ = kSlowedRelease;
-    [[[GameManager gameManager] rocket] showFlying];
+    if (rocketMode_ == kSlowed) {
+        rocketMode_ = kSlowedRelease;
+        [[[GameManager gameManager] rocket] showFlying];
+    }
 }
 
 - (void) engageBoost:(BoostType)boostType
@@ -334,11 +307,6 @@ const CGFloat SRSM_FPS = 60.0f;
 - (BOOL) boostOn
 {
     return rocketMode_ == kBoosting;
-}
-
-- (BOOL) isSlowed
-{
-    return rocketMode_ == kSlowed || rocketMode_ == kCollided;
 }
 
 @end

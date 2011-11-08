@@ -74,6 +74,7 @@
             if (!isToggleButton_) {
                 [self selectButton];
             }
+            isInvalidated_ = NO;
             return YES;
         }
     }
@@ -82,36 +83,43 @@
 
 - (void) ccTouchMoved:(UITouch *)touch withEvent:(UIEvent *)event
 {
-	if ([self containsTouchLocation:touch])	{
-        // Non-toggle buttons get unselected
-        // Toggle buttons become selected
-        if (!isToggleButton_) {
-            [self selectButton];
+    if (!isInvalidated_) {
+        if ([self containsTouchLocation:touch])	{
+            // Non-toggle buttons get unselected
+            // Toggle buttons become selected
+            if (!isToggleButton_) {
+                [self selectButton];
+            }
         }
-    }
-    else {
-        if (!isToggleButton_) {
-            [self unselectButton];
-        }        
+        else {
+            if (!isToggleButton_) {
+                [self unselectButton];
+            }        
+        }
     }
 }
 
 - (void) ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event
 {
-	if ([self containsTouchLocation:touch])	{
-        // Non-toggle buttons get unselected
-        // Toggle buttons become selected
-        if (!isToggleButton_) {
-            [self unselectButton];
+    if (!isInvalidated_) {
+        if ([self containsTouchLocation:touch])	{
+            // Non-toggle buttons get unselected
+            // Toggle buttons become selected
+            if (!isToggleButton_) {
+                [self unselectButton];
+            }
+            else {
+                [self selectButton];
+            }
+            
+            if ([delegate_ respondsToSelector:@selector(buttonClicked:)]) {
+                [delegate_ buttonClicked:self];
+            }
         }
         else {
-            [self selectButton];
+            [self unselectButton];
         }
-        
-        if ([delegate_ respondsToSelector:@selector(buttonClicked:)]) {
-            [delegate_ buttonClicked:self];
-        }
-	}
+    }
 }
 
 #pragma mark - Protocol Methods
@@ -122,6 +130,11 @@
 }
 
 #pragma mark - Object Manipulators
+
+- (void) invalidateTouch
+{
+    isInvalidated_ = YES;
+}
 
 - (void) selectButton
 {

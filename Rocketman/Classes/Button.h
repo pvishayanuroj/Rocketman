@@ -21,6 +21,12 @@
     /** Whether or not it is active */
     BOOL isClickable_;    
     
+    /** 
+     * If this is set during a touch, the button is essentially "reset",
+     * and the finger must be lifted before the button can function again
+     */
+    BOOL isInvalidated_;
+    
     /** Delegate object */
     id <ButtonDelegate> delegate_;    
     
@@ -35,6 +41,8 @@
 + (id) button:(NSUInteger)numID toggle:(BOOL)toggle;
 
 - (id) initButton:(NSUInteger)numID toggle:(BOOL)toggle;
+
+- (void) invalidateTouch;
 
 - (CGRect) rect;
 

@@ -80,11 +80,11 @@
 
 - (void) setTilt:(CGFloat)tilt;
 
+- (void) invalidateSlowButton;
+
 - (void) showCombo:(NSUInteger)comboNum;
 
 - (void) addToDialogueLayer:(CCNode *)dialogue;
-
-- (Rocket *) getRocket;
 
 - (BOOL) isRocketInvincible;
 
