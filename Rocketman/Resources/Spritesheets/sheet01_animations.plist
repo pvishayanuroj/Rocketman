@@ -186,7 +186,7 @@
 				<key>Animate Delay</key>
 				<real>0.2</real>
 				<key>Name</key>
-				<string>Fly</string>
+				<string>Idle</string>
 				<key>Num Frames</key>
 				<integer>3</integer>
 			</dict>

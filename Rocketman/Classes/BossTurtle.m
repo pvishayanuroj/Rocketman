@@ -45,7 +45,7 @@ static NSUInteger countID = 0;
         obstacleType_ = kBossTurtle;
         name_ = [[[DataManager dataManager] nameForType:obstacleType_] retain];
         
-        NSString *spriteName = [NSString stringWithFormat:@"%@ Fly 01.png", name_];           
+        NSString *spriteName = [NSString stringWithFormat:@"%@ Idle 01.png", name_];           
         sprite_ = [[CCSprite spriteWithSpriteFrameName:spriteName] retain];
         [self addChild:sprite_ z:-1];
         
@@ -121,7 +121,7 @@ static NSUInteger countID = 0;
 
 - (void) initActions
 {
-    NSString *animationName = [NSString stringWithFormat:@"%@ Fly", name_];
+    NSString *animationName = [NSString stringWithFormat:@"%@ Idle", name_];
 	CCAnimation *animation = [[CCAnimationCache sharedAnimationCache] animationByName:animationName];
 	CCActionInterval *animate = [CCAnimate actionWithAnimation:animation];
 	idleAnimation_ = [[CCRepeatForever actionWithAction:animate] retain];
