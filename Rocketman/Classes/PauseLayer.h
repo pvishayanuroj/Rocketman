@@ -18,15 +18,19 @@
     
     BOOL isPaused_;
     
-    CCMenuItemSprite *button_;
+    AnimatedButton *button_;
     
     CCSprite *restartIcon_;
     
     CCSprite *stageIcon_;    
     
+    CCSprite *resumeIcon_;
+    
     AnimatedButton *restartButton_;
     
     AnimatedButton *stageButton_;    
+    
+    AnimatedButton *resumeButton_;
 }
 
 - (void) addButtons;
@@ -38,5 +42,9 @@
 - (void) restart;
 
 - (void) stageSelect;
+
+- (void) pauseGame;
+
+- (void) resumeGame;
 
 @end

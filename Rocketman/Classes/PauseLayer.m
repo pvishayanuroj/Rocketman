@@ -14,11 +14,20 @@
 
 @implementation PauseLayer
 
-const CGFloat PL_BUTTON_SCALE = 0.8f;
-const CGFloat PL_BUTTON_SCALE_BIG = 1.0f;
+const CGFloat PL_PAUSE_X = 290.0f;
+const CGFloat PL_PAUSE_Y = 450.0f;
+const CGFloat PL_STAGE_SCALE = 0.8f;
+const CGFloat PL_STAGE_SCALE_BIG = 1.0f;
 const CGFloat PL_RESTART_REL_Y = 0.6f;
 const CGFloat PL_STAGE_REL_Y = 0.5f;
+const CGFloat PL_RESUME_REL_Y = 0.4f;
+const CGFloat PL_RESTART_X = 220.0f;
+const CGFloat PL_STAGE_X = 260.0f;
+const CGFloat PL_RESUME_X = 225.0f;
 const CGFloat PL_RESTART_ROTATE_TIME = 2.0f;
+const CGFloat PL_RESUME_BLINK_DELAY = 0.5f;
+const CGFloat PL_STAGE_PULSE_DELAY = 0.3f;
+const CGFloat PL_STAGE_RESIZE_DURATION = 0.05f;
 
 - (id) init
 {
@@ -28,21 +37,16 @@ const CGFloat PL_RESTART_ROTATE_TIME = 2.0f;
      
         isPaused_ = NO;
         
-        button_ = [CCMenuItemSprite itemFromNormalSprite:[CCSprite spriteWithFile:@"pause_button.png"] selectedSprite:[CCSprite spriteWithFile:@"pause_button.png"] target:self selector:@selector(select)];
-        
-        CCMenu *m = [CCMenu menuWithItems:button_, nil];
-        m.position = CGPointMake(290, 450);
-        [self addChild:m];
+        button_ = [[AnimatedButton buttonWithImage:@"pause_button.png" target:self selector:@selector(pauseGame)] retain];
+        button_.position = CGPointMake(PL_PAUSE_X, PL_PAUSE_Y);
+        [self addChild:button_];
     }
     return self;
 }
 
 - (void) dealloc
 {
-    [restartIcon_ release];
-    [stageIcon_ release];
-    [restartButton_ release];
-    [stageButton_ release];
+    [button_ release];
     
     [super dealloc];
 }
@@ -51,20 +55,26 @@ const CGFloat PL_RESTART_ROTATE_TIME = 2.0f;
 {
     restartIcon_ = [[CCSprite spriteWithFile:@"restart_icon.png"] retain];
     stageIcon_ = [[CCSprite spriteWithFile:@"stage_icon.png"] retain];
+    resumeIcon_ = [[CCSprite spriteWithFile:@"resume_button.png"] retain];    
     
     CGSize size = [[CCDirector sharedDirector] winSize];
-    restartIcon_.position = ccp(220, PL_RESTART_REL_Y * size.height);
-    stageIcon_.position = ccp(265, PL_STAGE_REL_Y * size.height);
+    restartIcon_.position = CGPointMake(PL_RESTART_X, PL_RESTART_REL_Y * size.height);
+    stageIcon_.position = CGPointMake(PL_STAGE_X, PL_STAGE_REL_Y * size.height);
+    resumeIcon_.position = CGPointMake(PL_RESUME_X, PL_RESUME_REL_Y * size.height);
     
     restartButton_ = [[AnimatedButton buttonWithImage:@"restart_text.png" target:self selector:@selector(restart)] retain];
     stageButton_ = [[AnimatedButton buttonWithImage:@"stage_text.png" target:self selector:@selector(stageSelect)] retain];
-    restartButton_.position = ccp(0.5 * size.width, PL_RESTART_REL_Y * size.height);
-    stageButton_.position = ccp(0.5 * size.width, PL_STAGE_REL_Y * size.height);
+    resumeButton_ = [[AnimatedButton buttonWithImage:@"resume_text.png" target:self selector:@selector(resumeGame)] retain];    
+    restartButton_.position = CGPointMake(0.5f * size.width, PL_RESTART_REL_Y * size.height);
+    stageButton_.position = CGPointMake(0.5f * size.width, PL_STAGE_REL_Y * size.height);
+    resumeButton_.position = CGPointMake(0.5f * size.width, PL_RESUME_REL_Y * size.height);    
     
     [self addChild:restartIcon_];
     [self addChild:stageIcon_];
+    [self addChild:resumeIcon_];
     [self addChild:restartButton_];
     [self addChild:stageButton_];  
+    [self addChild:resumeButton_];
     
     [self initActions];
 }
@@ -75,45 +85,52 @@ const CGFloat PL_RESTART_ROTATE_TIME = 2.0f;
     CCAction *spin = [CCRepeatForever actionWithAction:spinOnce];
     [restartIcon_ runAction:spin];
     
-    CGFloat duration = 0.05;
-    CGFloat delay = 0.3;
-    CCActionInterval *grow = [CCScaleTo actionWithDuration:duration scale:PL_BUTTON_SCALE];
-    CCActionInterval *growEase = [CCEaseIn actionWithAction:grow rate:2.0];
-    CCActionInterval *shrink = [CCScaleTo actionWithDuration:duration scale:PL_BUTTON_SCALE_BIG];    
-    CCActionInterval *shrinkEase = [CCEaseIn actionWithAction:shrink rate:2.0];    
-    CCActionInterval *delay1 = [CCDelayTime actionWithDuration:delay];
-    CCActionInterval *delay2 = [CCDelayTime actionWithDuration:delay];    
+    CGFloat duration = PL_STAGE_RESIZE_DURATION;
+    CGFloat pulseDelay = PL_STAGE_PULSE_DELAY;
+    CCActionInterval *grow = [CCScaleTo actionWithDuration:duration scale:PL_STAGE_SCALE];
+    CCActionInterval *growEase = [CCEaseIn actionWithAction:grow rate:2.0f];
+    CCActionInterval *shrink = [CCScaleTo actionWithDuration:duration scale:PL_STAGE_SCALE_BIG];    
+    CCActionInterval *shrinkEase = [CCEaseIn actionWithAction:shrink rate:2.0f];    
+    CCActionInterval *delay1 = [CCDelayTime actionWithDuration:pulseDelay];
+    CCActionInterval *delay2 = [CCDelayTime actionWithDuration:pulseDelay];    
     CCAction *pulse = [CCRepeatForever actionWithAction:[CCSequence actions:growEase, delay1, shrinkEase, delay2, nil]];
-    [stageIcon_ runAction:pulse];    
+    [stageIcon_ runAction:pulse];  
+    
+    CGFloat blinkDelay = PL_RESUME_BLINK_DELAY;    
+    CCActionInterval *hide = [CCFadeOut actionWithDuration:0.0f];
+    CCActionInterval *hideDelay = [CCDelayTime actionWithDuration:blinkDelay];    
+    CCActionInterval *show = [CCFadeIn actionWithDuration:0.0f];    
+    CCActionInterval *showDelay = [CCDelayTime actionWithDuration:blinkDelay];    
+    CCAction *blink = [CCRepeatForever actionWithAction:[CCSequence actions:hide, hideDelay, show, showDelay, nil]];
+    [resumeIcon_ runAction:blink];      
 }
 
 - (void) removeButtons
 {
     [restartIcon_ removeFromParentAndCleanup:YES];
     [stageIcon_ removeFromParentAndCleanup:YES];
+    [resumeIcon_ removeFromParentAndCleanup:YES];
     [restartButton_ removeFromParentAndCleanup:YES];
     [stageButton_ removeFromParentAndCleanup:YES];
+    [resumeButton_ removeFromParentAndCleanup:YES];
+    
+    [restartIcon_ release];
+    [stageIcon_ release];
+    [resumeIcon_ release];
+    [restartButton_ release];
+    [stageButton_ release];
+    [resumeButton_ release];
 }
 
-- (void) select
+- (void) pauseGame
 {
     // Pause the game
     if (!isPaused_) {
         isPaused_ = YES;
+        button_.visible = NO;
         [[GameManager gameManager] pause];
         [[AudioManager audioManager] pauseSound];
-        [button_ setNormalImage:[CCSprite spriteWithFile:@"resume_button.png"]];
-        [button_ setSelectedImage:[CCSprite spriteWithFile:@"resume_button.png"]];      
         [self addButtons];
-    }
-    // Unpause the game
-    else {
-        isPaused_ = NO;        
-        [self removeButtons];
-        [button_ setNormalImage:[CCSprite spriteWithFile:@"pause_button.png"]];
-        [button_ setSelectedImage:[CCSprite spriteWithFile:@"pause_button.png"]];        
-        [[AudioManager audioManager] resumeSound];        
-        [[GameManager gameManager] resume];                      
     }
 }
 
@@ -125,6 +142,15 @@ const CGFloat PL_RESTART_ROTATE_TIME = 2.0f;
 - (void) stageSelect
 {
     [[GameStateManager gameStateManager] stageSelectFromPause];
+}
+
+- (void) resumeGame
+{
+    isPaused_ = NO;        
+    button_.visible = YES;    
+    [self removeButtons];       
+    [[AudioManager audioManager] resumeSound];        
+    [[GameManager gameManager] resume];               
 }
 
 @end

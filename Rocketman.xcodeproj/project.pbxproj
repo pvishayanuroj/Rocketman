@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		DA1CB33B14661B39007096D8 /* PhysicsModule.m in Sources */ = {isa = PBXBuildFile; fileRef = DA1CB33A14661B39007096D8 /* PhysicsModule.m */; };
+		DA3979DA146B70900043C48F /* dialogue_cat_combo.png in Resources */ = {isa = PBXBuildFile; fileRef = DA3979D7146B70900043C48F /* dialogue_cat_combo.png */; };
+		DA3979DB146B70900043C48F /* dialogue_stage_clear.png in Resources */ = {isa = PBXBuildFile; fileRef = DA3979D8146B70900043C48F /* dialogue_stage_clear.png */; };
+		DA3979DC146B70900043C48F /* resume_text.png in Resources */ = {isa = PBXBuildFile; fileRef = DA3979D9146B70900043C48F /* resume_text.png */; };
 		DA50379F1453681C00600DD4 /* Boss Banner.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5037971453681C00600DD4 /* Boss Banner.png */; };
 		DA5037A01453681C00600DD4 /* Combo 2 Banner.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5037981453681C00600DD4 /* Combo 2 Banner.png */; };
 		DA5037A11453681C00600DD4 /* Combo Banner.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5037991453681C00600DD4 /* Combo Banner.png */; };
@@ -339,6 +342,9 @@
 		DA1CB33914661B39007096D8 /* PhysicsModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhysicsModule.h; path = Classes/PhysicsModule.h; sourceTree = "<group>"; };
 		DA1CB33A14661B39007096D8 /* PhysicsModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhysicsModule.m; path = Classes/PhysicsModule.m; sourceTree = "<group>"; };
 		DA1CB33D1466350A007096D8 /* PhysicsModuleDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhysicsModuleDelegate.h; path = Classes/PhysicsModuleDelegate.h; sourceTree = "<group>"; };
+		DA3979D7146B70900043C48F /* dialogue_cat_combo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dialogue_cat_combo.png; sourceTree = "<group>"; };
+		DA3979D8146B70900043C48F /* dialogue_stage_clear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dialogue_stage_clear.png; sourceTree = "<group>"; };
+		DA3979D9146B70900043C48F /* resume_text.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = resume_text.png; sourceTree = "<group>"; };
 		DA5037971453681C00600DD4 /* Boss Banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Boss Banner.png"; sourceTree = "<group>"; };
 		DA5037981453681C00600DD4 /* Combo 2 Banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Combo 2 Banner.png"; sourceTree = "<group>"; };
 		DA5037991453681C00600DD4 /* Combo Banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Combo Banner.png"; sourceTree = "<group>"; };
@@ -1427,6 +1433,9 @@
 		DAF441E1144B08B200943C0D /* Game Art */ = {
 			isa = PBXGroup;
 			children = (
+				DA3979D7146B70900043C48F /* dialogue_cat_combo.png */,
+				DA3979D8146B70900043C48F /* dialogue_stage_clear.png */,
+				DA3979D9146B70900043C48F /* resume_text.png */,
 				DAF441E2144B08B300943C0D /* boost_button.png */,
 				DAF441E3144B08B300943C0D /* boost_button_pressed.png */,
 				DAF441E4144B08B300943C0D /* cat_button.png */,
@@ -1985,6 +1994,9 @@
 				DAD8058914621B2400A195C3 /* Level3_data.plist in Resources */,
 				DAD8058A14621B2400A195C3 /* Level4_data.plist in Resources */,
 				DAD8058B14621B2400A195C3 /* Level5_data.plist in Resources */,
+				DA3979DA146B70900043C48F /* dialogue_cat_combo.png in Resources */,
+				DA3979DB146B70900043C48F /* dialogue_stage_clear.png in Resources */,
+				DA3979DC146B70900043C48F /* resume_text.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
