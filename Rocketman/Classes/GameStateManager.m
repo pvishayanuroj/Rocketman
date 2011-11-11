@@ -48,7 +48,8 @@ static GameStateManager *_gameStateManager = nil;
 {
 	if ((self = [super init])) {
             
-        lastUnlockedLevel_ = 5;
+        currentLevel_ = 6;
+        lastUnlockedLevel_ = 6;
         
         // Load sounds
         [AudioManager audioManager];      
@@ -88,7 +89,7 @@ static GameStateManager *_gameStateManager = nil;
 
 - (void) showWorldMap
 {
-    CCScene *scene = [MapScene mapWithLastUnlocked:lastUnlockedLevel_ currentLevel:0];
+    CCScene *scene = [MapScene mapWithLastUnlocked:lastUnlockedLevel_ currentLevel:currentLevel_];
     [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:scene]];        
 }
 
@@ -126,6 +127,7 @@ static GameStateManager *_gameStateManager = nil;
 
 - (void) stageSelectedFromMap:(NSUInteger)levelNum
 {
+    currentLevel_ = levelNum;
     [[AudioManager audioManager] stopMusic];    
     [self startGameWithLevel:levelNum];
 }

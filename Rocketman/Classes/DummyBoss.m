@@ -13,6 +13,7 @@
 #import "Boundary.h"
 #import "ConstantMovementWithStop.h"
 #import "SideMovement.h"
+#import "LightBlastCloud.h"
 #import "DarkBlastCloud.h"
 
 @implementation DummyBoss
@@ -99,6 +100,7 @@ static NSUInteger countID = 0;
 {
 	[sprite_ stopAllActions];	
  
+    [self showIdle];
     /*
     CCActionInterval *delay = [CCDelayTime actionWithDuration:0.5];
 	TargetedAction *animation = [TargetedAction actionWithTarget:sprite_ actionIn:(CCFiniteTimeAction *)damageAnimation_];
@@ -121,6 +123,11 @@ static NSUInteger countID = 0;
     }    
     else {
         [self showDamage];
+        // Account for offset, since pos is in terms of screen grid
+        CGPoint p = ccpSub(point, self.position);
+        NSLog(@"collide: %3.0f, %3.0f p: %3.0f, %3.0f", point.x, point.y, p.x, p.y);
+        // Turtle takes no damage on shell hit
+        [[GameManager gameManager] addDoodad:[LightBlastCloud lightBlastCloudAt:point movement:kNoMovement]];        
     }
 }
 

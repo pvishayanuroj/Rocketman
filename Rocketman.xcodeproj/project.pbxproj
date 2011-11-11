@@ -11,6 +11,7 @@
 		DA3979DA146B70900043C48F /* dialogue_cat_combo.png in Resources */ = {isa = PBXBuildFile; fileRef = DA3979D7146B70900043C48F /* dialogue_cat_combo.png */; };
 		DA3979DB146B70900043C48F /* dialogue_stage_clear.png in Resources */ = {isa = PBXBuildFile; fileRef = DA3979D8146B70900043C48F /* dialogue_stage_clear.png */; };
 		DA3979DC146B70900043C48F /* resume_text.png in Resources */ = {isa = PBXBuildFile; fileRef = DA3979D9146B70900043C48F /* resume_text.png */; };
+		DA3979DF146B82410043C48F /* Level6_data.plist in Resources */ = {isa = PBXBuildFile; fileRef = DA3979DE146B82410043C48F /* Level6_data.plist */; };
 		DA50379F1453681C00600DD4 /* Boss Banner.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5037971453681C00600DD4 /* Boss Banner.png */; };
 		DA5037A01453681C00600DD4 /* Combo 2 Banner.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5037981453681C00600DD4 /* Combo 2 Banner.png */; };
 		DA5037A11453681C00600DD4 /* Combo Banner.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5037991453681C00600DD4 /* Combo Banner.png */; };
@@ -345,6 +346,7 @@
 		DA3979D7146B70900043C48F /* dialogue_cat_combo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dialogue_cat_combo.png; sourceTree = "<group>"; };
 		DA3979D8146B70900043C48F /* dialogue_stage_clear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dialogue_stage_clear.png; sourceTree = "<group>"; };
 		DA3979D9146B70900043C48F /* resume_text.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = resume_text.png; sourceTree = "<group>"; };
+		DA3979DE146B82410043C48F /* Level6_data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Level6_data.plist; sourceTree = "<group>"; };
 		DA5037971453681C00600DD4 /* Boss Banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Boss Banner.png"; sourceTree = "<group>"; };
 		DA5037981453681C00600DD4 /* Combo 2 Banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Combo 2 Banner.png"; sourceTree = "<group>"; };
 		DA5037991453681C00600DD4 /* Combo Banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Combo Banner.png"; sourceTree = "<group>"; };
@@ -1473,6 +1475,7 @@
 		DAF441FF144B08B300943C0D /* Level Data */ = {
 			isa = PBXGroup;
 			children = (
+				DA3979DE146B82410043C48F /* Level6_data.plist */,
 				DAD8058614621B2400A195C3 /* Level3_data.plist */,
 				DAD8058714621B2400A195C3 /* Level4_data.plist */,
 				DAD8058814621B2400A195C3 /* Level5_data.plist */,
@@ -1997,6 +2000,7 @@
 				DA3979DA146B70900043C48F /* dialogue_cat_combo.png in Resources */,
 				DA3979DB146B70900043C48F /* dialogue_stage_clear.png in Resources */,
 				DA3979DC146B70900043C48F /* resume_text.png in Resources */,
+				DA3979DF146B82410043C48F /* Level6_data.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

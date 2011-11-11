@@ -58,11 +58,17 @@ typedef enum {
     /** Original speed before slow/collision */
     CGFloat origSpeed_;
     
+    /** Speed to restore to after slow is released. Restore is affected by decay. */
+    CGFloat restoreSpeed_;
+    
     /** Rate at which speed increases back to original speed after slow/collide */
     CGFloat dRestore_;
     
     /** Counts down until the end of the slow period */
     CGFloat slowTimer_;
+    
+    /** True if slow animation is playing */
+    BOOL slowAnimating_;
     
     /** Delegate object */
     id <PhysicsModuleDelegate> delegate_;
@@ -88,10 +94,13 @@ typedef enum {
 
 - (void) rocketCollision;
 
+/** Called when player is pressing the slow button */
 - (void) rocketSlowed;
 
+/** Called when the player releases the slow button */
 - (void) rocketSlowReleased;
 
+/** Used to initialize any type of boost */
 - (void) engageBoost:(BoostType)boostType;
 
 @end

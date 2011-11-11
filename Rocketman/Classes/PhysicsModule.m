@@ -16,31 +16,41 @@
 const CGFloat V_CRUISE  = 9.5f;
 const CGFloat V_T1      = 7.5f;
 const CGFloat V_T2      = 5.0f;
-const CGFloat V_MIN     = 2.0f; // Collisions will not cause speed to go any slower
+// At this speed, collisions will not cause speed to go any slower
+// and slow will not decay beyond this speed. If slow is pressed below this speed, then no decay occurs
+const CGFloat V_MIN     = 2.0f; 
 const CGFloat V_MAX     = 13.0f;
 // Delta V based on threshold
-// Rate at which max speed decays (typically after boost)
+// Rate at which speeds within range from max to cruise decays (typically after boost)
 const CGFloat DV_MAX    = 0.015f;
-// Rate at which cruising speed decays
+// Rates for speed decay from cruise to T1, T1 to T2, and T2 to V_MIN
 const CGFloat DV_CRUISE = 0.001f;
 const CGFloat DV_T1     = 0.0025f;
 const CGFloat DV_T2     = 0.005f;
 
+// Initial rate of fall once past V_MIN
 const CGFloat DV_MIN    = 0.005f;
-const CGFloat DDV_MIN   = 0.0008f;
+// Rate of fall acceleration (gravity)
+const CGFloat DDV_MIN   = 0.0004f;
 
 // Speed slowdown for collisions
 const CGFloat DV_COLLIDE = 2.0f;
 // Duration immediately after a collision where the rocket's speed is not affected by other collisions
 // Essentially a collision cooldown timer
-const CGFloat TS_COLLIDE = 0.75f;
+const CGFloat TS_COLLIDE = 0.5f;
 
-// Speed change when slowed by slow button
+// Speed change multiplier when slowed by slow button
 const CGFloat DV_SLOW_FACTOR = 0.5f;
+// Rate at which rate of rocket slow increases
+const CGFloat DDV_SLOWED_RATE_GROWTH = 0.0005f;
+// Slow will stop slowing at this speed
+const CGFloat V_SLOW_MIN = 0.0f;
+// Rate at which original speed decays during a slow
+const CGFloat DV_SLOW_DECAY = 0.5f/60.0f;
+// Minimum speed at which slow decay will stop at
+const CGFloat V_SLOW_DECAY_MIN = 2.0f;
 // Rate at which the rocket recovers its speed after slowing down
 const CGFloat DV_SLOWED_RESTORE = 0.3f;
-// Slow will stop slowing at this speed
-const CGFloat V_SLOW_MIN = 0.5f;
 
 // Boost amount for most cases
 const CGFloat VB_NORMAL         = 3.0f;
@@ -75,6 +85,7 @@ const CGFloat SRSM_FPS = 60.0f;
         vB_ = 0.0f;
         dVMin_ = 0.0f;
         rocketMode_ = kStopped;
+        slowAnimating_ = NO;
         collisionTimer_ = 0.0f;
     }
     return self;
@@ -113,7 +124,8 @@ const CGFloat SRSM_FPS = 60.0f;
 #if DEBUG_CONSTANTSPEED
     return;
 #endif
-    if (vR_ > DV_MIN) {
+    
+    if (vR_ > V_MIN) {
         dVMin_ = 0;
     }
     
@@ -130,9 +142,11 @@ const CGFloat SRSM_FPS = 60.0f;
     else if (vR_ > V_MIN) {
         vR_ -= DV_T2;
     }
+    // Below the V_MIN threshold, the engine shuts off and gravity takes effect
     else {
         vR_ -= (DV_MIN + dVMin_);
         dVMin_ += DDV_MIN;
+        [[[GameManager gameManager] rocket] turnFlameOff];        
     }
 }
 
@@ -197,13 +211,13 @@ const CGFloat SRSM_FPS = 60.0f;
     // Colliding while slowed, cancel the slow
     else if (rocketMode_ == kSlowed) {
         rocketMode_ = kSlowedRelease;      
-        origSpeed_ -= DV_COLLIDE;
+        restoreSpeed_ -= DV_COLLIDE;
         [[[GameManager gameManager] rocket] showWobbling];
         [[GameManager gameManager] invalidateSlowButton];          
     }
     // Colliding while speeding up from a slow
     else if (rocketMode_ == kSlowedRelease) {
-        origSpeed_ -= DV_COLLIDE;
+        restoreSpeed_ -= DV_COLLIDE;
     }
     // Colliding while going up normally    
     else {
@@ -215,16 +229,30 @@ const CGFloat SRSM_FPS = 60.0f;
 - (void) applySlow:(ccTime)dt
 {
     if (rocketMode_ == kSlowed) {
-        vR_ -= dS_;
-        dS_ += 0.0005f;
-        if (vR_ < V_SLOW_MIN) {
-            vR_ = V_SLOW_MIN;
+        // Slow only has an effect if it was used above it's minimum effective speed
+        if (origSpeed_ > V_SLOW_MIN) {
+            // Slow the rocket down
+            vR_ -= dS_;
+            dS_ += DDV_SLOWED_RATE_GROWTH;
+            if (vR_ < V_SLOW_MIN) {
+                vR_ = V_SLOW_MIN;
+            }
+            
+            // Only decay the original speed if slow was pressed while going faster than the minimum V_MIN speed
+            if (origSpeed_ > V_MIN) {
+                // Slow the original speed down
+                restoreSpeed_ -= DV_SLOW_DECAY;
+                if (restoreSpeed_ < V_SLOW_DECAY_MIN) {
+                    restoreSpeed_ = V_SLOW_DECAY_MIN;
+                }
+            }
         }
     }
+    // In restore mode, rocket speed is being restored to the target speed
     else if (rocketMode_ == kSlowedRelease) {
         vR_ += dRestore_;
-        if (vR_ >= origSpeed_) {
-            vR_ = origSpeed_;
+        if (vR_ >= restoreSpeed_) {
+            vR_ = restoreSpeed_;
             rocketMode_ = kNormal;
         }        
     }
@@ -232,35 +260,56 @@ const CGFloat SRSM_FPS = 60.0f;
 
 - (void) rocketSlowed
 {
-    if (vR_ < V_SLOW_MIN) {
-        return;
-    }
-    
-    // Cut boost if rocket is slowed during one
-    if (rocketMode_ == kBoosting && boostType_ != kStartBoost) {
-        [delegate_ boostDisengaged:boostType_];    
-        rocketMode_ = kSlowed;
-        origSpeed_ = V_CRUISE;
-        dRestore_ = DV_SLOWED_RESTORE;
-        vR_ *= DV_SLOW_FACTOR;
-        dS_ = 0.001f;
-        [[[GameManager gameManager] rocket] showSlow];        
-    }
-    else if (rocketMode_ == kNormal) {
-        rocketMode_ = kSlowed;        
-        origSpeed_ = vR_;
-        dRestore_ = DV_SLOWED_RESTORE;
-        vR_ *= DV_SLOW_FACTOR;
-        dS_ = 0.001f;
-        [[[GameManager gameManager] rocket] showSlow];
-    }
+        // If slow is pressed when going below the minimum speed at which slow is effective
+        if (vR_ < V_SLOW_MIN) {
+            // Ensure that the slow animation is playing, but rocket is still in normal mode
+            // In other words, slow has no effect, but the animation still needs to play
+            if (!slowAnimating_) {
+                slowAnimating_ = YES;
+                [[[GameManager gameManager] rocket] showSlow];           
+            }
+        }
+        // Slow pressed during a valid speed
+        else {
+            // Cut boost if rocket is slowed during one
+            if (rocketMode_ == kBoosting && boostType_ != kStartBoost) {
+                [delegate_ boostDisengaged:boostType_];    
+                rocketMode_ = kSlowed;
+                origSpeed_ = V_CRUISE;
+                restoreSpeed_ = V_CRUISE;
+                dRestore_ = DV_SLOWED_RESTORE;
+                vR_ *= DV_SLOW_FACTOR;
+                dS_ = 0.0f;
+                slowAnimating_ = YES;
+                [[[GameManager gameManager] rocket] showSlow];        
+            }
+            else if (rocketMode_ == kNormal) {
+                rocketMode_ = kSlowed;        
+                origSpeed_ = vR_;
+                restoreSpeed_ = vR_;
+                dRestore_ = DV_SLOWED_RESTORE;
+                vR_ *= DV_SLOW_FACTOR;
+                dS_ = 0.0f;
+                slowAnimating_ = YES;                
+                [[[GameManager gameManager] rocket] showSlow];
+            }
+        }
 }
 
 - (void) rocketSlowReleased
 {
     if (rocketMode_ == kSlowed) {
-        rocketMode_ = kSlowedRelease;
-        [[[GameManager gameManager] rocket] showFlying];
+        // Only restore speed if slow was pressed above its minimum effective speed
+        // But either way, stop flapping
+        if (origSpeed_ > V_SLOW_MIN) {
+            rocketMode_ = kSlowedRelease;
+        }
+    }
+    
+    // Only if the animation is playing does it transition to flying
+    if (slowAnimating_) {
+        [[[GameManager gameManager] rocket] showFlying];        
+        slowAnimating_ = NO;
     }
 }
 
