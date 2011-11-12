@@ -106,7 +106,7 @@ CGFloat ML_TURTLE_LINE2_Y = 360.0f;
         // Add flying map turtles
         NSInteger numTurtlesLine1 = (currentLevel > 3) ? 3 : 0;        
         NSInteger numTurtlesLine2 = (currentLevel > 3) ? 3 : currentLevel;
-        [self addChild:[MapTurtleController mapTurtleController:numTurtlesLine1 yPos:ML_TURTLE_LINE1_Y turtleStyle:kFadedTurtle]];
+        [self addChild:[MapTurtleController mapTurtleControllerWithImmediateAdd:numTurtlesLine1 yPos:ML_TURTLE_LINE1_Y turtleStyle:kFadedTurtle]];
         [self addChild:[MapTurtleController mapTurtleController:numTurtlesLine2 yPos:ML_TURTLE_LINE2_Y turtleStyle:kSharpTurtle]];
         
         [self initActions];

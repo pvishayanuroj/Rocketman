@@ -24,20 +24,29 @@ const NSInteger MTC_MAX_RANDOM_TIME = 10;
 
 #pragma mark - Object Lifecycle
 
-+ (id) mapTurtleController:(NSInteger)numTurtles yPos:(CGFloat)yPos turtleStyle:(MapTurtleStyle)turtleStyle
++ (id) mapTurtleControllerWithImmediateAdd:(NSInteger)numTurtles yPos:(CGFloat)yPos turtleStyle:(MapTurtleStyle)turtleStyle
 {
-    return [[[self alloc] initMapTurtleController:numTurtles yPos:yPos turtleStyle:turtleStyle] autorelease];
+    return [[[self alloc] initMapTurtleController:numTurtles yPos:yPos turtleStyle:turtleStyle immediateAdd:YES] autorelease]; 
 }
 
-- (id) initMapTurtleController:(NSInteger)numTurtles yPos:(CGFloat)yPos turtleStyle:(MapTurtleStyle)turtleStyle
++ (id) mapTurtleController:(NSInteger)numTurtles yPos:(CGFloat)yPos turtleStyle:(MapTurtleStyle)turtleStyle
+{
+    return [[[self alloc] initMapTurtleController:numTurtles yPos:yPos turtleStyle:turtleStyle immediateAdd:NO] autorelease];
+}
+
+- (id) initMapTurtleController:(NSInteger)numTurtles yPos:(CGFloat)yPos turtleStyle:(MapTurtleStyle)turtleStyle immediateAdd:(BOOL)immediateAdd
 {
     if ((self = [super init])) {
         
         yPos_ = yPos;
         turtleStyle_ = turtleStyle;
         maxNumTurtles_ = numTurtles;
-        //[self addTurtleGroup];
-        [self randomizeNextGroupTiming];
+        if (immediateAdd) {
+            [self addTurtleGroup];
+        }
+        else {
+            [self randomizeNextGroupTiming];
+        }
     }
     return self;
 }

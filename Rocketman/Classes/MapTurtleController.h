@@ -26,7 +26,9 @@
 
 + (id) mapTurtleController:(NSInteger)numTurtles yPos:(CGFloat)yPos turtleStyle:(MapTurtleStyle)turtleStyle;
 
-- (id) initMapTurtleController:(NSInteger)numTurtles yPos:(CGFloat)yPos turtleStyle:(MapTurtleStyle)turtleStyle;
++ (id) mapTurtleControllerWithImmediateAdd:(NSInteger)numTurtles yPos:(CGFloat)yPos turtleStyle:(MapTurtleStyle)turtleStyle;
+
+- (id) initMapTurtleController:(NSInteger)numTurtles yPos:(CGFloat)yPos turtleStyle:(MapTurtleStyle)turtleStyle immediateAdd:(BOOL)immediateAdd;
 
 - (void) randomizeNextGroupTiming;
 
