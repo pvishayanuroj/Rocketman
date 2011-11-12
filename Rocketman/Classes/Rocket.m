@@ -263,6 +263,7 @@
 - (void) showAuraForDuration:(CGFloat)duration
 {
     isInvincible_ = YES;
+    aura_.opacity = 0;
     [aura_ stopAllActions];
     [aura_ runAction:auraAnimation_];
     

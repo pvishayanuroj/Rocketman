@@ -20,8 +20,8 @@
 + (CGFloat) distanceNoRoot:(CGPoint)a b:(CGPoint)b;
 
 /** 
- * Returns a random number inclusive of the given integers. Should not be used in bulk, as this is
- * a slow method - it does not make any assumptions about the order of given integers
+ * Returns a random number inclusive of the given integers (a or b could be chosen).
+ * Ordering of a and b does not matter
  */
 + (NSInteger) randomIncl:(NSInteger)a b:(NSInteger)b;
 

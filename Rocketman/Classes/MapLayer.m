@@ -13,6 +13,7 @@
 #import "UtilFuncs.h"
 #import "Pair.h"
 #import "AnimatedButton.h"
+#import "MapTurtleController.h"
 
 #import "DataManager.h"
 
@@ -30,6 +31,8 @@ CGFloat ML_MENU_XPOS = 280.0f;
 CGFloat ML_MENU_YPOS = 40.0f;
 CGFloat ML_TITLE_XPOS = 160.0f;
 CGFloat ML_TITLE_YPOS = 72.0f;
+CGFloat ML_TURTLE_LINE1_Y = 440.0f;
+CGFloat ML_TURTLE_LINE2_Y = 360.0f;
 
 #pragma mark - Object Lifecycle
 
@@ -99,6 +102,12 @@ CGFloat ML_TITLE_YPOS = 72.0f;
         levelTitle_.position = CGPointMake(ML_TITLE_XPOS, ML_TITLE_YPOS);
         levelTitle_.scale = 0.65f;
         [self addChild:levelTitle_];
+        
+        // Add flying map turtles
+        NSInteger numTurtlesLine1 = (currentLevel > 3) ? 3 : 0;        
+        NSInteger numTurtlesLine2 = (currentLevel > 3) ? 3 : currentLevel;
+        [self addChild:[MapTurtleController mapTurtleController:numTurtlesLine1 yPos:ML_TURTLE_LINE1_Y turtleStyle:kFadedTurtle]];
+        [self addChild:[MapTurtleController mapTurtleController:numTurtlesLine2 yPos:ML_TURTLE_LINE2_Y turtleStyle:kSharpTurtle]];
         
         [self initActions];
         [self animateRocket];

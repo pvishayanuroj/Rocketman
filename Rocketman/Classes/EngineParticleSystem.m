@@ -36,6 +36,11 @@
     return [[[self alloc] initPSForBrokenRocket] autorelease];
 }
 
++ (id) PSForMapTurtle
+{
+    return [[[self alloc] initPSForMapTurtle] autorelease];
+}
+
 - (id) initPSForRocketFlame
 {
     if ((self = [self initWithTotalParticles:150])) {
@@ -242,6 +247,33 @@
         self.emissionRate = self.totalParticles/self.life;
     }
     return self;
+}
+
+- (id) initPSForMapTurtle
+{
+    if ((self = [self initWithTotalParticles:250])) {
+        
+        //ccColor4B purple = ccc4(255, 20, 147, 255);
+        ccColor4B purple = ccc4(195, 10, 120, 255);
+        ccColor4F c1 = ccc4FFromccc4B(purple);
+        ccColor4F c2 = c1;
+        c2.a = 0;
+        self.startColor = c1;
+        self.endColor = c2;        
+        
+        self.startSize = 8.0f;
+        self.startSizeVar = 2.0f;
+        self.endSize = kCCParticleStartSizeEqualToEndSize;    
+        
+        // life of particles
+        self.life = 0.2f;
+        self.lifeVar = 0.19f;
+        
+        // emits per seconds
+        self.emissionRate = self.totalParticles/self.life;        
+        
+    }
+    return self;    
 }
 
 @end

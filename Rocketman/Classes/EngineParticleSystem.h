@@ -31,6 +31,8 @@
 
 + (id) PSForRocketHearts;
 
++ (id) PSForMapTurtle;
+
 /** Particle system for end scene with the crashed rocket smoking */
 + (id) PSForBrokenRocket;
 
@@ -47,5 +49,7 @@
 - (id) initPSForRocketHearts;
 
 - (id) initPSForBrokenRocket;
+
+- (id) initPSForMapTurtle;
 
 @end

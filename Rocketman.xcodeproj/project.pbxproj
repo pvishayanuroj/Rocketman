@@ -12,6 +12,8 @@
 		DA3979DB146B70900043C48F /* dialogue_stage_clear.png in Resources */ = {isa = PBXBuildFile; fileRef = DA3979D8146B70900043C48F /* dialogue_stage_clear.png */; };
 		DA3979DC146B70900043C48F /* resume_text.png in Resources */ = {isa = PBXBuildFile; fileRef = DA3979D9146B70900043C48F /* resume_text.png */; };
 		DA3979DF146B82410043C48F /* Level6_data.plist in Resources */ = {isa = PBXBuildFile; fileRef = DA3979DE146B82410043C48F /* Level6_data.plist */; };
+		DA3979E2146E9B280043C48F /* MapTurtle.m in Sources */ = {isa = PBXBuildFile; fileRef = DA3979E1146E9B280043C48F /* MapTurtle.m */; };
+		DA3979E9146EBC740043C48F /* MapTurtleController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA3979E8146EBC740043C48F /* MapTurtleController.m */; };
 		DA50379F1453681C00600DD4 /* Boss Banner.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5037971453681C00600DD4 /* Boss Banner.png */; };
 		DA5037A01453681C00600DD4 /* Combo 2 Banner.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5037981453681C00600DD4 /* Combo 2 Banner.png */; };
 		DA5037A11453681C00600DD4 /* Combo Banner.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5037991453681C00600DD4 /* Combo Banner.png */; };
@@ -347,6 +349,11 @@
 		DA3979D8146B70900043C48F /* dialogue_stage_clear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dialogue_stage_clear.png; sourceTree = "<group>"; };
 		DA3979D9146B70900043C48F /* resume_text.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = resume_text.png; sourceTree = "<group>"; };
 		DA3979DE146B82410043C48F /* Level6_data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Level6_data.plist; sourceTree = "<group>"; };
+		DA3979E0146E9B280043C48F /* MapTurtle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapTurtle.h; path = Classes/MapTurtle.h; sourceTree = "<group>"; };
+		DA3979E1146E9B280043C48F /* MapTurtle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapTurtle.m; path = Classes/MapTurtle.m; sourceTree = "<group>"; };
+		DA3979E7146EBC730043C48F /* MapTurtleController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapTurtleController.h; path = Classes/MapTurtleController.h; sourceTree = "<group>"; };
+		DA3979E8146EBC740043C48F /* MapTurtleController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapTurtleController.m; path = Classes/MapTurtleController.m; sourceTree = "<group>"; };
+		DA3979EA146EBD0E0043C48F /* MapTurtleDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapTurtleDelegate.h; path = Classes/MapTurtleDelegate.h; sourceTree = "<group>"; };
 		DA5037971453681C00600DD4 /* Boss Banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Boss Banner.png"; sourceTree = "<group>"; };
 		DA5037981453681C00600DD4 /* Combo 2 Banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Combo 2 Banner.png"; sourceTree = "<group>"; };
 		DA5037991453681C00600DD4 /* Combo Banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Combo Banner.png"; sourceTree = "<group>"; };
@@ -1619,6 +1626,11 @@
 				DAF4441C144B08D100943C0D /* MapScene.m */,
 				DAF44410144B08CF00943C0D /* LockedText.h */,
 				DAF44411144B08CF00943C0D /* LockedText.m */,
+				DA3979E0146E9B280043C48F /* MapTurtle.h */,
+				DA3979E1146E9B280043C48F /* MapTurtle.m */,
+				DA3979EA146EBD0E0043C48F /* MapTurtleDelegate.h */,
+				DA3979E7146EBC730043C48F /* MapTurtleController.h */,
+				DA3979E8146EBC740043C48F /* MapTurtleController.m */,
 			);
 			name = "World Map";
 			sourceTree = "<group>";
@@ -2198,6 +2210,8 @@
 				DAD805721460CC0000A195C3 /* LightBlastCloud.m in Sources */,
 				DAD805751460CC1100A195C3 /* DarkBlastCloud.m in Sources */,
 				DA1CB33B14661B39007096D8 /* PhysicsModule.m in Sources */,
+				DA3979E2146E9B280043C48F /* MapTurtle.m in Sources */,
+				DA3979E9146EBC740043C48F /* MapTurtleController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

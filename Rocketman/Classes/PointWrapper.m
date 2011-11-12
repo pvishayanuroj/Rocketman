@@ -38,4 +38,13 @@
     return [NSString stringWithFormat:@"Point (%6.2f, %6.2f)", point_.x, point_.y];
 }    
 
+- (BOOL) isEqual:(id)anObject
+{
+	if ([anObject isKindOfClass:[PointWrapper class]]) {
+		PointWrapper *otherPoint = (PointWrapper *)anObject;
+		return (self.point.x == otherPoint.point.x && self.point.y == otherPoint.point.y);
+	}
+	return NO;
+}
+
 @end

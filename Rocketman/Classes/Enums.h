@@ -131,3 +131,13 @@ typedef enum {
     kSlowButton,
     kBoostButton
 } ButtonType;
+
+typedef enum {
+    kMapLeft,
+    kMapRight
+} MapTurtleSide;
+
+typedef enum {
+    kSharpTurtle,
+    kFadedTurtle
+} MapTurtleStyle;
