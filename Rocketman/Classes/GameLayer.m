@@ -27,6 +27,7 @@
 #import "Boundary.h"
 #import "TargetedAction.h"
 #import "PhysicsModule.h"
+#import "WallModule.h"
 
 #import "HighscoreManager.h"
 
@@ -66,6 +67,7 @@
         NSString *backgroundName = [data objectForKey:@"Background File"];
         NSString *groundName = [data objectForKey:@"Ground File"];
         NSString *parallaxName = [data objectForKey:@"Parallax File"];        
+        NSString *wallName = [data objectForKey:@"Wall File"];
         
         // Add background
         CCSprite *bg = [CCSprite spriteWithFile:backgroundName];
@@ -85,6 +87,14 @@
             Doodad *ground = [Ground groundWithPos:CGPointZero filename:groundName];
             [self addChild:ground z:kGroundDepth];
             [doodads_ addObject:ground];                
+        }
+        
+        // Add wall
+        if (wallName) {
+            wall_ = [[WallModule wallModule:wallName] retain];
+        }
+        else {
+            wall_ = nil;
         }
         
         // Load object data
@@ -138,6 +148,7 @@
     
     [rocket_ release];
     [physics_ release];
+    [wall_ release];
     [obstacles_ release];
     [firedCats_ release];
     [doodads_ release];
@@ -180,6 +191,7 @@
         [self loss];
     }
     
+    [wall_ heightUpdate:height_];
     [delegate_ heightUpdate:height_];
     [delegate_ speedUpdate:physics_.rocketSpeed];
 }

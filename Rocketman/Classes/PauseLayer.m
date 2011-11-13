@@ -120,7 +120,6 @@ const CGFloat PL_STAGE_RESIZE_DURATION = 0.05f;
     [stageButton_ removeFromParentAndCleanup:YES];
     [resumeButton_ removeFromParentAndCleanup:YES];
     
-    [button_ release];
     [restartIcon_ release];
     [stageIcon_ release];
     [resumeIcon_ release];
@@ -128,12 +127,11 @@ const CGFloat PL_STAGE_RESIZE_DURATION = 0.05f;
     [stageButton_ release];
     [resumeButton_ release];
     
-    button_ = nil;
     restartIcon_ = nil;
     stageIcon_ = nil;
     resumeIcon_ = nil;
     restartButton_ = nil;
-    stageIcon_ = nil;
+    stageButton_ = nil;
     resumeButton_ = nil;
 }
 

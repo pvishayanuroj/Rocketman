@@ -47,6 +47,9 @@
 		DA6901A9145F9697000D278F /* CatBoss.m in Sources */ = {isa = PBXBuildFile; fileRef = DA6901A8145F9692000D278F /* CatBoss.m */; };
 		DA69A98D146F0695008BBF38 /* Flame.m in Sources */ = {isa = PBXBuildFile; fileRef = DA69A98C146F0695008BBF38 /* Flame.m */; };
 		DA69A995146F6A24008BBF38 /* LoadScene.m in Sources */ = {isa = PBXBuildFile; fileRef = DA69A994146F6A23008BBF38 /* LoadScene.m */; };
+		DA69A99A146F8A3A008BBF38 /* WallModule.m in Sources */ = {isa = PBXBuildFile; fileRef = DA69A999146F8A39008BBF38 /* WallModule.m */; };
+		DA69A99D146F9324008BBF38 /* Wall.m in Sources */ = {isa = PBXBuildFile; fileRef = DA69A99C146F9322008BBF38 /* Wall.m */; };
+		DA69A99F146F98B9008BBF38 /* Cave Wall 01.png in Resources */ = {isa = PBXBuildFile; fileRef = DA69A99E146F98B9008BBF38 /* Cave Wall 01.png */; };
 		DAD805721460CC0000A195C3 /* LightBlastCloud.m in Sources */ = {isa = PBXBuildFile; fileRef = DAD805711460CBFF00A195C3 /* LightBlastCloud.m */; };
 		DAD805751460CC1100A195C3 /* DarkBlastCloud.m in Sources */ = {isa = PBXBuildFile; fileRef = DAD805741460CC1100A195C3 /* DarkBlastCloud.m */; };
 		DAD8058914621B2400A195C3 /* Level3_data.plist in Resources */ = {isa = PBXBuildFile; fileRef = DAD8058614621B2400A195C3 /* Level3_data.plist */; };
@@ -414,6 +417,11 @@
 		DA69A992146F5A32008BBF38 /* FlameDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlameDelegate.h; path = Classes/FlameDelegate.h; sourceTree = "<group>"; };
 		DA69A993146F6A22008BBF38 /* LoadScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoadScene.h; path = Classes/LoadScene.h; sourceTree = "<group>"; };
 		DA69A994146F6A23008BBF38 /* LoadScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoadScene.m; path = Classes/LoadScene.m; sourceTree = "<group>"; };
+		DA69A998146F8A38008BBF38 /* WallModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WallModule.h; path = Classes/WallModule.h; sourceTree = "<group>"; };
+		DA69A999146F8A39008BBF38 /* WallModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WallModule.m; path = Classes/WallModule.m; sourceTree = "<group>"; };
+		DA69A99B146F931F008BBF38 /* Wall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Wall.h; path = Classes/Wall.h; sourceTree = "<group>"; };
+		DA69A99C146F9322008BBF38 /* Wall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Wall.m; path = Classes/Wall.m; sourceTree = "<group>"; };
+		DA69A99E146F98B9008BBF38 /* Cave Wall 01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Cave Wall 01.png"; sourceTree = "<group>"; };
 		DAD805701460CBFE00A195C3 /* LightBlastCloud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LightBlastCloud.h; path = Classes/LightBlastCloud.h; sourceTree = "<group>"; };
 		DAD805711460CBFF00A195C3 /* LightBlastCloud.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LightBlastCloud.m; path = Classes/LightBlastCloud.m; sourceTree = "<group>"; };
 		DAD805731460CC1000A195C3 /* DarkBlastCloud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DarkBlastCloud.h; path = Classes/DarkBlastCloud.h; sourceTree = "<group>"; };
@@ -968,6 +976,8 @@
 				DA69A98B146F0695008BBF38 /* Flame.h */,
 				DA69A98C146F0695008BBF38 /* Flame.m */,
 				DA69A992146F5A32008BBF38 /* FlameDelegate.h */,
+				DA69A99B146F931F008BBF38 /* Wall.h */,
+				DA69A99C146F9322008BBF38 /* Wall.m */,
 			);
 			name = Enemies;
 			sourceTree = "<group>";
@@ -1012,6 +1022,29 @@
 			name = Helpers;
 			sourceTree = "<group>";
 		};
+		DA69A997146F8469008BBF38 /* Game Nodes */ = {
+			isa = PBXGroup;
+			children = (
+				DAF44400144B08CC00943C0D /* GameScene.h */,
+				DAF44401144B08CC00943C0D /* GameScene.m */,
+				DAF443FB144B08CB00943C0D /* GameLayer.h */,
+				DAF443FC144B08CC00943C0D /* GameLayer.m */,
+				DAF443FD144B08CC00943C0D /* GameLayerDelegate.h */,
+				DAF4440E144B08CE00943C0D /* HUDLayer.h */,
+				DAF4440F144B08CF00943C0D /* HUDLayer.m */,
+				DA5037B91454CC4C00600DD4 /* HUDDelegate.h */,
+				DAF443E6144B08C800943C0D /* DialogueLayer.h */,
+				DAF443E7144B08C800943C0D /* DialogueLayer.m */,
+				DAF4442B144B08D400943C0D /* PauseLayer.h */,
+				DAF4442C144B08D400943C0D /* PauseLayer.m */,
+				DAF443F0144B08C900943C0D /* EndScene.h */,
+				DAF443F1144B08CA00943C0D /* EndScene.m */,
+				DAF443EE144B08C900943C0D /* EndLayer.h */,
+				DAF443EF144B08C900943C0D /* EndLayer.m */,
+			);
+			name = "Game Nodes";
+			sourceTree = "<group>";
+		};
 		DAF43E43144B085400943C0D = {
 			isa = PBXGroup;
 			children = (
@@ -1049,9 +1082,10 @@
 			children = (
 				DAF444AC144B096D00943C0D /* Cocos2D Base */,
 				DAF444A2144B08EE00943C0D /* Singletons */,
+				DAF444A9144B093600943C0D /* Non-Game Nodes */,
 				DAF444A8144B092100943C0D /* Notifications */,
 				DAF444A7144B091B00943C0D /* World Map */,
-				DAF444A9144B093600943C0D /* Layers Scenes */,
+				DA69A997146F8469008BBF38 /* Game Nodes */,
 				DAF444AA144B095300943C0D /* Story */,
 				DAF444AB144B095F00943C0D /* Utility */,
 				DAF444AD144B097A00943C0D /* Doodads */,
@@ -1568,6 +1602,7 @@
 		DAF442A9144B08B300943C0D /* Stage Art */ = {
 			isa = PBXGroup;
 			children = (
+				DA69A99E146F98B9008BBF38 /* Cave Wall 01.png */,
 				DA5037B1145383DE00600DD4 /* Tutorial Parallax.png */,
 				DAF442AA144B08B300943C0D /* Cave Background.png */,
 				DAF442AB144B08B300943C0D /* Cave Ground.png */,
@@ -1659,39 +1694,23 @@
 			name = Notifications;
 			sourceTree = "<group>";
 		};
-		DAF444A9144B093600943C0D /* Layers Scenes */ = {
+		DAF444A9144B093600943C0D /* Non-Game Nodes */ = {
 			isa = PBXGroup;
 			children = (
-				DAF4442B144B08D400943C0D /* PauseLayer.h */,
-				DAF4442C144B08D400943C0D /* PauseLayer.m */,
 				DAF44412144B08CF00943C0D /* MainMenuLayer.h */,
 				DAF44413144B08CF00943C0D /* MainMenuLayer.m */,
 				DAF44414144B08CF00943C0D /* MainMenuScene.h */,
 				DAF44415144B08D000943C0D /* MainMenuScene.m */,
 				DA69A993146F6A22008BBF38 /* LoadScene.h */,
 				DA69A994146F6A23008BBF38 /* LoadScene.m */,
-				DAF44400144B08CC00943C0D /* GameScene.h */,
-				DAF44401144B08CC00943C0D /* GameScene.m */,
 				DAF44406144B08CD00943C0D /* HighscoreLayer.h */,
 				DAF44407144B08CD00943C0D /* HighscoreLayer.m */,
 				DAF44408144B08CD00943C0D /* HighScoreManager.h */,
 				DAF44409144B08CE00943C0D /* HighScoreManager.m */,
 				DAF4440A144B08CE00943C0D /* HighscoreScene.h */,
 				DAF4440B144B08CE00943C0D /* HighscoreScene.m */,
-				DAF4440E144B08CE00943C0D /* HUDLayer.h */,
-				DAF4440F144B08CF00943C0D /* HUDLayer.m */,
-				DA5037B91454CC4C00600DD4 /* HUDDelegate.h */,
-				DAF443FB144B08CB00943C0D /* GameLayer.h */,
-				DAF443FC144B08CC00943C0D /* GameLayer.m */,
-				DAF443FD144B08CC00943C0D /* GameLayerDelegate.h */,
-				DAF443E6144B08C800943C0D /* DialogueLayer.h */,
-				DAF443E7144B08C800943C0D /* DialogueLayer.m */,
-				DAF443EE144B08C900943C0D /* EndLayer.h */,
-				DAF443EF144B08C900943C0D /* EndLayer.m */,
-				DAF443F0144B08C900943C0D /* EndScene.h */,
-				DAF443F1144B08CA00943C0D /* EndScene.m */,
 			);
-			name = "Layers Scenes";
+			name = "Non-Game Nodes";
 			sourceTree = "<group>";
 		};
 		DAF444AA144B095300943C0D /* Story */ = {
@@ -1724,6 +1743,8 @@
 				DA1CB33914661B39007096D8 /* PhysicsModule.h */,
 				DA1CB33A14661B39007096D8 /* PhysicsModule.m */,
 				DA1CB33D1466350A007096D8 /* PhysicsModuleDelegate.h */,
+				DA69A998146F8A38008BBF38 /* WallModule.h */,
+				DA69A999146F8A39008BBF38 /* WallModule.m */,
 				DA5037BA1454CF8B00600DD4 /* Button.h */,
 				DA5037BB1454CF8F00600DD4 /* Button.m */,
 				DA5037BC1454CF9100600DD4 /* ButtonDelegate.h */,
@@ -2025,6 +2046,7 @@
 				DA3979DB146B70900043C48F /* dialogue_stage_clear.png in Resources */,
 				DA3979DC146B70900043C48F /* resume_text.png in Resources */,
 				DA3979DF146B82410043C48F /* Level6_data.plist in Resources */,
+				DA69A99F146F98B9008BBF38 /* Cave Wall 01.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2226,6 +2248,8 @@
 				DA3979E9146EBC740043C48F /* MapTurtleController.m in Sources */,
 				DA69A98D146F0695008BBF38 /* Flame.m in Sources */,
 				DA69A995146F6A24008BBF38 /* LoadScene.m in Sources */,
+				DA69A99A146F8A3A008BBF38 /* WallModule.m in Sources */,
+				DA69A99D146F9324008BBF38 /* Wall.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

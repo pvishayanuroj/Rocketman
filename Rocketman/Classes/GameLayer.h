@@ -14,6 +14,7 @@
 
 @class Rocket;
 @class PhysicsModule;
+@class WallModule;
 @class Cat;
 @class Boost;
 @class Fuel;
@@ -44,6 +45,9 @@
  
     /** Performs calculations regarding rocket speed */
     PhysicsModule *physics_;
+    
+    /** Used to generate the walls for certain levels */
+    WallModule *wall_;
     
     /** Holds all current active obstacles */
     NSMutableArray *obstacles_;

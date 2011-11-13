@@ -148,6 +148,11 @@ typedef enum {
 } MapTurtleSide;
 
 typedef enum {
+    kWallLeft,
+    kWallRight
+} WallSide;
+
+typedef enum {
     kSharpTurtle,
     kFadedTurtle
 } MapTurtleStyle;
