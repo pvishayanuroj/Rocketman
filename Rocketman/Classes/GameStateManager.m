@@ -14,6 +14,7 @@
 #import "MainMenuScene.h"
 #import "MapScene.h"
 #import "GameScene.h"
+#import "LoadScene.h"
 #import "EndScene.h"
 #import "MainMenuScene.h"
 
@@ -82,8 +83,7 @@ static GameStateManager *_gameStateManager = nil;
     // Initalize a game manager singleton. This should only exist for this stage
     [GameManager gameManager];
     
-    currentLevel_ = levelNum;
-    CCScene *scene = [GameScene stage:levelNum];
+    CCScene *scene = [LoadScene stage:levelNum];
     [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:scene]];    
 }
 

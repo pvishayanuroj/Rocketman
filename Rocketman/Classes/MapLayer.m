@@ -267,7 +267,7 @@ CGFloat ML_TURTLE_LINE2_Y = 360.0f;
 
 - (void) startPressed
 {
-    [[GameStateManager gameStateManager] startGameWithLevel:currentLevel_];
+    [[GameStateManager gameStateManager] stageSelectedFromMap:currentLevel_];
 }
 
 - (void) menuPressed
