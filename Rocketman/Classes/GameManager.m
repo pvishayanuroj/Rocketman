@@ -253,6 +253,11 @@ static GameManager *_gameManager = nil;
     [rocket_ showWobbling];
 }
 
+- (void) rocketBurn
+{
+    [rocket_ showBurning];
+}
+
 - (void) rocketAngelCollide
 {
     [rocket_ showHeart];
@@ -353,6 +358,7 @@ static GameManager *_gameManager = nil;
     
     // Auxiliary objects
     [Egg resetID];
+    [Flame resetID];
     [PlasmaBall resetID];
 }
 

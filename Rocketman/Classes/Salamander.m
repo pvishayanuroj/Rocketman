@@ -8,7 +8,6 @@
 
 #import "Salamander.h"
 
-#import "GameLayer.h"
 #import "AudioManager.h"
 #import "DataManager.h"
 #import "GameManager.h"
@@ -16,8 +15,15 @@
 #import "LightBlastCloud.h"
 #import "StaticMovement.h"
 #import "ArcMovement.h"
+#import "Flame.h"
+#import "TargetedAction.h"
 
 @implementation Salamander
+
+const CGFloat SL_FLAME_COOLDOWN = 1.5f;
+const CGFloat SL_FLAME_DURATION = 1.0f;
+const CGFloat SL_FLAME_XOFFSET = 75.0f;
+const CGFloat SL_FLAME_YOFFSET = 18.0f;
 
 static NSUInteger countID = 0;
 
@@ -26,17 +32,19 @@ static NSUInteger countID = 0;
     countID = 0;
 }
 
-+ (id) salamanderWithPos:(CGPoint)pos
+#pragma mark - Object Lifecycle
+
++ (id) salamanderWithPos:(CGPoint)pos type:(ObstacleType)type
 {
-    return [[[self alloc] initWithPos:pos] autorelease];
+    return [[[self alloc] initWithPos:pos type:type] autorelease];
 }
 
-- (id) initWithPos:(CGPoint)pos
+- (id) initWithPos:(CGPoint)pos type:(ObstacleType)type
 {
 	if ((self = [super init])) {
         
 		unitID_ = countID++;                
-        obstacleType_ = kSalamander;
+        obstacleType_ = type;
         name_ = [[[DataManager dataManager] nameForType:obstacleType_] retain];
         
         NSString *spriteName = [NSString stringWithFormat:@"%@ Idle 01.png", name_];           
@@ -47,7 +55,7 @@ static NSUInteger countID = 0;
         
         // Attributes
         PVCollide collide = defaultPVCollide_;
-        collide.radius = 30;
+        collide.radius = 16;
         
         // Bounding box setup
         [boundaries_ addObject:[Boundary boundary:self colStruct:collide]];        
@@ -55,8 +63,26 @@ static NSUInteger countID = 0;
         // Setup the way this obstacle moves
         [movements_ addObject:[StaticMovement staticMovement]];             
         
+        // Flame configuration
+        FlameDirection flameDirection;
+        if (type == kSalamanderLeft || type == kProximitySalamanderLeft) {
+            flameDirection = kFlameLeft;
+        }
+        else {
+            flameDirection = kFlameRight;
+        }
+        
+        CGPoint flamePos = CGPointMake(self.position.x, self.position.y + SL_FLAME_YOFFSET);
+        flamePos.x += (type == kSalamanderRight) ? SL_FLAME_XOFFSET : -SL_FLAME_XOFFSET; 
+        flame_ = [[Flame repeatingFlameWithPos:flamePos flameDirection:flameDirection flameDuration:SL_FLAME_DURATION] retain];
+        flame_.flameDelegate = self;
+        [[GameManager gameManager] addObstacle:flame_];
+        [childObstacles_ addObject:flame_];        
+        
         [self initActions];
         [self showIdle];        
+        
+        [self schedule:@selector(attack) interval:SL_FLAME_COOLDOWN + SL_FLAME_DURATION + 0.5f];        
     }
     return self;
 }
@@ -70,6 +96,8 @@ static NSUInteger countID = 0;
     [name_ release];
     [sprite_ release];
     [idleAnimation_ release];
+    [attackAnimation_ release];
+    [flame_ release];
     
     [super dealloc];
 }
@@ -80,11 +108,25 @@ static NSUInteger countID = 0;
 	CCAnimation *animation = [[CCAnimationCache sharedAnimationCache] animationByName:animationName];
 	CCActionInterval *animate = [CCAnimate actionWithAnimation:animation];
 	idleAnimation_ = [[CCRepeatForever actionWithAction:animate] retain];	
+    
+    animationName = [NSString stringWithFormat:@"%@ Attack", name_];
+    animation = [[CCAnimationCache sharedAnimationCache] animationByName:animationName];
+    animate = [CCAnimate actionWithAnimation:animation];
+    attackAnimation_ = [[CCRepeatForever actionWithAction:animate] retain];	
 }                 
+
+- (void) showAttack
+{
+    [sprite_ stopAllActions];
+    [sprite_ runAction:attackAnimation_];
+}
+
+#pragma mark - Delegate Methods
 
 - (void) boundaryCollide:(NSInteger)boundaryID
 {
     if ([[GameManager gameManager] isRocketInvincible]) {
+        [flame_ cutFlame];
         [movements_ removeAllObjects];
         [movements_ addObject:[ArcMovement arcFastRandomMovement:self.position]];
         [[AudioManager audioManager] playSound:kPlop];           
@@ -101,6 +143,19 @@ static NSUInteger countID = 0;
 {
     [[AudioManager audioManager] playSound:kPlop];        
     [self death];
+}
+
+- (void) flameFinished
+{
+    [self showIdle];
+}
+
+#pragma mark - Object Methods
+
+- (void) attack
+{
+    [self showAttack];
+    [flame_ startFlame];
 }
 
 - (void) death

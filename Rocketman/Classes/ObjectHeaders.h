@@ -34,6 +34,7 @@
 // Auxiliary Objects
 #import "PlasmaBall.h"
 #import "Egg.h"
+#import "Flame.h"
 
 // Collectables / Helpers
 #import "Angel.h"

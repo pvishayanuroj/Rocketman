@@ -145,7 +145,10 @@
     [map setObject:[NSNumber numberWithInt:kSquid] forKey:@"Squid"];
     [map setObject:[NSNumber numberWithInt:kBlueFish] forKey:@"Blue Fish"];
     [map setObject:[NSNumber numberWithInt:kBlueFishSwarm] forKey:@"Blue Fish Swarm"];
-    [map setObject:[NSNumber numberWithInt:kSalamander] forKey:@"Salamander"];
+    [map setObject:[NSNumber numberWithInt:kSalamanderLeft] forKey:@"Salamander Left"];
+    [map setObject:[NSNumber numberWithInt:kSalamanderRight] forKey:@"Salamander Right"];
+    [map setObject:[NSNumber numberWithInt:kProximitySalamanderLeft] forKey:@"Proximity Salamander Left"];
+    [map setObject:[NSNumber numberWithInt:kProximitySalamanderRight] forKey:@"Proximity Salamander Right"];    
     [map setObject:[NSNumber numberWithInt:kFlyingRock] forKey:@"Flying Rock"];
     // Bosses
     [map setObject:[NSNumber numberWithInt:kBossTurtle] forKey:@"Boss Turtle"];
@@ -167,6 +170,7 @@
     [map setObject:[NSNumber numberWithInt:kPlasmaBall] forKey:@"Plasma Bullet"];        
     [map setObject:[NSNumber numberWithInt:kRedEgg] forKey:@"Egg A"];
     [map setObject:[NSNumber numberWithInt:kBlueEgg] forKey:@"Egg B"];
+    [map setObject:[NSNumber numberWithInt:kFlame] forKey:@"Flame"];    
     
     return map;
 }

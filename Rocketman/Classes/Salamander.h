@@ -10,14 +10,22 @@
 #import "Obstacle.h"
 #import "cocos2d.h"
 #import "BoundaryDelegate.h"
+#import "FlameDelegate.h"
 
-@interface Salamander : Obstacle <BoundaryDelegate> {
+@class Flame;
+
+@interface Salamander : Obstacle <BoundaryDelegate, FlameDelegate> {
+ 
+    CGFloat cooldown_;
     
+    Flame *flame_;
+    
+    CCAction *attackAnimation_;    
 }
 
-+ (id) salamanderWithPos:(CGPoint)pos;
++ (id) salamanderWithPos:(CGPoint)pos type:(ObstacleType)type;
 
-- (id) initWithPos:(CGPoint)pos;
+- (id) initWithPos:(CGPoint)pos type:(ObstacleType)type;
 
 - (void) initActions;
 

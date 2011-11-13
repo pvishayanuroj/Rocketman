@@ -82,7 +82,10 @@ typedef enum {
     kSquid,
     kBlueFish,
     kBlueFishSwarm,
-    kSalamander,
+    kSalamanderLeft,
+    kSalamanderRight,
+    kProximitySalamanderLeft,
+    kProximitySalamanderRight,
     kFlyingRock,
     // Bosses
     kBossTurtle,
@@ -103,6 +106,8 @@ typedef enum {
     kRedEgg,
     kBlueEgg,
     kPlasmaBall,
+    kPlasmaBullet,
+    kFlame,
     // Object Swarm version
     kSwarmTurtling,
     kSwarmYellowBird,
@@ -131,6 +136,11 @@ typedef enum {
     kSlowButton,
     kBoostButton
 } ButtonType;
+
+typedef enum {
+    kFlameLeft,
+    kFlameRight
+} FlameDirection;
 
 typedef enum {
     kMapLeft,

@@ -552,9 +552,18 @@
             [SwarmGenerator addHorizontalSwarm:8 gameLayer:self type:kSwarmBlueFish];            
             add = NO;
             break;
-        case kSalamander:
-            obstacle = [Salamander salamanderWithPos:pos];
+        case kSalamanderRight:
+            obstacle = [Salamander salamanderWithPos:pos type:type];
             break;
+        case kSalamanderLeft:
+            obstacle = [Salamander salamanderWithPos:pos type:type];
+            break;
+        case kProximitySalamanderRight:
+            obstacle = [Salamander salamanderWithPos:pos type:type];
+            break;
+        case kProximitySalamanderLeft:
+            obstacle = [Salamander salamanderWithPos:pos type:type];
+            break;            
         case kFlyingRock:            
             obstacle = [FlyingRock rockWithPos:pos];
             break;            
@@ -601,7 +610,8 @@
             break;
         // Helper objects
         //case kRedEgg:
-        //case kBlueEgg:    
+        //case kBlueEgg: 
+        //case kFlame:
         case kPlasmaBall:
             obstacle = [PlasmaBall plasmaBallWithPos:pos];
             break;            

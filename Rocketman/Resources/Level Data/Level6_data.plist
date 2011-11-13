@@ -6,15 +6,15 @@
 	<string>Sky Background.png</string>
 	<key>Data</key>
 	<dict>
-		<key>1000</key>
+		<key>500</key>
 		<dict>
-			<key>40</key>
-			<string>Dummy Boss</string>
+			<key>160</key>
+			<string>Salamander Left</string>
 		</dict>
 	</dict>
 	<key>Datakeys</key>
 	<array>
-		<string>1000</string>
+		<string>500</string>
 	</array>
 	<key>Ground File</key>
 	<string>Mountains Ground.png</string>

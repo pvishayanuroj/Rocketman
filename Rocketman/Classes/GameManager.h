@@ -90,6 +90,8 @@
 
 - (void) rocketCollision;
 
+- (void) rocketBurn;
+
 /** Sets up the notifications object for this level */
 - (void) initNotifications:(NSUInteger)levelNum;
 

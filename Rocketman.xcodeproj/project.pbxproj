@@ -45,6 +45,7 @@
 		DA6901A3145F962A000D278F /* WhaleBoss.m in Sources */ = {isa = PBXBuildFile; fileRef = DA6901A2145F9623000D278F /* WhaleBoss.m */; };
 		DA6901A6145F964A000D278F /* BatBoss.m in Sources */ = {isa = PBXBuildFile; fileRef = DA6901A5145F9642000D278F /* BatBoss.m */; };
 		DA6901A9145F9697000D278F /* CatBoss.m in Sources */ = {isa = PBXBuildFile; fileRef = DA6901A8145F9692000D278F /* CatBoss.m */; };
+		DA69A98D146F0695008BBF38 /* Flame.m in Sources */ = {isa = PBXBuildFile; fileRef = DA69A98C146F0695008BBF38 /* Flame.m */; };
 		DAD805721460CC0000A195C3 /* LightBlastCloud.m in Sources */ = {isa = PBXBuildFile; fileRef = DAD805711460CBFF00A195C3 /* LightBlastCloud.m */; };
 		DAD805751460CC1100A195C3 /* DarkBlastCloud.m in Sources */ = {isa = PBXBuildFile; fileRef = DAD805741460CC1100A195C3 /* DarkBlastCloud.m */; };
 		DAD8058914621B2400A195C3 /* Level3_data.plist in Resources */ = {isa = PBXBuildFile; fileRef = DAD8058614621B2400A195C3 /* Level3_data.plist */; };
@@ -407,6 +408,9 @@
 		DA6901A5145F9642000D278F /* BatBoss.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BatBoss.m; path = Classes/BatBoss.m; sourceTree = "<group>"; };
 		DA6901A7145F968C000D278F /* CatBoss.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CatBoss.h; path = Classes/CatBoss.h; sourceTree = "<group>"; };
 		DA6901A8145F9692000D278F /* CatBoss.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CatBoss.m; path = Classes/CatBoss.m; sourceTree = "<group>"; };
+		DA69A98B146F0695008BBF38 /* Flame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Flame.h; path = Classes/Flame.h; sourceTree = "<group>"; };
+		DA69A98C146F0695008BBF38 /* Flame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Flame.m; path = Classes/Flame.m; sourceTree = "<group>"; };
+		DA69A992146F5A32008BBF38 /* FlameDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlameDelegate.h; path = Classes/FlameDelegate.h; sourceTree = "<group>"; };
 		DAD805701460CBFE00A195C3 /* LightBlastCloud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LightBlastCloud.h; path = Classes/LightBlastCloud.h; sourceTree = "<group>"; };
 		DAD805711460CBFF00A195C3 /* LightBlastCloud.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LightBlastCloud.m; path = Classes/LightBlastCloud.m; sourceTree = "<group>"; };
 		DAD805731460CC1000A195C3 /* DarkBlastCloud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DarkBlastCloud.h; path = Classes/DarkBlastCloud.h; sourceTree = "<group>"; };
@@ -958,6 +962,9 @@
 				DA690193145F9525000D278F /* BlueFish.m */,
 				DA690195145F953D000D278F /* Salamander.h */,
 				DA690196145F9541000D278F /* Salamander.m */,
+				DA69A98B146F0695008BBF38 /* Flame.h */,
+				DA69A98C146F0695008BBF38 /* Flame.m */,
+				DA69A992146F5A32008BBF38 /* FlameDelegate.h */,
 			);
 			name = Enemies;
 			sourceTree = "<group>";
@@ -2212,6 +2219,7 @@
 				DA1CB33B14661B39007096D8 /* PhysicsModule.m in Sources */,
 				DA3979E2146E9B280043C48F /* MapTurtle.m in Sources */,
 				DA3979E9146EBC740043C48F /* MapTurtleController.m in Sources */,
+				DA69A98D146F0695008BBF38 /* Flame.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

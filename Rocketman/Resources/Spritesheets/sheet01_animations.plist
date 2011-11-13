@@ -386,7 +386,7 @@
 				<key>Name</key>
 				<string>Idle</string>
 				<key>Num Frames</key>
-				<integer>4</integer>
+				<integer>5</integer>
 			</dict>
 		</array>
 		<key>Name</key>
@@ -458,7 +458,30 @@
 			</dict>
 		</array>
 		<key>Name</key>
-		<string>Salamander</string>
+		<string>Salamander Left</string>
+	</dict>
+	<dict>
+		<key>Animations</key>
+		<array>
+			<dict>
+				<key>Animate Delay</key>
+				<real>0.1</real>
+				<key>Name</key>
+				<string>Idle</string>
+				<key>Num Frames</key>
+				<integer>1</integer>
+			</dict>
+			<dict>
+				<key>Animate Delay</key>
+				<real>0.1</real>
+				<key>Name</key>
+				<string>Attack</string>
+				<key>Num Frames</key>
+				<integer>1</integer>
+			</dict>
+		</array>
+		<key>Name</key>
+		<string>Salamander Right</string>
 	</dict>
 </array>
 </plist>
