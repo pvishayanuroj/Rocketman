@@ -173,7 +173,7 @@
 
 - (void) slowUpdate:(ccTime)dt
 {
-    [self cloudGenerator];    
+    //[self cloudGenerator];    
       
 }
 
@@ -432,6 +432,21 @@
     return xCoord;
 }
 
+- (void) win
+{
+    inputLocked_ = YES;
+    
+    // Very important to do this, since the accelerometer singleton is holding a ref to us
+    [[UIAccelerometer sharedAccelerometer] setDelegate:nil];    
+    
+    CCActionInterval *fall = [CCMoveBy actionWithDuration:2.0f position:CGPointMake(0, 500)];
+    CCActionInterval *easeFall = [CCEaseOut actionWithAction:fall rate:2.0f];
+    TargetedAction *rocketFall = [TargetedAction actionWithTarget:rocket_ actionIn:easeFall];
+    CCFiniteTimeAction *delay = [CCDelayTime actionWithDuration:4.0f];    
+    CCActionInstant *method = [CCCallFunc actionWithTarget:self selector:@selector(endLevelWithWin)];    
+    [self runAction:[CCSequence actions:rocketFall, delay, method, nil]];    
+}
+
 - (void) loss
 {
     if (!lossTriggered_) {
@@ -447,12 +462,17 @@
         CCFiniteTimeAction *fall = [CCMoveBy actionWithDuration:0.2f position:CGPointMake(0, -300)];
         TargetedAction *rocketFall = [TargetedAction actionWithTarget:rocket_ actionIn:fall];
         CCFiniteTimeAction *delay = [CCDelayTime actionWithDuration:2.0f];
-        CCActionInstant *method = [CCCallFunc actionWithTarget:self selector:@selector(endLevel)];
+        CCActionInstant *method = [CCCallFunc actionWithTarget:self selector:@selector(endLevelWithLoss)];
         [self runAction:[CCSequence actions:rocketFall, delay, method, nil]];
     }
 }
 
-- (void) endLevel
+- (void) endLevelWithWin
+{
+    [[GameStateManager gameStateManager] endGame:height_];   
+}
+
+- (void) endLevelWithLoss
 {
     [[GameStateManager gameStateManager] endGame:height_];   
 }
@@ -518,7 +538,7 @@
             obstacle = [Turtling turtlingWithPos:pos];
             break;
         case kTurtlingSwarm:
-            [self addTurtlingSwarm:8];
+            [self addTurtlingSwarm:1];
             add = NO;
             break;   
         case kShockTurtling:

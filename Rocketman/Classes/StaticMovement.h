@@ -12,12 +12,14 @@
 /**
  * Movement derived class representing an inert object that will "fall" based on the speed of rocket movement
  */
-@interface StaticMovement : Movement {
+@interface StaticMovement : Movement <NSCopying> {
     
     /** Rate at which object falls relative to rocket speed */
     CGFloat rate_;
 
 }
+
+@property (nonatomic, readonly) CGFloat rate;
 
 /** Object falls however much the rocket moves */
 + (id) staticMovement;

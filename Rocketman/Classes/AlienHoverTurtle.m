@@ -169,7 +169,8 @@ static NSUInteger countID = 0;
 {        
     destroyed_ = YES;
     sprite_.visible = NO;
-    [[GameManager gameManager] addDoodad:[LightBlastCloud lightBlastCloudAt:self.position]];        
+    
+    [[GameManager gameManager] addDoodad:[LightBlastCloud lightBlastCloudAt:self.position movements:movements_]];
 }
 
 - (void) sideMovementLeftTurnaround:(SideMovement *)movement

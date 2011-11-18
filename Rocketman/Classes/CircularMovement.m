@@ -13,6 +13,12 @@
 
 static const CGFloat TWO_PI = 2 * M_PI;
 
+@synthesize time = time_;
+@synthesize rate = rate_;
+@synthesize radius = radius_;
+@synthesize origin = origin_;
+@synthesize previous = previous_;
+
 + (id) circularMovement:(CGFloat)rate radius:(CGFloat)radius angle:(CGFloat)angle;
 {
     return [[[self alloc] initCircularMovement:rate radius:radius angle:angle] autorelease];    
@@ -29,6 +35,17 @@ static const CGFloat TWO_PI = 2 * M_PI;
         
     }
     return self;
+}
+
+- (void) dealloc 
+{
+    [super dealloc];
+}
+
+- (id) copyWithZone:(NSZone *)zone
+{
+    CircularMovement *cpy = [[CircularMovement allocWithZone:zone] initCircularMovement:self.rate radius:self.radius angle:self.time];
+    return cpy;    
 }
 
 - (void) move:(CGFloat)speed object:(GameObject *)object;

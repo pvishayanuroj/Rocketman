@@ -9,7 +9,7 @@
 #import "CommonHeaders.h"
 #import "Movement.h"
 
-@interface CircularMovement : Movement {
+@interface CircularMovement : Movement <NSCopying> {
     
     CGFloat time_;
     
@@ -22,6 +22,12 @@
     CGPoint previous_;
     
 }
+
+@property (nonatomic, readonly) CGFloat time;
+@property (nonatomic, readonly) CGFloat rate;
+@property (nonatomic, readonly) CGFloat radius;
+@property (nonatomic, assign) CGPoint origin;
+@property (nonatomic, assign) CGPoint previous;
 
 + (id) circularMovement:(CGFloat)rate radius:(CGFloat)radius angle:(CGFloat)angle;
 

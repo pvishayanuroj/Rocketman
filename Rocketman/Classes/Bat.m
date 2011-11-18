@@ -123,12 +123,7 @@ static NSUInteger countID = 0;
     destroyed_ = YES;    
     sprite_.visible = NO;        
     
-    if (origType_ == kBat) {
-        [[GameManager gameManager] addDoodad:[LightBlastCloud lightBlastCloudAt:self.position]];        
-    }
-    else if (origType_ == kSwarmBat) {
-        [[GameManager gameManager] addDoodad:[LightBlastCloud lightBlastCloudAt:self.position movement:kNoMovement]];        
-    }    
+    [[GameManager gameManager] addDoodad:[LightBlastCloud lightBlastCloudAt:self.position movements:movements_]];
 }
 
 @end

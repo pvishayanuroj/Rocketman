@@ -17,11 +17,11 @@
 /** Default blast cloud */
 + (id) lightBlastCloudAt:(CGPoint)pos;
 
-+ (id) lightBlastCloudAt:(CGPoint)pos movement:(MovementType)movement;
++ (id) lightBlastCloudAt:(CGPoint)pos movements:(NSMutableArray *)movements;
 
-+ (id) lightBlastCloudAt:(CGPoint)pos size:(CGFloat)size text:(EventText)text movement:(MovementType)movement;
++ (id) lightBlastCloudAt:(CGPoint)pos size:(CGFloat)size text:(EventText)text movements:(NSMutableArray *)movements;
 
-- (id) initLightBlastCloudAt:(CGPoint)pos size:(CGFloat)size text:(EventText)text movement:(MovementType)movement;
+- (id) initLightBlastCloudAt:(CGPoint)pos size:(CGFloat)size text:(EventText)text movements:(NSMutableArray *)movements;
 
 - (void) addSprites:(EventText)text size:(CGFloat)size;
 

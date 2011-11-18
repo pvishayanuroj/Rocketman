@@ -11,6 +11,13 @@
 
 @implementation ArcMovement
 
+@synthesize rate = rate_;
+@synthesize t = t_;
+@synthesize c1 = c1_;
+@synthesize c2 = c2_;
+@synthesize startPoint = startPoint_;
+@synthesize endPoint = endPoint_;
+
 // Arc 1
 const CGFloat ARC1_C1X = 15.0f;
 const CGFloat ARC1_C1Y = -20.0f;
@@ -138,6 +145,15 @@ const CGFloat ARC_SLOW_SPEED = 1/30.0f;
 - (void) dealloc
 {
     [super dealloc];
+}
+
+- (id) copyWithZone:(NSZone *)zone
+{
+    ArcMovement *cpy = [[ArcMovement allocWithZone:zone] initArcMovement:self.startPoint arcType:kArc1 arcSide:kLeftArc rate:self.rate];
+    cpy.c1 = self.c1;
+    cpy.c2 = self.c2;
+    cpy.t = self.t;
+    return cpy;
 }
 
 - (void) move:(CGFloat)speed object:(GameObject *)object;

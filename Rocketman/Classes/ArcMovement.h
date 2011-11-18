@@ -27,7 +27,7 @@ typedef enum {
     kSlowArc
 } ArcSpeed;
 
-@interface ArcMovement : Movement {
+@interface ArcMovement : Movement <NSCopying> {
     
     CGFloat rate_;
     
@@ -42,6 +42,13 @@ typedef enum {
     CGPoint endPoint_;
     
 }
+
+@property (nonatomic, readonly) CGFloat rate;
+@property (nonatomic, assign) CGFloat t;
+@property (nonatomic, assign) CGPoint c1;
+@property (nonatomic, assign) CGPoint c2;
+@property (nonatomic, readonly) CGPoint startPoint;
+@property (nonatomic, assign) CGPoint endPoint;
 
 + (id) arcFastRandomMovement:(CGPoint)start;
 

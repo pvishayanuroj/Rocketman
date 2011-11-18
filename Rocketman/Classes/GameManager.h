@@ -72,6 +72,8 @@
 /** Method used to notify the game layer that a powerup has been collected */
 - (void) powerUpCollected:(ObstacleType)type;
 
+- (void) enemyKilled:(ObstacleType)type;
+
 - (void) setNumCats01:(NSUInteger)numCats;
 
 - (void) setNumCats02:(NSUInteger)numCats;

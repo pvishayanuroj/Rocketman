@@ -13,6 +13,10 @@
 
 @implementation SideMovement
 
+@synthesize leftCutoff = leftCutoff_;
+@synthesize rightCutoff = rightCutoff_;
+@synthesize speed = speed_;
+@synthesize movingLeft = movingLeft_;
 @synthesize delegate = delegate_;
 
 + (id) sideMovement:(GameObject *)object distance:(CGFloat)distance speed:(CGFloat)speed
@@ -52,6 +56,13 @@
     delegate_ = nil;
     
     [super dealloc];
+}
+
+- (id) copyWithZone: (NSZone *)zone
+{
+    SideMovement *cpy = [[SideMovement allocWithZone:zone] initSideMovement:self.leftCutoff rightCutoff:self.rightCutoff speed:self.speed];
+    cpy.movingLeft = self.movingLeft;
+    return cpy;
 }
 
 - (void) move:(CGFloat)speed object:(GameObject *)object;

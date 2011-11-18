@@ -9,7 +9,7 @@
 #import "CommonHeaders.h"
 #import "Movement.h"
 
-@interface ConstantMovementWithStop : Movement {
+@interface ConstantMovementWithStop : Movement <NSCopying> {
     
     /** Rate at which object falls relative to rocket speed */
     CGFloat rate_;
@@ -24,6 +24,11 @@
     BOOL fallingDown_;        
     
 }
+
+@property (nonatomic, readonly) CGFloat rate;
+@property (nonatomic, readonly) CGFloat targetHeight;
+@property (nonatomic, assign) BOOL moving;
+@property (nonatomic, assign) BOOL fallingDown;
 
 /** Moves the object down at the given rate every tick until the specified height is reached */
 + (id) constantMovementWithStop:(CGFloat)rate withStop:(CGFloat)height;

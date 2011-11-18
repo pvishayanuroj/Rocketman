@@ -11,6 +11,8 @@
 
 @implementation GameObject
 
+@synthesize movements = movements_;
+
 + (id) gameObject
 {
     return [[[self alloc] initGameObject] autorelease];

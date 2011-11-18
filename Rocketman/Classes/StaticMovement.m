@@ -11,6 +11,8 @@
 
 @implementation StaticMovement
 
+@synthesize rate = rate_;
+
 + (id) staticMovement
 {
     return [[[self alloc] initStaticMovement:1.0f] autorelease];
@@ -33,8 +35,18 @@
 
 - (void) dealloc
 {
+#if DEBUG_DEALLOCS    
+    NSLog(@"Static Movement dealloc'd");
+#endif
+    
     [super dealloc];
 }
+
+- (id) copyWithZone: (NSZone *)zone
+{
+    StaticMovement *cpy = [[StaticMovement allocWithZone:zone] initStaticMovement:self.rate];
+    return cpy;
+} 
 
 - (void) move:(CGFloat)speed object:(GameObject *)object;
 {

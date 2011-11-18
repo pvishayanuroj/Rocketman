@@ -50,6 +50,7 @@
 		DA69A99A146F8A3A008BBF38 /* WallModule.m in Sources */ = {isa = PBXBuildFile; fileRef = DA69A999146F8A39008BBF38 /* WallModule.m */; };
 		DA69A99D146F9324008BBF38 /* Wall.m in Sources */ = {isa = PBXBuildFile; fileRef = DA69A99C146F9322008BBF38 /* Wall.m */; };
 		DA69A99F146F98B9008BBF38 /* Cave Wall 01.png in Resources */ = {isa = PBXBuildFile; fileRef = DA69A99E146F98B9008BBF38 /* Cave Wall 01.png */; };
+		DA69A9A514734AEC008BBF38 /* VictoryScene.m in Sources */ = {isa = PBXBuildFile; fileRef = DA69A9A414734AEB008BBF38 /* VictoryScene.m */; };
 		DAD805721460CC0000A195C3 /* LightBlastCloud.m in Sources */ = {isa = PBXBuildFile; fileRef = DAD805711460CBFF00A195C3 /* LightBlastCloud.m */; };
 		DAD805751460CC1100A195C3 /* DarkBlastCloud.m in Sources */ = {isa = PBXBuildFile; fileRef = DAD805741460CC1100A195C3 /* DarkBlastCloud.m */; };
 		DAD8058914621B2400A195C3 /* Level3_data.plist in Resources */ = {isa = PBXBuildFile; fileRef = DAD8058614621B2400A195C3 /* Level3_data.plist */; };
@@ -422,6 +423,8 @@
 		DA69A99B146F931F008BBF38 /* Wall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Wall.h; path = Classes/Wall.h; sourceTree = "<group>"; };
 		DA69A99C146F9322008BBF38 /* Wall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Wall.m; path = Classes/Wall.m; sourceTree = "<group>"; };
 		DA69A99E146F98B9008BBF38 /* Cave Wall 01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Cave Wall 01.png"; sourceTree = "<group>"; };
+		DA69A9A314734AE9008BBF38 /* VictoryScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VictoryScene.h; path = Classes/VictoryScene.h; sourceTree = "<group>"; };
+		DA69A9A414734AEB008BBF38 /* VictoryScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VictoryScene.m; path = Classes/VictoryScene.m; sourceTree = "<group>"; };
 		DAD805701460CBFE00A195C3 /* LightBlastCloud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LightBlastCloud.h; path = Classes/LightBlastCloud.h; sourceTree = "<group>"; };
 		DAD805711460CBFF00A195C3 /* LightBlastCloud.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LightBlastCloud.m; path = Classes/LightBlastCloud.m; sourceTree = "<group>"; };
 		DAD805731460CC1000A195C3 /* DarkBlastCloud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DarkBlastCloud.h; path = Classes/DarkBlastCloud.h; sourceTree = "<group>"; };
@@ -1041,6 +1044,8 @@
 				DAF443F1144B08CA00943C0D /* EndScene.m */,
 				DAF443EE144B08C900943C0D /* EndLayer.h */,
 				DAF443EF144B08C900943C0D /* EndLayer.m */,
+				DA69A9A314734AE9008BBF38 /* VictoryScene.h */,
+				DA69A9A414734AEB008BBF38 /* VictoryScene.m */,
 			);
 			name = "Game Nodes";
 			sourceTree = "<group>";
@@ -2250,6 +2255,7 @@
 				DA69A995146F6A24008BBF38 /* LoadScene.m in Sources */,
 				DA69A99A146F8A3A008BBF38 /* WallModule.m in Sources */,
 				DA69A99D146F9324008BBF38 /* Wall.m in Sources */,
+				DA69A9A514734AEC008BBF38 /* VictoryScene.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

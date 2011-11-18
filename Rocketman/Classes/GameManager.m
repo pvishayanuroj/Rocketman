@@ -201,6 +201,11 @@ static GameManager *_gameManager = nil;
     [gameLayer_ powerUpCollected:type];
 }
 
+- (void) enemyKilled:(ObstacleType)type
+{
+
+}
+
 #pragma mark - HUD Methods
 
 - (void) setNumCats01:(NSUInteger)numCats

@@ -7,15 +7,12 @@
 //
 
 #import "CommonHeaders.h"
-#import "Obstacle.h"
+#import "Doodad.h"
 #import "cocos2d.h"
 #import "BoundaryDelegate.h"
 
-@class Boundary;
+@interface Wall : Doodad {
 
-@interface Wall : Obstacle <BoundaryDelegate> {
-    
-    Boundary *boundary_;
     
 }
 

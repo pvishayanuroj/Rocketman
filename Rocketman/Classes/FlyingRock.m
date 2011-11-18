@@ -105,7 +105,8 @@ static NSUInteger countID = 0;
 {        
     destroyed_ = YES;
     sprite_.visible = NO;
-    [[GameManager gameManager] addDoodad:[DarkBlastCloud darkBlastCloudAt:self.position]];
+    
+    [[GameManager gameManager] addDoodad:[DarkBlastCloud darkBlastCloudAt:self.position size:1.0f movements:movements_]];
 }
 
 @end

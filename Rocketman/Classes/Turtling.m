@@ -17,6 +17,7 @@
 #import "Rocket.h"
 #import "DataManager.h"
 #import "LightBlastCloud.h"
+#import "DarkBlastCloud.h"
 
 @implementation Turtling
 
@@ -127,12 +128,8 @@ static NSUInteger countID = 0;
     destroyed_ = YES;    
     sprite_.visible = NO;        
     
-    if (origType_ == kTurtling) {
-        [[GameManager gameManager] addDoodad:[LightBlastCloud lightBlastCloudAt:self.position]];        
-    }
-    else if (origType_ == kSwarmTurtling) {
-        [[GameManager gameManager] addDoodad:[LightBlastCloud lightBlastCloudAt:self.position movement:kNoMovement]];        
-    }    
+    //[[GameManager gameManager] addDoodad:[LightBlastCloud lightBlastCloudAt:self.position movements:movements_]];
+    [[GameManager gameManager] addDoodad:[DarkBlastCloud darkBlastCloudAt:self.position size:0.35f movements:movements_]];
 }
 
 @end

@@ -11,22 +11,29 @@
 
 @implementation LightBlastCloud
 
+// Scale factors for the blast, cloud, and text
+const CGFloat LBC_BLAST_SCALE = 1.0f;
+const CGFloat LBC_CLOUD_SCALE = 1.2f;
+const CGFloat LBC_TEXT_SCALE = 0.7f;
+// How long the explosion lasts
+const CGFloat LBC_BLAST_DURATION = 0.3f;
+
 + (id) lightBlastCloudAt:(CGPoint)pos
 {
-    return [[[self alloc] initLightBlastCloudAt:pos size:1.0f text:kRandomDeathText movement:kStaticMovement] autorelease];
+    return [[[self alloc] initLightBlastCloudAt:pos size:1.0f text:kRandomDeathText movements:nil] autorelease];
 }
 
-+ (id) lightBlastCloudAt:(CGPoint)pos movement:(MovementType)movement
++ (id) lightBlastCloudAt:(CGPoint)pos movements:(NSMutableArray *)movements
 {
-    return [[[self alloc] initLightBlastCloudAt:pos size:1.0f text:kRandomDeathText movement:movement] autorelease];    
+    return [[[self alloc] initLightBlastCloudAt:pos size:1.0f text:kRandomDeathText movements:movements] autorelease];    
 }
 
-+ (id) lightBlastCloudAt:(CGPoint)pos size:(CGFloat)size text:(EventText)text movement:(MovementType)movement
++ (id) lightBlastCloudAt:(CGPoint)pos size:(CGFloat)size text:(EventText)text movements:(NSMutableArray *)movements
 {
-    return [[[self alloc] initLightBlastCloudAt:pos size:size text:text movement:movement] autorelease];
+    return [[[self alloc] initLightBlastCloudAt:pos size:size text:text movements:movements] autorelease];
 }
 
-- (id) initLightBlastCloudAt:(CGPoint)pos size:(CGFloat)size text:(EventText)text movement:(MovementType)movement
+- (id) initLightBlastCloudAt:(CGPoint)pos size:(CGFloat)size text:(EventText)text movements:(NSMutableArray *)movements
 {
     if ((self = [super init])) {
         
@@ -35,14 +42,13 @@
         
         [self addSprites:text size:size];
         
-        CCFiniteTimeAction *delay = [CCDelayTime actionWithDuration:0.3f];
+        CCFiniteTimeAction *delay = [CCDelayTime actionWithDuration:LBC_BLAST_DURATION];
         CCCallFunc *method = [CCCallFunc actionWithTarget:self selector:@selector(destroy)];
         [self runAction:[CCSequence actions:delay, method, nil]];
         
-        if (movement == kStaticMovement) {
-            [movements_ addObject:[StaticMovement staticMovement]];
-        }
-        
+        for (Movement *movement in movements) {
+            [movements_ addObject:[[movement copy] autorelease]];
+        }    
     }
     return self;
 }
@@ -77,9 +83,9 @@
             textSprite = [CCSprite spriteWithSpriteFrameName:@"Bam Text.png"];            
     }    
     
-    blastCloud.scale = 1.2f * size;
-    blast.scale = 1.0f * size;
-    textSprite.scale = 0.7f * size;
+    blastCloud.scale = LBC_CLOUD_SCALE * size;
+    blast.scale = LBC_BLAST_SCALE * size;
+    textSprite.scale = LBC_TEXT_SCALE * size;
     
     [self addChild:blastCloud];
     [self addChild:blast];

@@ -13,7 +13,7 @@
 @class Rocket;
 @class GameObject;
 
-@interface SideMovement : Movement {
+@interface SideMovement : Movement <NSCopying> {
 
     /** Current direction of movement */
     BOOL movingLeft_;
@@ -50,6 +50,10 @@
     
 }
 
+@property (nonatomic, readonly) CGFloat leftCutoff;
+@property (nonatomic, readonly) CGFloat rightCutoff;
+@property (nonatomic, readonly) CGFloat speed;
+@property (nonatomic, assign) BOOL movingLeft;
 @property (nonatomic, assign) id <SideMovementDelegate> delegate;
 
 + (id) sideMovement:(GameObject *)object distance:(CGFloat)distance speed:(CGFloat)speed;

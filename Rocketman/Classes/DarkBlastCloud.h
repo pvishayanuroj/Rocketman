@@ -22,9 +22,9 @@
 
 + (id) darkBlastCloudAt:(CGPoint)pos;
 
-+ (id) darkBlastCloudAt:(CGPoint)pos size:(CGFloat)size movement:(MovementType)movement;
++ (id) darkBlastCloudAt:(CGPoint)pos size:(CGFloat)size movements:(NSMutableArray *)movements;
 
-- (id) initDarkBlastCloudAt:(CGPoint)pos size:(CGFloat)size movement:(MovementType)movement;
+- (id) initDarkBlastCloudAt:(CGPoint)pos size:(CGFloat)size movements:(NSMutableArray *)movements;
 
 - (void) addSprites:(CGFloat)size;
 

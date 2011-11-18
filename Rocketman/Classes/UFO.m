@@ -14,7 +14,7 @@
 #import "Boundary.h"
 #import "StaticMovement.h"
 #import "ArcMovement.h"
-#import "LightBlastCloud.h"
+#import "DarkBlastCloud.h"
 
 @implementation UFO
 
@@ -108,7 +108,7 @@ static NSUInteger countID = 0;
     destroyed_ = YES;    
     sprite_.visible = NO;        
     
-    [[GameManager gameManager] addDoodad:[LightBlastCloud lightBlastCloudAt:self.position]];        
+    [[GameManager gameManager] addDoodad:[DarkBlastCloud darkBlastCloudAt:self.position size:0.5f movements:movements_]];
 }
 
 @end

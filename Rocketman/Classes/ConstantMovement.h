@@ -10,12 +10,14 @@
 #import "Movement.h"
 
 /** Class to allow an object to move by a constant amount every tick */
-@interface ConstantMovement : Movement {
+@interface ConstantMovement : Movement <NSCopying> {
     
     /** Amount that the object will move each tick */
     CGPoint rate_;
     
 }
+
+@property (nonatomic, readonly) CGPoint rate;
 
 /** Every tick will move the object by the given rate */
 + (id) constantMovement:(CGPoint)rate;

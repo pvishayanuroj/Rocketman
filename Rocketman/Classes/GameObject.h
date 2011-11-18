@@ -19,6 +19,8 @@
     
 }
 
+@property (nonatomic, copy) NSMutableArray *movements;
+
 + (id) gameObject;
 
 - (id) initGameObject;

@@ -12,6 +12,11 @@
 
 @implementation ConstantMovementWithStop
 
+@synthesize rate = rate_;
+@synthesize targetHeight = targetHeight_;
+@synthesize moving = moving_;
+@synthesize fallingDown = fallingDown_;
+
 + (id) constantMovementWithStop:(CGFloat)rate withStop:(CGFloat)height 
 {
     return [[[self alloc] initConstantMovementWithStop:rate height:height] autorelease];    
@@ -32,6 +37,14 @@
 - (void) dealloc
 {
     [super dealloc];
+}
+
+- (id) copyWithZone:(NSZone *)zone
+{
+    ConstantMovementWithStop *cpy = [[ConstantMovementWithStop allocWithZone:zone] initConstantMovementWithStop:self.rate height:self.targetHeight];
+    cpy.moving = self.moving;
+    cpy.fallingDown = self.fallingDown;
+    return cpy;
 }
 
 - (void) move:(CGFloat)speed object:(GameObject *)object;
