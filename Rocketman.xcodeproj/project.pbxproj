@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		DA1CB33B14661B39007096D8 /* PhysicsModule.m in Sources */ = {isa = PBXBuildFile; fileRef = DA1CB33A14661B39007096D8 /* PhysicsModule.m */; };
+		DA3815171477F54C005D103B /* ComboModule.m in Sources */ = {isa = PBXBuildFile; fileRef = DA3815161477F54B005D103B /* ComboModule.m */; };
 		DA3979DA146B70900043C48F /* dialogue_cat_combo.png in Resources */ = {isa = PBXBuildFile; fileRef = DA3979D7146B70900043C48F /* dialogue_cat_combo.png */; };
 		DA3979DB146B70900043C48F /* dialogue_stage_clear.png in Resources */ = {isa = PBXBuildFile; fileRef = DA3979D8146B70900043C48F /* dialogue_stage_clear.png */; };
 		DA3979DC146B70900043C48F /* resume_text.png in Resources */ = {isa = PBXBuildFile; fileRef = DA3979D9146B70900043C48F /* resume_text.png */; };
@@ -51,6 +52,8 @@
 		DA69A99D146F9324008BBF38 /* Wall.m in Sources */ = {isa = PBXBuildFile; fileRef = DA69A99C146F9322008BBF38 /* Wall.m */; };
 		DA69A99F146F98B9008BBF38 /* Cave Wall 01.png in Resources */ = {isa = PBXBuildFile; fileRef = DA69A99E146F98B9008BBF38 /* Cave Wall 01.png */; };
 		DA69A9A514734AEC008BBF38 /* VictoryScene.m in Sources */ = {isa = PBXBuildFile; fileRef = DA69A9A414734AEB008BBF38 /* VictoryScene.m */; };
+		DA69A9A814760FFA008BBF38 /* StatsModule.m in Sources */ = {isa = PBXBuildFile; fileRef = DA69A9A714760FF7008BBF38 /* StatsModule.m */; };
+		DA69A9AE14777391008BBF38 /* EventText.m in Sources */ = {isa = PBXBuildFile; fileRef = DA69A9AD14777366008BBF38 /* EventText.m */; };
 		DAD805721460CC0000A195C3 /* LightBlastCloud.m in Sources */ = {isa = PBXBuildFile; fileRef = DAD805711460CBFF00A195C3 /* LightBlastCloud.m */; };
 		DAD805751460CC1100A195C3 /* DarkBlastCloud.m in Sources */ = {isa = PBXBuildFile; fileRef = DAD805741460CC1100A195C3 /* DarkBlastCloud.m */; };
 		DAD8058914621B2400A195C3 /* Level3_data.plist in Resources */ = {isa = PBXBuildFile; fileRef = DAD8058614621B2400A195C3 /* Level3_data.plist */; };
@@ -351,6 +354,9 @@
 		DA1CB33914661B39007096D8 /* PhysicsModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhysicsModule.h; path = Classes/PhysicsModule.h; sourceTree = "<group>"; };
 		DA1CB33A14661B39007096D8 /* PhysicsModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhysicsModule.m; path = Classes/PhysicsModule.m; sourceTree = "<group>"; };
 		DA1CB33D1466350A007096D8 /* PhysicsModuleDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhysicsModuleDelegate.h; path = Classes/PhysicsModuleDelegate.h; sourceTree = "<group>"; };
+		DA3815151477F54B005D103B /* ComboModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComboModule.h; path = Classes/ComboModule.h; sourceTree = "<group>"; };
+		DA3815161477F54B005D103B /* ComboModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ComboModule.m; path = Classes/ComboModule.m; sourceTree = "<group>"; };
+		DA3815181477F7D1005D103B /* ComboModuleDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ComboModuleDelegate.h; path = Classes/ComboModuleDelegate.h; sourceTree = "<group>"; };
 		DA3979D7146B70900043C48F /* dialogue_cat_combo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dialogue_cat_combo.png; sourceTree = "<group>"; };
 		DA3979D8146B70900043C48F /* dialogue_stage_clear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dialogue_stage_clear.png; sourceTree = "<group>"; };
 		DA3979D9146B70900043C48F /* resume_text.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = resume_text.png; sourceTree = "<group>"; };
@@ -425,6 +431,10 @@
 		DA69A99E146F98B9008BBF38 /* Cave Wall 01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Cave Wall 01.png"; sourceTree = "<group>"; };
 		DA69A9A314734AE9008BBF38 /* VictoryScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VictoryScene.h; path = Classes/VictoryScene.h; sourceTree = "<group>"; };
 		DA69A9A414734AEB008BBF38 /* VictoryScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VictoryScene.m; path = Classes/VictoryScene.m; sourceTree = "<group>"; };
+		DA69A9A614760FF3008BBF38 /* StatsModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StatsModule.h; path = Classes/StatsModule.h; sourceTree = "<group>"; };
+		DA69A9A714760FF7008BBF38 /* StatsModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StatsModule.m; path = Classes/StatsModule.m; sourceTree = "<group>"; };
+		DA69A9AC14777358008BBF38 /* EventText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventText.h; path = Classes/EventText.h; sourceTree = "<group>"; };
+		DA69A9AD14777366008BBF38 /* EventText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventText.m; path = Classes/EventText.m; sourceTree = "<group>"; };
 		DAD805701460CBFE00A195C3 /* LightBlastCloud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LightBlastCloud.h; path = Classes/LightBlastCloud.h; sourceTree = "<group>"; };
 		DAD805711460CBFF00A195C3 /* LightBlastCloud.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LightBlastCloud.m; path = Classes/LightBlastCloud.m; sourceTree = "<group>"; };
 		DAD805731460CC1000A195C3 /* DarkBlastCloud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DarkBlastCloud.h; path = Classes/DarkBlastCloud.h; sourceTree = "<group>"; };
@@ -979,8 +989,6 @@
 				DA69A98B146F0695008BBF38 /* Flame.h */,
 				DA69A98C146F0695008BBF38 /* Flame.m */,
 				DA69A992146F5A32008BBF38 /* FlameDelegate.h */,
-				DA69A99B146F931F008BBF38 /* Wall.h */,
-				DA69A99C146F9322008BBF38 /* Wall.m */,
 			);
 			name = Enemies;
 			sourceTree = "<group>";
@@ -1750,6 +1758,11 @@
 				DA1CB33D1466350A007096D8 /* PhysicsModuleDelegate.h */,
 				DA69A998146F8A38008BBF38 /* WallModule.h */,
 				DA69A999146F8A39008BBF38 /* WallModule.m */,
+				DA69A9A614760FF3008BBF38 /* StatsModule.h */,
+				DA69A9A714760FF7008BBF38 /* StatsModule.m */,
+				DA3815151477F54B005D103B /* ComboModule.h */,
+				DA3815161477F54B005D103B /* ComboModule.m */,
+				DA3815181477F7D1005D103B /* ComboModuleDelegate.h */,
 				DA5037BA1454CF8B00600DD4 /* Button.h */,
 				DA5037BB1454CF8F00600DD4 /* Button.m */,
 				DA5037BC1454CF9100600DD4 /* ButtonDelegate.h */,
@@ -1778,6 +1791,8 @@
 				DA690171145BA086000D278F /* GameObject.m */,
 				DAF4444A144B08DA00943C0D /* SwarmGenerator.h */,
 				DAF4444B144B08DB00943C0D /* SwarmGenerator.m */,
+				DA69A9AC14777358008BBF38 /* EventText.h */,
+				DA69A9AD14777366008BBF38 /* EventText.m */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -1815,6 +1830,8 @@
 				DA69016B145A49AF000D278F /* RockDebris.m */,
 				DA69016D145B9EB5000D278F /* DebrisGenerator.h */,
 				DA69016E145B9EB6000D278F /* DebrisGenerator.m */,
+				DA69A99B146F931F008BBF38 /* Wall.h */,
+				DA69A99C146F9322008BBF38 /* Wall.m */,
 			);
 			name = Doodads;
 			sourceTree = "<group>";
@@ -2256,6 +2273,9 @@
 				DA69A99A146F8A3A008BBF38 /* WallModule.m in Sources */,
 				DA69A99D146F9324008BBF38 /* Wall.m in Sources */,
 				DA69A9A514734AEC008BBF38 /* VictoryScene.m in Sources */,
+				DA69A9A814760FFA008BBF38 /* StatsModule.m in Sources */,
+				DA69A9AE14777391008BBF38 /* EventText.m in Sources */,
+				DA3815171477F54C005D103B /* ComboModule.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

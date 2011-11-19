@@ -41,7 +41,8 @@ static NSUInteger countID = 0;
 {
 	if ((self = [super init])) {
         
-		unitID_ = countID++;                
+		unitID_ = countID++; 
+        originalObstacleType_ = type;        
         obstacleType_ = kBat;
         name_ = [[[DataManager dataManager] nameForType:obstacleType_] retain];
         
@@ -58,7 +59,6 @@ static NSUInteger countID = 0;
         // Bounding box setup
         [boundaries_ addObject:[Boundary boundary:self colStruct:collide]];
         
-        origType_ = type;
         if (type == kBat) {
             [movements_ addObject:[StaticMovement staticMovement]];
         }

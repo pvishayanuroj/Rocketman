@@ -25,10 +25,14 @@ typedef enum {
     kSpeedDown,
     kCatPlus,
     kBoostPlus,
+    kGivenText
+} ActionText;
+
+typedef enum {
     kRandomDeathText,
     kBamText,
-    kPlopText
-} EventText;
+    kPlopText    
+} ExplosionText;
 
 typedef enum {
     kStartBoost,

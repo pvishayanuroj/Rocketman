@@ -185,7 +185,7 @@ static NSUInteger countID = 0;
     pos.x -= x/2;
     pos.y -= y/2;
     
-    [[GameManager gameManager] addDoodad:[LightBlastCloud lightBlastCloudAt:ccpAdd(self.position, pos) movement:kNoMovement]];
+    [[GameManager gameManager] addDoodad:[LightBlastCloud lightBlastCloudAt:ccpAdd(self.position, pos) movements:movements_]];
     
     if (arc4random() % 4 < 1) {
         [[AudioManager audioManager] playSound:kExplosion01];

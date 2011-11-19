@@ -34,7 +34,8 @@ static NSUInteger countID = 0;
 {
 	if ((self = [super init])) {
         
-		unitID_ = countID++;                
+		unitID_ = countID++;    
+        originalObstacleType_ = kFlybot;
         obstacleType_ = kFlybot;
         name_ = [[[DataManager dataManager] nameForType:obstacleType_] retain];
         

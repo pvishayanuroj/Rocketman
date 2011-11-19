@@ -186,4 +186,15 @@
     return map;
 }
 
++ (BOOL) isBoss:(ObstacleType)type
+{
+    return (type == kDummyBoss ||
+            type == kBossTurtle ||
+            type == kBirdBoss ||
+            type == kBatBoss ||
+            type == kWhaleBoss ||
+            type == kAlienBossTurtle ||
+            type == kCatBoss);
+}
+
 @end

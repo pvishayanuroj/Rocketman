@@ -42,7 +42,8 @@ static NSUInteger countID = 0;
 {
 	if ((self = [super init])) {
         
-		unitID_ = countID++;                
+		unitID_ = countID++; 
+        originalObstacleType_ = type;        
         obstacleType_ = kYellowBird;
         name_ = [[[DataManager dataManager] nameForType:obstacleType_] retain];
         
@@ -56,7 +57,6 @@ static NSUInteger countID = 0;
         PVCollide collide = defaultPVCollide_;
         collide.radius = 16;
         
-        origType_ = type;
         if (type == kYellowBird) {
             [movements_ addObject:[StaticMovement staticMovement]];
         }

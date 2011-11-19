@@ -19,10 +19,10 @@
 
 + (id) lightBlastCloudAt:(CGPoint)pos movements:(NSMutableArray *)movements;
 
-+ (id) lightBlastCloudAt:(CGPoint)pos size:(CGFloat)size text:(EventText)text movements:(NSMutableArray *)movements;
++ (id) lightBlastCloudAt:(CGPoint)pos size:(CGFloat)size text:(ExplosionText)text movements:(NSMutableArray *)movements;
 
-- (id) initLightBlastCloudAt:(CGPoint)pos size:(CGFloat)size text:(EventText)text movements:(NSMutableArray *)movements;
+- (id) initLightBlastCloudAt:(CGPoint)pos size:(CGFloat)size text:(ExplosionText)text movements:(NSMutableArray *)movements;
 
-- (void) addSprites:(EventText)text size:(CGFloat)size;
+- (void) addSprites:(ExplosionText)text size:(CGFloat)size;
 
 @end

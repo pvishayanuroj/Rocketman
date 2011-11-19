@@ -28,12 +28,12 @@ const CGFloat LBC_BLAST_DURATION = 0.3f;
     return [[[self alloc] initLightBlastCloudAt:pos size:1.0f text:kRandomDeathText movements:movements] autorelease];    
 }
 
-+ (id) lightBlastCloudAt:(CGPoint)pos size:(CGFloat)size text:(EventText)text movements:(NSMutableArray *)movements
++ (id) lightBlastCloudAt:(CGPoint)pos size:(CGFloat)size text:(ExplosionText)text movements:(NSMutableArray *)movements
 {
     return [[[self alloc] initLightBlastCloudAt:pos size:size text:text movements:movements] autorelease];
 }
 
-- (id) initLightBlastCloudAt:(CGPoint)pos size:(CGFloat)size text:(EventText)text movements:(NSMutableArray *)movements
+- (id) initLightBlastCloudAt:(CGPoint)pos size:(CGFloat)size text:(ExplosionText)text movements:(NSMutableArray *)movements
 {
     if ((self = [super init])) {
         
@@ -62,7 +62,7 @@ const CGFloat LBC_BLAST_DURATION = 0.3f;
     [super dealloc];
 }
 
-- (void) addSprites:(EventText)text size:(CGFloat)size
+- (void) addSprites:(ExplosionText)text size:(CGFloat)size
 {
     CCSprite *blastCloud = [CCSprite spriteWithSpriteFrameName:@"Blast Cloud.png"];    
     CCSprite *blast = [CCSprite spriteWithSpriteFrameName:@"Blast.png"];        

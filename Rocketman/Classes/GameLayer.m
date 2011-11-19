@@ -28,6 +28,8 @@
 #import "TargetedAction.h"
 #import "PhysicsModule.h"
 #import "WallModule.h"
+#import "ComboModule.h"
+#import "EventText.h"
 
 #import "HighscoreManager.h"
 
@@ -439,12 +441,12 @@
     // Very important to do this, since the accelerometer singleton is holding a ref to us
     [[UIAccelerometer sharedAccelerometer] setDelegate:nil];    
     
-    CCActionInterval *fall = [CCMoveBy actionWithDuration:2.0f position:CGPointMake(0, 500)];
-    CCActionInterval *easeFall = [CCEaseOut actionWithAction:fall rate:2.0f];
-    TargetedAction *rocketFall = [TargetedAction actionWithTarget:rocket_ actionIn:easeFall];
+    CCActionInterval *boost = [CCMoveBy actionWithDuration:2.0f position:CGPointMake(0, 500)];
+    CCActionInterval *easeBoost = [CCEaseOut actionWithAction:boost rate:2.0f];
+    TargetedAction *rocketBoost = [TargetedAction actionWithTarget:rocket_ actionIn:easeBoost];
     CCFiniteTimeAction *delay = [CCDelayTime actionWithDuration:4.0f];    
-    CCActionInstant *method = [CCCallFunc actionWithTarget:self selector:@selector(endLevelWithWin)];    
-    [self runAction:[CCSequence actions:rocketFall, delay, method, nil]];    
+    CCActionInstant *done = [CCCallFunc actionWithTarget:self selector:@selector(endLevelWithWin)];    
+    [self runAction:[CCSequence actions:rocketBoost, delay, done, nil]];    
 }
 
 - (void) loss
@@ -682,6 +684,11 @@
     [obstacles_ addObject:obstacle];     
 }
 
+- (void) enemyKilled:(ObstacleType)type pos:(CGPoint)pos
+{
+    [combo_ enemyKilled:type pos:pos];
+}
+
 - (void) fireCat:(CatType)type
 {
     if (!onGround_ && !inputLocked_) {        
@@ -865,52 +872,10 @@
     }
 }
 
-- (void) showText:(EventText)event
+- (void) showText:(ActionText)actionText
 {
-    CCSprite *text;
-    
-    switch (event) {
-        case kSpeedUp:
-            text = [CCSprite spriteWithSpriteFrameName:@"Speed Up Text.png"];
-            break;
-        case kSpeedDown:
-            text = [CCSprite spriteWithSpriteFrameName:@"Speed Down Text.png"];            
-            break;
-        case kCatPlus:
-            text = [CCSprite spriteWithSpriteFrameName:@"Cat Plus Text.png"];            
-            break;
-        case kBoostPlus:
-            text = [CCSprite spriteWithSpriteFrameName:@"Boosters Plus Text.png"];            
-            break;
-        default:
-            NSAssert(NO, @"Invalid event type");
-    }
-    
+    EventText *text = [EventText eventText:actionText];
     [rocket_ addChild:text z:kLabelDepth];
-    
-    NSUInteger rand = arc4random() % 2;
-    switch (rand) {
-        case 0:
-            text.position = CGPointMake(-15, 35);            
-            text.rotation = -15;
-            break;
-        case 1:
-            text.position = CGPointMake(15, 35);            
-            text.rotation = 15;
-            break;
-        default:
-            text.position = CGPointMake(0, 35);            
-    }
-    
-    CCFiniteTimeAction *delay = [CCDelayTime actionWithDuration:0.2];
-    CCFiniteTimeAction *fade = [CCFadeOut actionWithDuration:0.5];
-    CCCallFuncND *clean = [CCCallFuncND actionWithTarget:self selector:@selector(removeText:data:) data:text];
-    [text runAction:[CCSequence actions:delay, fade, clean, nil]];
-}
-
-- (void) removeText:(id)node data:(CCSprite *)text
-{
-    [text removeFromParentAndCleanup:YES];
 }
 
 - (void) accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration

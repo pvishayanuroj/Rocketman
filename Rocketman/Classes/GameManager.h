@@ -19,6 +19,8 @@
 @class Obstacle;
 @class Doodad;
 @class Notification;
+@class StatsModule;
+@class EventText;
 
 /** 
  * Singleton that only persists for one stage at a time.
@@ -38,6 +40,8 @@
     Rocket *rocket_;
     
     Notification *notification_;
+    
+    StatsModule *stats_;
 }
 
 @property (nonatomic, readonly) Rocket *rocket;
@@ -57,6 +61,8 @@
 
 - (void) registerRocket:(Rocket *)rocket;
 
+- (void) addGameLayerText:(EventText *)text;
+
 /** Method to tell the game layer to add an obstacle */
 - (void) addObstacle:(CGPoint)pos type:(ObstacleType)type;
 
@@ -72,7 +78,8 @@
 /** Method used to notify the game layer that a powerup has been collected */
 - (void) powerUpCollected:(ObstacleType)type;
 
-- (void) enemyKilled:(ObstacleType)type;
+/** Method used to keep track of enemies that were killed */
+- (void) enemyKilled:(ObstacleType)type pos:(CGPoint)pos;
 
 - (void) setNumCats01:(NSUInteger)numCats;
 

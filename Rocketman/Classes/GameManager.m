@@ -15,8 +15,10 @@
 #import "CCNode+PauseResume.h"
 #import "Obstacle.h"
 #import "Notification.h"
+#import "StatsModule.h"
 #import "ObjectHeaders.h"
 #import "Button.h"
+#import "EventText.h"
 
 // For singleton
 static GameManager *_gameManager = nil;
@@ -57,6 +59,7 @@ static GameManager *_gameManager = nil;
         dialogueLayer_ = nil;
         rocket_ = nil;
         notification_ = nil;
+        stats_ = nil;
         
         [self resetCounters];
 	}
@@ -74,12 +77,14 @@ static GameManager *_gameManager = nil;
     [dialogueLayer_ release];
     [rocket_ release];
     [notification_ release];
+    [stats_ release];
     gameLayer_ = nil;
     hudLayer_ = nil;
     pauseLayer_ = nil;
     dialogueLayer_ = nil;    
     rocket_ = nil;
     notification_ = nil;
+    stats_ = nil;
     
 	[super dealloc];
 }
@@ -176,6 +181,11 @@ static GameManager *_gameManager = nil;
 
 #pragma mark - Game Layer Methods
 
+- (void) addGameLayerText:(EventText *)text
+{
+    [gameLayer_ addChild:text];
+}
+
 - (void) addObstacle:(CGPoint)pos type:(ObstacleType)type
 {
     [gameLayer_ addObstacle:type pos:pos];
@@ -201,9 +211,10 @@ static GameManager *_gameManager = nil;
     [gameLayer_ powerUpCollected:type];
 }
 
-- (void) enemyKilled:(ObstacleType)type
+- (void) enemyKilled:(ObstacleType)type pos:(CGPoint)pos
 {
-
+    [stats_ enemyKilled:type];
+    [gameLayer_ enemyKilled:type pos:pos];
 }
 
 #pragma mark - HUD Methods

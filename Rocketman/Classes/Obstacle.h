@@ -38,7 +38,13 @@
     /** The ID number of this obstacle, unique across obstacle types */
 	NSUInteger unitID_;
     
-    /** The object's object type enum */
+    /** 
+     * The type that the obstacle was originally created as. This changes because 
+     * certain obstacles can be created/labeled differently, such as swarm versions, or boss versions
+     */
+    ObstacleType originalObstacleType_;
+    
+    /** The obstacle's common type */
     ObstacleType obstacleType_;
     
     /** The object's name */

@@ -127,7 +127,7 @@ static NSUInteger countID = 0;
         CGPoint p = ccpSub(point, self.position);
         NSLog(@"collide: %3.0f, %3.0f p: %3.0f, %3.0f", point.x, point.y, p.x, p.y);
         // Turtle takes no damage on shell hit
-        [[GameManager gameManager] addDoodad:[LightBlastCloud lightBlastCloudAt:point movement:kNoMovement]];        
+        [[GameManager gameManager] addDoodad:[LightBlastCloud lightBlastCloudAt:point movements:movements_]];
     }
 }
 

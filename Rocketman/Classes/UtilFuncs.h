@@ -46,4 +46,7 @@
 /** Maps object enums to object strings */
 + (NSDictionary *) reverseMapObjectTypes:(NSDictionary *)nameMap;
 
+/** Returns true if the passed in type is considered a boss */
++ (BOOL) isBoss:(ObstacleType)type;
+
 @end

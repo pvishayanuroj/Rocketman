@@ -39,7 +39,8 @@ static NSUInteger countID = 0;
 {
 	if ((self = [super init])) {
         
-		unitID_ = countID++;              
+		unitID_ = countID++;    
+        originalObstacleType_ = kPlasmaBall;
         obstacleType_ = kPlasmaBall;
         name_ = [[[DataManager dataManager] nameForType:obstacleType_] retain];
         

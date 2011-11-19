@@ -13,8 +13,6 @@
 
 @interface Bat : Obstacle <BoundaryDelegate> {
     
-    ObstacleType origType_;
-    
 }
 
 + (id) batWithPos:(CGPoint)pos;

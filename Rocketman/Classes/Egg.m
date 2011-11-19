@@ -39,7 +39,8 @@ static NSUInteger countID = 0;
 {
 	if ((self = [super init])) {
         
-		unitID_ = countID++;    
+		unitID_ = countID++; 
+        originalObstacleType_ = type;        
         obstacleType_ = type;
         name_ = [[[DataManager dataManager] nameForType:obstacleType_] retain];        
         
@@ -69,7 +70,6 @@ static NSUInteger countID = 0;
     
     [name_ release];
     [sprite_ release];
-    //[idleAnimation_ release];
     
     [super dealloc];
 }  

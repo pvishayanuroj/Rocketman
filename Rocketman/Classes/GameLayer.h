@@ -15,6 +15,7 @@
 @class Rocket;
 @class PhysicsModule;
 @class WallModule;
+@class ComboModule;
 @class Cat;
 @class Boost;
 @class Fuel;
@@ -49,6 +50,9 @@
     /** Used to generate the walls for certain levels */
     WallModule *wall_;
     
+    /** Used to keep track of enemy kill combos */
+    ComboModule *combo_;
+    
     /** Holds all current active obstacles */
     NSMutableArray *obstacles_;
     
@@ -58,6 +62,7 @@
     /** Holds all current active doodads */
     NSMutableArray *doodads_;   
     
+    /** Delegate object to notify of game layer events */
     id <GameLayerDelegate> delegate_;
     
     CGFloat rocketInitSpeed_;
@@ -149,6 +154,8 @@
 
 - (void) addObstacle:(Obstacle *)obstacle;
 
+- (void) enemyKilled:(ObstacleType)type pos:(CGPoint)pos;
+
 /** When a cat button is pressed */
 - (void) fireCat:(CatType)type;
 
@@ -163,8 +170,6 @@
 
 - (void) powerUpCollected:(ObstacleType)type;
 
-- (void) showText:(EventText)event;
-
-- (void) removeText:(id)node data:(CCSprite *)text;
+- (void) showText:(ActionText)actionText;
 
 @end

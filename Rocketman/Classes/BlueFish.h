@@ -13,8 +13,6 @@
 
 @interface BlueFish : Obstacle <BoundaryDelegate> {
     
-    ObstacleType origType_;
-    
 }
 
 + (id) blueFishWithPos:(CGPoint)pos;

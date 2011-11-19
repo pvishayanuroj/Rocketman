@@ -33,7 +33,8 @@ static NSUInteger countID = 0;
 {
 	if ((self = [super init])) {
         
-		unitID_ = countID++;                
+		unitID_ = countID++;   
+        originalObstacleType_ = kSquid;
         obstacleType_ = kSquid;
         name_ = [[[DataManager dataManager] nameForType:obstacleType_] retain];
         
