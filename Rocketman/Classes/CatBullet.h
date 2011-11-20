@@ -8,17 +8,16 @@
 
 #import "CommonHeaders.h"
 #import "cocos2d.h"
+#import "GameObject.h"
 
-@interface CatBullet : CCNode {
- 
-    CCSprite *sprite_;
+@interface CatBullet : GameObject {
  
 	/** Stored idle animation (this is RepeatForever action) */
 	CCAction *idleAnimation_;    
     
     CGFloat radius_;
-    
-    CGFloat velocity_;
+
+    CGPoint s_;
     
 	NSUInteger unitID_;       
     
@@ -37,7 +36,9 @@
 
 + (id) longBulletWithPos:(CGPoint)pos withSpeed:(CGFloat)speed;
 
-- (id) initWithPos:(CGPoint)pos withSpeed:(CGFloat)speed explosionRadius:(CGFloat)radius remainingImpacts:(NSInteger)impacts catType:(CatType)type;
++ (id) superCatWithPos:(CGPoint)pos withSpeed:(CGPoint)speed;
+
+- (id) initWithPos:(CGPoint)pos withSpeed:(CGPoint)speed explosionRadius:(CGFloat)radius remainingImpacts:(NSInteger)impacts catType:(CatType)type;
 
 - (void) initActions:(CatType)type;
 

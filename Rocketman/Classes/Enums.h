@@ -63,7 +63,8 @@ typedef enum {
 typedef enum {
     kCatNormal,
     kCatBomb,
-    kCatPierce
+    kCatPierce,
+    kCatSuper
 } CatType;
 
 typedef enum {

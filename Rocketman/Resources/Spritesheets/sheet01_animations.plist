@@ -160,6 +160,14 @@
 				<key>Num Frames</key>
 				<integer>2</integer>
 			</dict>
+			<dict>
+				<key>Animate Delay</key>
+				<real>0.2</real>
+				<key>Name</key>
+				<string>Super</string>
+				<key>Num Frames</key>
+				<integer>2</integer>
+			</dict>
 		</array>
 		<key>Name</key>
 		<string>Cat</string>

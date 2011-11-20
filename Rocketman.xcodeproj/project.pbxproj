@@ -1104,6 +1104,8 @@
 				DAF443EF144B08C900943C0D /* EndLayer.m */,
 				DA69A9A314734AE9008BBF38 /* VictoryScene.h */,
 				DA69A9A414734AEB008BBF38 /* VictoryScene.m */,
+				DA690170145BA086000D278F /* GameObject.h */,
+				DA690171145BA086000D278F /* GameObject.m */,
 			);
 			name = "Game Nodes";
 			sourceTree = "<group>";
@@ -1812,8 +1814,6 @@
 				DA5037B81454A59B00600DD4 /* BoundaryDelegate.h */,
 				DAF443D1144B08C400943C0D /* CallFuncWeak.h */,
 				DAF443D2144B08C400943C0D /* CallFuncWeak.m */,
-				DA690170145BA086000D278F /* GameObject.h */,
-				DA690171145BA086000D278F /* GameObject.m */,
 				DAF4444A144B08DA00943C0D /* SwarmGenerator.h */,
 				DAF4444B144B08DB00943C0D /* SwarmGenerator.m */,
 				DA69A9AC14777358008BBF38 /* EventText.h */,
@@ -1864,6 +1864,8 @@
 		DAF444AE144B099400943C0D /* Movements */ = {
 			isa = PBXGroup;
 			children = (
+				DAF4441D144B08D100943C0D /* Movement.h */,
+				DAF4441E144B08D100943C0D /* Movement.m */,
 				DA69016614579CA0000D278F /* ArcMovement.h */,
 				DA69016714579CA0000D278F /* ArcMovement.m */,
 				DAF4443A144B08D700943C0D /* SideMovement.h */,
@@ -1871,8 +1873,6 @@
 				DAF4443C144B08D700943C0D /* SideMovementDelegate.h */,
 				DAF44441144B08D800943C0D /* StaticMovement.h */,
 				DAF44442144B08D900943C0D /* StaticMovement.m */,
-				DAF4441D144B08D100943C0D /* Movement.h */,
-				DAF4441E144B08D100943C0D /* Movement.m */,
 				DAF443D9144B08C600943C0D /* CircularMovement.h */,
 				DAF443DA144B08C600943C0D /* CircularMovement.m */,
 				DAF443DE144B08C600943C0D /* ConstantMovement.h */,

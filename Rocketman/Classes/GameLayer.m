@@ -754,6 +754,21 @@
                 break;
         }
         
+        // Special case for super cats
+        if (type == kCatSuper) {
+            CGFloat speed = physics_.rocketSpeed + 5;
+            bullet = [CatBullet superCatWithPos:rocket_.position withSpeed:CGPointMake(0, speed)];
+            
+            // Left and right supercats
+            CatBullet *leftBullet = [CatBullet superCatWithPos:rocket_.position withSpeed:CGPointMake(-0.5f, speed)];
+            CatBullet *rightBullet = [CatBullet superCatWithPos:rocket_.position withSpeed:CGPointMake(0.5f, speed)];            
+            [self addChild:leftBullet z:kBulletDepth];
+            [self addChild:rightBullet z:kBulletDepth];            
+            [firedCats_ addObject:leftBullet];
+            [firedCats_ addObject:rightBullet]; 
+            [[GameManager gameManager] showCombo:R_CAT_COMBO_BANNER];            
+        }
+        
         // Add the cat
         [self addChild:bullet z:kBulletDepth];
         [firedCats_ addObject:bullet];

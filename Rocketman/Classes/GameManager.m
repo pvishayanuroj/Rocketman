@@ -151,7 +151,8 @@ static GameManager *_gameManager = nil;
 - (void) bombButtonPressed:(Button *)button
 {
     if ([notification_ buttonClicked:button]) {    
-        [gameLayer_ fireCat:kCatBomb];
+//        [gameLayer_ fireCat:kCatBomb];
+        [gameLayer_ fireCat:kCatSuper];        
     }
 }
 
