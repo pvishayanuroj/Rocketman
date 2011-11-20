@@ -87,9 +87,7 @@
 }
 
 - (void) destroy
-{
-    [[GameManager gameManager] enemyKilled:originalObstacleType_ pos:self.position];
-    
+{    
     [self removeFromParentAndCleanup:YES];
     
     // Take care of cleanup of child obstacles

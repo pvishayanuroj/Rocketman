@@ -155,6 +155,7 @@ static NSUInteger countID = 0;
         boundary_.collide = c;   
         [boundary_ release];
         [self death];
+        [[GameManager gameManager] enemyKilled:originalObstacleType_ pos:self.position];        
         
         // Make eggs invisible
         for (Obstacle *obstacle in childObstacles_) {

@@ -27,12 +27,12 @@
         // Initialize
         [GameStateManager gameStateManager];
         
-        CCSprite *backgroundImage = [CCSprite spriteWithFile:@"menu_splash.png"];
+        CCSprite *backgroundImage = [CCSprite spriteWithFile:R_MENU_SPLASH];
         backgroundImage.anchorPoint = CGPointZero;
         
-        AnimatedButton *startButton = [AnimatedButton buttonWithImage:@"play_button.png" target:self selector:@selector(startGame)];
-        AnimatedButton *helpButton = [AnimatedButton buttonWithImage:@"help_button.png" target:self selector:@selector(viewCredits)];
-        AnimatedButton *highScoreButton = [AnimatedButton buttonWithImage:@"scores_button.png" target:self selector:@selector(viewHighscore)];        
+        AnimatedButton *startButton = [AnimatedButton buttonWithImage:R_PLAY_TEXT target:self selector:@selector(startGame)];
+        AnimatedButton *helpButton = [AnimatedButton buttonWithImage:R_HELP_TEXT target:self selector:@selector(viewCredits)];
+        AnimatedButton *highScoreButton = [AnimatedButton buttonWithImage:R_SCORES_TEXT target:self selector:@selector(viewHighscore)];        
         
         startButton.position = CGPointMake(120, 260);
         helpButton.position = CGPointMake(120, 200);

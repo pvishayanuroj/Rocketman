@@ -18,6 +18,7 @@
 @synthesize rect = rect_;
 @synthesize isInvincible = isInvincible_;
 @synthesize rocketState = rocketState_;
+@synthesize delegate = delegate_;
 
 #pragma mark - Object Lifecycle
 
@@ -29,6 +30,8 @@
 - (id) initWithPos:(CGPoint)pos
 {
 	if ((self = [super init])) {
+        
+        delegate_ = nil;
         
         sprite_ = [[CCSprite spriteWithSpriteFrameName:@"Rocket2 Fly 01.png"] retain];
         [self addChild:sprite_ z:-2];
@@ -289,6 +292,38 @@
 {
     isInvincible_ = NO;
     [aura_ stopAllActions];
+}
+
+- (void) showVictoryBoost
+{
+    CGFloat centeringTime = fabs(self.position.x - 160)/120.0f;
+    CCActionInterval *center = [CCMoveTo actionWithDuration:centeringTime position:CGPointMake(160, self.position.y)];    
+    CCActionInterval *delay = [CCDelayTime actionWithDuration:1.5f];
+    CCActionInstant *boostOn = [CCCallFunc actionWithTarget:self selector:@selector(victoryBoost)];
+    CCActionInterval *boost = [CCMoveBy actionWithDuration:4.0f position:CGPointMake(0, 450)];
+    CCActionInterval *easeBoost = [CCEaseIn actionWithAction:boost rate:3.0f];
+    CCActionInstant *done = [CCCallFunc actionWithTarget:self selector:@selector(victoryBoostComplete)];    
+    [self runAction:[CCSequence actions:center, delay, boostOn, easeBoost, done, nil]];       
+}
+                                
+- (void) victoryBoost
+{
+    [self showRepeatableShaking];
+    [self toggleBoostOn:YES];
+}
+
+- (void) victoryBoostComplete
+{
+    [self toggleBoostOn:NO];    
+    [delegate_ victoryBoostComplete];
+}
+
+- (void) showLosingFall
+{
+    CCFiniteTimeAction *fall = [CCMoveBy actionWithDuration:0.2f position:CGPointMake(0, -300)];
+    CCFiniteTimeAction *delay = [CCDelayTime actionWithDuration:2.0f];
+    CCActionInstant *method = [CCCallFunc actionWithTarget:delegate_ selector:@selector(losingFallComplete)];
+    [self runAction:[CCSequence actions:fall, delay, method, nil]];    
 }
 
 #pragma mark - Particle System

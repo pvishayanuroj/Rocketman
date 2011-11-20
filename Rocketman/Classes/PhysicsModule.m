@@ -52,6 +52,9 @@ const CGFloat V_SLOW_DECAY_MIN = 2.0f;
 // Rate at which the rocket recovers its speed after slowing down
 const CGFloat DV_SLOWED_RESTORE = 0.3f;
 
+// Rate at which "world" slows to stop
+const CGFloat DV_WORLD_STOP = 0.1f;
+
 // Boost amount for most cases
 const CGFloat VB_NORMAL         = 3.0f;
 // Rate of boost change for the starting boost
@@ -114,6 +117,9 @@ const CGFloat SRSM_FPS = 60.0f;
         case kSlowedRelease:
             [self applySlow:dt];
             break;
+        case kWorldStop:
+            [self applyWorldStop:dt];
+            break;
         default:
             break;
     }
@@ -147,6 +153,14 @@ const CGFloat SRSM_FPS = 60.0f;
         vR_ -= (DV_MIN + dVMin_);
         dVMin_ += DDV_MIN;
         [[[GameManager gameManager] rocket] turnFlameOff];        
+    }
+}
+
+- (void) applyWorldStop:(ccTime)dt
+{
+    vR_ -= DV_WORLD_STOP;
+    if (vR_ < 0) {
+        vR_ = 0;
     }
 }
 
@@ -351,6 +365,11 @@ const CGFloat SRSM_FPS = 60.0f;
         default:
             break;
     }
+}
+
+- (void) worldStop
+{
+    rocketMode_ = kWorldStop;
 }
 
 - (BOOL) boostOn

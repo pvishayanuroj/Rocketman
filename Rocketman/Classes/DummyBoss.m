@@ -36,7 +36,8 @@ static NSUInteger countID = 0;
 {
 	if ((self = [super init])) {
         
-		unitID_ = countID++;                
+		unitID_ = countID++;    
+        originalObstacleType_ = kDummyBoss;
         obstacleType_ = kDummyBoss;
         name_ = [[[DataManager dataManager] nameForType:obstacleType_] retain];
         
@@ -123,9 +124,6 @@ static NSUInteger countID = 0;
     }    
     else {
         [self showDamage];
-        // Account for offset, since pos is in terms of screen grid
-        CGPoint p = ccpSub(point, self.position);
-        NSLog(@"collide: %3.0f, %3.0f p: %3.0f, %3.0f", point.x, point.y, p.x, p.y);
         // Turtle takes no damage on shell hit
         [[GameManager gameManager] addDoodad:[LightBlastCloud lightBlastCloudAt:point movements:movements_]];
     }
@@ -137,6 +135,7 @@ static NSUInteger countID = 0;
     sprite_.visible = NO;
     
     [[GameManager gameManager] addDoodad:[DarkBlastCloud darkBlastCloudAt:self.position]];
+    [[GameManager gameManager] enemyKilled:originalObstacleType_ pos:self.position];    
 }
 
 - (void) sideMovementLeftTurnaround:(SideMovement *)movement

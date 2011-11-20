@@ -30,6 +30,7 @@
 #import "WallModule.h"
 #import "ComboModule.h"
 #import "EventText.h"
+#import "Banner.h"
 
 #import "HighscoreManager.h"
 
@@ -112,9 +113,13 @@
         physics_ = [[PhysicsModule physicsModule] retain];
         physics_.delegate = self;
         
+        // Add combo module
+        combo_ = [[ComboModule comboModule] retain];
+        
         // Add the rocket
         CGPoint startPos = CGPointMake(screenWidth_ * 0.5, screenHeight_ * 0.15);
         rocket_ = [[Rocket rocketWithPos:startPos] retain];
+        rocket_.delegate = self;
         [self addChild:rocket_ z:kRocketDepth];
         [[GameManager gameManager] registerRocket:rocket_];
         
@@ -142,7 +147,9 @@
 
 - (void) dealloc
 {
+#if DEBUG_DEALLOCS      
     NSLog(@"Game Layer dealloc'd");
+#endif
     
     for (Obstacle *obstacle in obstacles_) {
         [obstacle destroy];
@@ -151,6 +158,7 @@
     [rocket_ release];
     [physics_ release];
     [wall_ release];
+    [combo_ release];
     [obstacles_ release];
     [firedCats_ release];
     [doodads_ release];
@@ -175,7 +183,7 @@
 
 - (void) slowUpdate:(ccTime)dt
 {
-    //[self cloudGenerator];    
+    [self cloudGenerator];    
       
 }
 
@@ -441,12 +449,29 @@
     // Very important to do this, since the accelerometer singleton is holding a ref to us
     [[UIAccelerometer sharedAccelerometer] setDelegate:nil];    
     
-    CCActionInterval *boost = [CCMoveBy actionWithDuration:2.0f position:CGPointMake(0, 500)];
-    CCActionInterval *easeBoost = [CCEaseOut actionWithAction:boost rate:2.0f];
-    TargetedAction *rocketBoost = [TargetedAction actionWithTarget:rocket_ actionIn:easeBoost];
-    CCFiniteTimeAction *delay = [CCDelayTime actionWithDuration:4.0f];    
-    CCActionInstant *done = [CCCallFunc actionWithTarget:self selector:@selector(endLevelWithWin)];    
-    [self runAction:[CCSequence actions:rocketBoost, delay, done, nil]];    
+    [rocket_ showVictoryBoost];
+}
+
+- (BOOL) bannerClicked
+{
+    return YES;
+}
+
+- (void) bannerClosed
+{
+    delegate_ = nil;
+    [[GameStateManager gameStateManager] endGame:height_];       
+}
+
+- (void) victoryBoostComplete
+{
+    // Stop the movement and show the victory banner
+    [physics_ worldStop];
+    
+    Banner *banner = [Banner banner:R_VICTORY_BANNER delay:0.0f];
+    banner.position = CGPointMake(160.0f, 300.0f);
+    banner.delegate = self;
+    [self addChild:banner z:kLabelDepth];
 }
 
 - (void) loss
@@ -461,20 +486,11 @@
         // Very important to do this, since the accelerometer singleton is holding a ref to us
         [[UIAccelerometer sharedAccelerometer] setDelegate:nil];
         
-        CCFiniteTimeAction *fall = [CCMoveBy actionWithDuration:0.2f position:CGPointMake(0, -300)];
-        TargetedAction *rocketFall = [TargetedAction actionWithTarget:rocket_ actionIn:fall];
-        CCFiniteTimeAction *delay = [CCDelayTime actionWithDuration:2.0f];
-        CCActionInstant *method = [CCCallFunc actionWithTarget:self selector:@selector(endLevelWithLoss)];
-        [self runAction:[CCSequence actions:rocketFall, delay, method, nil]];
+        [rocket_ showLosingFall];
     }
 }
 
-- (void) endLevelWithWin
-{
-    [[GameStateManager gameStateManager] endGame:height_];   
-}
-
-- (void) endLevelWithLoss
+- (void) losingFallComplete
 {
     [[GameStateManager gameStateManager] endGame:height_];   
 }
@@ -540,7 +556,7 @@
             obstacle = [Turtling turtlingWithPos:pos];
             break;
         case kTurtlingSwarm:
-            [self addTurtlingSwarm:1];
+            [self addTurtlingSwarm:8];
             add = NO;
             break;   
         case kShockTurtling:
@@ -687,6 +703,11 @@
 - (void) enemyKilled:(ObstacleType)type pos:(CGPoint)pos
 {
     [combo_ enemyKilled:type pos:pos];
+    
+    // Check if a boss was killed
+    if ([UtilFuncs isBoss:type]) {
+        [self win];
+    }
 }
 
 - (void) fireCat:(CatType)type
@@ -780,11 +801,11 @@
                     numBoosts_--;
                     
                     if (physics_.boostOn && (physics_.boostType == kRingBoost || physics_.boostType == kBoosterBoost)) {
-                        NSInteger random = arc4random() % 2;
                         [physics_ engageBoost:kInvincibilityBoost];
                         [rocket_ toggleBoostOn:YES];                            
-                        [rocket_ showAuraForDuration:3.0f];                    
-                        [[GameManager gameManager] showCombo:random+1];
+                        [rocket_ showAuraForDuration:3.0f];      
+                        NSString *comboName = (arc4random() % 2) ? R_MOJO_BOOST_BANNER : R_ROCKET_TIME_BANNER;
+                        [[GameManager gameManager] showCombo:comboName];
                     }
                     else {
                         [physics_ engageBoost:kBoosterBoost];              
@@ -838,10 +859,7 @@
             // Don't allow boosts during invincibility boost
             if (!(physics_.boostOn && physics_.boostType == kInvincibilityBoost)) {            
                 [self showText:kSpeedUp];                    
-                [[AudioManager audioManager] playSound:kKerrum];                            
-    #if DEBUG_CONSTANTSPEED
-                break;
-    #endif               
+                [[AudioManager audioManager] playSound:kKerrum];                                      
                 [physics_ engageBoost:kRingBoost];
                 [rocket_ toggleBoostOn:YES];                    
             }

@@ -38,15 +38,15 @@ const CGFloat EL_RESTART_ROTATE_TIME = 2.0f;
 
 - (void) addButtons
 {
-    restartIcon_ = [[CCSprite spriteWithFile:@"restart_icon.png"] retain];
-    stageIcon_ = [[CCSprite spriteWithFile:@"stage_icon.png"] retain];
+    restartIcon_ = [[CCSprite spriteWithFile:R_RESTART_ICON] retain];
+    stageIcon_ = [[CCSprite spriteWithFile:R_STAGE_SELECTION_ICON] retain];
     
     CGSize size = [[CCDirector sharedDirector] winSize];
     restartIcon_.position = ccp(220, EL_RESTART_REL_Y * size.height);
     stageIcon_.position = ccp(265, EL_STAGE_REL_Y * size.height);
     
-    AnimatedButton *restartButton = [AnimatedButton buttonWithImage:@"restart_text.png" target:self selector:@selector(restart)];
-    AnimatedButton *stageButton = [AnimatedButton buttonWithImage:@"stage_text.png" target:self selector:@selector(stageSelect)];
+    AnimatedButton *restartButton = [AnimatedButton buttonWithImage:R_RESTART_TEXT target:self selector:@selector(restart)];
+    AnimatedButton *stageButton = [AnimatedButton buttonWithImage:R_STAGE_SELECTION_TEXT target:self selector:@selector(stageSelect)];
     restartButton.position = ccp(0.5 * size.width, EL_RESTART_REL_Y * size.height);
     stageButton.position = ccp(0.5 * size.width, EL_STAGE_REL_Y * size.height);
     

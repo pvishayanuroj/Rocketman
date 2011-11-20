@@ -7,6 +7,8 @@
 //
 
 #import "ComboModule.h"
+#import "EventText.h"
+#import "GameManager.h"
 
 const NSInteger CM_TARGET_COUNT = 9;
 
@@ -32,7 +34,12 @@ const NSInteger CM_TARGET_COUNT = 9;
 
 - (void) enemyKilled:(ObstacleType)type pos:(CGPoint)pos
 {
+    comboCount_++;
     
+    NSString *text = [NSString stringWithFormat:@"+%d", comboCount_];
+    EventText *eventText = [EventText eventTextWithString:text];
+    eventText.position = CGPointMake(pos.x, pos.y + 20);
+    [[GameManager gameManager] addGameLayerText:eventText];
 }
 
 @end

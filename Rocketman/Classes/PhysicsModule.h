@@ -20,7 +20,8 @@ typedef enum {
     kNormal,
     kSlowed,
     kSlowedRelease,
-    kBoosting
+    kBoosting,
+    kWorldStop
 } RocketMode;
 
 @interface PhysicsModule : CCNode {
@@ -88,11 +89,16 @@ typedef enum {
 
 - (void) calculateSpeed:(ccTime)dt;
 
+- (void) applyWorldStop:(ccTime)dt;
+
 - (void) applyBoost:(ccTime)dt;
 
 - (void) applySlow:(ccTime)dt;
 
 - (void) rocketCollision;
+
+/** Called for quickly dropping speed to zero */
+- (void) worldStop;
 
 /** Called when player is pressing the slow button */
 - (void) rocketSlowed;

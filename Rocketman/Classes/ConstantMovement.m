@@ -44,7 +44,6 @@
 
 - (id) copyWithZone: (NSZone *)zone
 {
-    NSLog(@"constant movement copied");
     ConstantMovement *cpy = [[ConstantMovement allocWithZone:zone] initConstantMovement:self.rate];
     return cpy;
 }

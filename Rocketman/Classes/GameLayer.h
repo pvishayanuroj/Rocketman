@@ -11,6 +11,8 @@
 #import "CDAudioManager.h"
 #import "GameLayerDelegate.h"
 #import "PhysicsModuleDelegate.h"
+#import "RocketDelegate.h"
+#import "BannerDelegate.h"
 
 @class Rocket;
 @class PhysicsModule;
@@ -24,7 +26,7 @@
 @class CDAudioManager;
 @class CDSoundEngine;
 
-@interface GameLayer : CCLayer <PhysicsModuleDelegate, UIAccelerometerDelegate> {
+@interface GameLayer : CCLayer <PhysicsModuleDelegate, RocketDelegate, BannerDelegate, UIAccelerometerDelegate> {
  
     /** Maps object strings to object types */
     NSDictionary *objectNameMap_;
@@ -140,6 +142,10 @@
 
 - (NSInteger) getRandomX;
 
+/** Method used to trigger the sequence of events for a win */
+- (void) win;
+
+/** Method used to trigger the sequence of events for a loss */
 - (void) loss;
 
 - (void) addBirdSwarm:(NSInteger)size;

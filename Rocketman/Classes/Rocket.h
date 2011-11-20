@@ -8,6 +8,7 @@
 
 #import "CommonHeaders.h"
 #import "cocos2d.h"
+#import "RocketDelegate.h"
 
 /** Rocket states */
 typedef enum {
@@ -54,11 +55,14 @@ typedef enum {
 	CCParticleSystem *boostFlame_;         
     
 	CCParticleSystem *heartParticles_;
+    
+    id <RocketDelegate> delegate_;
 }
 
 @property (nonatomic, readonly) CGRect rect;
 @property (nonatomic, readonly) BOOL isInvincible;
 @property (nonatomic, readonly) RocketState rocketState;
+@property (nonatomic, assign) id <RocketDelegate> delegate;
 
 + (id) rocketWithPos:(CGPoint)pos;
 
@@ -91,6 +95,10 @@ typedef enum {
 - (void) doneHeartSequence;
 
 - (void) showWobbling;
+
+- (void) showVictoryBoost;
+
+- (void) showLosingFall;
 
 /** Only used to turn the boost on/engine off or the boost off/engine on */
 - (void) toggleBoostOn:(BOOL)on;

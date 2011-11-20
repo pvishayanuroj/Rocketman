@@ -41,17 +41,17 @@ static AudioManager *_audioManager = nil;
 	if ((self = [super init])) {
         
         SimpleAudioEngine *sae = [SimpleAudioEngine sharedEngine];
-        [sae preloadBackgroundMusic:@"SRSMTheme01.mp3"];
-        [sae preloadEffect:@"meow01.mp3"];
-        [sae preloadEffect:@"meow02.mp3"];
-        [sae preloadEffect:@"meow03.wav"];    
-        [sae preloadEffect:@"plop.wav"];    
-        [sae preloadEffect:@"kerrum.wav"];    
-        [sae preloadEffect:@"werr.wav"];    
-        [sae preloadEffect:@"explosion01.wav"];        
-        [sae preloadEffect:@"powerup.wav"];        
-        [sae preloadEffect:@"slap.wav"];                
-        engineSound_ = [[sae soundSourceForFile:@"engine.wav"] retain];       
+        [sae preloadBackgroundMusic:R_01_MUSIC];
+        [sae preloadEffect:R_MEOW_01_SOUND];
+        [sae preloadEffect:R_MEOW_02_SOUND];
+        [sae preloadEffect:R_MEOW_03_SOUND];    
+        [sae preloadEffect:R_PLOP_SOUND];    
+        [sae preloadEffect:R_KERRUM_SOUND];    
+        [sae preloadEffect:R_WERR_SOUND];    
+        [sae preloadEffect:R_EXPLOSION_01_SOUND];        
+        [sae preloadEffect:R_POWERUP_SOUND];        
+        [sae preloadEffect:R_SLAP_SOUND];                
+        engineSound_ = [[sae soundSourceForFile:R_ENGINE_SOUND] retain];       
         enginePlaying_ = NO;
         backgroundMusicPlaying_ = NO;
         
@@ -73,48 +73,39 @@ static AudioManager *_audioManager = nil;
 #if DEBUG_NOSOUND
     return;
 #endif
-    NSUInteger rand;
+    
     NSString *name;
     SimpleAudioEngine *engine = [SimpleAudioEngine sharedEngine];
     
     switch (type) {
         case kTheme01:
-            name = [NSString stringWithFormat:@"SRSMTheme01.mp3"];
-            [engine playBackgroundMusic:name];
+            [engine playBackgroundMusic:R_01_MUSIC];
             backgroundMusicPlaying_ = YES;
             break;
         case kMeow:
-            rand = arc4random() % 2 + 1;
-            name = [NSString stringWithFormat:@"meow%02d.mp3", rand];
+            name = (arc4random() % 2) ? R_MEOW_01_SOUND : R_MEOW_02_SOUND;
             [engine playEffect:name];            
             break;
         case kPlop:
-            name = [NSString stringWithFormat:@"plop.wav"];
-            [engine playEffect:name];
+            [engine playEffect:R_PLOP_SOUND];
             break;
         case kKerrum:
-            name = [NSString stringWithFormat:@"kerrum.wav"];
-            [engine playEffect:name];
+            [engine playEffect:R_KERRUM_SOUND];
             break;            
         case kWerr:
-            name = [NSString stringWithFormat:@"werr.wav"];
-            [engine playEffect:name];
+            [engine playEffect:R_WERR_SOUND];
             break;            
         case kPowerup:
-            name = [NSString stringWithFormat:@"powerup.wav"];
-            [engine playEffect:name];
+            [engine playEffect:R_POWERUP_SOUND];
             break;                   
         case kCollectMeow:
-            name = [NSString stringWithFormat:@"meow03.wav"];
-            [engine playEffect:name];
+            [engine playEffect:R_MEOW_03_SOUND];
             break;                 
         case kExplosion01:
-            name = [NSString stringWithFormat:@"explosion01.wav"];
-            [engine playEffect:name];
+            [engine playEffect:R_EXPLOSION_01_SOUND];
             break;                   
         case kSlap:
-            name = [NSString stringWithFormat:@"slap.wav"];
-            [engine playEffect:name];
+            [engine playEffect:R_SLAP_SOUND];
             break;                             
         case kEngine:
             engineSound_.looping = YES;

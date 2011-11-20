@@ -246,9 +246,9 @@ static GameManager *_gameManager = nil;
 
 #pragma mark - Dialogue Layer Methods
 
-- (void) showCombo:(NSUInteger)comboNum
+- (void) showCombo:(NSString *)filename
 {
-    [dialogueLayer_ showCombo:comboNum];
+    [dialogueLayer_ showCombo:filename];
 }
 
 - (void) addToDialogueLayer:(CCNode *)dialogue

@@ -15,6 +15,6 @@
     
 }
 
-- (void) showCombo:(NSUInteger)comboNum;
+- (void) showCombo:(NSString *)filename;
 
 @end

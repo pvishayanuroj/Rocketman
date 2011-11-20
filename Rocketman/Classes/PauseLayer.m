@@ -37,7 +37,7 @@ const CGFloat PL_STAGE_RESIZE_DURATION = 0.05f;
      
         isPaused_ = NO;
         
-        button_ = [[AnimatedButton buttonWithImage:@"pause_button.png" target:self selector:@selector(pauseGame)] retain];
+        button_ = [[AnimatedButton buttonWithImage:R_PAUSE_ICON target:self selector:@selector(pauseGame)] retain];
         button_.position = CGPointMake(PL_PAUSE_X, PL_PAUSE_Y);
         [self addChild:button_];
     }
@@ -59,18 +59,18 @@ const CGFloat PL_STAGE_RESIZE_DURATION = 0.05f;
 
 - (void) addButtons
 {
-    restartIcon_ = [[CCSprite spriteWithFile:@"restart_icon.png"] retain];
-    stageIcon_ = [[CCSprite spriteWithFile:@"stage_icon.png"] retain];
-    resumeIcon_ = [[CCSprite spriteWithFile:@"resume_button.png"] retain];    
+    restartIcon_ = [[CCSprite spriteWithFile:R_RESTART_ICON] retain];
+    stageIcon_ = [[CCSprite spriteWithFile:R_STAGE_SELECTION_ICON] retain];
+    resumeIcon_ = [[CCSprite spriteWithFile:R_RESUME_ICON] retain];    
     
     CGSize size = [[CCDirector sharedDirector] winSize];
     restartIcon_.position = CGPointMake(PL_RESTART_X, PL_RESTART_REL_Y * size.height);
     stageIcon_.position = CGPointMake(PL_STAGE_X, PL_STAGE_REL_Y * size.height);
     resumeIcon_.position = CGPointMake(PL_RESUME_X, PL_RESUME_REL_Y * size.height);
     
-    restartButton_ = [[AnimatedButton buttonWithImage:@"restart_text.png" target:self selector:@selector(restart)] retain];
-    stageButton_ = [[AnimatedButton buttonWithImage:@"stage_text.png" target:self selector:@selector(stageSelect)] retain];
-    resumeButton_ = [[AnimatedButton buttonWithImage:@"resume_text.png" target:self selector:@selector(resumeGame)] retain];    
+    restartButton_ = [[AnimatedButton buttonWithImage:R_RESTART_TEXT target:self selector:@selector(restart)] retain];
+    stageButton_ = [[AnimatedButton buttonWithImage:R_STAGE_SELECTION_TEXT target:self selector:@selector(stageSelect)] retain];
+    resumeButton_ = [[AnimatedButton buttonWithImage:R_RESUME_TEXT target:self selector:@selector(resumeGame)] retain];    
     restartButton_.position = CGPointMake(0.5f * size.width, PL_RESTART_REL_Y * size.height);
     stageButton_.position = CGPointMake(0.5f * size.width, PL_STAGE_REL_Y * size.height);
     resumeButton_.position = CGPointMake(0.5f * size.width, PL_RESUME_REL_Y * size.height);    

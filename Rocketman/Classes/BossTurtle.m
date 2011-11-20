@@ -41,7 +41,8 @@ static NSUInteger countID = 0;
 {
 	if ((self = [super init])) {
         
-		unitID_ = countID++;        
+		unitID_ = countID++;   
+        originalObstacleType_ = kBossTurtle;
         obstacleType_ = kBossTurtle;
         name_ = [[[DataManager dataManager] nameForType:obstacleType_] retain];
         
@@ -258,6 +259,7 @@ static NSUInteger countID = 0;
     sprite_.visible = NO;
     
     [[GameManager gameManager] addDoodad:[DarkBlastCloud darkBlastCloudAt:self.position]];
+    [[GameManager gameManager] enemyKilled:originalObstacleType_ pos:self.position];    
 }
 
 #pragma mark - Particle System

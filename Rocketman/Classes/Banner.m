@@ -32,7 +32,11 @@ const CGFloat BN_MOVE_DUR = 0.5f;
         delegate_ = nil;
         clickable_ = YES;
         
-        NSString *path = [[NSBundle mainBundle] pathForResource:bannerName ofType:@"png"];
+        NSString *path = [NSString stringWithString:bannerName];
+        if (![[bannerName substringFromIndex:[bannerName length] - 4] isEqualToString:@".png"]) {
+            path = [[NSBundle mainBundle] pathForResource:bannerName ofType:@"png"];
+        }
+            
         sprite_ = [[CCSprite spriteWithFile:path] retain];
         sprite_.position = CGPointMake(BN_START_X, 0);
         [self addChild:sprite_];

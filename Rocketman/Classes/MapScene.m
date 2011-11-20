@@ -24,16 +24,16 @@ CGFloat MS_LINE2_XSCALE = 0.7f;
 {
 	if ((self = [super init])) {
         
-        CCSprite *mapImage = [CCSprite spriteWithFile:@"World Map.png"];
+        CCSprite *mapImage = [CCSprite spriteWithFile:R_WORLD_MAP];
         mapImage.anchorPoint = CGPointZero;        
         [self addChild:mapImage];
         
-        CCSprite *line1 = [CCSprite spriteWithFile:@"Black Line.png"];
+        CCSprite *line1 = [CCSprite spriteWithFile:R_BLACK_LINE];
         line1.anchorPoint = CGPointMake(0.0f, 0.5f);
         line1.position = CGPointMake(0, MS_LINE1_YPOS);
         [self addChild:line1];
         
-        CCSprite *line2 = [CCSprite spriteWithFile:@"Black Line.png"];        
+        CCSprite *line2 = [CCSprite spriteWithFile:R_BLACK_LINE];        
         line2.anchorPoint = CGPointMake(0.0f, 0.5f);
         line2.position = CGPointMake(0, MS_LINE2_YPOS);
         line2.scaleX = MS_LINE2_XSCALE;

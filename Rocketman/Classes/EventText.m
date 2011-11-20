@@ -17,9 +17,9 @@ const CGFloat ET_ANGLED_TEXT_YOFFSET = 35.0f;
 const CGFloat ET_ANGLED_TEXT_HOLD_DURATION = 0.2f;
 const CGFloat ET_ANGLED_TEXT_FADE_DURATION = 0.5f;
 
-const CGFloat ET_FADEUP_TEXT_FADE_DURATION = 0.2f;
-const CGFloat ET_FADEUP_TEXT_TOTAL_DURATION = 0.8f;
-const CGFloat ET_FADEUP_TEXT_MOVE_AMT = 30.0f;
+const CGFloat ET_FADEUP_TEXT_FADE_DURATION = 0.7f;
+const CGFloat ET_FADEUP_TEXT_TOTAL_DURATION = 0.9f;
+const CGFloat ET_FADEUP_TEXT_MOVE_AMT = 20.0f;
 
 + (id) eventText:(ActionText)actionText
 {
@@ -40,7 +40,7 @@ const CGFloat ET_FADEUP_TEXT_MOVE_AMT = 30.0f;
         
         if (actionText == kGivenText) {
             
-            label_ = [[CCLabelBMFont labelWithString:string fntFile:@"SRSMWhiteFont.fnt"] retain];
+            label_ = [[CCLabelBMFont labelWithString:string fntFile:R_WHITE_FONT] retain];
             [self addChild:label_];
         }
         else {
@@ -125,24 +125,21 @@ const CGFloat ET_FADEUP_TEXT_MOVE_AMT = 30.0f;
 - (void) showFadeUpText
 {
     CGPoint moveAmt = CGPointMake(0, ET_FADEUP_TEXT_MOVE_AMT);
-    CGFloat delayTime = ET_FADEUP_TEXT_TOTAL_DURATION - 2 * ET_FADEUP_TEXT_FADE_DURATION;
+    CGFloat delayTime = ET_FADEUP_TEXT_TOTAL_DURATION - 1 * ET_FADEUP_TEXT_FADE_DURATION;
 
-    CCActionInterval *fadeIn = [CCFadeIn actionWithDuration:ET_FADEUP_TEXT_FADE_DURATION];
+    //CCActionInterval *fadeIn = [CCFadeIn actionWithDuration:ET_FADEUP_TEXT_FADE_DURATION];
     CCActionInterval *delay = [CCDelayTime actionWithDuration:delayTime];
     CCActionInterval *fadeOut = [CCFadeOut actionWithDuration:ET_FADEUP_TEXT_FADE_DURATION];
     CCActionInterval *moveUp = [CCMoveBy actionWithDuration:ET_FADEUP_TEXT_TOTAL_DURATION position:moveAmt];
     CCActionInstant *done = [CCCallFunc actionWithTarget:self selector:@selector(destroy)];    
     
-    CCActionInterval *fade = [CCSequence actions:fadeIn, delay, fadeOut, nil];
+    CCActionInterval *fade = [CCSequence actions:delay, fadeOut, nil];
     CCActionInterval *move = [CCSequence actions:moveUp, done, nil];
     
-    // Unfortunately CCNode does not have the opacity property
     if (sprite_) {
-        sprite_.opacity = 0;
         [sprite_ runAction:fade];
     }
     else if (label_) {
-        label_.opacity = 0;
         [label_ runAction:fade];
     }
     

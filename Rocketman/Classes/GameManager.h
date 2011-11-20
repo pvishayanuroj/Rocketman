@@ -91,7 +91,7 @@
 
 - (void) invalidateSlowButton;
 
-- (void) showCombo:(NSUInteger)comboNum;
+- (void) showCombo:(NSString *)filename;
 
 - (void) addToDialogueLayer:(CCNode *)dialogue;
 

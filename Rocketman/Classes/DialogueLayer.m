@@ -31,9 +31,8 @@ const CGFloat DL_COMBO_HOLD_DUR = 0.7f;
     [super dealloc];
 }
 
-- (void) showCombo:(NSUInteger)comboNum
+- (void) showCombo:(NSString *)filename
 {
-    NSString *filename = [NSString stringWithFormat:@"dialogue_combo%d.png", comboNum];
     sprite_ = [[CCSprite spriteWithFile:filename] retain];
     
     [self addChild:sprite_];

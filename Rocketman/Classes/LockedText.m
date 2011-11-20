@@ -26,7 +26,7 @@ const CGFloat LT_SHAKEOFFSET = 2.0f;
 {
     if ((self = [super init])) {
         
-        CCSprite *sprite = [CCSprite spriteWithFile:@"Locked Text.png"];
+        CCSprite *sprite = [CCSprite spriteWithFile:R_LOCKED_TEXT];
         [self addChild:sprite];
         
         [self runShaking];

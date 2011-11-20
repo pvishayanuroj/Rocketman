@@ -119,6 +119,7 @@ static NSUInteger countID = 0;
 
 - (void) boundaryHit:(CGPoint)point boundaryID:(NSInteger)boundaryID
 {
+    [[GameManager gameManager] enemyKilled:originalObstacleType_ pos:self.position];    
     [[AudioManager audioManager] playSound:kPlop];        
     [self death];
 }
