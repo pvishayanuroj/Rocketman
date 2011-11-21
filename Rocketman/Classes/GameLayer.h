@@ -18,6 +18,7 @@
 @class PhysicsModule;
 @class WallModule;
 @class ComboModule;
+@class Gauge;
 @class Cat;
 @class Boost;
 @class Fuel;
@@ -54,6 +55,9 @@
     
     /** Used to keep track of enemy kill combos */
     ComboModule *combo_;
+    
+    /** Graphical representation of rocket speed */
+    Gauge *speedGauge_;
     
     /** Holds all current active obstacles */
     NSMutableArray *obstacles_;

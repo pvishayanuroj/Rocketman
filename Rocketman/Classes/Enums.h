@@ -17,7 +17,8 @@ enum {
     kRocketFlameDepth = 7,
 	kRocketDepth = 8,
     kCatDepth = 9,
-    kLabelDepth = 10
+    kLabelDepth = 10,
+    kReadoutDepth = 11
 };
 
 typedef enum {

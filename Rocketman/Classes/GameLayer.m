@@ -29,6 +29,7 @@
 #import "PhysicsModule.h"
 #import "WallModule.h"
 #import "ComboModule.h"
+#import "Gauge.h"
 #import "EventText.h"
 #import "Banner.h"
 
@@ -116,6 +117,19 @@
         // Add combo module
         combo_ = [[ComboModule comboModule] retain];
         
+        // Add the gauge
+        NSMutableArray *cutoffs = [NSMutableArray arrayWithCapacity:6];
+        [cutoffs addObject:[NSNumber numberWithFloat:0.01f]];
+        [cutoffs addObject:[NSNumber numberWithFloat:3.00f]];
+        [cutoffs addObject:[NSNumber numberWithFloat:5.00f]];
+        [cutoffs addObject:[NSNumber numberWithFloat:6.75f]];
+        [cutoffs addObject:[NSNumber numberWithFloat:8.25f]];
+        [cutoffs addObject:[NSNumber numberWithFloat:9.51f]];
+        [cutoffs addObject:[NSNumber numberWithFloat:11.0f]];         
+        speedGauge_ = [[Gauge gauge:@"Speed Bar" numIntervals:8 cutoffs:cutoffs] retain];
+        speedGauge_.position = CGPointMake(40, 450);
+        [self addChild:speedGauge_ z:kReadoutDepth];
+        
         // Add the rocket
         CGPoint startPos = CGPointMake(screenWidth_ * 0.5, screenHeight_ * 0.15);
         rocket_ = [[Rocket rocketWithPos:startPos] retain];
@@ -159,6 +173,7 @@
     [physics_ release];
     [wall_ release];
     [combo_ release];
+    [speedGauge_ release];
     [obstacles_ release];
     [firedCats_ release];
     [doodads_ release];
@@ -202,6 +217,7 @@
     }
     
     [wall_ heightUpdate:height_];
+    [speedGauge_ tick:physics_.rocketSpeed];
     [delegate_ heightUpdate:height_];
     [delegate_ speedUpdate:physics_.rocketSpeed];
 }
