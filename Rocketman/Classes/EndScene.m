@@ -51,7 +51,7 @@ const CGFloat ES_SCORE_TIME = 2.0f;
         
         // Game over text
 		CGSize size = [[CCDirector sharedDirector] winSize];        
-        CCSprite *text = [CCSprite spriteWithFile:@"gameover_text.png"];
+        CCSprite *text = [CCSprite spriteWithFile:R_GAME_OVER_TEXT];
         text.position = CGPointMake(size.width * 0.5, size.height * 0.65);
         [self addChild:text z:3];
         

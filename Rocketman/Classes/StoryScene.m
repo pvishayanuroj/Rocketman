@@ -30,7 +30,7 @@
         sceneDuration_ = duration;
 
         // Skip button
-        AnimatedButton *skipButton = [AnimatedButton buttonWithImage:@"skip_button.png" target:self selector:@selector(skip)];
+        AnimatedButton *skipButton = [AnimatedButton buttonWithImage:R_SKIP_TEXT target:self selector:@selector(skip)];
         skipButton.position = CGPointMake(280, 30);
         [self addChild:skipButton z:2];
     }

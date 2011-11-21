@@ -28,6 +28,8 @@
 
 - (id) initComboModule;
 
+- (void) step:(ccTime)dt;
+
 - (void) enemyKilled:(ObstacleType)type pos:(CGPoint)pos;
 
 @end

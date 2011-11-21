@@ -108,12 +108,10 @@
 		<string>4928</string>
 		<string>7328</string>
 	</array>
-	<key>Ground File</key>
-	<string></string>
+	<key>Parallax File</key>
+	<string>Abstract Ground.png</string>
 	<key>Level Num</key>
 	<string>3</string>
-	<key>Parallax File</key>
-	<string></string>
 	<key>Vertical Tiles</key>
 	<integer>5000</integer>
 </dict>

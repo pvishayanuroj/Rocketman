@@ -134,8 +134,6 @@
 	<string>City Ground.png</string>
 	<key>Level Num</key>
 	<string>5</string>
-	<key>Parallax File</key>
-	<string></string>
 	<key>Vertical Tiles</key>
 	<integer>4000</integer>
 </dict>

@@ -32,6 +32,11 @@ const NSInteger CM_TARGET_COUNT = 9;
     return self;
 }
 
+- (void) step:(ccTime)dt
+{
+    
+}
+
 - (void) enemyKilled:(ObstacleType)type pos:(CGPoint)pos
 {
     comboCount_++;

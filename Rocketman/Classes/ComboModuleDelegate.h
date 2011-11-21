@@ -12,5 +12,7 @@
 
 - (void) comboReached;
 
+- (void) comboExpired;
+
 @end
 

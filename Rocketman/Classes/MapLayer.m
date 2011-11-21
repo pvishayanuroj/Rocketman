@@ -90,8 +90,8 @@ CGFloat ML_TURTLE_LINE2_Y = 360.0f;
         [self addChild:rocket_];    
         
         // Add buttons
-        startButton_ = [[AnimatedButton buttonWithImage:@"Start Button.png" target:self selector:@selector(startPressed)] retain];
-        AnimatedButton *menuButton = [AnimatedButton buttonWithImage:@"Menu Button.png" target:self selector:@selector(menuPressed)];    
+        startButton_ = [[AnimatedButton buttonWithImage:R_START_TEXT target:self selector:@selector(startPressed)] retain];
+        AnimatedButton *menuButton = [AnimatedButton buttonWithImage:R_MENU_TEXT target:self selector:@selector(menuPressed)];    
         startButton_.position = CGPointMake(ML_START_XPOS, ML_START_YPOS);
         menuButton.position = CGPointMake(ML_MENU_XPOS, ML_MENU_YPOS);
         [self addChild:startButton_];

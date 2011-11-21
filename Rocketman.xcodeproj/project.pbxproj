@@ -19,8 +19,6 @@
 		DA38153C14784D42005D103B /* Cat Bomb Button.png in Resources */ = {isa = PBXBuildFile; fileRef = DA38152414784D42005D103B /* Cat Bomb Button.png */; };
 		DA38153D14784D42005D103B /* Cat Button Pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = DA38152514784D42005D103B /* Cat Button Pressed.png */; };
 		DA38153E14784D42005D103B /* Cat Button.png in Resources */ = {isa = PBXBuildFile; fileRef = DA38152614784D42005D103B /* Cat Button.png */; };
-		DA38153F14784D42005D103B /* Fire.png in Resources */ = {isa = PBXBuildFile; fileRef = DA38152714784D42005D103B /* Fire.png */; };
-		DA38154114784D42005D103B /* Heart.png in Resources */ = {isa = PBXBuildFile; fileRef = DA38152914784D42005D103B /* Heart.png */; };
 		DA38154314784D42005D103B /* Menu Splash.png in Resources */ = {isa = PBXBuildFile; fileRef = DA38152B14784D42005D103B /* Menu Splash.png */; };
 		DA38154614784D42005D103B /* Restart Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = DA38152E14784D42005D103B /* Restart Icon.png */; };
 		DA38154C14784D42005D103B /* Slow Button Pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = DA38153414784D42005D103B /* Slow Button Pressed.png */; };
@@ -43,6 +41,9 @@
 		DA3815781478566A005D103B /* Black Line.png in Resources */ = {isa = PBXBuildFile; fileRef = DA38157714785669005D103B /* Black Line.png */; };
 		DA38157C147894B3005D103B /* Abstract Background.png in Resources */ = {isa = PBXBuildFile; fileRef = DA38157A147894B3005D103B /* Abstract Background.png */; };
 		DA38157D147894B3005D103B /* Abstract Ground.png in Resources */ = {isa = PBXBuildFile; fileRef = DA38157B147894B3005D103B /* Abstract Ground.png */; };
+		DA3815871479B27A005D103B /* Supercat Button Pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = DA3815851479B268005D103B /* Supercat Button Pressed.png */; };
+		DA3815881479B27A005D103B /* Supercat Button.png in Resources */ = {isa = PBXBuildFile; fileRef = DA3815861479B26C005D103B /* Supercat Button.png */; };
+		DA3815901479E2F8005D103B /* Gauge.m in Sources */ = {isa = PBXBuildFile; fileRef = DA38158F1479E2F8005D103B /* Gauge.m */; };
 		DA3979DF146B82410043C48F /* Level6_data.plist in Resources */ = {isa = PBXBuildFile; fileRef = DA3979DE146B82410043C48F /* Level6_data.plist */; };
 		DA3979E2146E9B280043C48F /* MapTurtle.m in Sources */ = {isa = PBXBuildFile; fileRef = DA3979E1146E9B280043C48F /* MapTurtle.m */; };
 		DA3979E9146EBC740043C48F /* MapTurtleController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA3979E8146EBC740043C48F /* MapTurtleController.m */; };
@@ -60,6 +61,8 @@
 		DA5037BD1454CF9600600DD4 /* Button.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5037BB1454CF8F00600DD4 /* Button.m */; };
 		DA642B64145F98C300FAB4D4 /* BlueBird.m in Sources */ = {isa = PBXBuildFile; fileRef = DA642B63145F98C300FAB4D4 /* BlueBird.m */; };
 		DA642B67145F9A5600FAB4D4 /* AlienBossTurtle.m in Sources */ = {isa = PBXBuildFile; fileRef = DA642B66145F9A5500FAB4D4 /* AlienBossTurtle.m */; };
+		DA6648231479E762001AEDED /* fire.png in Resources */ = {isa = PBXBuildFile; fileRef = DA6648211479E762001AEDED /* fire.png */; };
+		DA6648241479E762001AEDED /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = DA6648221479E762001AEDED /* heart.png */; };
 		DA69016814579CA0000D278F /* ArcMovement.m in Sources */ = {isa = PBXBuildFile; fileRef = DA69016714579CA0000D278F /* ArcMovement.m */; };
 		DA69016C145A49AF000D278F /* RockDebris.m in Sources */ = {isa = PBXBuildFile; fileRef = DA69016B145A49AF000D278F /* RockDebris.m */; };
 		DA69016F145B9EB6000D278F /* DebrisGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = DA69016E145B9EB6000D278F /* DebrisGenerator.m */; };
@@ -366,8 +369,6 @@
 		DA38152414784D42005D103B /* Cat Bomb Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Cat Bomb Button.png"; sourceTree = "<group>"; };
 		DA38152514784D42005D103B /* Cat Button Pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Cat Button Pressed.png"; sourceTree = "<group>"; };
 		DA38152614784D42005D103B /* Cat Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Cat Button.png"; sourceTree = "<group>"; };
-		DA38152714784D42005D103B /* Fire.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Fire.png; sourceTree = "<group>"; };
-		DA38152914784D42005D103B /* Heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Heart.png; sourceTree = "<group>"; };
 		DA38152B14784D42005D103B /* Menu Splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Menu Splash.png"; sourceTree = "<group>"; };
 		DA38152E14784D42005D103B /* Restart Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Restart Icon.png"; sourceTree = "<group>"; };
 		DA38153414784D42005D103B /* Slow Button Pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Slow Button Pressed.png"; sourceTree = "<group>"; };
@@ -392,6 +393,10 @@
 		DA38157914786B33005D103B /* RocketDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RocketDelegate.h; path = Classes/RocketDelegate.h; sourceTree = "<group>"; };
 		DA38157A147894B3005D103B /* Abstract Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Abstract Background.png"; sourceTree = "<group>"; };
 		DA38157B147894B3005D103B /* Abstract Ground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Abstract Ground.png"; sourceTree = "<group>"; };
+		DA3815851479B268005D103B /* Supercat Button Pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Supercat Button Pressed.png"; sourceTree = "<group>"; };
+		DA3815861479B26C005D103B /* Supercat Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Supercat Button.png"; sourceTree = "<group>"; };
+		DA38158E1479E2F8005D103B /* Gauge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Gauge.h; path = Classes/Gauge.h; sourceTree = "<group>"; };
+		DA38158F1479E2F8005D103B /* Gauge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Gauge.m; path = Classes/Gauge.m; sourceTree = "<group>"; };
 		DA3979DE146B82410043C48F /* Level6_data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Level6_data.plist; sourceTree = "<group>"; };
 		DA3979E0146E9B280043C48F /* MapTurtle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapTurtle.h; path = Classes/MapTurtle.h; sourceTree = "<group>"; };
 		DA3979E1146E9B280043C48F /* MapTurtle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapTurtle.m; path = Classes/MapTurtle.m; sourceTree = "<group>"; };
@@ -420,6 +425,8 @@
 		DA642B63145F98C300FAB4D4 /* BlueBird.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BlueBird.m; path = Classes/BlueBird.m; sourceTree = "<group>"; };
 		DA642B65145F9A5500FAB4D4 /* AlienBossTurtle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlienBossTurtle.h; path = Classes/AlienBossTurtle.h; sourceTree = "<group>"; };
 		DA642B66145F9A5500FAB4D4 /* AlienBossTurtle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlienBossTurtle.m; path = Classes/AlienBossTurtle.m; sourceTree = "<group>"; };
+		DA6648211479E762001AEDED /* fire.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fire.png; sourceTree = "<group>"; };
+		DA6648221479E762001AEDED /* heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart.png; sourceTree = "<group>"; };
 		DA69016614579CA0000D278F /* ArcMovement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ArcMovement.h; path = Classes/ArcMovement.h; sourceTree = "<group>"; };
 		DA69016714579CA0000D278F /* ArcMovement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ArcMovement.m; path = Classes/ArcMovement.m; sourceTree = "<group>"; };
 		DA69016A145A49AF000D278F /* RockDebris.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RockDebris.h; path = Classes/RockDebris.h; sourceTree = "<group>"; };
@@ -1146,12 +1153,12 @@
 			isa = PBXGroup;
 			children = (
 				DA38155314784E46005D103B /* Headers */,
-				DA38155214784E3E005D103B /* Modules */,
 				DAF444AC144B096D00943C0D /* Cocos2D Base */,
 				DAF444A2144B08EE00943C0D /* Singletons */,
 				DAF444A9144B093600943C0D /* Non-Game Nodes */,
 				DAF444A8144B092100943C0D /* Notifications */,
 				DAF444A7144B091B00943C0D /* World Map */,
+				DA38155214784E3E005D103B /* Modules */,
 				DA69A997146F8469008BBF38 /* Game Nodes */,
 				DAF444AA144B095300943C0D /* Story */,
 				DAF444AB144B095F00943C0D /* Utility */,
@@ -1561,8 +1568,8 @@
 				DA38152414784D42005D103B /* Cat Bomb Button.png */,
 				DA38152514784D42005D103B /* Cat Button Pressed.png */,
 				DA38152614784D42005D103B /* Cat Button.png */,
-				DA38152714784D42005D103B /* Fire.png */,
-				DA38152914784D42005D103B /* Heart.png */,
+				DA6648211479E762001AEDED /* fire.png */,
+				DA6648221479E762001AEDED /* heart.png */,
 				DA38152B14784D42005D103B /* Menu Splash.png */,
 				DA38156F14785365005D103B /* Pause Icon.png */,
 				DA38152E14784D42005D103B /* Restart Icon.png */,
@@ -1570,6 +1577,8 @@
 				DA38153414784D42005D103B /* Slow Button Pressed.png */,
 				DA38153514784D42005D103B /* Slow Button.png */,
 				DA3815711478536F005D103B /* Stage Selection Icon.png */,
+				DA3815851479B268005D103B /* Supercat Button Pressed.png */,
+				DA3815861479B26C005D103B /* Supercat Button.png */,
 				DA38153814784D42005D103B /* UI Bar.png */,
 				DAF441E8144B08B300943C0D /* Default.png */,
 			);
@@ -1818,6 +1827,8 @@
 				DAF4444B144B08DB00943C0D /* SwarmGenerator.m */,
 				DA69A9AC14777358008BBF38 /* EventText.h */,
 				DA69A9AD14777366008BBF38 /* EventText.m */,
+				DA38158E1479E2F8005D103B /* Gauge.h */,
+				DA38158F1479E2F8005D103B /* Gauge.m */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -2070,8 +2081,6 @@
 				DA38153C14784D42005D103B /* Cat Bomb Button.png in Resources */,
 				DA38153D14784D42005D103B /* Cat Button Pressed.png in Resources */,
 				DA38153E14784D42005D103B /* Cat Button.png in Resources */,
-				DA38153F14784D42005D103B /* Fire.png in Resources */,
-				DA38154114784D42005D103B /* Heart.png in Resources */,
 				DA38154314784D42005D103B /* Menu Splash.png in Resources */,
 				DA38154614784D42005D103B /* Restart Icon.png in Resources */,
 				DA38154C14784D42005D103B /* Slow Button Pressed.png in Resources */,
@@ -2093,6 +2102,10 @@
 				DA3815781478566A005D103B /* Black Line.png in Resources */,
 				DA38157C147894B3005D103B /* Abstract Background.png in Resources */,
 				DA38157D147894B3005D103B /* Abstract Ground.png in Resources */,
+				DA3815871479B27A005D103B /* Supercat Button Pressed.png in Resources */,
+				DA3815881479B27A005D103B /* Supercat Button.png in Resources */,
+				DA6648231479E762001AEDED /* fire.png in Resources */,
+				DA6648241479E762001AEDED /* heart.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2301,6 +2314,7 @@
 				DA69A9AE14777391008BBF38 /* EventText.m in Sources */,
 				DA3815171477F54C005D103B /* ComboModule.m in Sources */,
 				DA38155514785043005D103B /* Resources.m in Sources */,
+				DA3815901479E2F8005D103B /* Gauge.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
