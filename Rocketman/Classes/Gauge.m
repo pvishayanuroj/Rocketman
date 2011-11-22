@@ -10,6 +10,9 @@
 
 @implementation Gauge
 
+/* Minimum time to wait between gauge changes */
+const CGFloat GA_MIN_CHANGE_INTERVAL = 0.15f;
+
 + (id) gauge:(NSString *)gaugeName numIntervals:(NSInteger)numIntervals cutoffs:(NSArray *)cutoffs
 {
     return [[[self alloc] initGauge:gaugeName numIntervals:numIntervals cutoffs:cutoffs] autorelease];
@@ -19,6 +22,10 @@
 {
     if ((self = [super init])) {
     
+        lastUpdateTime_ = 0;
+        currentInterval_ = 0;
+        targetInterval_ = 0;
+        
         sprites_ = [[self loadSprites:gaugeName numIntervals:numIntervals] retain];
         sprite_ = [[sprites_ objectAtIndex:0] retain];
         [self addChild:sprite_];
@@ -53,19 +60,35 @@
 {
     if (value < minMax_.x || value >= minMax_.y) {
         NSInteger interval = [self getInterval:value];
+        targetInterval_ = [self getInterval:value];
         minMax_ = [self getHighLowForInterval:interval];
-        [self updateGauge:interval];
     }
+    [self updateGauge];    
 }
 
-- (void) updateGauge:(NSInteger)interval
+- (void) updateGauge
 {
-    [sprite_ removeFromParentAndCleanup:YES];
-    [sprite_ release];
-    
-    sprite_ = [[sprites_ objectAtIndex:interval] retain];
-    [self addChild:sprite_];
-    currentInterval_ = interval;    
+    if (currentInterval_ != targetInterval_) {
+        
+        if (CACurrentMediaTime() - lastUpdateTime_ > GA_MIN_CHANGE_INTERVAL) {
+         
+            NSInteger interval;
+            if (targetInterval_ > currentInterval_) {
+                interval = currentInterval_ + 1;
+            }
+            else {
+                interval = currentInterval_ - 1;                
+            }
+            
+            [sprite_ removeFromParentAndCleanup:YES];
+            [sprite_ release];
+            
+            sprite_ = [[sprites_ objectAtIndex:interval] retain];
+            [self addChild:sprite_];
+            currentInterval_ = interval;                
+            lastUpdateTime_ = CACurrentMediaTime();
+        }
+    }
 }
 
 - (CGPoint) getHighLowForInterval:(NSInteger)interval

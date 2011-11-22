@@ -23,8 +23,12 @@
     /** Current intervals, there are always N cutoffs and N+1 intervals */
     NSInteger currentInterval_;
     
+    NSInteger targetInterval_;
+    
     /** Threshold values, there are always N cutoffs and N+1 intervals */
     NSArray *cutoffs_;
+    
+    double lastUpdateTime_;
     
 }
 
@@ -37,7 +41,7 @@
 - (void) tick:(CGFloat)value;
 
 /** Used to update the gauge sprite */
-- (void) updateGauge:(NSInteger)interval;
+- (void) updateGauge;
 
 /** Returns the low and high for this interval, where x is low and y is high */
 - (CGPoint) getHighLowForInterval:(NSInteger)interval;
