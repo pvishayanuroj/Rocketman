@@ -11,8 +11,6 @@
 
 @interface EndScene : CCScene {
     
-    CCLabelBMFont *scoreLabel_;    
-    
     NSUInteger score_;
     
     NSUInteger finalScore_;

@@ -8,11 +8,20 @@
 
 #import "CommonHeaders.h"
 #import "cocos2d.h"
+#import "IncrementingTextDelegate.h"
 
-@interface VictoryScene : CCScene {
+@interface VictoryScene : CCScene <IncrementingTextDelegate> {
     
-    
+    NSArray *scoreLabels_;
     
 }
+
++ (id) victoryScene:(SRSMScore)score;
+
+- (id) initVictoryScene:(SRSMScore)score;
+
+- (NSArray *) createScoreTitles;
+
+- (NSArray *) createScoreLabels:(SRSMScore)score;
 
 @end

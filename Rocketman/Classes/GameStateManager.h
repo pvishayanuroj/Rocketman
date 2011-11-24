@@ -39,11 +39,17 @@
 /** Method to show the world map */
 - (void) showWorldMap;
 
+/** Method to show the victory screen */
+- (void) showStageCleared:(NSUInteger)levelNum score:(SRSMScore)score;
+
 /** Method to display a game over screen */
 - (void) showGameOver:(NSUInteger)levelNum score:(NSUInteger)score;
 
 /** Called when a level ends */
 - (void) endGame:(NSUInteger)score;
+
+/** Called when a level is cleared */
+- (void) endGameWithWin:(SRSMScore)score;
 
 /** Called when a cutscene ends */
 - (void) endStory;

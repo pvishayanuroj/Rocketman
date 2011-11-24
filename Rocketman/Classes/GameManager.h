@@ -40,8 +40,7 @@
     Rocket *rocket_;
     
     Notification *notification_;
-    
-    StatsModule *stats_;
+
 }
 
 @property (nonatomic, readonly) Rocket *rocket;

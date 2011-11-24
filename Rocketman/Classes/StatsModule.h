@@ -13,11 +13,13 @@
  
     double startTime_;
     
-    double accumulatedTime_;
-    
     NSMutableDictionary *enemiesKilled_;
     
+    SRSMScore score_;
+    
 }
+
+@property (nonatomic, readonly) SRSMScore score;
 
 + (id) statsModule;
 
@@ -25,8 +27,20 @@
 
 - (void) enemyKilled:(ObstacleType)obstacleType;
 
-- (void) startTimer;
+- (void) incrementRocketCollisions;
 
-- (void) stopTimer;
+- (void) incrementBoostsUsed;
+
+- (void) incrementCollectedPowerup:(ObstacleType)type;
+
+- (void) incrementFiredCat:(CatType)type;
+
+- (void) incrementSlowTime:(CGFloat)time;
+
+- (void) setHeight:(CGFloat)height;
+
+- (void) startGameTimer;
+
+- (void) stopGameTimer;
 
 @end

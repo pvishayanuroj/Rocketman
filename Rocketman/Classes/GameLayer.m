@@ -29,6 +29,7 @@
 #import "PhysicsModule.h"
 #import "WallModule.h"
 #import "ComboModule.h"
+#import "StatsModule.h"
 #import "Gauge.h"
 #import "EventText.h"
 #import "Banner.h"
@@ -37,6 +38,7 @@
 
 @implementation GameLayer
 
+@synthesize stats = stats_;
 @synthesize delegate = delegate_;
 
 #pragma mark - Object Lifecycle
@@ -117,6 +119,9 @@
         // Add combo module
         combo_ = [[ComboModule comboModule] retain];
         
+        // Add stats module
+        stats_ = [[StatsModule statsModule] retain];
+        
         // Add the gauge
         NSMutableArray *cutoffs = [NSMutableArray arrayWithCapacity:6];
         [cutoffs addObject:[NSNumber numberWithFloat:0.01f]];
@@ -173,6 +178,7 @@
     [physics_ release];
     [wall_ release];
     [combo_ release];
+    [stats_ release];    
     [speedGauge_ release];
     [obstacles_ release];
     [firedCats_ release];
@@ -465,6 +471,7 @@
     // Very important to do this, since the accelerometer singleton is holding a ref to us
     [[UIAccelerometer sharedAccelerometer] setDelegate:nil];    
     
+    [stats_ stopGameTimer];        
     [rocket_ showVictoryBoost];
 }
 
@@ -476,7 +483,8 @@
 - (void) bannerClosed
 {
     delegate_ = nil;
-    [[GameStateManager gameStateManager] endGame:height_];       
+    [stats_ setHeight:height_];
+    [[GameStateManager gameStateManager] endGameWithWin:stats_.score];       
 }
 
 - (void) victoryBoostComplete
@@ -502,6 +510,7 @@
         // Very important to do this, since the accelerometer singleton is holding a ref to us
         [[UIAccelerometer sharedAccelerometer] setDelegate:nil];
         
+        [stats_ stopGameTimer];        
         [rocket_ showLosingFall];
     }
 }
@@ -719,6 +728,7 @@
 - (void) enemyKilled:(ObstacleType)type pos:(CGPoint)pos
 {
     [combo_ enemyKilled:type pos:pos];
+    [stats_ enemyKilled:type];
     
     // Check if a boss was killed
     if ([UtilFuncs isBoss:type]) {
@@ -820,6 +830,7 @@
             CCFiniteTimeAction *move = [CCMoveTo actionWithDuration:6.0 position:CGPointMake(rocket_.position.x, screenHeight_ * 0.3)];
             [rocket_ runAction:move];
             [rocket_ showShaking];
+            [stats_ startGameTimer];
             [[AudioManager audioManager] playSound:kTheme01];
         }
         // Else the typical case when player is already flying
@@ -878,13 +889,14 @@
 #if DEBUG_CONSTANTSPEED || DEBUG_NOSLOWDOWN
     return;
 #endif
-    
+
+    [stats_ incrementRocketCollisions];
     [physics_ rocketCollision];
     [self showText:kSpeedDown];    
 }
 
 - (void) powerUpCollected:(ObstacleType)type
-{
+{    
     switch (type) {
         case kBoost:
             // Don't allow boosts during invincibility boost
@@ -919,6 +931,8 @@
         default:
             break;
     }
+    
+    [stats_ incrementCollectedPowerup:type];    
 }
 
 - (void) showText:(ActionText)actionText

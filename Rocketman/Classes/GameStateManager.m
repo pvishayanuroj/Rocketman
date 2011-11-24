@@ -16,6 +16,7 @@
 #import "GameScene.h"
 #import "LoadScene.h"
 #import "EndScene.h"
+#import "VictoryScene.h"
 #import "MainMenuScene.h"
 
 // For singleton
@@ -93,6 +94,12 @@ static GameStateManager *_gameStateManager = nil;
     [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:scene]];        
 }
 
+- (void) showStageCleared:(NSUInteger)levelNum score:(SRSMScore)score
+{
+    CCScene *scene = [VictoryScene victoryScene:score];
+    [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:2.0 scene:scene]];     
+}
+
 - (void) showGameOver:(NSUInteger)levelNum score:(NSUInteger)score
 {
     CCScene *scene = [EndScene endSceneWithLevel:levelNum score:score];
@@ -112,6 +119,14 @@ static GameStateManager *_gameStateManager = nil;
     [GameManager purgeGameManager];
     
     [self showGameOver:currentLevel_ score:score];
+}
+
+- (void) endGameWithWin:(SRSMScore)score
+{
+    // Cleanup GM singleton
+    [GameManager purgeGameManager];
+    
+    [self showStageCleared:currentLevel_ score:score];    
 }
 
 - (void) endStory

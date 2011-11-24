@@ -59,7 +59,6 @@ static GameManager *_gameManager = nil;
         dialogueLayer_ = nil;
         rocket_ = nil;
         notification_ = nil;
-        stats_ = nil;
         
         [self resetCounters];
 	}
@@ -77,14 +76,12 @@ static GameManager *_gameManager = nil;
     [dialogueLayer_ release];
     [rocket_ release];
     [notification_ release];
-    [stats_ release];
     gameLayer_ = nil;
     hudLayer_ = nil;
     pauseLayer_ = nil;
     dialogueLayer_ = nil;    
     rocket_ = nil;
     notification_ = nil;
-    stats_ = nil;
     
 	[super dealloc];
 }
@@ -214,7 +211,6 @@ static GameManager *_gameManager = nil;
 
 - (void) enemyKilled:(ObstacleType)type pos:(CGPoint)pos
 {
-    [stats_ enemyKilled:type];
     [gameLayer_ enemyKilled:type pos:pos];
 }
 
@@ -292,6 +288,7 @@ static GameManager *_gameManager = nil;
 
 - (void) pause
 {
+    [[gameLayer_ stats] stopGameTimer];
     [gameLayer_ pauseHierarchy];
     [dialogueLayer_ pauseHierarchy];    
     [hudLayer_ pauseHierarchy];
@@ -307,10 +304,12 @@ static GameManager *_gameManager = nil;
     [hudLayer_ resumeHierarchy];
     [dialogueLayer_ resumeHierarchy];
     [gameLayer_ resumeHierarchy];
+    [[gameLayer_ stats] startGameTimer];    
 }
 
 - (void) dialoguePause
 {
+    [[gameLayer_ stats] stopGameTimer];         
     [gameLayer_ pauseHierarchy];
     [hudLayer_ pauseHierarchy];
     // Because pauseHiearchy doesn't seem to stop button presses
@@ -322,16 +321,19 @@ static GameManager *_gameManager = nil;
     [hudLayer_ resume];
     [hudLayer_ resumeHierarchy];
     [gameLayer_ resumeHierarchy];    
+    [[gameLayer_ stats] startGameTimer];        
 }
 
 - (void) notificationPause
 {
+    [[gameLayer_ stats] stopGameTimer];     
     [gameLayer_ pauseHierarchy];
 }
 
 - (void) notificationResume
 {
     [gameLayer_ resumeHierarchy];
+    [[gameLayer_ stats] startGameTimer];    
 }
 
 #pragma mark - Reset Methods

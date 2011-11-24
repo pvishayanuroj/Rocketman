@@ -18,6 +18,7 @@
 @class PhysicsModule;
 @class WallModule;
 @class ComboModule;
+@class StatsModule;
 @class Gauge;
 @class Cat;
 @class Boost;
@@ -55,6 +56,9 @@
     
     /** Used to keep track of enemy kill combos */
     ComboModule *combo_;
+    
+    /** Used to keep track of all game statistics */
+    StatsModule *stats_;    
     
     /** Graphical representation of rocket speed */
     Gauge *speedGauge_;
@@ -121,6 +125,7 @@
 }
 
 @property (nonatomic, assign) id delegate;
+@property (nonatomic, readonly) StatsModule *stats;
 
 + (id) startWithLevelData:(NSDictionary *)data;
 

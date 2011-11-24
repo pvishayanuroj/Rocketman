@@ -19,8 +19,22 @@
 {
     if ((self = [super init])) {
         
-        accumulatedTime_ = 0;
         enemiesKilled_ = [[NSMutableDictionary dictionaryWithCapacity:20] retain];
+        
+        // Zero all stats
+        score_.elapsedTime = 0;
+        score_.totalHeight = 0;
+        score_.totalSlowTime = 0;
+        score_.numBombsCollected = 0;
+        score_.numBombsFired = 0;
+        score_.numBoostCombos = 0;
+        score_.numBoostsUsed = 0;
+        score_.numCatsCollected = 0;
+        score_.numCatsFired = 0;
+        score_.numCollisions = 0;
+        score_.numEnemiesKilled = 0;
+        score_.numFuelCollected = 0;
+        score_.numSupercatCombos = 0;
         
     }
     return self;
@@ -31,6 +45,17 @@
     [enemiesKilled_ release];
     
     [super dealloc];
+}
+
+- (SRSMScore) score
+{
+    // Count the total number of enemies killed
+    for (NSNumber *key in enemiesKilled_) {
+        NSNumber *val = [enemiesKilled_ objectForKey:key];
+        score_.numEnemiesKilled += [val integerValue];
+    }
+    
+    return score_;
 }
 
 - (void) enemyKilled:(ObstacleType)obstacleType
@@ -49,14 +74,74 @@
     [enemiesKilled_ setObject:count forKey:key];    
 }
 
-- (void) startTimer
+- (void) incrementRocketCollisions
+{
+    score_.numCollisions++;
+}
+
+- (void) incrementBoostsUsed
+{
+    score_.numBoostsUsed++;
+}
+
+- (void) incrementCollectedPowerup:(ObstacleType)type
+{
+    switch (type) {
+        case kBoost:
+            score_.numBoostsCollected++;
+            break;
+        case kFuel:
+            score_.numFuelCollected++;
+            break;
+        case kCat:
+            score_.numCatsCollected++;
+            break;
+        case kBombCat:
+            score_.numBombsCollected;
+            break;
+        case kCatBundle:
+            score_.numCatBundlesCollected;
+            break;
+        default:
+            break;
+    }
+}
+
+- (void) incrementFiredCat:(CatType)type
+{
+    switch (type) {
+        kCatNormal:
+            score_.numCatsFired++;
+            break;
+        kCatBomb:
+            score_.numBombsFired++;
+            break;
+        kCatSuper:
+            score_.numSupercatCombos++;
+            break;
+        default:
+            break;
+    }
+}
+
+- (void) incrementSlowTime:(CGFloat)time
+{
+    score_.totalSlowTime += time;
+}
+
+- (void) setHeight:(CGFloat)height
+{
+    score_.totalHeight = height;
+}
+
+- (void) startGameTimer
 {
     startTime_ = CACurrentMediaTime();
 }
 
-- (void) stopTimer
+- (void) stopGameTimer
 {
-    accumulatedTime_ += (CACurrentMediaTime() - startTime_);
+    score_.elapsedTime += (CACurrentMediaTime() - startTime_);
 }
 
 @end

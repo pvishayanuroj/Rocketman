@@ -31,3 +31,40 @@ typedef struct {
     CGPoint offset;
     
 } PVCollide;
+
+/** Structure used to hold all final score information */
+typedef struct {
+    
+    /** Time spent on stage */
+    double elapsedTime;
+    
+    CGFloat totalHeight;
+    
+    double totalSlowTime;
+    
+    /** Number of rocket collisions */
+    NSInteger numCollisions;
+    
+    NSInteger numEnemiesKilled;
+    
+    NSInteger numBoostCombos;
+    
+    NSInteger numSupercatCombos;
+    
+    NSInteger numBombsCollected;    
+    
+    NSInteger numCatBundlesCollected;
+    
+    NSInteger numCatsCollected;
+    
+    NSInteger numBoostsCollected;
+    
+    NSInteger numFuelCollected;
+    
+    NSInteger numCatsFired;
+    
+    NSInteger numBombsFired;
+    
+    NSInteger numBoostsUsed;
+    
+} SRSMScore;

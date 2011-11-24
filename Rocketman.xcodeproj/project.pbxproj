@@ -63,6 +63,7 @@
 		DA642B67145F9A5600FAB4D4 /* AlienBossTurtle.m in Sources */ = {isa = PBXBuildFile; fileRef = DA642B66145F9A5500FAB4D4 /* AlienBossTurtle.m */; };
 		DA6648231479E762001AEDED /* fire.png in Resources */ = {isa = PBXBuildFile; fileRef = DA6648211479E762001AEDED /* fire.png */; };
 		DA6648241479E762001AEDED /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = DA6648221479E762001AEDED /* heart.png */; };
+		DA66482A147C9BCE001AEDED /* IncrementingText.m in Sources */ = {isa = PBXBuildFile; fileRef = DA664829147C9BCE001AEDED /* IncrementingText.m */; };
 		DA69016814579CA0000D278F /* ArcMovement.m in Sources */ = {isa = PBXBuildFile; fileRef = DA69016714579CA0000D278F /* ArcMovement.m */; };
 		DA69016C145A49AF000D278F /* RockDebris.m in Sources */ = {isa = PBXBuildFile; fileRef = DA69016B145A49AF000D278F /* RockDebris.m */; };
 		DA69016F145B9EB6000D278F /* DebrisGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = DA69016E145B9EB6000D278F /* DebrisGenerator.m */; };
@@ -427,6 +428,9 @@
 		DA642B66145F9A5500FAB4D4 /* AlienBossTurtle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlienBossTurtle.m; path = Classes/AlienBossTurtle.m; sourceTree = "<group>"; };
 		DA6648211479E762001AEDED /* fire.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fire.png; sourceTree = "<group>"; };
 		DA6648221479E762001AEDED /* heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart.png; sourceTree = "<group>"; };
+		DA664828147C9BCE001AEDED /* IncrementingText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IncrementingText.h; path = Classes/IncrementingText.h; sourceTree = "<group>"; };
+		DA664829147C9BCE001AEDED /* IncrementingText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IncrementingText.m; path = Classes/IncrementingText.m; sourceTree = "<group>"; };
+		DA66482B147C9DEE001AEDED /* IncrementingTextDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IncrementingTextDelegate.h; path = Classes/IncrementingTextDelegate.h; sourceTree = "<group>"; };
 		DA69016614579CA0000D278F /* ArcMovement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ArcMovement.h; path = Classes/ArcMovement.h; sourceTree = "<group>"; };
 		DA69016714579CA0000D278F /* ArcMovement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ArcMovement.m; path = Classes/ArcMovement.m; sourceTree = "<group>"; };
 		DA69016A145A49AF000D278F /* RockDebris.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RockDebris.h; path = Classes/RockDebris.h; sourceTree = "<group>"; };
@@ -1827,6 +1831,9 @@
 				DAF4444B144B08DB00943C0D /* SwarmGenerator.m */,
 				DA69A9AC14777358008BBF38 /* EventText.h */,
 				DA69A9AD14777366008BBF38 /* EventText.m */,
+				DA664828147C9BCE001AEDED /* IncrementingText.h */,
+				DA664829147C9BCE001AEDED /* IncrementingText.m */,
+				DA66482B147C9DEE001AEDED /* IncrementingTextDelegate.h */,
 				DA38158E1479E2F8005D103B /* Gauge.h */,
 				DA38158F1479E2F8005D103B /* Gauge.m */,
 			);
@@ -2315,6 +2322,7 @@
 				DA3815171477F54C005D103B /* ComboModule.m in Sources */,
 				DA38155514785043005D103B /* Resources.m in Sources */,
 				DA3815901479E2F8005D103B /* Gauge.m in Sources */,
+				DA66482A147C9BCE001AEDED /* IncrementingText.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
