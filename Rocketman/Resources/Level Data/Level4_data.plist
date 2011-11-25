@@ -138,6 +138,8 @@
 	</array>
 	<key>Ground File</key>
 	<string>Cave Ground.png</string>
+	<key>Wall File</key>
+	<string>Cave Wall.png</string>
 	<key>Level Num</key>
 	<string>4</string>
 	<key>Vertical Tiles</key>

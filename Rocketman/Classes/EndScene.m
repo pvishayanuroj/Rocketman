@@ -57,8 +57,8 @@ const CGFloat ES_SCORE_TIME = 2.0f;
         [self addChild:text z:3];
         
         // Score
-        IncrementingText *scoreText = [IncrementingText incrementingText:score font:R_DARK_FONT alignment:kCenterAligned];
-        scoreText.position =  CGPointMake(size.width * 0.5, size.height * 0.5);
+        IncrementingText *scoreText = [IncrementingText incrementingText:score font:R_DARK_FONT alignment:kCenterAligned isTime:NO];
+        scoreText.position =  CGPointMake(size.width * 0.5f, size.height * 0.5f);
         [self addChild:scoreText z:3];
         
         EndLayer *endLayer = [EndLayer node];

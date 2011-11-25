@@ -13,7 +13,7 @@
 
 @interface Wall : Doodad {
 
-    
+
 }
 
 + (id) wallWithPos:(CGPoint)pos wallName:(NSString *)wallName side:(WallSide)side;

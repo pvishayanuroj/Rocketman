@@ -24,9 +24,10 @@
      
         self.position = pos;
         sprite_ = [[CCSprite spriteWithFile:wallName] retain];
+        sprite_.anchorPoint = CGPointZero;
         sprite_.flipX = (side == kWallRight);
         [self addChild:sprite_];
-        
+
         [movements_ addObject:[StaticMovement staticMovement]];        
         
     }

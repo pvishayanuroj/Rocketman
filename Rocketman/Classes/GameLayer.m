@@ -97,7 +97,7 @@
         
         // Add wall
         if (wallName) {
-            wall_ = [[WallModule wallModule:wallName] retain];
+            wall_ = [[WallModule wallModule:[UtilFuncs removeFileExtension:wallName]] retain];
         }
         else {
             wall_ = nil;
@@ -204,7 +204,7 @@
 
 - (void) slowUpdate:(ccTime)dt
 {
-    [self cloudGenerator];    
+    //[self cloudGenerator];    
       
 }
 

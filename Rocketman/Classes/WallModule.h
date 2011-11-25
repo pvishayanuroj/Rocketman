@@ -9,10 +9,15 @@
 #import "CommonHeaders.h"
 #import "cocos2d.h"
 
+@class Wall;
+
 @interface WallModule : NSObject {
     
     NSString *wallName_;
     
+    CGFloat nextHeight_;
+    
+    Wall *lastWall_;
 }
 
 + (id) wallModule:(NSString *)wallName;
@@ -20,5 +25,7 @@
 - (id) initWallModule:(NSString *)wallName;
 
 - (void) heightUpdate:(CGFloat)height;
+
+- (void) placeWall:(CGFloat)y;
 
 @end
