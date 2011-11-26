@@ -89,6 +89,7 @@
 		DA69A9A514734AEC008BBF38 /* VictoryScene.m in Sources */ = {isa = PBXBuildFile; fileRef = DA69A9A414734AEB008BBF38 /* VictoryScene.m */; };
 		DA69A9A814760FFA008BBF38 /* StatsModule.m in Sources */ = {isa = PBXBuildFile; fileRef = DA69A9A714760FF7008BBF38 /* StatsModule.m */; };
 		DA69A9AE14777391008BBF38 /* EventText.m in Sources */ = {isa = PBXBuildFile; fileRef = DA69A9AD14777366008BBF38 /* EventText.m */; };
+		DAB8013B148152080058FD3A /* FallingRocket.m in Sources */ = {isa = PBXBuildFile; fileRef = DAB8013A148152080058FD3A /* FallingRocket.m */; };
 		DAD805721460CC0000A195C3 /* LightBlastCloud.m in Sources */ = {isa = PBXBuildFile; fileRef = DAD805711460CBFF00A195C3 /* LightBlastCloud.m */; };
 		DAD805751460CC1100A195C3 /* DarkBlastCloud.m in Sources */ = {isa = PBXBuildFile; fileRef = DAD805741460CC1100A195C3 /* DarkBlastCloud.m */; };
 		DAD8058914621B2400A195C3 /* Level3_data.plist in Resources */ = {isa = PBXBuildFile; fileRef = DAD8058614621B2400A195C3 /* Level3_data.plist */; };
@@ -478,6 +479,8 @@
 		DA69A9A714760FF7008BBF38 /* StatsModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StatsModule.m; path = Classes/StatsModule.m; sourceTree = "<group>"; };
 		DA69A9AC14777358008BBF38 /* EventText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventText.h; path = Classes/EventText.h; sourceTree = "<group>"; };
 		DA69A9AD14777366008BBF38 /* EventText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventText.m; path = Classes/EventText.m; sourceTree = "<group>"; };
+		DAB80139148152080058FD3A /* FallingRocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FallingRocket.h; path = Classes/FallingRocket.h; sourceTree = "<group>"; };
+		DAB8013A148152080058FD3A /* FallingRocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FallingRocket.m; path = Classes/FallingRocket.m; sourceTree = "<group>"; };
 		DAD805701460CBFE00A195C3 /* LightBlastCloud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LightBlastCloud.h; path = Classes/LightBlastCloud.h; sourceTree = "<group>"; };
 		DAD805711460CBFF00A195C3 /* LightBlastCloud.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LightBlastCloud.m; path = Classes/LightBlastCloud.m; sourceTree = "<group>"; };
 		DAD805731460CC1000A195C3 /* DarkBlastCloud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DarkBlastCloud.h; path = Classes/DarkBlastCloud.h; sourceTree = "<group>"; };
@@ -1117,6 +1120,8 @@
 				DA69A9A414734AEB008BBF38 /* VictoryScene.m */,
 				DA690170145BA086000D278F /* GameObject.h */,
 				DA690171145BA086000D278F /* GameObject.m */,
+				DAB80139148152080058FD3A /* FallingRocket.h */,
+				DAB8013A148152080058FD3A /* FallingRocket.m */,
 			);
 			name = "Game Nodes";
 			sourceTree = "<group>";
@@ -2323,6 +2328,7 @@
 				DA38155514785043005D103B /* Resources.m in Sources */,
 				DA3815901479E2F8005D103B /* Gauge.m in Sources */,
 				DA66482A147C9BCE001AEDED /* IncrementingText.m in Sources */,
+				DAB8013B148152080058FD3A /* FallingRocket.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -53,6 +53,13 @@ const CGFloat ARC5_C2X = 150.0f;
 const CGFloat ARC5_C2Y = 50.0f;
 const CGFloat ARC5_EX = 200.0f;
 const CGFloat ARC5_EY = -150.0f;
+// Arc 6
+const CGFloat ARC6_C1X = 30.0f;
+const CGFloat ARC6_C1Y = -25.0f;
+const CGFloat ARC6_C2X = 60.0f;
+const CGFloat ARC6_C2Y = -25.0f;
+const CGFloat ARC6_EX = 90.0f;
+const CGFloat ARC6_EY = 0.0f;
 
 const CGFloat ARC_FAST_SPEED = 1/15.0f;
 const CGFloat ARC_SLOW_SPEED = 1/30.0f;
@@ -129,6 +136,11 @@ const CGFloat ARC_SLOW_SPEED = 1/30.0f;
                 c2_ = CGPointMake(ARC5_C2X, ARC5_C2Y); 
                 endPoint_ = CGPointMake(ARC5_EX, ARC5_EY);                
                 break;                
+            case kArc6:
+                c1_ = CGPointMake(ARC6_C1X, ARC6_C1Y);
+                c2_ = CGPointMake(ARC6_C2X, ARC6_C2Y); 
+                endPoint_ = CGPointMake(ARC6_EX, ARC6_EY);                
+                break;                       
             default:
                 break;
         }
@@ -188,6 +200,49 @@ const CGFloat ARC_SLOW_SPEED = 1/30.0f;
 			3 * t * (powf(1 - t, 2)) * b + 
 			3 * powf(t, 2) * (1 - t) * c +
 			powf(t, 3) * d);
+}
+
+@end
+
+@implementation RepeatedArcMovement
+
++ (id) repeatedArcMovement:(CGPoint)start
+{
+    return [[[self alloc] initRepeatedArcMovement:start] autorelease];
+}
+
+- (id) initRepeatedArcMovement:(CGPoint)start
+{
+    if ((self = [super initArcMovement:start arcType:kArc6 arcSide:kLeftArc rate:ARC_SLOW_SPEED])) {
+        
+        endTime_ = 1.0f;
+        
+    }
+    return self;
+}
+
+- (void) move:(CGFloat)speed object:(GameObject *)object;
+{
+    CGPoint p = [super calculatePoint];
+    
+    t_ += rate_;
+    object.position = ccpAdd(startPoint_, p);
+    
+    if (t_ > endTime_) {
+        [self reverse];
+        object.position = startPoint_;
+    }
+}
+
+- (void) reverse
+{
+    startPoint_ = ccpAdd(startPoint_, endPoint_);
+    endPoint_ = CGPointMake(-endPoint_.x, endPoint_.y);
+    
+    c1_ = CGPointMake(-c1_.x, c1_.y);    
+    c2_ = CGPointMake(-c2_.x, c2_.y);
+    
+    t_ = 0;
 }
 
 @end

@@ -268,12 +268,13 @@
 - (void) draw
 {
     glLineWidth(3.0f);    
-    ccColor3B colors[5];
+    ccColor3B colors[6];
     colors[0] = ccRED;
     colors[1] = ccBLUE;
     colors[2] = ccYELLOW;
     colors[3] = ccGREEN;
     colors[4] = ccMAGENTA;    
+    colors[5] = ccRED;        
     CGPoint origin = CGPointMake(160, 300);
     NSMutableArray *c1 = [NSMutableArray arrayWithCapacity:10];
     NSMutableArray *c2 = [NSMutableArray arrayWithCapacity:10];
@@ -298,6 +299,10 @@
     [c1 addObject:[Pair pair:60 second:100]];
     [c2 addObject:[Pair pair:150 second:50]];
     [end addObject:[Pair pair:200 second:-150]];        
+    // Arc 6
+    [c1 addObject:[Pair pair:30 second:-25]];
+    [c2 addObject:[Pair pair:60 second:-25]];
+    [end addObject:[Pair pair:90 second:0]];    
     
     for (int i = 0; i < [c1 count]; i++) {
    

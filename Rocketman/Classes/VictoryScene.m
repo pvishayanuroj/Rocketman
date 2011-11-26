@@ -8,6 +8,7 @@
 
 #import "VictoryScene.h"
 #import "IncrementingText.h"
+#import "FallingRocket.h"
 
 @implementation VictoryScene
 
@@ -47,7 +48,7 @@ static const CGFloat VS_SCORE_Y_SEPERATION = 0.1f;
         for (CCLabelBMFont *title in scoreTitles) {
             title.position = CGPointMake(size.width * VS_TITLE_X, size.height * (VS_SCORE_Y_TOP - VS_SCORE_Y_SEPERATION * count));
             title.anchorPoint = CGPointMake(0.0f, 0.5f);
-            [self addChild:title z:2];
+            [self addChild:title z:3];
             count++;
         }        
         
@@ -57,9 +58,13 @@ static const CGFloat VS_SCORE_Y_SEPERATION = 0.1f;
             text.unitID = count;
             text.delegate = self;
             text.position = CGPointMake(size.width * VS_SCORE_X, size.height * (VS_SCORE_Y_TOP - VS_SCORE_Y_SEPERATION * count));
-            [self addChild:text z:2];
+            [self addChild:text z:3];
             count++;
         }
+        
+        // Add the falling rocket
+        FallingRocket *rocket = [FallingRocket fallingRocket];
+        [self addChild:rocket z:2];
     }
     return self;
 }

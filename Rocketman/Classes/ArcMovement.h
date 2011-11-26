@@ -14,7 +14,8 @@ typedef enum {
     kArc2,
     kArc3,
     kArc4,
-    kArc5
+    kArc5,
+    kArc6 
 } ArcType;
 
 typedef enum {
@@ -64,3 +65,16 @@ typedef enum {
 
 @end
  
+@interface RepeatedArcMovement : ArcMovement <NSCopying> {
+    
+    CGFloat endTime_;
+    
+}
+
++ (id) repeatedArcMovement:(CGPoint)start;
+
+- (id) initRepeatedArcMovement:(CGPoint)start;
+
+- (void) reverse;
+
+@end
