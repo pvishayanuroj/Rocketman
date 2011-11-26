@@ -17,10 +17,18 @@
     
     NSUInteger incrementSpeed_;
     
+    CCSprite *restartIcon_;
+    
+    CCSprite *stageIcon_;    
+    
 }
 
 + (id) endSceneWithLevel:(NSUInteger)levelNum score:(NSUInteger)score;
 
 - (id) initEndSceneWithLevel:(NSUInteger)levelNum score:(NSUInteger)score;
+
+- (void) addButtons;
+
+- (void) initActions;
 
 @end

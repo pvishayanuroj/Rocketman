@@ -9,6 +9,8 @@
 #import "VictoryScene.h"
 #import "IncrementingText.h"
 #import "FallingRocket.h"
+#import "GameStateManager.h"
+#import "AnimatedButton.h"
 
 @implementation VictoryScene
 
@@ -16,6 +18,10 @@ static const CGFloat VS_TITLE_X = 0.02f;
 static const CGFloat VS_SCORE_X = 0.9f;
 static const CGFloat VS_SCORE_Y_TOP = 0.7f;
 static const CGFloat VS_SCORE_Y_SEPERATION = 0.1f;
+
+static const CGFloat VS_BUTTON_SCALE = 0.8f;
+static const CGFloat VS_BUTTON_SCALE_BIG = 1.0f;
+static const CGFloat VS_STAGE_REL_Y = 0.25f;
 
 + (id) victoryScene:(SRSMScore)score
 {
@@ -65,6 +71,10 @@ static const CGFloat VS_SCORE_Y_SEPERATION = 0.1f;
         // Add the falling rocket
         FallingRocket *rocket = [FallingRocket fallingRocket];
         [self addChild:rocket z:2];
+        
+        [self addButtons];
+        [self initActions];
+        
     }
     return self;
 }
@@ -72,6 +82,7 @@ static const CGFloat VS_SCORE_Y_SEPERATION = 0.1f;
 - (void) dealloc
 {
     [scoreLabels_ release];
+    [stageIcon_ release];
     
     [super dealloc];
 }
@@ -117,6 +128,39 @@ static const CGFloat VS_SCORE_Y_SEPERATION = 0.1f;
         IncrementingText *scoreText = [scoreLabels_ objectAtIndex:index];
         [scoreText startIncrementing];
     }
+}
+
+- (void) addButtons
+{
+    stageIcon_ = [[CCSprite spriteWithFile:R_STAGE_SELECTION_ICON] retain];
+    
+    CGSize size = [[CCDirector sharedDirector] winSize];
+    stageIcon_.position = ccp(265, VS_STAGE_REL_Y * size.height);
+    
+    AnimatedButton *stageButton = [AnimatedButton buttonWithImage:R_STAGE_SELECTION_TEXT target:self selector:@selector(stageSelect)];
+    stageButton.position = ccp(0.5 * size.width, VS_STAGE_REL_Y * size.height);
+    
+    [self addChild:stageIcon_ z:4];
+    [self addChild:stageButton z:4];    
+}
+
+- (void) initActions
+{   
+    CGFloat duration = 0.05;
+    CGFloat delay = 0.3;
+    CCActionInterval *grow = [CCScaleTo actionWithDuration:duration scale:VS_BUTTON_SCALE];
+    CCActionInterval *growEase = [CCEaseIn actionWithAction:grow rate:2.0];
+    CCActionInterval *shrink = [CCScaleTo actionWithDuration:duration scale:VS_BUTTON_SCALE_BIG];    
+    CCActionInterval *shrinkEase = [CCEaseIn actionWithAction:shrink rate:2.0];    
+    CCActionInterval *delay1 = [CCDelayTime actionWithDuration:delay];
+    CCActionInterval *delay2 = [CCDelayTime actionWithDuration:delay];    
+    CCAction *pulse = [CCRepeatForever actionWithAction:[CCSequence actions:growEase, delay1, shrinkEase, delay2, nil]];
+    [stageIcon_ runAction:pulse];    
+}
+
+- (void) stageSelect
+{
+    [[GameStateManager gameStateManager] stageSelectFromGameOver];
 }
 
 @end

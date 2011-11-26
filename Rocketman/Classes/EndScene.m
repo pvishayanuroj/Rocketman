@@ -7,13 +7,19 @@
 //
 
 #import "EndScene.h"
-#import "EndLayer.h"
 #import "EngineParticleSystem.h"
 #import "IncrementingText.h"
+#import "AnimatedButton.h"
+#import "GameStateManager.h"
 
 @implementation EndScene
 
-const CGFloat ES_SCORE_TIME = 2.0f;
+static const CGFloat ES_SCORE_TIME = 2.0f;
+static const CGFloat ES_BUTTON_SCALE = 0.8f;
+static const CGFloat ES_BUTTON_SCALE_BIG = 1.0f;
+static const CGFloat ES_RESTART_REL_Y = 0.35f;
+static const CGFloat ES_STAGE_REL_Y = 0.25f;
+static const CGFloat ES_RESTART_ROTATE_TIME = 2.0f;
 
 + (id) endSceneWithLevel:(NSUInteger)levelNum score:(NSUInteger)score
 {
@@ -60,16 +66,68 @@ const CGFloat ES_SCORE_TIME = 2.0f;
         IncrementingText *scoreText = [IncrementingText incrementingText:score font:R_DARK_FONT alignment:kCenterAligned isTime:NO];
         scoreText.position =  CGPointMake(size.width * 0.5f, size.height * 0.5f);
         [self addChild:scoreText z:3];
-        
-        EndLayer *endLayer = [EndLayer node];
-		[self addChild:endLayer z:4];                
+
+        // Add buttons
+        [self addButtons];
+        [self initActions];
     }
     return self;
 }   
 
 - (void) dealloc
 {
+    [restartIcon_ release];
+    [stageIcon_ release];    
+    
     [super dealloc];
+}
+
+- (void) addButtons
+{
+    restartIcon_ = [[CCSprite spriteWithFile:R_RESTART_ICON] retain];
+    stageIcon_ = [[CCSprite spriteWithFile:R_STAGE_SELECTION_ICON] retain];
+    
+    CGSize size = [[CCDirector sharedDirector] winSize];
+    restartIcon_.position = ccp(220, ES_RESTART_REL_Y * size.height);
+    stageIcon_.position = ccp(265, ES_STAGE_REL_Y * size.height);
+    
+    AnimatedButton *restartButton = [AnimatedButton buttonWithImage:R_RESTART_TEXT target:self selector:@selector(restart)];
+    AnimatedButton *stageButton = [AnimatedButton buttonWithImage:R_STAGE_SELECTION_TEXT target:self selector:@selector(stageSelect)];
+    restartButton.position = ccp(0.5 * size.width, ES_RESTART_REL_Y * size.height);
+    stageButton.position = ccp(0.5 * size.width, ES_STAGE_REL_Y * size.height);
+    
+    [self addChild:restartIcon_ z:4];
+    [self addChild:stageIcon_ z:4];
+    [self addChild:restartButton z:4];
+    [self addChild:stageButton z:4];    
+}
+
+- (void) initActions
+{
+    CCActionInterval *spinOnce = [CCRotateBy actionWithDuration:ES_RESTART_ROTATE_TIME angle:-360];
+    CCAction *spin = [CCRepeatForever actionWithAction:spinOnce];
+    [restartIcon_ runAction:spin];
+    
+    CGFloat duration = 0.05;
+    CGFloat delay = 0.3;
+    CCActionInterval *grow = [CCScaleTo actionWithDuration:duration scale:ES_BUTTON_SCALE];
+    CCActionInterval *growEase = [CCEaseIn actionWithAction:grow rate:2.0];
+    CCActionInterval *shrink = [CCScaleTo actionWithDuration:duration scale:ES_BUTTON_SCALE_BIG];    
+    CCActionInterval *shrinkEase = [CCEaseIn actionWithAction:shrink rate:2.0];    
+    CCActionInterval *delay1 = [CCDelayTime actionWithDuration:delay];
+    CCActionInterval *delay2 = [CCDelayTime actionWithDuration:delay];    
+    CCAction *pulse = [CCRepeatForever actionWithAction:[CCSequence actions:growEase, delay1, shrinkEase, delay2, nil]];
+    [stageIcon_ runAction:pulse];    
+}
+
+- (void) restart
+{
+    [[GameStateManager gameStateManager] restartFromGameOver];
+}
+
+- (void) stageSelect
+{
+    [[GameStateManager gameStateManager] stageSelectFromGameOver];
 }
 
 @end

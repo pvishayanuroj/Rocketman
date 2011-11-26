@@ -304,7 +304,6 @@
 		DAF4446D144B08DE00943C0D /* DialogueLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF443E7144B08C800943C0D /* DialogueLayer.m */; };
 		DAF4446F144B08DE00943C0D /* Doodad.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF443EB144B08C800943C0D /* Doodad.m */; };
 		DAF44470144B08DE00943C0D /* Egg.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF443ED144B08C900943C0D /* Egg.m */; };
-		DAF44471144B08DE00943C0D /* EndLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF443EF144B08C900943C0D /* EndLayer.m */; };
 		DAF44472144B08DE00943C0D /* EndScene.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF443F1144B08CA00943C0D /* EndScene.m */; };
 		DAF44473144B08DE00943C0D /* EngineParticleSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF443F3144B08CA00943C0D /* EngineParticleSystem.m */; };
 		DAF44474144B08DE00943C0D /* Flybot.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF443F6144B08CA00943C0D /* Flybot.m */; };
@@ -841,8 +840,6 @@
 		DAF443EB144B08C800943C0D /* Doodad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Doodad.m; path = Classes/Doodad.m; sourceTree = "<group>"; };
 		DAF443EC144B08C900943C0D /* Egg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Egg.h; path = Classes/Egg.h; sourceTree = "<group>"; };
 		DAF443ED144B08C900943C0D /* Egg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Egg.m; path = Classes/Egg.m; sourceTree = "<group>"; };
-		DAF443EE144B08C900943C0D /* EndLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EndLayer.h; path = Classes/EndLayer.h; sourceTree = "<group>"; };
-		DAF443EF144B08C900943C0D /* EndLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EndLayer.m; path = Classes/EndLayer.m; sourceTree = "<group>"; };
 		DAF443F0144B08C900943C0D /* EndScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EndScene.h; path = Classes/EndScene.h; sourceTree = "<group>"; };
 		DAF443F1144B08CA00943C0D /* EndScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EndScene.m; path = Classes/EndScene.m; sourceTree = "<group>"; };
 		DAF443F2144B08CA00943C0D /* EngineParticleSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EngineParticleSystem.h; path = Classes/EngineParticleSystem.h; sourceTree = "<group>"; };
@@ -1114,8 +1111,6 @@
 				DAF4442C144B08D400943C0D /* PauseLayer.m */,
 				DAF443F0144B08C900943C0D /* EndScene.h */,
 				DAF443F1144B08CA00943C0D /* EndScene.m */,
-				DAF443EE144B08C900943C0D /* EndLayer.h */,
-				DAF443EF144B08C900943C0D /* EndLayer.m */,
 				DA69A9A314734AE9008BBF38 /* VictoryScene.h */,
 				DA69A9A414734AEB008BBF38 /* VictoryScene.m */,
 				DA690170145BA086000D278F /* GameObject.h */,
@@ -2246,7 +2241,6 @@
 				DAF4446D144B08DE00943C0D /* DialogueLayer.m in Sources */,
 				DAF4446F144B08DE00943C0D /* Doodad.m in Sources */,
 				DAF44470144B08DE00943C0D /* Egg.m in Sources */,
-				DAF44471144B08DE00943C0D /* EndLayer.m in Sources */,
 				DAF44472144B08DE00943C0D /* EndScene.m in Sources */,
 				DAF44473144B08DE00943C0D /* EngineParticleSystem.m in Sources */,
 				DAF44474144B08DE00943C0D /* Flybot.m in Sources */,

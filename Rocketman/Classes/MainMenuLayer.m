@@ -49,6 +49,8 @@
 - (void) startGame 
 {
     [[GameStateManager gameStateManager] startGameFromMainMenu];
+    //SRSMScore score;
+    //[[GameStateManager gameStateManager] showStageCleared:1 score:score];
 }
 
 - (void) viewHighscore {

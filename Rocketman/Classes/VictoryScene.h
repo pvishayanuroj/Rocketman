@@ -14,6 +14,8 @@
     
     NSArray *scoreLabels_;
     
+    CCSprite *stageIcon_;    
+    
 }
 
 + (id) victoryScene:(SRSMScore)score;
@@ -23,5 +25,9 @@
 - (NSArray *) createScoreTitles;
 
 - (NSArray *) createScoreLabels:(SRSMScore)score;
+
+- (void) addButtons;
+
+- (void) initActions;
 
 @end

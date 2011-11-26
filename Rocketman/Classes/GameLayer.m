@@ -204,7 +204,7 @@
 
 - (void) slowUpdate:(ccTime)dt
 {
-    //[self cloudGenerator];    
+    [self cloudGenerator];    
       
 }
 
