@@ -112,29 +112,35 @@
     CCLabelBMFont *staticHeightLabel = [CCLabelBMFont labelWithString:@"HEIGHT:" fntFile:R_DARK_FONT];
     staticHeightLabel.position = ccp(50, screenHeight_*0.85);
     staticHeightLabel.scale = 0.4;
-    [self addChild:staticHeightLabel];
     heightLabel_ = [[CCLabelBMFont labelWithString:@"0" fntFile:R_DARK_FONT] retain];
     heightLabel_.position =  ccp(82, screenHeight_*0.85);
     heightLabel_.scale = 0.4f;
     heightLabel_.anchorPoint = ccp(0, 0.5);
+#if SHOW_READOUT
+    [self addChild:staticHeightLabel];    
     [self addChild:heightLabel_ z:1];     
+#endif
     
     // Speed
     CCLabelBMFont *staticSpeedLabel = [CCLabelBMFont labelWithString:@"SPEED:" fntFile:R_DARK_FONT];
     staticSpeedLabel.position = ccp(50, screenHeight_*0.82);
     staticSpeedLabel.scale = 0.4;  
-    [self addChild:staticSpeedLabel];
     speedLabel_ = [[CCLabelBMFont labelWithString:@"0.0" fntFile:R_DARK_FONT] retain];
     speedLabel_.position =  ccp(78, screenHeight_*0.82);
     speedLabel_.scale = 0.4f;
     speedLabel_.anchorPoint = ccp(0, 0.5);
+#if SHOW_READOUT    
+    [self addChild:staticSpeedLabel];    
     [self addChild:speedLabel_ z:1]; 
+#endif
     
     // Tilt
     tiltLabel_ = [[CCLabelBMFont labelWithString:@"0.000" fntFile:R_DARK_FONT] retain];
     tiltLabel_.position =  ccp(50, screenHeight_*0.89);
     tiltLabel_.scale = 0.4f;
-    //[self addChild:tiltLabel_ z:1];        
+#if SHOW_READOUT    
+    [self addChild:tiltLabel_ z:1];        
+#endif
     
     // Button 1 Counter
     numCats01Label_ = [[CCLabelBMFont labelWithString:@"0" fntFile:R_DARK_FONT] retain];

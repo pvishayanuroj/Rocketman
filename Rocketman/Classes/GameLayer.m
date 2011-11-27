@@ -60,10 +60,8 @@
         screenWidth_ = size.width;
         screenHeight_ = size.height;        
         
-        yCutoff_ = -screenHeight_ * 3;
+        yCutoff_ = -screenHeight_ * 4;
         xCutoff_ = screenWidth_ * 2;
-        leftCutoff_ = SIDE_MARGIN;
-        rightCutoff_ = screenWidth_ - SIDE_MARGIN;
         
         // Array initialization
         obstacles_ = [[NSMutableArray arrayWithCapacity:20] retain];
@@ -98,9 +96,13 @@
         // Add wall
         if (wallName) {
             wall_ = [[WallModule wallModule:[UtilFuncs removeFileExtension:wallName]] retain];
+            leftCutoff_ = SIDE_MARGIN + wall_.wallWidth;
+            rightCutoff_ = screenWidth_ - (SIDE_MARGIN + wall_.wallWidth);
         }
         else {
             wall_ = nil;
+            leftCutoff_ = SIDE_MARGIN;
+            rightCutoff_ = screenWidth_ - SIDE_MARGIN;            
         }
         
         // Load object data

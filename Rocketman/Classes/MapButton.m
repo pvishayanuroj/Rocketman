@@ -15,8 +15,8 @@
 @synthesize levelNum = levelNum_;
 @synthesize delegate = delegate_;
 
-CGFloat MB_SHRUNK_SCALE = 0.75f;
-CGFloat MB_NORMAL_SCALE = 1.0f;
+static const CGFloat MB_SHRUNK_SCALE = 0.75f;
+static const CGFloat MB_NORMAL_SCALE = 1.0f;
 
 #pragma mark - Object Lifecycle
 

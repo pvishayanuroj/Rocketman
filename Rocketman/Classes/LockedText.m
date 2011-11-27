@@ -11,9 +11,9 @@
 
 @implementation LockedText
 
-const CGFloat LT_SHAKESPEED = 0.02f;
-const CGFloat LT_NUMSHAKES = 5;
-const CGFloat LT_SHAKEOFFSET = 2.0f;
+static const CGFloat LT_SHAKESPEED = 0.02f;
+static const CGFloat LT_NUMSHAKES = 5;
+static const CGFloat LT_SHAKEOFFSET = 2.0f;
 
 #pragma mark - Object Lifecycle
 

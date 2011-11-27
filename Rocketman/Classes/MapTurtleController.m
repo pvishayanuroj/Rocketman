@@ -13,14 +13,14 @@
 
 @implementation MapTurtleController
 
-const CGFloat MTC_RIGHT_X = 400.0f;
-const CGFloat MTC_LEFT_X = -100.0f;
-const CGFloat MTC_GROUP_X_OFFSET = 10.0f;
-const CGFloat MTC_GROUP_Y_OFFSET = 15.0f;
-const NSInteger MTC_MIN_RANDOM_SPEED = 9;
-const NSInteger MTC_MAX_RANDOM_SPEED = 6;
-const NSInteger MTC_MIN_RANDOM_TIME = 3;
-const NSInteger MTC_MAX_RANDOM_TIME = 10;
+static const CGFloat MTC_RIGHT_X = 400.0f;
+static const CGFloat MTC_LEFT_X = -100.0f;
+static const CGFloat MTC_GROUP_X_OFFSET = 15.0f;
+static const CGFloat MTC_GROUP_Y_OFFSET = 20.0f;
+static const NSInteger MTC_MIN_RANDOM_SPEED = 9;
+static const NSInteger MTC_MAX_RANDOM_SPEED = 6;
+static const NSInteger MTC_MIN_RANDOM_TIME = 3;
+static const NSInteger MTC_MAX_RANDOM_TIME = 10;
 
 #pragma mark - Object Lifecycle
 

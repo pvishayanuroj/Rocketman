@@ -11,9 +11,9 @@
 
 @implementation MapScene
 
-CGFloat MS_LINE1_YPOS = 70.0f;
-CGFloat MS_LINE2_YPOS = 40.0f;
-CGFloat MS_LINE2_XSCALE = 0.7f;
+static const CGFloat MS_LINE1_YPOS = 70.0f;
+static const CGFloat MS_LINE2_YPOS = 40.0f;
+static const CGFloat MS_LINE2_XSCALE = 0.7f;
 
 + (id) mapWithLastUnlocked:(NSUInteger)lastUnlockedLevel currentLevel:(NSUInteger)currentLevel
 {

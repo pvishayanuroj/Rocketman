@@ -19,20 +19,20 @@
 
 @implementation MapLayer
 
-CGFloat ML_ROCKET_ROTATION = 140.0f;
-CGFloat ML_ROCKET_ROTATION2 = 170.0f;
-CGFloat ML_ROCKET_ROTATION_SPEED = 0.15f;
-CGFloat ML_ROCKET_ROTATION_DELAY = 0.35f;
-CGFloat ML_ROCKET_SCALE = 0.9f;
-CGFloat ML_ROCKET_SCALE_BIG = 1.0f;
-CGFloat ML_START_XPOS = 160.0f;
-CGFloat ML_START_YPOS = 40.0f;
-CGFloat ML_MENU_XPOS = 280.0f;
-CGFloat ML_MENU_YPOS = 40.0f;
-CGFloat ML_TITLE_XPOS = 160.0f;
-CGFloat ML_TITLE_YPOS = 72.0f;
-CGFloat ML_TURTLE_LINE1_Y = 440.0f;
-CGFloat ML_TURTLE_LINE2_Y = 360.0f;
+static const CGFloat ML_ROCKET_ROTATION = 140.0f;
+static const CGFloat ML_ROCKET_ROTATION2 = 170.0f;
+static const CGFloat ML_ROCKET_ROTATION_SPEED = 0.15f;
+static const CGFloat ML_ROCKET_ROTATION_DELAY = 0.35f;
+static const CGFloat ML_ROCKET_SCALE = 0.9f;
+static const CGFloat ML_ROCKET_SCALE_BIG = 1.0f;
+static const CGFloat ML_START_XPOS = 160.0f;
+static const CGFloat ML_START_YPOS = 40.0f;
+static const CGFloat ML_MENU_XPOS = 280.0f;
+static const CGFloat ML_MENU_YPOS = 40.0f;
+static const CGFloat ML_TITLE_XPOS = 160.0f;
+static const CGFloat ML_TITLE_YPOS = 72.0f;
+static const CGFloat ML_TURTLE_LINE1_Y = 440.0f;
+static const CGFloat ML_TURTLE_LINE2_Y = 360.0f;
 
 #pragma mark - Object Lifecycle
 
@@ -104,8 +104,8 @@ CGFloat ML_TURTLE_LINE2_Y = 360.0f;
         [self addChild:levelTitle_];
         
         // Add flying map turtles
-        NSInteger numTurtlesLine1 = (currentLevel > 3) ? 3 : 0;        
-        NSInteger numTurtlesLine2 = (currentLevel > 3) ? 3 : currentLevel;
+        NSInteger numTurtlesLine1 = (lastUnlockedLevel > 3) ? 3 : 0;        
+        NSInteger numTurtlesLine2 = (lastUnlockedLevel > 3) ? 3 : lastUnlockedLevel;
         [self addChild:[MapTurtleController mapTurtleControllerWithImmediateAdd:numTurtlesLine1 yPos:ML_TURTLE_LINE1_Y turtleStyle:kFadedTurtle]];
         [self addChild:[MapTurtleController mapTurtleController:numTurtlesLine2 yPos:ML_TURTLE_LINE2_Y turtleStyle:kSharpTurtle]];
         

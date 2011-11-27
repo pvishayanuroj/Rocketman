@@ -15,9 +15,9 @@
 
 @synthesize delegate = delegate_;
 
-const CGFloat MT_MOVE_AMT = 500.0f;
-const CGFloat MT_ENGINE_X = 20.0f;
-const CGFloat MT_ENGINE_Y = 15.0f;
+static const CGFloat MT_MOVE_AMT = 500.0f;
+static const CGFloat MT_ENGINE_X = 20.0f;
+static const CGFloat MT_ENGINE_Y = 15.0f;
 
 + (id) mapTurtle:(CGPoint)pos speed:(CGFloat)speed side:(MapTurtleSide)side type:(MapTurtleStyle)type
 {

@@ -12,10 +12,12 @@
 
 @implementation WallModule
 
-const CGFloat WM_YOFFSET = 480.0f;
+const CGFloat WM_YOFFSET = 479.0f;
 const CGFloat WM_XOFFSET = 45.0f;
 // How many tiles ahead to place a wall
 const NSInteger WM_BUFFER = 2;
+
+@synthesize wallWidth = wallWidth_;
 
 + (id) wallModule:(NSString *)wallName
 {
@@ -30,6 +32,7 @@ const NSInteger WM_BUFFER = 2;
         wallName_ = [wallName retain];
         [self placeWall:0];
         
+        wallWidth_ = WM_XOFFSET;
         lastWall_ = nil;
         
     }

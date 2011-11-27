@@ -17,8 +17,12 @@
     
     CGFloat nextHeight_;
     
+    CGFloat wallWidth_;
+    
     Wall *lastWall_;
 }
+
+@property (nonatomic, readonly) CGFloat wallWidth;
 
 + (id) wallModule:(NSString *)wallName;
 
