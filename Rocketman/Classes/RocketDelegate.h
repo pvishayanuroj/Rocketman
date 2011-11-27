@@ -12,6 +12,8 @@
 
 @protocol RocketDelegate <NSObject>
 
+- (void) victoryBoostStart;
+
 - (void) victoryBoostComplete;
 
 - (void) losingFallComplete;

@@ -113,6 +113,8 @@
     
     BOOL lossTriggered_;
     
+    BOOL winTriggered_;
+    
     CGFloat nextCloudHeight_;
     
     CGFloat nextSlowCloudHeight_;

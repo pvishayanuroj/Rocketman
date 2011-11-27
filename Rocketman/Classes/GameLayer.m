@@ -159,6 +159,7 @@
         onGround_ = YES;
         inputLocked_ = NO;
         lossTriggered_ = NO;
+        winTriggered_ = NO;
         
         [self schedule:@selector(update:) interval:1.0/60.0];
         [self schedule:@selector(slowUpdate:) interval:10.0/60.0];
@@ -468,13 +469,21 @@
 
 - (void) win
 {
-    inputLocked_ = YES;
-    
-    // Very important to do this, since the accelerometer singleton is holding a ref to us
-    [[UIAccelerometer sharedAccelerometer] setDelegate:nil];    
-    
-    [stats_ stopGameTimer];        
-    [rocket_ showVictoryBoost];
+    if (!lossTriggered_ ) {
+        inputLocked_ = YES;
+        winTriggered_ = YES;
+        
+        // Very important to do this, since the accelerometer singleton is holding a ref to us
+        [[UIAccelerometer sharedAccelerometer] setDelegate:nil];    
+        
+        [stats_ stopGameTimer];        
+        [rocket_ showVictoryBoost];
+    }
+}
+
+- (void) victoryBoostStart
+{
+    [speedGauge_ overrideGauge:FLT_MAX];    
 }
 
 - (BOOL) bannerClicked
@@ -502,7 +511,7 @@
 
 - (void) loss
 {
-    if (!lossTriggered_) {
+    if (!lossTriggered_ && !winTriggered_) {
         lossTriggered_ = YES;
         onGround_ = YES;
         rocketSpeed_ = 0;

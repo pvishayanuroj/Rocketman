@@ -310,6 +310,7 @@
 {
     [self showRepeatableShaking];
     [self toggleBoostOn:YES];
+    [delegate_ victoryBoostStart];
 }
 
 - (void) victoryBoostComplete
@@ -345,7 +346,7 @@
 - (void) turnFlameOff
 {
     engineFlame_.emissionRate = 0;
-    boostFlame_.emissionRate = 0;
+    //boostFlame_.emissionRate = 0;
 }
 
 #pragma mark - Debug Methods

@@ -28,6 +28,10 @@
     /** Threshold values, there are always N cutoffs and N+1 intervals */
     NSArray *cutoffs_;
     
+    /** True if gauge reflect values coming in from input tick */
+    BOOL useInputTick_;
+    
+    /** Used to keep track of the last timestamp for when gauge was changed */
     double lastUpdateTime_;
     
 }
@@ -53,5 +57,8 @@
  * where N is the number of cutoffs 
  */
 - (NSInteger) getInterval:(CGFloat)value;
+
+/** Forces the gauge to disregard tick input and to just change to the given value */
+- (void) overrideGauge:(CGFloat)value;
 
 @end

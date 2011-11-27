@@ -25,6 +25,7 @@ const CGFloat GA_MIN_CHANGE_INTERVAL = 0.15f;
         lastUpdateTime_ = 0;
         currentInterval_ = 0;
         targetInterval_ = 0;
+        useInputTick_ = YES;
         
         sprites_ = [[self loadSprites:gaugeName numIntervals:numIntervals] retain];
         sprite_ = [[sprites_ objectAtIndex:0] retain];
@@ -58,10 +59,12 @@ const CGFloat GA_MIN_CHANGE_INTERVAL = 0.15f;
 
 - (void) tick:(CGFloat)value
 {
-    if (value < minMax_.x || value >= minMax_.y) {
-        NSInteger interval = [self getInterval:value];
-        targetInterval_ = [self getInterval:value];
-        minMax_ = [self getHighLowForInterval:interval];
+    if (useInputTick_) {
+        if (value < minMax_.x || value >= minMax_.y) {
+            NSInteger interval = [self getInterval:value];
+            targetInterval_ = [self getInterval:value];
+            minMax_ = [self getHighLowForInterval:interval];
+        }
     }
     [self updateGauge];    
 }
@@ -124,6 +127,12 @@ const CGFloat GA_MIN_CHANGE_INTERVAL = 0.15f;
     }
 
     return count;
+}
+        
+- (void) overrideGauge:(CGFloat)value
+{
+    useInputTick_ = NO;
+    targetInterval_ = [self getInterval:value];
 }
 
 @end
