@@ -97,7 +97,7 @@ static const CGFloat VS_STAGE_REL_Y = 0.25f;
     CCLabelBMFont *enemiesKilled = [CCLabelBMFont labelWithString:@"Killed" fntFile:R_DARK_FONT];
     [titles addObject:enemiesKilled];
     
-    CCLabelBMFont *collisions = [CCLabelBMFont labelWithString:@"Coll." fntFile:R_DARK_FONT];
+    CCLabelBMFont *collisions = [CCLabelBMFont labelWithString:@"Collisions" fntFile:R_DARK_FONT];
     [titles addObject:collisions];    
     
     return titles;        
