@@ -59,6 +59,8 @@
 		DA5037B51453ACCA00600DD4 /* DummyBoss.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5037B41453ACC900600DD4 /* DummyBoss.m */; };
 		DA5037B71454437D00600DD4 /* Level2_data.plist in Resources */ = {isa = PBXBuildFile; fileRef = DA5037B61454437D00600DD4 /* Level2_data.plist */; };
 		DA5037BD1454CF9600600DD4 /* Button.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5037BB1454CF8F00600DD4 /* Button.m */; };
+		DA5D69CE1485BB3D00996F74 /* Crab.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5D69CD1485BB3D00996F74 /* Crab.m */; };
+		DA5D69D21485BB6B00996F74 /* FlyingTurtling.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5D69D11485BB6B00996F74 /* FlyingTurtling.m */; };
 		DA642B64145F98C300FAB4D4 /* BlueBird.m in Sources */ = {isa = PBXBuildFile; fileRef = DA642B63145F98C300FAB4D4 /* BlueBird.m */; };
 		DA642B67145F9A5600FAB4D4 /* AlienBossTurtle.m in Sources */ = {isa = PBXBuildFile; fileRef = DA642B66145F9A5500FAB4D4 /* AlienBossTurtle.m */; };
 		DA6648231479E762001AEDED /* fire.png in Resources */ = {isa = PBXBuildFile; fileRef = DA6648211479E762001AEDED /* fire.png */; };
@@ -423,6 +425,10 @@
 		DA5037BB1454CF8F00600DD4 /* Button.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Button.m; path = Classes/Button.m; sourceTree = "<group>"; };
 		DA5037BC1454CF9100600DD4 /* ButtonDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ButtonDelegate.h; path = Classes/ButtonDelegate.h; sourceTree = "<group>"; };
 		DA5037BE1454CFFD00600DD4 /* Clickable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Clickable.h; path = Classes/Clickable.h; sourceTree = "<group>"; };
+		DA5D69CC1485BB3D00996F74 /* Crab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Crab.h; path = Classes/Crab.h; sourceTree = "<group>"; };
+		DA5D69CD1485BB3D00996F74 /* Crab.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Crab.m; path = Classes/Crab.m; sourceTree = "<group>"; };
+		DA5D69D01485BB6A00996F74 /* FlyingTurtling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlyingTurtling.h; path = Classes/FlyingTurtling.h; sourceTree = "<group>"; };
+		DA5D69D11485BB6B00996F74 /* FlyingTurtling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FlyingTurtling.m; path = Classes/FlyingTurtling.m; sourceTree = "<group>"; };
 		DA642B62145F98C300FAB4D4 /* BlueBird.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BlueBird.h; path = Classes/BlueBird.h; sourceTree = "<group>"; };
 		DA642B63145F98C300FAB4D4 /* BlueBird.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BlueBird.m; path = Classes/BlueBird.m; sourceTree = "<group>"; };
 		DA642B65145F9A5500FAB4D4 /* AlienBossTurtle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlienBossTurtle.h; path = Classes/AlienBossTurtle.h; sourceTree = "<group>"; };
@@ -1038,6 +1044,8 @@
 				DAF44431144B08D500943C0D /* PlasmaBall.m */,
 				DAF44438144B08D600943C0D /* ShockTurtling.h */,
 				DAF44439144B08D700943C0D /* ShockTurtling.m */,
+				DA5D69D01485BB6A00996F74 /* FlyingTurtling.h */,
+				DA5D69D11485BB6B00996F74 /* FlyingTurtling.m */,
 				DAF44456144B08DE00943C0D /* YellowBird.h */,
 				DAF44457144B08DE00943C0D /* YellowBird.m */,
 				DA642B62145F98C300FAB4D4 /* BlueBird.h */,
@@ -1048,6 +1056,8 @@
 				DA690190145F94FE000D278F /* Bat.m */,
 				DA690192145F951E000D278F /* BlueFish.h */,
 				DA690193145F9525000D278F /* BlueFish.m */,
+				DA5D69CC1485BB3D00996F74 /* Crab.h */,
+				DA5D69CD1485BB3D00996F74 /* Crab.m */,
 				DA690195145F953D000D278F /* Salamander.h */,
 				DA690196145F9541000D278F /* Salamander.m */,
 				DA69A98B146F0695008BBF38 /* Flame.h */,
@@ -2329,6 +2339,8 @@
 				DA66482A147C9BCE001AEDED /* IncrementingText.m in Sources */,
 				DAB8013B148152080058FD3A /* FallingRocket.m in Sources */,
 				DAB801411482BF670058FD3A /* RelativeMovement.m in Sources */,
+				DA5D69CE1485BB3D00996F74 /* Crab.m in Sources */,
+				DA5D69D21485BB6B00996F74 /* FlyingTurtling.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

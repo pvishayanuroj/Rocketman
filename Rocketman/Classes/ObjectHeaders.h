@@ -12,6 +12,7 @@
 #import "Flybot.h"
 #import "Turtling.h"
 #import "ShockTurtling.h"
+#import "FlyingTurtling.h"
 #import "HoverTurtle.h"
 #import "AlienHoverTurtle.h"
 #import "YellowBird.h"
@@ -19,8 +20,10 @@
 #import "Bat.h"
 #import "Squid.h"
 #import "BlueFish.h"
+#import "Crab.h"
 #import "Salamander.h"
 #import "FlyingRock.h"
+
 
 // Bosses
 #import "DummyBoss.h"

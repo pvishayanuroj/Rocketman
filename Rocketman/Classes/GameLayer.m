@@ -598,6 +598,9 @@
         case kShockTurtling:
             obstacle = [ShockTurtling shockTurtlingWithPos:pos];
             break;            
+        case kFlyingTurtling:
+            obstacle = [FlyingTurtling flyingTurtlingWithPos:pos];
+            break;            
         case kHoverTurtle:
             obstacle = [HoverTurtle hoverTurtleWithPos:pos];
             break;
@@ -637,6 +640,9 @@
         case kBlueFishSwarm:
             [SwarmGenerator addHorizontalSwarm:8 gameLayer:self type:kSwarmBlueFish];            
             add = NO;
+            break;
+        case kCrab:
+            obstacle = [Crab crabWithPos:pos];
             break;
         case kSalamanderRight:
             obstacle = [Salamander salamanderWithPos:pos type:type];

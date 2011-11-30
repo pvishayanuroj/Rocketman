@@ -71,6 +71,7 @@ extern NSString * const R_01_MUSIC;
 // Data
 extern NSString * const R_WORLD_MAP_NAME;
 extern NSString * const R_CINEMATICS_NAME;
+extern NSString * const R_MEDAL_BENCHMARKS;
 extern NSString * const R_SPRITESHEET_NAME;
 
 

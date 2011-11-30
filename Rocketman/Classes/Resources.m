@@ -73,5 +73,7 @@ NSString * const R_01_MUSIC = @"SRSMTheme01.mp3";
 // Data
 NSString * const R_WORLD_MAP_NAME = @"WorldMap";
 NSString * const R_CINEMATICS_NAME = @"Cinematics";
+NSString * const R_MEDAL_BENCHMARKS_NAME = @"MedalBenchmarks";
 NSString * const R_SPRITESHEET_NAME = @"sheet01";
+
 
