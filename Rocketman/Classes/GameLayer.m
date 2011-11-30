@@ -207,7 +207,7 @@
 
 - (void) slowUpdate:(ccTime)dt
 {
-    [self cloudGenerator];    
+    //[self cloudGenerator];    
       
 }
 
@@ -701,7 +701,7 @@
         case kPlasmaBall:
             obstacle = [PlasmaBall plasmaBallWithPos:pos];
             break;            
-        // Swarm versions ob obstacles
+        // Swarm versions of obstacles
         case kSwarmTurtling:
             obstacle = [Turtling swarmTurtlingWithPos:pos];
             break;
@@ -716,6 +716,9 @@
             break;
         case kSwarmBat:
             obstacle = [Bat swarmBatWithPos:pos];            
+            break;
+        case kFallingTurtling:
+            obstacle = [Turtling fallingTurtlingWithPos:pos];
             break;
         default:
             add = NO;

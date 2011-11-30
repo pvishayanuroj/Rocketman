@@ -129,6 +129,34 @@
          landmarkName = "-overrideGauge:"
          landmarkType = "5">
       </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Rocketman/Classes/RelativeMovement.m"
+         timestampString = "344115941.282207"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "46"
+         endingLineNumber = "46"
+         landmarkName = "-move:object:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Rocketman/Classes/RelativeMovement.m"
+         timestampString = "344115941.282207"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "48"
+         endingLineNumber = "48"
+         landmarkName = "-move:object:"
+         landmarkType = "5">
+      </FileBreakpoint>
    </FileBreakpoints>
    <SymbolicBreakpoints>
       <SymbolicBreakpoint

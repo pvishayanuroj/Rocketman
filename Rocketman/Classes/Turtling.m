@@ -10,6 +10,7 @@
 #import "Boundary.h"
 #import "ConstantMovement.h"
 #import "StaticMovement.h"
+#import "RelativeMovement.h"
 #import "ArcMovement.h"
 #import "GameLayer.h"
 #import "AudioManager.h"
@@ -38,6 +39,11 @@ static NSUInteger countID = 0;
 + (id) swarmTurtlingWithPos:(CGPoint)pos
 {
     return [[[self alloc] initWithPos:pos type:kSwarmTurtling] autorelease];    
+}
+
++ (id) fallingTurtlingWithPos:(CGPoint)pos
+{
+    return [[[self alloc] initWithPos:pos type:kFallingTurtling] autorelease];        
 }
 
 - (id) initWithPos:(CGPoint)pos type:(ObstacleType)type
@@ -70,6 +76,9 @@ static NSUInteger countID = 0;
             CGPoint fallRate = CGPointMake(2, 0);            
             [movements_ addObject:[ConstantMovement constantMovement:fallRate]];            
             [movements_ addObject:[StaticMovement staticMovement:1/2.5f]];
+        }
+        else if (type == kFallingTurtling) {
+            [movements_ addObject:[RelativeMovement relativeMovement:4.0f equalRate:9.0f]];
         }
         
         [self initActions];

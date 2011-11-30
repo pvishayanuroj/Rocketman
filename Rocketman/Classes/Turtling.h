@@ -18,6 +18,8 @@
 
 + (id) swarmTurtlingWithPos:(CGPoint)pos;
 
++ (id) fallingTurtlingWithPos:(CGPoint)pos;
+
 - (id) initWithPos:(CGPoint)pos type:(ObstacleType)type;
 
 - (void) initActions;

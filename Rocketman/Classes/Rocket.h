@@ -103,7 +103,7 @@ typedef enum {
 /** Only used to turn the boost on/engine off or the boost off/engine on */
 - (void) toggleBoostOn:(BOOL)on;
 
-/** Ensures the boost and engine to be off */
-- (void) turnFlameOff;
+/** Ensures the engine is off */
+- (void) turnEngineFlameOff;
 
 @end

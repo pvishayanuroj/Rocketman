@@ -152,7 +152,7 @@ const CGFloat SRSM_FPS = 60.0f;
     else {
         vR_ -= (DV_MIN + dVMin_);
         dVMin_ += DDV_MIN;
-        [[[GameManager gameManager] rocket] turnFlameOff];        
+        [[[GameManager gameManager] rocket] turnEngineFlameOff];        
     }
 }
 

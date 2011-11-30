@@ -343,10 +343,9 @@
     }
 }
 
-- (void) turnFlameOff
+- (void) turnEngineFlameOff
 {
     engineFlame_.emissionRate = 0;
-    //boostFlame_.emissionRate = 0;
 }
 
 #pragma mark - Debug Methods

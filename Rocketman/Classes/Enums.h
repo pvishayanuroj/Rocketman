@@ -119,7 +119,9 @@ typedef enum {
     kSwarmYellowBird,
     kSwarmBlueBird,
     kSwarmBlueFish,
-    kSwarmBat
+    kSwarmBat,
+    // Falling versions
+    kFallingTurtling
 } ObstacleType;
 
 typedef enum {
