@@ -25,6 +25,7 @@
         score_.elapsedTime = 0;
         score_.totalHeight = 0;
         score_.totalSlowTime = 0;
+        score_.maxCombo = 0;
         score_.numBombsCollected = 0;
         score_.numBombsFired = 0;
         score_.numBoostCombos = 0;

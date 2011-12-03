@@ -17,17 +17,21 @@ extern NSString * const R_SLOW_BUTTON;
 extern NSString * const R_SLOW_BUTTON_PRESSED;
 
 // Text
+extern NSString * const R_ENEMIES_DESTROYED_TEXT;
 extern NSString * const R_GAME_OVER_TEXT;
 extern NSString * const R_HELP_TEXT;
 extern NSString * const R_LOCKED_TEXT;
+extern NSString * const R_MAX_COMBO_TEXT;
 extern NSString * const R_MENU_TEXT;
 extern NSString * const R_PLAY_TEXT;
 extern NSString * const R_RESTART_TEXT;
 extern NSString * const R_RESUME_TEXT;
 extern NSString * const R_SCORES_TEXT;
 extern NSString * const R_SKIP_TEXT;
+extern NSString * const R_STAGE_CLEARED_TEXT;
 extern NSString * const R_STAGE_SELECTION_TEXT;
 extern NSString * const R_START_TEXT;
+extern NSString * const R_TIME_TAKEN_TEXT;
 
 // Fonts
 extern NSString * const R_OUTLINE_28_FONT;
@@ -71,7 +75,8 @@ extern NSString * const R_01_MUSIC;
 // Data
 extern NSString * const R_WORLD_MAP_NAME;
 extern NSString * const R_CINEMATICS_NAME;
-extern NSString * const R_MEDAL_BENCHMARKS;
+extern NSString * const R_MEDAL_BENCHMARKS_NAME;
+extern NSString * const R_HIGH_SCORES_NAME;
 extern NSString * const R_SPRITESHEET_NAME;
 
 

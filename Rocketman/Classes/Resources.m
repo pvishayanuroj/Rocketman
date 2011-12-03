@@ -19,17 +19,21 @@ NSString * const R_SLOW_BUTTON = @"Slow Button.png";
 NSString * const R_SLOW_BUTTON_PRESSED = @"Slow Button Pressed.png";
 
 // Text
+NSString * const R_ENEMIES_DESTROYED_TEXT = @"Enemies Destroyed Text.png";
 NSString * const R_GAME_OVER_TEXT = @"Game Over Text.png";
 NSString * const R_HELP_TEXT = @"Help Text.png";
 NSString * const R_LOCKED_TEXT = @"Locked Text.png";
+NSString * const R_MAX_COMBO_TEXT = @"Max Combo Text.png";
 NSString * const R_MENU_TEXT = @"Menu Text.png";
 NSString * const R_PLAY_TEXT = @"Play Text.png";
 NSString * const R_RESTART_TEXT = @"Restart Text.png";
 NSString * const R_RESUME_TEXT = @"Resume Text.png";
 NSString * const R_SCORES_TEXT = @"Scores Text.png";
 NSString * const R_SKIP_TEXT = @"Skip Text.png";
+NSString * const R_STAGE_CLEARED_TEXT = @"Stage Cleared Text.png";
 NSString * const R_STAGE_SELECTION_TEXT = @"Stage Selection Text.png";
 NSString * const R_START_TEXT = @"Start Text.png";
+NSString * const R_TIME_TAKEN_TEXT = @"Time Taken Text.png";
 
 // Fonts
 NSString * const R_OUTLINE_28_FONT = @"SRSM Outline Font 28.fnt";
@@ -74,6 +78,7 @@ NSString * const R_01_MUSIC = @"SRSMTheme01.mp3";
 NSString * const R_WORLD_MAP_NAME = @"WorldMap";
 NSString * const R_CINEMATICS_NAME = @"Cinematics";
 NSString * const R_MEDAL_BENCHMARKS_NAME = @"MedalBenchmarks";
+NSString * const R_HIGH_SCORES_NAME = @"HighScores";
 NSString * const R_SPRITESHEET_NAME = @"sheet01";
 
 

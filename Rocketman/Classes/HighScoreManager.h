@@ -8,13 +8,8 @@
 
 #import "CommonHeaders.h"
 
-
-@interface HighscoreManager : NSObject {
+@interface HighScoreManager : NSObject {
     
 }
-
-+ (BOOL)addToHighscore:(NSInteger)score;
-+ (BOOL)resetHighscore;
-+ (NSArray *)getHighscores;
 
 @end

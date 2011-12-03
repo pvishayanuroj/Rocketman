@@ -8,41 +8,13 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
-         filePath = "Rocketman/Classes/EventText.h"
-         timestampString = "343407079.104816"
+         filePath = "Rocketman/Classes/ScoreManager.m"
+         timestampString = "344647346.449239"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "25"
-         endingLineNumber = "25"
-         landmarkName = "+eventText:"
-         landmarkType = "4">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "Rocketman/Classes/ComboModule.h"
-         timestampString = "343407079.104816"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "19"
-         endingLineNumber = "19"
-         landmarkName = "@interface ComboModule"
-         landmarkType = "2">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "Rocketman/Classes/ComboModule.m"
-         timestampString = "343413767.347404"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "37"
-         endingLineNumber = "37"
-         landmarkName = "-enemyKilled:pos:"
+         startingLineNumber = "91"
+         endingLineNumber = "91"
+         landmarkName = "+checkAndStoreRecord:level:score:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -50,13 +22,13 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
-         filePath = "Rocketman/Classes/GameLayer.m"
-         timestampString = "344052183.073174"
+         filePath = "Rocketman/Classes/ScoreManager.m"
+         timestampString = "344647346.449239"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "83"
-         endingLineNumber = "83"
-         landmarkName = "-initWithLevelData:"
+         startingLineNumber = "93"
+         endingLineNumber = "93"
+         landmarkName = "+checkAndStoreRecord:level:score:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -64,28 +36,14 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
-         filePath = "Rocketman/Classes/CatBullet.m"
-         timestampString = "343453006.234183"
+         filePath = "Rocketman/Classes/ScoreManager.m"
+         timestampString = "344647346.449239"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "144"
-         endingLineNumber = "144"
-         landmarkName = "@implementation CatBullet"
-         landmarkType = "3">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "Rocketman/Classes/CatBullet.m"
-         timestampString = "343453006.234183"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "143"
-         endingLineNumber = "143"
-         landmarkName = "@implementation CatBullet"
-         landmarkType = "3">
+         startingLineNumber = "95"
+         endingLineNumber = "95"
+         landmarkName = "+checkAndStoreRecord:level:score:"
+         landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -93,12 +51,12 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Rocketman/Classes/VictoryScene.m"
-         timestampString = "344030475.274606"
+         timestampString = "344647034.836148"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "135"
-         endingLineNumber = "135"
-         landmarkName = "-addButtons"
+         startingLineNumber = "173"
+         endingLineNumber = "173"
+         landmarkName = "-placeMedal:medal:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -106,74 +64,14 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
-         filePath = "Rocketman/Classes/Gauge.m"
-         timestampString = "344054141.874619"
+         filePath = "Rocketman/Classes/VictoryScene.m"
+         timestampString = "344647034.836148"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "134"
-         endingLineNumber = "134"
-         landmarkName = "-overrideGauge:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "Rocketman/Classes/Gauge.m"
-         timestampString = "344054334.336947"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "135"
-         endingLineNumber = "135"
-         landmarkName = "-overrideGauge:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "Rocketman/Classes/RelativeMovement.m"
-         timestampString = "344115941.282207"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "46"
-         endingLineNumber = "46"
-         landmarkName = "-move:object:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "Rocketman/Classes/RelativeMovement.m"
-         timestampString = "344115941.282207"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "48"
-         endingLineNumber = "48"
-         landmarkName = "-move:object:"
+         startingLineNumber = "174"
+         endingLineNumber = "174"
+         landmarkName = "-placeMedal:medal:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
-   <SymbolicBreakpoints>
-      <SymbolicBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         symbolName = "objc_exception_throw"
-         moduleName = "">
-      </SymbolicBreakpoint>
-   </SymbolicBreakpoints>
-   <ExceptionBreakpoints>
-      <ExceptionBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         scope = "0"
-         stopOnStyle = "0">
-      </ExceptionBreakpoint>
-   </ExceptionBreakpoints>
 </Bucket>

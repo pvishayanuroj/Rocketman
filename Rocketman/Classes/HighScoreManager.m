@@ -7,21 +7,11 @@
 //
 
 #import "HighscoreManager.h"
+#import "DataManager.h"
 
-NSInteger intSort(id num1, id num2, void *context)
-{
-    int v1 = [num1 intValue];
-    int v2 = [num2 intValue];
-    if (v1 < v2)
-        return NSOrderedAscending;
-    else if (v1 > v2)
-        return NSOrderedDescending;
-    else
-        return NSOrderedSame;
-}
+@implementation HighScoreManager
 
-@implementation HighscoreManager
-
+/*
 + (BOOL)addToHighscore:(NSInteger)score {
     
     NSNumber *newScore = [[NSNumber numberWithInt:score] retain];
@@ -85,18 +75,38 @@ NSInteger intSort(id num1, id num2, void *context)
 
 }
 
-+ (BOOL)resetHighscore {
-    NSFileManager *manager = [NSFileManager defaultManager];
++ (MedalType) checkAndRecordScore:(ScoreCategory)scoreCategory score:(NSInteger)score
+{
     
-    NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"Highscores" ofType:@"plist"];
+}
+
++ (NSInteger) getIntegerScore:(ScoreCategory)scoreCategory level:(NSInteger)level
+{
+    NSDictionary *scores = [self getAndCreateScoreData];
+    NSString *levelKey = [NSString stringWithFormat:@"%d", level];    
+    NSDictionary *levelScores = [scores objectForKey:levelKey];
     
-    if ([manager isWritableFileAtPath:plistPath]) {
-        NSNumber *zero = [NSNumber numberWithInt:0];
-        
-        NSArray *scores = [NSArray arrayWithObject: zero];
-        return [scores writeToFile:plistPath atomically:YES];
+    switch (scoreCategory) {
+        case kScoreTimeTaken:
+            break;
+        case kScoreEnemiesDestroyed:
+            break;
+        case kScoreMaxCombo:
+            break;
+        default:
+            break;
     }
-    else return NO;
+}
+
++ (void) setIntegerScore:(ScoreCategory)scoreCategory level:(NSInteger)level
+{
+    
+}
+
++ (void) resetScores
+{
+    NSDictionary *scores = [self createNewScoreData];
+    [self saveData:scores];
 }
 
 + (NSArray *)getHighscores {
@@ -105,5 +115,46 @@ NSInteger intSort(id num1, id num2, void *context)
     
     return scores;
 }
+     
++ (NSDictionary *) getAndCreateScoreData
+{
+    NSDictionary *scores = [self loadData];
+    if (scores == nil) {
+        
+        scores = [NSMutableDictionary dictionaryWithCapacity:6];        
+        [self saveData:scores];
+    }
+    return scores;
+}
 
++ (NSDictionary *) createNewScoreData
+{
+    NSMutableDictionary *scores = [NSMutableDictionary dictionaryWithCapacity:6];
+    NSInteger numLevels = [[[DataManager dataManager] mapData] count];
+    for (int i = 0; i < numLevels; ++i) {
+        NSMutableDictionary *levelScores = [NSMutableDictionary dictionaryWithCapacity:3];
+        [levelScores setObject:[NSNumber numberWithInt:-1] forKey:@"Time Taken"];
+        [levelScores setObject:[NSNumber numberWithInt:-1] forKey:@"Max Combo"];
+        [levelScores setObject:[NSNumber numberWithInt:-1] forKey:@"Enemies Destroyed"];            
+        NSString *levelKey = [NSString stringWithFormat:@"%d", i];
+        [scores setObject:levelScores forKey:levelKey];
+    }    
+    return scores;
+}
+
++ (NSDictionary *) loadData
+{
+
+}
+
++ (void) saveData:(NSDictionary *)data
+{
+    
+}
+
++ (NSString *) getPath
+{
+    return [[NSBundle mainBundle] pathForResource:R_HIGH_SCORES ofType:@"plist"];
+}
+*/
 @end

@@ -153,6 +153,19 @@ typedef enum {
 } FlameDirection;
 
 typedef enum {
+    kScoreTimeTaken,
+    kScoreMaxCombo,
+    kScoreEnemiesDestroyed
+} ScoreCategory;
+
+typedef enum {
+    kMedalNone,
+    kMedalBronze,
+    kMedalSilver,
+    kMedalGold
+} MedalType;
+
+typedef enum {
     kMapLeft,
     kMapRight
 } MapTurtleSide;

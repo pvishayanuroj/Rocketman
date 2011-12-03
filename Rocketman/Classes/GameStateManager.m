@@ -94,15 +94,15 @@ static GameStateManager *_gameStateManager = nil;
     [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:scene]];        
 }
 
-- (void) showStageCleared:(NSUInteger)levelNum score:(SRSMScore)score
+- (void) showStageCleared:(SRSMScore)score
 {
-    CCScene *scene = [VictoryScene victoryScene:score];
+    CCScene *scene = [VictoryScene victorySceneWithLevel:currentLevel_ score:score ];
     [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:2.0 scene:scene]];     
 }
 
-- (void) showGameOver:(NSUInteger)levelNum score:(NSUInteger)score
+- (void) showGameOver:(NSUInteger)score
 {
-    CCScene *scene = [EndScene endSceneWithLevel:levelNum score:score];
+    CCScene *scene = [EndScene endSceneWithLevel:currentLevel_ score:score];
     [[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:2.0 scene:scene]];    
 }
 
@@ -110,6 +110,13 @@ static GameStateManager *_gameStateManager = nil;
 
 - (void) startGameFromMainMenu
 {
+    /*
+    SRSMScore score;
+    score.numEnemiesKilled = 5;
+    score.elapsedTime = 70.5;
+    score.maxCombo = 30;
+    [self showStageCleared:score];    
+    */
     [[StoryManager storyManager] beginCutscene:@"Intro"];
 }
 
@@ -118,7 +125,7 @@ static GameStateManager *_gameStateManager = nil;
     // Cleanup GM singleton
     [GameManager purgeGameManager];
     
-    [self showGameOver:currentLevel_ score:score];
+    [self showGameOver:score];
 }
 
 - (void) endGameWithWin:(SRSMScore)score
@@ -126,7 +133,7 @@ static GameStateManager *_gameStateManager = nil;
     // Cleanup GM singleton
     [GameManager purgeGameManager];
     
-    [self showStageCleared:currentLevel_ score:score];    
+    [self showStageCleared:score];    
 }
 
 - (void) endStory

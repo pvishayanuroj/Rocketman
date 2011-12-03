@@ -17,7 +17,7 @@
 - (id) init {
     if ((self = [super init])) {
         
-        NSArray *scores = [HighscoreManager getHighscores];
+        NSArray *scores;// = [HighscoreManager getHighscores];
         
         for (int i=0; i < [scores count]; i++) {
             CCLabelBMFont *label = [CCLabelBMFont labelWithString:[[scores objectAtIndex:[scores count]-i-1] stringValue] fntFile:@"SRSM_font.fnt"];
@@ -48,7 +48,7 @@
 }
 
 - (void) resetHighscores {
-    [HighscoreManager resetHighscore];
+    //[HighscoreManager resetHighscore];
     
     HighscoreScene *scene = [HighscoreScene node];
     [[CCDirector sharedDirector] replaceScene:scene];

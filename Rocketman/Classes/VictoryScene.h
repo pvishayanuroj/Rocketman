@@ -12,22 +12,27 @@
 
 @interface VictoryScene : CCScene <IncrementingTextDelegate> {
     
-    NSArray *scoreLabels_;
+    CCSprite *timeTitle_;
     
-    CCSprite *stageIcon_;    
+    CCSprite *comboTitle_;
     
+    CCSprite *enemiesTitle_;
+    
+    SRSMScore score_;
+    
+    NSUInteger level_;
 }
 
-+ (id) victoryScene:(SRSMScore)score;
++ (id) victorySceneWithLevel:(NSUInteger)level score:(SRSMScore)score;
 
-- (id) initVictoryScene:(SRSMScore)score;
+- (id) initVictoryScene:(NSUInteger)level score:(SRSMScore)score;
 
-- (NSArray *) createScoreTitles;
+- (void) createTextCallback:(id)sender data:(void *)data;
 
-- (NSArray *) createScoreLabels:(SRSMScore)score;
+- (void) createText:(ScoreCategory)scoreCategory;
 
-- (void) addButtons;
+- (void) placeMedalAndRecord:(ScoreCategory)scoreCategory score:(NSInteger)score;
 
-- (void) initActions;
+- (void) placeMedal:(ScoreCategory)scoreCategory medal:(MedalType)medal;
 
 @end

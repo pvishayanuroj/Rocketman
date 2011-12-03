@@ -40,10 +40,10 @@
 - (void) showWorldMap;
 
 /** Method to show the victory screen */
-- (void) showStageCleared:(NSUInteger)levelNum score:(SRSMScore)score;
+- (void) showStageCleared:(SRSMScore)score;
 
 /** Method to display a game over screen */
-- (void) showGameOver:(NSUInteger)levelNum score:(NSUInteger)score;
+- (void) showGameOver:(NSUInteger)score;
 
 /** Called when a level ends */
 - (void) endGame:(NSUInteger)score;

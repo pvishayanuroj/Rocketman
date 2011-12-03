@@ -42,6 +42,8 @@ typedef struct {
     
     double totalSlowTime;
     
+    NSInteger maxCombo;
+    
     /** Number of rocket collisions */
     NSInteger numCollisions;
     

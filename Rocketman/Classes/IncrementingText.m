@@ -72,7 +72,9 @@ static const CGFloat IT_DURATION = 2.0f;
     
     if (score_ >= finalScore_) {
         score_ = finalScore_;
-        [delegate_ respondsToSelector:@selector(incrementationDone:)];
+        if ([delegate_ respondsToSelector:@selector(incrementationDone:)]) {
+            [delegate_ incrementationDone:self];
+        }
         [self unschedule:@selector(update:)];
     }
     

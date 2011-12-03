@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Stage 00</key>
+	<dict>
+		<key>Time Taken</key>
+		<dict>
+			<key>Silver</key>
+			<integer>100</integer>
+			<key>Gold</key>
+			<integer>50</integer>
+		</dict>
+		<key>Enemies Destroyed</key>
+		<dict>
+			<key>Silver</key>
+			<integer>15</integer>
+			<key>Gold</key>
+			<integer>30</integer>
+		</dict>
+		<key>Max Combo</key>
+		<dict>
+			<key>Silver</key>
+			<integer>10</integer>
+			<key>Gold</key>
+			<integer>20</integer>
+		</dict>
+	</dict>
+	<key>Stage 01</key>
+	<dict>
+		<key>Time Taken</key>
+		<dict>
+			<key>Silver</key>
+			<integer>100</integer>
+			<key>Gold</key>
+			<integer>50</integer>
+		</dict>
+		<key>Enemies Destroyed</key>
+		<dict>
+			<key>Silver</key>
+			<integer>15</integer>
+			<key>Gold</key>
+			<integer>30</integer>
+		</dict>
+		<key>Max Combo</key>
+		<dict>
+			<key>Silver</key>
+			<integer>10</integer>
+			<key>Gold</key>
+			<integer>20</integer>
+		</dict>
+	</dict>
+	<key>Stage 02</key>
+	<dict>
+		<key>Time Taken</key>
+		<dict>
+			<key>Silver</key>
+			<integer>100</integer>
+			<key>Gold</key>
+			<integer>50</integer>
+		</dict>
+		<key>Enemies Destroyed</key>
+		<dict>
+			<key>Silver</key>
+			<integer>15</integer>
+			<key>Gold</key>
+			<integer>30</integer>
+		</dict>
+		<key>Max Combo</key>
+		<dict>
+			<key>Silver</key>
+			<integer>10</integer>
+			<key>Gold</key>
+			<integer>20</integer>
+		</dict>
+	</dict>
+	<key>Stage 03</key>
+	<dict>
+		<key>Time Taken</key>
+		<dict>
+			<key>Silver</key>
+			<integer>100</integer>
+			<key>Gold</key>
+			<integer>50</integer>
+		</dict>
+		<key>Enemies Destroyed</key>
+		<dict>
+			<key>Silver</key>
+			<integer>15</integer>
+			<key>Gold</key>
+			<integer>30</integer>
+		</dict>
+		<key>Max Combo</key>
+		<dict>
+			<key>Silver</key>
+			<integer>10</integer>
+			<key>Gold</key>
+			<integer>20</integer>
+		</dict>
+	</dict>
+	<key>Stage 04</key>
+	<dict>
+		<key>Time Taken</key>
+		<dict>
+			<key>Silver</key>
+			<integer>100</integer>
+			<key>Gold</key>
+			<integer>50</integer>
+		</dict>
+		<key>Enemies Destroyed</key>
+		<dict>
+			<key>Silver</key>
+			<integer>15</integer>
+			<key>Gold</key>
+			<integer>30</integer>
+		</dict>
+		<key>Max Combo</key>
+		<dict>
+			<key>Silver</key>
+			<integer>10</integer>
+			<key>Gold</key>
+			<integer>20</integer>
+		</dict>
+	</dict>
+	<key>Stage 05</key>
+	<dict>
+		<key>Time Taken</key>
+		<dict>
+			<key>Silver</key>
+			<integer>100</integer>
+			<key>Gold</key>
+			<integer>50</integer>
+		</dict>
+		<key>Enemies Destroyed</key>
+		<dict>
+			<key>Silver</key>
+			<integer>15</integer>
+			<key>Gold</key>
+			<integer>30</integer>
+		</dict>
+		<key>Max Combo</key>
+		<dict>
+			<key>Silver</key>
+			<integer>10</integer>
+			<key>Gold</key>
+			<integer>20</integer>
+		</dict>
+	</dict>
+	<key>Stage 06</key>
+	<dict>
+		<key>Time Taken</key>
+		<dict>
+			<key>Silver</key>
+			<integer>100</integer>
+			<key>Gold</key>
+			<integer>50</integer>
+		</dict>
+		<key>Enemies Destroyed</key>
+		<dict>
+			<key>Silver</key>
+			<integer>15</integer>
+			<key>Gold</key>
+			<integer>30</integer>
+		</dict>
+		<key>Max Combo</key>
+		<dict>
+			<key>Silver</key>
+			<integer>10</integer>
+			<key>Gold</key>
+			<integer>20</integer>
+		</dict>
+	</dict>
+	<key>Stage 07</key>
+	<dict>
+		<key>Time Taken</key>
+		<dict>
+			<key>Silver</key>
+			<integer>100</integer>
+			<key>Gold</key>
+			<integer>50</integer>
+		</dict>
+		<key>Enemies Destroyed</key>
+		<dict>
+			<key>Silver</key>
+			<integer>15</integer>
+			<key>Gold</key>
+			<integer>30</integer>
+		</dict>
+		<key>Max Combo</key>
+		<dict>
+			<key>Silver</key>
+			<integer>10</integer>
+			<key>Gold</key>
+			<integer>20</integer>
+		</dict>
+	</dict>
+</dict>
+</plist>

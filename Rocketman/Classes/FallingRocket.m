@@ -12,9 +12,6 @@
 
 @implementation FallingRocket
 
-// Startin position of the rocket
-const CGFloat FL_START_X = 160.0f;
-const CGFloat FL_START_Y = 450.0f;
 // Rocket fall speed
 const CGFloat FL_FALL_SPEED = 0.6f;
 // How far the rocket rotates per arc
@@ -33,8 +30,6 @@ const CGFloat FL_ARC_YOFFSET = 15.0f;
 - (id) initFallingRocket
 {
     if ((self = [super initGameObject])) {
-        
-        self.position = CGPointMake(FL_START_X, FL_START_Y);
         
         sprite_ = [[CCSprite spriteWithSpriteFrameName:@"Rocket2 Parachute 01.png"] retain];
         sprite_.rotation = -FL_ROTATION;

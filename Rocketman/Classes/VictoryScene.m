@@ -11,27 +11,37 @@
 #import "FallingRocket.h"
 #import "GameStateManager.h"
 #import "AnimatedButton.h"
+#import "ScoreManager.h"
 
 @implementation VictoryScene
 
-static const CGFloat VS_TITLE_X = 0.02f;
-static const CGFloat VS_SCORE_X = 0.9f;
-static const CGFloat VS_SCORE_Y_TOP = 0.7f;
-static const CGFloat VS_SCORE_Y_SEPERATION = 0.1f;
+static const CGFloat VS_MEDAL_X = 0.10f;
+static const CGFloat VS_CLEARED_TITLE_Y = 0.9f;
+static const CGFloat VS_SCORE_TITLE_X = 0.25f;
+static const CGFloat VS_SCORE_VALUE_X = 0.35f;
+static const CGFloat VS_TIME_TITLE_Y = 0.65f;
+static const CGFloat VS_TIME_VALUE_Y = 0.60f;
+static const CGFloat VS_COMBO_TITLE_Y = 0.50f;
+static const CGFloat VS_COMBO_VALUE_Y = 0.45f;
+static const CGFloat VS_ENEMIES_TITLE_Y = 0.35f;
+static const CGFloat VS_ENEMIES_VALUE_Y = 0.30f;
 
-static const CGFloat VS_BUTTON_SCALE = 0.8f;
-static const CGFloat VS_BUTTON_SCALE_BIG = 1.0f;
-static const CGFloat VS_STAGE_REL_Y = 0.25f;
+// Starting position of the rocket
+static const CGFloat VS_ROCKET_START_X = 200.0f;
+static const CGFloat VS_ROCKET_START_Y = 450.0f;
 
-+ (id) victoryScene:(SRSMScore)score
++ (id) victorySceneWithLevel:(NSUInteger)level score:(SRSMScore)score
 {
-    return [[[self alloc] initVictoryScene:score] autorelease];
+    return [[[self alloc] initVictoryScene:level score:score] autorelease];
 }
 
-- (id) initVictoryScene:(SRSMScore)score
+- (id) initVictoryScene:(NSUInteger)level score:(SRSMScore)score
 {
     if ((self = [super init])) {
         
+        NSLog(@"time: %6.4f", score.elapsedTime);
+        score_ = score;
+        level_ = level;
         CGSize size = [[CCDirector sharedDirector] winSize];        
         
         // Add background sky
@@ -46,116 +56,152 @@ static const CGFloat VS_STAGE_REL_Y = 0.25f;
         fg.anchorPoint = CGPointZero;
         [self addChild:fg z:1];
         
-        NSArray *scoreTitles = [self createScoreTitles];
-        scoreLabels_ = [[self createScoreLabels:score] retain];
+        CCSprite *clearedTitle = [CCSprite spriteWithFile:R_STAGE_CLEARED_TEXT];
+        clearedTitle.position = CGPointMake(size.width * 0.5f, size.height * VS_CLEARED_TITLE_Y);
+        [self addChild:clearedTitle z:3];
         
-        // Add score titles
-        NSInteger count = 0;        
-        for (CCLabelBMFont *title in scoreTitles) {
-            title.position = CGPointMake(size.width * VS_TITLE_X, size.height * (VS_SCORE_Y_TOP - VS_SCORE_Y_SEPERATION * count));
-            title.anchorPoint = CGPointMake(0.0f, 0.5f);
-            [self addChild:title z:3];
-            count++;
-        }        
-        
-        // Add scores
-        count = 0;
-        for (IncrementingText *text in scoreLabels_) {
-            text.unitID = count;
-            text.delegate = self;
-            text.position = CGPointMake(size.width * VS_SCORE_X, size.height * (VS_SCORE_Y_TOP - VS_SCORE_Y_SEPERATION * count));
-            [self addChild:text z:3];
-            count++;
-        }
+        timeTitle_ = [[CCSprite spriteWithFile:R_TIME_TAKEN_TEXT] retain];
+        comboTitle_ = [[CCSprite spriteWithFile:R_MAX_COMBO_TEXT] retain];
+        enemiesTitle_ = [[CCSprite spriteWithFile:R_ENEMIES_DESTROYED_TEXT] retain];
+        timeTitle_.position = CGPointMake(size.width * VS_SCORE_TITLE_X, size.height * VS_TIME_TITLE_Y);
+        comboTitle_.position = CGPointMake(size.width * VS_SCORE_TITLE_X, size.height * VS_COMBO_TITLE_Y);
+        enemiesTitle_.position = CGPointMake(size.width * VS_SCORE_TITLE_X, size.height * VS_ENEMIES_TITLE_Y);        
+        timeTitle_.anchorPoint = CGPointMake(0.0f, 0.5f);
+        comboTitle_.anchorPoint = CGPointMake(0.0f, 0.5f);
+        enemiesTitle_.anchorPoint = CGPointMake(0.0f, 0.5f);        
+        timeTitle_.visible = NO;
+        comboTitle_.visible = NO;
+        enemiesTitle_.visible = NO;
+        [self addChild:timeTitle_ z:3];
+        [self addChild:comboTitle_ z:3];
+        [self addChild:enemiesTitle_ z:3];
         
         // Add the falling rocket
         FallingRocket *rocket = [FallingRocket fallingRocket];
+        rocket.position = CGPointMake(VS_ROCKET_START_X, VS_ROCKET_START_Y);
         [self addChild:rocket z:2];
         
-        [self addButtons];
-        [self initActions];
         
+        
+        // Show the first score
+        [self createText:kScoreTimeTaken];
     }
     return self;
 }
 
 - (void) dealloc
 {
-    [scoreLabels_ release];
-    [stageIcon_ release];
+    [timeTitle_ release];
+    [comboTitle_ release];
+    [enemiesTitle_ release];
     
     [super dealloc];
 }
 
-- (NSArray *) createScoreTitles
+- (void) createTextCallback:(id)sender data:(void *)data
 {
-    NSMutableArray *titles = [NSMutableArray arrayWithCapacity:10];
-    
-    CCLabelBMFont *elapsedTime = [CCLabelBMFont labelWithString:@"Time" fntFile:R_DARK_FONT];
-    [titles addObject:elapsedTime];    
-    
-    CCLabelBMFont *enemiesKilled = [CCLabelBMFont labelWithString:@"Killed" fntFile:R_DARK_FONT];
-    [titles addObject:enemiesKilled];
-    
-    CCLabelBMFont *collisions = [CCLabelBMFont labelWithString:@"Collisions" fntFile:R_DARK_FONT];
-    [titles addObject:collisions];    
-    
-    return titles;        
+    [self createText:(int)data];
 }
 
-- (NSArray *) createScoreLabels:(SRSMScore)score
+- (void) createText:(ScoreCategory)scoreCategory
 {
-    NSMutableArray *labels = [NSMutableArray arrayWithCapacity:10];
+    CGSize size = [[CCDirector sharedDirector] winSize];  
+    IncrementingText *text;
+    
+    if (scoreCategory == kScoreTimeTaken) {
+        timeTitle_.visible = YES;
+        NSInteger elapsedTime = round(score_.elapsedTime * 10);    
+        text = [IncrementingText incrementingText:elapsedTime font:R_DARK_FONT alignment:kLeftAligned isTime:YES];
+        text.unitID = kScoreTimeTaken;
+        text.position = CGPointMake(size.width * VS_SCORE_VALUE_X, size.height * VS_TIME_VALUE_Y);        
+    }
+    else if (scoreCategory == kScoreEnemiesDestroyed) {
+        enemiesTitle_.visible = YES;        
+        text = [IncrementingText incrementingText:score_.numEnemiesKilled font:R_DARK_FONT alignment:kLeftAligned isTime:NO];    
+        text.unitID = kScoreEnemiesDestroyed;
+        text.position = CGPointMake(size.width * VS_SCORE_VALUE_X, size.height * VS_ENEMIES_VALUE_Y);        
+    }
+    else if (scoreCategory == kScoreMaxCombo) {
+        comboTitle_.visible = YES;        
+        text = [IncrementingText incrementingText:score_.maxCombo font:R_DARK_FONT alignment:kLeftAligned isTime:NO];
+        text.unitID = kScoreMaxCombo;
+        text.position = CGPointMake(size.width * VS_SCORE_VALUE_X, size.height * VS_COMBO_VALUE_Y);        
+    }
 
-    NSInteger elapsedTime = round(score.elapsedTime * 10);
-    IncrementingText *time = [IncrementingText incrementingText:elapsedTime font:R_DARK_FONT alignment:kRightAligned isTime:YES];
-    [labels addObject:time];
-    
-    IncrementingText *numKilled = [IncrementingText incrementingText:score.numEnemiesKilled font:R_DARK_FONT alignment:kRightAligned isTime:NO];
-    [labels addObject:numKilled];    
-    
-    IncrementingText *collisions = [IncrementingText incrementingText:score.numCollisions font:R_DARK_FONT alignment:kRightAligned isTime:NO];
-    [labels addObject:collisions];        
-    
-    return labels;
+    text.delegate = self;
+    [self addChild:text z:3];    
 }
 
 - (void) incrementationDone:(IncrementingText *)text
 {
-    // Kick off the next score
-    NSInteger index = text.unitID + 1;
-    if ([scoreLabels_ count] > index) {
-        IncrementingText *scoreText = [scoreLabels_ objectAtIndex:index];
-        [scoreText startIncrementing];
+    CCAction *nextScore;
+    CCDelayTime *delay = [CCDelayTime actionWithDuration:1.0f];
+    CCCallFuncND *nextText = nil;
+    switch (text.unitID) {
+        case kScoreTimeTaken:
+            [self placeMedalAndRecord:text.unitID score:round(score_.elapsedTime)];
+            nextText = [CCCallFuncND actionWithTarget:self selector:@selector(createTextCallback:data:) data:(void *)kScoreMaxCombo];
+            nextScore = [CCSequence actions:delay, nextText, nil];
+            [self runAction:nextScore];            
+            break;
+        case kScoreMaxCombo:
+            [self placeMedalAndRecord:text.unitID score:score_.maxCombo];
+            nextText = [CCCallFuncND actionWithTarget:self selector:@selector(createTextCallback:data:) data:(void *)kScoreEnemiesDestroyed];            
+            nextScore = [CCSequence actions:delay, nextText, nil];
+            [self runAction:nextScore];            
+            break;
+        case kScoreEnemiesDestroyed:
+            [self placeMedalAndRecord:text.unitID score:score_.numEnemiesKilled];
+            break;
+        default:
+            break;
     }
 }
 
-- (void) addButtons
+- (void) placeMedalAndRecord:(ScoreCategory)scoreCategory score:(NSInteger)score
 {
-    stageIcon_ = [[CCSprite spriteWithFile:R_STAGE_SELECTION_ICON] retain];
-    
-    CGSize size = [[CCDirector sharedDirector] winSize];
-    stageIcon_.position = ccp(265, VS_STAGE_REL_Y * size.height);
-    
-    AnimatedButton *stageButton = [AnimatedButton buttonWithImage:R_STAGE_SELECTION_TEXT target:self selector:@selector(stageSelect)];
-    stageButton.position = ccp(0.5 * size.width, VS_STAGE_REL_Y * size.height);
-    
-    [self addChild:stageIcon_ z:4];
-    [self addChild:stageButton z:4];    
+    // Check if record is broken
+    if ([ScoreManager checkAndStoreRecord:scoreCategory level:level_ score:score]) {
+        
+    }
+    MedalType medal = [ScoreManager checkBenchmark:scoreCategory level:level_ score:score];
+    [self placeMedal:scoreCategory medal:medal];
 }
 
-- (void) initActions
-{   
-    CGFloat duration = 0.05;
-    CGFloat delay = 0.3;
-    CCActionInterval *grow = [CCScaleTo actionWithDuration:duration scale:VS_BUTTON_SCALE];
-    CCActionInterval *growEase = [CCEaseIn actionWithAction:grow rate:2.0];
-    CCActionInterval *shrink = [CCScaleTo actionWithDuration:duration scale:VS_BUTTON_SCALE_BIG];    
-    CCActionInterval *shrinkEase = [CCEaseIn actionWithAction:shrink rate:2.0];    
-    CCActionInterval *delay1 = [CCDelayTime actionWithDuration:delay];
-    CCActionInterval *delay2 = [CCDelayTime actionWithDuration:delay];    
-    CCAction *pulse = [CCRepeatForever actionWithAction:[CCSequence actions:growEase, delay1, shrinkEase, delay2, nil]];
-    [stageIcon_ runAction:pulse];    
+- (void) placeMedal:(ScoreCategory)scoreCategory medal:(MedalType)medal
+{
+    CGSize size = [[CCDirector sharedDirector] winSize];
+    CCSprite *sprite;
+    
+    switch (medal) {
+        case kMedalBronze:
+            sprite = [CCSprite spriteWithSpriteFrameName:@"Bronze Medal.png"];
+            break;
+        case kMedalSilver:
+            sprite = [CCSprite spriteWithSpriteFrameName:@"Silver Medal.png"];
+            break;
+        case kMedalGold:
+            sprite = [CCSprite spriteWithSpriteFrameName:@"Gold Medal.png"];
+            break;
+        default:
+            break;
+    }
+    
+    switch (scoreCategory) {
+        case kScoreTimeTaken:
+            sprite.position = CGPointMake(size.width * VS_MEDAL_X, size.height * VS_TIME_TITLE_Y);
+            break;
+        case kScoreEnemiesDestroyed:
+            sprite.position = CGPointMake(size.width * VS_MEDAL_X, size.height * VS_ENEMIES_TITLE_Y);
+            break;
+        case kScoreMaxCombo:
+            sprite.position = CGPointMake(size.width * VS_MEDAL_X, size.height * VS_COMBO_TITLE_Y);
+            break;
+        default:
+            break;
+    }
+    
+    [self addChild:sprite z:3];
 }
 
 - (void) stageSelect
