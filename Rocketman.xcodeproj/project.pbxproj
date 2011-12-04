@@ -103,6 +103,7 @@
 		DA73BDD6148ACC1B00D56F97 /* Start Text.png in Resources */ = {isa = PBXBuildFile; fileRef = DA73BDC2148ACC1B00D56F97 /* Start Text.png */; };
 		DA73BDD7148ACC1B00D56F97 /* Time Taken Text-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = DA73BDC3148ACC1B00D56F97 /* Time Taken Text-hd.png */; };
 		DA73BDD8148ACC1B00D56F97 /* Time Taken Text.png in Resources */ = {isa = PBXBuildFile; fileRef = DA73BDC4148ACC1B00D56F97 /* Time Taken Text.png */; };
+		DA73BDDA148BB30800D56F97 /* Abstract Parallax.png in Resources */ = {isa = PBXBuildFile; fileRef = DA73BDD9148BB30800D56F97 /* Abstract Parallax.png */; };
 		DAB8013B148152080058FD3A /* FallingRocket.m in Sources */ = {isa = PBXBuildFile; fileRef = DAB8013A148152080058FD3A /* FallingRocket.m */; };
 		DAB801411482BF670058FD3A /* RelativeMovement.m in Sources */ = {isa = PBXBuildFile; fileRef = DAB801401482BF670058FD3A /* RelativeMovement.m */; };
 		DAD805721460CC0000A195C3 /* LightBlastCloud.m in Sources */ = {isa = PBXBuildFile; fileRef = DAD805711460CBFF00A195C3 /* LightBlastCloud.m */; };
@@ -509,6 +510,7 @@
 		DA73BDC2148ACC1B00D56F97 /* Start Text.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Start Text.png"; sourceTree = "<group>"; };
 		DA73BDC3148ACC1B00D56F97 /* Time Taken Text-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Time Taken Text-hd.png"; sourceTree = "<group>"; };
 		DA73BDC4148ACC1B00D56F97 /* Time Taken Text.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Time Taken Text.png"; sourceTree = "<group>"; };
+		DA73BDD9148BB30800D56F97 /* Abstract Parallax.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Abstract Parallax.png"; sourceTree = "<group>"; };
 		DAB80139148152080058FD3A /* FallingRocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FallingRocket.h; path = Classes/FallingRocket.h; sourceTree = "<group>"; };
 		DAB8013A148152080058FD3A /* FallingRocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FallingRocket.m; path = Classes/FallingRocket.m; sourceTree = "<group>"; };
 		DAB8013F1482BF670058FD3A /* RelativeMovement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RelativeMovement.h; path = Classes/RelativeMovement.h; sourceTree = "<group>"; };
@@ -1716,6 +1718,7 @@
 			isa = PBXGroup;
 			children = (
 				DA38157A147894B3005D103B /* Abstract Background.png */,
+				DA73BDD9148BB30800D56F97 /* Abstract Parallax.png */,
 				DA38157B147894B3005D103B /* Abstract Ground.png */,
 				DA69A99E146F98B9008BBF38 /* Cave Wall 01.png */,
 				DA5037B1145383DE00600DD4 /* Tutorial Parallax.png */,
@@ -2173,6 +2176,7 @@
 				DA73BDD6148ACC1B00D56F97 /* Start Text.png in Resources */,
 				DA73BDD7148ACC1B00D56F97 /* Time Taken Text-hd.png in Resources */,
 				DA73BDD8148ACC1B00D56F97 /* Time Taken Text.png in Resources */,
+				DA73BDDA148BB30800D56F97 /* Abstract Parallax.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

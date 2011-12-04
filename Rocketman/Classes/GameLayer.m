@@ -127,13 +127,19 @@
         // Add the gauge
         NSMutableArray *cutoffs = [NSMutableArray arrayWithCapacity:6];
         [cutoffs addObject:[NSNumber numberWithFloat:0.01f]];
-        [cutoffs addObject:[NSNumber numberWithFloat:3.00f]];
-        [cutoffs addObject:[NSNumber numberWithFloat:5.00f]];
-        [cutoffs addObject:[NSNumber numberWithFloat:6.75f]];
-        [cutoffs addObject:[NSNumber numberWithFloat:8.25f]];
-        [cutoffs addObject:[NSNumber numberWithFloat:9.51f]];
-        [cutoffs addObject:[NSNumber numberWithFloat:11.0f]];         
-        speedGauge_ = [[Gauge gauge:@"Speed Bar" numIntervals:8 cutoffs:cutoffs] retain];
+        [cutoffs addObject:[NSNumber numberWithFloat:1.0f]];
+        [cutoffs addObject:[NSNumber numberWithFloat:2.0f]];
+        [cutoffs addObject:[NSNumber numberWithFloat:3.0f]];
+        [cutoffs addObject:[NSNumber numberWithFloat:4.0f]];
+        [cutoffs addObject:[NSNumber numberWithFloat:5.0f]];
+        [cutoffs addObject:[NSNumber numberWithFloat:6.0f]];        
+        [cutoffs addObject:[NSNumber numberWithFloat:7.0f]];        
+        [cutoffs addObject:[NSNumber numberWithFloat:8.0f]];        
+        [cutoffs addObject:[NSNumber numberWithFloat:9.0f]];                
+        [cutoffs addObject:[NSNumber numberWithFloat:10.0f]];                
+        [cutoffs addObject:[NSNumber numberWithFloat:11.0f]];                
+        [cutoffs addObject:[NSNumber numberWithFloat:12.0f]];                        
+        speedGauge_ = [[Gauge gauge:@"Speed Bar" numIntervals:14 cutoffs:cutoffs] retain];
         speedGauge_.position = CGPointMake(40, 450);
         [self addChild:speedGauge_ z:kReadoutDepth];
         

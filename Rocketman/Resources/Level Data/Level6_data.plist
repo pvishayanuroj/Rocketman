@@ -18,6 +18,8 @@
 	</array>
 	<key>Ground File</key>
 	<string>Abstract Ground.png</string>
+	<key>Parallax File</key>
+	<string>Abstract Parallax.png</string>
 	<key>Level Num</key>
 	<string>6</string>
 	<key>Vertical Tiles</key>
