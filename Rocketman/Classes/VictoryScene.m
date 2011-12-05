@@ -16,15 +16,15 @@
 @implementation VictoryScene
 
 static const CGFloat VS_MEDAL_X = 0.10f;
-static const CGFloat VS_CLEARED_TITLE_Y = 0.9f;
+static const CGFloat VS_CLEARED_TITLE_Y = 0.88f;
 static const CGFloat VS_SCORE_TITLE_X = 0.25f;
 static const CGFloat VS_SCORE_VALUE_X = 0.35f;
-static const CGFloat VS_TIME_TITLE_Y = 0.65f;
+static const CGFloat VS_TIME_TITLE_Y = 0.68f;
 static const CGFloat VS_TIME_VALUE_Y = 0.60f;
 static const CGFloat VS_COMBO_TITLE_Y = 0.50f;
-static const CGFloat VS_COMBO_VALUE_Y = 0.45f;
-static const CGFloat VS_ENEMIES_TITLE_Y = 0.35f;
-static const CGFloat VS_ENEMIES_VALUE_Y = 0.30f;
+static const CGFloat VS_COMBO_VALUE_Y = 0.42f;
+static const CGFloat VS_ENEMIES_TITLE_Y = 0.32f;
+static const CGFloat VS_ENEMIES_VALUE_Y = 0.24f;
 
 // Starting position of the rocket
 static const CGFloat VS_ROCKET_START_X = 200.0f;

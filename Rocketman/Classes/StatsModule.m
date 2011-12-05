@@ -37,6 +37,10 @@
         score_.numFuelCollected = 0;
         score_.numSupercatCombos = 0;
         
+        startTime_ = CACurrentMediaTime();
+        
+        NSLog(@"init, elapsed time: %6.2f", score_.elapsedTime);
+        
     }
     return self;
 }
@@ -138,11 +142,13 @@
 - (void) startGameTimer
 {
     startTime_ = CACurrentMediaTime();
+    NSLog(@"Time started, elapsed: %2.6f", score_.elapsedTime);
 }
 
 - (void) stopGameTimer
 {
     score_.elapsedTime += (CACurrentMediaTime() - startTime_);
+    NSLog(@"Time stopped, elapsed: %6.2f", score_.elapsedTime);
 }
 
 @end

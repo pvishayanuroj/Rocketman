@@ -82,6 +82,9 @@
 {
     // Get current scores or a new one
     NSMutableDictionary *scores = [self getAndCreateScoreData];
+    
+    //NSLog(@"Checking %d, Retrieved Scores: %@", scoreCategory, scores);    
+    
     NSInteger record = [self getIntegerScore:scoreCategory level:level scores:scores];
     
     // If new score beats old score, record it
@@ -117,7 +120,6 @@
 {
     NSMutableDictionary *scores = [self loadData];
     if (scores == nil) {
-        
         scores = [self createNewScoreData];
         [self saveData:scores];
     }
@@ -164,8 +166,10 @@
 + (void) setIntegerScore:(ScoreCategory)scoreCategory level:(NSInteger)level score:(NSInteger)score scores:(NSMutableDictionary *)scores
 {
     NSString *levelKey = [NSString stringWithFormat:@"%d", level];    
-    NSMutableDictionary *levelScores = [scores objectForKey:levelKey];
+    NSMutableDictionary *levelScores = [scores objectForKey:levelKey];   
+    
     NSNumber *scoreValue = [NSNumber numberWithInteger:score];
+    
     switch (scoreCategory) {
         case kScoreTimeTaken:
             [levelScores setObject:scoreValue forKey:@"Time Taken"];
@@ -183,13 +187,43 @@
 
 + (NSMutableDictionary *) loadData
 {
-    return [[NSUserDefaults standardUserDefaults] objectForKey:R_HIGH_SCORES_NAME];
+    /*
+    NSDictionary *data = [[NSUserDefaults standardUserDefaults] objectForKey:R_HIGH_SCORES_NAME];
+    return [NSMutableDictionary dictionaryWithDictionary:data];
+    */
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *path = [paths objectAtIndex:0];        
+    NSString *filename = [NSString stringWithFormat:@"%@.plist", R_HIGH_SCORES_NAME];    
+    NSString *dataPath = [path stringByAppendingPathComponent:filename];
+    NSMutableDictionary *data = [NSDictionary dictionaryWithContentsOfFile:dataPath];    
+    return data;    
 }
 
 + (void) saveData:(NSDictionary *)data
 {
+    /*
     [[NSUserDefaults standardUserDefaults] setObject:data forKey:R_HIGH_SCORES_NAME];
     [[NSUserDefaults standardUserDefaults] synchronize];
+     */
+    // Locate documents directory to write to
+    NSFileManager *manager = [NSFileManager defaultManager];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);     
+    NSString *documentsDir = [paths objectAtIndex:0];
+    
+    if (![manager isWritableFileAtPath:documentsDir]) {
+        NSLog(@"Error - Path %@ is not writable", documentsDir);
+    }
+    
+    // Generate filename
+    NSString *filename = [NSString stringWithFormat:@"%@.plist", R_HIGH_SCORES_NAME];
+    NSString *path = [documentsDir stringByAppendingPathComponent:filename];
+    
+    if ([data writeToFile:path atomically:YES]) {
+        NSLog(@"Data file written to %@", path);                    
+    }
+    else {
+        NSLog(@"Error - Data file not written");                    
+    }     
 }
 
 + (NSDictionary *) loadBenchmarkData

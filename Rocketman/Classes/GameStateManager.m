@@ -112,9 +112,9 @@ static GameStateManager *_gameStateManager = nil;
 {
     /*
     SRSMScore score;
-    score.numEnemiesKilled = 5;
-    score.elapsedTime = 70.5;
-    score.maxCombo = 30;
+    score.numEnemiesKilled = 7;
+    score.elapsedTime = 30.5;
+    score.maxCombo = 35;
     [self showStageCleared:score];    
     */
     [[StoryManager storyManager] beginCutscene:@"Intro"];
