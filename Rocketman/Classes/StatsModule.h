@@ -39,6 +39,8 @@
 
 - (void) setHeight:(CGFloat)height;
 
+- (void) comboCountUpdated:(NSInteger)count;
+
 - (void) startGameTimer;
 
 - (void) stopGameTimer;

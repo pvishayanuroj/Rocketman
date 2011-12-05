@@ -47,7 +47,7 @@ const CGFloat GA_MIN_CHANGE_INTERVAL = 0.15f;
 
 - (NSArray *) loadSprites:(NSString *)gaugeName numIntervals:(NSInteger)numIntervals
 {
-    NSMutableArray *sprites = [NSMutableArray arrayWithCapacity:10];
+    NSMutableArray *sprites = [NSMutableArray arrayWithCapacity:numIntervals];
     
     for (int i = 0; i < numIntervals; i++) {
         NSString *filename = [NSString stringWithFormat:@"%@ L%d.png", gaugeName, i];

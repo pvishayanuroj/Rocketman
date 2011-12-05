@@ -18,18 +18,24 @@
     
     NSInteger comboCount_;
     
-    NSInteger targetComboCount_;
+    NSInteger maxComboCount_;
     
     id <ComboModuleDelegate> delegate_;
     
 }
 
-+ (id) comboModule;
+@property (nonatomic, assign) id <ComboModuleDelegate> delegate;
 
-- (id) initComboModule;
++ (id) comboModule:(NSInteger)maxCount maxInterval:(double)maxInterval;
+
+- (id) initComboModule:(NSInteger)maxCount maxInterval:(double)maxInterval;
 
 - (void) step:(ccTime)dt;
 
 - (void) enemyKilled:(ObstacleType)type pos:(CGPoint)pos;
+
+- (void) rocketCollision;
+
+- (void) setComboCount:(NSInteger)count;
 
 @end

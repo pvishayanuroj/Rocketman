@@ -12,10 +12,10 @@
 
 @implementation WallModule
 
-const CGFloat WM_YOFFSET = 479.0f;
-const CGFloat WM_XOFFSET = 45.0f;
+static const CGFloat WM_YOFFSET = 479.0f;
+static const CGFloat WM_XOFFSET = 45.0f;
 // How many tiles ahead to place a wall
-const NSInteger WM_BUFFER = 2;
+static const NSInteger WM_BUFFER = 2;
 
 @synthesize wallWidth = wallWidth_;
 

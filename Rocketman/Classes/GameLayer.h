@@ -11,6 +11,7 @@
 #import "CDAudioManager.h"
 #import "GameLayerDelegate.h"
 #import "PhysicsModuleDelegate.h"
+#import "ComboModuleDelegate.h"
 #import "RocketDelegate.h"
 #import "BannerDelegate.h"
 
@@ -20,6 +21,7 @@
 @class ComboModule;
 @class StatsModule;
 @class Gauge;
+@class BasicGauge;
 @class Cat;
 @class Boost;
 @class Fuel;
@@ -28,7 +30,7 @@
 @class CDAudioManager;
 @class CDSoundEngine;
 
-@interface GameLayer : CCLayer <PhysicsModuleDelegate, RocketDelegate, BannerDelegate, UIAccelerometerDelegate> {
+@interface GameLayer : CCLayer <PhysicsModuleDelegate, ComboModuleDelegate, RocketDelegate, BannerDelegate, UIAccelerometerDelegate> {
  
     /** Maps object strings to object types */
     NSDictionary *objectNameMap_;
@@ -62,6 +64,9 @@
     
     /** Graphical representation of rocket speed */
     Gauge *speedGauge_;
+    
+    /** Graphical representation of combo activation progress */
+    BasicGauge *comboGauge_;
     
     /** Holds all current active obstacles */
     NSMutableArray *obstacles_;
@@ -141,7 +146,7 @@
 /** Method called in a loop to move non-player objects */
 - (void) applyGravity;
 
-- (void) updateCounters;
+- (void) updateCounters:(ccTime)dt;
 
 /** Method called in a loop to handle collisions */
 - (void) collisionDetect;

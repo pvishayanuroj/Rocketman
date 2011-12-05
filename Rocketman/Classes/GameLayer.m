@@ -31,12 +31,30 @@
 #import "ComboModule.h"
 #import "StatsModule.h"
 #import "Gauge.h"
+#import "BasicGauge.h"
 #import "EventText.h"
 #import "Banner.h"
 
 #import "HighscoreManager.h"
 
 @implementation GameLayer
+
+// Gauge related constants
+static const CGFloat GL_SPEED_GAUGE_X = 55.0f;
+static const CGFloat GL_SPEED_GAUGE_Y = 463.0f;
+static const CGFloat GL_COMBO_GAUGE_X = 55.0f;
+static const CGFloat GL_COMBO_GAUGE_Y = 437.0f;
+static const CGFloat GL_SPEED_ICON_X = 15.0f;
+static const CGFloat GL_COMBO_ICON_X = 15.0f;
+static const CGFloat GL_COMBO_ICON_Y = 440.0f;
+
+// Rocket position constants
+static const CGFloat GL_ROCKET_X = 0.5f;
+static const CGFloat GL_ROCKET_Y = 0.15f;
+
+// Combo constants
+static const NSInteger GL_MAX_COMBO_COUNT = 10;
+static const CGFloat GL_MAX_COMBO_INTERVAL = 1.0f;
 
 @synthesize stats = stats_;
 @synthesize delegate = delegate_;
@@ -119,12 +137,13 @@
         physics_.delegate = self;
         
         // Add combo module
-        combo_ = [[ComboModule comboModule] retain];
+        combo_ = [[ComboModule comboModule:GL_MAX_COMBO_COUNT maxInterval:GL_MAX_COMBO_INTERVAL] retain];
+        combo_.delegate = self;
         
         // Add stats module
         stats_ = [[StatsModule statsModule] retain];
         
-        // Add the gauge
+        // Add the speed gauge
         NSMutableArray *cutoffs = [NSMutableArray arrayWithCapacity:6];
         [cutoffs addObject:[NSNumber numberWithFloat:0.01f]];
         [cutoffs addObject:[NSNumber numberWithFloat:1.0f]];
@@ -140,11 +159,24 @@
         [cutoffs addObject:[NSNumber numberWithFloat:11.0f]];                
         [cutoffs addObject:[NSNumber numberWithFloat:12.0f]];                        
         speedGauge_ = [[Gauge gauge:@"Speed Bar" numIntervals:14 cutoffs:cutoffs] retain];
-        speedGauge_.position = CGPointMake(40, 450);
+        speedGauge_.position = CGPointMake(GL_SPEED_GAUGE_X, GL_SPEED_GAUGE_Y);
         [self addChild:speedGauge_ z:kReadoutDepth];
         
+        CCSprite *speedIcon = [CCSprite spriteWithFile:@"Rocket Icon.png"];
+        speedIcon.position = CGPointMake(GL_SPEED_ICON_X, GL_SPEED_GAUGE_Y);
+        [self addChild:speedIcon z:kReadoutDepth];
+        
+        // Add the combo gauge
+        comboGauge_ = [[BasicGauge basicGauge:@"Combo Bar" numIntervals:11] retain];
+        comboGauge_.position = CGPointMake(GL_COMBO_GAUGE_X, GL_COMBO_GAUGE_Y);
+        [self addChild:comboGauge_ z:kReadoutDepth];
+        
+        CCSprite *comboIcon = [CCSprite spriteWithFile:@"Turtle Icon.png"];
+        comboIcon.position = CGPointMake(GL_COMBO_ICON_X, GL_COMBO_ICON_Y);
+        [self addChild:comboIcon z:kReadoutDepth];        
+        
         // Add the rocket
-        CGPoint startPos = CGPointMake(screenWidth_ * 0.5, screenHeight_ * 0.15);
+        CGPoint startPos = CGPointMake(screenWidth_ * GL_ROCKET_X, screenHeight_ * GL_ROCKET_Y);
         rocket_ = [[Rocket rocketWithPos:startPos] retain];
         rocket_.delegate = self;
         [self addChild:rocket_ z:kRocketDepth];
@@ -189,6 +221,7 @@
     [combo_ release];
     [stats_ release];    
     [speedGauge_ release];
+    [comboGauge_ release];
     [obstacles_ release];
     [firedCats_ release];
     [doodads_ release];
@@ -204,7 +237,7 @@
 - (void) update:(ccTime)dt
 {    
     [physics_ step:dt];
-    [self updateCounters];
+    [self updateCounters:dt];
     [self applyGravity];
     [self moveRocketHorizontally];
     [self collisionDetect];       
@@ -217,7 +250,7 @@
       
 }
 
-- (void) updateCounters
+- (void) updateCounters:(ccTime)dt
 {
     // Keep track of height
     height_ += physics_.rocketSpeed;
@@ -233,6 +266,7 @@
     
     [wall_ heightUpdate:height_];
     [speedGauge_ tick:physics_.rocketSpeed];
+    [combo_ step:dt];
     [delegate_ heightUpdate:height_];
     [delegate_ speedUpdate:physics_.rocketSpeed];
 }
@@ -762,6 +796,22 @@
     }
 }
 
+- (void) comboCountUpdate:(NSInteger)count
+{
+    [comboGauge_ setGauge:count];
+    [stats_ comboCountUpdated:count];
+}
+
+- (void) comboActivated
+{
+    
+}
+
+- (void) comboDeactivated
+{
+    
+}
+
 - (void) fireCat:(CatType)type
 {
     if (!onGround_ && !inputLocked_) {        
@@ -918,6 +968,7 @@
 
     [stats_ incrementRocketCollisions];
     [physics_ rocketCollision];
+    [combo_ rocketCollision];
     [self showText:kSpeedDown];    
 }
 

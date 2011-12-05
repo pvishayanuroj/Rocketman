@@ -13,62 +13,62 @@
 @implementation PhysicsModule
 
 // Speed thresholds
-const CGFloat V_CRUISE  = 9.5f;
-const CGFloat V_T1      = 7.5f;
-const CGFloat V_T2      = 5.0f;
+static const CGFloat V_CRUISE  = 9.5f;
+static const CGFloat V_T1      = 7.5f;
+static const CGFloat V_T2      = 5.0f;
 // At this speed, collisions will not cause speed to go any slower
 // and slow will not decay beyond this speed. If slow is pressed below this speed, then no decay occurs
-const CGFloat V_MIN     = 2.0f; 
-const CGFloat V_MAX     = 13.0f;
+static const CGFloat V_MIN     = 2.0f; 
+static const CGFloat V_MAX     = 13.0f;
 // Delta V based on threshold
 // Rate at which speeds within range from max to cruise decays (typically after boost)
-const CGFloat DV_MAX    = 0.015f;
+static const CGFloat DV_MAX    = 0.015f;
 // Rates for speed decay from cruise to T1, T1 to T2, and T2 to V_MIN
-const CGFloat DV_CRUISE = 0.001f;
-const CGFloat DV_T1     = 0.0025f;
-const CGFloat DV_T2     = 0.005f;
+static const CGFloat DV_CRUISE = 0.001f;
+static const CGFloat DV_T1     = 0.0025f;
+static const CGFloat DV_T2     = 0.005f;
 
 // Initial rate of fall once past V_MIN
-const CGFloat DV_MIN    = 0.005f;
+static const CGFloat DV_MIN    = 0.005f;
 // Rate of fall acceleration (gravity)
-const CGFloat DDV_MIN   = 0.0004f;
+static const CGFloat DDV_MIN   = 0.0004f;
 
 // Speed slowdown for collisions
-const CGFloat DV_COLLIDE = 2.0f;
+static const CGFloat DV_COLLIDE = 2.0f;
 // Duration immediately after a collision where the rocket's speed is not affected by other collisions
 // Essentially a collision cooldown timer
-const CGFloat TS_COLLIDE = 0.5f;
+static const CGFloat TS_COLLIDE = 0.5f;
 
 // Speed change multiplier when slowed by slow button
-const CGFloat DV_SLOW_FACTOR = 0.5f;
+static const CGFloat DV_SLOW_FACTOR = 0.5f;
 // Rate at which rate of rocket slow increases
-const CGFloat DDV_SLOWED_RATE_GROWTH = 0.0005f;
+static const CGFloat DDV_SLOWED_RATE_GROWTH = 0.0005f;
 // Slow will stop slowing at this speed
-const CGFloat V_SLOW_MIN = 0.0f;
+static const CGFloat V_SLOW_MIN = 0.0f;
 // Rate at which original speed decays during a slow
-const CGFloat DV_SLOW_DECAY = 0.5f/60.0f;
+static const CGFloat DV_SLOW_DECAY = 0.5f/60.0f;
 // Minimum speed at which slow decay will stop at
-const CGFloat V_SLOW_DECAY_MIN = 2.0f;
+static const CGFloat V_SLOW_DECAY_MIN = 2.0f;
 // Rate at which the rocket recovers its speed after slowing down
-const CGFloat DV_SLOWED_RESTORE = 0.3f;
+static const CGFloat DV_SLOWED_RESTORE = 0.3f;
 
 // Rate at which "world" slows to stop
-const CGFloat DV_WORLD_STOP = 0.1f;
+static const CGFloat DV_WORLD_STOP = 0.1f;
 
 // Boost amount for most cases
-const CGFloat VB_NORMAL         = 3.0f;
+static const CGFloat VB_NORMAL         = 3.0f;
 // Rate of boost change for the starting boost
-const CGFloat DB_STARTBOOST     = 0.0005f;
+static const CGFloat DB_STARTBOOST     = 0.0005f;
 // How much speed is added from a ring
-const CGFloat DV_RINGBOOST      = 3.0f;
+static const CGFloat DV_RINGBOOST      = 3.0f;
 
 // Boost duration based on type
-const CGFloat TB_BOOSTER        = 1.5f;
-const CGFloat TB_INVINCIBILITY  = 3.0f;
-const CGFloat TB_RING           = 1.5f;
+static const CGFloat TB_BOOSTER        = 1.5f;
+static const CGFloat TB_INVINCIBILITY  = 3.0f;
+static const CGFloat TB_RING           = 1.5f;
 
 // Game frame rate
-const CGFloat SRSM_FPS = 60.0f;
+static const CGFloat SRSM_FPS = 60.0f;
 
 @synthesize rocketSpeed = vR_;
 @synthesize rocketMode = rocketMode_;

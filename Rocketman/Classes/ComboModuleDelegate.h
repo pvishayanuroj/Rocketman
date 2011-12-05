@@ -10,9 +10,11 @@
 
 @protocol ComboModuleDelegate <NSObject>
 
-- (void) comboReached;
+- (void) comboCountUpdate:(NSInteger)count;
 
-- (void) comboExpired;
+- (void) comboActivated;
+
+- (void) comboDeactivated;
 
 @end
 

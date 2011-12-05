@@ -104,6 +104,18 @@
 		DA73BDD7148ACC1B00D56F97 /* Time Taken Text-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = DA73BDC3148ACC1B00D56F97 /* Time Taken Text-hd.png */; };
 		DA73BDD8148ACC1B00D56F97 /* Time Taken Text.png in Resources */ = {isa = PBXBuildFile; fileRef = DA73BDC4148ACC1B00D56F97 /* Time Taken Text.png */; };
 		DA73BDDA148BB30800D56F97 /* Abstract Parallax.png in Resources */ = {isa = PBXBuildFile; fileRef = DA73BDD9148BB30800D56F97 /* Abstract Parallax.png */; };
+		DA73BDDD148C537400D56F97 /* BasicGauge.m in Sources */ = {isa = PBXBuildFile; fileRef = DA73BDDC148C537400D56F97 /* BasicGauge.m */; };
+		DA73BDE9148C597600D56F97 /* Black Line-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = DA73BDDE148C597500D56F97 /* Black Line-hd.png */; };
+		DA73BDEA148C597600D56F97 /* Cat Bomb Button Pressed-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = DA73BDDF148C597500D56F97 /* Cat Bomb Button Pressed-hd.png */; };
+		DA73BDEB148C597600D56F97 /* Cat Bomb Button-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = DA73BDE0148C597500D56F97 /* Cat Bomb Button-hd.png */; };
+		DA73BDEC148C597600D56F97 /* Pause Icon-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = DA73BDE1148C597500D56F97 /* Pause Icon-hd.png */; };
+		DA73BDED148C597600D56F97 /* Resume Icon-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = DA73BDE2148C597500D56F97 /* Resume Icon-hd.png */; };
+		DA73BDEE148C597600D56F97 /* Rocket Icon-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = DA73BDE3148C597500D56F97 /* Rocket Icon-hd.png */; };
+		DA73BDEF148C597600D56F97 /* Rocket Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = DA73BDE4148C597600D56F97 /* Rocket Icon.png */; };
+		DA73BDF0148C597600D56F97 /* Slow Button Pressed-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = DA73BDE5148C597600D56F97 /* Slow Button Pressed-hd.png */; };
+		DA73BDF1148C597600D56F97 /* Slow Button-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = DA73BDE6148C597600D56F97 /* Slow Button-hd.png */; };
+		DA73BDF2148C597600D56F97 /* Turtle Icon-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = DA73BDE7148C597600D56F97 /* Turtle Icon-hd.png */; };
+		DA73BDF3148C597600D56F97 /* Turtle Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = DA73BDE8148C597600D56F97 /* Turtle Icon.png */; };
 		DAB8013B148152080058FD3A /* FallingRocket.m in Sources */ = {isa = PBXBuildFile; fileRef = DAB8013A148152080058FD3A /* FallingRocket.m */; };
 		DAB801411482BF670058FD3A /* RelativeMovement.m in Sources */ = {isa = PBXBuildFile; fileRef = DAB801401482BF670058FD3A /* RelativeMovement.m */; };
 		DAD805721460CC0000A195C3 /* LightBlastCloud.m in Sources */ = {isa = PBXBuildFile; fileRef = DAD805711460CBFF00A195C3 /* LightBlastCloud.m */; };
@@ -511,6 +523,19 @@
 		DA73BDC3148ACC1B00D56F97 /* Time Taken Text-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Time Taken Text-hd.png"; sourceTree = "<group>"; };
 		DA73BDC4148ACC1B00D56F97 /* Time Taken Text.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Time Taken Text.png"; sourceTree = "<group>"; };
 		DA73BDD9148BB30800D56F97 /* Abstract Parallax.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Abstract Parallax.png"; sourceTree = "<group>"; };
+		DA73BDDB148C537400D56F97 /* BasicGauge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BasicGauge.h; path = Classes/BasicGauge.h; sourceTree = "<group>"; };
+		DA73BDDC148C537400D56F97 /* BasicGauge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BasicGauge.m; path = Classes/BasicGauge.m; sourceTree = "<group>"; };
+		DA73BDDE148C597500D56F97 /* Black Line-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Black Line-hd.png"; sourceTree = "<group>"; };
+		DA73BDDF148C597500D56F97 /* Cat Bomb Button Pressed-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Cat Bomb Button Pressed-hd.png"; sourceTree = "<group>"; };
+		DA73BDE0148C597500D56F97 /* Cat Bomb Button-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Cat Bomb Button-hd.png"; sourceTree = "<group>"; };
+		DA73BDE1148C597500D56F97 /* Pause Icon-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Pause Icon-hd.png"; sourceTree = "<group>"; };
+		DA73BDE2148C597500D56F97 /* Resume Icon-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Resume Icon-hd.png"; sourceTree = "<group>"; };
+		DA73BDE3148C597500D56F97 /* Rocket Icon-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Rocket Icon-hd.png"; sourceTree = "<group>"; };
+		DA73BDE4148C597600D56F97 /* Rocket Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Rocket Icon.png"; sourceTree = "<group>"; };
+		DA73BDE5148C597600D56F97 /* Slow Button Pressed-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Slow Button Pressed-hd.png"; sourceTree = "<group>"; };
+		DA73BDE6148C597600D56F97 /* Slow Button-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Slow Button-hd.png"; sourceTree = "<group>"; };
+		DA73BDE7148C597600D56F97 /* Turtle Icon-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Turtle Icon-hd.png"; sourceTree = "<group>"; };
+		DA73BDE8148C597600D56F97 /* Turtle Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Turtle Icon.png"; sourceTree = "<group>"; };
 		DAB80139148152080058FD3A /* FallingRocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FallingRocket.h; path = Classes/FallingRocket.h; sourceTree = "<group>"; };
 		DAB8013A148152080058FD3A /* FallingRocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FallingRocket.m; path = Classes/FallingRocket.m; sourceTree = "<group>"; };
 		DAB8013F1482BF670058FD3A /* RelativeMovement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RelativeMovement.h; path = Classes/RelativeMovement.h; sourceTree = "<group>"; };
@@ -1613,6 +1638,17 @@
 		DAF441E1144B08B200943C0D /* Game Art */ = {
 			isa = PBXGroup;
 			children = (
+				DA73BDDE148C597500D56F97 /* Black Line-hd.png */,
+				DA73BDDF148C597500D56F97 /* Cat Bomb Button Pressed-hd.png */,
+				DA73BDE0148C597500D56F97 /* Cat Bomb Button-hd.png */,
+				DA73BDE1148C597500D56F97 /* Pause Icon-hd.png */,
+				DA73BDE2148C597500D56F97 /* Resume Icon-hd.png */,
+				DA73BDE3148C597500D56F97 /* Rocket Icon-hd.png */,
+				DA73BDE4148C597600D56F97 /* Rocket Icon.png */,
+				DA73BDE5148C597600D56F97 /* Slow Button Pressed-hd.png */,
+				DA73BDE6148C597600D56F97 /* Slow Button-hd.png */,
+				DA73BDE7148C597600D56F97 /* Turtle Icon-hd.png */,
+				DA73BDE8148C597600D56F97 /* Turtle Icon.png */,
 				DA38157714785669005D103B /* Black Line.png */,
 				DA38152114784D42005D103B /* Boost Button Pressed.png */,
 				DA38152214784D42005D103B /* Boost Button.png */,
@@ -1883,6 +1919,8 @@
 				DA664828147C9BCE001AEDED /* IncrementingText.h */,
 				DA664829147C9BCE001AEDED /* IncrementingText.m */,
 				DA66482B147C9DEE001AEDED /* IncrementingTextDelegate.h */,
+				DA73BDDB148C537400D56F97 /* BasicGauge.h */,
+				DA73BDDC148C537400D56F97 /* BasicGauge.m */,
 				DA38158E1479E2F8005D103B /* Gauge.h */,
 				DA38158F1479E2F8005D103B /* Gauge.m */,
 				DA5D69E1148A837500996F74 /* ScoreManager.h */,
@@ -2177,6 +2215,17 @@
 				DA73BDD7148ACC1B00D56F97 /* Time Taken Text-hd.png in Resources */,
 				DA73BDD8148ACC1B00D56F97 /* Time Taken Text.png in Resources */,
 				DA73BDDA148BB30800D56F97 /* Abstract Parallax.png in Resources */,
+				DA73BDE9148C597600D56F97 /* Black Line-hd.png in Resources */,
+				DA73BDEA148C597600D56F97 /* Cat Bomb Button Pressed-hd.png in Resources */,
+				DA73BDEB148C597600D56F97 /* Cat Bomb Button-hd.png in Resources */,
+				DA73BDEC148C597600D56F97 /* Pause Icon-hd.png in Resources */,
+				DA73BDED148C597600D56F97 /* Resume Icon-hd.png in Resources */,
+				DA73BDEE148C597600D56F97 /* Rocket Icon-hd.png in Resources */,
+				DA73BDEF148C597600D56F97 /* Rocket Icon.png in Resources */,
+				DA73BDF0148C597600D56F97 /* Slow Button Pressed-hd.png in Resources */,
+				DA73BDF1148C597600D56F97 /* Slow Button-hd.png in Resources */,
+				DA73BDF2148C597600D56F97 /* Turtle Icon-hd.png in Resources */,
+				DA73BDF3148C597600D56F97 /* Turtle Icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2391,6 +2440,7 @@
 				DA5D69CE1485BB3D00996F74 /* Crab.m in Sources */,
 				DA5D69D21485BB6B00996F74 /* FlyingTurtling.m in Sources */,
 				DA5D69E3148A837500996F74 /* ScoreManager.m in Sources */,
+				DA73BDDD148C537400D56F97 /* BasicGauge.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

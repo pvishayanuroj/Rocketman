@@ -37,10 +37,8 @@
         score_.numFuelCollected = 0;
         score_.numSupercatCombos = 0;
         
+        // For tutorials, stop game timer is called before start is called
         startTime_ = CACurrentMediaTime();
-        
-        NSLog(@"init, elapsed time: %6.2f", score_.elapsedTime);
-        
     }
     return self;
 }
@@ -139,16 +137,21 @@
     score_.totalHeight = height;
 }
 
+- (void) comboCountUpdated:(NSInteger)count
+{
+    if (count > score_.maxCombo) {
+        score_.maxCombo = count;
+    }
+}
+
 - (void) startGameTimer
 {
     startTime_ = CACurrentMediaTime();
-    NSLog(@"Time started, elapsed: %2.6f", score_.elapsedTime);
 }
 
 - (void) stopGameTimer
 {
     score_.elapsedTime += (CACurrentMediaTime() - startTime_);
-    NSLog(@"Time stopped, elapsed: %6.2f", score_.elapsedTime);
 }
 
 @end
