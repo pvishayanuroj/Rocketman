@@ -87,6 +87,7 @@ static NSUInteger countID = 0;
         [movements_ removeAllObjects];
         [movements_ addObject:[ArcMovement arcFastRandomMovement:self.position]];
         [[AudioManager audioManager] playSound:kPlop];           
+        [[GameManager gameManager] enemyKilled:originalObstacleType_ pos:self.position];        
     }
     else {  
         [[GameManager gameManager] rocketCollision];

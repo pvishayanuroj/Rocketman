@@ -144,7 +144,8 @@ typedef enum {
     kCatButton,
     kBombButton,
     kSlowButton,
-    kBoostButton
+    kBoostButton,
+    kSuperCatButton
 } ButtonType;
 
 typedef enum {

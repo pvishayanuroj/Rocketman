@@ -238,6 +238,9 @@ const CGFloat NF_BANNER_Y = 250.0f;
     else if ([name isEqualToString:@"Slow Button"]) {
         return kSlowButton;
     } 
+    else if ([name isEqualToString:@"Supercat Button"]) {
+        return kSuperCatButton;
+    }
     
     NSAssert(NO, @"Invalid button type in notification");
     return 0;

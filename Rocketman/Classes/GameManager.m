@@ -148,9 +148,15 @@ static GameManager *_gameManager = nil;
 - (void) bombButtonPressed:(Button *)button
 {
     if ([notification_ buttonClicked:button]) {    
-//        [gameLayer_ fireCat:kCatBomb];
-        [gameLayer_ fireCat:kCatSuper];        
+        [gameLayer_ fireCat:kCatBomb];
     }
+}
+
+- (void) superCatButtonPressed:(Button *)button
+{
+    if ([notification_ buttonClicked:button]) {    
+        [gameLayer_ fireCat:kCatSuper];        
+    }    
 }
 
 - (void) slowButtonPressed:(Button *)button
@@ -239,6 +245,16 @@ static GameManager *_gameManager = nil;
 - (void) invalidateSlowButton
 {
     [hudLayer_ invalidateSlow];
+}
+
+- (void) showSuperCatButton
+{
+    [hudLayer_ showSuperCatButton];
+}
+
+- (void) hideSuperCatButton
+{
+    [hudLayer_ hideSuperCatButton];
 }
 
 #pragma mark - Dialogue Layer Methods
@@ -346,6 +362,7 @@ static GameManager *_gameManager = nil;
     [Flybot resetID];
     [Turtling resetID];    
     [ShockTurtling resetID];
+    [FlyingTurtling resetID];
     [HoverTurtle resetID];
     [AlienHoverTurtle resetID];    
     [YellowBird resetID];

@@ -34,8 +34,10 @@
 
 - (void) enemyKilled:(ObstacleType)type pos:(CGPoint)pos;
 
-- (void) rocketCollision;
-
 - (void) setComboCount:(NSInteger)count;
+
+- (void) comboUsed;
+
+- (void) rocketCollision;
 
 @end

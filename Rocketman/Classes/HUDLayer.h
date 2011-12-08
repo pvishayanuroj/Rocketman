@@ -47,6 +47,10 @@
 
 - (void) invalidateSlow;
 
+- (void) showSuperCatButton;
+
+- (void) hideSuperCatButton;
+
 - (void) addLabels;
 
 - (void) pause;
@@ -57,9 +61,13 @@
 
 - (void) addBombButton;
 
+- (void) addSuperCatButton;
+
 - (void) addSlowButton;
 
 - (void) addBoostButton;
+
+- (void) removeButton:(ButtonType)buttonType;
 
 - (void) setNumCats01:(NSUInteger)val;
 

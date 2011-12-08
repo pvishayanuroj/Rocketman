@@ -16,6 +16,8 @@
 
 - (void) bombButtonPressed:(Button *)button;
 
+- (void) superCatButtonPressed:(Button *)button;
+
 - (void) slowButtonPressed:(Button *)button;
 
 - (void) slowButtonReleased:(Button *)button;

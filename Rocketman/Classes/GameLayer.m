@@ -804,12 +804,12 @@ static const CGFloat GL_MAX_COMBO_INTERVAL = 1.0f;
 
 - (void) comboActivated
 {
-    
+    [[GameManager gameManager] showSuperCatButton];
 }
 
 - (void) comboDeactivated
 {
-    
+    [[GameManager gameManager] hideSuperCatButton];
 }
 
 - (void) fireCat:(CatType)type
@@ -868,7 +868,8 @@ static const CGFloat GL_MAX_COMBO_INTERVAL = 1.0f;
             [self addChild:rightBullet z:kBulletDepth];            
             [firedCats_ addObject:leftBullet];
             [firedCats_ addObject:rightBullet]; 
-            [[GameManager gameManager] showCombo:R_CAT_COMBO_BANNER];            
+            [[GameManager gameManager] showCombo:R_CAT_COMBO_BANNER];  
+            [combo_ comboUsed];
         }
         
         // Add the cat

@@ -17,6 +17,8 @@ NSString * const R_CAT_BOMB_BUTTON = @"Cat Bomb Button.png";
 NSString * const R_CAT_BOMB_BUTTON_PRESSED = @"Cat Bomb Button Pressed.png";
 NSString * const R_SLOW_BUTTON = @"Slow Button.png";
 NSString * const R_SLOW_BUTTON_PRESSED = @"Slow Button Pressed.png";
+NSString * const R_SUPERCAT_BUTTON = @"Supercat Button.png";
+NSString * const R_SUPERCAT_BUTTON_PRESSED = @"Supercat Button Pressed.png";
 
 // Text
 NSString * const R_ENEMIES_DESTROYED_TEXT = @"Enemies Destroyed Text.png";

@@ -15,6 +15,8 @@ extern NSString * const R_CAT_BOMB_BUTTON;
 extern NSString * const R_CAT_BOMB_BUTTON_PRESSED;
 extern NSString * const R_SLOW_BUTTON;
 extern NSString * const R_SLOW_BUTTON_PRESSED;
+extern NSString * const R_SUPERCAT_BUTTON;
+extern NSString * const R_SUPERCAT_BUTTON_PRESSED;
 
 // Text
 extern NSString * const R_ENEMIES_DESTROYED_TEXT;

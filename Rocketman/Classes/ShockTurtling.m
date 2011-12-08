@@ -118,7 +118,8 @@ static NSUInteger countID = 0;
     if ([[GameManager gameManager] isRocketInvincible]) {
         [movements_ removeAllObjects];
         [movements_ addObject:[ArcMovement arcFastRandomMovement:self.position]];
-        [[AudioManager audioManager] playSound:kPlop];                    
+        [[AudioManager audioManager] playSound:kPlop];      
+        [[GameManager gameManager] enemyKilled:originalObstacleType_ pos:self.position];        
     }
     else {
         [[AudioManager audioManager] playSound:kWerr];                

@@ -55,28 +55,34 @@
     [[GameManager gameManager] addGameLayerText:eventText];
 }
 
-- (void) rocketCollision
-{
-    [self setComboCount:0];
-}
-
 - (void) setComboCount:(NSInteger)count
 {
     if (count >= 0) {
     
+        NSInteger origComboCount = comboCount_;
         lastComboTimestamp_ = CACurrentMediaTime();
         comboCount_ = count;
         [delegate_ comboCountUpdate:comboCount_];
         
-        // Check if the combo max has been reached or if
-        // the combo max has been decremented from, meaning that the combo was lost
+        // Check if the combo max has been reached
         if (comboCount_ == maxComboCount_) {
             [delegate_ comboActivated];
         }
-        else if (comboCount_ == maxComboCount_ - 1) {
+        // Check if combo has been lost or used
+        else if (origComboCount >= maxComboCount_ && comboCount_ < maxComboCount_) {
             [delegate_ comboDeactivated];
         }
     }
+}
+
+- (void) comboUsed
+{
+    [self setComboCount:0];
+}
+
+- (void) rocketCollision
+{
+    [self setComboCount:0];
 }
 
 @end

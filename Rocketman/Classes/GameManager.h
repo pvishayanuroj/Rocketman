@@ -90,6 +90,10 @@
 
 - (void) invalidateSlowButton;
 
+- (void) showSuperCatButton;
+
+- (void) hideSuperCatButton;
+
 - (void) showCombo:(NSString *)filename;
 
 - (void) addToDialogueLayer:(CCNode *)dialogue;

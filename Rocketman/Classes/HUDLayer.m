@@ -67,6 +67,9 @@
         case kBombButton:
             [delegate_ bombButtonPressed:button];
             break;
+        case kSuperCatButton:
+            [delegate_ superCatButtonPressed:button];
+            break;
         case kBoostButton:
             [delegate_ boostButtonPressed:button];
             break;
@@ -102,6 +105,20 @@
 - (void) invalidateSlow
 {
     [slowButton_ invalidateTouch];
+}
+
+- (void) showSuperCatButton
+{
+    [self removeButton:kBombButton];
+    numCats02Label_.visible = NO;
+    [self addSuperCatButton];
+}
+
+- (void) hideSuperCatButton
+{
+    [self removeButton:kSuperCatButton];
+    numCats02Label_.visible = YES;
+    [self addBombButton];
 }
 
 #pragma mark - Populate Methods
@@ -176,6 +193,15 @@
     [self addChild:button];    
 }
 
+- (void) addSuperCatButton
+{
+    Button *button = [ImageButton imageButton:kSuperCatButton unselectedImage:R_SUPERCAT_BUTTON selectedImage:R_SUPERCAT_BUTTON_PRESSED];
+    button.position = CGPointMake(HUD_BOMB_BUTTON_X, HUD_BOMB_BUTTON_Y);
+    button.delegate = self;    
+    [buttons_ addObject:button];
+    [self addChild:button];        
+}
+
 - (void) addSlowButton
 {
     Button *button = [ImageButton imageButton:kSlowButton unselectedImage:R_SLOW_BUTTON selectedImage:R_SLOW_BUTTON_PRESSED];
@@ -212,6 +238,19 @@
     for (Button *button in buttons_) {
         [button clickable:YES];        
     }    
+}
+
+#pragma mark - Remove Methods
+
+- (void) removeButton:(ButtonType)buttonType
+{
+    for (Button *button in buttons_) {
+        if (button.numID == buttonType) {
+            [buttons_ removeObject:button];
+            [button removeFromParentAndCleanup:YES];
+            break;
+        }
+    }
 }
 
 #pragma mark - Touch Handlers
