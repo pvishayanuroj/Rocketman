@@ -82,7 +82,10 @@
 
 - (void) rocketCollision
 {
-    [self setComboCount:0];
+    // Only reset count if combo hasn't been reached yet
+    if (comboCount_ < maxComboCount_) {
+        [self setComboCount:0];
+    }
 }
 
 @end

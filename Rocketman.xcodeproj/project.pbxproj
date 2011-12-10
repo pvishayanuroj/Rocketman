@@ -49,6 +49,8 @@
 		DA5037B51453ACCA00600DD4 /* DummyBoss.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5037B41453ACC900600DD4 /* DummyBoss.m */; };
 		DA5037B71454437D00600DD4 /* Level2_data.plist in Resources */ = {isa = PBXBuildFile; fileRef = DA5037B61454437D00600DD4 /* Level2_data.plist */; };
 		DA5037BD1454CF9600600DD4 /* Button.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5037BB1454CF8F00600DD4 /* Button.m */; };
+		DA50DF031493088B001D50E1 /* Supercat Button Pressed-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = DA50DF011493088B001D50E1 /* Supercat Button Pressed-hd.png */; };
+		DA50DF041493088B001D50E1 /* Supercat Button-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = DA50DF021493088B001D50E1 /* Supercat Button-hd.png */; };
 		DA5D69CE1485BB3D00996F74 /* Crab.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5D69CD1485BB3D00996F74 /* Crab.m */; };
 		DA5D69D21485BB6B00996F74 /* FlyingTurtling.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5D69D11485BB6B00996F74 /* FlyingTurtling.m */; };
 		DA5D69D41485E0A100996F74 /* MedalBenchmarks.plist in Resources */ = {isa = PBXBuildFile; fileRef = DA5D69D31485E0A100996F74 /* MedalBenchmarks.plist */; };
@@ -439,6 +441,8 @@
 		DA5037BB1454CF8F00600DD4 /* Button.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Button.m; path = Classes/Button.m; sourceTree = "<group>"; };
 		DA5037BC1454CF9100600DD4 /* ButtonDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ButtonDelegate.h; path = Classes/ButtonDelegate.h; sourceTree = "<group>"; };
 		DA5037BE1454CFFD00600DD4 /* Clickable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Clickable.h; path = Classes/Clickable.h; sourceTree = "<group>"; };
+		DA50DF011493088B001D50E1 /* Supercat Button Pressed-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Supercat Button Pressed-hd.png"; sourceTree = "<group>"; };
+		DA50DF021493088B001D50E1 /* Supercat Button-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Supercat Button-hd.png"; sourceTree = "<group>"; };
 		DA5D69CC1485BB3D00996F74 /* Crab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Crab.h; path = Classes/Crab.h; sourceTree = "<group>"; };
 		DA5D69CD1485BB3D00996F74 /* Crab.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Crab.m; path = Classes/Crab.m; sourceTree = "<group>"; };
 		DA5D69D01485BB6A00996F74 /* FlyingTurtling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlyingTurtling.h; path = Classes/FlyingTurtling.h; sourceTree = "<group>"; };
@@ -1638,6 +1642,8 @@
 		DAF441E1144B08B200943C0D /* Game Art */ = {
 			isa = PBXGroup;
 			children = (
+				DA50DF011493088B001D50E1 /* Supercat Button Pressed-hd.png */,
+				DA50DF021493088B001D50E1 /* Supercat Button-hd.png */,
 				DA73BDDE148C597500D56F97 /* Black Line-hd.png */,
 				DA73BDDF148C597500D56F97 /* Cat Bomb Button Pressed-hd.png */,
 				DA73BDE0148C597500D56F97 /* Cat Bomb Button-hd.png */,
@@ -2226,6 +2232,8 @@
 				DA73BDF1148C597600D56F97 /* Slow Button-hd.png in Resources */,
 				DA73BDF2148C597600D56F97 /* Turtle Icon-hd.png in Resources */,
 				DA73BDF3148C597600D56F97 /* Turtle Icon.png in Resources */,
+				DA50DF031493088B001D50E1 /* Supercat Button Pressed-hd.png in Resources */,
+				DA50DF041493088B001D50E1 /* Supercat Button-hd.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
