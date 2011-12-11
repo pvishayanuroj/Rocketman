@@ -51,6 +51,7 @@
 		DA5037BD1454CF9600600DD4 /* Button.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5037BB1454CF8F00600DD4 /* Button.m */; };
 		DA50DF031493088B001D50E1 /* Supercat Button Pressed-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = DA50DF011493088B001D50E1 /* Supercat Button Pressed-hd.png */; };
 		DA50DF041493088B001D50E1 /* Supercat Button-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = DA50DF021493088B001D50E1 /* Supercat Button-hd.png */; };
+		DA50DF081494EF51001D50E1 /* VictoryLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DA50DF071494EF51001D50E1 /* VictoryLayer.m */; };
 		DA5D69CE1485BB3D00996F74 /* Crab.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5D69CD1485BB3D00996F74 /* Crab.m */; };
 		DA5D69D21485BB6B00996F74 /* FlyingTurtling.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5D69D11485BB6B00996F74 /* FlyingTurtling.m */; };
 		DA5D69D41485E0A100996F74 /* MedalBenchmarks.plist in Resources */ = {isa = PBXBuildFile; fileRef = DA5D69D31485E0A100996F74 /* MedalBenchmarks.plist */; };
@@ -344,7 +345,6 @@
 		DAF4447A144B08DE00943C0D /* GameStateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF44403144B08CD00943C0D /* GameStateManager.m */; };
 		DAF4447B144B08DE00943C0D /* Ground.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF44405144B08CD00943C0D /* Ground.m */; };
 		DAF4447C144B08DE00943C0D /* HighscoreLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF44407144B08CD00943C0D /* HighscoreLayer.m */; };
-		DAF4447D144B08DE00943C0D /* HighScoreManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF44409144B08CE00943C0D /* HighScoreManager.m */; };
 		DAF4447E144B08DE00943C0D /* HighscoreScene.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF4440B144B08CE00943C0D /* HighscoreScene.m */; };
 		DAF4447F144B08DE00943C0D /* HoverTurtle.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF4440D144B08CE00943C0D /* HoverTurtle.m */; };
 		DAF44480144B08DE00943C0D /* HUDLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = DAF4440F144B08CF00943C0D /* HUDLayer.m */; };
@@ -443,6 +443,8 @@
 		DA5037BE1454CFFD00600DD4 /* Clickable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Clickable.h; path = Classes/Clickable.h; sourceTree = "<group>"; };
 		DA50DF011493088B001D50E1 /* Supercat Button Pressed-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Supercat Button Pressed-hd.png"; sourceTree = "<group>"; };
 		DA50DF021493088B001D50E1 /* Supercat Button-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Supercat Button-hd.png"; sourceTree = "<group>"; };
+		DA50DF061494EF51001D50E1 /* VictoryLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VictoryLayer.h; path = Classes/VictoryLayer.h; sourceTree = "<group>"; };
+		DA50DF071494EF51001D50E1 /* VictoryLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VictoryLayer.m; path = Classes/VictoryLayer.m; sourceTree = "<group>"; };
 		DA5D69CC1485BB3D00996F74 /* Crab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Crab.h; path = Classes/Crab.h; sourceTree = "<group>"; };
 		DA5D69CD1485BB3D00996F74 /* Crab.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Crab.m; path = Classes/Crab.m; sourceTree = "<group>"; };
 		DA5D69D01485BB6A00996F74 /* FlyingTurtling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlyingTurtling.h; path = Classes/FlyingTurtling.h; sourceTree = "<group>"; };
@@ -927,8 +929,6 @@
 		DAF44405144B08CD00943C0D /* Ground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Ground.m; path = Classes/Ground.m; sourceTree = "<group>"; };
 		DAF44406144B08CD00943C0D /* HighscoreLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HighscoreLayer.h; path = Classes/HighscoreLayer.h; sourceTree = "<group>"; };
 		DAF44407144B08CD00943C0D /* HighscoreLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HighscoreLayer.m; path = Classes/HighscoreLayer.m; sourceTree = "<group>"; };
-		DAF44408144B08CD00943C0D /* HighScoreManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HighScoreManager.h; path = Classes/HighScoreManager.h; sourceTree = "<group>"; };
-		DAF44409144B08CE00943C0D /* HighScoreManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HighScoreManager.m; path = Classes/HighScoreManager.m; sourceTree = "<group>"; };
 		DAF4440A144B08CE00943C0D /* HighscoreScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HighscoreScene.h; path = Classes/HighscoreScene.h; sourceTree = "<group>"; };
 		DAF4440B144B08CE00943C0D /* HighscoreScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HighscoreScene.m; path = Classes/HighscoreScene.m; sourceTree = "<group>"; };
 		DAF4440C144B08CE00943C0D /* HoverTurtle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HoverTurtle.h; path = Classes/HoverTurtle.h; sourceTree = "<group>"; };
@@ -1190,6 +1190,8 @@
 				DAF443F1144B08CA00943C0D /* EndScene.m */,
 				DA69A9A314734AE9008BBF38 /* VictoryScene.h */,
 				DA69A9A414734AEB008BBF38 /* VictoryScene.m */,
+				DA50DF061494EF51001D50E1 /* VictoryLayer.h */,
+				DA50DF071494EF51001D50E1 /* VictoryLayer.m */,
 				DA690170145BA086000D278F /* GameObject.h */,
 				DA690171145BA086000D278F /* GameObject.m */,
 				DAB80139148152080058FD3A /* FallingRocket.h */,
@@ -1865,8 +1867,6 @@
 				DA69A994146F6A23008BBF38 /* LoadScene.m */,
 				DAF44406144B08CD00943C0D /* HighscoreLayer.h */,
 				DAF44407144B08CD00943C0D /* HighscoreLayer.m */,
-				DAF44408144B08CD00943C0D /* HighScoreManager.h */,
-				DAF44409144B08CE00943C0D /* HighScoreManager.m */,
 				DAF4440A144B08CE00943C0D /* HighscoreScene.h */,
 				DAF4440B144B08CE00943C0D /* HighscoreScene.m */,
 			);
@@ -2373,7 +2373,6 @@
 				DAF4447A144B08DE00943C0D /* GameStateManager.m in Sources */,
 				DAF4447B144B08DE00943C0D /* Ground.m in Sources */,
 				DAF4447C144B08DE00943C0D /* HighscoreLayer.m in Sources */,
-				DAF4447D144B08DE00943C0D /* HighScoreManager.m in Sources */,
 				DAF4447E144B08DE00943C0D /* HighscoreScene.m in Sources */,
 				DAF4447F144B08DE00943C0D /* HoverTurtle.m in Sources */,
 				DAF44480144B08DE00943C0D /* HUDLayer.m in Sources */,
@@ -2449,6 +2448,7 @@
 				DA5D69D21485BB6B00996F74 /* FlyingTurtling.m in Sources */,
 				DA5D69E3148A837500996F74 /* ScoreManager.m in Sources */,
 				DA73BDDD148C537400D56F97 /* BasicGauge.m in Sources */,
+				DA50DF081494EF51001D50E1 /* VictoryLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

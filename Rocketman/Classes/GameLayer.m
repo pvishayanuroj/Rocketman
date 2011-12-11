@@ -35,8 +35,6 @@
 #import "EventText.h"
 #import "Banner.h"
 
-#import "HighscoreManager.h"
-
 @implementation GameLayer
 
 // Gauge related constants

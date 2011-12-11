@@ -10,6 +10,8 @@
 #import "cocos2d.h"
 #import "IncrementingTextDelegate.h"
 
+@class VictoryLayer;
+
 @interface VictoryScene : CCScene <IncrementingTextDelegate> {
     
     CCSprite *timeTitle_;
@@ -21,6 +23,9 @@
     SRSMScore score_;
     
     NSUInteger level_;
+    
+    /** For detecting touches */
+    VictoryLayer *layer_;
 }
 
 + (id) victorySceneWithLevel:(NSUInteger)level score:(SRSMScore)score;

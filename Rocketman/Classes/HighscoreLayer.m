@@ -8,7 +8,6 @@
 
 #import "HighscoreLayer.h"
 #import "HighscoreScene.h"
-#import "HighscoreManager.h"
 #import "MainMenuScene.h"
 #import "Constants.h"
 

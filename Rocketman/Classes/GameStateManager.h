@@ -51,6 +51,9 @@
 /** Called when a level is cleared */
 - (void) endGameWithWin:(SRSMScore)score;
 
+/** Called after the score screen is shown */
+- (void) continueFromVictory;
+
 /** Called when a cutscene ends */
 - (void) endStory;
 

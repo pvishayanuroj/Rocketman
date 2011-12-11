@@ -125,6 +125,7 @@ static GameStateManager *_gameStateManager = nil;
     // Cleanup GM singleton
     [GameManager purgeGameManager];
     
+    // Shows the game over screen
     [self showGameOver:score];
 }
 
@@ -133,7 +134,14 @@ static GameStateManager *_gameStateManager = nil;
     // Cleanup GM singleton
     [GameManager purgeGameManager];
     
+    // Shows the stage cleared screen
     [self showStageCleared:score];    
+}
+
+- (void) continueFromVictory
+{
+    [[AudioManager audioManager] stopMusic];    
+    [self showWorldMap];    
 }
 
 - (void) endStory

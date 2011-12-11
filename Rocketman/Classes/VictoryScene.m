@@ -12,6 +12,7 @@
 #import "GameStateManager.h"
 #import "AnimatedButton.h"
 #import "ScoreManager.h"
+#import "VictoryLayer.h"
 
 @implementation VictoryScene
 
@@ -81,16 +82,19 @@ static const CGFloat VS_ROCKET_START_Y = 450.0f;
         rocket.position = CGPointMake(VS_ROCKET_START_X, VS_ROCKET_START_Y);
         [self addChild:rocket z:2];
         
-        
-        
         // Show the first score
         [self createText:kScoreTimeTaken];
+        
+        // Add the victory layer
+        layer_ = [[VictoryLayer node] retain];
+        [self addChild:layer_];
     }
     return self;
 }
 
 - (void) dealloc
 {
+    [layer_ release];
     [timeTitle_ release];
     [comboTitle_ release];
     [enemiesTitle_ release];
@@ -152,6 +156,7 @@ static const CGFloat VS_ROCKET_START_Y = 450.0f;
             break;
         case kScoreEnemiesDestroyed:
             [self placeMedalAndRecord:text.unitID score:score_.numEnemiesKilled];
+            layer_.clickable = YES;
             break;
         default:
             break;
