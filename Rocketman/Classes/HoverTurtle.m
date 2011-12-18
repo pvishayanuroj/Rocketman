@@ -16,8 +16,12 @@
 #import "ConstantMovementWithStop.h"
 #import "ArcMovement.h"
 #import "LightBlastCloud.h"
+#import "UtilFuncs.h"
 
 @implementation HoverTurtle
+
+static const NSInteger HT_START_Y = 400;
+static const NSInteger HT_START_Y_PLUSMINUS = 40;
 
 static NSUInteger countID = 0;
 
@@ -44,7 +48,15 @@ static NSUInteger countID = 0;
         sprite_ = [[CCSprite spriteWithSpriteFrameName:spriteName] retain];
         [self addChild:sprite_ z:-1];
         
-        self.position = pos;
+        // The hover turtle only starts from either side of the screen
+		CGSize size = [[CCDirector sharedDirector] winSize];   
+        NSInteger yPos = [UtilFuncs randomPlusMinus:HT_START_Y range:HT_START_Y_PLUSMINUS];
+        if (pos.x < size.width * 0.5f) {
+            self.position = CGPointMake(-50.0f, yPos);
+        }
+        else {
+            self.position = CGPointMake(size.width + 50.0f, yPos);
+        }
         
         // Attributes
         PVCollide collide = defaultPVCollide_;
@@ -53,17 +65,10 @@ static NSUInteger countID = 0;
         // Bounding box setup
         [boundaries_ addObject:[Boundary boundary:self colStruct:collide]];        
         
-        CGSize size = [[CCDirector sharedDirector] winSize];        
-        CGFloat yTarget = 0.80 * size.height;        
-        
-        // Setup the initial fall
-        ConstantMovementWithStop *initial = [ConstantMovementWithStop constantMovementWithStop:-1.0f withStop:yTarget];
-        [movements_ addObject:initial];        
-        
         // Setup side to side movement
-        SideMovement *movement = [SideMovement sideMovement:self distance:200 speed:3];
+        SideMovement *movement = [SideMovement sideMovement:self leftCutoff:10 rightCutoff:300 speed:2.5f];
         movement.delegate = self;
-        [movement setProximityTrigger:25.0f];        
+        [movement setRandomTrigger:3];
         [movements_ addObject:movement];
         
         [self initEngine];
@@ -137,7 +142,8 @@ static NSUInteger countID = 0;
 
 - (void) sideMovementRandomTrigger:(SideMovement *)movement
 {
-
+    CGPoint pos = CGPointMake(self.position.x, self.position.y - 10);
+    [[GameManager gameManager] addObstacle:pos type:kPlasmaBall];
 }
 
 @end

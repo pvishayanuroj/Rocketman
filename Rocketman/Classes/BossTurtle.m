@@ -23,6 +23,11 @@
 
 @implementation BossTurtle
 
+static const CGFloat BT_ENGINE_X = 70.0f;
+static const CGFloat BT_ENGINE_Y = 48.0f;
+static const CGFloat BT_ENGINE_GRAVITY = 50.0f;
+static const NSInteger BT_TURTLINGS = 6;
+
 static NSUInteger countID = 0;
 
 + (void) resetID
@@ -81,16 +86,16 @@ static NSUInteger countID = 0;
     
         sprite_.flipX = YES;
         numShells_ = 0;
-        maxShells_ = 6;
+        maxShells_ = BT_TURTLINGS;
         
         // Setup the initial fall
         ConstantMovementWithStop *initial = [ConstantMovementWithStop constantMovementWithStop:-1.0f withStop:yTarget_];
         [movements_ addObject:initial];
         
         // Setup the side-to-side movement of the boss
-        sideMovement_ = [[SideMovement sideMovement:leftCutoff rightCutoff:rightCutoff speed:3] retain];
+        sideMovement_ = [[SideMovement sideMovement:self leftCutoff:leftCutoff rightCutoff:rightCutoff speed:3] retain];
         sideMovement_.delegate = self;
-        [sideMovement_ setProximityTrigger:25.0f];
+        [sideMovement_ setProximityTrigger:20.0f];
         [movements_ addObject:sideMovement_];        
         
         [self initActions];
@@ -274,12 +279,12 @@ static NSUInteger countID = 0;
 - (void) engineFlameGoingRight:(BOOL)right
 {
     if (right) {
-        engineFlame_.gravity = ccp(50, 0);
-        engineFlame_.position = ccp(80, 27);
+        engineFlame_.gravity = ccp(BT_ENGINE_GRAVITY, 0);
+        engineFlame_.position = ccp(BT_ENGINE_X, BT_ENGINE_Y);
     }
     else {
-        engineFlame_.gravity = ccp(-50, 0);
-        engineFlame_.position = ccp(-80, 27);
+        engineFlame_.gravity = ccp(-BT_ENGINE_GRAVITY, 0);
+        engineFlame_.position = ccp(-BT_ENGINE_X, BT_ENGINE_Y);
     }
 }
 

@@ -63,19 +63,12 @@ static NSUInteger countID = 0;
         // Bounding box setup
         boundary_ = [[Boundary boundary:self colStruct:collide] retain];
         [boundaries_ addObject:boundary_];        
-        
-        CGSize size = [[CCDirector sharedDirector] winSize];        
-        yTarget_ = 0.80 * size.height;        
-        
-        // Setup the initial fall
-        ConstantMovementWithStop *initial = [ConstantMovementWithStop constantMovementWithStop:-1.0f withStop:yTarget_];
-        [movements_ addObject:initial];        
-        
+
         // Setup side to side movement
-        SideMovement *movement = [SideMovement sideMovement:self distance:200 speed:3];
+        SideMovement *movement = [SideMovement sideMovement:self leftCutoff:10 rightCutoff:300 speed:3.0f];
         movement.delegate = self;
-        [movement setProximityTrigger:25.0f];        
-        [movements_ addObject:movement];
+        [movement setProximityTrigger:20.0f];        
+        [movements_ addObject:movement];        
         
         if (type == kShieldedAlienHoverTurtle) {
             int numEggs = 3;

@@ -20,10 +20,10 @@
 
 @implementation Salamander
 
-const CGFloat SL_FLAME_COOLDOWN = 1.5f;
-const CGFloat SL_FLAME_DURATION = 1.0f;
-const CGFloat SL_FLAME_XOFFSET = 75.0f;
-const CGFloat SL_FLAME_YOFFSET = 18.0f;
+static const CGFloat SL_FLAME_COOLDOWN = 1.5f;
+static const CGFloat SL_FLAME_DURATION = 1.0f;
+static const CGFloat SL_FLAME_XOFFSET = 75.0f;
+static const CGFloat SL_FLAME_YOFFSET = 18.0f;
 
 static NSUInteger countID = 0;
 

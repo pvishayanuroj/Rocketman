@@ -40,6 +40,16 @@
     }
 }
 
++ (BOOL) randomChoice
+{
+    return (arc4random() % 2 == 0);
+}
+
++ (NSInteger) randomPlusMinus:(NSInteger)val range:(NSInteger)range
+{
+    return [UtilFuncs randomIncl:(val - range) b:(val + range)];
+}
+
 + (CGFloat) distanceNoRoot:(CGPoint)a b:(CGPoint)b
 {
 	CGFloat t1 = a.x - b.x;

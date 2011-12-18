@@ -25,6 +25,12 @@
  */
 + (NSInteger) randomIncl:(NSInteger)a b:(NSInteger)b;
 
+/** Returns true or false at random */
++ (BOOL) randomChoice;
+
+/** Returns a random value inclusive of val +/- range */
++ (NSInteger) randomPlusMinus:(NSInteger)val range:(NSInteger)range;
+
 /** Returns whether or not the given circle intersects with the rectangle */
 + (BOOL) intersects:(CGPoint)circle radius:(CGFloat)r rect:(CGRect)rect;
 

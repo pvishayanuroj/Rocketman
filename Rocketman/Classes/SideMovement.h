@@ -27,6 +27,9 @@
     /** Whether or not the proximity trigger has fired this turn */
     BOOL proximityTriggered_;
     
+    /** Updated every time move is called. Needed for copying this movement */
+    CGFloat objectXPos_;
+    
     /** Movement speed */
     CGFloat sideSpeed_;
     
@@ -41,6 +44,9 @@
     
     /** How many times this fires per direction/turn */
     NSUInteger numRandomTriggers_;
+    
+    /** Holds the positions at which to activate the random trigger */
+    NSMutableArray *randomTriggers_;
     
     /** Delegate object */
     id <SideMovementDelegate> delegate_;            
@@ -58,14 +64,16 @@
 
 + (id) sideMovement:(GameObject *)object distance:(CGFloat)distance speed:(CGFloat)speed;
 
-+ (id) sideMovement:(CGFloat)leftCutoff rightCutoff:(CGFloat)rightCutoff speed:(CGFloat)speed;
++ (id) sideMovement:(GameObject *)object leftCutoff:(CGFloat)leftCutoff rightCutoff:(CGFloat)rightCutoff speed:(CGFloat)speed;
 
-- (id) initSideMovement:(CGFloat)leftCutoff rightCutoff:(CGFloat)rightCutoff speed:(CGFloat)speed;
+- (id) initSideMovement:(CGFloat)xPos leftCutoff:(CGFloat)leftCutoff rightCutoff:(CGFloat)rightCutoff speed:(CGFloat)speed;
 
 - (void) changeSideSpeed:(CGFloat)sideSpeed;
 
 - (void) setProximityTrigger:(CGFloat)distance;
 
 - (void) setRandomTrigger:(NSUInteger)numPerTurn;
+
+- (void) populateRandomTriggers:(BOOL)movingLeft;
 
 @end
