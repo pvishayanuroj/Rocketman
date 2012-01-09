@@ -297,7 +297,7 @@ static const CGFloat GL_MAX_COMBO_INTERVAL = 1.0f;
         for (Obstacle *obstacle in obstacles_) {
             // Check all boundaries of an object (may be many)
             for (Boundary *boundary in obstacle.boundaries) {
-                if ([boundary hitCheckAndHandle:obstacle.position catPos:cat.position catRadius:cat.radius]) {
+                if ([boundary hitCheckAndHandle:obstacle.position catPos:cat.position catRadius:cat.radius catType:cat.catType]) {
                     // Decrement the number of impacts the bullet can have
                     cat.remainingImpacts--;
                     
@@ -312,7 +312,7 @@ static const CGFloat GL_MAX_COMBO_INTERVAL = 1.0f;
                         // If it is, check to see if any other obstacle in proximity will be affected
                         for (Obstacle *obs in obstacles_) {
                             for (Boundary *b in obs.boundaries) {
-                                [b hitCheckAndHandle:obs.position catPos:cat.position catRadius:cat.explosionRadius];
+                                [b hitCheckAndHandle:obs.position catPos:cat.position catRadius:cat.explosionRadius catType:cat.catType];
                             }             
                         }
                     }                    

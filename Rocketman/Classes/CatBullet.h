@@ -24,8 +24,11 @@
     CGFloat explosionRadius_;
     
     NSInteger remainingImpacts_;
+    
+    CatType catType_;
 }
 
+@property (nonatomic, readonly) CatType catType;
 @property (nonatomic, readonly) CGFloat radius;
 @property (nonatomic, readonly) CGFloat explosionRadius;
 @property (nonatomic, assign) NSInteger remainingImpacts;

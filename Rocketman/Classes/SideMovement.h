@@ -62,7 +62,7 @@
 @property (nonatomic, assign) BOOL movingLeft;
 @property (nonatomic, assign) id <SideMovementDelegate> delegate;
 
-+ (id) sideMovement:(GameObject *)object distance:(CGFloat)distance speed:(CGFloat)speed;
+//+ (id) sideMovement:(GameObject *)object distance:(CGFloat)distance speed:(CGFloat)speed;
 
 + (id) sideMovement:(GameObject *)object leftCutoff:(CGFloat)leftCutoff rightCutoff:(CGFloat)rightCutoff speed:(CGFloat)speed;
 

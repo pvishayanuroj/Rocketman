@@ -11,6 +11,7 @@
 
 @implementation CatBullet
 
+@synthesize catType = catType_;
 @synthesize radius = radius_;
 @synthesize explosionRadius = explosionRadius_;
 @synthesize remainingImpacts = remainingImpacts_;
@@ -45,6 +46,7 @@ static NSUInteger countID = 0;
     if ((self = [super initGameObject])) {
         
         unitID_ = countID++;        
+        catType_ = type;
         
         // Pick the correct sprite to use
         switch (type) {

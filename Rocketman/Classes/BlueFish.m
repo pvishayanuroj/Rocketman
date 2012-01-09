@@ -113,7 +113,7 @@ static NSUInteger countID = 0;
     }
 }
 
-- (void) boundaryHit:(CGPoint)point boundaryID:(NSInteger)boundaryID
+- (void) boundaryHit:(CGPoint)point boundaryID:(NSInteger)boundaryID catType:(CatType)catType
 {
     [[GameManager gameManager] enemyKilled:originalObstacleType_ pos:self.position];    
     [[AudioManager audioManager] playSound:kPlop];        

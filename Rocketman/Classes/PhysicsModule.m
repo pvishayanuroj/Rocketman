@@ -13,9 +13,9 @@
 @implementation PhysicsModule
 
 // Speed thresholds
-static const CGFloat V_CRUISE  = 9.5f;
-static const CGFloat V_T1      = 7.5f;
-static const CGFloat V_T2      = 5.0f;
+static const CGFloat V_CRUISE  = 8.5f;
+static const CGFloat V_T1      = 6.5f;
+static const CGFloat V_T2      = 4.0f;
 // At this speed, collisions will not cause speed to go any slower
 // and slow will not decay beyond this speed. If slow is pressed below this speed, then no decay occurs
 static const CGFloat V_MIN     = 2.0f; 

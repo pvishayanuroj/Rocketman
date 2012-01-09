@@ -6,12 +6,14 @@
 //  Copyright (c) 2011 Paul Vishayanuroj. All rights reserved.
 //
 
+#import "CommonHeaders.h"
+
 @protocol BoundaryDelegate <NSObject>
 
 @optional
 
 - (void) boundaryCollide:(NSInteger)boundaryID;
 
-- (void) boundaryHit:(CGPoint)point boundaryID:(NSInteger)boundaryID;
+- (void) boundaryHit:(CGPoint)point boundaryID:(NSInteger)boundaryID catType:(CatType)catType;
 
 @end

@@ -9,7 +9,6 @@
 #import "CommonHeaders.h"
 #import "BoundaryDelegate.h"
 
-
 @interface Boundary : NSObject {
   
 	PVCollide collide_;
@@ -30,7 +29,7 @@
 
 - (BOOL) collisionCheckAndHandle:(CGPoint)objectPos rocketBox:(CGRect)rocketBox;
 
-- (BOOL) hitCheckAndHandle:(CGPoint)objectPos catPos:(CGPoint)catPos catRadius:(CGFloat)catRadius;
+- (BOOL) hitCheckAndHandle:(CGPoint)objectPos catPos:(CGPoint)catPos catRadius:(CGFloat)catRadius catType:(CatType)catType;
 
 - (BOOL) collides:(CGPoint)objectPos rocketBox:(CGRect)rocketBox;
 

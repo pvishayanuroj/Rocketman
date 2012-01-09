@@ -62,7 +62,7 @@
     return NO;
 }
 
-- (BOOL) hitCheckAndHandle:(CGPoint)objectPos catPos:(CGPoint)catPos catRadius:(CGFloat)catRadius
+- (BOOL) hitCheckAndHandle:(CGPoint)objectPos catPos:(CGPoint)catPos catRadius:(CGFloat)catRadius catType:(CatType)catType
 {
     if (collide_.hitActive && [self collides:objectPos catPos:catPos catRadius:catRadius]) {
         // If boundary is turned off after first hit        
@@ -71,8 +71,8 @@
             collide_.collideActive = NO;
         }
         // Let delegate know that hit has occurred
-        if ([delegate_ respondsToSelector:@selector(boundaryHit:boundaryID:)]) {
-            [delegate_ boundaryHit:catPos boundaryID:boundaryID_];
+        if ([delegate_ respondsToSelector:@selector(boundaryHit:boundaryID:catType:)]) {
+            [delegate_ boundaryHit:catPos boundaryID:boundaryID_ catType:catType];
         }
         return YES;
     }

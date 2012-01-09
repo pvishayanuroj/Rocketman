@@ -55,6 +55,7 @@ static NSUInteger countID = 0;
         // Attributes
         PVCollide collide = defaultPVCollide_;
         collide.radius = 32;
+        collide.autoInactive = NO;
         
         // Bounding box setup
         [boundaries_ addObject:[Boundary boundary:self colStruct:collide]];
@@ -93,13 +94,16 @@ static NSUInteger countID = 0;
     }
 }
 
-- (void) boundaryHit:(CGPoint)point boundaryID:(NSInteger)boundaryID
+- (void) boundaryHit:(CGPoint)point boundaryID:(NSInteger)boundaryID catType:(CatType)catType
 {
     [[AudioManager audioManager] playSound:kPlop];    
-    // Account for offset, since pos is in terms of screen grid
-    CGPoint p = ccpSub(point, self.position);
-    // Rock takes no damage on shell hit
-    [[GameManager gameManager] addDoodad:[LightBlastCloud lightBlastCloudAt:p]];
+    // Rock takes no damage on normal cat type
+    if (catType == kCatNormal) {
+        [[GameManager gameManager] addDoodad:[LightBlastCloud lightBlastCloudAt:point movements:movements_]];
+    }
+    else {
+        [self death];
+    }
 }
 
 - (void) death

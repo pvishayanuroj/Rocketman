@@ -16,7 +16,7 @@
 
 #define DEBUG_NOSOUND 0
 
-#define DEBUG_BOUNDINGBOX 0
+#define DEBUG_BOUNDINGBOX 1
 
 #define DEBUG_NORINGS 0
 

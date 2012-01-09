@@ -137,7 +137,7 @@ static NSUInteger countID = 0;
 }
 
 
-- (void) boundaryHit:(CGPoint)point boundaryID:(NSInteger)boundaryID
+- (void) boundaryHit:(CGPoint)point boundaryID:(NSInteger)boundaryID catType:(CatType)catType
 {
     [[AudioManager audioManager] playSound:kPlop];        
     
