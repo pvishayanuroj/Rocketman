@@ -31,10 +31,10 @@ static const CGFloat DV_T2     = 0.005f;
 // Initial rate of fall once past V_MIN
 static const CGFloat DV_MIN    = 0.005f;
 // Rate of fall acceleration (gravity)
-static const CGFloat DDV_MIN   = 0.0004f;
+static const CGFloat DDV_MIN   = 0.004f;
 
 // Speed slowdown for collisions
-static const CGFloat DV_COLLIDE = 2.0f;
+static const CGFloat DV_COLLIDE = 5.0f;
 // Duration immediately after a collision where the rocket's speed is not affected by other collisions
 // Essentially a collision cooldown timer
 static const CGFloat TS_COLLIDE = 0.5f;
@@ -60,7 +60,7 @@ static const CGFloat VB_NORMAL         = 3.0f;
 // Rate of boost change for the starting boost
 static const CGFloat DB_STARTBOOST     = 0.0005f;
 // How much speed is added from a ring
-static const CGFloat DV_RINGBOOST      = 3.0f;
+static const CGFloat DV_RINGBOOST      = 5.0f;
 
 // Boost duration based on type
 static const CGFloat TB_BOOSTER        = 1.5f;

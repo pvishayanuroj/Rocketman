@@ -70,6 +70,7 @@ extern NSString * const R_PLOP_SOUND;
 extern NSString * const R_POWERUP_SOUND;
 extern NSString * const R_SLAP_SOUND;
 extern NSString * const R_WERR_SOUND;
+extern NSString * const R_DAMAGED_01_SOUND;
 
 // Music
 extern NSString * const R_01_MUSIC;

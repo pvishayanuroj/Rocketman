@@ -87,7 +87,7 @@ static NSUInteger countID = 0;
     // If not invincible, rock disintegrates
     else {
         [[GameManager gameManager] rocketCollision];
-        [[AudioManager audioManager] playSound:kWerr];  
+        [[AudioManager audioManager] playSound:kDamaged01];  
         [[GameManager gameManager] addDoodad:kDebrisGen pos:self.position];
         destroyed_ = YES;
         sprite_.visible = NO;

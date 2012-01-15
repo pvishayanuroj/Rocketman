@@ -76,17 +76,16 @@ static NSUInteger countID = 0;
 
 - (void) initActions
 {
-    CCActionInterval *sDown = [CCScaleTo actionWithDuration:0.3 scale:0.7];    
-    CCActionInterval *eDown = [CCEaseIn actionWithAction:sDown rate:1.0];
-    CCActionInterval *sUp = [CCScaleTo actionWithDuration:0.3 scale:1.0];
-    CCActionInterval *eUp = [CCEaseOut actionWithAction:sUp rate:1.0];    
-    CCActionInterval *animate = [CCSequence actions:eDown, eUp, nil];
+    
+    CCActionInterval *animate = [CCRotateBy actionWithDuration:2.0 angle:360];
 	idleAnimation_ = [[CCRepeatForever actionWithAction:animate] retain];		    
     
-    CCActionInterval *scaleUp = [CCScaleBy actionWithDuration:0.1f scale:1.5];
-    CCActionInterval *scaleDown = [CCScaleBy actionWithDuration:0.05f scale:0.01];    
+    CCActionInterval *scaleUp = [CCScaleBy actionWithDuration:0.15 scale:2.0];
+    CCActionInterval *scaleDown = [CCScaleBy actionWithDuration:0.1 scale:0.01];    
 	CCFiniteTimeAction *method = [CallFuncWeak actionWithTarget:self selector:@selector(death)];	    
-    collectAnimation_ = [[CCSequence actions:scaleUp, scaleDown, method, nil] retain];    
+    collectAnimation_ = [[CCSequence actions:scaleUp, scaleDown, method, nil] retain];
+    
+
 }
 
 - (void) showCollect

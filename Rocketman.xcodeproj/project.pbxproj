@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		52F1335514C2685F003EFF90 /* playerDamaged.caf in Resources */ = {isa = PBXBuildFile; fileRef = 52F1335414C2685F003EFF90 /* playerDamaged.caf */; };
+		52F1336E14C2F7F3003EFF90 /* Level2_data.plist in Resources */ = {isa = PBXBuildFile; fileRef = 52F1336D14C2F7F3003EFF90 /* Level2_data.plist */; };
 		DA1CB33B14661B39007096D8 /* PhysicsModule.m in Sources */ = {isa = PBXBuildFile; fileRef = DA1CB33A14661B39007096D8 /* PhysicsModule.m */; };
 		DA3815171477F54C005D103B /* ComboModule.m in Sources */ = {isa = PBXBuildFile; fileRef = DA3815161477F54B005D103B /* ComboModule.m */; };
 		DA38151D14784D29005D103B /* Cat Combo Banner.png in Resources */ = {isa = PBXBuildFile; fileRef = DA38151914784D29005D103B /* Cat Combo Banner.png */; };
@@ -47,7 +49,7 @@
 		DA5037A61453681C00600DD4 /* Tilt Banner.png in Resources */ = {isa = PBXBuildFile; fileRef = DA50379E1453681C00600DD4 /* Tilt Banner.png */; };
 		DA5037B2145383DE00600DD4 /* Tutorial Parallax.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5037B1145383DE00600DD4 /* Tutorial Parallax.png */; };
 		DA5037B51453ACCA00600DD4 /* DummyBoss.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5037B41453ACC900600DD4 /* DummyBoss.m */; };
-		DA5037B71454437D00600DD4 /* Level2_data.plist in Resources */ = {isa = PBXBuildFile; fileRef = DA5037B61454437D00600DD4 /* Level2_data.plist */; };
+		DA5037B71454437D00600DD4 /* Level2_data2.plist in Resources */ = {isa = PBXBuildFile; fileRef = DA5037B61454437D00600DD4 /* Level2_data2.plist */; };
 		DA5037BD1454CF9600600DD4 /* Button.m in Sources */ = {isa = PBXBuildFile; fileRef = DA5037BB1454CF8F00600DD4 /* Button.m */; };
 		DA50DF031493088B001D50E1 /* Supercat Button Pressed-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = DA50DF011493088B001D50E1 /* Supercat Button Pressed-hd.png */; };
 		DA50DF041493088B001D50E1 /* Supercat Button-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = DA50DF021493088B001D50E1 /* Supercat Button-hd.png */; };
@@ -383,6 +385,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		52F1335414C2685F003EFF90 /* playerDamaged.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = playerDamaged.caf; sourceTree = "<group>"; };
+		52F1336D14C2F7F3003EFF90 /* Level2_data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Level2_data.plist; sourceTree = "<group>"; };
 		DA1CB33914661B39007096D8 /* PhysicsModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhysicsModule.h; path = Classes/PhysicsModule.h; sourceTree = "<group>"; };
 		DA1CB33A14661B39007096D8 /* PhysicsModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhysicsModule.m; path = Classes/PhysicsModule.m; sourceTree = "<group>"; };
 		DA1CB33D1466350A007096D8 /* PhysicsModuleDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhysicsModuleDelegate.h; path = Classes/PhysicsModuleDelegate.h; sourceTree = "<group>"; };
@@ -434,7 +438,7 @@
 		DA5037B1145383DE00600DD4 /* Tutorial Parallax.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial Parallax.png"; sourceTree = "<group>"; };
 		DA5037B31453ACC900600DD4 /* DummyBoss.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DummyBoss.h; path = Classes/DummyBoss.h; sourceTree = "<group>"; };
 		DA5037B41453ACC900600DD4 /* DummyBoss.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DummyBoss.m; path = Classes/DummyBoss.m; sourceTree = "<group>"; };
-		DA5037B61454437D00600DD4 /* Level2_data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Level2_data.plist; sourceTree = "<group>"; };
+		DA5037B61454437D00600DD4 /* Level2_data2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Level2_data2.plist; sourceTree = "<group>"; };
 		DA5037B81454A59B00600DD4 /* BoundaryDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BoundaryDelegate.h; path = Classes/BoundaryDelegate.h; sourceTree = "<group>"; };
 		DA5037B91454CC4C00600DD4 /* HUDDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HUDDelegate.h; path = Classes/HUDDelegate.h; sourceTree = "<group>"; };
 		DA5037BA1454CF8B00600DD4 /* Button.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Button.h; path = Classes/Button.h; sourceTree = "<group>"; };
@@ -1598,6 +1602,7 @@
 		DAF441C8144B08B200943C0D /* Audio */ = {
 			isa = PBXGroup;
 			children = (
+				52F1335414C2685F003EFF90 /* playerDamaged.caf */,
 				DAF441C9144B08B200943C0D /* engine.wav */,
 				DAF441CA144B08B200943C0D /* explosion01.wav */,
 				DAF441CB144B08B200943C0D /* kerrum.wav */,
@@ -1685,11 +1690,12 @@
 		DAF441FF144B08B300943C0D /* Level Data */ = {
 			isa = PBXGroup;
 			children = (
+				52F1336D14C2F7F3003EFF90 /* Level2_data.plist */,
 				DA3979DE146B82410043C48F /* Level6_data.plist */,
 				DAD8058614621B2400A195C3 /* Level3_data.plist */,
 				DAD8058714621B2400A195C3 /* Level4_data.plist */,
 				DAD8058814621B2400A195C3 /* Level5_data.plist */,
-				DA5037B61454437D00600DD4 /* Level2_data.plist */,
+				DA5037B61454437D00600DD4 /* Level2_data2.plist */,
 				DAF44200144B08B300943C0D /* Level0_data.plist */,
 				DAF44201144B08B300943C0D /* Level0_notifications.plist */,
 				DAF44202144B08B300943C0D /* Level1_data.plist */,
@@ -2165,7 +2171,7 @@
 				DA5037A51453681C00600DD4 /* Tap Bomb Banner.png in Resources */,
 				DA5037A61453681C00600DD4 /* Tilt Banner.png in Resources */,
 				DA5037B2145383DE00600DD4 /* Tutorial Parallax.png in Resources */,
-				DA5037B71454437D00600DD4 /* Level2_data.plist in Resources */,
+				DA5037B71454437D00600DD4 /* Level2_data2.plist in Resources */,
 				DA690175145DF377000D278F /* Intro 07 Lab.png in Resources */,
 				DA690176145DF377000D278F /* Intro 07 President.png in Resources */,
 				DA690178145DFE47000D278F /* Intro 10.png in Resources */,
@@ -2234,6 +2240,8 @@
 				DA73BDF3148C597600D56F97 /* Turtle Icon.png in Resources */,
 				DA50DF031493088B001D50E1 /* Supercat Button Pressed-hd.png in Resources */,
 				DA50DF041493088B001D50E1 /* Supercat Button-hd.png in Resources */,
+				52F1335514C2685F003EFF90 /* playerDamaged.caf in Resources */,
+				52F1336E14C2F7F3003EFF90 /* Level2_data.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2459,7 +2467,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Paul Vishayanuroj (8GPS98FCV8)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -2472,7 +2480,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				PROVISIONING_PROFILE = "E2D4FF9D-9C3A-495C-93DF-9DF38A24089F";
+				PROVISIONING_PROFILE = "6AEC0ED8-B746-4C46-945C-81A233220485";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -2481,7 +2489,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Paul Vishayanuroj (8GPS98FCV8)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_PREPROCESSOR_DEFINITIONS = NDEBUG;
@@ -2490,7 +2498,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "E2D4FF9D-9C3A-495C-93DF-9DF38A24089F";
+				PROVISIONING_PROFILE = "6AEC0ED8-B746-4C46-945C-81A233220485";
 				SDKROOT = iphoneos;
 			};
 			name = Release;
@@ -2499,7 +2507,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Paul Vishayanuroj (8GPS98FCV8)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -2510,7 +2518,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = "-lz";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "30410858-87E0-47A4-B3A4-C31FD71EDAB5";
+				PROVISIONING_PROFILE = "6AEC0ED8-B746-4C46-945C-81A233220485";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2519,7 +2527,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Paul Vishayanuroj (8GPS98FCV8)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Rocketman/Prefix.pch;
@@ -2529,7 +2537,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_LDFLAGS = "-lz";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "30410858-87E0-47A4-B3A4-C31FD71EDAB5";
+				PROVISIONING_PROFILE = "6AEC0ED8-B746-4C46-945C-81A233220485";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};

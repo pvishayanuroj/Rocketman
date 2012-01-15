@@ -14,6 +14,7 @@
 #import "GameManager.h"
 #import "Boundary.h"
 #import "StaticMovement.h"
+#import "SideMovement.h"
 #import "ArcMovement.h"
 #import "LightBlastCloud.h"
 
@@ -55,6 +56,10 @@ static NSUInteger countID = 0;
         
         // Setup the way this obstacle moves
         [movements_ addObject:[StaticMovement staticMovement]];
+        
+        // Setup side to side movement - Dan
+        SideMovement *movement = [SideMovement sideMovement:self leftCutoff:10 rightCutoff:300 speed:rand()%4];      
+        [movements_ addObject:movement]; 
         
         [self initActions];
         [self showIdle];        

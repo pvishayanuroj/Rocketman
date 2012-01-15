@@ -13,6 +13,7 @@
 #import "DataManager.h"
 #import "Boundary.h"
 #import "StaticMovement.h"
+#import "SideMovement.h"
 #import "ArcMovement.h"
 #import "DarkBlastCloud.h"
 
@@ -53,7 +54,11 @@ static NSUInteger countID = 0;
         [boundaries_ addObject:[Boundary boundary:self colStruct:collide]];        
 
         // Setup the way this obstacle moves
-        [movements_ addObject:[StaticMovement staticMovement]];           
+        [movements_ addObject:[StaticMovement staticMovement]];     
+        
+        // Setup side to side movement - Dan
+        SideMovement *movement = [SideMovement sideMovement:self leftCutoff:10 rightCutoff:300 speed:rand()%4];      
+        [movements_ addObject:movement]; 
         
         [self initActions];
         [self showIdle];        

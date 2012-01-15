@@ -50,7 +50,8 @@ static AudioManager *_audioManager = nil;
         [sae preloadEffect:R_WERR_SOUND];    
         [sae preloadEffect:R_EXPLOSION_01_SOUND];        
         [sae preloadEffect:R_POWERUP_SOUND];        
-        [sae preloadEffect:R_SLAP_SOUND];                
+        [sae preloadEffect:R_SLAP_SOUND];
+        [sae preloadEffect:R_DAMAGED_01_SOUND];
         engineSound_ = [[sae soundSourceForFile:R_ENGINE_SOUND] retain];       
         enginePlaying_ = NO;
         backgroundMusicPlaying_ = NO;
@@ -106,7 +107,10 @@ static AudioManager *_audioManager = nil;
             break;                   
         case kSlap:
             [engine playEffect:R_SLAP_SOUND];
-            break;                             
+            break;
+        case kDamaged01:
+            [engine playEffect:R_DAMAGED_01_SOUND];
+            break;
         case kEngine:
             engineSound_.looping = YES;
             enginePlaying_ = YES;

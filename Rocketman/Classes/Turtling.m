@@ -11,6 +11,7 @@
 #import "ConstantMovement.h"
 #import "StaticMovement.h"
 #import "RelativeMovement.h"
+#import "SideMovement.h"
 #import "ArcMovement.h"
 #import "GameLayer.h"
 #import "AudioManager.h"
@@ -69,7 +70,15 @@ static NSUInteger countID = 0;
         [boundaries_ addObject:[Boundary boundary:self colStruct:collide]];
         
         if (type == kTurtling) {
-            [movements_ addObject:[StaticMovement staticMovement]];
+            [movements_ addObject:[StaticMovement staticMovement]];           
+            
+            // Setup side to side movement - Dan
+            SideMovement *movement = [SideMovement sideMovement:self leftCutoff:10 rightCutoff:300 speed:rand()%4];      
+            [movements_ addObject:movement]; 
+            
+            // Setup Relative movement - Dan
+            [movements_ addObject:[RelativeMovement relativeMovement:2.0f equalRate:2.0f]];
+            
         }
         else if (type == kSwarmTurtling) {
             //CGPoint fallRate = CGPointMake(2, -3);            
@@ -117,12 +126,13 @@ static NSUInteger countID = 0;
         [movements_ removeAllObjects];
         [movements_ addObject:[ArcMovement arcFastRandomMovement:self.position]];
         [[AudioManager audioManager] playSound:kPlop];       
-        [[GameManager gameManager] enemyKilled:originalObstacleType_ pos:self.position];        
+        [[GameManager gameManager] enemyKilled:originalObstacleType_ pos:self.position];
+        [self death]; //add explosion to enemies when hit with Invincibility mode
     }
     else {    
         [[GameManager gameManager] rocketCollision];
-        [[AudioManager audioManager] playSound:kWerr];                
-        
+        [[AudioManager audioManager] playSound:kDamaged01];                
+        [movements_ addObject:[RelativeMovement relativeMovement:4.0f equalRate:9.0f]]; //Dan: Explosion falls down
         [self death];
     }
 }
@@ -130,7 +140,8 @@ static NSUInteger countID = 0;
 - (void) boundaryHit:(CGPoint)point boundaryID:(NSInteger)boundaryID catType:(CatType)catType
 {
     [[GameManager gameManager] enemyKilled:originalObstacleType_ pos:self.position];    
-    [[AudioManager audioManager] playSound:kPlop];        
+    [[AudioManager audioManager] playSound:kPlop];
+    [movements_ addObject:[RelativeMovement relativeMovement:4.0f equalRate:9.0f]];
     [self death];
 }
 
@@ -140,7 +151,8 @@ static NSUInteger countID = 0;
     sprite_.visible = NO;        
     
     //[[GameManager gameManager] addDoodad:[LightBlastCloud lightBlastCloudAt:self.position movements:movements_]];
-    [[GameManager gameManager] addDoodad:[DarkBlastCloud darkBlastCloudAt:self.position size:0.35f movements:movements_]];
+    [[GameManager gameManager] addDoodad:[DarkBlastCloud darkBlastCloudAt:self.position size:0.5f movements:movements_]];
+    
 }
 
 @end

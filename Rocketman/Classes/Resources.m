@@ -72,6 +72,7 @@ NSString * const R_PLOP_SOUND = @"plop.wav";
 NSString * const R_POWERUP_SOUND = @"powerup.wav";
 NSString * const R_SLAP_SOUND = @"slap.wav";
 NSString * const R_WERR_SOUND = @"werr.wav";
+NSString * const R_DAMAGED_01_SOUND = @"playerDamaged.caf";
 
 // Music
 NSString * const R_01_MUSIC = @"SRSMTheme01.mp3";

@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Background File</key>
+	<string>Sunset Background.png</string>
+	<key>Data</key>
+	<dict>
+		<key>12224</key>
+		<dict>
+			<key>173</key>
+			<string>Bird Boss</string>
+		</dict>
+		<key>1312</key>
+		<dict>
+			<key>227</key>
+			<string>Shock Turtling</string>
+			<key>67</key>
+			<string>Shock Turtling</string>
+		</dict>
+		<key>1472</key>
+		<dict>
+			<key>200</key>
+			<string>Shock Turtling</string>
+			<key>93</key>
+			<string>Shock Turtling</string>
+		</dict>
+		<key>1696</key>
+		<dict>
+			<key>173</key>
+			<string>Shock Turtling</string>
+		</dict>
+		<key>1952</key>
+		<dict>
+			<key>93</key>
+			<string>Shock Turtling</string>
+		</dict>
+		<key>2304</key>
+		<dict>
+			<key>227</key>
+			<string>Yellow Bird</string>
+		</dict>
+		<key>2336</key>
+		<dict>
+			<key>67</key>
+			<string>Yellow Bird</string>
+		</dict>
+		<key>2432</key>
+		<dict>
+			<key>227</key>
+			<string>Yellow Bird</string>
+		</dict>
+		<key>2528</key>
+		<dict>
+			<key>120</key>
+			<string>Yellow Bird</string>
+		</dict>
+		<key>2624</key>
+		<dict>
+			<key>253</key>
+			<string>Yellow Bird</string>
+		</dict>
+		<key>2656</key>
+		<dict>
+			<key>40</key>
+			<string>Yellow Bird</string>
+		</dict>
+		<key>2720</key>
+		<dict>
+			<key>200</key>
+			<string>Yellow Bird</string>
+		</dict>
+		<key>2848</key>
+		<dict>
+			<key>120</key>
+			<string>Yellow Bird</string>
+		</dict>
+		<key>2944</key>
+		<dict>
+			<key>67</key>
+			<string>Yellow Bird</string>
+		</dict>
+		<key>2976</key>
+		<dict>
+			<key>227</key>
+			<string>Yellow Bird</string>
+		</dict>
+		<key>3136</key>
+		<dict>
+			<key>120</key>
+			<string>Yellow Bird</string>
+		</dict>
+		<key>3168</key>
+		<dict>
+			<key>227</key>
+			<string>Yellow Bird</string>
+			<key>40</key>
+			<string>Yellow Bird</string>
+		</dict>
+		<key>3360</key>
+		<dict>
+			<key>173</key>
+			<string>Yellow Bird</string>
+		</dict>
+		<key>3520</key>
+		<dict>
+			<key>227</key>
+			<string>Yellow Bird</string>
+			<key>67</key>
+			<string>Yellow Bird</string>
+		</dict>
+		<key>3680</key>
+		<dict>
+			<key>173</key>
+			<string>Yellow Bird</string>
+		</dict>
+		<key>3840</key>
+		<dict>
+			<key>120</key>
+			<string>Yellow Bird</string>
+		</dict>
+		<key>4448</key>
+		<dict>
+			<key>120</key>
+			<string>Yellow Bird Swarm</string>
+		</dict>
+		<key>5152</key>
+		<dict>
+			<key>227</key>
+			<string>Yellow Bird Swarm</string>
+		</dict>
+		<key>5920</key>
+		<dict>
+			<key>93</key>
+			<string>Yellow Bird Swarm</string>
+		</dict>
+		<key>6464</key>
+		<dict>
+			<key>147</key>
+			<string>Yellow Bird Swarm</string>
+		</dict>
+		<key>6912</key>
+		<dict>
+			<key>227</key>
+			<string>Yellow Bird Swarm</string>
+		</dict>
+		<key>7200</key>
+		<dict>
+			<key>93</key>
+			<string>Yellow Bird Swarm</string>
+		</dict>
+		<key>8192</key>
+		<dict>
+			<key>120</key>
+			<string>Hover Turtle</string>
+		</dict>
+		<key>8864</key>
+		<dict>
+			<key>227</key>
+			<string>Hover Turtle</string>
+		</dict>
+		<key>9472</key>
+		<dict>
+			<key>120</key>
+			<string>Hover Turtle</string>
+		</dict>
+	</dict>
+	<key>Datakeys</key>
+	<array>
+		<string>1312</string>
+		<string>1472</string>
+		<string>1696</string>
+		<string>1952</string>
+		<string>2304</string>
+		<string>2336</string>
+		<string>2432</string>
+		<string>2528</string>
+		<string>2624</string>
+		<string>2656</string>
+		<string>2720</string>
+		<string>2848</string>
+		<string>2944</string>
+		<string>2976</string>
+		<string>3136</string>
+		<string>3168</string>
+		<string>3360</string>
+		<string>3520</string>
+		<string>3680</string>
+		<string>3840</string>
+		<string>4448</string>
+		<string>5152</string>
+		<string>5920</string>
+		<string>6464</string>
+		<string>6912</string>
+		<string>7200</string>
+		<string>8192</string>
+		<string>8864</string>
+		<string>9472</string>
+		<string>12224</string>
+	</array>
+	<key>Ground File</key>
+	<string>Desert Ground.png</string>
+	<key>Level Num</key>
+	<string>2</string>
+	<key>Parallax File</key>
+	<string>Desert Parallax.png</string>
+	<key>Vertical Tiles</key>
+	<integer>10000</integer>
+</dict>
+</plist>
